@@ -1,54 +1,61 @@
 # PuzzleAlarm
 
-A planned personal native iPhone alarm app for iOS 26+, SwiftUI and AlarmKit.
-Modes: ordinary alarms with selected sounds, or an ordered Math / Memory / QR
-challenge sequence backed by a primary alarm and four independent backup alarms.
+Personal native iPhone alarm application under development for iOS 26+.
+The planned app offers ordinary alarms with selected sounds or ordered Math,
+Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Status: Stage 0 scaffold created; Gate 0 BLOCKED. This is not a usable alarm app.**
-No Swift build, unit test, Xcode build, Simulator flow or device test has run.
+**Stage 1 core domain implemented and tested. This is not yet a runnable iPhone app.**
 
-## Start here
+## Evidence and scope
 
-- [Authoritative specification](docs/MASTER_PLAN.md)
-- [Current state and blockers](docs/PROJECT_STATE.md)
-- [Evidence matrix](docs/TEST_MATRIX.md)
-- [Development log](docs/DEVELOPMENT_LOG.md)
+See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
+[TEST_MATRIX](docs/TEST_MATRIX.md) distinguishes automated evidence from unimplemented
+platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
-## Development
+Implemented in dependency-free PuzzleAlarmCore:
+- Validated alarm definitions, modes, unique ordered challenge configurations and sound identifiers.
+- Immutable occurrence snapshots with explicit scheduling, challenge and cancellation states.
+- Stable planned alarm IDs, in-flight outcome tracking, retryable cancellation and retirement.
+- Deterministic local-time scheduling with explicit Gregorian calendar/timezone and DST rules.
+- Exactly five backup-plan entries at T, T+60s, T+120s, T+180s and T+240s.
+- Codable validation, recovery-state round trips and behavioral/invariant tests.
 
-Pure logic will live in the dependency-free PuzzleAlarmCore Swift package.
-Platform integration will live under PuzzleAlarm. XcodeGen project.yml is currently
-a definition skeleton with no app target; the SwiftUI shell belongs to Stage 2.
+Challenge engines, disk persistence, OS scheduling, iOS UI, camera and sound files
+belong to later gates. No real alarm, device installation or camera/audio behavior
+has been verified.
 
-With Swift 6+ installed, from this directory:
+## Free CI-first development
+
+[Public repository](https://github.com/teejayishere/PuzzleAlarm) /
+[GitHub Actions](https://github.com/teejayishere/PuzzleAlarm/actions/workflows/ios.yml).
+
+CI uses a standard macos-26 runner, prints macOS/Xcode/SDK/Swift versions, parses
+the package, builds with warnings as errors, runs Swift tests and reports core
+line coverage. No paid runners, cloud services, runtime dependencies or signing
+credentials. Private-repository execution is guarded out to preserve the $0 rule.
+
+A local Mac or large Windows Swift toolchain is unnecessary for ordinary work.
+With Swift 6+ available, equivalent core commands are:
 
 ```sh
-swift --version
 swift package dump-package
 swift build -Xswiftc -warnings-as-errors
+swift test -Xswiftc -warnings-as-errors --enable-code-coverage
+python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
 ```
 
-There are no domain tests yet. Stage 1 must add a test target and run swift test.
-A successful empty-module build proves tooling only.
+The package's macOS 13 minimum supports its host-side testing; the planned app
+targets iOS 26+. project.yml remains a Stage 2 XcodeGen skeleton, with no app target.
+Do not equate core compilation with an iOS or Simulator build.
 
-The Stage 0 workflow can run on a public GitHub repository's standard macOS runner.
-It skips private repositories to avoid assuming a paid minutes allowance.
-It prints tool versions, parses the manifest and builds the scaffold.
-No repository remote is configured and no workflow has been observed.
-Stage 2 must add XcodeGen installation with a pinned version, iOS 26 SDK selection,
-project generation, discovered iPhone Simulator destination, builds and tests.
+## Engineering rules
 
-No paid services, Apple membership, signing credentials, backend or telemetry.
-Physical installation with personal provisioning remains an unverified capability;
-do not assume AlarmKit availability or successful sideloading.
+Read [AGENTS.md](AGENTS.md) and [CONTRIBUTING](CONTRIBUTING.md). Invalidated assumptions
+send work back to the earliest affected gate. Full device validation remains
+[DEVICE REQUIRED](docs/DEVICE_TEST_PLAN.md), including free personal provisioning.
 
-This directory is independent of Investment Dashboard. Adding it to the app's
-project sidebar remains a manual app action.
+This standalone directory/repository is separate from Investment Dashboard.
+No accounts, backend, telemetry, payments or App Store infrastructure are planned.
 
-## Sources checked during setup
-
-- [Swift Windows prerequisites](https://www.swift.org/install/windows/manual/)
-- [GitHub standard runner cost rules](https://docs.github.com/en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job)
-- [XcodeGen](https://github.com/yonaskolb/XcodeGen)
-
-See the evidence ledger for what was actually executed.
+[GitHub standard runner rules](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)
+confirm standard public-repository runner usage is free.

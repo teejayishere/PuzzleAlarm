@@ -76,3 +76,43 @@ Local focused validation: inspected macro expansion in actual failed CI log;
 git diff --check. Swift execution remains CI-only.
 Gate 0 assumptions remain supported; Gate 1 has never passed.
 Next action: rerun package validation/build and complete test suite on macOS.
+
+## Stage 1, attempt 2 — 2026-10-01 America/Chicago
+
+Status: AUTOMATED PASS, audit pending
+Revision: 76420f1f8595d5c82cf103824e948088923a1b3f
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/36945155823
+Changes: One explicit inner try in the existing calendar invariant test.
+Tests: All 21 functions passed, including 15 sequence/13 calendar cases and each
+scheduling/cancellation failure position. Assertions were not weakened.
+Commands: gh run view --json; gh run view --log; git diff --check; git push.
+Gate 0 replay: manifest validation and core build passed before tests.
+Next action: Finish adversarial review and measure production coverage.
+
+## Stage 1, attempt 3 — 2026-10-01 America/Chicago
+
+Status: PASS
+Revision: cb5797f133993183e5dcf6082598182dc25450a9
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/36945373495
+Changes: Five adversarial tests; dependency-free coverage summary script.
+Tests added: concurrent uncertain scheduling outcome survives failure/restore;
+stale session snapshot timestamps; malformed checkpoint counters/types;
+non-finite/extreme calendar inputs; regressing success/finalization timestamps.
+Commands: Python ast.parse (reporter); rg safety/boundary checks; git diff --check;
+git push; gh run view --json and --log.
+Focused validation: prior macro failure reproduction fixed in actual compiler;
+new assertions exercise identified recovery/decoding edges.
+Full gate: manifest parse, warnings-as-errors build, 26 tests and coverage report
+all passed. Core coverage: 439/444 lines = 98.87%.
+Regression gates rerun: Gate 0 and all Stage 1 tests, including 2,590 date checks.
+Self-review: explicit immutable values, controlled mutations, bounded settings,
+validating decoding, no Apple UI/OS adapters or uncontrolled time/randomness.
+Adversarial findings: rollback must retain unacknowledged in-flight IDs; future
+retirement must never become challenge completion; creation cannot predate a
+snapshotted edit. Tests now cover these. No additional failing behavior observed.
+Invalidated prior gates: None. Expanded suite passed before Gate 1 acceptance.
+Known limitations: core state/checkpoint tests are not engine, disk, OS or device
+tests; operational side effects and full Math/Memory round snapshots are deferred.
+Device validation remaining: all cases.
+Next action: Documentation-only evidence commit and exact-HEAD CI confirmation.
+Stage 2 remains unstarted under the user's latest Stage 1-only scope.
