@@ -131,3 +131,23 @@ Local validation: pending structural checks; no local Xcode claim.
 Gate 0/1: last PASS retained; regression replay runs before iOS build/tests.
 Gate 2: pending actual generation, iOS compilation and Simulator test evidence.
 No Stage 3+ product functionality introduced. No paid tool/service or signing keys.
+
+## Stage 2, attempt 1 — actual CI success; audit correction required
+
+Revision: 373fa89e856b3f2b03d32b1baf4f00ed0c104a56
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/36946854457
+Generation: PASS (project/scheme/Info.plist reproducibility comparisons).
+Core: 26 tests PASS; 439/444 lines = 98.87% coverage.
+iOS app: BUILD SUCCEEDED on Xcode 26.6 / Swift 6.3.3.
+Simulator: dynamically selected iPhone 17 / iOS 26.5; 1 launch test PASS.
+Local validation: YAML/package-boundary checks and five Simulator-selector cases passed.
+Self-review: actual log confirms core compiled from Package.swift as a dependency,
+not copied into the app. No core source/test changes from 457fe81.
+Adversarial finding: xcodebuild matched ARM and Intel variants of the same UDID.
+Classification: Stage 2 destination configuration ambiguity; no core defect.
+Smallest correction: add arch=$(uname -m) to both build/test destinations.
+Add explicit warning audit: fail on new warnings; report the SDK's exact
+appintentsmetadataprocessor advisory (no AppIntents dependency by design).
+No compiler warnings found. Do not add Stage 3 code to remove an SDK advisory.
+Gate 2 remains pending acceptance until the corrected current revision passes.
+Earlier gates invalidated: None. Rerun full CI with core regressions before Gate 2.

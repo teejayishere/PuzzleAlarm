@@ -64,7 +64,7 @@ jobs:
         run: |
           set -o pipefail
           xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
-            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build \
             2>&1 | tee "$RUNNER_TEMP/ios-build.log"
       - name: Run native shell launch test
@@ -73,7 +73,9 @@ jobs:
         run: |
           set -o pipefail
           xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
-            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData -resultBundlePath TestResults/Shell.xcresult \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/ios-tests.log"
+      - name: Review Xcode diagnostics
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log"
