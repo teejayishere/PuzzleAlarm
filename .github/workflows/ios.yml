@@ -33,3 +33,5 @@ jobs:
         run: swift build -Xswiftc -warnings-as-errors
       - name: Run Swift package tests
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
+      - name: Report core coverage
+        run: python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
