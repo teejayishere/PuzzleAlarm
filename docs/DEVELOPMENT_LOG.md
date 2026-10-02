@@ -40,3 +40,23 @@ trivial test falsely implies Stage 1/2 progress. CI reports its Stage 0 boundary
 Full gate remains BLOCKED. No Swift/Xcode commands or tests have run.
 Next action: obtain Swift execution or a public GitHub remote, run the Stage 0
 workflow for a recorded revision, and rerun Gate 0 before implementing Stage 1.
+
+## Stage 0, attempt 2 — 2026-10-01 America/Chicago
+
+Status: PASS
+Changes: Public repository created; executable standard macos-26 workflow;
+SwiftPM test target and Foundation/Swift Testing toolchain smoke test.
+Tests added: foundationCodableAvailableInPackageTests (tooling only).
+Commands executed: gh auth status; gh repo create; git commit/push; gh run view
+36943963689 --json status,conclusion,headSha,jobs,url; gh run view --log.
+Focused/full gate result: actual manifest parse, build, swift test passed.
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/36943963689
+Revision: 92faaf89716a4f4d030e8cff4abe1021a07dd558
+Toolchain: macOS 26.6.2; Xcode 26.6 build 17F113; Swift 6.3.3; 1 test passed.
+Self-review: no paid runner or dependencies, no platform app code; GitHub
+noreply identity configured only in this repository. Public status verified.
+Adversarial review: smoke test is explicitly not domain evidence; private repos
+are guarded out; workflow failures propagate rather than being ignored.
+Regression gates rerun: Gate 0 checks. Invalidated gates: None.
+Known limitations/device validation: all iOS and hardware behavior unverified.
+Next action: Stage 1 domain models and behavioral tests, then current CI.

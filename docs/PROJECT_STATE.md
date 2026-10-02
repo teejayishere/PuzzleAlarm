@@ -1,54 +1,40 @@
 # Project state
 
-Current stage: 0 — Repository / Environment
-Current gate: Gate 0 — BLOCKED
-Last known passing gate: None
+Current stage: 1 — Core Domain
+Current gate: Gate 1 — NOT STARTED
+Last known passing gate: Gate 0
 Invalidated gates: None
-Current version/status: 0.0.0 scaffold — not runnable, not device ready
+Current version/status: 0.0.1 — toolchain verified; no alarm functionality
 
-## Current blockers
+## Current CI evidence
 
-- Swift is absent from PATH; common Swift install locations were not found.
-- WSL reports it is not installed; no Docker or GitHub CLI was found on PATH.
-- There is no configured GitHub remote or current CI run to supply Swift evidence.
-- This Windows environment cannot compile Xcode/iOS targets.
-- Gate 0 requires a successful manifest parse and working Swift tooling.
-  Those requirements are unverified; Stage 1 must not begin yet.
+Gate 0 PASS: https://github.com/teejayishere/PuzzleAlarm/actions/runs/36943963689
+Revision: 92faaf89716a4f4d030e8cff4abe1021a07dd558
+Observed 2026-10-01 America/Chicago (run timestamps 2026-10-02 UTC).
+Standard macos-26: macOS 26.6.2, Xcode 26.6 (17F113), Swift 6.3.3.
+Manifest parse, warnings-as-errors core build and 1 toolchain test passed.
+Local structure, YAML and common-secret-pattern review also passed.
+This is compiler/tooling evidence only, not domain or iOS integration evidence.
 
-## Open engineering risks
+## Blockers
 
-- AlarmKit APIs, entitlements, limits, sounds and App Intent routing need a real
-  current SDK compile spike in Stage 3.
-- Personal provisioning and AlarmKit installation must be proven on an iPhone.
-- Durable scheduling must handle the crash window between OS success and disk
-  acknowledgment; merely storing returned IDs after calls is insufficient.
-- Five alarms provide a bounded four-minute backup window, not an indefinite alarm.
-- GitHub runner labels and SDK inventories change. Stage 2 must inspect them.
-- Empty project generation or a scaffold build must never be called an app build.
+None for Stage 1. GitHub CI is the primary Swift validation environment.
+No local Windows Swift/Visual Studio installation is needed.
 
-## Unverified assumptions
+## Open risks and unverified assumptions
 
-SwiftPM manifest/module build, XcodeGen generation, all app/domain behavior,
-public-repository CI execution and device installation remain unverified.
+- AlarmKit types, metadata, entitlements, limits and routing await Stage 3 SDK probe.
+- Plan IDs before side effects; persist in-flight calls so recovery can reconcile
+  unknown outcomes instead of falsely assuming a schedule failed.
+- Five alarms provide only a four-minute backup window.
+- XcodeGen, iOS compilation and Simulator workflows are unverified.
+- Free personal provisioning and AlarmKit device installation remain unverified.
 
 ## Device-required validations
 
-Authorization, lock-screen and terminated-app firing, Focus/Silent Mode,
-backup chain, cancellation, intent launch, QR camera, sound playback, timezone
-changes and free personal provisioning.
-
-## Most recent CI evidence
-
-None. Workflow exists locally and has never run. No remote is configured.
+All cases in DEVICE_TEST_PLAN.md remain DEVICE REQUIRED.
 
 ## Next action
 
-Provide a Swift 6+ execution environment or connect this folder to a public
-GitHub repository and run the Stage 0 workflow. Record revision/run evidence.
-Rerun Gate 0 before beginning Stage 1. Actual Xcode integration begins at Stage 2.
-
-## Latest local structural evidence (2026-09-30)
-
-YAML parsing/structure, exact specification copy, dependency and common-secret
-pattern checks passed across 16 files. These do not satisfy the missing Swift
-manifest/build checks. Git initialized on main; no remote, commits or CI runs.
+Implement and test Stage 1 only. Replay Gate 0 checks and obtain current green
+CI before passing Gate 1. Do not begin iOS shell or AlarmKit before that evidence.

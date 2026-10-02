@@ -23,3 +23,13 @@ A future successful scaffold build is tooling evidence only.
 
 Specification copy: byte-for-byte match; SHA256 5bcebc02bce9554c1fec468cbf12d4d55f4ca19d36853c08879a8f76b1636cf5.
 Git repository initialized on main; no commits or remotes. No CI evidence.
+
+## Superseding Stage 0 evidence — 2026-10-01 America/Chicago
+
+Earlier blocked rows above are historical. Gate 0 is now PASS.
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/36943963689
+Revision: 92faaf89716a4f4d030e8cff4abe1021a07dd558
+Manifest parsing: AUTOMATED PASS. Core compilation: AUTOMATED PASS.
+Swift Testing/Foundation toolchain check: AUTOMATED PASS (1 test).
+macOS CI: AUTOMATED PASS on standard macos-26; Swift 6.3.3 / Xcode 26.6.
+Stage 1 and all iOS/device capabilities: still NOT STARTED / DEVICE REQUIRED.
