@@ -33,14 +33,14 @@ Swift 6.3.3 / Xcode 26.6 on standard macos-26. Warnings are errors.
 | Counter checkpoints | AUTOMATED PASS | Matching types, bounds, monotonicity and restoration |
 | Corrupted lifecycle data | AUTOMATED PASS | False armed/completed states, ledger shapes, invalid progress/dates/IDs rejected |
 | Core line coverage | AUTOMATED PASS | 439/444 lines = 98.87%; does not imply full branch/behavior coverage |
-| SwiftUI shell / generated Xcode project | NOT STARTED | Stage 2 |
+| SwiftUI shell / generated Xcode project | XCODE COMPILE PASS | See Stage 2 evidence below |
 | AlarmKit / App Intent SDK compilation | NOT STARTED | Stage 3+ |
 | Disk persistence / atomicity / disk failures | NOT STARTED | Stage 4; Codable evidence is not disk evidence |
 | Actual scheduling/rollback/edit/disable/delete effects | NOT STARTED | Stage 5; current evidence covers model transitions only |
 | Challenge coordinator and answer validation engines | NOT STARTED | Stages 7–10; success events currently supplied by tests |
 | Memory hidden-state restoration and camera QR matching | NOT STARTED | Stages 9–10 |
 | Audio resources / previews / real alarm sounds | NOT STARTED | Stage 11 |
-| iOS Simulator flows | NOT STARTED | No iOS app target exists |
+| Native shell launch on iPhone Simulator | SIMULATOR PASS | One launch/title test; product flows still NOT STARTED |
 | Physical firing/camera/audio/provisioning | DEVICE REQUIRED | No device observations |
 
 Production coverage by source: Challenges 100%; Models 100%; Scheduling 97.10%;
@@ -56,3 +56,34 @@ at 76420f1 passed 21 tests before the final adversarial expansion.
 
 Local Windows Swift remains absent by choice; CI supplies actual execution evidence.
 No paid service/tool was introduced.
+
+## Gate 2 — PASS (observed 2026-10-02)
+
+Revision: 7d619f480c99b8868cbb7bfc7a776132deb104db
+[Actual corrected CI run](https://github.com/teejayishere/PuzzleAlarm/actions/runs/37035827761).
+Environment: standard macos-26, macOS 26.6.2, Xcode 26.6, Swift 6.3.3.
+XcodeGen 2.44.1 installed from its checksum-pinned official release.
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Clean project generation | AUTOMATED PASS | Project, shared scheme and generated Info.plist reproduced byte-for-byte |
+| Core package regression | AUTOMATED PASS | Manifest/build; all 26 tests; 439/444 production lines = 98.87% |
+| Native iOS app compilation | XCODE COMPILE PASS | xcodebuild BUILD SUCCEEDED, iOS 26.5 Simulator SDK |
+| Core linked as SwiftPM product | XCODE COMPILE PASS | Dependency graph and compiler log reference Package.swift; no duplicated core sources in app |
+| Dynamic iPhone destination | AUTOMATED PASS | Discovered iPhone 17 / iOS 26.5; no fixed model/UUID, native architecture selected |
+| Native shell launch | SIMULATOR PASS | ShellLaunchTests.testLaunchDisplaysNativeShell; 1 XCTest UI test, 0 failures |
+| Xcode diagnostic review | AUTOMATED PASS | No compiler/destination warnings; 2 explicit no-AppIntents SDK metadata advisories |
+| Earlier gate invalidation | None | Stage 1 source and tests unchanged; core regressions replayed |
+| AlarmKit and all Stage 3+ features | NOT STARTED | Scope explicitly stops after Gate 2 |
+| Physical installation/behavior | DEVICE REQUIRED | No device claims |
+
+Initial shell run at 373fa89 also passed generation/build/launch:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/36946854457
+Audit found ARM/Intel destination ambiguity and corrected the CI destination.
+The corrected run above confirms that warning is gone. The remaining metadata
+advisory is an Apple tool message because this stage intentionally has no AppIntents.
+No warnings were hidden and no excluded functionality was added to silence it.
+
+Local focused checks: five Simulator-discovery cases and four diagnostic-classifier
+cases passed; YAML structure and Python syntax checked. These do not substitute
+for the real Xcode and Simulator results above.

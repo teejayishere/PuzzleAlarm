@@ -4,7 +4,7 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 1 core domain implemented and tested. This is not yet a runnable iPhone app.**
+**Stage 2 native shell builds and launches in Simulator. No alarm functionality exists yet.**
 
 ## Evidence and scope
 
@@ -13,6 +13,7 @@ See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
 Implemented in dependency-free PuzzleAlarmCore:
+
 - Validated alarm definitions, modes, unique ordered challenge configurations and sound identifiers.
 - Immutable occurrence snapshots with explicit scheduling, challenge and cancellation states.
 - Stable planned alarm IDs, in-flight outcome tracking, retryable cancellation and retirement.
@@ -20,7 +21,7 @@ Implemented in dependency-free PuzzleAlarmCore:
 - Exactly five backup-plan entries at T, T+60s, T+120s, T+180s and T+240s.
 - Codable validation, recovery-state round trips and behavioral/invariant tests.
 
-Challenge engines, disk persistence, OS scheduling, iOS UI, camera and sound files
+Challenge engines, disk persistence, OS scheduling, product UI, camera and sound files
 belong to later gates. No real alarm, device installation or camera/audio behavior
 has been verified.
 
@@ -31,7 +32,8 @@ has been verified.
 
 CI uses a standard macos-26 runner, prints macOS/Xcode/SDK/Swift versions, parses
 the package, builds with warnings as errors, runs Swift tests and reports core
-line coverage. No paid runners, cloud services, runtime dependencies or signing
+line coverage. It also generates the Xcode project, builds the iOS app and runs
+one Simulator launch test. No paid runners, runtime dependencies or signing
 credentials. Private-repository execution is guarded out to preserve the $0 rule.
 
 A local Mac or large Windows Swift toolchain is unnecessary for ordinary work.
@@ -44,9 +46,20 @@ swift test -Xswiftc -warnings-as-errors --enable-code-coverage
 python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
 ```
 
-The package's macOS 13 minimum supports its host-side testing; the planned app
-targets iOS 26+. project.yml remains a Stage 2 XcodeGen skeleton, with no app target.
-Do not equate core compilation with an iOS or Simulator build.
+The package's macOS 13 minimum supports host-side testing. Both package and iOS
+app declare an iOS 26 minimum. project.yml is the source of truth for the native
+app and its launch-test target. Generated projects and Info.plist are ignored.
+
+On macOS with Xcode, bash Scripts/install_xcodegen.sh downloads checksum-pinned
+XcodeGen 2.44.1 and prints its executable path. Run that executable with
+`generate --spec project.yml`. See .github/workflows/ios.yml for complete build
+and test commands. CI discovers a compatible available iPhone Simulator and
+selects the runner's native architecture; no fixed model is required.
+
+The shell displays only PuzzleAlarm. CI confirms the package dependency compiles
+for iOS and the shell launches, not physical-device functionality. The diagnostic
+check rejects compiler/destination warnings and explicitly reports Xcode's expected
+metadata-extraction advisory because Stage 2 has no AppIntents dependency.
 
 ## Engineering rules
 

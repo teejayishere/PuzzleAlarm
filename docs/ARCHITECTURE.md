@@ -73,7 +73,6 @@ progress, false armed/completed states and inconsistent dates.
 
 ## Deferred platform and persistence responsibilities
 
-Stage 2: SwiftUI shell and generated Xcode project.
 Stage 3: real SDK compile spike and AlarmScheduling adapter feasibility.
 Stage 4: versioned local atomic persistence and actual disk-failure tests.
 Stage 5: transactional side effects, reconciliation, recurrence, edit/disable/delete.
@@ -82,3 +81,35 @@ Stage 11: generated sound resources, preview cleanup and AlarmKit sound integrat
 
 Nothing in Stage 1 establishes actual OS scheduling, durable disk writes, camera,
 audio, intent routing, Simulator success or physical-device readiness.
+
+## Stage 2 native shell and build boundary
+
+PuzzleAlarm/App contains PuzzleAlarmApp and ContentView. The screen displays only
+PuzzleAlarm; no domain state is modified and there is no feature UI. project.yml
+links the existing PuzzleAlarmCore SwiftPM product from path '.', rather than
+including core sources in the app target. CI logs confirm compilation from
+Package.swift as a separate dependency. Core implementations/tests are unchanged.
+
+XcodeGen 2.44.1 is fetched from its official release with pinned SHA256 verification.
+project.yml generates an iPhone-only iOS 26 app, Info.plist and shared scheme,
+plus a minimal XCTest UI launch target. Package.swift explicitly declares iOS 26
+alongside its macOS host-testing minimum. No signing identity is required for CI.
+
+Each clean CI checkout regenerates the project twice and compares the project,
+scheme and Info.plist bytes. Generated files, DerivedData and local xcresult
+bundles are ignored. There is no manual pbxproj source or committed generated project.
+Core tests/coverage remain independent and execute before Simulator compilation.
+
+Simulator discovery reads actual simctl device/runtime JSON, rejects unavailable
+or pre-iOS-26 runtimes and non-iPhones, then deterministically selects a compatible
+device. xcodebuild also prints supported destinations. Build and test explicitly
+select the host architecture to avoid ARM/Intel ambiguity for one device UUID.
+
+Swift/C warnings are errors. A post-test log check rejects new Xcode warnings.
+The specific appintentsmetadataprocessor advisory about skipped metadata with no
+AppIntents.framework is reported explicitly; no compiler diagnostic is suppressed
+and no Stage 3 dependency was added to hide the advisory.
+
+Simulator shell launch proves native app startup and accessible title rendering.
+It does not prove core business behavior on iOS, alarms, device signing/install,
+AlarmKit permissions, camera, audio or physical-device reliability.

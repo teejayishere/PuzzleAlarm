@@ -151,3 +151,50 @@ appintentsmetadataprocessor advisory (no AppIntents dependency by design).
 No compiler warnings found. Do not add Stage 3 code to remove an SDK advisory.
 Gate 2 remains pending acceptance until the corrected current revision passes.
 Earlier gates invalidated: None. Rerun full CI with core regressions before Gate 2.
+## Stage 2 adversarial review
+
+- Clean checkout: GitHub checkout supplies no generated project, build cache,
+  certificates or user-specific Xcode state.
+- Reproduction: pinned XcodeGen 2.44.1 with official release SHA256;
+  consecutive generation compares project, shared scheme and Info.plist.
+- Core linkage: local SwiftPM product dependency from path '.', no core sources
+  listed in the application target, and no copied core implementation.
+- Core boundary: no changes in PuzzleAlarmCore/Sources or its tests since 457fe81;
+  no iOS-only imports in core.
+- Simulator selection: available runtime/device metadata, iOS >=26, iPhone only,
+  deterministic version/name/UDID choice. No fixed model or hard-coded UUID.
+- Tool count: XcodeGen alone for generation; Xcode/Swift, Bash and standard-library
+  Python for orchestration/reporting; no Homebrew/Mint or runtime dependencies.
+- Deployment: package iOS 26 and app/test project iOS 26; macOS 13 remains solely
+  the package host-testing floor.
+- Diagnostics: Swift/C warnings treated as errors; actual job log warnings
+  inspected separately before gate acceptance.
+- Scope: SwiftUI title screen and launch assertion only. No AlarmKit, App Intents,
+  camera, QR scanner, audio, persistence, scheduling effects or challenge UI.
+- Cost: public repository, standard macos-26, signing disabled for Simulator,
+  no credentials, larger runner or artifact storage added.
+
+
+## Stage 2, attempt 2 — 2026-10-02
+
+Status: PASS
+Revision: 7d619f480c99b8868cbb7bfc7a776132deb104db
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37035827761
+Changes: Native architecture in Simulator destination; explicit diagnostic audit.
+Tests added/changed: No core or UI test weakened/changed. Four local diagnostic
+cases reject compiler/destination warnings while reporting the specific SDK advisory.
+Commands: git diff --check; Python local diagnostic cases; git push; gh run view
+--json and --log; actual CI commands in .github/workflows/ios.yml.
+Focused validation: log confirms ARM/Intel destination ambiguity eliminated.
+Full gate: XcodeGen reproducibility PASS; core parse/build/26 tests PASS;
+98.87% coverage; native iOS app BUILD SUCCEEDED; 1 UI launch test TEST SUCCEEDED;
+warning audit PASS with no compiler/destination warning and 2 SDK metadata advisories.
+Runtime: discovered iPhone 17, iOS 26.5; Xcode 26.6, Swift 6.3.3, macOS 26.6.2.
+Regression gates rerun: Gate 0 package checks and complete Gate 1 suite.
+Self-review/adversarial review: checklist above completed; one Stage 2 CI issue
+corrected at its cause. No Stage 1 design assumption was disproved.
+Invalidated prior gates: None.
+Known limitations: title-only shell; Simulator and unsigned build only; no product
+features, physical validation, AlarmKit or other Stage 3 implementation.
+Device validation remaining: all cases.
+Next action: Push documentation and verify exact-HEAD CI; stop after Gate 2.
