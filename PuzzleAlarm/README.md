@@ -1,5 +1,12 @@
-# iOS application boundary
+# Native iOS shell — Stage 2
 
-Reserved for Stage 2's smallest SwiftUI shell and subsequent thin Apple adapters.
-There is deliberately no application entry point while Gate 0 is blocked.
-Use the iOS 26+ deployment setting in project.yml when adding the real app target.
+PuzzleAlarmApp opens ContentView, which displays only the PuzzleAlarm title.
+The application links the existing PuzzleAlarmCore product as a local Swift
+package through project.yml. Core sources are not copied into the app target.
+
+The UI test launches the app on a dynamically selected iPhone Simulator and
+checks the displayed title. This is shell-launch evidence only.
+
+No AlarmKit, App Intents, scheduling, storage, challenge UI, camera or audio is
+implemented. Generate PuzzleAlarm.xcodeproj with pinned XcodeGen; generated
+projects and Info.plist files are intentionally ignored.

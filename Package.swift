@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "PuzzleAlarm",
-    platforms: [.macOS(.v13)],
+    platforms: [.macOS(.v13), .iOS("26.0")],
     products: [.library(name: "PuzzleAlarmCore", targets: ["PuzzleAlarmCore"])],
     targets: [
         .target(name: "PuzzleAlarmCore", path: "PuzzleAlarmCore/Sources/PuzzleAlarmCore"),

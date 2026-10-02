@@ -116,3 +116,18 @@ tests; operational side effects and full Math/Memory round snapshots are deferre
 Device validation remaining: all cases.
 Next action: Documentation-only evidence commit and exact-HEAD CI confirmation.
 Stage 2 remains unstarted under the user's latest Stage 1-only scope.
+
+## Stage 2, attempt 1 — implementation awaiting CI
+
+Base: 457fe81ee26cfac1312cf9ecb648b6eccf076f0f; clean working tree and prior PASS confirmed.
+Changes: Pinned/checksummed XcodeGen 2.44.1; local SwiftPM product dependency;
+minimal SwiftUI title screen; iPhone-only iOS 26 app; one launch UI test;
+dynamic compatible iPhone discovery; generation reproducibility checks;
+existing core tests and coverage preserved in expanded CI.
+Package change: explicit iOS 26 minimum added alongside macOS 13. No core source
+or API change; prior macOS-only declaration did not exclude other platforms.
+This is deployment configuration, not evidence of an invalid Stage 1 assumption.
+Local validation: pending structural checks; no local Xcode claim.
+Gate 0/1: last PASS retained; regression replay runs before iOS build/tests.
+Gate 2: pending actual generation, iOS compilation and Simulator test evidence.
+No Stage 3+ product functionality introduced. No paid tool/service or signing keys.

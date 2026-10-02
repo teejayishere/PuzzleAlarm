@@ -1,11 +1,11 @@
 # Project state
 
-Current stage: 1 — Core Domain — complete
-Current gate: Gate 1 — PASS
+Current stage: 2 — iOS Shell + Real Xcode CI
+Current gate: Gate 2 — IMPLEMENTED, awaiting Xcode CI
 Last known passing gate: Gate 1
 Invalidated gates: None
 Current version/status: 0.1.0 core only — not a runnable iPhone app
-Current blockers: None within Stage 1; requested Stage 1 scope is complete.
+Current blockers: None; Stage 2 validation pending.
 
 ## Observed CI evidence
 
@@ -58,6 +58,6 @@ All DEVICE_TEST_PLAN cases remain DEVICE REQUIRED.
 
 ## Next stage
 
-Stage 2 is next in the master plan but is not started, following the latest
-explicit Stage 1-only scope. No local Windows Swift/Visual Studio toolchain was
+Stage 2 shell, declarative generation and Simulator CI are implemented but unverified.
+Stage 3 remains explicitly out of scope. No local Windows Swift/Visual Studio toolchain was
 installed. GitHub CI remains the primary validation environment.

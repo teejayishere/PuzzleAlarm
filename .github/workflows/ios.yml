@@ -1,4 +1,4 @@
-name: PuzzleAlarm Core
+name: PuzzleAlarm Core and iOS
 on:
   push:
   pull_request:
@@ -12,11 +12,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  core:
-    # Standard public-repository runner; no larger runners or signing.
+  validate:
+    # Standard public-repository runner; no larger runners or signing credentials.
     if: github.event.repository.private == false
     runs-on: macos-26
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,6 +27,20 @@ jobs:
           xcodebuild -version
           xcodebuild -showsdks
           swift --version
+      - name: Install pinned XcodeGen
+        run: bash Scripts/install_xcodegen.sh
+      - name: Generate reproducible Xcode project
+        run: |
+          xcodegen --version
+          xcodegen generate --spec project.yml
+          cp PuzzleAlarm.xcodeproj/project.pbxproj "$RUNNER_TEMP/first-project.pbxproj"
+          cp PuzzleAlarm.xcodeproj/xcshareddata/xcschemes/PuzzleAlarm.xcscheme "$RUNNER_TEMP/first-scheme.xcscheme"
+          cp .generated/PuzzleAlarm-Info.plist "$RUNNER_TEMP/first-info.plist"
+          xcodegen generate --spec project.yml
+          cmp PuzzleAlarm.xcodeproj/project.pbxproj "$RUNNER_TEMP/first-project.pbxproj"
+          cmp PuzzleAlarm.xcodeproj/xcshareddata/xcschemes/PuzzleAlarm.xcscheme "$RUNNER_TEMP/first-scheme.xcscheme"
+          cmp .generated/PuzzleAlarm-Info.plist "$RUNNER_TEMP/first-info.plist"
+          test -z "$(git ls-files '*.xcodeproj/*' '.generated/*')"
       - name: Validate package manifest
         run: swift package dump-package
       - name: Build PuzzleAlarmCore
@@ -35,3 +49,31 @@ jobs:
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage
         run: python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
+      - name: Discover compatible iPhone Simulator
+        id: simulator
+        run: |
+          xcrun simctl list devices available
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
+          xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -showdestinations
+          simulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"
+          echo "id=$simulator_id" >> "$GITHUB_OUTPUT"
+      - name: Build iOS application for Simulator
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
+            -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build \
+            2>&1 | tee "$RUNNER_TEMP/ios-build.log"
+      - name: Run native shell launch test
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Shell.xcresult \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/ios-tests.log"

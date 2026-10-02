@@ -1,14 +1,69 @@
-# Stage 0 project definition. Stage 2 adds the SwiftUI app and test targets.
-# Do not interpret generation of this empty project as an iOS build pass.
 name: PuzzleAlarm
 options:
   minimumXcodeGenVersion: "2.44.1"
   deploymentTarget:
     iOS: "26.0"
+  createIntermediateGroups: true
 settings:
   base:
     SWIFT_VERSION: "6.0"
     SWIFT_STRICT_CONCURRENCY: complete
+    SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+    GCC_TREAT_WARNINGS_AS_ERRORS: YES
     IPHONEOS_DEPLOYMENT_TARGET: "26.0"
     TARGETED_DEVICE_FAMILY: "1"
-targets: {}
+    MARKETING_VERSION: "0.2.0"
+    CURRENT_PROJECT_VERSION: "1"
+packages:
+  PuzzleAlarmCore:
+    path: .
+targets:
+  PuzzleAlarm:
+    type: application
+    platform: iOS
+    sources:
+      - path: PuzzleAlarm/App
+    dependencies:
+      - package: PuzzleAlarmCore
+        product: PuzzleAlarmCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.teejayishere.PuzzleAlarm
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+    info:
+      path: .generated/PuzzleAlarm-Info.plist
+      properties:
+        CFBundleDisplayName: PuzzleAlarm
+        LSRequiresIPhoneOS: true
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+  PuzzleAlarmUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: PuzzleAlarmUITests
+    dependencies:
+      - target: PuzzleAlarm
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.teejayishere.PuzzleAlarm.UITests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  PuzzleAlarm:
+    build:
+      targets:
+        PuzzleAlarm: all
+        PuzzleAlarmUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - name: PuzzleAlarmUITests
+      gatherCoverageData: false

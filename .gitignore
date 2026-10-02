@@ -17,3 +17,6 @@ DerivedData/
 *.mobileprovision
 *.cer
 *.key
+
+.generated/
+TestResults/
