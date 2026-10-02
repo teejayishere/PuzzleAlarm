@@ -1,0 +1,23 @@
+# Physical iPhone acceptance plan
+
+Status: DEVICE REQUIRED for every item. No device test has run.
+
+Record app revision, iPhone model, iOS version, provisioning method, exact steps,
+timestamps, observed result and logs without personal credentials.
+
+- Prove free personal provisioning and required AlarmKit capabilities first.
+- Authorization: first launch, allow, deny, recovery.
+- Firing: unlocked/locked; foreground/background/terminated; Silent Mode; Focus.
+- Challenge intent launch routes to the due occurrence and current challenge.
+- Stop primary without solving: independent backup still fires.
+- Complete only first challenge: backups remain.
+- Complete all challenges: cancellation finishes and no later sibling fires.
+- Next enabled recurring occurrence remains valid.
+- QR: correct, wrong, another PuzzleAlarm target, low light, permission denied,
+  granted, interrupted and unavailable.
+- Each bundled sound, fallback and lock-screen playback.
+- Terminate during Math, hidden Memory, QR, scheduling and cancellation; restore.
+- Timezone change and DST: compare desired and actual AlarmKit behavior.
+
+A failure invalidates the earliest affected assumptions and dependent gates.
+Never report DEVICE PASS from mocks, compilation or Simulator observations.

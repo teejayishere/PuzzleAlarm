@@ -1,0 +1,35 @@
+name: PuzzleAlarm Core
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: puzzlealarm-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core:
+    # Standard public-repository runner; no larger runners or signing.
+    if: github.event.repository.private == false
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Record toolchain evidence
+        run: |
+          sw_vers
+          xcodebuild -version
+          xcodebuild -showsdks
+          swift --version
+      - name: Validate package manifest
+        run: swift package dump-package
+      - name: Build PuzzleAlarmCore
+        run: swift build -Xswiftc -warnings-as-errors
+      - name: Run Swift package tests
+        run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
