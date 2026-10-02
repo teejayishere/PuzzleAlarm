@@ -60,3 +60,19 @@ are guarded out; workflow failures propagate rather than being ignored.
 Regression gates rerun: Gate 0 checks. Invalidated gates: None.
 Known limitations/device validation: all iOS and hardware behavior unverified.
 Next action: Stage 1 domain models and behavioral tests, then current CI.
+
+## Stage 1, attempt 1 — 2026-10-01 America/Chicago
+
+Status: FAILED (test compilation)
+Changes: Value models, snapshots, operation ledgers, controlled lifecycle,
+calendar/DST rules, backup generation and behavioral/Codable tests.
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/36945010757
+Revision: eb03c50d1dfeb3785c96f758a19304412c0b1c18
+Actual result: manifest and production core build passed; Swift test compilation
+failed at SchedulingTests.swift:74. #require macro needs explicit inner try.
+Classification/root cause: test defect in macro throwing-expression syntax.
+Correction: add inner try; preserve every assertion and production behavior.
+Local focused validation: inspected macro expansion in actual failed CI log;
+git diff --check. Swift execution remains CI-only.
+Gate 0 assumptions remain supported; Gate 1 has never passed.
+Next action: rerun package validation/build and complete test suite on macOS.

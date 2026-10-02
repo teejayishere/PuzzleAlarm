@@ -1,7 +1,7 @@
 # Project state
 
 Current stage: 1 — Core Domain
-Current gate: Gate 1 — NOT STARTED
+Current gate: Gate 1 — FAILED (test compilation; correction awaiting CI)
 Last known passing gate: Gate 0
 Invalidated gates: None
 Current version/status: 0.0.1 — toolchain verified; no alarm functionality

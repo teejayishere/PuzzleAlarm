@@ -71,7 +71,7 @@ private func nextOccurrenceHonorsCalendarBoundaries(_ item: ScheduleCase) throws
         let alarm = try definition(weekdays: [weekday])
         for index in 0..<370 {
             let after = base.addingTimeInterval(Double(index) * 86400)
-            let next = try #require(OccurrenceCalculator.next(for: alarm, after: after, context: context))
+            let next = try #require(try OccurrenceCalculator.next(for: alarm, after: after, context: context))
             #expect(next > after)
             #expect(next.timeIntervalSince(after) <= 8 * 86400)
             #expect(calendar.component(.weekday, from: next) == weekday.rawValue)
