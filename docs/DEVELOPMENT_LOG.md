@@ -248,3 +248,20 @@ Final follow-up changes: evidence docs, stronger empty-update assertion and
 accurate diagnostic text. All require a fresh exact-HEAD full run before final
 acceptance. No Stage 4 work. Physical behavior remains DEVICE REQUIRED.
 Next action: push final follow-up, inspect actual full CI, stop after Gate 3.
+
+## Stage 4, attempt 1 — implementation pending CI
+
+Base: 6be4415148445f83a1879d2a219d3667327bcffc; clean tree.
+Gate 3 exact-HEAD run 37096261777 rechecked successful.
+Changes: schema-1 repository document; disk and byte-backed memory actors;
+compare-and-swap revision; coordinated atomic replacement; interrupted-write marker;
+canonical session-derived ownership ledger plus detached recovery records;
+validated session timestamp/checkpoint wrapper; read-only reconciliation inventory.
+Stage 1 counters/lifecycle were intentionally limited, not disproved. The additive
+wrapper persists engine inputs without duplicating progress or changing lifecycle.
+No earlier gate invalidated; full regressions required.
+Tests: 27 persistence tests plus one iOS disk integration test; unchanged 26 core,
+seven AlarmKit platform tests and native launch test retained.
+Focused test step precedes full coverage suite in free standard macOS CI.
+No permission/AlarmKit daemon calls, engine, scheduler, recovery actions or UI.
+Status: Gate 4 PENDING actual Swift/Xcode execution.

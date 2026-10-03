@@ -1,11 +1,11 @@
 # Project state
 
-Current stage: 3 — AlarmKit Capability / Compile Spike
-Current gate: Gate 3 — implementation PASS; final follow-up exact-HEAD CI required
-Last known passing gate: Gate 3 at 6e750fd (run below)
+Current stage: 4 — Persistence and Recovery Architecture
+Current gate: Gate 4 — PENDING actual CI
+Last known passing gate: Gate 3 at 6be4415148445f83a1879d2a219d3667327bcffc; run 37096261777
 Invalidated gates: None
 Current version/status: Native shell with an unconnected platform compile spike
-Current blockers: None. Final follow-up must pass full CI before stopping.
+Current blockers: None; Stage 4 implementation awaits full CI.
 
 Passing implementation: 6e750fdbe510a4dc2174fc222e62f05548b96eae
 Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37095598366
@@ -21,7 +21,7 @@ must retain the session ledger. Relative-alarm DST semantics, authorization,
 real firing, lock-screen actions, intent delivery and sound playback are DEVICE
 REQUIRED. No real permission or alarm daemon call runs in automated tests.
 
-Next action: finish Gate 3 evidence, record exact-revision CI, then STOP.
+Next action: verify Stage 4, replay Gates 0–3, record evidence and STOP before Stage 5.
 
 ## Historical Gate 2 evidence
 ## Gate 2 observed evidence

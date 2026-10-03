@@ -45,6 +45,8 @@ jobs:
         run: swift package dump-package
       - name: Build PuzzleAlarmCore
         run: swift build -Xswiftc -warnings-as-errors
+      - name: Run focused persistence tests
+        run: swift test -Xswiftc -warnings-as-errors --filter Persistence
       - name: Run Swift package tests
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage
