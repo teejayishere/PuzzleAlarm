@@ -1,12 +1,29 @@
 # Project state
 
-Current stage: 2 — iOS Shell + Real Xcode CI — complete
-Current gate: Gate 2 — PASS
-Last known passing gate: Gate 2
+Current stage: 3 — AlarmKit Capability / Compile Spike
+Current gate: Gate 3 — implementation PASS; final follow-up exact-HEAD CI required
+Last known passing gate: Gate 3 at 6e750fd (run below)
 Invalidated gates: None
-Current version/status: 0.2.0 native shell — not a functional alarm app
-Current blockers: None within Stage 2.
+Current version/status: Native shell with an unconnected platform compile spike
+Current blockers: None. Final follow-up must pass full CI before stopping.
 
+Passing implementation: 6e750fdbe510a4dc2174fc222e62f05548b96eae
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37095598366
+SDK inspection: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37095284734
+
+See [ALARMKIT_CAPABILITIES](ALARMKIT_CAPABILITIES.md) for exact SDK APIs,
+documentation differences and remaining device requirements.
+Gate 2 base b3f12f8 was rechecked against successful run 37037179078.
+Core models/tests and shell UI are unchanged. Stage 4 is NOT STARTED.
+
+Open risks: SDK snapshots expose IDs/state but not metadata; later persistence
+must retain the session ledger. Relative-alarm DST semantics, authorization,
+real firing, lock-screen actions, intent delivery and sound playback are DEVICE
+REQUIRED. No real permission or alarm daemon call runs in automated tests.
+
+Next action: finish Gate 3 evidence, record exact-revision CI, then STOP.
+
+## Historical Gate 2 evidence
 ## Gate 2 observed evidence
 
 Revision: 7d619f480c99b8868cbb7bfc7a776132deb104db
@@ -42,7 +59,7 @@ Fixed the Stage 2 destination configuration with an explicit native architecture
 No domain/package API flaw was discovered. Earlier gates were not invalidated.
 No retries or test-weakening were used to obtain the pass.
 
-## Known limitations and future risks
+## Historical Stage 2 limitations (superseded by Stage 3 above)
 
 - The shell displays only PuzzleAlarm. No product functionality is implemented.
 - Simulator evidence is not device signing, installation or physical validation.
@@ -56,6 +73,6 @@ No retries or test-weakening were used to obtain the pass.
 
 ## Next action
 
-Stop at Gate 2 as requested. Stage 3 is NOT STARTED.
+Historical Gate 2 stopping point; Stage 3 is now authorized as described above.
 GitHub CI remains the primary validation environment; no local Swift/Visual Studio
 toolchain or paid service was introduced.

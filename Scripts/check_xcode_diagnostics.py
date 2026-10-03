@@ -1,4 +1,4 @@
-"""Fail on new Xcode warnings; explicitly report the shell's SDK metadata advisory."""
+"""Fail on new Xcode warnings; explicitly report the SDK metadata advisory for targets without AppIntents."""
 from pathlib import Path
 import re
 import sys
@@ -17,4 +17,4 @@ if unexpected:
     raise SystemExit("Unexpected Xcode warnings:\n" + "\n".join(unexpected))
 print(f"No compiler/destination warnings. SDK metadata advisories observed: {known_count}.")
 if known_count:
-    print("Xcode skipped App Intents metadata because this Stage 2 shell has no AppIntents dependency.")
+    print("Xcode reported skipped metadata for a target without an AppIntents dependency; inspect target context in the log.")

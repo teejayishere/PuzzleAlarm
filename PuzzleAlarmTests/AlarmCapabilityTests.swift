@@ -90,8 +90,8 @@ final class AlarmCapabilityTests: XCTestCase, @unchecked Sendable {
         let session = try session()
         let request = try AlarmRequest(session: session, alarmID: session.backupAlarmIDs[2])
         let expected = RegisteredAlarm(id: request.plannedAlarm.id, state: .scheduled)
-        let cancelled = LockedIDs()
-        let observed = LockedIDs()
+        let cancelled = LockedValues<UUID>()
+        let observed = LockedValues<[RegisteredAlarm]>()
         let service: any AlarmScheduling = AlarmManagerService(operations: .init(
             authorization: { .notDetermined },
             requestAuthorization: { .denied },
@@ -115,9 +115,9 @@ final class AlarmCapabilityTests: XCTestCase, @unchecked Sendable {
         try service.cancel(id: expected.id)
         XCTAssertEqual(cancelled.values, [expected.id])
         await service.observeAlarms { alarms in
-            for alarm in alarms { observed.append(alarm.id) }
+            observed.append(alarms)
         }
-        XCTAssertEqual(observed.values, [expected.id])
+        XCTAssertEqual(observed.values, [[expected], []])
         XCTAssertEqual(session.phase, .planned)
     }
 
@@ -150,9 +150,9 @@ final class AlarmCapabilityTests: XCTestCase, @unchecked Sendable {
 }
 
 // Test-only synchronized recorder for the adapter's Sendable callbacks.
-private final class LockedIDs: @unchecked Sendable {
+private final class LockedValues<Value: Sendable>: @unchecked Sendable {
     private let lock = NSLock()
-    private var stored: [UUID] = []
-    func append(_ id: UUID) { lock.withLock { stored.append(id) } }
-    var values: [UUID] { lock.withLock { stored } }
+    private var stored: [Value] = []
+    func append(_ value: Value) { lock.withLock { stored.append(value) } }
+    var values: [Value] { lock.withLock { stored } }
 }

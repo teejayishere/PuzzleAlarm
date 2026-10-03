@@ -113,3 +113,36 @@ and no Stage 3 dependency was added to hide the advisory.
 Simulator shell launch proves native app startup and accessible title rendering.
 It does not prove core business behavior on iOS, alarms, device signing/install,
 AlarmKit permissions, camera, audio or physical-device reliability.
+
+## Stage 3 platform capability boundary
+
+See [ALARMKIT_CAPABILITIES](ALARMKIT_CAPABILITIES.md) for observed Xcode 26.6 /
+iOS 26.5 signatures, the validation status and device limits.
+
+One iOS-layer AlarmScheduling protocol is implemented by AlarmManagerService.
+The service forwards authorization, single-ID schedule/cancel, registered-ID
+snapshots and asynchronous updates. Injectable operation closures isolate tests
+from Apple's daemon without adding another protocol or singleton.
+No scheduling service is created by the shell.
+
+AlarmRequest selects an existing PlannedAlarm by ID from WakeUpSession.
+OccurrenceMetadata contains only session ID, parent ID and ordinal; primary vs
+backup derives from the existing core ordinal. A traditional fixed configuration
+uses that exact date and ID. Relative/weekly conversion is a separate capability
+probe, not recurrence orchestration. Named sound construction is compile-only.
+
+OpenOccurrenceIntent conforms to the SDK-required LiveActivityIntent. Its sole
+String parameter contains the session UUID; supportedModes requests foreground.
+It performs no routing, persistence, cancellation or completion. There is no
+custom Stop intent. The alert uses the iOS 26.1 system-owned Stop UI and a guarded
+26.0 initializer for compatibility.
+
+Snapshots expose ID/state, not custom metadata. They can reconcile membership
+against the future persisted session ledger; absence never proves challenge
+completion. No reconciliation or persistence implementation exists yet.
+ActivityKit supplies only the required sound type, with no Live Activity/widget.
+
+The observation method borrows the caller's task and creates no producer Task.
+A future owner must retain/cancel its observation task. Runtime update-delivery
+and cancellation behavior are device-required, distinct from compilation.
+Core and the title-only shell remain unchanged. Stage 4+ is not started.

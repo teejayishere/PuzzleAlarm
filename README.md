@@ -4,13 +4,15 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 2 native shell builds and launches in Simulator. No alarm functionality exists yet.**
+**Stage 3 AlarmKit capability spike compiles and passes fake-boundary tests. The shell remains a title screen; no real alarm behavior is verified.**
 
 ## Evidence and scope
 
 See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 [TEST_MATRIX](docs/TEST_MATRIX.md) distinguishes automated evidence from unimplemented
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
+
+See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. Stage 4+ is not started.
 
 Implemented in dependency-free PuzzleAlarmCore:
 
@@ -33,7 +35,7 @@ has been verified.
 CI uses a standard macos-26 runner, prints macOS/Xcode/SDK/Swift versions, parses
 the package, builds with warnings as errors, runs Swift tests and reports core
 line coverage. It also generates the Xcode project, builds the iOS app and runs
-one Simulator launch test. No paid runners, runtime dependencies or signing
+seven platform capability tests and one Simulator launch test. No paid runners, runtime dependencies or signing
 credentials. Private-repository execution is guarded out to preserve the $0 rule.
 
 A local Mac or large Windows Swift toolchain is unnecessary for ordinary work.
@@ -48,7 +50,7 @@ python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
 
 The package's macOS 13 minimum supports host-side testing. Both package and iOS
 app declare an iOS 26 minimum. project.yml is the source of truth for the native
-app and its launch-test target. Generated projects and Info.plist are ignored.
+app and its platform/unit and launch-test targets. Generated projects and Info.plist are ignored.
 
 On macOS with Xcode, bash Scripts/install_xcodegen.sh downloads checksum-pinned
 XcodeGen 2.44.1 and prints its executable path. Run that executable with
@@ -59,7 +61,7 @@ selects the runner's native architecture; no fixed model is required.
 The shell displays only PuzzleAlarm. CI confirms the package dependency compiles
 for iOS and the shell launches, not physical-device functionality. The diagnostic
 check rejects compiler/destination warnings and explicitly reports Xcode's expected
-metadata-extraction advisory because Stage 2 has no AppIntents dependency.
+metadata-extraction advisory for the UI-test bundle without AppIntents. The app itself extracts App Intents metadata.
 
 ## Engineering rules
 

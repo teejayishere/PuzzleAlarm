@@ -198,3 +198,53 @@ Known limitations: title-only shell; Simulator and unsigned build only; no produ
 features, physical validation, AlarmKit or other Stage 3 implementation.
 Device validation remaining: all cases.
 Next action: Push documentation and verify exact-HEAD CI; stop after Gate 2.
+
+## Stage 3, attempt 1 — 2026-10-02 America/Chicago
+
+Status: PENDING actual compile/test result.
+Base Gate 2 b3f12f8 and exact run 37037179078 verified successful; tree clean.
+SDK observation: 917a399 / run 37095284734 PASS before platform calls were written.
+Inspected installed Xcode 26.6 / iOS Simulator 26.5 public interfaces and official
+Apple documentation. Found deprecated Stop customization/openAppWhenRun and
+newer web overloads absent from the installed SDK. Implementation follows SDK.
+Changes: one iOS scheduler protocol, thin injected adapter, traditional fixed
+configuration, relative/weekly translation probe, minimal metadata, foreground
+secondary intent with session ID, built-app usage-description validation.
+Tests added: seven iOS tests, no real daemon/permission calls; existing 26 core
+tests and launch test unchanged. Core source and Package.swift unchanged.
+Local validation: YAML parses, git diff --check, core/shell unchanged diff.
+A broad text replacement initially duplicated a project scheme block locally;
+inspection corrected it before commit; the parsed final YAML has three targets.
+Current implementation: 6e750fd; run 37095598366 under observation.
+Self-review/adversarial findings: documented in ALARMKIT_CAPABILITIES.md.
+Invalidated prior gates: None. Snapshot IDs support the existing recovery model;
+metadata is not available in snapshots, so the persisted ledger remains required.
+Known limitations: compilation and fake tests do not establish OS behavior;
+Stage 4+ intentionally absent. All physical alarm behavior DEVICE REQUIRED.
+Next action: inspect actual CI, correct any failure at its source, replay gate,
+record passing evidence, then stop after Gate 3.
+
+## Stage 3, attempt 1 — actual CI PASS; final follow-up pending
+
+Revision: 6e750fdbe510a4dc2174fc222e62f05548b96eae
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37095598366
+Actual result: generation/reproduction, manifest/build, 26 core tests,
+439/444 production lines (98.87%), iOS BUILD SUCCEEDED, built-app nonempty
+NSAlarmKitUsageDescription, seven platform tests, one shell UI test and
+diagnostic check all PASS. Xcode 26.6 / iOS 26.5 / Swift 6.3.3; iPhone 17
+selected dynamically. App and platform-test metadata extraction completed.
+No compiler/destination warning. One existing no-AppIntents advisory belongs
+to the UI-test bundle, which intentionally has no AppIntents dependency.
+
+Self-review: diagnostic summary still described the old Stage 2 app as lacking
+AppIntents; correct that text without expanding the warning allowlist.
+Strengthen the fake update test to assert the empty snapshot is also forwarded.
+No source/API failure, retry or weakened assertion. No earlier gate invalidated.
+The inspection-only push's full regression run 37095284730 was superseded and
+cancelled by the implementation push; it is not counted as passing evidence.
+The dedicated SDK inspection run completed successfully.
+
+Final follow-up changes: evidence docs, stronger empty-update assertion and
+accurate diagnostic text. All require a fresh exact-HEAD full run before final
+acceptance. No Stage 4 work. Physical behavior remains DEVICE REQUIRED.
+Next action: push final follow-up, inspect actual full CI, stop after Gate 3.
