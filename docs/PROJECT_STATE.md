@@ -1,29 +1,29 @@
 # Project state
 
 Current stage: 4 — Persistence and Recovery Architecture
-Current gate: Gate 4 — implementation PASS at recorded revision; final follow-up CI required
-Last known passing gate: Gate 4 at 47c96dc (evidence below)
+Current gate: Gate 4 — PASS
+Last known passing gate: Gate 4 at 4050145 (evidence below)
 Invalidated gates: None
 Current blockers: None
 Current version/status: Native shell plus persistence and unconnected AlarmKit adapter
 
 ## Observed Stage 4 evidence
 
-Revision: 47c96dc9bb9b5c122e4ac0fd6f240eec1b784461
-Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37144199020
-Result: PASS. Focused persistence: 27 tests. Full core: 53 tests.
+Revision: 40501452d1aaf7e7e3fa03ba54d153574d560fde
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37144990239
+Result: PASS. Focused persistence: 31 tests. Full core: 57 tests.
 iOS: seven AlarmKit capability tests, one disk integration test, one UI launch test.
-Total: 62 test functions (focused repeat and parameterized cases not double-counted).
-Core coverage: 772/779 lines = 99.10%.
+Total: 66 test functions (focused repeat and parameterized cases not double-counted).
+Core coverage: 771/777 lines = 99.23%.
 Xcode 26.6 / iOS 26.5; standard free macos-26 runner.
 All generation, package, iOS build, usage-description and diagnostic checks passed.
 No compiler/destination warnings; one known UI-test SDK metadata advisory.
 
-Final follow-up adds four adversarial tests (31 core persistence + one iOS
-persistence test), strengthens concurrent conflict assertions, removes duplicate
-schema-header decoding and records evidence. These changes require their own
-exact-HEAD full CI before final acceptance. Named evidence never substitutes
-for a newer revision's run.
+Persistence total: 32 tests (31 core plus one iOS integration).
+Final adversarial additions passed, including exact conflict assertions.
+The recorded revision is the final source/test implementation. Documentation-only
+follow-ups also require matching successful full CI before acceptance; inspect
+the current HEAD run rather than assuming the named run covers later changes.
 
 ## Architecture and recovery status
 
@@ -74,5 +74,5 @@ Gate 0: https://github.com/teejayishere/PuzzleAlarm/actions/runs/36943963689
 
 ## Next action
 
-Verify final exact-HEAD CI and STOP after Gate 4. Do not begin Stage 5.
+STOP after Gate 4 once the current documentation-only HEAD has matching green CI. Stage 5 requires a new instruction.
 See ARCHITECTURE.md, TEST_MATRIX.md and DEVELOPMENT_LOG.md for contracts/evidence.

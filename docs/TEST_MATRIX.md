@@ -35,7 +35,7 @@ Swift 6.3.3 / Xcode 26.6 on standard macos-26. Warnings are errors.
 | Core line coverage | AUTOMATED PASS | 439/444 lines = 98.87%; does not imply full branch/behavior coverage |
 | SwiftUI shell / generated Xcode project | XCODE COMPILE PASS | See Stage 2 evidence below |
 | AlarmKit / App Intent SDK compilation | XCODE COMPILE PASS | Stage 3 evidence below; physical effects unverified |
-| Disk persistence / atomicity / disk failures | NOT STARTED | Stage 4; Codable evidence is not disk evidence |
+| Disk persistence / atomicity / disk failures | AUTOMATED / SIMULATOR PASS | Stage 4 evidence below; real disk and injected interruption tests |
 | Actual scheduling/rollback/edit/disable/delete effects | NOT STARTED | Stage 5; current evidence covers model transitions only |
 | Challenge coordinator and answer validation engines | NOT STARTED | Stages 7–10; success events currently supplied by tests |
 | Memory hidden-state restoration and camera QR matching | NOT STARTED | Stages 9–10 |
@@ -148,3 +148,22 @@ real disk read error distinguished from missing. Concurrent losers must specific
 report conflict. It also removes redundant schema decoding. Final acceptance
 requires a full successful CI run for that exact follow-up revision.
 No earlier gate invalidated. Stage 5+ remains NOT STARTED.
+
+## Gate 4 — final implementation PASS
+
+Revision: 40501452d1aaf7e7e3fa03ba54d153574d560fde
+[Actual final implementation CI](https://github.com/teejayishere/PuzzleAlarm/actions/runs/37144990239).
+
+- Total: 66 distinct tests (57 core, eight iOS unit/integration, one UI).
+- Persistence: 32 tests (31 core, one iOS Application Support integration).
+- Core coverage: 771/777 production lines = 99.23%.
+- Four additional adversarial checks above passed; concurrent losers specifically
+  report conflicts. Source/test assertions were not weakened.
+- Production persistence, AlarmKit and AppIntents compile; all Gates 0–3 regressions
+  pass in the same run, with no compiler/destination warnings.
+- The known UI-test metadata advisory remains documented and unchanged.
+- Earlier gates invalidated: none. Stage 5+ NOT STARTED.
+
+Subsequent documentation-only revisions also run the complete workflow.
+Acceptance of the current checkout requires its matching successful GitHub run;
+this named run is the immutable evidence for the final implementation.

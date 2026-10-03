@@ -296,3 +296,27 @@ Known limits: no actual process kill/power loss, separate-process contention,
 iPhone file protection or daemon reconciliation evidence. No backup restoration,
 migration, engine, product UI or Stage 5 actions implemented.
 Next action: push final review changes and docs; run full exact-HEAD CI; STOP at Gate 4.
+
+## Stage 4, attempt 2 — final implementation PASS
+
+Revision: 40501452d1aaf7e7e3fa03ba54d153574d560fde
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37144990239
+Changes: four adversarial regressions; exact conflict assertions; redundant
+schema decode removed; architecture and evidence documentation.
+Focused: 31 persistence tests PASS.
+Full gate: 57 core + 8 iOS unit/integration + 1 UI launch = 66 distinct tests PASS.
+Persistence: 31 core + 1 iOS = 32 tests. Parameterized cases/focused repeats
+are not double-counted. Coverage: 771/777 production lines = 99.23%.
+Actual Xcode BUILD SUCCEEDED and TEST SUCCEEDED; iOS disk round trip PASS.
+Gates 0–3 replayed: generation, package, original 26 core tests, AlarmKit,
+AppIntents, seven platform tests, nonempty built usage description and shell launch.
+No compiler/destination warnings; one known SDK advisory in the UI-test bundle.
+Commands: gh run view --json/--log, full CI commands in ios.yml, git diff --check.
+Self-review: current source and tests meet Stage 4 requirements; no Stage 5 action.
+Adversarial review: stricter concurrent losers are conflicts; invalid commits
+retain bytes; timestamp/ownership corruption rejected; cancelled-but-present
+IDs remain stale and do not change completion; real read error is not missing.
+Earlier gates invalidated: None.
+Known limitations: architecture's power-loss, process/device and recovery-action
+limits remain. No physical AlarmKit behavior or iPhone file protection verified.
+Next action: documentation-only evidence commit; confirm exact-HEAD full CI and STOP.

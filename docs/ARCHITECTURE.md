@@ -259,3 +259,8 @@ ownership invariants. They do not simulate sudden power loss, filesystem damage,
 iPhone file protection, multiple real OS processes or live AlarmKit reconciliation.
 A lost entire document cannot reconstruct ownership; no backup/migration framework
 or automatic destructive repair is introduced. Full device acceptance remains required.
+
+Stage 4 validation: revision 40501452d1aaf7e7e3fa03ba54d153574d560fde,
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37144990239.
+66 tests pass, including 32 persistence tests; core coverage 99.23%.
+No earlier gate invalidation. Stage 5 recovery actions remain deferred.
