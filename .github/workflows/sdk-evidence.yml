@@ -1,0 +1,21 @@
+name: Installed AlarmKit SDK evidence
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    if: github.event.repository.private == false
+    runs-on: macos-26
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Inspect installed public module interfaces
+        run: |
+          sw_vers
+          xcodebuild -version
+          xcodebuild -showsdks
+          swift --version
+          python3 Scripts/inspect_alarmkit_sdk.py
