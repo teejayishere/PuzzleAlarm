@@ -23,6 +23,8 @@ targets:
     platform: iOS
     sources:
       - path: PuzzleAlarm/App
+      - path: PuzzleAlarm/AlarmKit
+      - path: PuzzleAlarm/Intents
     dependencies:
       - package: PuzzleAlarmCore
         product: PuzzleAlarmCore
@@ -35,6 +37,7 @@ targets:
       path: .generated/PuzzleAlarm-Info.plist
       properties:
         CFBundleDisplayName: PuzzleAlarm
+        NSAlarmKitUsageDescription: PuzzleAlarm uses alarms to wake you at the times you schedule.
         LSRequiresIPhoneOS: true
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
@@ -43,6 +46,19 @@ targets:
           - UIInterfaceOrientationPortrait
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
+  PuzzleAlarmTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: PuzzleAlarmTests
+    dependencies:
+      - target: PuzzleAlarm
+      - package: PuzzleAlarmCore
+        product: PuzzleAlarmCore
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.teejayishere.PuzzleAlarm.Tests
+        GENERATE_INFOPLIST_FILE: YES
   PuzzleAlarmUITests:
     type: bundle.ui-testing
     platform: iOS
@@ -60,10 +76,12 @@ schemes:
       targets:
         PuzzleAlarm: all
         PuzzleAlarmUITests: [test]
+        PuzzleAlarmTests: [test]
     run:
       config: Debug
     test:
       config: Debug
       targets:
         - name: PuzzleAlarmUITests
+        - name: PuzzleAlarmTests
       gatherCoverageData: false

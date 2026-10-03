@@ -67,7 +67,17 @@ jobs:
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build \
             2>&1 | tee "$RUNNER_TEMP/ios-build.log"
-      - name: Run native shell launch test
+      - name: Verify built AlarmKit usage description
+        run: |
+          python3 - <<'PY'
+          import pathlib, plistlib
+          path = pathlib.Path("DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Info.plist")
+          value = plistlib.loads(path.read_bytes()).get("NSAlarmKitUsageDescription")
+          if not isinstance(value, str) or not value.strip():
+              raise SystemExit("Built app is missing NSAlarmKitUsageDescription")
+          print(f"Built app usage description: {value}")
+          PY
+      - name: Run platform capability and native shell tests
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: |
