@@ -4,7 +4,7 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 3 AlarmKit capability spike compiles and passes fake-boundary tests. The shell remains a title screen; no real alarm behavior is verified.**
+**Stage 4 adds versioned atomic local persistence and recovery representations. The shell remains a title screen; no real alarm behavior is verified.**
 
 ## Evidence and scope
 
@@ -12,7 +12,7 @@ See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 [TEST_MATRIX](docs/TEST_MATRIX.md) distinguishes automated evidence from unimplemented
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
-See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. Stage 4+ is not started.
+See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. Stage 5+ is not started.
 
 Implemented in dependency-free PuzzleAlarmCore:
 
@@ -23,7 +23,7 @@ Implemented in dependency-free PuzzleAlarmCore:
 - Exactly five backup-plan entries at T, T+60s, T+120s, T+180s and T+240s.
 - Codable validation, recovery-state round trips and behavioral/invariant tests.
 
-Challenge engines, disk persistence, OS scheduling, product UI, camera and sound files
+Challenge engines, OS scheduling orchestration, product UI, camera and sound files
 belong to later gates. No real alarm, device installation or camera/audio behavior
 has been verified.
 
@@ -35,7 +35,7 @@ has been verified.
 CI uses a standard macos-26 runner, prints macOS/Xcode/SDK/Swift versions, parses
 the package, builds with warnings as errors, runs Swift tests and reports core
 line coverage. It also generates the Xcode project, builds the iOS app and runs
-seven platform capability tests and one Simulator launch test. No paid runners, runtime dependencies or signing
+seven platform capability tests, an iOS disk round-trip and one Simulator launch test. No paid runners, runtime dependencies or signing
 credentials. Private-repository execution is guarded out to preserve the $0 rule.
 
 A local Mac or large Windows Swift toolchain is unnecessary for ordinary work.

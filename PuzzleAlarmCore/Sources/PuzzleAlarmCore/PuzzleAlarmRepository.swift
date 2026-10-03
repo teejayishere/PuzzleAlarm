@@ -50,13 +50,11 @@ public protocol PuzzleAlarmRepository: Sendable {
 }
 
 enum RepositoryCodec {
-    private struct Header: Decodable { let schemaVersion: Int }
+
 
     static func decode(_ data: Data) throws -> RepositorySnapshot {
         do {
             let decoder = JSONDecoder()
-            let header = try decoder.decode(Header.self, from: data)
-            guard header.schemaVersion == 1 else { throw PersistenceError.unsupportedSchema(header.schemaVersion) }
             let snapshot = try decoder.decode(RepositorySnapshot.self, from: data)
             try snapshot.state.validate()
             return snapshot

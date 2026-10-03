@@ -114,3 +114,37 @@ Exact API-by-API matrix and scope limits:
 The final follow-up strengthens the empty-update assertion and corrects diagnostic
 wording. It requires its own exact-HEAD successful run; the run above is evidence
 only for its named revision. No earlier gates invalidated. Stage 4+ NOT STARTED.
+
+## Gate 4 — persistence implementation PASS at recorded revision
+
+Revision: 47c96dc9bb9b5c122e4ac0fd6f240eec1b784461
+[Actual full CI](https://github.com/teejayishere/PuzzleAlarm/actions/runs/37144199020).
+27 focused persistence tests; 53 full core tests; seven platform tests;
+one iOS disk integration test; one native shell launch test.
+62 distinct test functions, excluding focused repeats/parameterized invocations.
+Core coverage: 772/779 lines (99.10%).
+
+| Requirement | Observed evidence |
+| --- | --- |
+| Empty/missing, save/load/update/delete, multiple definitions | AUTOMATED PASS; explicit missing differs from a committed empty document |
+| Weekdays/modes/order/sounds/timestamps | AUTOMATED PASS; configuration permutations and schema round trips |
+| Session lifecycle/progress/index/parent/snapshot | AUTOMATED PASS; all ten phases, inFlight schedule/cancel and partial failures preserved |
+| Ownership ledger | AUTOMATED PASS; all five IDs/ordinals, detached records, duplicate UUID and competing authorities rejected |
+| Math/Memory/QR data | AUTOMATED PASS; exact math problem, five Memory phases/deadline, QR token; no engines/camera state |
+| Corruption/schema | AUTOMATED PASS; empty/truncated/malformed bytes, invalid enum/configuration, schema 0/2/99 rejected; bytes retained |
+| Atomic failure | AUTOMATED PASS; injected failure after staging preserves prior document and reports interruption |
+| Initial interrupted write | AUTOMATED PASS; missing committed document plus pending file never becomes a valid empty state |
+| Real filesystem errors | AUTOMATED PASS; staging-path write failure and blocked storage directory surfaced |
+| Concurrency | AUTOMATED PASS; stale revisions rejected; one winner across simultaneous memory writes and separate disk actors |
+| Reconciliation representation | AUTOMATED PASS; recognized/persisted-missing/stale/orphaned ownership inventory; no recovery actions |
+| Production iOS persistence | SIMULATOR PASS; real Application Support create/save/reload |
+| Gates 0–3 | PASS; original 26 core tests, generated build, AlarmKit/AppIntents, seven platform tests, shell launch retained |
+| Diagnostics | PASS; no compiler/destination warnings; known UI-test metadata advisory remains |
+| Physical durability/AlarmKit | DEVICE REQUIRED |
+
+Final follow-up adds four adversarial tests: invalid commit retains good bytes;
+invalid ownership/timestamp decoding; cancelled ID still present classified stale;
+real disk read error distinguished from missing. Concurrent losers must specifically
+report conflict. It also removes redundant schema decoding. Final acceptance
+requires a full successful CI run for that exact follow-up revision.
+No earlier gate invalidated. Stage 5+ remains NOT STARTED.

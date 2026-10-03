@@ -265,3 +265,34 @@ seven AlarmKit platform tests and native launch test retained.
 Focused test step precedes full coverage suite in free standard macOS CI.
 No permission/AlarmKit daemon calls, engine, scheduler, recovery actions or UI.
 Status: Gate 4 PENDING actual Swift/Xcode execution.
+
+## Stage 4, attempt 1 — actual CI PASS
+
+Revision: 47c96dc9bb9b5c122e4ac0fd6f240eec1b784461
+Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37144199020
+Focused result: 27 persistence tests PASS.
+Full gate: 53 core + 8 iOS unit/integration + 1 UI launch = 62 functions PASS.
+Coverage: 772/779 core production lines (99.10%).
+Xcode 26.6/iOS 26.5; production Foundation disk adapter compiles and executes in
+iOS Application Support. AlarmKit/AppIntents and all prior checks remain green.
+No compiler/destination warnings. One unchanged UI-test SDK metadata advisory.
+Commands: git diff --check; free macOS focused/full Swift suites; coverage reporter;
+Xcode generation/build/test; built plist validation; diagnostic review; gh run logs.
+No test failure, speculative retry, warning suppression or weakened assertion.
+
+Self-review: one Codable document, one ownership authority per session, no
+platform-framework leakage into core; separate revision tokens prevent stale writes.
+Adversarial review: staged termination leaves old committed state; uncertain
+OS effects retain inFlight ledger; missing IDs never complete sessions; corruption
+blocks overwrite; parent edits retain snapshots; concurrent commits do not lose data.
+One gap in test strictness: losing concurrent writers initially accepted any error.
+Strengthen to require conflict. Add four regressions for invalid commits,
+ownership/timestamp decoding, stale cancelled IDs and actual read failures.
+Remove duplicate header decode now that Snapshot validates schema before payload.
+These are Stage 4 improvements, not defects in earlier models.
+
+Earlier gates invalidated: None. Full Gates 0–3 regression replay passed.
+Known limits: no actual process kill/power loss, separate-process contention,
+iPhone file protection or daemon reconciliation evidence. No backup restoration,
+migration, engine, product UI or Stage 5 actions implemented.
+Next action: push final review changes and docs; run full exact-HEAD CI; STOP at Gate 4.

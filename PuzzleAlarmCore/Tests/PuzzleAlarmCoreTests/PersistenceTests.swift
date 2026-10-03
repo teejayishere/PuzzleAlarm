@@ -338,7 +338,7 @@ struct PersistenceTests {
             for _ in 0..<10 {
                 group.addTask {
                     do { _ = try await repository.commit(value, expecting: .missing); return true }
-                    catch { return false }
+                    catch PersistenceError.conflict { return false } catch { Issue.record(error); return false }
                 }
             }
             var count = 0
@@ -431,7 +431,7 @@ struct PersistenceTests {
                 group.addTask {
                     let repository = DiskRepository(directory: directory)
                     do { _ = try await repository.commit(value, expecting: .missing); return true }
-                    catch { return false }
+                    catch PersistenceError.conflict { return false } catch { Issue.record(error); return false }
                 }
             }
             var count = 0
@@ -440,5 +440,61 @@ struct PersistenceTests {
         }
         #expect(wins == 1)
         #expect(try await loaded(DiskRepository(directory: directory)).state == value)
+    }
+
+    @Test func invalidCommitCannotDamageKnownGoodState() async throws {
+        let repository = InMemoryRepository()
+        let valid = try state()
+        let first = try await repository.commit(valid, expecting: .missing)
+        let bytes = await repository.storedRepresentation()
+        var invalid = valid
+        invalid.sessions += valid.sessions
+        await #expect(throws: DomainError.self) {
+            try await repository.commit(invalid, expecting: first.version)
+        }
+        #expect(await repository.storedRepresentation() == bytes)
+    }
+
+    @Test func invalidOwnershipAndTimestampDecodeAreRejected() throws {
+        let value = try session()
+        let ownership = try AlarmOwnership(alarmKitID: uuid(100), sessionID: nil,
+                                           parentAlarmID: value.parentAlarmID, ordinal: 0,
+                                           intendedDate: value.scheduledWakeUpDate,
+                                           scheduling: .inFlight, cancellation: .notRequested)
+        for ordinal in [-1, 1, 5] {
+            #expect(throws: (any Error).self) {
+                try JSONDecoder().decode(AlarmOwnership.self, from: mutatedJSON(ownership) { $0["ordinal"] = ordinal })
+            }
+        }
+        let record = try PersistedSession(session: value, updatedAt: value.createdAt)
+        #expect(throws: (any Error).self) {
+            try JSONDecoder().decode(PersistedSession.self, from: mutatedJSON(record) { $0["updatedAt"] = 0 })
+        }
+        let checkpoint = ResumeCheckpoint(challengeIndex: 0, detail: .math(
+            problemID: uuid(80), prompt: "1+1", expectedAnswer: 2
+        ))
+        #expect(throws: DomainError.self) {
+            try PersistedSession(session: value, updatedAt: value.createdAt, checkpoint: checkpoint)
+        }
+    }
+
+    @Test func cancelledIDsStillPresentAreStaleNotNewSessions() throws {
+        var value = try solvedSession()
+        try value.beginCancellation(id: value.primaryAlarmID)
+        try value.recordCancellation(id: value.primaryAlarmID, succeeded: true)
+        let before = value
+        let report = try ReconciliationInventory(state: state(value), observedOwnedIDs: [value.primaryAlarmID])
+        #expect(report.entries.first?.status == .stalePresent)
+        #expect(value == before)
+        #expect(value.phase == .completing)
+    }
+
+    @Test func realDiskReadFailureIsNotMissing() async throws {
+        let directory = try directory()
+        defer { try? FileManager.default.removeItem(at: directory) }
+        try FileManager.default.createDirectory(at: directory.appendingPathComponent("state.json"),
+                                                withIntermediateDirectories: false)
+        let repository = DiskRepository(directory: directory)
+        await #expect(throws: PersistenceError.io("read")) { try await repository.load() }
     }
 }

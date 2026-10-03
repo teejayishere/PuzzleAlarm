@@ -146,3 +146,116 @@ The observation method borrows the caller's task and creates no producer Task.
 A future owner must retain/cancel its observation task. Runtime update-delivery
 and cancellation behavior are device-required, distinct from compilation.
 Core and the title-only shell remain unchanged. Stage 4+ is not started.
+
+## Stage 4 persistence and source-of-truth ownership
+
+PuzzleAlarmRepository saves one cohesive schema-1 Codable document containing
+definitions, PersistedSession records and detached ownership records.
+DiskRepository and InMemoryRepository are actor-isolated implementations.
+The Foundation-only disk adapter compiles into the existing SwiftPM product on
+Apple platforms; pure state/codec/memory repository types remain platform-neutral.
+No SwiftUI, AlarmKit, AppIntents, ActivityKit or camera dependency enters core.
+
+| Fact | Authority |
+| --- | --- |
+| Definition configuration, weekdays, sound and timestamps | Persisted AlarmDefinition |
+| Session snapshot, challenge index/counters, lifecycle, scheduling/cancellation acknowledgments | Persisted WakeUpSession |
+| Session last checkpoint timestamp and engine resume input | PersistedSession wrapper |
+| AlarmKit UUID ownership and intended occurrence | Persisted session plan plus operation arrays, or detached ownership when no session exists |
+| Whether a UUID currently exists and its OS state | Successful AlarmKit snapshot; not the local intended status |
+| Challenge completion | Controlled session transitions; never OS absence, Stop, app opening or a resume checkpoint |
+
+ownershipLedger() derives each session's five entries from its stored plan and
+operation arrays. It never persists a second copy that could disagree. Entries
+include UUID, session UUID, parent UUID, ordinal, intended date and both operation
+statuses. Primary/backup derives from ordinal. Detached records support ordinary
+alarms without sessions and retained ownership after missing session data.
+A detached record may not refer to a session already present in the document.
+Duplicate UUID ownership across all sources, definitions and sessions is rejected.
+
+PersistedSession adds updatedAt to the existing createdAt and validates it against
+recorded progress/completion dates. It does not replace or reset WakeUpSession.
+Optional ResumeCheckpoint belongs to the current active challenge index. Math
+stores the exact problem ID, prompt and answer; progress remains in the session.
+Memory stores round ID, digits, generated/visible/hidden/failed/completed phase,
+and an explicit deadline only for visible state. Reload preserves phase and
+deadline exactly. A future engine must evaluate elapsed time before rendering;
+hidden/failed/completed must never default to visible. These are data contracts,
+not challenge engines or verified future UI behavior. QR uses the saved config
+token and persists no camera state. Schema evolution must precede incompatible
+future checkpoint changes.
+
+### Atomic storage and concurrency
+
+Production location: Application Support/PuzzleAlarm/state.json.
+There is no database, network, paid service or dependency. State is not wired into
+the shell or startup yet. One iOS test exercises a unique Application Support
+subdirectory and cleans it up.
+
+Each commit requires the version returned by load (missing or revision UUID).
+The repository rereads and validates current bytes before compare-and-swap.
+A stale version returns conflict instead of overwriting newer state. The UUID is
+a storage revision token, never an AlarmKit identifier. Actors serialize calls;
+NSFileCoordinator exclusively covers the read/check/write transaction across
+cooperating repository instances and processes. No await occurs inside it.
+Only repository-coordinated access is supported; external file editors do not
+participate in the protocol.
+
+The disk adapter first atomically writes state.json.pending, then uses Foundation
+Data.write(options: .atomic) to replace state.json. The same directory keeps writes
+on the same filesystem. The pending file is an interrupted-write signal, not an
+automatically promoted backup. Failure before replacement retains prior committed
+bytes. After replacement, cleanup failure leaves a diagnostic flag, not a false
+claim that the successful commit rolled back. Success means the filesystem API
+accepted the atomic commit; physical power-loss durability is not proven.
+
+Foundation behavior:
+[Atomic writes](https://developer.apple.com/documentation/foundation/nsdata/writingoptions)
+and [replacement coordination](https://developer.apple.com/documentation/foundation/nsfilecoordinator/writingoptions/forreplacing).
+No manual truncate-and-rewrite or best-effort fallback to empty data exists.
+
+### Recovery outcomes, not recovery actions
+
+- Missing local file returns missing explicitly. It does not mean there are no
+  AlarmKit alarms; Stage 5 must inspect a successful OS snapshot before recovery.
+- A valid committed empty document differs from a missing one.
+- A pending initial write with no committed document throws interruptedInitialWrite.
+- A valid committed document with a pending file returns its known-good snapshot
+  and interruptedWrite=true. The pending data is never silently accepted.
+- Empty bytes, malformed/truncated JSON, invalid domain values and unsupported
+  schema versions throw. Existing bytes are retained; commits cannot overwrite
+  unreadable/unsupported state. Startup must handle this error as recovery-required.
+- Reads/writes/coordination errors propagate; no failed operation reports success.
+  After an ambiguous write error, reload and inspect OS state before retrying.
+- InMemoryRepository also stores encoded bytes, validates on read, supports injected
+  read/write errors and accepts corrupt initial bytes for tests.
+
+ReconciliationInventory is a read-only classification against explicitly supplied
+app-scoped AlarmKit IDs: recognizedPresent, persistedMissing, stalePresent,
+staleMissing and potentiallyOrphanedOwned. Missing parent/session, terminal
+session or confirmed cancellation makes a retained entry stale. Unknown IDs in
+the app-scoped OS snapshot are potentially orphaned, not assigned invented owners.
+Duplicate observed IDs are rejected. A failed OS snapshot must not be passed as [].
+No scheduling, cancellation, completion, repair, cleanup or routing runs here.
+
+If the app dies after an OS effect but before acknowledgment, the persisted
+inFlight entry preserves ownership and uncertainty. Stage 5 must persist this
+intent BEFORE the effect. If no local entry exists, classification can detect an
+untracked app-owned UUID but cannot recover the lost session relationship from
+AlarmKit metadata. Recovery policy and user-facing repair are deliberately deferred.
+
+### Stage 4 review and limitations
+
+Existing Stage 1/3 models are unchanged; the previously documented engine-input
+gap is filled additively at the persistence boundary, not hidden by a workaround.
+All ten existing session phases can round-trip, including uncertain operations.
+Parent edits/deletions leave retained session snapshots and ownership intact.
+Repository commits are storage operations, not permission to delete armed state:
+Stage 5 must enforce business-level edit/delete/retirement rules.
+
+Tests cover actor and separate-instance races, injected post-staging interruption,
+real filesystem write failure, malformed data, unsupported schema, snapshots and
+ownership invariants. They do not simulate sudden power loss, filesystem damage,
+iPhone file protection, multiple real OS processes or live AlarmKit reconciliation.
+A lost entire document cannot reconstruct ownership; no backup/migration framework
+or automatic destructive repair is introduced. Full device acceptance remains required.
