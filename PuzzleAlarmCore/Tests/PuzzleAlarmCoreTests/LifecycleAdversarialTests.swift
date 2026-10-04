@@ -261,4 +261,80 @@ struct LifecycleAdversarialTests {
         #expect(result.state.definitions == [newer])
         #expect(result.state.sessions.last?.session.phase == .armed)
     }
+
+    @Test func deletedIdentityCannotBeRecreatedOrUnknownCommandsReportedSuccessful() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        let coordinator = try orchestrator(repository, scheduler)
+        let original = try definition()
+        _ = try await coordinator.create(original, context: lifecycleContext())
+        _ = try await coordinator.delete(original.id, context: lifecycleContext())
+        let saved = try await repository.load()
+        await #expect(throws: DomainError.self) { try await coordinator.create(original, context: lifecycleContext()) }
+        await #expect(throws: DomainError.unknownAlarm) { try await coordinator.retry(uuid(999), context: lifecycleContext()) }
+        await #expect(throws: DomainError.unknownAlarm) { try await coordinator.enable(uuid(999), context: lifecycleContext()) }
+        #expect(try await repository.load() == saved)
+        #expect(scheduler.schedules.count == 5)
+    }
+
+    @Test func weeklyOrdinaryRetryAfterOriginalDateRetainsItsRecurringIdentity() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.failSchedule = 1 }
+        let first = try await orchestrator(repository, scheduler).create(lifecycleOrdinary(), context: lifecycleContext())
+        let entry = first.state.detachedOwnership[0]
+        let later = entry.intendedDate.addingTimeInterval(86400)
+        scheduler.configure { $0.failSchedule = nil }
+        let result = try await orchestrator(repository, scheduler, now: later).retry(uuid(1), context: lifecycleContext())
+        #expect(result.state.operations[0].status == .ready)
+        #expect(scheduler.schedules.map(\.plannedAlarm.id) == [entry.alarmKitID, entry.alarmKitID])
+        #expect(result.state.sessions.isEmpty && result.state.definitions[0].enabled)
+    }
+
+    @Test func observedRingingProtectsSessionEvenBeforeLocalClockReachesWakeDate() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        let coordinator = try orchestrator(repository, scheduler)
+        let original = try await coordinator.create(definition(), context: lifecycleContext())
+        let value = original.state.sessions[0].session
+        scheduler.configure { $0.alarms[0] = .init(id: value.primaryAlarmID, state: .alerting) }
+        let result = try await coordinator.delete(uuid(1), context: lifecycleContext())
+        #expect(result.issues.contains(.deletionDeferred(uuid(1))))
+        #expect(result.state.sessions[0].session == value)
+        #expect(scheduler.cancellations.isEmpty && scheduler.values.alarms.count == 5)
+    }
+
+    @Test func scheduleAndCancellationAcknowledgmentsRequireTheRightPhaseAndIntent() throws {
+        var planned = try session()
+        #expect(throws: DomainError.invalidTransition) { try planned.beginScheduleAttempt(id: planned.primaryAlarmID) }
+        #expect(throws: DomainError.invalidTransition) { try planned.recordScheduled(id: planned.primaryAlarmID) }
+        #expect(throws: DomainError.invalidTransition) { try planned.recordScheduleFailure(id: planned.primaryAlarmID) }
+        try planned.beginScheduling()
+        #expect(throws: DomainError.invalidTransition) { try planned.recordScheduleFailure(id: planned.primaryAlarmID) }
+        try planned.requestRetirement()
+        #expect(throws: DomainError.invalidTransition) { try planned.recordCancellation(id: planned.primaryAlarmID, succeeded: true) }
+        #expect(planned.completedAt == nil && planned.remainingCancellationIDs.count == 5)
+    }
+
+    @Test func newerOperationGenerationDuringOSAwaitStopsOldScheduling() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.afterSchedule = { _ in
+            guard case let .loaded(snapshot, _) = try await repository.load() else { throw FixtureError.invalidDate }
+            var state = snapshot.state
+            let old = state.operations[0]
+            var newer = LifecycleOperation(id: uuid(999), configuration: old.configuration, context: old.context)
+            newer.sessionID = old.sessionID
+            state.operations[0] = newer
+            _ = try await repository.commit(state, expecting: snapshot.version)
+        } }
+        await #expect(throws: LifecycleError.superseded) {
+            try await orchestrator(repository, scheduler).create(definition(), context: lifecycleContext())
+        }
+        #expect(scheduler.schedules.count == 1)
+        scheduler.configure { $0.afterSchedule = nil }
+        let result = try await orchestrator(repository, scheduler).startup(context: lifecycleContext())
+        #expect(result.state.operations[0].id == uuid(999))
+        #expect(result.state.sessions[0].session.phase == .armed && scheduler.schedules.count == 5)
+    }
 }
