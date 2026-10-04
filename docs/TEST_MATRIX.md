@@ -217,3 +217,119 @@ as above. The horizon fallback is retained after the real recurrence defect was
 fixed and meaningfully tested; no injected calendar failure just to make it execute.
 Gates 1–4 restored after full replay; Gate 0 also rechecked. Stage 5 NOT STARTED.
 No threshold changed. Final documentation-only acceptance requires exact-HEAD CI.
+
+## Stage 5 acceptance matrix
+
+Stage 5 adds deterministic lifecycle tests plus two iOS composition/translation
+tests. Parameterized cases count as one Swift Testing test declaration in the
+reported totals; focused reruns are not counted twice. Final evidence is recorded
+in PROJECT_STATE.md and the final acceptance entry in DEVELOPMENT_LOG.md.
+
+| Requirement | Meaningful evidence |
+| --- | --- |
+| Five-alarm transaction | LifecycleTests checks ID/date order, durable inFlight at each effect, no premature armed/completed state, and final five acknowledgments. |
+| All five failures / rollback | Parameterized failures at positions 1–5 include an OS side effect followed by an error; assert exact cancellation IDs, empty OS state and retained five-entry ownership. Cancellation errors must not stop siblings. |
+| Every external-effect crash window | LifecycleRecoveryTests restores partial plans at positions 0–5, all acknowledgments before arming, missing/present inFlight IDs, failed acknowledgment writes, partial cancellation and failure after actual OS removal. |
+| Missing / failed / stale snapshots | Snapshot errors propagate; known missing alarms do not solve challenges; unknown owned IDs are reported; stale terminal positives do not repeat cancellation. |
+| Recurrence | Ordinary weekly uses one ID without sessions; challenge completion creates one successor only after cleanup. Calendar tests cover midnight, month/year, DST and Pacific/Apia's skipped local date. |
+| One-time | Fixed ordinary occurrence and challenge terminal consumption disable the definition; repeated startup/enable cannot silently rearm. Deadline crossing during storage or OS awaits is tested. |
+| Enable / disable / delete | Both modes, repeated commands, partial cleanup, write failure before/after effects, retained ownership, deferred active deletion, tombstone ID reuse rejection. |
+| Edit / mode change | Seven cases cover time, weekdays, sound, challenge settings/order and both mode directions. Assert new target healthy before old retirement, old preserved on replacement failure, stable retry IDs, active snapshot isolation. |
+| Ringing protection | Already-alerting snapshots protect a session even before the local clock reaches its date; alerting during replacement blocks old retirement without cancelling the healthy new target. |
+| Conflicts / await races | Bounded three-attempt CAS; unrelated writes merged; newer definitions and operation generations preserved; reentrant commands rejected; snapshots refreshed after intent writes. |
+| Schema / corruption | Schema-1 upgrade, schema-2 journal requirement, invalid operation ownership/status and duplicate UUID rejection before effects; all existing persistence corruption/atomicity tests rerun. |
+| Domain completion | Degraded state preserves scheduling history; active/completed guards, late scheduling/cancellation acknowledgments and full challenge sequence requirements remain enforced. |
+| Platform | Production disk + coordinator + injected AlarmManagerService integration, native recurrence/presentation/sound translation, original seven capabilities, disk integration and native shell launch. |
+
+### New coverage gaps investigated
+
+The first passing expanded run (6924c81, run 37208755043) had 107 core tests and
+1800/1848 lines (97.40%). The audit prompted behavioral regressions for duplicate
+create, partial acknowledged-chain disappearance, final-snapshot disappearance,
+elapsed planned and ordinary inFlight occurrences, scheduling-failure/crash state,
+future degraded rollback, completed rollback with pending journal, missing ordinary
+ownership, and cancellation throwing after OS removal. The cleanup loop was
+corrected so a single recovery pass does not make redundant cancellation attempts.
+
+Passing c48aeb7/run 37209286645 had 117 core tests and 1835/1852 (99.08%).
+Inline-region inspection, not just whole-line coverage, then prompted tests for
+deleted identity reuse, weekly retries after their original date, unknown commands,
+ringing protection (including during replacement), generation supersession, and
+invalid late domain acknowledgments. No test fabricates an impossible valid state
+or merely asserts execution.
+
+Remaining locations below refer to the Stage 5 production sources (unchanged by
+the final test-only revisions). SwiftPM counts closure regions independently,
+whereas LLVM LCOV merges line numbers; these are different denominators.
+
+| Location / behavior | Classification / justification |
+| --- | --- |
+| AlarmLifecycleCoordinator.swift:30, default clock closure | NON-MEANINGFUL COVERAGE. Production delegates directly to Date(); deterministic behavioral tests inject their clock. |
+| AlarmScheduling.swift:31, request for ID outside session plan | ERROR/RECOVERY BEHAVIOR. Already tested by the iOS capability suite using the shared production request type; core-only coverage excludes that executable. Do not duplicate solely for percentage. |
+| DiskRepository.swift:23, no Application Support URL | PLATFORM-DEPENDENT. Foundation environment lookup has no realistic injected failure; normal lookup, real I/O errors and iOS disk integration are tested. Device storage/file protection remains required. |
+| LifecycleEffects.swift:228/235, session/ownership lookup absent | DEFENSIVE/UNREACHABLE BRANCH within the supported single lifecycle owner. Validated journal/ledger references supply these IDs and history is retained. Invalid ownership is rejected at repository boundaries; helpers do not invent records. |
+| LifecycleOperation.swift:89, absent detached record during update | DEFENSIVE/UNREACHABLE BRANCH for validated targets and retained history. No public command removes ownership before acknowledgment. |
+| LifecycleRecovery.swift:175, journal target session absent | DEFENSIVE/UNREACHABLE BRANCH after repository validation. Corrupt journal references are tested as rejected input. |
+| LifecycleRecovery.swift:179, failed target with neither target ID | DEFENSIVE/UNREACHABLE BRANCH for coordinator-produced failed scheduling operations: allocation persists a target before any effect/failure outcome. Keeping empty cleanup safe does not authorize creating or deleting anything. |
+| Scheduling.swift:16, validated timezone becomes unavailable | DEFENSIVE/UNREACHABLE BRANCH with stable system timezone database. Init/decode reject invalid zones. |
+| Scheduling.swift:57, no date in two-week search horizon | DEFENSIVE/UNREACHABLE BRANCH for tested supported Gregorian dates/zones. Retained fail-closed fallback after the real Apia defect was fixed and regression tested; no fabricated calendar to inflate coverage. |
+| WakeUpSession.swift:200/282, nil last-success fallback closures | DEFENSIVE/UNREACHABLE BRANCH. Nonempty full sequence validation precedes completed state; malformed completion and terminal replay are tested. |
+
+Additional zero-count inline guards were reviewed:
+- DiskRepository's coordination-error/missing-callback guards and failed removal
+  of an interrupted-write marker are PLATFORM-DEPENDENT. Real write/read failures,
+  interruption detection and preservation are covered; no Foundation swizzling.
+- LifecycleEffects' active early return duplicates ensureTarget's active guard
+  (DEFENSIVE/UNREACHABLE through public commands).
+- Token checks in failure/final-retirement and allocation's already-target guard
+  are defensive against unsupported competing journal writers. Generation
+  supersession is tested through the public scheduling path; ordinary parent
+  edits/conflicts are independently tested. No claim of multi-process OS atomicity.
+- Allocation's disabled-definition nil occurrence is defensive: disabled parents
+  use retirement actions, and checkedOperation rejects a changed parent.
+- Internal updateSession's missing-ID guard is defensive under the same validated,
+  retained-history invariant. Public unknown-parent/operation commands are tested.
+- Scheduling's calendar calculation and missing-primary inline guards are
+  defensive for validated Gregorian inputs and a validated five-entry plan.
+
+The existing meaningful-coverage policy is unchanged. The final percentage is
+evidence of exercised lines, not a claim of exhaustive branches or device behavior.
+
+### Test quality and recursive final review
+
+Five principal remaining risks and their evidence:
+1. Disk/OS disagreement after process death: persisted phase matrices, injected
+   acknowledgment failures and before/after-effect OS failures assert stable IDs.
+   Real daemon freshness and power loss remain device work.
+2. Replacement cleanup destroying a healthy target: assert exact old/new sets,
+   retry behavior, both mode changes and ringing during the replacement await.
+3. Stale writers overwriting intent: CAS conflicts preserve unrelated/newer data,
+   bounded conflict exhaustion throws, and superseded generation stops old work.
+4. Completion or recurrence bypass: due missing/degraded sessions retain challenges,
+   failed cleanup blocks completion/next occurrence, repeated one-time recovery
+   cannot create another occurrence.
+5. Ownership ambiguity: malformed/duplicate journals fail before OS calls; foreign
+   and orphan IDs are untouched; retained history prevents identity reuse.
+
+Most damaging prior assumption: missing AlarmKit presence could invalidate the
+historical schedule acknowledgment and accidentally bypass a due session.
+Stage 1 was corrected to retain acknowledgments in degraded state; domain,
+persistence and lifecycle regressions directly exercise that assumption.
+All dependent gates require current replay, not the original Stage 4 run.
+
+The fake records requests/IDs/effects and injects errors, including errors after
+effects. It does not implement occurrence calculation, rollback or reconciliation.
+Assertions would fail for wrong order, early arming, stop-on-first-cancel-error,
+duplicate schedules, foreign cancellation, overwritten state or non-idempotent
+recovery. Mock and Simulator evidence does not prove real AlarmKit delivery.
+
+### Final Stage 5 implementation evidence
+
+8118e44dc007143813edf668cca223459cd97b88:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37236486724 — SUCCESS.
+123 core + 10 iOS unit/integration + one shell UI = 134 distinct tests.
+New Stage 5 work: 65 tests including the two Stage 1 recursion regressions.
+Core: 1840/1852 (99.35%). Ten merged uncovered source lines plus the two
+WakeUpSession completion autoclosures account for all 12 missing counts.
+All prior gates pass in this same run. Final documentation HEAD must also pass.
+No numeric/meaningful coverage threshold was lowered.

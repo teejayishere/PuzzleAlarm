@@ -1,5 +1,9 @@
 # Architecture
 
+Current architecture is described in the Stage 5 section below. Earlier sections
+are the historical stage record; their deferred-work statements are superseded
+by Stage 5. Exact passing implementation evidence is in PROJECT_STATE.md.
+
 ## Implemented through Stage 1
 
 PuzzleAlarmCore contains Foundation-only Codable/Equatable/Sendable values and
@@ -280,7 +284,7 @@ https://github.com/teejayishere/PuzzleAlarm/actions/runs/37182114469
 69 tests PASS (33 persistence), core coverage 774/779 = 99.36%.
 Known platform/device limitations above remain; Stage 5 is not started.
 
-## Stage 5 lifecycle architecture (implementation under validation)
+## Stage 5 lifecycle architecture (validated implementation)
 
 AlarmLifecycleCoordinator is the application service above the single
 Foundation-only AlarmScheduling boundary and PuzzleAlarmRepository. The Apple

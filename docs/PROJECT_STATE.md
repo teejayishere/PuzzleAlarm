@@ -1,82 +1,85 @@
 # Project state
 
-Current stage: 5 — RECURSE to Stage 1 recovery transitions
-Current gate: Gates 1–4 pending recovery-transition replay
-Last known passing gate: Gate 4 at b9c87ab
-Invalidated gates: Gates 1–4 pending degraded-state and Stage 5 shared-code replay
-Current blockers: None
-Current version/status: Native shell plus persistence and unconnected AlarmKit adapter
+Current stage: 5 — implementation PASS; stopped before Stage 6
+Last passing gate: Gate 5 (implementation evidence below)
+Gates 0–4: replayed and restored
+Invalidated gates remaining: None
+Blocker: None
+Current status: Lifecycle orchestration implemented and tested, not connected to product UI
 
-## Observed current evidence
+## Exact implementation evidence
 
-Revision: b9c87ab56df0e0e7928578d978d1c03304faa5ce
-Run: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37182114469
-Result: PASS. Focused persistence: 32 tests; focused domain audit: two tests.
-Full core: 60 tests. iOS: seven AlarmKit capability tests, one disk integration,
-one UI launch. Total: 69 distinct tests; persistence total: 33.
-Core coverage: 774/779 line counts = 99.36%.
-Xcode 26.6 / iOS 26.5; standard free macos-26 runner.
-Package, generation, iOS build, usage-description and diagnostic checks pass.
-No compiler/destination warnings; one known UI-test SDK metadata advisory.
+Revision: 8118e44dc007143813edf668cca223459cd97b88
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37236486724
+Result: SUCCESS, full workflow on free standard macos-26.
+123 core + 10 iOS unit/integration + one shell UI = 134 distinct tests.
+New since Stage 4: 65 tests (61 lifecycle, two domain recovery, two iOS).
+Focused persistence: 32 core; original iOS disk and new lifecycle disk composition pass.
+Core coverage: 1840/1852 line counts = 99.35%.
+Package validation/build, generated project reproducibility, AlarmKit/AppIntents,
+iOS build, usage-description verification and Simulator tests all passed.
+No avoidable production warnings. Known UI-test SDK advisory remains:
+"Metadata extraction skipped. No AppIntents.framework dependency found."
 
-This immutable run proves the final source/test implementation. Documentation
-follow-ups also require successful full CI for their own SHA before acceptance;
-the final task report links that exact-HEAD run.
+This is the immutable source/test evidence. A documentation-only follow-up must
+also pass its own complete workflow before final task acceptance. The final task
+report supplies that exact HEAD/run; no old run substitutes for current CI.
 
-## Coverage audit and recursion
+## Architecture and behavior
 
-Baseline 771/777 is fully accounted for in TEST_MATRIX.md: four wholly uncovered
-lines plus two unreachable nil-coalescing autoclosures counted separately by SwiftPM.
-Three meaningful regressions were added: restored primary/backup ownership,
-completed-session late-event replay, and recurrence across a skipped local date.
-The last exposed a Stage 1 seven-day horizon defect. Gates 1–4 were invalidated,
-the horizon corrected to two weekly cycles, and all affected gates replayed.
-No persistence schema, lifecycle or ownership authority changed.
-The error fallback remains fail-closed; no coverage threshold was changed.
+One actor-isolated AlarmLifecycleCoordinator owns lifecycle effects through the
+shared AlarmScheduling protocol. Reentrant commands fail as busy. Repository CAS
+retries at most three times; conflicts re-read and preserve newer state.
 
-## Persistence and recovery status
+Schema 2 adds a durable operation journal; schema 1 loads and upgrades on write.
+Session/detached ledgers retain primary/backup UUID ownership. Every schedule/cancel
+intent precedes the external effect; acknowledgment is separate. Unknown ownership
+is never reconstructed from AlarmKit metadata or silently cancelled.
 
-A schema-1 document persists definitions, session snapshots, resume inputs,
-timestamps and ownership. Session ledger entries derive from persisted plans/status
-arrays; detached records retain ownership where no session exists. Duplicate UUID
-ownership is rejected.
+Challenge scheduling persists all five stable IDs, schedules in order and arms only
+after acknowledgment and observed presence. Failures roll back every relevant
+owned/uncertain sibling; cancellation errors preserve ownership and do not stop
+other siblings. Explicit safe retry retains IDs; automatic recovery retries cleanup.
 
-DiskRepository and InMemoryRepository use actors and revision compare-and-swap.
-Disk commits coordinate read/check/write, stage an interruption marker and atomically
-replace the Application Support document. Corruption/future schema blocks overwrite.
-Missing state does not prove that AlarmKit contains no alarms.
+Ordinary weekly alarms use a single relative schedule; one-time uses a fixed date.
+Challenge recurrence creates one concrete successor after trusted completion and
+cleanup. One-time consumption disables and does not rearm on startup/enable.
 
-Read-only reconciliation represents recognized/missing/stale and potentially orphaned
-app-owned IDs. No scheduling, cancellation, completion or repair actions are wired
-into the app. Math/Memory resume data is stored; engines and product UI do not exist.
+Enable, disable, delete, edit and mode changes are idempotent. New replacements
+become healthy before old retirement; replacement failure preserves the old target.
+Active/ringing session snapshots are protected. Delete waits for cleanup/protected
+sessions and retains minimal history/tombstones.
 
-## Prior gate evidence
+## Recursive findings and coverage audit
 
-Gates 0–3 replayed in the current full run, including Stage 1 tests plus new domain
-regressions, generated iOS build, AlarmKit/AppIntents, platform tests and shell launch.
+Stage 1 required missing-armed and fully-rolled-back retry transitions. Further
+review corrected missing presence to degraded, preserving historical acknowledgments.
+Due degraded sessions become active, never completed by absence. Gates 1–4 were
+invalidated during correction and fully restored by the current passing replay.
 
-Original Gate 3 base: 6be4415148445f83a1879d2a219d3667327bcffc
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/37096261777
-Original Gate 4 implementation evidence remains historical, not a substitute for
-the recurrence correction's current run.
+The original 771/777 six-count audit is preserved in TEST_MATRIX.md, including the
+earlier skipped-local-date defect and regression. New Stage 5 audit tested whole
+lines and inline regions. Remaining 12 counts (10 LCOV lines + two completion
+autoclosures) are individually justified there. Coverage policy was not weakened.
 
-## Known limitations and device requirements
+## Known limitations / device-required items
 
-- Stage 5 scheduling, reconciliation actions and business-level deletion rules
-  remain NOT STARTED. Persistence is not connected to startup/product UI.
-- Lost/corrupt state cannot reconstruct ownership from AlarmKit metadata.
-- Memory phase persistence does not prove engine timing/rendering.
-- Atomic tests cover staged interruption and I/O errors, not physical power loss.
-- Concurrency covers separate actors/instances, not real separate processes.
-- Application Support unavailability/timezone database replacement cannot be
-  forced through the existing production APIs without artificial platform mocks.
-- Recurrence search is bounded to two weekly cycles; unexpected calendar failure
-  throws rather than substituting a weekday or reporting a successful schedule.
-- iPhone file protection/storage availability, authorization, firing, lock screen,
-  Focus/Silent, intent delivery, live reconciliation and sound remain DEVICE REQUIRED.
-- No paid tools, large Windows toolchain, dependencies or signing material added.
+- One live lifecycle owner per repository. Separate concurrent coordinator processes
+  are not supported; future extensions must route through the owner or add a tested
+  cross-process effect serialization design.
+- No disk/AlarmKit atomic transaction or guarantee of daemon snapshot freshness.
+  Replacement may temporarily overlap old/new IDs; real capacity/delivery is unproven.
+- Corrupt/lost ownership blocks safe automatic reconstruction. Unknown app-owned
+  IDs are reported, never assigned invented parent/session links.
+- Sound identifiers map to future .caf resources; no audio files/playback implemented.
+- Product UI/startup wiring, engines, camera, final intent routing and Stage 6+ remain
+  unimplemented. Tests do not claim these features.
+- Device required: authorization, real scheduling/firing, lock screen, Silent/Focus,
+  Stop, snapshots/reconciliation, intent delivery, audio and file protection/power loss.
+- No paid runner/service, local Windows Swift installation, credentials or signing
+  material introduced. Unrelated Investment Dashboard was not modified.
 
 ## Next action
 
-STOP after the final documentation revision has matching green full CI.
-Stage 5 is authorized and in progress; STOP after Gate 5.
+STOP after the documentation revision's full CI is green. Do not begin Stage 6.
+No user action is required to complete Gate 5.

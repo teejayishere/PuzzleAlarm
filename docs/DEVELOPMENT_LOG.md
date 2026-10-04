@@ -404,3 +404,40 @@ or bypassed; future degraded sessions can retire. Gates 1–4 require current re
 Schema 2 journal and schema-1 upgrade are Stage 5 additions to the Stage 4 repository,
 not evidence that corrupt state may be reset. No schema authority is duplicated.
 Gate 5 remains PENDING full expanded tests, coverage audit and final exact-HEAD CI.
+
+## Stage 5 final implementation — PASS after recursive replay
+
+Revision: 8118e44dc007143813edf668cca223459cd97b88
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37236486724
+Full workflow SUCCESS: 123 core + 10 iOS unit/integration + one shell UI = 134 tests.
+65 new tests relative to Stage 4: 61 lifecycle, two domain recovery, two iOS.
+Focused persistence 32 core; focused lifecycle filter 63 (includes two pre-existing
+test names, so it is not the count of new tests). Coverage 1840/1852 = 99.35%.
+
+Gates 0–4 rerun: package, core, Apia/terminal/ownership regressions, reproducible
+generated iOS project, AlarmKit/AppIntents, capability and disk tests, native launch,
+usage description and diagnostics. Gates 1–4 restored after degraded-state recursion.
+Known UI-test metadata advisory only; no avoidable production compiler warnings.
+
+Expanded recovery evidence:
+- c48aeb7d697c6c7dc0dd1dbf68939758635ee04c,
+  https://github.com/teejayishere/PuzzleAlarm/actions/runs/37209286645:
+  117 core, full gate PASS, 1835/1852 (99.08%).
+- 88b62c8f07d3fb2544d3bec3088c78eeb38ca526,
+  https://github.com/teejayishere/PuzzleAlarm/actions/runs/37236350816:
+  test compilation FAILED because uuid(999) exceeded the fixture's UInt8 range.
+  Production package built. Small correction to fixture value 99; no production
+  workaround, no suppressed diagnostic, no weakened assertion. Final full replay
+  above passed, including ringing protection during replacement.
+
+Self/adversarial review and uncovered-line classifications are in TEST_MATRIX.md.
+Important corrections include preserved historical schedule acknowledgments,
+fresh snapshots after storage awaits, bounded CAS merging, superseded delete
+protection, deadline checks and one cleanup attempt per recovery pass.
+The fake models errors after effects and retained OS state, not the orchestration.
+
+Locally available validation: five Python scripts parsed; git diff --check clean;
+no Apple presentation/platform framework imports in PuzzleAlarmCore.
+Swift/Xcode validation used free standard macos-26. Device items remain untested.
+Final documentation-only revision requires its matching full CI before exact-HEAD
+acceptance; final task report records that SHA/run. STOP at Gate 5, no Stage 6.
