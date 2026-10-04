@@ -100,3 +100,19 @@ private func nextOccurrenceHonorsCalendarBoundaries(_ item: ScheduleCase) throws
         try JSONDecoder().decode(BackupPlan.self, from: mutatedJSON(plan) { $0["alarms"] = [] })
     }
 }
+
+@Test func weeklyOccurrenceSurvivesSkippedLocalCalendarDate() throws {
+    // Pacific/Apia skipped Friday 2011-12-30 entirely. The next real Friday
+    // must still be found without moving the alarm to a different weekday.
+    let context = try ScheduleContext(timeZoneIdentifier: "Pacific/Apia")
+    let alarm = try definition(hour: 6, minute: 30, weekdays: [.friday])
+    let after = try instant("2011-12-23T17:00:00Z")
+    let expected = try instant("2012-01-05T16:30:00Z")
+    let occurrence = try #require(try OccurrenceCalculator.next(for: alarm, after: after, context: context))
+    #expect(occurrence == expected)
+    let calendar = try context.calendar()
+    #expect(calendar.component(.weekday, from: occurrence) == Weekday.friday.rawValue)
+    #expect(calendar.component(.hour, from: occurrence) == 6)
+    #expect(calendar.component(.minute, from: occurrence) == 30)
+    #expect(occurrence > after)
+}

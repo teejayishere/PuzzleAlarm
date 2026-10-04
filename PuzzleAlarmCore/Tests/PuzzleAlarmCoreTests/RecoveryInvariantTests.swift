@@ -76,3 +76,22 @@ import Testing
     try value.finalizeCompletion(at: first)
     #expect(value.completedAt == first)
 }
+
+@Test func completedReloadPreservesTerminalStateUnderLateEvents() throws {
+    var value = try solvedSession()
+    try cancelAll(&value)
+    try value.finalizeCompletion(at: value.scheduledWakeUpDate)
+    value = try roundTrip(value)
+    let completed = value
+    // A delayed success event must not append a second completion or clear state.
+    #expect(!(try value.recordChallengeSuccess(expectedIndex: 0, at: value.scheduledWakeUpDate.addingTimeInterval(60))))
+    try value.finalizeCompletion(at: value.scheduledWakeUpDate.addingTimeInterval(120))
+    #expect(throws: DomainError.invalidTransition) {
+        try value.recordCancellation(id: value.primaryAlarmID, succeeded: false)
+    }
+    #expect(throws: DomainError.invalidTransition) {
+        try value.recordProgress(.math(correctAnswers: 1))
+    }
+    #expect(value == completed)
+    #expect(try roundTrip(value) == completed)
+}

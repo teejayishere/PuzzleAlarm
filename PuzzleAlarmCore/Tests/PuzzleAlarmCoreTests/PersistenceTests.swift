@@ -497,4 +497,22 @@ struct PersistenceTests {
         let repository = DiskRepository(directory: directory)
         await #expect(throws: PersistenceError.io("read")) { try await repository.load() }
     }
+
+    @Test func restoredLedgerKeepsExactlyOnePrimaryAndFourBackups() async throws {
+        let value = try state()
+        let repository = InMemoryRepository()
+        _ = try await repository.commit(value, expecting: .missing)
+        let restarted = InMemoryRepository(storedRepresentation: await repository.storedRepresentation())
+        let restored = try await loaded(restarted).state
+        let ledger = try restored.ownershipLedger()
+        let session = restored.sessions[0].session
+        #expect(ledger.filter(\.isPrimary).map(\.alarmKitID) == [session.primaryAlarmID])
+        #expect(ledger.filter { !$0.isPrimary }.map(\.alarmKitID) == session.backupAlarmIDs)
+        #expect(ledger.allSatisfy { $0.sessionID == session.id && $0.parentAlarmID == session.parentAlarmID })
+        // A detached ordinary alarm is also primary, despite having no session.
+        let ordinary = try AlarmOwnership(alarmKitID: uuid(100), sessionID: nil,
+            parentAlarmID: session.parentAlarmID, ordinal: 0, intendedDate: session.scheduledWakeUpDate,
+            scheduling: .scheduled, cancellation: .notRequested)
+        #expect(try roundTrip(ordinary).isPrimary)
+    }
 }
