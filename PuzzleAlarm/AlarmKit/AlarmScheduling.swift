@@ -1,9 +1,8 @@
 import AlarmKit
 import Foundation
+import PuzzleAlarmCore
 
-enum AlarmAuthorization: Equatable, Sendable {
-    case notDetermined, authorized, denied, unknown
-
+extension AlarmAuthorization {
     init(_ state: AlarmManager.AuthorizationState) {
         switch state {
         case .notDetermined: self = .notDetermined
@@ -14,20 +13,9 @@ enum AlarmAuthorization: Equatable, Sendable {
     }
 }
 
-struct RegisteredAlarm: Equatable, Sendable {
-    enum State: Equatable, Sendable {
-        case scheduled, alerting, countdown, paused, unknown
-    }
-    let id: UUID
-    let state: State
-
-    init(id: UUID, state: State) {
-        self.id = id
-        self.state = state
-    }
-
+extension RegisteredAlarm {
     init(_ alarm: Alarm) {
-        id = alarm.id
+        let state: State
         switch alarm.state {
         case .scheduled: state = .scheduled
         case .alerting: state = .alerting
@@ -35,16 +23,6 @@ struct RegisteredAlarm: Equatable, Sendable {
         case .paused: state = .paused
         @unknown default: state = .unknown
         }
+        self.init(id: alarm.id, state: state)
     }
-}
-
-// This boundary lives in the iOS layer. Core still has no platform dependencies.
-protocol AlarmScheduling: Sendable {
-    var authorization: AlarmAuthorization { get }
-    func requestAuthorization() async throws -> AlarmAuthorization
-    func schedule(_ request: AlarmRequest) async throws -> RegisteredAlarm
-    func cancel(id: UUID) throws
-    func currentAlarms() throws -> [RegisteredAlarm]
-    // Runs in the caller's task; no hidden/unbounded producer Task is created.
-    func observeAlarms(_ receive: @escaping @Sendable ([RegisteredAlarm]) -> Void) async
 }

@@ -30,7 +30,7 @@ struct PersistenceTests {
         #expect(try await repository.load() == .missing)
         let saved = try await repository.commit(RepositoryState(), expecting: .missing)
         #expect(try await repository.load() == .loaded(saved, interruptedWrite: false))
-        #expect(saved.schemaVersion == 1)
+        #expect(saved.schemaVersion == 2)
     }
 
     @Test func definitionsSaveLoadUpdateDeleteAndMultiple() async throws {
@@ -209,10 +209,10 @@ struct PersistenceTests {
         let bytes = try RepositoryCodec.encode(snapshot)
         #expect(try RepositoryCodec.decode(bytes) == snapshot)
         #expect(try roundTrip(snapshot) == snapshot)
-        #expect(snapshot.schemaVersion == 1)
+        #expect(snapshot.schemaVersion == 2)
     }
 
-    @Test(arguments: [0, 2, 99])
+    @Test(arguments: [0, 3, 99])
     func unsupportedSchemasNeverBecomeEmpty(_ version: Int) async throws {
         let bytes = Data("{\"schemaVersion\":\(version)}".utf8)
         let repository = InMemoryRepository(storedRepresentation: bytes)

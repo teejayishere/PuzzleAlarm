@@ -5,35 +5,50 @@ import PuzzleAlarmCore
 import SwiftUI
 
 enum AlarmConfigurationFactory {
-    static func presentation() -> AlarmPresentation {
-        let solve = AlarmButton(text: "Solve", textColor: .white, systemImageName: "arrow.up.forward")
+    static func presentation(challenge: Bool = true) -> AlarmPresentation {
+        let solve: AlarmButton? = challenge ? AlarmButton(text: "Solve", textColor: .white, systemImageName: "arrow.up.forward") : nil
         let alert: AlarmPresentation.Alert
         if #available(iOS 26.1, *) {
             alert = AlarmPresentation.Alert(
-                title: "PuzzleAlarm", secondaryButton: solve, secondaryButtonBehavior: .custom
+                title: "PuzzleAlarm", secondaryButton: solve, secondaryButtonBehavior: challenge ? .custom : nil
             )
         } else {
             // Required only by the iOS 26.0 initializer; 26.1+ owns its Stop control.
             alert = AlarmPresentation.Alert(
                 title: "PuzzleAlarm",
                 stopButton: AlarmButton(text: "Stop", textColor: .white, systemImageName: "stop.fill"),
-                secondaryButton: solve, secondaryButtonBehavior: .custom
+                secondaryButton: solve, secondaryButtonBehavior: challenge ? .custom : nil
             )
         }
         return AlarmPresentation(alert: alert)
     }
 
     static func configuration(
-        for request: AlarmRequest, sound: AlertConfiguration.AlertSound = .default
+        for request: AlarmRequest, sound: AlertConfiguration.AlertSound? = nil
     ) -> AlarmManager.AlarmConfiguration<OccurrenceMetadata> {
         .alarm(
-            schedule: .fixed(request.plannedAlarm.date),
+            schedule: schedule(for: request),
             attributes: AlarmAttributes(
-                presentation: presentation(), metadata: request.metadata, tintColor: .orange
+                presentation: presentation(challenge: request.sessionID != nil), metadata: request.metadata, tintColor: .orange
             ),
-            secondaryIntent: OpenOccurrenceIntent(occurrenceID: request.metadata.sessionID),
-            sound: sound
+            secondaryIntent: request.sessionID.map { OpenOccurrenceIntent(occurrenceID: $0) },
+            sound: sound ?? selectedSound(request.selectedSound)
         )
+    }
+
+
+    static func schedule(for request: AlarmRequest) -> Alarm.Schedule {
+        switch request.schedule {
+        case let .fixed(date): .fixed(date)
+        case let .weekly(time, days): relativeSchedule(time: time, weekdays: days)
+        }
+    }
+
+    static func selectedSound(_ selection: SoundSelection) -> AlertConfiguration.AlertSound {
+        switch selection {
+        case .systemDefault: .default
+        case let .bundled(sound): .named(sound.rawValue + ".caf")
+        }
     }
 
     // Compile-only named-sound path. No resource is supplied or playback claimed.

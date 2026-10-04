@@ -53,12 +53,14 @@ public struct RepositoryState: Codable, Equatable, Sendable {
     // Records without a retained session (including future ordinary alarms and
     // recovery tombstones). Session records must never be duplicated here.
     public var detachedOwnership: [AlarmOwnership]
+    public var operations: [LifecycleOperation]
 
     public init(definitions: [AlarmDefinition] = [], sessions: [PersistedSession] = [],
-                detachedOwnership: [AlarmOwnership] = []) throws {
+                detachedOwnership: [AlarmOwnership] = [], operations: [LifecycleOperation] = []) throws {
         self.definitions = definitions
         self.sessions = sessions
         self.detachedOwnership = detachedOwnership
+        self.operations = operations
         try validate()
     }
 
@@ -76,6 +78,8 @@ public struct RepositoryState: Codable, Equatable, Sendable {
     }
 
     public func validate() throws {
+        try require(Set(operations.map { $0.configuration.id }).count == operations.count, "Duplicate parent operation")
+        for operation in operations { try operation.validate(in: self) }
         try require(Set(definitions.map(\.id)).count == definitions.count, "Duplicate definition ID")
         try require(Set(sessions.map { $0.session.id }).count == sessions.count, "Duplicate session ID")
         for record in sessions { try record.validate() }
@@ -92,11 +96,12 @@ public struct RepositoryState: Codable, Equatable, Sendable {
         }
     }
 
-    private enum CodingKeys: String, CodingKey { case definitions, sessions, detachedOwnership }
+    private enum CodingKeys: String, CodingKey { case definitions, sessions, detachedOwnership, operations }
     public init(from decoder: any Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         try self.init(definitions: c.decode([AlarmDefinition].self, forKey: .definitions),
                       sessions: c.decode([PersistedSession].self, forKey: .sessions),
-                      detachedOwnership: c.decode([AlarmOwnership].self, forKey: .detachedOwnership))
+                      detachedOwnership: c.decode([AlarmOwnership].self, forKey: .detachedOwnership),
+                      operations: c.decodeIfPresent([LifecycleOperation].self, forKey: .operations) ?? [])
     }
 }

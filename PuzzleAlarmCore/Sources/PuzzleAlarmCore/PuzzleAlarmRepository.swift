@@ -12,18 +12,23 @@ public struct RepositorySnapshot: Codable, Equatable, Sendable {
 
     init(state: RepositoryState, revision: UUID = UUID()) throws {
         try state.validate()
-        schemaVersion = 1
+        schemaVersion = 2
         self.revision = revision
         self.state = state
     }
 
     private enum CodingKeys: String, CodingKey { case schemaVersion, revision, state }
+    private enum StateKeys: String, CodingKey { case operations }
     public init(from decoder: any Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         let version = try c.decode(Int.self, forKey: .schemaVersion)
-        guard version == 1 else { throw PersistenceError.unsupportedSchema(version) }
-        schemaVersion = version
+        guard version == 1 || version == 2 else { throw PersistenceError.unsupportedSchema(version) }
+        schemaVersion = 2
         revision = try c.decode(UUID.self, forKey: .revision)
+        if version == 2 {
+            let payload = try c.nestedContainer(keyedBy: StateKeys.self, forKey: .state)
+            guard payload.contains(.operations) else { throw PersistenceError.corrupt }
+        }
         state = try c.decode(RepositoryState.self, forKey: .state)
     }
 

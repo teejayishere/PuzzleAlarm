@@ -1,5 +1,6 @@
 import AlarmKit
 import Foundation
+import PuzzleAlarmCore
 
 struct AlarmManagerService: AlarmScheduling {
     // A closure seam lets tests exercise this adapter without touching the daemon.
