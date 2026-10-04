@@ -14,6 +14,7 @@ final class FakeAlarmScheduler: AlarmScheduling, @unchecked Sendable {
         var failSchedule: Int?
         var failAfterEffect = false
         var failCancellation: Set<UUID> = []
+        var cancelFailsAfterEffect = false
         var snapshotFails = false
         var snapshotOverride: [RegisteredAlarm]?
         var afterSchedule: (@Sendable (AlarmRequest) async throws -> Void)?
@@ -42,7 +43,10 @@ final class FakeAlarmScheduler: AlarmScheduling, @unchecked Sendable {
     func cancel(id: UUID) throws {
         try lock.withLock {
             storage.calls.append(.cancel(id))
-            if storage.failCancellation.contains(id) { throw LifecycleTestFailure.injected }
+            if storage.failCancellation.contains(id) {
+                if storage.cancelFailsAfterEffect { storage.alarms.removeAll { $0.id == id } }
+                throw LifecycleTestFailure.injected
+            }
             storage.alarms.removeAll { $0.id == id }
         }
     }

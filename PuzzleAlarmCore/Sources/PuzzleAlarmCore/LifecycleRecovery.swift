@@ -18,7 +18,9 @@ extension AlarmLifecycleCoordinator {
                     try state.updateSession(value.id, at: now) { try $0.activate(at: now) }
                 }
             }
-            if [.completing, .cancellationPartiallyFailed, .cancelling, .schedulingFailed].contains(value.phase) {
+            let parentExists = initialState.definitions.contains { $0.id == value.parentAlarmID }
+            if [.completing, .cancellationPartiallyFailed].contains(value.phase) ||
+                (!parentExists && [.cancelling, .schedulingFailed].contains(value.phase)) {
                 try await cancelIDs(value.plan.alarms.map(\.id))
             }
         }
@@ -85,7 +87,7 @@ extension AlarmLifecycleCoordinator {
            let value = try await state().sessions.first(where: { $0.session.id == sessionID })?.session {
             if value.phase == .active { return }
             if [.completing, .cancellationPartiallyFailed].contains(value.phase) {
-                try await cancelIDs(value.plan.alarms.map(\.id))
+                // Startup already made this call's cleanup attempts.
                 return
             }
             if value.phase == .completed {

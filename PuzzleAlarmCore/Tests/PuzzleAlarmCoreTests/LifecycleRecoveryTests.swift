@@ -247,4 +247,165 @@ struct LifecycleRecoveryTests {
         #expect(scheduler.cancellations.count == 1)
         #expect(try await repository.load() == persisted)
     }
+
+    @Test func acknowledgedSiblingMissingDuringPartialScheduleTriggersRollback() async throws {
+        var value = try session()
+        try value.beginScheduling()
+        try value.beginScheduleAttempt(id: value.primaryAlarmID)
+        try value.recordScheduled(id: value.primaryAlarmID)
+        try value.beginScheduleAttempt(id: value.backupAlarmIDs[0])
+        let repository = InMemoryRepository()
+        _ = try await repository.commit(RepositoryState(definitions: [value.definitionSnapshot], sessions: [
+            PersistedSession(session: value, updatedAt: value.createdAt)
+        ]), expecting: .missing)
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.alarms = [.init(id: value.backupAlarmIDs[0], state: .scheduled)] }
+        let result = try await orchestrator(repository, scheduler).startup(context: lifecycleContext())
+        #expect(result.state.sessions[0].session.phase == .cancelled)
+        #expect(result.state.operations[0].failure == .missingAlarm)
+        #expect(scheduler.schedules.isEmpty && scheduler.cancellations == [value.backupAlarmIDs[0]])
+    }
+
+    @Test func disappearanceAfterLastAcknowledgmentPreventsArming() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.afterSchedule = { request in
+            if request.plannedAlarm.ordinal == 4 {
+                let value = try await repositoryState(repository).sessions[0].session
+                scheduler.configure { $0.alarms.removeAll { $0.id == value.primaryAlarmID } }
+            }
+        } }
+        let result = try await orchestrator(repository, scheduler).create(definition(), context: lifecycleContext())
+        #expect(result.state.sessions[0].session.phase == .cancelled)
+        #expect(result.state.operations[0].failure == .missingAlarm)
+        #expect(scheduler.schedules.count == 5 && scheduler.cancellations.count == 4)
+        #expect(result.state.sessions[0].session.completedAt == nil)
+    }
+
+    @Test func elapsedPlannedSessionFailsWithoutSchedulingOrCreatingAnotherOccurrence() async throws {
+        let value = try session()
+        let repository = InMemoryRepository()
+        _ = try await repository.commit(RepositoryState(definitions: [value.definitionSnapshot], sessions: [
+            PersistedSession(session: value, updatedAt: value.createdAt)
+        ]), expecting: .missing)
+        let scheduler = FakeAlarmScheduler()
+        let coordinator = try orchestrator(repository, scheduler, now: value.scheduledWakeUpDate)
+        let result = try await coordinator.startup(context: lifecycleContext())
+        #expect(result.state.operations[0].failure == .elapsedOccurrence)
+        #expect(result.state.sessions[0].session.phase == .cancelled)
+        _ = try await coordinator.startup(context: lifecycleContext())
+        #expect(scheduler.schedules.isEmpty)
+        #expect(try await repositoryState(repository).sessions.count == 1)
+    }
+
+    @Test func persistedFailureBeforeOperationAcknowledgmentCannotRestartItself() async throws {
+        var value = try session()
+        try value.beginScheduling()
+        try value.beginScheduleAttempt(id: value.primaryAlarmID)
+        try value.recordScheduleFailure(id: value.primaryAlarmID)
+        var operation = LifecycleOperation(id: uuid(77), configuration: value.definitionSnapshot, context: value.context)
+        operation.sessionID = value.id
+        let repository = InMemoryRepository()
+        _ = try await repository.commit(RepositoryState(definitions: [value.definitionSnapshot], sessions: [
+            PersistedSession(session: value, updatedAt: value.createdAt)
+        ], operations: [operation]), expecting: .missing)
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.alarms = [.init(id: value.primaryAlarmID, state: .scheduled)] }
+        let result = try await orchestrator(repository, scheduler).startup(context: lifecycleContext())
+        #expect(result.state.operations[0].status == .failed)
+        #expect(result.state.sessions[0].session.phase == .cancelled)
+        #expect(scheduler.schedules.isEmpty && scheduler.cancellations == [value.primaryAlarmID])
+    }
+
+    @Test func duplicateCreateIsIdempotentButDifferentDefinitionCannotOverwriteIdentity() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        let coordinator = try orchestrator(repository, scheduler)
+        let original = try definition()
+        _ = try await coordinator.create(original, context: lifecycleContext())
+        let saved = try await repository.load()
+        _ = try await coordinator.create(original, context: lifecycleContext())
+        #expect(try await repository.load() == saved)
+        await #expect(throws: LifecycleError.superseded) {
+            try await coordinator.create(lifecycleOrdinary(), context: lifecycleContext())
+        }
+        #expect(scheduler.schedules.count == 5)
+    }
+
+    @Test func cancellationErrorAfterOSRemovalRecoversWithoutRepeatingEffect() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        let coordinator = try orchestrator(repository, scheduler)
+        let first = try await coordinator.create(definition(), context: lifecycleContext())
+        let id = first.state.sessions[0].session.primaryAlarmID
+        scheduler.configure { $0.failCancellation = [id]; $0.cancelFailsAfterEffect = true }
+        let partial = try await coordinator.disable(uuid(1), context: lifecycleContext())
+        #expect(partial.state.sessions[0].session.cancellation[0] == .failed)
+        #expect(partial.state.sessions[0].session.completedAt == nil)
+        #expect(!scheduler.values.alarms.contains { $0.id == id })
+        let result = try await coordinator.startup(context: lifecycleContext())
+        #expect(result.state.sessions[0].session.phase == .cancelled)
+        #expect(scheduler.cancellations.filter { $0 == id }.count == 1)
+    }
+
+    @Test func degradedFutureSessionRollsBackWithoutRearming() async throws {
+        var value = try armedSession()
+        try value.recordMissingArmedAlarm(id: value.primaryAlarmID)
+        var operation = LifecycleOperation(id: uuid(77), configuration: value.definitionSnapshot, context: value.context)
+        operation.sessionID = value.id
+        let repository = InMemoryRepository()
+        _ = try await repository.commit(RepositoryState(definitions: [value.definitionSnapshot], sessions: [
+            PersistedSession(session: value, updatedAt: value.createdAt)
+        ], operations: [operation]), expecting: .missing)
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.alarms = value.backupAlarmIDs.map { .init(id: $0, state: .scheduled) } }
+        let result = try await orchestrator(repository, scheduler).startup(context: lifecycleContext())
+        #expect(result.state.operations[0].failure == .missingAlarm)
+        #expect(result.state.sessions[0].session.phase == .cancelled)
+        #expect(scheduler.schedules.isEmpty && scheduler.cancellations.count == 4)
+    }
+
+    @Test func completedRollbackBeforeJournalAcknowledgmentCannotAutomaticallyRetry() async throws {
+        var value = try session()
+        try value.requestRetirement()
+        for id in value.plan.alarms.map(\.id) {
+            try value.beginCancellation(id: id)
+            try value.recordCancellation(id: id, succeeded: true)
+        }
+        try value.finishRetirement()
+        var operation = LifecycleOperation(id: uuid(77), configuration: value.definitionSnapshot, context: value.context)
+        operation.sessionID = value.id
+        let repository = InMemoryRepository()
+        _ = try await repository.commit(RepositoryState(definitions: [value.definitionSnapshot], sessions: [
+            PersistedSession(session: value, updatedAt: value.createdAt)
+        ], operations: [operation]), expecting: .missing)
+        let scheduler = FakeAlarmScheduler()
+        let result = try await orchestrator(repository, scheduler).startup(context: lifecycleContext())
+        #expect(result.state.operations[0].failure == .scheduling)
+        #expect(result.state.sessions[0].session == value)
+        #expect(scheduler.values.calls.isEmpty)
+    }
+
+    @Test func ordinaryDeadlineCrossingDuringIntentWriteCannotSchedulePastOccurrence() async throws {
+        let repository = FaultRepository()
+        let scheduler = FakeAlarmScheduler()
+        let clock = TestClock(try lifecycleNow())
+        await repository.interfereOnce({ storage in
+            let state = try await repositoryState(storage)
+            clock.set(state.detachedOwnership[0].intendedDate)
+        }, when: { $0.detachedOwnership.first?.scheduling == .inFlight })
+        let coordinator = AlarmLifecycleCoordinator(repository: repository, scheduler: scheduler, clock: clock.now)
+        let result = try await coordinator.create(lifecycleOrdinary(days: []), context: lifecycleContext())
+        #expect(result.state.operations[0].failure == .elapsedOccurrence)
+        #expect(result.state.operations[0].oneTimeConsumed)
+        #expect(!result.state.definitions[0].enabled && scheduler.values.calls.isEmpty)
+    }
+
+    @Test func journalWithoutOrdinaryOwnershipIsRejectedBeforeAnyOSEffect() async throws {
+        var operation = LifecycleOperation(id: uuid(77), configuration: try lifecycleOrdinary(), context: try lifecycleContext())
+        operation.ordinaryID = uuid(88)
+        #expect(throws: DomainError.self) {
+            try RepositoryState(definitions: [operation.configuration], operations: [operation])
+        }
+    }
 }
