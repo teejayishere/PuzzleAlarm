@@ -52,7 +52,7 @@ final class AlarmStore {
     func currentDate() -> Date { clock() }
     func displayContext() throws -> ScheduleContext { try context() }
     func clearError() { errorMessage = nil; editWasSuperseded = false }
-    func reportError(_ error: any Error) { errorMessage = AlarmPresentation.error(error) }
+    func reportError(_ error: any Error) { errorMessage = AlarmFormatting.error(error) }
 
     func refresh() async {
         if isBusy { refreshPending = true; return }
@@ -149,15 +149,15 @@ final class AlarmStore {
                 editWasSuperseded = true
             }
             errorMessage = error is StoreError ? "Allow alarm access in Settings before enabling this alarm." :
-                AlarmPresentation.error(error)
+                AlarmFormatting.error(error)
             // Retain authoritative partial progress without issuing more OS effects.
             do { try await loadPersisted(); hasLoaded = true }
-            catch { errorMessage = AlarmPresentation.error(error) }
+            catch { errorMessage = AlarmFormatting.error(error) }
         }
         if refreshPending {
             refreshPending = false
             do { accept(try await reconcile()) }
-            catch { confirmed = false; if errorMessage == nil { errorMessage = AlarmPresentation.error(error) } }
+            catch { confirmed = false; if errorMessage == nil { errorMessage = AlarmFormatting.error(error) } }
         }
         isBusy = false
         return success

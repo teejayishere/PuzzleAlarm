@@ -35,13 +35,13 @@ struct ChallengeConfigurationEditor: View {
                 }), in: 1...20).accessibilityIdentifier("memory.rounds")
             case .qr: Text("QR Code")
             }
-        }.navigationTitle(AlarmPresentation.challenge(configuration.kind))
+        }.navigationTitle(AlarmFormatting.challenge(configuration.kind))
     }
     private var difficulties: some View {
         ForEach(Difficulty.allCases, id: \.self) { Text($0.rawValue.capitalized).tag($0) }
     }
     private func update(_ action: () throws -> ChallengeConfiguration) {
         do { let value = try action(); configuration = value; onChange(value); error = nil }
-        catch { self.error = AlarmPresentation.error(error) }
+        catch { self.error = AlarmFormatting.error(error) }
     }
 }

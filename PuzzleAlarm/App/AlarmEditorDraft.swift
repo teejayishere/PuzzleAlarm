@@ -90,10 +90,10 @@ struct AlarmEditorDraft: Identifiable {
     }
     // A fixed Gregorian reference day represents UI time only; it is never persisted.
     var pickerDate: Date {
-        get { AlarmPresentation.wallCalendar.date(from: DateComponents(year: 2001, month: 1, day: 1,
+        get { AlarmFormatting.wallCalendar.date(from: DateComponents(year: 2001, month: 1, day: 1,
                     hour: hour, minute: minute)) ?? createdAt }
         set {
-            let components = AlarmPresentation.wallCalendar.dateComponents([.hour, .minute], from: newValue)
+            let components = AlarmFormatting.wallCalendar.dateComponents([.hour, .minute], from: newValue)
             hour = components.hour ?? hour; minute = components.minute ?? minute
         }
     }

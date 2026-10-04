@@ -69,7 +69,7 @@ final class AlarmStoreTests: XCTestCase {
             await store.refresh()
             XCTAssertEqual(store.authorization, authorization)
             XCTAssertEqual(effect.values.authorizationRequests, 0)
-            XCTAssertFalse(AlarmPresentation.authorization(authorization).isEmpty)
+            XCTAssertFalse(AlarmFormatting.authorization(authorization).isEmpty)
             if authorization == .notDetermined {
                 await store.grantAuthorization()
                 XCTAssertEqual(store.authorization, .authorized)
@@ -136,7 +136,7 @@ final class AlarmStoreTests: XCTestCase {
         XCTAssertTrue(effect.values.cancellations.isEmpty)
         for issue: LifecycleReport.Issue in [.orphaned(orphan), .stalePresent(orphan), .deletionDeferred(orphan),
             .activeAlarmMissing(orphan), .operationFailed(orphan, .scheduling), .operationFailed(orphan, .cancellation)] {
-            XCTAssertFalse(AlarmPresentation.issue(issue).contains(orphan.uuidString))
+            XCTAssertFalse(AlarmFormatting.issue(issue).contains(orphan.uuidString))
         }
     }
     func testBusySaveAndForegroundRefreshAreCoalescedWithoutDuplicates() async throws {
@@ -174,9 +174,53 @@ final class AlarmStoreTests: XCTestCase {
         for error: any Error in [PersistenceError.unsupportedSchema(999), PersistenceError.io("secret"),
             PersistenceError.conflict, LifecycleError.conflictLimit, LifecycleError.busy,
             LifecycleError.superseded, DomainError.invalidTransition, DomainError.invalidConfiguration("secret")] {
-            let message = AlarmPresentation.error(error)
+            let message = AlarmFormatting.error(error)
             XCTAssertFalse(message.isEmpty || message.contains("secret") || message.contains("999"))
         }
+    }
+
+    func testOneTimeSummaryNeverInventsTomorrowAfterItsPersistedDate() async throws {
+        let clock = StoreClock(now)
+        let effect = try TestAlarmScheduler()
+        let store = AlarmStore(repository: InMemoryRepository(), scheduler: effect, clock: clock.read,
+            context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
+        var value = try draft(); value.weekdays = []
+        _ = await store.save(value)
+        let alarm = try XCTUnwrap(store.definition(value.id))
+        let date = try XCTUnwrap(store.nextOccurrence(alarm))
+        clock.set(date.addingTimeInterval(1))
+        XCTAssertNil(store.nextOccurrence(alarm))
+        XCTAssertEqual(store.alarms.count, 1)
+    }
+    func testProtectedSessionCannotBeDeletedOrCompletedThroughStore() async throws {
+        let repository = InMemoryRepository()
+        let (store, effect) = try make(repository)
+        var value = try draft()
+        try value.setMode(.challengesRequired); try value.add(.math, token: UUID())
+        _ = await store.save(value)
+        guard case let .loaded(snapshot, _) = try await repository.load() else { return XCTFail("Missing state") }
+        var state = snapshot.state
+        var session = state.sessions[0].session
+        try session.activate(at: session.scheduledWakeUpDate)
+        state.sessions[0] = try PersistedSession(session: session, updatedAt: session.scheduledWakeUpDate)
+        _ = try await repository.commit(state, expecting: snapshot.version)
+        await store.refresh()
+        let deleted = await store.delete(value.id)
+        XCTAssertFalse(deleted)
+        XCTAssertEqual(store.state?.sessions[0].session, session)
+        XCTAssertNil(store.state?.sessions[0].session.completedAt)
+        XCTAssertTrue(effect.values.cancellations.isEmpty)
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "Wake-up session unfinished")
+    }
+    func testRevokedAuthorizationRefreshRemovesHealthyClaimWithoutPrompting() async throws {
+        let (store, effect) = try make()
+        let value = try draft()
+        _ = await store.save(value)
+        effect.configure { $0.authorization = .denied }
+        await store.refresh()
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "Alarm access needed")
+        XCTAssertEqual(effect.values.authorizationRequests, 0)
+        XCTAssertEqual(effect.values.schedules.count, 1)
     }
 }
 
@@ -193,4 +237,12 @@ private actor StoreTestPause {
         await withCheckedContinuation { observer = $0 }
     }
     func release() { continuation?.resume(); continuation = nil }
+}
+
+private final class StoreClock: @unchecked Sendable {
+    private let lock = NSLock()
+    private var date: Date
+    init(_ date: Date) { self.date = date }
+    func read() -> Date { lock.withLock { date } }
+    func set(_ date: Date) { lock.withLock { self.date = date } }
 }

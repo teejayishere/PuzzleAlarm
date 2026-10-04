@@ -8,7 +8,7 @@ final class AlarmEditorDraftTests: XCTestCase {
     func testNewDraftIsOneTimeAndDomainDefaultsAreUsed() throws {
         var draft = try AlarmEditorDraft(id: UUID(), now: now)
         XCTAssertTrue(try draft.definition(at: now).weekdays.isEmpty)
-        XCTAssertEqual(AlarmPresentation.repeatSummary(draft.weekdays), "Once")
+        XCTAssertEqual(AlarmFormatting.repeatSummary(draft.weekdays), "Once")
         try draft.setMode(.challengesRequired)
         XCTAssertNotNil(draft.validationMessage)
         XCTAssertThrowsError(try draft.definition(at: now))
@@ -75,8 +75,8 @@ final class AlarmEditorDraftTests: XCTestCase {
             draft.sound = sound
             XCTAssertEqual(AlarmEditorDraft(try draft.definition(at: now)).sound, sound)
         }
-        XCTAssertEqual(AlarmPresentation.repeatSummary(Set(Weekday.allCases)), "Every day")
-        XCTAssertEqual(AlarmPresentation.repeatSummary([.saturday, .sunday]), "Weekends")
-        XCTAssertEqual(AlarmPresentation.repeatSummary([.monday, .wednesday, .friday]), "Mon, Wed, Fri")
+        XCTAssertEqual(AlarmFormatting.repeatSummary(Set(Weekday.allCases)), "Every day")
+        XCTAssertEqual(AlarmFormatting.repeatSummary([.saturday, .sunday]), "Weekends")
+        XCTAssertEqual(AlarmFormatting.repeatSummary([.monday, .wednesday, .friday]), "Mon, Wed, Fri")
     }
 }

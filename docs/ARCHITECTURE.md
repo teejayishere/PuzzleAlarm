@@ -396,3 +396,57 @@ Device-required: authorization, actual scheduling/limits, snapshot freshness and
 OS effects, real reconciliation/Stop, lock-screen/Silent/Focus firing, intent delivery,
 sound resources/playback, file protection and power loss. Simulator tests exercise
 production disk + adapter composition using injected operations, never the daemon.
+
+## Stage 6 application integration — pending current-HEAD gate
+
+AppEnvironment is the production composition root: one DiskRepository in Application
+Support, one AlarmManagerService and one AlarmStore. AlarmStore constructs and owns
+exactly one AlarmLifecycleCoordinator. No view owns a scheduler or repository.
+There is no second lifecycle protocol or copy of Stage 5 scheduling business rules.
+
+The MainActor Observation store serializes user actions and coalesces foreground
+refreshes into at most one additional refresh after the current action. The app
+starts once per environment; active-scene refresh only runs after startup.
+No fresh installation creates a demo alarm. Permission is never requested by
+startup: configuration is read without OS reconciliation when access is unavailable.
+An explicit Allow Alarms, enabled Save or Enable may request undetermined access.
+Denied access offers system Settings. Unknown access is shown as unavailable.
+
+Store state comes from LifecycleReport. After an error, read-only repository reload
+shows authoritative partial progress without attempting another mutation. Failure
+never resets state or claims an empty installation. Cached state is unconfirmed
+until successful reconciliation. Enabled configuration alone never means scheduled.
+Active sessions remain unfinished, including after parent disable or edit.
+
+Alarm list ordering is enabled first, then wall-clock hour/minute, then UUID.
+Formatting is centralized. Once means an empty weekday set. A next-occurrence date
+appears only with confirmed healthy state: persisted concrete date for one-time and
+challenge alarms, existing domain calculation for ordinary weekly alarms.
+
+AlarmEditorDraft is an isolated value copy. Identity/createdAt/QR token/order/sound
+survive edits. Constructors and ChallengeSequence APIs enforce domain rules. Changing
+to Annoying Alarm Only clears challenges. Cancel only discards the draft.
+Math and Memory are configuration forms, not engines. QR is a stable token shell.
+Sound choices store identifiers; no resources, preview or playback were added.
+
+Save waits for the lifecycle result. Clean success dismisses. A persisted configuration
+with scheduling/cleanup issues keeps the editor open with a needs-attention message
+and a safe Retry when available. Retrying never builds ledgers in presentation code.
+A partial-write error reloads persisted state but only adopts the exact value submitted
+by this editor. Superseded edits never auto-rebase: the editor remains open, explains
+the conflict and offers Reload Alarm, which discards its draft in favor of current data.
+Deletion requires native confirmation; deferred deletion keeps the editor/row and
+ownership. No challenge-success, skip or manual completion product action exists.
+
+DEBUG-only UI-test composition uses a dedicated temporary DiskRepository and fake
+external scheduler, with fixed clock/context and injected authorization/errors.
+Simulated OS IDs persist separately across process relaunch. Seeding uses the same
+store/coordinator mutation path. Unit tests can use InMemoryRepository. Release
+compilation excludes the launch fixture implementation and ignores its environment
+switches. There is no production test menu.
+
+Native NavigationStack, Form, controls and scalable text avoid a custom design
+system. Weekdays have text and selected values; ordered challenges have explicit
+Move Up/Move Down actions. Critical controls have stable accessibility identifiers.
+No final App Intent/due-session routing, challenge execution, camera, generated sound
+resources or physical-device validation is implemented in Stage 6.

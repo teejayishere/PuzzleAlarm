@@ -24,7 +24,7 @@ final class AppEnvironment {
             let repository = DiskRepository(directory: try DiskRepository.applicationSupportDirectory())
             let scheduler = AlarmManagerService()
             return AppEnvironment(store: AlarmStore(repository: repository, scheduler: scheduler))
-        } catch { return AppEnvironment(store: nil, failure: AlarmPresentation.error(error)) }
+        } catch { return AppEnvironment(store: nil, failure: AlarmFormatting.error(error)) }
     }
     func start() async {
         guard !started else { return }
@@ -33,6 +33,6 @@ final class AppEnvironment {
             try await prepare()
             await store?.refresh()
             ready = true
-        } catch { failure = AlarmPresentation.error(error) }
+        } catch { failure = AlarmFormatting.error(error) }
     }
 }

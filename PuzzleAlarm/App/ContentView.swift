@@ -10,7 +10,7 @@ struct ContentView: View {
         NavigationStack {
             List {
                 Section("Alarm access") {
-                    Text(AlarmPresentation.authorization(store.authorization)).accessibilityIdentifier("authorization.status")
+                    Text(AlarmFormatting.authorization(store.authorization)).accessibilityIdentifier("authorization.status")
                     if store.authorization == .notDetermined {
                         Button("Allow Alarms") { Task { await store.grantAuthorization() } }
                             .accessibilityIdentifier("authorization.request")
@@ -30,7 +30,7 @@ struct ContentView: View {
                 if !store.issues.isEmpty {
                     Section("Alarm status") {
                         ForEach(Array(store.issues.enumerated()), id: \.offset) { _, issue in
-                            Text(AlarmPresentation.issue(issue))
+                            Text(AlarmFormatting.issue(issue))
                         }
                     }
                 }
@@ -44,9 +44,9 @@ struct ContentView: View {
                     Section {
                         Button { draft = AlarmEditorDraft(alarm) } label: {
                             VStack(alignment: .leading, spacing: 5) {
-                                Text(AlarmPresentation.time(alarm.time)).font(.largeTitle).monospacedDigit()
-                                Text(AlarmPresentation.repeatSummary(alarm.weekdays))
-                                Text(AlarmPresentation.challenges(alarm))
+                                Text(AlarmFormatting.time(alarm.time)).font(.largeTitle).monospacedDigit()
+                                Text(AlarmFormatting.repeatSummary(alarm.weekdays))
+                                Text(AlarmFormatting.challenges(alarm))
                                 Text(SoundChoice(alarm.selectedSound).title).foregroundStyle(.secondary)
                             }.foregroundStyle(.primary).frame(maxWidth: .infinity, alignment: .leading)
                         }.accessibilityIdentifier("alarm.edit." + alarm.id.uuidString)

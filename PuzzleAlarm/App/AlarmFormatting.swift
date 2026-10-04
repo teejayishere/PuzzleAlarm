@@ -1,7 +1,7 @@
 import Foundation
 import PuzzleAlarmCore
 
-enum AlarmPresentation {
+enum AlarmFormatting {
     static var wallCalendar: Calendar {
         var value = Calendar(identifier: .gregorian)
         value.timeZone = TimeZone(secondsFromGMT: 0)!
@@ -78,6 +78,8 @@ enum AlarmPresentation {
             "Another alarm update is in progress. Please try again."
         case DomainError.invalidConfiguration:
             "Check the alarm settings and challenge configuration."
+        case DomainError.unknownAlarm:
+            "This alarm is no longer available. Close the editor and refresh."
         case DomainError.invalidTransition:
             "This alarm cannot be retried in its current state. Refresh and review its settings."
         default:

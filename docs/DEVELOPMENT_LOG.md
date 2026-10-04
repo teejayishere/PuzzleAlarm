@@ -441,3 +441,25 @@ no Apple presentation/platform framework imports in PuzzleAlarmCore.
 Swift/Xcode validation used free standard macos-26. Device items remain untested.
 Final documentation-only revision requires its matching full CI before exact-HEAD
 acceptance; final task report records that SHA/run. STOP at Gate 5, no Stage 6.
+
+## Stage 6 observation and initial implementation — gate pending
+
+Clean requested base 159b777379ad587a615df56ef24fa273aa29ffe4 verified.
+Gates 0–5 remain valid as baseline; Stage 6 must replay their full checks.
+Read the current plan, evidence, models, persistence/lifecycle boundary, native shell,
+platform adapter and CI before editing.
+
+Implemented one production composition root, MainActor observable store, value
+drafts, native alarm list/editor, configuration-only challenge/sound controls and
+DEBUG-only external-effect UI fixtures. Added focused draft/store and critical UI
+flows. New UI behavior does not change Stage 5 source.
+
+Initial CI 37239917692 at 7e2b9e1: core regression passed; iOS compile failed because
+a DEBUG sendable clock closure referenced an actor-isolated static fixture date.
+Classified as Stage 6 fixture isolation; captured the immutable date before closure
+creation. No warning suppression or prior-gate invalidation.
+Self-review also corrected next-occurrence presentation: one-time dates come from
+the persisted occurrence, never tomorrow's recalculation after the date passes.
+
+Current gate remains pending expanded UI execution, adversarial review, coverage
+audit and exact-HEAD CI. No physical device result claimed.

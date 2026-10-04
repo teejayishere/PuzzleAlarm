@@ -24,19 +24,22 @@ struct AlarmEditorView: View {
                             }.accessibilityIdentifier("editor.reload")
                         }
                         if let value = store.definition(draft.id), store.canRetry(value) {
-                            Button("Retry") { Task { await store.retry(value.id) } }.accessibilityIdentifier("editor.retry")
+                            Button("Retry") { Task {
+                                await store.retry(value.id)
+                                if let current = store.definition(value.id), !store.needsAttention(current) { localError = nil }
+                            } }.accessibilityIdentifier("editor.retry")
                         }
                     }
                 }
                 Section("Time") {
                     DatePicker("Time", selection: $draft.pickerDate, displayedComponents: .hourAndMinute)
-                        .datePickerStyle(.wheel).environment(\.timeZone, AlarmPresentation.wallCalendar.timeZone)
+                        .datePickerStyle(.wheel).environment(\.timeZone, AlarmFormatting.wallCalendar.timeZone)
                         .accessibilityIdentifier("editor.time")
                     Toggle("Alarm enabled", isOn: $draft.enabled).accessibilityIdentifier("editor.enabled")
                     NavigationLink {
                         WeekdayEditor(days: $draft.weekdays)
                     } label: {
-                        LabeledContent("Repeat", value: AlarmPresentation.repeatSummary(draft.weekdays))
+                        LabeledContent("Repeat", value: AlarmFormatting.repeatSummary(draft.weekdays))
                     }.accessibilityIdentifier("editor.repeat")
                 }
                 Section("Dismissal") {
@@ -54,10 +57,10 @@ struct AlarmEditorView: View {
                     Section("Challenges in order") {
                         ForEach(Array(draft.sequence.items.enumerated()), id: \.element.kind) { index, configuration in
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("\(index + 1). \(AlarmPresentation.challenge(configuration.kind))").font(.headline)
+                                Text("\(index + 1). \(AlarmFormatting.challenge(configuration.kind))").font(.headline)
                                     .accessibilityIdentifier("challenge.order." + configuration.kind.rawValue)
                                 if configuration.kind != .qr {
-                                    NavigationLink("Configure " + AlarmPresentation.challenge(configuration.kind)) {
+                                    NavigationLink("Configure " + AlarmFormatting.challenge(configuration.kind)) {
                                         ChallengeConfigurationEditor(configuration: configuration) { updated in
                                             change { try draft.replace(index, with: updated) }
                                         }
@@ -65,20 +68,20 @@ struct AlarmEditorView: View {
                                 }
                                 Button("Move Up") { change { try draft.move(index, by: -1) } }
                                     .disabled(index == 0).accessibilityIdentifier("challenge.up." + configuration.kind.rawValue)
-                                    .accessibilityLabel("Move " + AlarmPresentation.challenge(configuration.kind) + " up")
+                                    .accessibilityLabel("Move " + AlarmFormatting.challenge(configuration.kind) + " up")
                                 Button("Move Down") { change { try draft.move(index, by: 1) } }
                                     .disabled(index == draft.sequence.items.count - 1)
                                     .accessibilityIdentifier("challenge.down." + configuration.kind.rawValue)
-                                    .accessibilityLabel("Move " + AlarmPresentation.challenge(configuration.kind) + " down")
+                                    .accessibilityLabel("Move " + AlarmFormatting.challenge(configuration.kind) + " down")
                                 Button("Remove", role: .destructive) { change { try draft.remove(index) } }
                                     .accessibilityIdentifier("challenge.remove." + configuration.kind.rawValue)
-                                    .accessibilityLabel("Remove " + AlarmPresentation.challenge(configuration.kind))
+                                    .accessibilityLabel("Remove " + AlarmFormatting.challenge(configuration.kind))
                             }.buttonStyle(.borderless)
                         }
                         Menu("Add Challenge") {
                             ForEach(ChallengeKind.allCases.filter { kind in !draft.sequence.items.contains { $0.kind == kind } },
                                     id: \.self) { kind in
-                                Button(AlarmPresentation.challenge(kind)) {
+                                Button(AlarmFormatting.challenge(kind)) {
                                     change { try draft.add(kind, token: store.newToken()) }
                                 }
                             }
@@ -124,7 +127,7 @@ struct AlarmEditorView: View {
                 Button("Delete Alarm", role: .destructive) {
                     Task {
                         if await store.delete(draft.id) { dismiss() }
-                        else { localError = "Deletion is waiting for cleanup or an unfinished wake-up session." }
+                        else { localError = store.errorMessage ?? "Deletion is waiting for cleanup or an unfinished wake-up session." }
                     }
                 }.accessibilityIdentifier("editor.confirmDelete")
                 Button("Keep Alarm", role: .cancel) {}.accessibilityIdentifier("editor.keep")
@@ -133,7 +136,7 @@ struct AlarmEditorView: View {
     }
     private func change(_ body: () throws -> Void) {
         do { try body(); localError = nil }
-        catch { localError = AlarmPresentation.error(error) }
+        catch { localError = AlarmFormatting.error(error) }
     }
 }
 
@@ -142,12 +145,12 @@ struct WeekdayEditor: View {
     var body: some View {
         List {
             Section {
-                ForEach(AlarmPresentation.orderedDays, id: \.self) { day in
+                ForEach(AlarmFormatting.orderedDays, id: \.self) { day in
                     Button {
                         if days.contains(day) { days.remove(day) } else { days.insert(day) }
                     } label: {
                         HStack {
-                            Text(AlarmPresentation.day(day))
+                            Text(AlarmFormatting.day(day))
                             Spacer()
                             if days.contains(day) { Image(systemName: "checkmark") }
                         }.frame(minHeight: 44)
@@ -157,7 +160,7 @@ struct WeekdayEditor: View {
             }
             Section {
                 Button("Once") { days = [] }.accessibilityIdentifier("repeat.once")
-                Button("Weekdays") { days = Set(AlarmPresentation.orderedDays.prefix(5)) }.accessibilityIdentifier("repeat.weekdays")
+                Button("Weekdays") { days = Set(AlarmFormatting.orderedDays.prefix(5)) }.accessibilityIdentifier("repeat.weekdays")
                 Button("Weekends") { days = [.saturday, .sunday] }.accessibilityIdentifier("repeat.weekends")
                 Button("Every day") { days = Set(Weekday.allCases) }.accessibilityIdentifier("repeat.everyday")
             }
