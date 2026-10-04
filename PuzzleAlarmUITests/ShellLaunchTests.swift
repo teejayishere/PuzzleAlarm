@@ -4,10 +4,10 @@ final class ShellLaunchTests: XCTestCase {
     @MainActor
     func testLaunchDisplaysNativeShell() {
         let app = XCUIApplication()
+        app.launchEnvironment = ["PUZZLE_UI_TEST": "1", "PUZZLE_RESET": "1", "PUZZLE_TEST_NAME": "shell"]
         app.launch()
-
-        let title = app.staticTexts["shell.title"]
-        XCTAssertTrue(title.waitForExistence(timeout: 10))
-        XCTAssertEqual(title.label, "PuzzleAlarm")
+        XCTAssertTrue(app.navigationBars["PuzzleAlarm"].waitForExistence(timeout: 15))
+        XCTAssertTrue(app.otherElements["alarms.empty"].exists || app.staticTexts["No alarms"].exists)
+        XCTAssertTrue(app.buttons["alarms.add"].exists)
     }
 }
