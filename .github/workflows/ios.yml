@@ -51,6 +51,8 @@ jobs:
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage
         run: python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
+      - name: Report exact uncovered core lines
+        run: python3 Scripts/report_uncovered_lines.py
       - name: Discover compatible iPhone Simulator
         id: simulator
         run: |
