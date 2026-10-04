@@ -94,7 +94,8 @@ enum UITestEnvironment {
             if ["failed", "enableFailure"].contains(scenario) { $0.failSchedules = 1 }
             if scenario == "deleteFailure" { $0.failCancellation = true }
         }
-        let store = AlarmStore(repository: repository, scheduler: scheduler, clock: { now },
+        let fixedDate = now
+        let store = AlarmStore(repository: repository, scheduler: scheduler, clock: { fixedDate },
             context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
         return AppEnvironment(store: store) {
             guard try await repository.load() == .missing else { return }

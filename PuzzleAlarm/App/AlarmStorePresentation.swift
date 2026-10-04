@@ -45,7 +45,11 @@ extension AlarmStore {
     func nextOccurrence(_ alarm: AlarmDefinition) -> Date? {
         guard status(alarm) == "On", let operation = operation(alarm), let state else { return nil }
         if let id = operation.sessionID {
-            return state.sessions.first { $0.session.id == id }?.session.scheduledWakeUpDate
+            let date = state.sessions.first { $0.session.id == id }?.session.scheduledWakeUpDate
+            return date.flatMap { $0 > displayNow() ? $0 : nil }
+        }
+        if alarm.weekdays.isEmpty, let id = operation.ordinaryID {
+            return state.detachedOwnership.first { $0.alarmKitID == id && $0.intendedDate > displayNow() }?.intendedDate
         }
         // Ordinary weekly recurrence is calculated by the existing domain API.
         return try? OccurrenceCalculator.next(for: alarm, after: displayNow(), context: displayContext())
