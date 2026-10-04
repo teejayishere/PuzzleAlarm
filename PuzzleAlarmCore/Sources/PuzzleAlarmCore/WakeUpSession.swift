@@ -210,6 +210,27 @@ public struct WakeUpSession: Codable, Equatable, Sendable {
         phase = .cancelled
     }
 
+    // Successful OS observation may disprove a future armed chain. It cannot
+    // complete challenges or retire an active challenge occurrence.
+    public mutating func recordMissingArmedAlarm(id: UUID) throws {
+        guard phase == .armed else { throw DomainError.invalidTransition }
+        let index = try index(of: id)
+        scheduling[index] = .failed
+        phase = .schedulingFailed
+    }
+
+    // Explicit retry only after every old side effect has been cleaned up.
+    // Keep occurrence identity and immutable snapshot; never revive completion.
+    public mutating func restartAfterRollback(at date: Date) throws {
+        try validateDate(date)
+        guard phase == .cancelled, date < scheduledWakeUpDate,
+              cancellation.allSatisfy({ $0 == .succeeded })
+        else { throw DomainError.invalidTransition }
+        scheduling = Array(repeating: .planned, count: 5)
+        cancellation = Array(repeating: .notRequested, count: 5)
+        phase = .planned
+    }
+
     private func index(of id: UUID) throws -> Int {
         guard let index = plan.alarms.firstIndex(where: { $0.id == id }) else { throw DomainError.unknownAlarm }
         return index

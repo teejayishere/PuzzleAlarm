@@ -95,3 +95,43 @@ import Testing
     #expect(value == completed)
     #expect(try roundTrip(value) == completed)
 }
+
+@Test func missingArmedAlarmInvalidatesChainWithoutCompletingChallenges() throws {
+    for id in try armedSession().plan.alarms.map(\.id) {
+        var value = try armedSession()
+        try value.recordMissingArmedAlarm(id: id)
+        #expect(value.phase == .schedulingFailed)
+        #expect(value.scheduling.filter { $0 == .failed }.count == 1)
+        #expect(value.currentChallengeIndex == 0 && value.completedAt == nil)
+        #expect(try roundTrip(value) == value)
+        #expect(throws: DomainError.invalidTransition) { try value.arm() }
+    }
+    var active = try activeSession()
+    let before = active
+    #expect(throws: DomainError.invalidTransition) { try active.recordMissingArmedAlarm(id: active.primaryAlarmID) }
+    #expect(active == before)
+    var armed = try armedSession()
+    #expect(throws: DomainError.unknownAlarm) { try armed.recordMissingArmedAlarm(id: uuid(200)) }
+}
+
+@Test func rollbackRetryRetainsIDsAndRequiresCompleteFutureRetirement() throws {
+    var value = try armedSession()
+    let identity = value
+    try value.requestRetirement()
+    #expect(throws: DomainError.invalidTransition) { try value.restartAfterRollback(at: value.createdAt) }
+    try cancelAll(&value)
+    try value.finishRetirement()
+    let retired = try roundTrip(value)
+    #expect(throws: DomainError.invalidTransition) { try value.restartAfterRollback(at: value.scheduledWakeUpDate) }
+    #expect(value == retired)
+    try value.restartAfterRollback(at: value.createdAt)
+    #expect(value.plan == identity.plan && value.id == identity.id)
+    #expect(value.definitionSnapshot == identity.definitionSnapshot)
+    #expect(value.phase == .planned && value.scheduling.allSatisfy { $0 == .planned })
+    #expect(value.cancellation.allSatisfy { $0 == .notRequested })
+    #expect(try roundTrip(value) == value)
+    var completed = try solvedSession()
+    try cancelAll(&completed)
+    try completed.finalizeCompletion(at: completed.scheduledWakeUpDate)
+    #expect(throws: DomainError.invalidTransition) { try completed.restartAfterRollback(at: completed.createdAt) }
+}

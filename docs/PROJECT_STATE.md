@@ -1,7 +1,7 @@
 # Project state
 
-Current stage: 4 — Persistence and Recovery Architecture; coverage audit complete
-Current gate: Gate 4 — PASS at the implementation revision below
+Current stage: 5 — RECURSE to Stage 1 recovery transitions
+Current gate: Gates 1–4 pending recovery-transition replay
 Last known passing gate: Gate 4 at b9c87ab
 Invalidated gates: None remaining; Gates 1–4 invalidated and replayed during this audit
 Current blockers: None

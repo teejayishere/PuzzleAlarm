@@ -368,3 +368,13 @@ One known UI-test metadata advisory only; no new production compiler warnings.
 Locally available checks: Python AST, YAML parse, git diff --check. Swift/Xcode ran
 on free standard macos-26, not Windows. No physical device evidence claimed.
 Final docs/report-label revision requires its own matching full CI; then STOP at 4.
+
+## Stage 5 observation — RECURSE to Stage 1
+
+Expected clean base f7e7e92 verified. Stage 5 exposes missing controlled transitions:
+armed + observed missing ID must cease claiming armed, and a fully rolled-back
+future occurrence must retry without replacing its stable IDs. Extend Stage 1
+with guarded transitions, preserving active/completed boundaries. Two regression
+functions exercise every missing position, round trips, retry identity, cleanup
+and time restrictions. Gates 1–4 invalidated pending full replay. No Stage 5
+orchestration runs yet; no device claims.
