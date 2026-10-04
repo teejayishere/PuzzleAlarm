@@ -271,8 +271,8 @@ struct LifecycleAdversarialTests {
         _ = try await coordinator.delete(original.id, context: lifecycleContext())
         let saved = try await repository.load()
         await #expect(throws: DomainError.self) { try await coordinator.create(original, context: lifecycleContext()) }
-        await #expect(throws: DomainError.unknownAlarm) { try await coordinator.retry(uuid(999), context: lifecycleContext()) }
-        await #expect(throws: DomainError.unknownAlarm) { try await coordinator.enable(uuid(999), context: lifecycleContext()) }
+        await #expect(throws: DomainError.unknownAlarm) { try await coordinator.retry(uuid(99), context: lifecycleContext()) }
+        await #expect(throws: DomainError.unknownAlarm) { try await coordinator.enable(uuid(99), context: lifecycleContext()) }
         #expect(try await repository.load() == saved)
         #expect(scheduler.schedules.count == 5)
     }
@@ -323,7 +323,7 @@ struct LifecycleAdversarialTests {
             guard case let .loaded(snapshot, _) = try await repository.load() else { throw FixtureError.invalidDate }
             var state = snapshot.state
             let old = state.operations[0]
-            var newer = LifecycleOperation(id: uuid(999), configuration: old.configuration, context: old.context)
+            var newer = LifecycleOperation(id: uuid(99), configuration: old.configuration, context: old.context)
             newer.sessionID = old.sessionID
             state.operations[0] = newer
             _ = try await repository.commit(state, expecting: snapshot.version)
@@ -334,7 +334,30 @@ struct LifecycleAdversarialTests {
         #expect(scheduler.schedules.count == 1)
         scheduler.configure { $0.afterSchedule = nil }
         let result = try await orchestrator(repository, scheduler).startup(context: lifecycleContext())
-        #expect(result.state.operations[0].id == uuid(999))
+        #expect(result.state.operations[0].id == uuid(99))
         #expect(result.state.sessions[0].session.phase == .armed && scheduler.schedules.count == 5)
+    }
+
+    @Test func oldSessionBecomingRingingDuringReplacementIsNotCancelled() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        let coordinator = try orchestrator(repository, scheduler)
+        let original = try definition()
+        let first = try await coordinator.create(original, context: lifecycleContext())
+        let old = first.state.sessions[0].session
+        let replacement = try original.replacing(time: AlarmTime(hour: 9, minute: 0), weekdays: original.weekdays,
+            enabled: true, mode: original.dismissalMode, challenges: original.challengeSequence,
+            sound: original.selectedSound, at: lifecycleNow())
+        scheduler.configure { $0.afterSchedule = { _ in
+            scheduler.configure { storage in
+                storage.alarms.removeAll { $0.id == old.primaryAlarmID }
+                storage.alarms.append(.init(id: old.primaryAlarmID, state: .alerting))
+            }
+        } }
+        let result = try await coordinator.edit(replacement, expecting: original, context: lifecycleContext())
+        #expect(result.state.operations[0].failure == .cancellation)
+        #expect(result.state.sessions[0].session == old)
+        #expect(result.state.sessions[1].session.phase == .armed)
+        #expect(scheduler.cancellations.isEmpty)
     }
 }
