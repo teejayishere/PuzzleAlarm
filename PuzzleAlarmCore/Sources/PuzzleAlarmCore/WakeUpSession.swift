@@ -1,7 +1,7 @@
 import Foundation
 
 public enum SessionPhase: String, Codable, Sendable {
-    case planned, scheduling, armed, active, completing, completed
+    case planned, scheduling, armed, degraded, active, completing, completed
     case schedulingFailed, cancellationPartiallyFailed, cancelling, cancelled
 }
 
@@ -133,7 +133,7 @@ public struct WakeUpSession: Codable, Equatable, Sendable {
         try validateDate(date)
         guard date >= scheduledWakeUpDate else { throw DomainError.invalidTransition }
         if phase == .active { return }
-        guard phase == .armed else { throw DomainError.invalidTransition }
+        guard phase == .armed || phase == .degraded else { throw DomainError.invalidTransition }
         phase = .active
     }
 
@@ -162,7 +162,7 @@ public struct WakeUpSession: Codable, Equatable, Sendable {
     // Retiring a future occurrence is distinct from solving its challenges.
     public mutating func requestRetirement() throws {
         if phase == .cancelling || phase == .cancelled { return }
-        guard [.planned, .scheduling, .armed, .schedulingFailed].contains(phase)
+        guard [.planned, .scheduling, .armed, .degraded, .schedulingFailed].contains(phase)
         else { throw DomainError.invalidTransition }
         phase = .cancelling
     }
@@ -214,9 +214,8 @@ public struct WakeUpSession: Codable, Equatable, Sendable {
     // complete challenges or retire an active challenge occurrence.
     public mutating func recordMissingArmedAlarm(id: UUID) throws {
         guard phase == .armed else { throw DomainError.invalidTransition }
-        let index = try index(of: id)
-        scheduling[index] = .failed
-        phase = .schedulingFailed
+        _ = try index(of: id)
+        phase = .degraded
     }
 
     // Explicit retry only after every old side effect has been cleaned up.
@@ -259,7 +258,7 @@ public struct WakeUpSession: Codable, Equatable, Sendable {
         } else {
             try require(currentChallengeIndex < count, "Full sequence in non-completion phase")
         }
-        if [.armed, .active, .completing, .cancellationPartiallyFailed, .completed].contains(phase) {
+        if [.armed, .degraded, .active, .completing, .cancellationPartiallyFailed, .completed].contains(phase) {
             try require(scheduling.allSatisfy { $0 == .scheduled }, "False armed state")
         }
         if phase == .planned { try require(scheduling.allSatisfy { $0 == .planned }, "Scheduled planned session") }
@@ -268,7 +267,7 @@ public struct WakeUpSession: Codable, Equatable, Sendable {
         if phase != .active && !completionPhases.contains(phase) {
             try require(currentChallengeIndex == 0 && progress == .notStarted, "Progress before activation")
         }
-        if [.planned, .scheduling, .armed, .active].contains(phase) {
+        if [.planned, .scheduling, .armed, .degraded, .active].contains(phase) {
             try require(cancellation.allSatisfy { $0 == .notRequested }, "Premature cancellation")
         }
         if phase == .completing {

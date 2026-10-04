@@ -378,3 +378,29 @@ with guarded transitions, preserving active/completed boundaries. Two regression
 functions exercise every missing position, round trips, retry identity, cleanup
 and time restrictions. Gates 1–4 invalidated pending full replay. No Stage 5
 orchestration runs yet; no device claims.
+
+## Stage 5 — first transaction implementation and adversarial review
+
+Stage 1 transition replay PASS: 6d53e594a5a7cde93c9f5e84550d61e4f9113dca,
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37183294279.
+62 core tests, full iOS/Simulator gate green, 790/795 (99.37%).
+Fresh SDK inspection: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37183340935.
+No undocumented AlarmKit configuration fields or metadata reads were assumed.
+
+First Stage 5 implementation: 2c2f36d6b15053e01610f2018ae02f5c5ea95299.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37207440659 PASS.
+68 core tests, prior platform/Simulator gate green, 1489/1797 (82.86%).
+This was compilation/initial transaction evidence, NOT Gate 5 acceptance.
+Expanded crash, command, recurrence, conflict and iOS composition tests follow.
+
+Adversarial findings: old-cleanup failure must never roll back a healthy replacement;
+snapshots before storage awaits can be stale when the OS effect runs; an operation
+can cross wake time during an await. Added meaningful regressions and corrections.
+
+RECURSE to Stage 1 again: missing presence after successful arming must not rewrite
+historical scheduling acknowledgments as failed. Add degraded phase and preserve all
+prior successful acknowledgments. Due degraded sessions become active, never completed
+or bypassed; future degraded sessions can retire. Gates 1–4 require current replay.
+Schema 2 journal and schema-1 upgrade are Stage 5 additions to the Stage 4 repository,
+not evidence that corrupt state may be reset. No schema authority is duplicated.
+Gate 5 remains PENDING full expanded tests, coverage audit and final exact-HEAD CI.

@@ -211,7 +211,7 @@ public actor AlarmLifecycleCoordinator {
 
     func protected(_ session: WakeUpSession, now: Date, observed: [RegisteredAlarm]) -> Bool {
         if [.active, .completing, .cancellationPartiallyFailed].contains(session.phase) { return true }
-        return session.phase == .armed && (session.scheduledWakeUpDate <= now ||
+        return [.armed, .degraded].contains(session.phase) && (session.scheduledWakeUpDate <= now ||
             observed.contains { $0.state == .alerting && session.plan.alarms.map(\.id).contains($0.id) })
     }
 

@@ -71,13 +71,14 @@ actor FaultRepository: PuzzleAlarmRepository {
     let storage = InMemoryRepository()
     var reject: (@Sendable (RepositoryState) -> Bool)?
     var interfere: (@Sendable (InMemoryRepository) async throws -> Void)?
+    var interferenceCondition: (@Sendable (RepositoryState) -> Bool)?
     var alwaysConflict = false
     var attempts = 0
     func load() async throws -> RepositoryRead { try await storage.load() }
     func commit(_ state: RepositoryState, expecting version: RepositoryVersion) async throws -> RepositorySnapshot {
         attempts += 1
         if alwaysConflict { throw PersistenceError.conflict }
-        if let action = interfere {
+        if let action = interfere, interferenceCondition?(state) ?? true {
             interfere = nil
             try await action(storage)
             throw PersistenceError.conflict
@@ -86,7 +87,10 @@ actor FaultRepository: PuzzleAlarmRepository {
         return try await storage.commit(state, expecting: version)
     }
     func rejectOnce(_ predicate: @escaping @Sendable (RepositoryState) -> Bool) { reject = predicate }
-    func interfereOnce(_ action: @escaping @Sendable (InMemoryRepository) async throws -> Void) { interfere = action }
+    func interfereOnce(_ action: @escaping @Sendable (InMemoryRepository) async throws -> Void,
+                       when condition: @escaping @Sendable (RepositoryState) -> Bool = { _ in true }) {
+        interfere = action; interferenceCondition = condition
+    }
     func conflictForever() { alwaysConflict = true }
 }
 

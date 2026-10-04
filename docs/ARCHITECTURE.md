@@ -279,3 +279,116 @@ Implementation: b9c87ab56df0e0e7928578d978d1c03304faa5ce
 https://github.com/teejayishere/PuzzleAlarm/actions/runs/37182114469
 69 tests PASS (33 persistence), core coverage 774/779 = 99.36%.
 Known platform/device limitations above remain; Stage 5 is not started.
+
+## Stage 5 lifecycle architecture (implementation under validation)
+
+AlarmLifecycleCoordinator is the application service above the single
+Foundation-only AlarmScheduling boundary and PuzzleAlarmRepository. The Apple
+AlarmManagerService remains a thin translator/forwarder. Commands, recovery and
+external effects are separated into source files; occurrence calculation remains
+solely in OccurrenceCalculator. No UI, engine, timer, background producer or daemon
+call is attached to app startup.
+
+### Durable commands and schema
+
+Schema 2 adds one LifecycleOperation per parent: generation UUID, immutable target
+configuration snapshot, context, action (ensure/disable/delete), pending/ready/failed
+outcome, target session or ordinary UUID, retiring IDs, one-time consumption and
+failure reason. Parent configuration is still authoritative for current user intent;
+the operation snapshot describes the generation being applied. Session and detached
+ledgers remain the sole UUID ownership authority, not the command record.
+
+Schema 1 loads with an empty operation journal and upgrades on the next successful
+write. Schema 2 requires its journal key; missing/corrupt data does not become a
+successful empty state. Older binaries reject schema 2 instead of discarding newer
+commands. No database, server, paid service or general migration framework.
+
+### Scheduling and rollback
+
+An enabled challenge definition owns one concrete future session with five stable
+IDs at T through T+4 minutes. The entire plan is persisted first, then each inFlight
+intent before its OS call, followed by a separate acknowledgment. All five must be
+acknowledged and observed before armed. A write failure after an OS success leaves
+inFlight; it is not mislabeled as a schedule failure.
+
+Failure rolls back every possibly existing owned sibling. Each cancellation has
+durable intent, a fresh successful snapshot after storage awaits, then an OS cancel
+if present, followed by acknowledgment. Individual OS cancellation errors do not
+stop later siblings. Persistence/snapshot errors stop with uncertainty intact.
+Successful absence can reconcile cancellation; it cannot complete challenges.
+
+Explicit retry reuses the same future occurrence IDs only after full rollback.
+Automatic recovery retries cleanup, not an endlessly failing schedule generation.
+A clock crossing the intended wake time during scheduling fails visibly instead
+of blindly scheduling an elapsed chain.
+
+### Recovery and presence
+
+startup loads state before requesting a snapshot. Missing differs from committed
+empty; corruption/unsupported schema propagates without repair or overwrite.
+Snapshot failure never becomes an empty array. inFlight + present reconciles a
+scheduling acknowledgment; inFlight + absent retries the same ID when safe.
+A previously armed missing chain becomes degraded, preserving its historical
+scheduling acknowledgments. Future degraded chains retire conservatively; due
+armed/degraded chains become active with missing-alarm issues, never completed.
+Active challenge progress/snapshots remain mandatory even if every OS ID disappears.
+
+Stale terminal ownership is retained as history; if observed again it is reported,
+not assigned a new session or destructively guessed away. App-owned IDs absent from
+the ledger are reported as orphaned. Foreign scope is untouched; conflict between
+foreign scope and known ownership is an explicit error. Duplicate snapshots and
+duplicate ledger ownership fail before OS effects. Actual Apple snapshots are
+app-scoped; no custom occurrence metadata is read from them.
+
+### Recurrence and one-time behavior
+
+Ordinary selected-weekday alarms use one relative weekly AlarmKit schedule and
+detached ownership, without a WakeUpSession. Ordinary one-time alarms use one fixed
+date. The selected sound identifier reaches configuration; .caf names are a future
+resource contract, not evidence of bundled files or audible playback.
+
+Challenge recurrence remains concrete, one next occurrence at a time. After trusted
+domain success enters completing, cleanup confirms every sibling before completed;
+only then can next-occurrence recovery create a successor using the current calendar
+context. No lifecycle API accepts an arbitrary challenge-success/complete flag.
+Empty weekdays are one-time: terminal consumption durably disables the definition
+and repeated startup/enable cannot accidentally rearm it. An explicit configuration
+edit can create a new generation. Timezone changes affect the next occurrence,
+not an already-persisted session snapshot.
+
+### Commands and replacement safety
+
+Enable is idempotent; existing target IDs are retained. Disable persists disabled
+configuration plus retirement intent before cancellation. Delete retains the disabled
+definition and all ownership until future cleanup succeeds; active sessions defer
+deletion. Completed sessions and acknowledged ownership remain minimal safety history.
+
+Edit persists desired configuration and replacement intent. It schedules the new
+representation before cancelling the old future representation. A replacement
+failure is visible and rolls back only the new target, leaving the old schedule.
+Old-cleanup failure retains the healthy replacement and retryable old ownership.
+Both mode changes follow this protocol. Due/active challenge snapshots are isolated
+and excluded from ordinary edit/disable/delete retirement. A retirement already
+durably initiated while future is allowed to finish; it never counts as solving.
+
+### Concurrency, idempotency and limits
+
+Use one live coordinator per repository for all lifecycle commands. Actor reentry
+is explicitly rejected as busy across async effects. This isolates alarm lifecycle
+work only, not the entire app. Storage CAS retries at most three times, reloading and
+reapplying a change rather than replacing newer state. Configuration-changing
+conflicts are surfaced; startup prepares the current generation. OS acknowledgments
+merge into their known ledger, preserving uncertainty on persistence failure.
+
+Semantic no-ops skip commits, UUID allocation and timestamp changes. Repeated recovery
+does not schedule confirmed IDs again or recancel acknowledged cleanup. Fresh OS
+snapshots are requested after storage awaits; no implementation can make disk and
+AlarmKit atomic or prove daemon snapshot freshness. Separate concurrently executing
+coordinator processes are outside this single-owner application boundary; future
+extensions must route commands through the owner or introduce a tested OS-effect
+serialization mechanism before shipping.
+
+Device-required: authorization, actual scheduling/limits, snapshot freshness and late
+OS effects, real reconciliation/Stop, lock-screen/Silent/Focus firing, intent delivery,
+sound resources/playback, file protection and power loss. Simulator tests exercise
+production disk + adapter composition using injected operations, never the daemon.

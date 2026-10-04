@@ -34,7 +34,8 @@ public struct LifecycleOperation: Codable, Equatable, Sendable {
             guard let value = state.sessions.first(where: { $0.session.id == sessionID })?.session else {
                 throw DomainError.invalidConfiguration("Missing operation session")
             }
-            try require(value.parentAlarmID == configuration.id, "Wrong operation parent")
+            try require(value.parentAlarmID == configuration.id && value.definitionSnapshot == configuration,
+                        "Wrong operation parent or snapshot")
         }
         if let ordinaryID {
             guard let entry = state.detachedOwnership.first(where: { $0.alarmKitID == ordinaryID }) else {

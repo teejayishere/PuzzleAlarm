@@ -100,8 +100,8 @@ import Testing
     for id in try armedSession().plan.alarms.map(\.id) {
         var value = try armedSession()
         try value.recordMissingArmedAlarm(id: id)
-        #expect(value.phase == .schedulingFailed)
-        #expect(value.scheduling.filter { $0 == .failed }.count == 1)
+        #expect(value.phase == .degraded)
+        #expect(value.scheduling.allSatisfy { $0 == .scheduled })
         #expect(value.currentChallengeIndex == 0 && value.completedAt == nil)
         #expect(try roundTrip(value) == value)
         #expect(throws: DomainError.invalidTransition) { try value.arm() }

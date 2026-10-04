@@ -177,4 +177,74 @@ struct LifecycleRecoveryTests {
         }
         #expect(scheduler.cancellations.isEmpty)
     }
+
+    @Test func ordinaryFailureAndMissingRecoveryRetainStableOwnership() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.failSchedule = 1; $0.failAfterEffect = true }
+        let coordinator = try orchestrator(repository, scheduler)
+        let failed = try await coordinator.create(lifecycleOrdinary(), context: lifecycleContext())
+        let id = failed.state.detachedOwnership[0].alarmKitID
+        #expect(failed.state.operations[0].failure == .scheduling)
+        #expect(failed.state.detachedOwnership[0].cancellation == .succeeded)
+        #expect(scheduler.cancellations == [id])
+        scheduler.configure { $0.failSchedule = nil }
+        let ready = try await coordinator.retry(uuid(1), context: lifecycleContext())
+        #expect(ready.state.operations[0].status == .ready)
+        #expect(scheduler.schedules.map(\.plannedAlarm.id) == [id, id])
+        scheduler.configure { $0.alarms = [] }
+        let missing = try await coordinator.startup(context: lifecycleContext())
+        #expect(missing.state.operations[0].failure == .missingAlarm)
+        _ = try await coordinator.startup(context: lifecycleContext())
+        #expect(scheduler.schedules.count == 2)
+        _ = try await coordinator.retry(uuid(1), context: lifecycleContext())
+        #expect(scheduler.schedules.map(\.plannedAlarm.id) == [id, id, id])
+    }
+
+    @Test(arguments: [false, true])
+    func ordinaryInFlightRecoveryReconcilesPresenceOrRetriesSameID(_ present: Bool) async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.afterSchedule = { _ in await repository.failNext(.write) } }
+        let coordinator = try orchestrator(repository, scheduler)
+        await #expect(throws: PersistenceError.self) {
+            try await coordinator.create(lifecycleOrdinary(), context: lifecycleContext())
+        }
+        let id = try await repositoryState(repository).detachedOwnership[0].alarmKitID
+        scheduler.configure { $0.afterSchedule = nil; if !present { $0.alarms = [] } }
+        let recovered = try await orchestrator(repository, scheduler).startup(context: lifecycleContext())
+        #expect(recovered.state.detachedOwnership[0].scheduling == .scheduled)
+        #expect(scheduler.schedules.count == (present ? 1 : 2))
+        #expect(scheduler.schedules.allSatisfy { $0.plannedAlarm.id == id })
+    }
+
+    @Test func elapsedOneTimeIntentNeverSchedulesInThePast() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.afterSchedule = { _ in await repository.failNext(.write) } }
+        await #expect(throws: PersistenceError.self) {
+            try await orchestrator(repository, scheduler).create(lifecycleOrdinary(days: []), context: lifecycleContext())
+        }
+        let wake = try await repositoryState(repository).detachedOwnership[0].intendedDate
+        scheduler.configure { $0.afterSchedule = nil; $0.alarms = [] }
+        let result = try await orchestrator(repository, scheduler, now: wake).startup(context: lifecycleContext())
+        #expect(result.state.operations[0].failure == .elapsedOccurrence)
+        #expect(result.state.operations[0].oneTimeConsumed)
+        #expect(!result.state.definitions[0].enabled && scheduler.schedules.count == 1)
+    }
+
+    @Test func stalePositiveSnapshotDoesNotRepeatAcknowledgedCancellation() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        let coordinator = try orchestrator(repository, scheduler)
+        _ = try await coordinator.create(lifecycleOrdinary(), context: lifecycleContext())
+        let stale = scheduler.values.alarms
+        scheduler.configure { $0.snapshotOverride = stale }
+        let first = try await coordinator.disable(uuid(1), context: lifecycleContext())
+        #expect(first.issues.contains(.stalePresent(stale[0].id)))
+        let persisted = try await repository.load()
+        _ = try await coordinator.startup(context: lifecycleContext())
+        #expect(scheduler.cancellations.count == 1)
+        #expect(try await repository.load() == persisted)
+    }
 }

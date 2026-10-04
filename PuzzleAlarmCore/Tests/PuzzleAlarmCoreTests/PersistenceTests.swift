@@ -176,7 +176,11 @@ struct PersistenceTests {
             _ = try await repository.commit(original, expecting: .missing)
             #expect(try await loaded(repository).state == original)
         }
-        #expect(Set(variants.map(\.phase)).count == 10)
+        var degraded = try armedSession()
+        try degraded.recordMissingArmedAlarm(id: degraded.primaryAlarmID)
+        #expect(try roundTrip(state(degraded)).sessions[0].session == degraded)
+        variants.append(degraded)
+        #expect(Set(variants.map(\.phase)).count == 11)
     }
 
     @Test func completedSessionRemainsCompletedOnRepeatedReload() async throws {

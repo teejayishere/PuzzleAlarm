@@ -21,3 +21,15 @@ timestamps, observed result and logs without personal credentials.
 
 A failure invalidates the earliest affected assumptions and dependent gates.
 Never report DEVICE PASS from mocks, compilation or Simulator observations.
+
+## Stage 5 additions — DEVICE REQUIRED, not yet run
+
+- Terminate between durable intent, OS schedule/cancel and local acknowledgment.
+- Measure actual snapshot freshness, delayed effects and same-ID retry behavior.
+- Verify ordinary relative weekly recurrence versus fixed one-time scheduling.
+- Verify pending edit replacement and old retirement under OS capacity/error limits.
+- Check due/degraded challenge preservation after Stop and missing siblings.
+- File protection must surface storage failure without assuming alarms are absent.
+- The application must use one lifecycle owner; concurrent extensions/processes
+  need separate design/validation before enabling lifecycle calls there.
+No Stage 5 mock, compile or Simulator result is DEVICE PASS.

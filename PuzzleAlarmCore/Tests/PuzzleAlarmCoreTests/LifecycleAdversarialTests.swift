@@ -158,4 +158,107 @@ struct LifecycleAdversarialTests {
         #expect(scheduler.values.calls.isEmpty)
         #expect(try await repository.load() == .missing)
     }
+
+    @Test func degradedDueSessionPreservesAcknowledgmentsAndCannotBypassChallenges() async throws {
+        var value = try armedSession()
+        try value.recordMissingArmedAlarm(id: value.primaryAlarmID)
+        #expect(value.phase == .degraded && value.scheduling.allSatisfy { $0 == .scheduled })
+        var operation = LifecycleOperation(id: uuid(70), configuration: value.definitionSnapshot, context: value.context)
+        operation.sessionID = value.id; operation.status = .failed; operation.failure = .missingAlarm
+        let repository = InMemoryRepository()
+        _ = try await repository.commit(RepositoryState(definitions: [value.definitionSnapshot], sessions: [
+            PersistedSession(session: value, updatedAt: value.createdAt)
+        ], operations: [operation]), expecting: .missing)
+        let scheduler = FakeAlarmScheduler()
+        scheduler.configure { $0.alarms = value.backupAlarmIDs.map { .init(id: $0, state: .scheduled) } }
+        let result = try await orchestrator(repository, scheduler, now: value.scheduledWakeUpDate).startup(context: lifecycleContext())
+        #expect(result.state.sessions[0].session.phase == .active)
+        #expect(result.state.sessions[0].session.currentChallengeIndex == 0)
+        #expect(result.state.sessions[0].session.completedAt == nil)
+        #expect(result.state.sessions[0].session.scheduling.allSatisfy { $0 == .scheduled })
+        #expect(scheduler.cancellations.isEmpty && scheduler.schedules.isEmpty)
+    }
+
+    @Test(arguments: 1...5) func clockCrossingWakeTimeDuringScheduleStopsTheTransaction(_ position: Int) async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        let clock = TestClock(try lifecycleNow())
+        scheduler.configure { $0.afterSchedule = { request in
+            if request.plannedAlarm.ordinal == position - 1 { clock.set(request.plannedAlarm.date.addingTimeInterval(1)) }
+        } }
+        let coordinator = AlarmLifecycleCoordinator(repository: repository, scheduler: scheduler, clock: clock.now)
+        let result = try await coordinator.create(definition(), context: lifecycleContext())
+        #expect(scheduler.schedules.count == position)
+        #expect(result.state.operations[0].failure == .elapsedOccurrence)
+        #expect(result.state.sessions[0].session.phase == .cancelled)
+        #expect(scheduler.values.alarms.isEmpty)
+    }
+
+    @Test func cancellationRefreshesSnapshotAfterDurableIntentAwait() async throws {
+        let repository = FaultRepository()
+        let scheduler = FakeAlarmScheduler()
+        let coordinator = try orchestrator(repository, scheduler)
+        let ready = try await coordinator.create(definition(), context: lifecycleContext())
+        let primary = ready.state.sessions[0].session.primaryAlarmID
+        scheduler.configure { $0.alarms.removeAll { $0.id == primary } }
+        await repository.interfereOnce({ _ in
+            // A delayed external scheduling result becomes visible during storage IO.
+            scheduler.configure { $0.alarms.append(.init(id: primary, state: .scheduled)) }
+        }, when: { $0.sessions.first?.session.cancellation[0] == .inFlight })
+        let result = try await coordinator.disable(uuid(1), context: lifecycleContext())
+        #expect(scheduler.cancellations.contains(primary))
+        #expect(scheduler.values.alarms.isEmpty)
+        #expect(result.state.sessions[0].session.phase == .cancelled)
+    }
+
+    @Test func parentEditDuringScheduleAwaitIsNotOverwrittenByAcknowledgment() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = FakeAlarmScheduler()
+        let original = try definition()
+        let replacement = try original.replacing(time: AlarmTime(hour: 11, minute: 0), weekdays: [.sunday],
+            enabled: true, mode: original.dismissalMode, challenges: original.challengeSequence,
+            sound: .bundled(.siren), at: lifecycleNow())
+        scheduler.configure { $0.afterSchedule = { request in
+            if request.plannedAlarm.ordinal == 0 {
+                guard case let .loaded(snapshot, _) = try await repository.load() else { throw FixtureError.invalidDate }
+                var state = snapshot.state
+                state.definitions[0] = replacement
+                _ = try await repository.commit(state, expecting: snapshot.version)
+            }
+        } }
+        let coordinator = try orchestrator(repository, scheduler)
+        await #expect(throws: LifecycleError.superseded) {
+            try await coordinator.create(original, context: lifecycleContext())
+        }
+        #expect(try await repositoryState(repository).definitions[0] == replacement)
+        #expect(scheduler.schedules.count == 1)
+        scheduler.configure { $0.afterSchedule = nil }
+        let recovered = try await coordinator.startup(context: lifecycleContext())
+        #expect(recovered.state.sessions.last?.session.definitionSnapshot == replacement)
+        #expect(scheduler.values.alarms.count == 5 && scheduler.cancellations.count == 1)
+    }
+
+    @Test func newerDefinitionDuringDeleteCannotBeRemovedByOldIntent() async throws {
+        let repository = FaultRepository()
+        let scheduler = FakeAlarmScheduler()
+        let coordinator = try orchestrator(repository, scheduler)
+        let original = try definition()
+        _ = try await coordinator.create(original, context: lifecycleContext())
+        let newer = try original.replacing(time: AlarmTime(hour: 10, minute: 0), weekdays: [.friday],
+            enabled: true, mode: original.dismissalMode, challenges: original.challengeSequence,
+            sound: .bundled(.siren), at: lifecycleNow())
+        await repository.interfereOnce({ storage in
+            guard case let .loaded(snapshot, _) = try await storage.load() else { throw FixtureError.invalidDate }
+            var state = snapshot.state
+            state.definitions[0] = newer
+            _ = try await storage.commit(state, expecting: snapshot.version)
+        }, when: { $0.sessions.first?.session.cancellation[0] == .succeeded })
+        await #expect(throws: LifecycleError.superseded) {
+            try await coordinator.delete(uuid(1), context: lifecycleContext())
+        }
+        #expect(try await repositoryState(repository).definitions == [newer])
+        let result = try await coordinator.startup(context: lifecycleContext())
+        #expect(result.state.definitions == [newer])
+        #expect(result.state.sessions.last?.session.phase == .armed)
+    }
 }

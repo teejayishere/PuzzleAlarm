@@ -3,7 +3,7 @@
 Current stage: 5 — RECURSE to Stage 1 recovery transitions
 Current gate: Gates 1–4 pending recovery-transition replay
 Last known passing gate: Gate 4 at b9c87ab
-Invalidated gates: None remaining; Gates 1–4 invalidated and replayed during this audit
+Invalidated gates: Gates 1–4 pending degraded-state and Stage 5 shared-code replay
 Current blockers: None
 Current version/status: Native shell plus persistence and unconnected AlarmKit adapter
 
@@ -79,4 +79,4 @@ the recurrence correction's current run.
 ## Next action
 
 STOP after the final documentation revision has matching green full CI.
-Stage 5 requires a new instruction.
+Stage 5 is authorized and in progress; STOP after Gate 5.

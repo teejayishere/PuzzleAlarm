@@ -5,6 +5,11 @@ extension AlarmLifecycleCoordinator {
         let now = clock()
         var value = try await session(id)
         if value.phase == .active { return }
+        if value.phase == .degraded {
+            try await fail(parent, token: token, reason: .missingAlarm)
+            try await cancelIDs(value.plan.alarms.map(\.id))
+            return
+        }
         if value.phase == .armed {
             let snapshot = try observed()
             try checkOwnership(try await state(), observed: snapshot)
@@ -51,8 +56,16 @@ extension AlarmLifecycleCoordinator {
                 try state.updateSession(id, at: now) { _ = try $0.beginScheduleAttempt(id: alarm.id) }
             }
             // Revalidate the current command after the persistence await.
-            _ = try checkedOperation(try await state(), parent: parent, token: token)
-            if !present {
+            let latest = try await state()
+            _ = try checkedOperation(latest, parent: parent, token: token)
+            let effectSnapshot = try observed()
+            try checkOwnership(latest, observed: effectSnapshot)
+            if !effectSnapshot.contains(where: { $0.id == alarm.id }) {
+                guard clock() < value.scheduledWakeUpDate else {
+                    try await fail(parent, token: token, reason: .elapsedOccurrence)
+                    try await cancelIDs(value.plan.alarms.map(\.id))
+                    return
+                }
                 let request = try AlarmRequest(session: fresh, alarmID: alarm.id)
                 let succeeded: Bool
                 do {
@@ -73,6 +86,11 @@ extension AlarmLifecycleCoordinator {
             try await update { state in
                 try state.updateSession(id, at: now) { try $0.recordScheduled(id: alarm.id) }
             }
+        }
+        guard clock() < value.scheduledWakeUpDate else {
+            try await fail(parent, token: token, reason: .elapsedOccurrence)
+            try await cancelIDs(value.plan.alarms.map(\.id))
+            return
         }
         let final = try observed()
         try checkOwnership(try await state(), observed: final)
@@ -115,8 +133,17 @@ extension AlarmLifecycleCoordinator {
             _ = try self.checkedOperation(state, parent: parent, token: token)
             try state.updateDetached(id, scheduling: .inFlight)
         }
-        _ = try checkedOperation(try await state(), parent: parent, token: token)
-        if !present {
+        let latest = try await state()
+        _ = try checkedOperation(latest, parent: parent, token: token)
+        let effectSnapshot = try observed()
+        try checkOwnership(latest, observed: effectSnapshot)
+        if !effectSnapshot.contains(where: { $0.id == id }) {
+            if operation.configuration.weekdays.isEmpty && entry.intendedDate <= clock() {
+                try await cancelIDs([id])
+                try await consumeOneTime(parent: parent, token: token)
+                try await fail(parent, token: token, reason: .elapsedOccurrence)
+                return
+            }
             let request = try AlarmRequest(definition: operation.configuration, alarmID: id, date: entry.intendedDate)
             let succeeded: Bool
             do {
@@ -146,20 +173,23 @@ extension AlarmLifecycleCoordinator {
             }
             if let attached {
                 if attached.phase == .active { continue }
-                if attached.phase == .armed && protected(attached, now: now, observed: snapshot) { continue }
+                if [.armed, .degraded].contains(attached.phase) && protected(attached, now: now, observed: snapshot) { continue }
                 try await update { state in
                     try state.updateSession(attached.id, at: now) { session in
-                        if [.planned, .scheduling, .armed].contains(session.phase) { try session.requestRetirement() }
+                        if [.planned, .scheduling, .armed, .degraded].contains(session.phase) { try session.requestRetirement() }
                         _ = try session.beginCancellation(id: id)
                     }
                 }
             } else {
                 try await update { try $0.updateDetached(id, cancellation: .inFlight) }
             }
+            let latest = try await state()
+            let effectSnapshot = try observed()
+            try checkOwnership(latest, observed: effectSnapshot)
             let succeeded: Bool
-            if snapshot.contains(where: { $0.id == id }) {
+            if effectSnapshot.contains(where: { $0.id == id }) {
                 // Only durable, known ownership can reach this OS call.
-                _ = try ownership(id, in: await state())
+                _ = try ownership(id, in: latest)
                 do { try scheduler.cancel(id: id); succeeded = true }
                 catch { succeeded = false }
             } else { succeeded = true }

@@ -13,7 +13,7 @@ extension AlarmLifecycleCoordinator {
         // Due challenge occurrences stay mandatory even if Stop removed every OS ID.
         for record in initialState.sessions {
             let value = record.session
-            if value.phase == .armed && value.scheduledWakeUpDate <= now {
+            if [.armed, .degraded].contains(value.phase) && value.scheduledWakeUpDate <= now {
                 try await update { state in
                     try state.updateSession(value.id, at: now) { try $0.activate(at: now) }
                 }
@@ -30,7 +30,7 @@ extension AlarmLifecycleCoordinator {
             try await update { state in
                 let actual = try state.definition(definition.id)
                 if let old = state.operations.first(where: { $0.configuration.id == actual.id }) {
-                    if old.oneTimeConsumed || old.action == .delete { return }
+                    if old.oneTimeConsumed { return }
                     if old.configuration == actual { return }
                 }
                 state.put(try self.prepared(state, definition: actual,
@@ -195,6 +195,8 @@ extension AlarmLifecycleCoordinator {
         try await update { state in
             var operation = try state.operation(parent)
             guard operation.id == token else { throw LifecycleError.superseded }
+            if let current = state.definitions.first(where: { $0.id == parent }),
+               current != operation.configuration { throw LifecycleError.superseded }
             let unresolved = try state.ownershipLedger().contains {
                 operation.retiringIDs.contains($0.alarmKitID) && $0.cancellation != .succeeded
             }
