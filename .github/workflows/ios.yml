@@ -47,6 +47,8 @@ jobs:
         run: swift build -Xswiftc -warnings-as-errors
       - name: Run focused persistence tests
         run: swift test -Xswiftc -warnings-as-errors --filter Persistence
+      - name: Run focused coverage-audit regressions
+        run: swift test -Xswiftc -warnings-as-errors --filter 'weeklyOccurrenceSurvivesSkippedLocalCalendarDate|completedReloadPreservesTerminalStateUnderLateEvents'
       - name: Run Swift package tests
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage

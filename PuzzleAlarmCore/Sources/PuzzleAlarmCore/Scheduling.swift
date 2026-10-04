@@ -39,7 +39,9 @@ public enum OccurrenceCalculator {
         guard alarm.enabled else { return nil }
         let calendar = try context.calendar()
         let today = calendar.startOfDay(for: now)
-        for offset in 0...7 {
+        // A dateline change can omit a selected weekday for an entire week.
+        // Search two weekly cycles; never substitute a different weekday.
+        for offset in 0...14 {
             guard let day = calendar.date(byAdding: .day, value: offset, to: today),
                   let weekday = Weekday(rawValue: calendar.component(.weekday, from: day))
             else { throw DomainError.invalidConfiguration("Calendar calculation failed") }

@@ -167,3 +167,38 @@ Revision: 40501452d1aaf7e7e3fa03ba54d153574d560fde
 Subsequent documentation-only revisions also run the complete workflow.
 Acceptance of the current checkout requires its matching successful GitHub run;
 this named run is the immutable evidence for the final implementation.
+
+## Coverage audit — baseline 771/777, six missing line counts
+
+Baseline source: cdd45d57477d8f2cbc492dbc9535ff76a28f8ecf.
+Raw evidence (same production sources): a5f7a28385141accf9e3131a788f5c2257f81982,
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37181404906.
+LLVM LCOV merges source lines and lists four zeros; SwiftPM's JSON also counts
+two uncalled nil-coalescing autoclosures as separate uncovered line counts.
+This accounts for all six, without confusing line coverage with branch coverage.
+
+| Baseline location/function | Behavior | Classification and disposition |
+| --- | --- | --- |
+| DiskRepository.swift:23, applicationSupportDirectory | Throw when Foundation returns no user Application Support URL | PLATFORM-DEPENDENT. No production injection seam for the system search-path result. Normal macOS and iOS lookup and real read/write failures are tested. Track unavailable storage/file protection under platform/device integration; do not swizzle Foundation for a coverage number. |
+| RepositoryState.swift:20, AlarmOwnership.isPrimary | Derive primary versus backup from persisted ordinal | CRITICAL BEHAVIOR. Add restored-ledger regression verifying exactly one primary/four backups, stable IDs/owners, and a detached ordinary primary. |
+| Scheduling.swift:16, ScheduleContext.calendar | Reject a timezone that disappears after successful validation | DEFENSIVE/UNREACHABLE BRANCH under a stable timezone database. Immutable context init and decode reject unknown identifiers before calendar construction. No unchecked context or broad mock added; platform database replacement remains an environmental limitation. |
+| Scheduling.swift:55, OccurrenceCalculator.next | Throw when no occurrence exists within the search horizon | CRITICAL BEHAVIOR. Not safely dismissible as unreachable: skipped-date regression exposed the seven-day assumption. Recurse to Stage 1 and fix the horizon, then replay dependent gates. |
+| WakeUpSession.swift:200, finalizeCompletion | Nil fallback to wake date when deriving last challenge success timestamp | DEFENSIVE/UNREACHABLE BRANCH. Prior full-sequence guard plus nonempty challenge-required configuration guarantees last exists. Existing malformed-completion tests prove rejection; new terminal-reload late-event regression protects idempotency without manufacturing an invalid session. |
+| WakeUpSession.swift:262, validate | Same nil fallback while validating a completed session's timestamp | DEFENSIVE/UNREACHABLE BRANCH. Earlier decode validation requires the full nonempty sequence. Corrupt missing/empty challenge completions already fail before this line's autoclosure. No test bypasses the invariant. |
+
+No coverage threshold changed; no production code removed merely to raise coverage.
+Zero-count inline regions also appear on covered lines; the retained JSON evidence
+makes clear that 99% line coverage is not exhaustive branch coverage.
+
+### Reproduction and correction pending full validation
+
+Regression-only revision: 1356491831105c34768d56632a122d4a83e25a96.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37181948057
+Actual failure: weeklyOccurrenceSurvivesSkippedLocalCalendarDate throws
+"No occurrence found in calendar horizon"; other 59 core tests pass.
+Earliest affected stage: 1; Gates 1–4 invalidated pending complete replay.
+Samoa skipped Friday 2011-12-30 (IANA historical timezone data:
+https://lists.iana.org/hyperkitty/list/tz%40iana.org/2011/9/?count=10&page=8).
+A Friday alarm after the prior Friday must advance to 2012-01-06 local, not fail
+or silently select Saturday. Search two weekly cycles to allow an omitted weekday.
+Keep the fail-closed fallback for unsupported calendar outcomes. Stage 5 not started.

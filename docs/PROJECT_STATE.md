@@ -1,9 +1,9 @@
 # Project state
 
 Current stage: 4 — Persistence and Recovery Architecture
-Current gate: Gate 4 — PASS
+Current gate: RECURSE to Stage 1 — recurrence horizon correction pending CI
 Last known passing gate: Gate 4 at 4050145 (evidence below)
-Invalidated gates: None
+Invalidated gates: Gates 1–4 pending coverage-audit regression replay
 Current blockers: None
 Current version/status: Native shell plus persistence and unconnected AlarmKit adapter
 
