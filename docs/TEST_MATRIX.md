@@ -202,3 +202,18 @@ https://lists.iana.org/hyperkitty/list/tz%40iana.org/2011/9/?count=10&page=8).
 A Friday alarm after the prior Friday must advance to 2012-01-06 local, not fail
 or silently select Saturday. Search two weekly cycles to allow an omitted weekday.
 Keep the fail-closed fallback for unsupported calendar outcomes. Stage 5 not started.
+
+### Coverage audit — corrected implementation PASS
+
+Revision: b9c87ab56df0e0e7928578d978d1c03304faa5ce
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37182114469
+60 core + eight iOS unit/integration + one UI = 69 tests PASS.
+Persistence: 32 core + one iOS = 33. Coverage: 774/779 (99.36%).
+The primary-role getter is now covered. The two added source comments also appear
+in LLVM's line-region denominator; coverage was not the reason for those comments.
+Remaining five counts: DiskRepository:23; Scheduling:16 and now :57;
+WakeUpSession:200 and :262 autoclosures. Platform/unreachable justifications remain
+as above. The horizon fallback is retained after the real recurrence defect was
+fixed and meaningfully tested; no injected calendar failure just to make it execute.
+Gates 1–4 restored after full replay; Gate 0 also rechecked. Stage 5 NOT STARTED.
+No threshold changed. Final documentation-only acceptance requires exact-HEAD CI.

@@ -264,3 +264,18 @@ Stage 4 validation: revision 40501452d1aaf7e7e3fa03ba54d153574d560fde,
 https://github.com/teejayishere/PuzzleAlarm/actions/runs/37144990239.
 66 tests pass, including 32 persistence tests; core coverage 99.23%.
 No earlier gate invalidation. Stage 5 recovery actions remain deferred.
+
+### Coverage-audit correction and current evidence
+
+The coverage audit exposed a Stage 1 recurrence assumption: a timezone can omit
+an entire selected weekday. OccurrenceCalculator now searches two weekly cycles
+and still requires the requested weekday and local time. Failure stays explicit
+if the bounded calendar search cannot produce an occurrence.
+This changes no persistence schema, lifecycle, ledger or source-of-truth ownership.
+Three regression tests cover skipped-date recurrence, reloaded primary/backup roles
+and terminal-session late events. Gates 1–4 were invalidated and fully replayed.
+
+Implementation: b9c87ab56df0e0e7928578d978d1c03304faa5ce
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37182114469
+69 tests PASS (33 persistence), core coverage 774/779 = 99.36%.
+Known platform/device limitations above remain; Stage 5 is not started.

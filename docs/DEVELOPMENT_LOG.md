@@ -320,3 +320,51 @@ Earlier gates invalidated: None.
 Known limitations: architecture's power-loss, process/device and recovery-action
 limits remain. No physical AlarmKit behavior or iPhone file protection verified.
 Next action: documentation-only evidence commit; confirm exact-HEAD full CI and STOP.
+
+## Coverage audit — six missing baseline line counts and Stage 1 recursion
+
+Baseline: cdd45d57477d8f2cbc492dbc9535ff76a28f8ecf, 771/777 (99.23%).
+Raw same-source coverage: a5f7a28385141accf9e3131a788f5c2257f81982,
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37181404906.
+TEST_MATRIX.md records each exact line, behavior, classification and justification.
+Added repeatable LCOV plus SwiftPM zero-region/uncalled-function reporting to CI.
+
+Hypothesis: the recurrence horizon fallback might hide a real skipped-date case.
+Regression-only revision 1356491831105c34768d56632a122d4a83e25a96 failed:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37181948057.
+The actual error was "No occurrence found in calendar horizon" for Friday
+recurrence across Pacific/Apia's skipped 2011-12-30. The other 59 core tests passed.
+Earliest defect: Stage 1 assumed any selected weekday occurs within seven days.
+Gates 1–4 invalidated; Gate 0 unaffected. Corrected the horizon to two weekly cycles,
+preserving the weekday/local-time/DST policy and the explicit failure fallback.
+
+Three regression functions added:
+- weeklyOccurrenceSurvivesSkippedLocalCalendarDate: correct next real Friday,
+  exact instant/local time and strictly future result.
+- restoredLedgerKeepsExactlyOnePrimaryAndFourBackups: persisted IDs and owners,
+  derived primary/backup roles, detached ordinary primary.
+- completedReloadPreservesTerminalStateUnderLateEvents: duplicate success/finalize
+  does not alter completion, and late cancellation failure/progress is rejected.
+
+Focused and full CI PASS at b9c87ab56df0e0e7928578d978d1c03304faa5ce:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37182114469.
+32 focused persistence + two focused domain regressions; 60 full core tests,
+eight iOS unit/integration tests, one shell UI test = 69 distinct tests.
+Persistence total: 33. Core coverage: 774/779 (99.36%).
+The denominator includes two added explanatory comment lines in LLVM's regions;
+the primary-role getter is the newly covered production behavior. Five line
+counts remain: three throws and two invariant-unreachable autoclosures.
+No superficial tests, removed guards, warning suppression or threshold change.
+
+Self/adversarial review: only production edit is the recurrence horizon. Existing
+DST/repeated-time/weekday property cases remain green. The new exact-date assertion
+prevents silently choosing Saturday. No schema/lifecycle/ownership changes; malformed
+completion remains rejected before either fallback. Error paths remain explicit.
+No full calendar injection layer was added solely for unreachable/platform branches.
+
+All Gates 0–4 checks now pass: package, generated iOS build, AlarmKit/AppIntents,
+platform persistence/capability tests, shell launch and diagnostics. Gates 1–4 restored.
+One known UI-test metadata advisory only; no new production compiler warnings.
+Locally available checks: Python AST, YAML parse, git diff --check. Swift/Xcode ran
+on free standard macos-26, not Windows. No physical device evidence claimed.
+Final docs/report-label revision requires its own matching full CI; then STOP at 4.

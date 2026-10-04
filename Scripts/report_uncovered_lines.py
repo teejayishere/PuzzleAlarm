@@ -21,7 +21,7 @@ for line in report.splitlines():
             text = source.read_text().splitlines()[int(number) - 1]
             print(f"{source.name}:{number}: {text.strip()}")
             total += 1
-print(f"Uncovered production core lines: {total}")
+print(f"LCOV merged uncovered source lines: {total} (see SwiftPM closure counts below)")
 
 # SwiftPM's JSON summary can differ from LCOV's merged line view (for example,
 # separate closure instantiations). Preserve the original evidence for auditing.
