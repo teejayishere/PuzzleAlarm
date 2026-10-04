@@ -120,7 +120,7 @@ extension AlarmLifecycleCoordinator {
             try await scheduleOrdinary(id, parent: parent, token: token)
         }
         operation = try await state().operation(parent)
-        guard operation.status != .failed && !operation.oneTimeConsumed else { return }
+        guard (operation.status != .failed || operation.failure == .cancellation) && !operation.oneTimeConsumed else { return }
         try await cancelIDs(operation.retiringIDs)
         let current = try await state()
         let unresolved = try current.ownershipLedger().contains {

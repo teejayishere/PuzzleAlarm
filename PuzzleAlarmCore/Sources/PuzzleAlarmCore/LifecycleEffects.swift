@@ -105,6 +105,12 @@ extension AlarmLifecycleCoordinator {
             }
             return
         }
+        if !present && operation.configuration.weekdays.isEmpty && entry.intendedDate <= clock() {
+            try await cancelIDs([id])
+            try await consumeOneTime(parent: parent, token: token)
+            try await fail(parent, token: token, reason: .elapsedOccurrence)
+            return
+        }
         try await update { state in
             _ = try self.checkedOperation(state, parent: parent, token: token)
             try state.updateDetached(id, scheduling: .inFlight)
