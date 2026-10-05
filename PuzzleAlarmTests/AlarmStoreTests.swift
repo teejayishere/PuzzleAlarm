@@ -75,7 +75,7 @@ final class AlarmStoreTests: XCTestCase {
                 XCTAssertEqual(store.authorization, .authorized)
                 XCTAssertEqual(effect.values.authorizationRequests, 1)
             } else if authorization != .authorized {
-                _ = await store.save(draft())
+                _ = try await store.save(draft())
                 XCTAssertTrue(store.alarms.isEmpty && effect.values.schedules.isEmpty)
                 XCTAssertNotNil(store.errorMessage)
             }
@@ -221,6 +221,38 @@ final class AlarmStoreTests: XCTestCase {
         XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "Alarm access needed")
         XCTAssertEqual(effect.values.authorizationRequests, 0)
         XCTAssertEqual(effect.values.schedules.count, 1)
+    }
+
+    func testWriteFailureBeforeCreateDoesNotInventSavedAlarmOrOSEffect() async throws {
+        let repository = InMemoryRepository()
+        let (store, effect) = try make(repository)
+        await repository.failNext(.write)
+        guard case .failed = try await store.save(draft()) else { return XCTFail("Failed write accepted") }
+        XCTAssertNotNil(store.errorMessage)
+        XCTAssertTrue(store.alarms.isEmpty && effect.values.schedules.isEmpty)
+        let read = try await repository.load()
+        XCTAssertEqual(read, .missing)
+    }
+    func testPostEffectWriteFailureShowsPersistedProgressAndRefreshDoesNotDuplicate() async throws {
+        let repository = InMemoryRepository()
+        let (store, effect) = try make(repository)
+        effect.configure { $0.afterSchedule = { await repository.failNext(.write) } }
+        let value = try draft()
+        guard case .attention = await store.save(value) else { return XCTFail("Persisted partial progress lost") }
+        XCTAssertEqual(store.alarms.count, 1)
+        XCTAssertNotEqual(store.status(try XCTUnwrap(store.definition(value.id))), "On")
+        effect.configure { $0.afterSchedule = nil }
+        await store.refresh()
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "On")
+        XCTAssertEqual(effect.values.schedules.count, 1)
+    }
+    func testFutureSchemaFailsSafelyWithoutEmptySuccess() async throws {
+        let repository = InMemoryRepository(storedRepresentation: Data("{\"schemaVersion\":999}".utf8))
+        let (store, effect) = try make(repository)
+        await store.refresh()
+        XCTAssertFalse(store.hasLoaded)
+        XCTAssertTrue(store.errorMessage?.contains("newer version") == true)
+        XCTAssertTrue(effect.values.schedules.isEmpty)
     }
 }
 

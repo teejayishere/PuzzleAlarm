@@ -34,7 +34,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                if store.hasLoaded && store.alarms.isEmpty {
+                if store.hasLoaded && store.alarms.isEmpty && store.errorMessage == nil {
                     ContentUnavailableView("No alarms", systemImage: "alarm",
                         description: Text("Add an alarm for your next wake-up.")).accessibilityIdentifier("alarms.empty")
                 } else if !store.hasLoaded {

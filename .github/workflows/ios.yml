@@ -94,6 +94,17 @@ jobs:
               raise SystemExit("Built app is missing NSAlarmKitUsageDescription")
           print(f"Built app usage description: {value}")
           PY
+      - name: Run focused application state and draft tests
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Application.xcresult \
+            -only-testing:PuzzleAlarmTests/AlarmStoreTests -only-testing:PuzzleAlarmTests/AlarmEditorDraftTests \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/application-tests.log"
       - name: Run platform capability and native shell tests
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -104,5 +115,19 @@ jobs:
             -derivedDataPath DerivedData -resultBundlePath TestResults/Shell.xcresult \
             -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/ios-tests.log"
+      - name: Report application behavior coverage
+        run: |
+          xcrun xccov view --report --json TestResults/Shell.xcresult > "$RUNNER_TEMP/app-coverage.json"
+          python3 Scripts/report_app_coverage.py "$RUNNER_TEMP/app-coverage.json"
+      - name: Verify Release excludes UI-test switches
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          binary = Path("ReleaseDerivedData/Build/Products/Release-iphonesimulator/PuzzleAlarm.app/PuzzleAlarm").read_bytes()
+          for marker in [b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler"]:
+              if marker in binary:
+                  raise SystemExit("DEBUG fixture leaked into Release: " + marker.decode())
+          print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")
+          PY
       - name: Review Xcode diagnostics
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/application-tests.log"
