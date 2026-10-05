@@ -254,6 +254,19 @@ final class AlarmStoreTests: XCTestCase {
         XCTAssertTrue(store.errorMessage?.contains("newer version") == true)
         XCTAssertTrue(effect.values.schedules.isEmpty)
     }
+
+    func testOneTimeDeleteCleanupCanRetryWithoutRearming() async throws {
+        let (store, effect) = try make()
+        var value = try draft(); value.weekdays = []
+        _ = await store.save(value)
+        effect.configure { $0.failCancellation = true }
+        _ = await store.delete(value.id)
+        XCTAssertTrue(store.canRetry(try XCTUnwrap(store.definition(value.id))))
+        effect.configure { $0.failCancellation = false }
+        await store.retry(value.id)
+        XCTAssertNil(store.definition(value.id))
+        XCTAssertEqual(effect.values.schedules.count, 1)
+    }
 }
 
 private actor StoreTestPause {

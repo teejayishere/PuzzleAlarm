@@ -40,7 +40,7 @@ extension AlarmStore {
     }
     func canRetry(_ alarm: AlarmDefinition) -> Bool {
         guard let operation = operation(alarm) else { return false }
-        return operation.status == .failed && !operation.oneTimeConsumed
+        return operation.status == .failed && (operation.action != .ensure || !operation.oneTimeConsumed)
     }
     func nextOccurrence(_ alarm: AlarmDefinition) -> Date? {
         guard status(alarm) == "On", let operation = operation(alarm), let state else { return nil }

@@ -19,11 +19,19 @@ final class AlarmManagementUITests: XCTestCase {
     }
     private func tap(_ app: XCUIApplication, _ id: String) {
         let target = element(app, id)
-        for _ in 0..<8 {
+        if !target.exists || !target.isHittable {
+            for _ in 0..<6 {
+                if target.exists && target.isHittable { break }
+                app.swipeDown()
+            }
+        }
+        for _ in 0..<6 {
             if target.exists && target.isHittable { break }
             app.swipeUp()
         }
         XCTAssertTrue(target.waitForExistence(timeout: 5), id)
+        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: target)
+        XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 10), .completed, id)
         target.tap()
     }
     private func choose(_ app: XCUIApplication, _ id: String, _ title: String) {

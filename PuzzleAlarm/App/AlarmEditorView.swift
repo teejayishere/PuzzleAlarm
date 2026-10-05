@@ -113,7 +113,7 @@ struct AlarmEditorView: View {
                             switch await store.save(draft) {
                             case .saved: dismiss()
                             case let .attention(value):
-                                draft.original = value
+                                draft = AlarmEditorDraft(value)
                                 localError = "Your settings are saved, but the alarm needs attention. Review its status or retry."
                             case .failed: break
                             }
