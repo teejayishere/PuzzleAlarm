@@ -1,11 +1,11 @@
 # Project state
 
-Current stage: 5 — implementation PASS; stopped before Stage 6
+Current stage: 6 — application integration in progress; Gate 6 PENDING
 Last passing gate: Gate 5 (implementation evidence below)
 Gates 0–4: replayed and restored
 Invalidated gates remaining: None
 Blocker: None
-Current status: Lifecycle orchestration implemented and tested, not connected to product UI
+Current status: Native alarm management and application integration implemented; expanded UI validation pending
 
 ## Exact implementation evidence
 
@@ -81,5 +81,5 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 
 ## Next action
 
-STOP after the documentation revision's full CI is green. Do not begin Stage 6.
+Complete Stage 6 validation and STOP after Gate 6. Do not begin Stage 7.
 No user action is required to complete Gate 5.

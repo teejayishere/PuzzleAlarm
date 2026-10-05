@@ -333,3 +333,51 @@ Core: 1840/1852 (99.35%). Ten merged uncovered source lines plus the two
 WakeUpSession completion autoclosures account for all 12 missing counts.
 All prior gates pass in this same run. Final documentation HEAD must also pass.
 No numeric/meaningful coverage threshold was lowered.
+
+## Stage 6 test matrix — pending actual full-gate results
+
+Prior 123 core tests and 10 platform unit/integration tests are preserved. The
+existing shell-launch test evolves to verify the real list/empty state using injected
+effects. New tests must pass alongside these before Gate 6 acceptance.
+
+| Area | Test evidence under validation |
+| --- | --- |
+| Draft/domain boundary | AlarmEditorDraftTests: new one-time state/defaults, edit round trip/identity, challenge uniqueness/order/QR stability, configured Math/Memory and ranges, wall-clock conversion, sound/repeat labels. |
+| Application CRUD | AlarmStoreTests: create/edit/enable/disable/delete through the real coordinator, stable owner, explicit fixed context, deterministic sorting. |
+| Authorization | Injected four-state mapping, no startup prompt, intentional request, denied save without OS effects, revoked-access refresh removes healthy claim. |
+| Honest failure/retry | Failed scheduling retains configuration and stable retry ID; snapshot failure marks status unconfirmed; failed delete retains ownership; one-time cleanup retry never rearms. |
+| Storage safety | Missing vs committed empty, corrupt/future-schema rejection, write failure before OS effect, failed acknowledgment after OS success, recovery without duplicate scheduling. |
+| Concurrency/staleness | Paused external effect tests duplicate Save suppression and coalesced foreground refresh; stale expected-original save cannot overwrite newer configuration and explicit reload succeeds. |
+| Protected sessions | Store deletion preserves active session and all challenges; no completion/control API in product views. |
+| UI create/persistence | Empty → time/weekday/mode/sound → Save → row → actual process relaunch. |
+| UI challenge configuration | Memory/Math/QR → configure → accessible reorder → Save → relaunch → exact order/settings restored. |
+| UI mutations/errors | Enable failure → needs attention → Retry → healthy; off/on; identity-preserving edit; confirmed/cancelled delete; failed cleanup keeps row. |
+| UI one-time/authorization/accessibility | Empty weekdays remain Once after relaunch, Cancel discards draft, injected permission states, large-text toolbar controls. |
+| Release | Separate Release compile; executable scan rejects DEBUG UI-test switch/fake scheduler/storage marker. |
+| Coverage | Unchanged core report plus separate xccov application-behavior report. No arbitrary SwiftUI-body line target. |
+
+All app tests use real AlarmLifecycleCoordinator. External effects are the fake
+boundary; some unit tests seed legitimate persisted phases to test recovery.
+No real AlarmKit prompt, scheduling, sound, camera or physical device is required
+by UI tests. Fixed date/context and isolated durable test directories keep relaunch
+behavior reproducible. Test switches compile only in DEBUG.
+
+### Stage 6 self-review / adversarial findings
+
+- Most damaging UI misunderstanding: enabled is only intent. Status requires a
+  successful report and healthy persisted ownership; errors remove certainty.
+- Cancel discards draft only; a Save that already persisted state is reported as
+  saved-with-attention, not rolled back by dismissing the sheet.
+- Superseded drafts require explicit reload; successful partial-save adoption uses
+  the full authoritative definition, including any one-time disabled state.
+- One-time next date uses durable ownership, never a newly calculated tomorrow.
+- Cleanup retries remain available for disabled/deleting one-time definitions,
+  while consumed one-time scheduling does not automatically restart.
+- Conflicting controls are disabled during async work and the store independently
+  suppresses duplicate actions. Foreground refresh is bounded/coalesced.
+- Code inspection finds no view repository writes, direct AlarmKit effects or
+  challenge completion actions. DEBUG fixtures are isolated from Release.
+- Device-only uncertainty (snapshot freshness, real access prompt, intent delivery,
+  sound and file protection) remains separate from these tests.
+
+Gate 6 is PENDING current exact-HEAD full CI and final uncovered-behavior audit.

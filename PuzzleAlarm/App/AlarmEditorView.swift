@@ -123,7 +123,7 @@ struct AlarmEditorView: View {
             }
             .disabled(store.isBusy)
             .interactiveDismissDisabled(store.isBusy)
-            .confirmationDialog("Delete this alarm?", isPresented: $confirmingDelete, titleVisibility: .visible) {
+            .alert("Delete this alarm?", isPresented: $confirmingDelete) {
                 Button("Delete Alarm", role: .destructive) {
                     Task {
                         if await store.delete(draft.id) { dismiss() }

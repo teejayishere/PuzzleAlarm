@@ -5,6 +5,7 @@ final class AlarmManagementUITests: XCTestCase {
     private let seededID = "00000000-0000-0000-0000-000000000001"
 
     private func launch(_ name: String, scenario: String = "empty", largeText: Bool = false) -> XCUIApplication {
+        continueAfterFailure = false
         let app = XCUIApplication()
         app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         if largeText { app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
@@ -18,7 +19,8 @@ final class AlarmManagementUITests: XCTestCase {
         app.descendants(matching: .any).matching(identifier: id).firstMatch
     }
     private func tap(_ app: XCUIApplication, _ id: String) {
-        let target = element(app, id)
+        let popup = app.popUpButtons.matching(identifier: id).firstMatch
+        let target = popup.exists ? popup : element(app, id)
         if !target.exists || !target.isHittable {
             for _ in 0..<6 {
                 if target.exists && target.isHittable { break }
@@ -29,22 +31,28 @@ final class AlarmManagementUITests: XCTestCase {
             if target.exists && target.isHittable { break }
             app.swipeUp()
         }
-        XCTAssertTrue(target.waitForExistence(timeout: 5), id)
+        XCTAssertTrue(target.waitForExistence(timeout: 5), id + "\n" + app.debugDescription)
         let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: target)
         XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 10), .completed, id)
-        target.tap()
+        if target.elementType == .switch {
+            let inner = target.switches.firstMatch
+            if inner.exists { inner.tap() }
+            else { target.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap() }
+        } else { target.tap() }
     }
     private func choose(_ app: XCUIApplication, _ id: String, _ title: String) {
         tap(app, id)
-        let choice = app.buttons[title].firstMatch
-        XCTAssertTrue(choice.waitForExistence(timeout: 5), title)
+        let choice = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", title)).firstMatch
+        XCTAssertTrue(choice.waitForExistence(timeout: 5), title + "\n" + app.debugDescription)
         choice.tap()
     }
     private func expectLabel(_ element: XCUIElement, _ text: String) {
         let condition = XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", text), object: element)
-        XCTAssertEqual(XCTWaiter.wait(for: [condition], timeout: 10), .completed)
+        XCTAssertEqual(XCTWaiter.wait(for: [condition], timeout: 10), .completed, "Expected \(text), found \(element.label)")
     }
-    private func back(_ app: XCUIApplication) { app.navigationBars.buttons.element(boundBy: 0).tap() }
+    private func back(_ app: XCUIApplication, from title: String) {
+        app.navigationBars[title].buttons.element(boundBy: 0).tap()
+    }
     private func firstRow(_ app: XCUIApplication) -> XCUIElement {
         app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "alarm.edit.")).firstMatch
     }
@@ -72,7 +80,7 @@ final class AlarmManagementUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["No alarms"].waitForExistence(timeout: 10))
         tap(app, "alarms.add")
         time(app, hour: "8", minute: "30")
-        tap(app, "editor.repeat"); tap(app, "repeat.weekdays"); back(app)
+        tap(app, "editor.repeat"); tap(app, "repeat.weekdays"); back(app, from: "Repeat")
         choose(app, "editor.sound", "Siren")
         tap(app, "editor.save")
         let row = firstRow(app)
@@ -96,10 +104,10 @@ final class AlarmManagementUITests: XCTestCase {
         tap(app, "challenge.configure.memory")
         choose(app, "memory.difficulty", "Hard")
         increment(app, "memory.length"); increment(app, "memory.duration"); increment(app, "memory.rounds")
-        back(app)
+        back(app, from: "Memory")
         tap(app, "challenge.configure.math")
         choose(app, "math.difficulty", "Hard"); increment(app, "math.count")
-        back(app)
+        back(app, from: "Math")
         tap(app, "challenge.up.math")
         tap(app, "editor.save")
         XCTAssertTrue(firstRow(app).waitForExistence(timeout: 10))
@@ -112,7 +120,7 @@ final class AlarmManagementUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Sequence length: 9"].exists)
         XCTAssertTrue(app.staticTexts["Display seconds: 4"].exists)
         XCTAssertTrue(app.staticTexts["Successful rounds: 2"].exists)
-        back(app)
+        back(app, from: "Memory")
         tap(app, "challenge.configure.math")
         XCTAssertTrue(app.staticTexts["Correct answers: 6"].exists)
     }
@@ -140,7 +148,7 @@ final class AlarmManagementUITests: XCTestCase {
         XCTAssertTrue(app.buttons[id].waitForExistence(timeout: 10))
         app.buttons[id].tap()
         time(app, hour: "9", minute: "15")
-        tap(app, "editor.repeat"); tap(app, "repeat.weekends"); back(app)
+        tap(app, "editor.repeat"); tap(app, "repeat.weekends"); back(app, from: "Repeat")
         choose(app, "editor.mode", "Challenges Required")
         choose(app, "challenge.add", "Math")
         choose(app, "editor.sound", "Rapid Beeps")
@@ -182,7 +190,7 @@ final class AlarmManagementUITests: XCTestCase {
     func testOneTimeAndCancelDraftRemainDistinctFromDaily() {
         let app = launch("once")
         tap(app, "alarms.add")
-        tap(app, "editor.repeat"); tap(app, "repeat.everyday"); back(app)
+        tap(app, "editor.repeat"); tap(app, "repeat.everyday"); back(app, from: "Repeat")
         tap(app, "editor.cancel")
         XCTAssertTrue(app.staticTexts["No alarms"].exists)
         tap(app, "alarms.add")

@@ -116,6 +116,7 @@ jobs:
             -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/ios-tests.log"
       - name: Report application behavior coverage
+        if: always()
         run: |
           xcrun xccov view --report --json TestResults/Shell.xcresult > "$RUNNER_TEMP/app-coverage.json"
           python3 Scripts/report_app_coverage.py "$RUNNER_TEMP/app-coverage.json"

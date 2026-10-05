@@ -33,3 +33,17 @@ Never report DEVICE PASS from mocks, compilation or Simulator observations.
 - The application must use one lifecycle owner; concurrent extensions/processes
   need separate design/validation before enabling lifecycle calls there.
 No Stage 5 mock, compile or Simulator result is DEVICE PASS.
+
+## Stage 6 additions — DEVICE REQUIRED, not run
+
+- Intentional Allow Alarms / enabled Save / Enable permission prompt; no startup prompt.
+- Denied access and the public Settings action, then authorization refresh on return.
+- Foreground reconciliation while a real schedule/cancellation is pending.
+- Real file-protection/storage errors displayed without reset or false healthy state.
+- Actual replacement overlap/capacity and lifecycle warnings after platform failures.
+- VoiceOver and largest Dynamic Type on physical hardware in addition to Simulator controls.
+- Real scheduling/firing, Stop, snapshot freshness, intent delivery and sound remain unproved.
+
+The native list and configuration forms do not implement challenge execution or
+final due-session/intent routing. A visible unfinished session is not a completion
+or bypass path. Sound names select future resource identifiers; playback is not tested.

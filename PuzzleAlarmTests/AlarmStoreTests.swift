@@ -267,6 +267,31 @@ final class AlarmStoreTests: XCTestCase {
         XCTAssertNil(store.definition(value.id))
         XCTAssertEqual(effect.values.schedules.count, 1)
     }
+
+    func testEditorWhoseAlarmWasDeletedCannotRecreateIt() async throws {
+        let (store, effect) = try make()
+        let value = try draft()
+        _ = await store.save(value)
+        var stale = AlarmEditorDraft(try XCTUnwrap(store.definition(value.id)))
+        stale.hour = 11
+        _ = await store.delete(value.id)
+        guard case .failed = await store.save(stale) else { return XCTFail("Deleted identity recreated") }
+        XCTAssertTrue(store.alarms.isEmpty)
+        XCTAssertTrue(store.errorMessage?.contains("no longer available") == true)
+        XCTAssertEqual(effect.values.schedules.count, 1)
+    }
+    func testEqualTimeSortUsesStableIdentityAcrossRefresh() async throws {
+        let repository = InMemoryRepository()
+        let earlier = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
+        let later = UUID(uuidString: "00000000-0000-0000-0000-000000000002")!
+        let a = try AlarmEditorDraft(id: earlier, now: now).definition(at: now)
+        let b = try AlarmEditorDraft(id: later, now: now).definition(at: now)
+        _ = try await repository.commit(RepositoryState(definitions: [b, a]), expecting: .missing)
+        let (store, effect) = try make(repository)
+        effect.configure { $0.authorization = .denied }
+        await store.refresh(); await store.refresh()
+        XCTAssertEqual(store.alarms.map(\.id), [earlier, later])
+    }
 }
 
 private actor StoreTestPause {
