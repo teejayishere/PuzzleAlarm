@@ -38,6 +38,9 @@ final class AlarmManagementUITests: XCTestCase {
             let inner = target.switches.firstMatch
             if inner.exists { inner.tap() }
             else { target.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap() }
+        } else if id == "challenge.add", target.buttons.firstMatch.exists {
+            // SwiftUI exposes the full row and a separate actionable menu label.
+            target.buttons.firstMatch.tap()
         } else { target.tap() }
     }
     private func choose(_ app: XCUIApplication, _ id: String, _ title: String) {
@@ -167,7 +170,7 @@ final class AlarmManagementUITests: XCTestCase {
         XCTAssertTrue(row.waitForExistence(timeout: 10)); row.tap()
         tap(app, "editor.delete")
         XCTAssertTrue(app.buttons["Keep Alarm"].waitForExistence(timeout: 5))
-        app.buttons["Keep Alarm"].tap()
+        tap(app, "editor.keep")
         XCTAssertTrue(app.buttons["editor.save"].exists)
         tap(app, "editor.delete")
         tap(app, "editor.confirmDelete")

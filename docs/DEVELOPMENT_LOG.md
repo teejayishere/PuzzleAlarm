@@ -463,3 +463,24 @@ the persisted occurrence, never tomorrow's recalculation after the date passes.
 
 Current gate remains pending expanded UI execution, adversarial review, coverage
 audit and exact-HEAD CI. No physical device result claimed.
+
+## Stage 6 native interaction failures — RECURSE within Stage 6
+
+Run 37256439193 at fd457c2: all 123 core tests, Debug/Release builds, focused
+24 app/draft tests and all 34 iOS unit/integration tests passed. Full UI suite failed:
+authorization/large text, deferred-delete failure and evolved shell launch passed;
+six management flows failed with 18 assertions/query errors.
+
+Actual trace proved the unscoped Back helper selected the underlying list's
+alarms.add button rather than the Repeat screen's Back button. Scoped navigation
+to the visible titled navigation bar. Modern iOS menu accessibility exposed popup
+elements outside a Button-only query; query the actual popup and option label.
+Target the switch control rather than its outer label container.
+Native confirmationDialog omitted the custom cancel action in its presentation;
+use a native alert with explicit Keep Alarm and Delete Alarm choices.
+Keep all behavioral assertions. Stop each UI test at its first failure and include
+the test-only accessibility tree in failures for diagnosis.
+
+These are Stage 6 interaction/UX issues. Core, persistence and lifecycle sources
+remain unchanged; Gates 0–5 were not invalidated. Full current-HEAD replay remains
+required after corrections. No Gate 6 PASS and no device claims.

@@ -292,6 +292,36 @@ final class AlarmStoreTests: XCTestCase {
         await store.refresh(); await store.refresh()
         XCTAssertEqual(store.alarms.map(\.id), [earlier, later])
     }
+
+    func testEnabledSaveRequestsUndeterminedAccessOnlyOnce() async throws {
+        let (store, effect) = try make()
+        effect.configure { $0.authorization = .notDetermined }
+        await store.refresh()
+        XCTAssertEqual(effect.values.authorizationRequests, 0)
+        let value = try draft()
+        guard case .saved = await store.save(value) else { return XCTFail("Intentional access flow failed") }
+        let edit = AlarmEditorDraft(try XCTUnwrap(store.definition(value.id)))
+        _ = await store.save(edit)
+        XCTAssertEqual(effect.values.authorizationRequests, 1)
+        XCTAssertEqual(effect.values.schedules.count, 1)
+    }
+    func testQueuedRefreshFailurePreservesUncertaintyAndData() async throws {
+        let (store, effect) = try make()
+        let pause = StoreTestPause()
+        effect.configure { $0.afterSchedule = { await pause.wait() } }
+        let value = try draft()
+        let action = Task { await store.save(value) }
+        await pause.started()
+        await store.refresh()
+        effect.configure { $0.failSnapshot = true }
+        await pause.release()
+        _ = await action.value
+        XCTAssertFalse(store.isBusy)
+        XCTAssertNotNil(store.errorMessage)
+        XCTAssertEqual(store.alarms.count, 1)
+        XCTAssertNotEqual(store.status(try XCTUnwrap(store.definition(value.id))), "On")
+        XCTAssertEqual(effect.values.schedules.count, 1)
+    }
 }
 
 private actor StoreTestPause {
