@@ -18,18 +18,27 @@ final class AlarmManagementUITests: XCTestCase {
     private func element(_ app: XCUIApplication, _ id: String) -> XCUIElement {
         app.descendants(matching: .any).matching(identifier: id).firstMatch
     }
+    private func scroll(_ app: XCUIApplication, down: Bool) {
+        guard let form = app.collectionViews.allElementsBoundByIndex.last(where: { $0.isHittable }) else {
+            return XCTFail("No visible form to scroll\n" + app.debugDescription)
+        }
+        // Scroll along the form edge, away from the time wheel and sheet grabber.
+        let start = form.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: down ? 0.3 : 0.7))
+        let end = form.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: down ? 0.7 : 0.3))
+        start.press(forDuration: 0.1, thenDragTo: end)
+    }
     private func tap(_ app: XCUIApplication, _ id: String) {
         let popup = app.popUpButtons.matching(identifier: id).firstMatch
-        let target = popup.exists ? popup : element(app, id)
-        if !target.exists || !target.isHittable {
-            for _ in 0..<6 {
-                if target.exists && target.isHittable { break }
-                app.swipeDown()
-            }
+        let button = app.buttons.matching(identifier: id).firstMatch
+        let target = popup.exists ? popup : (button.exists ? button : element(app, id))
+        _ = target.waitForExistence(timeout: 3)
+        for _ in 0..<6 {
+            if target.exists && target.isHittable { break }
+            scroll(app, down: false)
         }
         for _ in 0..<6 {
             if target.exists && target.isHittable { break }
-            app.swipeUp()
+            scroll(app, down: true)
         }
         XCTAssertTrue(target.waitForExistence(timeout: 5), id + "\n" + app.debugDescription)
         let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: target)
@@ -38,10 +47,16 @@ final class AlarmManagementUITests: XCTestCase {
             let inner = target.switches.firstMatch
             if inner.exists { inner.tap() }
             else { target.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap() }
-        } else if id == "challenge.add", target.buttons.firstMatch.exists {
-            // SwiftUI exposes the full row and a separate actionable menu label.
-            target.buttons.firstMatch.tap()
         } else { target.tap() }
+        if id == "alarms.add" {
+            XCTAssertTrue(app.buttons["editor.save"].waitForExistence(timeout: 10))
+        } else if id == "editor.repeat" {
+            XCTAssertTrue(app.navigationBars["Repeat"].waitForExistence(timeout: 10))
+        } else if id == "editor.save" {
+            let dismissed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),
+                                                     object: app.buttons["editor.save"])
+            XCTAssertEqual(XCTWaiter.wait(for: [dismissed], timeout: 15), .completed, app.debugDescription)
+        }
     }
     private func choose(_ app: XCUIApplication, _ id: String, _ title: String) {
         tap(app, id)
@@ -157,7 +172,7 @@ final class AlarmManagementUITests: XCTestCase {
         choose(app, "editor.sound", "Rapid Beeps")
         tap(app, "editor.save")
         XCTAssertTrue(app.buttons[id].waitForExistence(timeout: 10))
-        XCTAssertTrue(app.buttons[id].label.contains("9:15") && app.buttons[id].label.contains("Weekends"))
+        XCTAssertTrue(app.buttons[id].label.contains("9:15") && app.buttons[id].label.contains("Weekends"), app.buttons[id].label)
         XCTAssertTrue(app.buttons[id].label.contains("Math") && app.buttons[id].label.contains("Rapid Beeps"))
         relaunch(app)
         XCTAssertTrue(app.buttons[id].waitForExistence(timeout: 10))

@@ -1,8 +1,8 @@
 # Architecture
 
-Current architecture is described in the Stage 5 section below. Earlier sections
+Current architecture is described in the Stage 5 and Stage 6 sections below. Earlier sections
 are the historical stage record; their deferred-work statements are superseded
-by Stage 5. Exact passing implementation evidence is in PROJECT_STATE.md.
+by those later sections. Exact passing implementation evidence is in PROJECT_STATE.md.
 
 ## Implemented through Stage 1
 

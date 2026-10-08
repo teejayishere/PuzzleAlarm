@@ -500,3 +500,10 @@ startup idempotence/failure. Expanded paused-operation testing to suppress disab
 delete and retry as well as duplicate Save. The accessible next-occurrence field
 now retains its spoken date value alongside its label. Remaining uncovered paths
 are classified in TEST_MATRIX.md. Gate 6 remains pending current full CI.
+Run 37396765469 at 5445276 passed the core and 38 iOS unit/integration tests,
+and seven of nine UI tests. The menu-label button was also not hittable; identifier
+selection fixed Keep Alarm and the full delete flow passed. Replace the menu with
+explicit native Add Math / Add Memory / Add QR Code actions, removing each option
+once selected. This improves direct accessibility and preserves uniqueness and
+ordering; the UI tests still configure, save, relaunch and verify exact settings.
+Run 37725353411 validates that correction plus the completed behavioral audit.

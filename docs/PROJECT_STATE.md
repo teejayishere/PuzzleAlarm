@@ -7,7 +7,7 @@ Invalidated gates remaining: None
 Blocker: None
 Current status: Native alarm management and application integration implemented; expanded UI validation pending
 
-## Exact implementation evidence
+## Prior Stage 5 implementation evidence
 
 Revision: 8118e44dc007143813edf668cca223459cd97b88
 CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37236486724
@@ -72,7 +72,7 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 - Corrupt/lost ownership blocks safe automatic reconstruction. Unknown app-owned
   IDs are reported, never assigned invented parent/session links.
 - Sound identifiers map to future .caf resources; no audio files/playback implemented.
-- Product UI/startup wiring, engines, camera, final intent routing and Stage 6+ remain
+- Engines, camera, sound playback and final intent routing in Stage 7+ remain
   unimplemented. Tests do not claim these features.
 - Device required: authorization, real scheduling/firing, lock screen, Silent/Focus,
   Stop, snapshots/reconciliation, intent delivery, audio and file protection/power loss.
@@ -82,4 +82,4 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 ## Next action
 
 Complete Stage 6 validation and STOP after Gate 6. Do not begin Stage 7.
-No user action is required to complete Gate 5.
+No user action is currently required.
