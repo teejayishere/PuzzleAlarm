@@ -148,6 +148,11 @@ final class AlarmStoreTests: XCTestCase {
         await pause.started()
         XCTAssertTrue(store.isBusy)
         guard case .failed = await store.save(value) else { return XCTFail("Duplicate save was accepted") }
+        await store.setEnabled(try value.definition(at: now), false)
+        let deletedWhileBusy = await store.delete(value.id)
+        XCTAssertFalse(deletedWhileBusy)
+        await store.retry(value.id)
+        XCTAssertTrue(effect.values.cancellations.isEmpty)
         await store.refresh(); await store.refresh()
         await pause.release()
         _ = await action.value
@@ -321,6 +326,49 @@ final class AlarmStoreTests: XCTestCase {
         XCTAssertEqual(store.alarms.count, 1)
         XCTAssertNotEqual(store.status(try XCTUnwrap(store.definition(value.id))), "On")
         XCTAssertEqual(effect.values.schedules.count, 1)
+    }
+    func testChallengeNextOccurrenceUsesPersistedSessionAndExpiresHonestly() async throws {
+        let clock = StoreClock(now)
+        let effect = try TestAlarmScheduler()
+        let store = AlarmStore(repository: InMemoryRepository(), scheduler: effect, clock: clock.read,
+            context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
+        var value = try draft()
+        try value.setMode(.challengesRequired); try value.add(.math, token: UUID())
+        _ = await store.save(value)
+        let alarm = try XCTUnwrap(store.definition(value.id))
+        let session = try XCTUnwrap(store.state?.sessions.first?.session)
+        XCTAssertEqual(store.nextOccurrence(alarm), session.scheduledWakeUpDate)
+        clock.set(session.scheduledWakeUpDate.addingTimeInterval(1))
+        XCTAssertNil(store.nextOccurrence(alarm))
+        XCTAssertEqual(store.state?.sessions.first?.session, session)
+        effect.configure { $0.alarms = [] }
+        await store.refresh(); await store.refresh()
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "Wake-up session unfinished")
+        XCTAssertEqual(store.state?.sessions.first?.session.phase, .active)
+        XCTAssertNil(store.state?.sessions.first?.session.completedAt)
+        XCTAssertEqual(store.issues.count, session.plan.alarms.count)
+        for alarm in session.plan.alarms { XCTAssertTrue(store.issues.contains(.activeAlarmMissing(alarm.id))) }
+        XCTAssertEqual(effect.values.schedules.count, 5)
+    }
+    func testCompositionStartupRunsPreparationOnceWithoutCreatingAlarms() async throws {
+        let (store, effect) = try make()
+        var preparations = 0
+        let environment = AppEnvironment(store: store, prepare: { preparations += 1 })
+        await environment.start(); await environment.start()
+        XCTAssertEqual(preparations, 1)
+        XCTAssertTrue(environment.ready && store.hasLoaded)
+        XCTAssertNil(environment.failure)
+        XCTAssertTrue(store.alarms.isEmpty && effect.values.schedules.isEmpty)
+        XCTAssertEqual(effect.values.authorizationRequests, 0)
+    }
+    func testCompositionPreparationFailureDoesNotClaimReadyOrSchedule() async throws {
+        let (store, effect) = try make()
+        let environment = AppEnvironment(store: store, prepare: { throw PersistenceError.io("private details") })
+        await environment.start(); await environment.start()
+        XCTAssertFalse(environment.ready || store.hasLoaded)
+        XCTAssertNotNil(environment.failure)
+        XCTAssertFalse(environment.failure?.contains("private details") == true)
+        XCTAssertTrue(effect.values.schedules.isEmpty)
     }
 }
 

@@ -57,6 +57,7 @@ struct ContentView: View {
                         if let date = store.nextOccurrence(alarm) {
                             Text(date, format: .dateTime.weekday().hour().minute()).foregroundStyle(.secondary)
                                 .accessibilityLabel("Next occurrence")
+                                .accessibilityValue(Text(date, format: .dateTime.weekday().hour().minute()))
                         }
                         if store.canRetry(alarm) {
                             Button("Retry") { Task { await store.retry(alarm.id) } }

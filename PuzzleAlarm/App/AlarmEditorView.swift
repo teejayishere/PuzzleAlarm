@@ -78,14 +78,12 @@ struct AlarmEditorView: View {
                                     .accessibilityLabel("Remove " + AlarmFormatting.challenge(configuration.kind))
                             }.buttonStyle(.borderless)
                         }
-                        Menu("Add Challenge") {
-                            ForEach(ChallengeKind.allCases.filter { kind in !draft.sequence.items.contains { $0.kind == kind } },
-                                    id: \.self) { kind in
-                                Button(AlarmFormatting.challenge(kind)) {
-                                    change { try draft.add(kind, token: store.newToken()) }
-                                }
-                            }
-                        }.disabled(draft.sequence.items.count == 3).accessibilityIdentifier("challenge.add")
+                        ForEach(ChallengeKind.allCases.filter { kind in !draft.sequence.items.contains { $0.kind == kind } },
+                                id: \.self) { kind in
+                            Button("Add " + AlarmFormatting.challenge(kind)) {
+                                change { try draft.add(kind, token: store.newToken()) }
+                            }.accessibilityIdentifier("challenge.add." + kind.rawValue)
+                        }
                     }
                 }
                 Section("Sound") {

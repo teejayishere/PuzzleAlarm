@@ -381,3 +381,45 @@ behavior reproducible. Test switches compile only in DEBUG.
   sound and file protection) remains separate from these tests.
 
 Gate 6 is PENDING current exact-HEAD full CI and final uncovered-behavior audit.
+
+### Stage 6 uncovered-behavior audit and final risk review
+
+Run 37258084975 at 4f15ac440e0ab7b0dcb88f5508262efff6e827df provided
+actual app coverage despite three failing native interaction tests. The gate was
+not accepted. Core remained 1840/1852 (99.35%); no core source changed from the
+accepted Stage 5 base. The earlier six-count audit and subsequent recurrence fix
+above remain applicable historical evidence, not a new 771/777 result.
+
+| Location/behavior | Classification and action |
+| --- | --- |
+| AlarmStore.nextOccurrence, challenge session date lookup/expiry | CRITICAL BEHAVIOR. Add a real-coordinator regression comparing the displayed date with the persisted session, then advance the clock and require no invented future date or session mutation. |
+| AlarmStore.perform, coalesced refresh throws | ERROR/RECOVERY BEHAVIOR. Inject a snapshot failure after a paused schedule while foreground refresh is queued; retain configuration and uncertainty, issue one schedule only. |
+| AlarmStore.requireAccess, enabled Save requests undetermined authorization | CRITICAL BEHAVIOR. Intentional Save requests once; unchanged subsequent edit neither prompts nor schedules again. |
+| AppEnvironment.start, repeated startup and throwing preparation | ERROR/RECOVERY BEHAVIOR. Inject preparation failure and assert no readiness, repository load, scheduling or leaked technical payload. Successful repeated start prepares once and leaves a fresh installation empty. |
+| AlarmStore.newToken / AlarmFormatting challenge summary | CRITICAL BEHAVIOR. The complete native challenge flow must execute token creation and restored ordered labels after the menu interaction correction; draft tests independently assert stable QR identity through repeated reorder/edit. |
+| AlarmStore default Date/current timezone closures; AppEnvironment.make production construction/failure | PLATFORM-DEPENDENT. Deterministic tests inject clock/context and external effects. Production paths compile in Debug and Release; disk/adapter integration tests run separately. Real Application Support availability, current device timezone, permission and daemon behavior remain device integration items. |
+| AlarmStore.reportError from failure constructing the fixed valid new draft | DEFENSIVE/UNREACHABLE BRANCH for current valid defaults. Domain validation tests reject malformed configurations; no invalid production initializer or artificial exception added to cover this UI fallback. |
+| AlarmEditorDraft SoundChoice lookup fallback and fixed Gregorian picker nil fallbacks | DEFENSIVE/UNREACHABLE BRANCH for the closed sound enum and valid hour/minute inputs. Tests cover every supported sound and midnight wall-time round trip. No fake calendar or invalid time is introduced to execute an impossible picker fallback. |
+| AlarmStore.status guards for absent state, mismatched/absent ready target, missing session/ledger | DEFENSIVE guards. A valid ready report validates its target and ownership; public UI obtains rows from that state. Real missing snapshots, stale edits, authorization revocation, partial writes, failed scheduling and protected sessions have behavioral regressions. Guards stay fail-closed; no unchecked repository state is fabricated. |
+| Trivial SwiftUI rendering and empty default preparation closure | NON-MEANINGFUL COVERAGE. Native flows assert visible behavior; no line-coverage target for generated body/accessor code. |
+
+No coverage threshold is reduced and no superficial 100% target is introduced.
+Final exact-HEAD counts must come from the passing gate, not this intermediate run.
+
+Five remaining integration risks and their checks:
+1. A saved enabled flag mistaken for a healthy schedule: failure/retry, revoked
+   access, read/snapshot failure and persisted-date expiry tests assert uncertainty.
+2. Stale or repeated commands overwrite current intent: expected-original tests,
+   deleted-editor regression and paused-effect Save/disable/delete/retry suppression.
+3. Startup/foreground overlap duplicates effects: one composition owner, startup
+   idempotence, bounded queued refresh, and injected queued-refresh failure tests.
+4. UI navigation/selection loses configuration: full native create/edit/challenge
+   flows verify identity, exact settings/order and durable process relaunch.
+5. Cleanup erases protected ownership: failed-delete UI and active-session store
+   tests retain alarm/session/ledger; no product action can declare challenge success.
+
+Most damaging earlier assumption to misunderstand: enabled configuration is intent,
+not proof of an armed alarm. The presentation layer requires confirmed lifecycle
+state and keeps unresolved ownership visible. No new Stage 1–5 defect was found.
+External-effect fakes do not replace the real lifecycle coordinator. Real daemon
+freshness, VoiceOver interaction, Settings and alarm delivery remain device work.

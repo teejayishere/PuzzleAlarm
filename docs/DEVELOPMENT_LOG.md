@@ -484,3 +484,19 @@ the test-only accessibility tree in failures for diagnosis.
 These are Stage 6 interaction/UX issues. Core, persistence and lifecycle sources
 remain unchanged; Gates 0–5 were not invalidated. Full current-HEAD replay remains
 required after corrections. No Gate 6 PASS and no device claims.
+
+## Stage 6 interaction correction and coverage audit
+
+Run 37258084975 at 4f15ac4 passed 123 core tests and 36 iOS unit/integration
+tests, with six of nine native UI tests passing. Three UI tests failed: challenge
+menu opening in two flows, and ambiguous Keep Alarm selection. The actual tree
+showed a full-row button wrapping a separate actionable menu-label button. Target
+that child instead of the row center; select the confirmation action by identifier.
+All mandatory assertions remain. No core or Stage 5 change was needed.
+
+Added meaningful coverage regressions for intentional authorization on Save and
+queued-refresh failure, followed by challenge persisted-date expiry and composition
+startup idempotence/failure. Expanded paused-operation testing to suppress disable,
+delete and retry as well as duplicate Save. The accessible next-occurrence field
+now retains its spoken date value alongside its label. Remaining uncovered paths
+are classified in TEST_MATRIX.md. Gate 6 remains pending current full CI.

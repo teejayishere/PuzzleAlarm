@@ -18,6 +18,9 @@ for target in document.get("targets", []):
         for function in item.get("functions", []):
             if function.get("executionCount", 0) == 0:
                 print(f"  uncalled {function.get('lineNumber')}: {function.get('name')}")
+            elif function.get("coveredLines", 0) < function.get("executableLines", 0):
+                print(f"  partial {function.get('lineNumber')}: {function.get('name')} "
+                      f"{function.get('coveredLines')}/{function.get('executableLines')} lines")
 if not found:
     raise SystemExit("No production application behavior coverage found")
 print("SwiftUI rendering and physical AlarmKit behavior are not inferred from line coverage.")
