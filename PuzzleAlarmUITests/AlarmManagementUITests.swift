@@ -19,7 +19,7 @@ final class AlarmManagementUITests: XCTestCase {
         app.descendants(matching: .any).matching(identifier: id).firstMatch
     }
     private func scroll(_ app: XCUIApplication, down: Bool) {
-        guard let form = app.collectionViews.allElementsBoundByIndex.last(where: { $0.isHittable }) else {
+        guard let form = app.collectionViews.allElementsBoundByIndex.last(where: { $0.frame.intersects(app.frame) }) else {
             return XCTFail("No visible form to scroll\n" + app.debugDescription)
         }
         // Scroll along the form edge, away from the time wheel and sheet grabber.

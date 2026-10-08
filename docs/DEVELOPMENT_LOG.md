@@ -507,3 +507,22 @@ explicit native Add Math / Add Memory / Add QR Code actions, removing each optio
 once selected. This improves direct accessibility and preserves uniqueness and
 ordering; the UI tests still configure, save, relaunch and verify exact settings.
 Run 37725353411 validates that correction plus the completed behavioral audit.
+Run 37725353411 at 6c9a822 passed all 123 core and 41 iOS unit/integration
+tests, including the added audit regressions. The complete challenge configuration,
+ordering, save and process-relaunch UI test passed. Two other UI assertions failed:
+edit checked an already-existing background row immediately after asynchronous Save;
+the Once test's screen-wide scroll dismissed its sheet while locating a repeat preset.
+Scope scrolling to the visible form edge, away from picker wheels and sheet gestures;
+prefer actual buttons over wrapper elements, wait for Repeat navigation and completed
+Save dismissal, and retain the exact row/configuration assertions.
+
+App behavior report: AlarmStore 167/172, AppEnvironment 23/27, AlarmEditorDraft
+84/88, AlarmFormatting 86/86, AlarmStorePresentation 71/72. Remaining partial
+functions are production environment construction and defensive status guards;
+uncalled functions/fallbacks are classified in TEST_MATRIX.md. No core changes,
+threshold reductions or Gate 6 PASS were inferred from this failing run.
+Run 37727035595 at f8155e6: core and all 41 iOS unit/integration tests passed;
+native tests exposed an automation assumption: CollectionView.isHittable can be
+false while its visible children are tappable. The failure trees showed the correct
+editor/Repeat form. Select the foreground collection by its displayed frame rather
+than the container hit-test flag; keep edge scrolling and all completion assertions.

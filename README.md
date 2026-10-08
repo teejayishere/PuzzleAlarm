@@ -4,7 +4,7 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 4 adds versioned atomic local persistence and recovery representations. The shell remains a title screen; no real alarm behavior is verified.**
+**Stage 6 implements native alarm management over the durable Stage 5 lifecycle coordinator. See PROJECT_STATE for gate acceptance and exact CI evidence. Real-device alarm behavior remains unverified.**
 
 ## Evidence and scope
 
@@ -12,7 +12,7 @@ See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 [TEST_MATRIX](docs/TEST_MATRIX.md) distinguishes automated evidence from unimplemented
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
-See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. Stage 5+ is not started.
+See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. Stage 7 challenge execution has not started.
 
 Implemented in dependency-free PuzzleAlarmCore:
 
@@ -23,8 +23,9 @@ Implemented in dependency-free PuzzleAlarmCore:
 - Exactly five backup-plan entries at T, T+60s, T+120s, T+180s and T+240s.
 - Codable validation, recovery-state round trips and behavioral/invariant tests.
 
-Challenge engines, OS scheduling orchestration, product UI, camera and sound files
-belong to later gates. No real alarm, device installation or camera/audio behavior
+The app includes list/create/edit/enable/disable/delete, ordered challenge settings,
+authorization/status/retry and durable reload. Mutations use one lifecycle owner.
+Challenge engines, camera, final intent routing and sound files belong to later gates. No real alarm, device installation or camera/audio behavior
 has been verified.
 
 ## Free CI-first development
@@ -58,8 +59,8 @@ XcodeGen 2.44.1 and prints its executable path. Run that executable with
 and test commands. CI discovers a compatible available iPhone Simulator and
 selects the runner's native architecture; no fixed model is required.
 
-The shell displays only PuzzleAlarm. CI confirms the package dependency compiles
-for iOS and the shell launches, not physical-device functionality. The diagnostic
+CI builds Debug and Release and exercises native management flows with the real
+lifecycle coordinator and injected external effects. This is not physical-device evidence. The diagnostic
 check rejects compiler/destination warnings and explicitly reports Xcode's expected
 metadata-extraction advisory for the UI-test bundle without AppIntents. The app itself extracts App Intents metadata.
 
