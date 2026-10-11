@@ -549,3 +549,21 @@ Updated PROJECT_STATE, TEST_MATRIX, ARCHITECTURE, DEVICE_TEST_PLAN and README to
 reflect the implemented native UI and boundaries. Physical-device claims remain
 unproved. The documentation-only acceptance commit will receive one full matching
 CI run before the final report. Stop after Gate 6; Stage 7 has not begun.
+## Gate 6 documentation closeout verification
+
+Read PROJECT_STATE first. Initial checkout was the preserved Stage 7 branch
+b0a2cff; the requested Gate 6 / Stage 7-not-started boundary belongs to origin/main
+c571bb5fa18b922a2835873fab9a05dc59943578. Created codex/gate-6-closeout from that
+Gate 6 line without modifying the Stage 7 branch or default branch.
+
+Verified complete SUCCESS run 38110244628 for exact c571bb5, including all job
+steps and logs. 123 core + 41 iOS + 9 UI tests PASS; core 1840/1852 (99.35%),
+application behavior 431/445 (96.85%). Reproducible Xcode generation, Debug/Release,
+platform compilation, Simulator, fixture exclusion and diagnostics pass. No compiler/
+destination warnings; three documented SDK metadata advisories. Device NOT RUN.
+
+Corrected PROJECT_STATE's stale pending follow-up text and recorded the immutable
+matching SHA/run. No app/core/test/workflow or coverage-policy changes. No earlier
+defect found or gate invalidated. The new evidence-only commit receives its own
+complete exact-HEAD workflow before the final report. STOP after Gate 6 closeout;
+Stage 7 is not begun on this line. No device or authentication action is required.

@@ -1,7 +1,7 @@
 # Project state
 
 Current stage: 6 — Alarm Management UI + Application Integration COMPLETE
-Last passing gate: Gate 6 — PASS at the exact implementation revision below
+Last passing gate: Gate 6 — PASS; implementation and documentation closeout evidence below
 Gates 0–5: replayed successfully in the same full workflow
 Earlier gates invalidated by Stage 6: None
 Blocker: None
@@ -38,9 +38,32 @@ configuration, stable QR token, sound identifiers, status/retry and stale-editor
 reload are implemented and tested. UI tests use the real lifecycle coordinator
 with DEBUG-only external effects and durable relaunch fixtures.
 
-This record names immutable source/test evidence. The documentation-only follow-up
-must also pass its complete exact-HEAD workflow before final task acceptance; the
-final report supplies that matching SHA/run. No code or test changes accompany it.
+This record names immutable source/test evidence.
+
+## Stage 6 documentation closeout — verified
+
+Documentation revision: c571bb5fa18b922a2835873fab9a05dc59943578
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38110244628
+Result: SUCCESS, complete required workflow for that exact SHA; every step passed.
+The former pending documentation-only follow-up is complete at this revision.
+
+Source: changes from the implementation revision were documentation only; app,
+core, tests, workflow and coverage policy were unchanged.
+Automated: 123 core + 41 iOS unit/integration + 9 UI = 173 distinct tests PASS;
+focused reruns are not counted twice. Core coverage 1840/1852 (99.35%). Existing
+uncovered-count classifications remain unchanged in TEST_MATRIX.md.
+Xcode: reproducible generation, package/build, Debug/Release, AlarmKit/App Intents,
+usage description, Release fixture exclusion and diagnostics PASS. No compiler or
+destination warnings; three known SDK metadata advisories remain reported.
+Simulator: all required native state/draft, integration and management tests PASS.
+Application behavior coverage remains 431/445 (96.85%).
+Physical device: NOT RUN; the existing device-required items remain unverified.
+No earlier defect identified, no gate invalidated, and no coverage policy weakened.
+
+This closeout uses the Gate 6 line from origin/main. The pre-existing Stage 7
+branch is preserved separately; no Stage 7 implementation is part of this closeout.
+Any subsequent documentation-only evidence commit must pass the same complete
+workflow at its own exact HEAD; the final task report supplies its matching SHA/run.
 
 ## Prior Stage 5 implementation evidence
 
@@ -116,5 +139,5 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 
 ## Next action
 
-STOP after Gate 6. Validate the documentation-only follow-up, then report; do not begin Stage 7.
+STOP after Gate 6 closeout. The original documentation-only follow-up is verified above. Do not begin Stage 7.
 No user action is currently required.
