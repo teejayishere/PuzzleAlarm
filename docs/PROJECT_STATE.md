@@ -1,13 +1,45 @@
 # Project state
 
-Current stage: 6 — Alarm Management UI + Application Integration REOPENED
-Last passing gate: Gate 5; historical Gate 6 repair PASS retained below, current Gate 6 reopened
-Current run: core/build and application unit checks passed; native execution blocked by launch machinery
-Invalidated evidence: current Gate 0 environment and Gate 6/current closeout acceptance; replay Gates 0–6 in order
-Blocker: transient hosted Xcode/Simulator launch failure; source unchanged, fresh full workflow pending
+Current stage: 6 — Alarm Management UI + Application Integration COMPLETE
+Last passing gate: Gate 6 — restored by combined repair evidence below
+Gates 0–6: complete ordered workflow replay passed for the combined repair revision below
+Invalidated gates: None on this Gate 6 line; Gate 0 environment and Gate 6 closeout restored
+Blocker: None
 Stop boundary: STOP after Gate 6 closeout. No Stage 7 work on this line; do not begin Stage 8.
 
-## Current native environment attempt — FAILURE; fresh full replay pending
+## Combined repair acceptance — PASS at immutable revision
+
+Revision: 2266d5b47e8f6c92ac0318983206fb634e6a58c3
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38183072210
+Result: SUCCESS, every step of the complete required workflow at that exact SHA.
+
+Source: await asynchronous authorization's observable result before the original
+exact assertion; re-resolve concrete control role after lazy Form scrolling.
+Enabled AND hittable readiness uses the same 10-second bound. All valid assertions
+remain; no repeat business taps, sleep, timeout inflation or product change.
+DEBUG fixture and controlled pending-request test verify legitimate old label while
+pending, then exact Authorized outcome and one request. New large-text sound test
+forces off-screen control, selects/saves exact sound and Math/Memory/QR config order.
+No engines, camera/audio or live production view/store/adapter/core changes.
+
+Automated: 123 core + 42 iOS + 10 UI = 175 distinct tests PASS, reruns excluded.
+Authorization, edit and new lazy-sound cases PASS in focused/full native runs.
+Core 1840/1852 (99.35%); application 431/445 (96.85%), unchanged. Prior uncovered
+classifications and policy preserved. Two new declarations since Gate 6 baseline.
+Xcode: generation, Debug/Release, platform compilation, usage description, Release
+fixture exclusion and diagnostics PASS. Xcode 26.6 / Swift 6.3.3. No compiler or
+destination warnings; three known SDK metadata advisories explicitly reported.
+Simulator: all ten UI tests PASS. Physical device NOT RUN.
+
+The prior hosted launch/resume/termination error was environmental; source-identical
+fresh-runner execution passed. Actions rerun integration returned 403, so verified
+failure docs triggered the authorized push workflow instead. No credential or
+permission change required. Gate 0 environment and Gate 6 closeout restored by
+ordered Gates 0–6 replay. Main and Stage 7 branch remain unchanged; no Stage 8 work.
+The final documentation-only HEAD requires its own complete matching workflow;
+the final task report supplies that SHA/run. No user action currently required.
+
+## Prior native environment attempt — FAILURE; subsequently replayed successfully
 
 Revision: 0937e6d5fff9851a57ab5bdf9246cdcdca92634c
 CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38181961543
@@ -23,7 +55,7 @@ will replay Gates 0–6. Integration rerun API lacks Actions write permission (4
 the authorized branch push workflow is used by recording this verified failure.
 No credentials or permissions changed, no user action currently required.
 
-## Prior closeout attempt — FAILURE; lazy-picker repair pending
+## Prior closeout attempt — FAILURE; lazy-picker defect subsequently repaired
 
 Revision: 5ba669da207447e3ea5874dadaf825b810bcda97
 CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38179960936

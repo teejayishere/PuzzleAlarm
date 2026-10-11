@@ -471,3 +471,26 @@ The DEBUG-only scheduler pause makes pending/completed state deterministic. No
 production permission/busy behavior, core, coverage policy or diagnostic rule changed.
 Gate 6 closeout restored by full replay; no feature-stage advance. The final
 source-identical documentation commit requires its own full matching CI.
+
+### Combined Gate 6 repair acceptance — PASS
+
+Revision 2266d5b47e8f6c92ac0318983206fb634e6a58c3:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38183072210 — SUCCESS.
+
+| Evidence | Verified result |
+| --- | --- |
+| Authorization and pending-request regression | PASS focused/full; exact Authorized assertion retained |
+| Previously failing edit test | PASS focused/full; concrete lazy control re-resolved after scrolling |
+| New off-screen sound/large-text UI regression | PASS focused/full; off-screen precondition, exact saved sound and three-kind order |
+| Full distinct tests | 123 core + 42 iOS + 10 UI = 175; two new declarations, reruns excluded |
+| Coverage | Core 1840/1852 (99.35%), application 431/445 (96.85%); unchanged |
+| Ordered gates | Gates 0–6 replay PASS, including final fixture exclusion/diagnostics |
+| Physical device | NOT RUN |
+
+No production behavior or core change. Enabled readiness is preserved and additionally
+requires hittability, with the same timeout. No retry taps, sleeps, loosened assertion,
+ignored compiler warning or weakened coverage policy. Three SDK metadata advisories
+remain reported. Prior failed/cancelled revisions remain history, not passing evidence.
+The hosted launch failure was not used to change product behavior; source-identical
+fresh execution passed. Main/Stage 7 branch untouched; do not begin Stage 8.
+Final documentation-only HEAD must receive complete matching CI before final report.

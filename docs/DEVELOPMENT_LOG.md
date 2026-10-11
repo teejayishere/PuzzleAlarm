@@ -704,3 +704,39 @@ required failure-evidence update triggers the normal full push workflow instead.
 No credentials extracted or permissions changed; no user action needed for that path.
 Source and tests stay unchanged; all acceptance remains pending until complete exact-
 HEAD success. Recheck Gates 0–6 in order. Preserve main/Stage 7; no Stage 8 work.
+
+## Combined Gate 6 repair — PASS after environment and Stage 6 replay
+
+Revision 2266d5b47e8f6c92ac0318983206fb634e6a58c3:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38183072210 — SUCCESS.
+Every required workflow step passes. Core 123 + iOS 42 + UI 10 = 175 distinct
+tests; focused reruns excluded. Both authorization and edit/lazy-sound regressions
+pass in focused and full native runs. The controlled pending-request test passes
+in application, focused and full runs. New tests since baseline: one unit + one UI.
+
+Two Stage 6 validation defects were corrected without product changes: await the
+observable result of an asynchronous permission action; refresh concrete control
+role after lazy Form scrolling. Readiness now requires enabled AND hittable in the
+same 10-second bound, with target/app diagnostics. No old assertions removed, no
+repeated business taps, no sleep, no timeout inflation, no warning/coverage weakening.
+The off-screen sound regression uses large text and all three configured challenge
+kinds, verifies off-screen precondition, saves exact sound/order through the real
+store/lifecycle coordinator with DEBUG external effects. This is configuration UI,
+not challenge execution or an engine.
+
+The preceding hosted launch/resume/termination failure was environmental: source-
+identical fresh-runner replay passed. Integration Actions rerun permission was
+unavailable (403); recording verified failure evidence used the already-authorized
+branch push workflow. No credentials extracted, permissions changed or app/tests
+altered for that environment failure. No user action required.
+
+Source: only test fixture/UI/unit synchronization helpers and CI focused orchestration
+changed; live production view/store/adapter/core unchanged. Core coverage remains
+1840/1852 (99.35%); application 431/445 (96.85%); prior classifications retained.
+Xcode: generation, Debug/Release, platform compilation, usage description, Release
+fixture exclusion and diagnostics PASS. Xcode 26.6 / Swift 6.3.3; no compiler or
+destination warnings, three known SDK metadata advisories explicitly reported.
+Simulator: all ten native UI tests PASS. Physical device NOT RUN.
+Gate 0 environment and Gate 6 closeout restored by ordered Gates 0–6 replay. Main
+and the Stage 7 branch preserved. Final docs-only follow-up requires its own full
+exact-HEAD workflow; final task answer supplies matching SHA/run. No Stage 8 work.
