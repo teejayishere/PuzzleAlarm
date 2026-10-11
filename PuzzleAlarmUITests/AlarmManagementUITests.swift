@@ -36,14 +36,14 @@ final class AlarmManagementUITests: XCTestCase {
         var target = control(app, id)
         _ = target.waitForExistence(timeout: 3)
         for _ in 0..<6 {
-            target = control(app, id)
             if target.exists && target.isHittable { break }
             scroll(app, down: false)
+            target = control(app, id)
         }
         for _ in 0..<6 {
-            target = control(app, id)
             if target.exists && target.isHittable { break }
             scroll(app, down: true)
+            target = control(app, id)
         }
         // Form rows are lazy: the concrete control may not exist until scrolling.
         // Resolve its role again rather than retaining the off-screen fallback.
