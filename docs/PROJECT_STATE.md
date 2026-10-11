@@ -2,12 +2,28 @@
 
 Current stage: 6 — Alarm Management UI + Application Integration REOPENED
 Last passing gate: Gate 5; historical Gate 6 repair PASS retained below, current Gate 6 reopened
-Gates 0–5: build/core/platform checks passed; final diagnostics skipped after new UI failure
-Invalidated gates: Gate 6 and current closeout acceptance; second Stage 6 UI helper defect
-Blocker: None; lazy-picker repair validation pending
+Current run: core/build and application unit checks passed; native execution blocked by launch machinery
+Invalidated evidence: current Gate 0 environment and Gate 6/current closeout acceptance; replay Gates 0–6 in order
+Blocker: transient hosted Xcode/Simulator launch failure; source unchanged, fresh full workflow pending
 Stop boundary: STOP after Gate 6 closeout. No Stage 7 work on this line; do not begin Stage 8.
 
-## Latest closeout attempt — FAILURE; lazy-picker repair pending
+## Current native environment attempt — FAILURE; fresh full replay pending
+
+Revision: 0937e6d5fff9851a57ab5bdf9246cdcdca92634c
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38181961543
+Result: FAILURE. Core 123, application 32 and controlled pending-request unit test
+PASS; Debug/Release/generation PASS. UI authorization/lazy-picker validation could
+not reach its assertions: Xcode launch timed out, process-resume failed, and app
+termination then failed. The edit test's missing seeded row followed that launch
+sequence. Full native suite and final checks skipped; Shell.xcresult absent.
+
+Classification: hosted Xcode/Simulator environment failure, earliest Gate 0.
+No app/test change justified by this run. Fresh source-identical full validation
+will replay Gates 0–6. Integration rerun API lacks Actions write permission (403);
+the authorized branch push workflow is used by recording this verified failure.
+No credentials or permissions changed, no user action currently required.
+
+## Prior closeout attempt — FAILURE; lazy-picker repair pending
 
 Revision: 5ba669da207447e3ea5874dadaf825b810bcda97
 CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38179960936

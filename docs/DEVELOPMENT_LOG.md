@@ -678,3 +678,29 @@ challenge order. Focused CI now includes authorization, the failing edit test, a
 this lazy-picker regression before the full native suite. Coverage policy unchanged.
 Source review/diff only locally; fresh automated/Xcode/Simulator evidence pending.
 Main and the Stage 7 branch preserved. Stop after Gate 6; no Stage 8 work.
+
+## Hosted native launch failure — fresh environment replay required
+
+Source revision 0937e6d5fff9851a57ab5bdf9246cdcdca92634c:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38181961543 — FAILURE.
+The preceding 9e384cb run 38181882735 was superseded/cancelled by the small source
+self-review refinement: refresh role selection after actual scrolling, not on
+unchanged viewport iterations. No acceptance evidence claimed from that run.
+
+Core 123, focused application 32 and pending-request unit regression PASS; Debug/
+Release/generation pass. Focused UI fails before repair assertions: Xcode app launch
+timeout, DTXMessage failed process-resume signal, then failed app termination. The
+edit case's absent seeded row follows the broken launch sequence; no sound assertion
+was reached. Full native suite and final diagnostics/fixture exclusion are skipped.
+The always-run coverage report also fails because Shell.xcresult was never produced;
+this is secondary missing evidence, not a coverage-policy relaxation or source defect.
+
+Earliest blocker is hosted Xcode/Simulator execution (Gate 0 environment), not a
+new demonstrated product failure. Do not alter app/tests to compensate. Replay the
+complete job on a fresh hosted runner, source-identical. GitHub integration rerun
+request returned HTTP 403 Resource not accessible by integration (Actions write
+permission unavailable). Existing authorized Git branch pushes still work, so this
+required failure-evidence update triggers the normal full push workflow instead.
+No credentials extracted or permissions changed; no user action needed for that path.
+Source and tests stay unchanged; all acceptance remains pending until complete exact-
+HEAD success. Recheck Gates 0–6 in order. Preserve main/Stage 7; no Stage 8 work.
