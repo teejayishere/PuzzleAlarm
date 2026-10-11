@@ -397,7 +397,7 @@ OS effects, real reconciliation/Stop, lock-screen/Silent/Focus firing, intent de
 sound resources/playback, file protection and power loss. Simulator tests exercise
 production disk + adapter composition using injected operations, never the daemon.
 
-## Stage 6 application integration — pending current-HEAD gate
+## Stage 6 application integration — validated
 
 AppEnvironment is the production composition root: one DiskRepository in Application
 Support, one AlarmManagerService and one AlarmStore. AlarmStore constructs and owns
@@ -450,3 +450,10 @@ system. Weekdays have text and selected values; ordered challenges have explicit
 Move Up/Move Down actions. Critical controls have stable accessibility identifiers.
 No final App Intent/due-session routing, challenge execution, camera, generated sound
 resources or physical-device validation is implemented in Stage 6.
+
+
+Gate 6 implementation evidence: 73971f054d4e74949e6aa0eb32aa026d0d6dc93d,
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37728785501 (full PASS).
+Native challenge additions use explicit Add Math / Add Memory / Add QR Code buttons;
+selected kinds disappear from the available actions. There is no nested popup menu.
+No earlier architecture was invalidated by Stage 6. Stage 7 is not started.

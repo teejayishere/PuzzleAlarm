@@ -526,3 +526,26 @@ native tests exposed an automation assumption: CollectionView.isHittable can be
 false while its visible children are tappable. The failure trees showed the correct
 editor/Repeat form. Select the foreground collection by its displayed frame rather
 than the container hit-test flag; keep edge scrolling and all completion assertions.
+
+## Stage 6 full acceptance — PASS, stop before Stage 7
+
+Revision 73971f054d4e74949e6aa0eb32aa026d0d6dc93d:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37728785501 — SUCCESS.
+The displayed-frame form selection fixed the automation assumption. All nine UI
+tests now pass, including exact challenge configuration/order after relaunch and
+identity-preserving edits. All 41 iOS unit/integration and 123 core tests pass:
+173 distinct total, 39 new Stage 6 tests. Focused reruns are not double-counted.
+
+Core coverage 1840/1852 (99.35%); five application-behavior files 431/445 (96.85%).
+Remaining coverage classifications and the five-risk adversarial review are in
+TEST_MATRIX.md. No core source changed, no earlier gate was invalidated, no
+coverage threshold was weakened, and no assertion was removed to hide a defect.
+All prior gates replayed: package, persistence/lifecycle regressions, Xcode project,
+Debug/Release, AlarmKit, App Intents, Simulator and diagnostics. Release fixture
+exclusion passed. Xcode 26.6 / Swift 6.3.3 were recorded by the standard macos-26
+runner. No unexpected warnings; three known SDK metadata advisories remain visible.
+
+Updated PROJECT_STATE, TEST_MATRIX, ARCHITECTURE, DEVICE_TEST_PLAN and README to
+reflect the implemented native UI and boundaries. Physical-device claims remain
+unproved. The documentation-only acceptance commit will receive one full matching
+CI run before the final report. Stop after Gate 6; Stage 7 has not begun.

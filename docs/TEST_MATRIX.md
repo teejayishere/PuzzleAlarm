@@ -334,7 +334,7 @@ WakeUpSession completion autoclosures account for all 12 missing counts.
 All prior gates pass in this same run. Final documentation HEAD must also pass.
 No numeric/meaningful coverage threshold was lowered.
 
-## Stage 6 test matrix — pending actual full-gate results
+## Stage 6 test matrix — PASS (acceptance evidence below)
 
 Prior 123 core tests and 10 platform unit/integration tests are preserved. The
 existing shell-launch test evolves to verify the real list/empty state using injected
@@ -380,7 +380,7 @@ behavior reproducible. Test switches compile only in DEBUG.
 - Device-only uncertainty (snapshot freshness, real access prompt, intent delivery,
   sound and file protection) remains separate from these tests.
 
-Gate 6 is PENDING current exact-HEAD full CI and final uncovered-behavior audit.
+Gate 6 implementation passed the full workflow; final uncovered-behavior audit is recorded below.
 
 ### Stage 6 uncovered-behavior audit and final risk review
 
@@ -423,3 +423,29 @@ not proof of an armed alarm. The presentation layer requires confirmed lifecycle
 state and keeps unresolved ownership visible. No new Stage 1–5 defect was found.
 External-effect fakes do not replace the real lifecycle coordinator. Real daemon
 freshness, VoiceOver interaction, Settings and alarm delivery remain device work.
+### Stage 6 acceptance — full workflow PASS
+
+73971f054d4e74949e6aa0eb32aa026d0d6dc93d:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37728785501 — SUCCESS.
+173 distinct tests: 123 core + 41 iOS unit/integration + 9 native UI.
+39 new Stage 6 tests: 25 store/composition + 6 draft + 8 UI; the existing shell
+launch test now verifies the functional list/empty state. No skipped mandatory flow.
+All prior gates, Debug/Release, AlarmKit/App Intents, usage description, Release
+fixture exclusion and diagnostics passed in this run. Core source is unchanged
+from the accepted Stage 5 base; no earlier gate was invalidated by Stage 6.
+
+Final core coverage is 1840/1852 (99.35%). Five application-behavior files total
+431/445 (96.85%): store 167/172, environment 23/27, draft 84/88, formatting 86/86,
+status/occurrence presentation 71/72. The meaningful audit regressions all passed.
+Remaining uncovered production construction, default closures, closed-enum/calendar
+fallbacks and fail-closed status guards have the classifications above. No threshold
+changed; no artificial invalid state or superficial coverage-only test was added.
+The native challenge test verifies exact Memory/Math settings and order after save
+and process relaunch. CRUD, confirmation cancellation, failed cleanup, enable/retry,
+Once, authorization and large-text toolbar tests all pass. UI automation explicitly
+waits for navigation and Save completion and scrolls the displayed form away from
+picker wheels; assertions were not weakened to obtain a green result.
+
+Physical VoiceOver, Settings, daemon behavior, firing, sound and file protection
+remain DEVICE REQUIRED. Final documentation HEAD must pass its own complete CI;
+its matching run is supplied in the final task report. STOP after Gate 6.

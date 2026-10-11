@@ -1,11 +1,46 @@
 # Project state
 
-Current stage: 6 — application integration in progress; Gate 6 PENDING
-Last passing gate: Gate 5 (implementation evidence below)
-Gates 0–4: replayed and restored
-Invalidated gates remaining: None
+Current stage: 6 — Alarm Management UI + Application Integration COMPLETE
+Last passing gate: Gate 6 — PASS at the exact implementation revision below
+Gates 0–5: replayed successfully in the same full workflow
+Earlier gates invalidated by Stage 6: None
 Blocker: None
-Current status: Native alarm management and application integration implemented; expanded UI validation pending
+Stop boundary: Stage 7 NOT STARTED. Stop after Gate 6.
+
+## Stage 6 acceptance evidence
+
+Revision: 73971f054d4e74949e6aa0eb32aa026d0d6dc93d
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37728785501
+Result: SUCCESS, full workflow on the free standard macos-26 public-repository runner.
+Toolchain recorded by CI: Xcode 26.6, Apple Swift 6.3.3.
+173 distinct tests PASS: 123 core + 41 iOS unit/integration + 9 native UI.
+New Stage 6 tests: 39 (31 application/draft unit tests + 8 management UI tests).
+The original 134 tests are preserved or legitimately evolved; focused reruns are
+not counted again. Core coverage: 1840/1852 (99.35%).
+Application behavior files: 431/445 lines (96.85%): AlarmStore 167/172,
+AppEnvironment 23/27, AlarmEditorDraft 84/88, AlarmFormatting 86/86,
+AlarmStorePresentation 71/72. Remaining paths are classified in TEST_MATRIX.md;
+this is not a claim of exhaustive SwiftUI or device coverage.
+
+Package/build/tests, focused persistence/lifecycle regressions, skipped-local-date
+regression, reproducible Xcode generation, Debug and Release builds, AlarmKit and
+App Intents compilation, usage description, all native tests and diagnostics passed.
+Release excludes UI-test switches, fake scheduler and simulated-system storage.
+No unexpected compiler/destination warnings. Three known SDK metadata advisories
+were reported; the advisory remains documented and is not suppressed.
+
+One production composition root owns DiskRepository → AlarmStore → one lifecycle
+coordinator plus AlarmManagerService. Views edit value drafts and call the store.
+Startup/foreground refresh is bounded, permission requests are intentional, and
+saved enabled intent is never treated as proof of a healthy schedule.
+Native list/create/edit/enable/disable/delete, Once/weekdays, ordered challenge
+configuration, stable QR token, sound identifiers, status/retry and stale-editor
+reload are implemented and tested. UI tests use the real lifecycle coordinator
+with DEBUG-only external effects and durable relaunch fixtures.
+
+This record names immutable source/test evidence. The documentation-only follow-up
+must also pass its complete exact-HEAD workflow before final task acceptance; the
+final report supplies that matching SHA/run. No code or test changes accompany it.
 
 ## Prior Stage 5 implementation evidence
 
@@ -81,5 +116,5 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 
 ## Next action
 
-Complete Stage 6 validation and STOP after Gate 6. Do not begin Stage 7.
+STOP after Gate 6. Validate the documentation-only follow-up, then report; do not begin Stage 7.
 No user action is currently required.

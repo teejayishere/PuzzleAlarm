@@ -47,3 +47,10 @@ No Stage 5 mock, compile or Simulator result is DEVICE PASS.
 The native list and configuration forms do not implement challenge execution or
 final due-session/intent routing. A visible unfinished session is not a completion
 or bypass path. Sound names select future resource identifiers; playback is not tested.
+
+
+Gate 6 automated boundary: revision 73971f054d4e74949e6aa0eb32aa026d0d6dc93d,
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/37728785501 passed all nine
+native UI tests and platform/unit checks with injected external effects. This does
+not satisfy any DEVICE REQUIRED item above. No physical iPhone validation was run.
+Stage 7 challenge execution is not implemented and is outside this acceptance.
