@@ -15,6 +15,7 @@ final class TestAlarmScheduler: AlarmScheduling, @unchecked Sendable {
         var failCancellation = false
         var failSnapshot = false
         var authorizationRequests = 0
+        var beforeAuthorization: (@Sendable () async -> Void)?
         var afterSchedule: (@Sendable () async -> Void)?
     }
     private let lock = NSLock()
@@ -31,8 +32,12 @@ final class TestAlarmScheduler: AlarmScheduling, @unchecked Sendable {
     var values: Values { lock.withLock { storage } }
     var authorization: AlarmAuthorization { values.authorization }
     func requestAuthorization() async throws -> AlarmAuthorization {
-        lock.withLock {
+        let hook = lock.withLock {
             storage.authorizationRequests += 1
+            return storage.beforeAuthorization
+        }
+        await hook?()
+        return lock.withLock {
             if storage.authorization == .notDetermined { storage.authorization = .authorized }
             return storage.authorization
         }

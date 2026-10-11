@@ -225,6 +225,8 @@ final class AlarmManagementUITests: XCTestCase {
         let app = launch("access", scenario: "notDetermined", largeText: true)
         XCTAssertEqual(app.staticTexts["authorization.status"].label, "Not requested")
         tap(app, "authorization.request")
+        // UI idleness after a tap does not await the authorization Task.
+        expectLabel(app.staticTexts["authorization.status"], "Authorized")
         XCTAssertEqual(app.staticTexts["authorization.status"].label, "Authorized")
         tap(app, "alarms.add")
         XCTAssertTrue(app.buttons["editor.cancel"].isHittable && app.buttons["editor.save"].isHittable)

@@ -567,3 +567,57 @@ matching SHA/run. No app/core/test/workflow or coverage-policy changes. No earli
 defect found or gate invalidated. The new evidence-only commit receives its own
 complete exact-HEAD workflow before the final report. STOP after Gate 6 closeout;
 Stage 7 is not begun on this line. No device or authentication action is required.
+
+## Gate 6 closeout failure — BLOCKED, acceptance invalidated
+
+Assessed revision b1a8ac36884b4f396c794b58e8e4f3e3b19d47de:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38166736220 — FAILURE.
+Complete workflow was run and awaited; native tests failed. 123 core and 41 iOS
+unit/integration tests pass; 8 UI tests pass and one fails. Core coverage remains
+1840/1852 (99.35%); application coverage remains 431/445 (96.85%). Debug/Release,
+project generation and usage description pass. Final Release fixture exclusion
+and diagnostics are SKIPPED after the failure, not verified for this revision.
+
+Failure: AlarmManagementUITests.testAuthorizationAndLargeTextControls, line 228:
+expected Authorized, observed Not requested after tapping authorization.request.
+Source inspection: the button launches an asynchronous Task; the test immediately
+asserts the label. Its tap helper waits for enabled state but has no authorization
+completion wait. The store also rejects authorization while busy. Synchronization/
+action-delivery is the initial Stage 6 hypothesis; this single log does not prove
+an app defect or isolate the exact cause. The test already has an expectLabel
+predicate helper, but changing tests is explicitly prohibited in this closeout.
+
+Gate 6 and dependent acceptance invalidated; historical passes remain evidence of
+those prior runs, not current acceptance. Do not blindly retry or weaken assertions.
+No code/test/workflow/coverage-policy changes made; no Stage 7 work begun. Updating
+PROJECT_STATE and this log records the failure in the working tree. These final
+failure notes are uncommitted; HEAD remains the exact failed revision above.
+Required action: authorization to investigate/repair Stage 6 outside docs-only
+scope, followed by focused validation and ordered full gate replay. No device or
+authentication action is required. Closeout cannot honestly be marked PASS.
+
+## Gate 6 authorization synchronization repair — validation pending
+
+User authorized repair on codex/gate-6-closeout; main and the Stage 7 branch stay
+unchanged. Read state, log, AGENTS, relevant recursive/gate/coverage instructions,
+current diff, failure logs, UI test, store, view, DEBUG fixture and existing tests.
+
+The test asserts an asynchronous Task's result synchronously after tapping Allow
+Alarms. The failure log reads the old label immediately after the tap. UI idleness
+is not an authorization completion contract. Fix: wait with the existing bounded
+label predicate, then retain the exact Authorized equality assertion. No repeated
+taps, arbitrary sleep, weakened assertion or production authorization change.
+
+Added a controlled-continuation regression using the DEBUG-only scheduler: after
+one delivered request, the store remains busy and displays Not requested while
+permission is pending; release then await yields Authorized, one request, no error.
+This isolates the missing completion assumption without depending on wall-clock
+speed. No evidence warrants changing production busy handling or permission logic.
+The historical log alone cannot timestamp the original Task's eventual completion;
+focused native validation will test the repaired observable-completion contract.
+
+Workflow now runs the focused unit/native authorization tests before the complete
+native suite and includes their log in diagnostics. Source review/diff checks only
+locally (Windows has no Swift/Xcode). Automated, Xcode and Simulator repair evidence
+PENDING; Gate 6 remains invalid until complete matching CI passes. Device NOT RUN.
+Coverage policy unchanged. Stop after Gate 6 closeout; do not begin Stage 8.

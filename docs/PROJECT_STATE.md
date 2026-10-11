@@ -1,11 +1,35 @@
 # Project state
 
-Current stage: 6 — Alarm Management UI + Application Integration COMPLETE
-Last passing gate: Gate 6 — PASS; implementation and documentation closeout evidence below
-Gates 0–5: replayed successfully in the same full workflow
-Earlier gates invalidated by Stage 6: None
-Blocker: None
-Stop boundary: Stage 7 NOT STARTED. Stop after Gate 6.
+Current stage: 6 — Alarm Management UI + Application Integration REOPENED
+Last passing gate: Gate 5; historical Gate 6 passes retained below, current Gate 6 invalidated
+Gates 0–5: core/build/platform regression checks passed; final diagnostics were skipped after UI failure
+Invalidated gates: Gate 6 and dependent acceptance; earliest affected stage is Stage 6 UI validation
+Blocker: None. User authorized Stage 6 repair; focused and complete exact-HEAD validation pending.
+Stop boundary: Gate 6 repair validation PENDING. Stop after closeout; do not begin Stage 8.
+
+## Prior closeout attempt — FAILURE / BLOCKED
+
+Assessed HEAD: b1a8ac36884b4f396c794b58e8e4f3e3b19d47de
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38166736220
+Result: FAILURE, complete workflow run and awaited for that exact SHA.
+AlarmManagementUITests.testAuthorizationAndLargeTextControls failed at line 228:
+expected Authorized after Allow Alarms, observed Not requested.
+
+Source: only PROJECT_STATE and DEVELOPMENT_LOG changed from origin/main.
+Automated: 123 core and 41 iOS tests PASS; 8 UI PASS, 1 UI FAIL.
+Core coverage 1840/1852 (99.35%); application coverage 431/445 (96.85%).
+Xcode: project generation, Debug/Release and usage description PASS; final Release
+fixture exclusion and diagnostics SKIPPED after failure, not a pass.
+Simulator: authorization/large-text workflow FAIL; remaining eight UI tests PASS.
+Physical device: NOT RUN. No device or authentication action required.
+
+Earliest affected stage: Stage 6 UI validation. The test asserts immediately after
+an asynchronous authorization action; synchronization/action delivery is a candidate
+cause, not a proven production defect. Gate 6 and dependent acceptance are invalid
+until the cause is corrected and affected gates replay in order. Prior successful
+runs below remain historical evidence only. No retry, assertion weakening or policy
+change was made. The documentation-only restriction blocks test/app investigation
+and repair. These failure notes are uncommitted; HEAD stays at the failed SHA.
 
 ## Stage 6 acceptance evidence
 
@@ -40,12 +64,12 @@ with DEBUG-only external effects and durable relaunch fixtures.
 
 This record names immutable source/test evidence.
 
-## Stage 6 documentation closeout — verified
+## Stage 6 documentation closeout — historical verification
 
 Documentation revision: c571bb5fa18b922a2835873fab9a05dc59943578
 CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38110244628
 Result: SUCCESS, complete required workflow for that exact SHA; every step passed.
-The former pending documentation-only follow-up is complete at this revision.
+That documentation-only follow-up passed at this revision; the later failure below reopens current Gate 6 acceptance.
 
 Source: changes from the implementation revision were documentation only; app,
 core, tests, workflow and coverage policy were unchanged.
@@ -139,5 +163,5 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 
 ## Next action
 
-STOP after Gate 6 closeout. The original documentation-only follow-up is verified above. Do not begin Stage 7.
-No user action is currently required.
+STOP at blocked Gate 6 closeout. Diagnose and repair the authorization UI failure, run focused validation, then replay Gate 6 and dependent gates in order. Do not begin Stage 7.
+User authorized repair. No device or authentication action is currently required.

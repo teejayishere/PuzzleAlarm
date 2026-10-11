@@ -81,6 +81,28 @@ final class AlarmStoreTests: XCTestCase {
             }
         }
     }
+    func testAuthorizationRemainsUnrequestedUntilPendingRequestCompletes() async throws {
+        let (store, effect) = try make()
+        let pause = StoreTestPause()
+        effect.configure {
+            $0.authorization = .notDetermined
+            $0.beforeAuthorization = { await pause.wait() }
+        }
+        await store.refresh()
+        let request = Task { await store.grantAuthorization() }
+        await pause.started()
+        // A delivered action can legitimately display the old label while its
+        // asynchronous permission request is pending. UI tests must await outcome.
+        XCTAssertTrue(store.isBusy)
+        XCTAssertEqual(effect.values.authorizationRequests, 1)
+        XCTAssertEqual(AlarmFormatting.authorization(store.authorization), "Not requested")
+        await pause.release()
+        await request.value
+        XCTAssertEqual(AlarmFormatting.authorization(store.authorization), "Authorized")
+        XCTAssertEqual(effect.values.authorizationRequests, 1)
+        XCTAssertFalse(store.isBusy)
+        XCTAssertNil(store.errorMessage)
+    }
     func testCorruptionAndSnapshotFailureNeverResetOrClaimEmptySuccess() async throws {
         let repository = InMemoryRepository(storedRepresentation: Data("broken".utf8))
         let (store, effect) = try make(repository)
