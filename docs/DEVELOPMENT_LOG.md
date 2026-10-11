@@ -549,3 +549,27 @@ Updated PROJECT_STATE, TEST_MATRIX, ARCHITECTURE, DEVICE_TEST_PLAN and README to
 reflect the implemented native UI and boundaries. Physical-device claims remain
 unproved. The documentation-only acceptance commit will receive one full matching
 CI run before the final report. Stop after Gate 6; Stage 7 has not begun.
+## Stage 7 implementation — validation pending
+
+Read AGENTS, PROJECT_STATE, global/recursive requirements, Challenge Coordinator
+and Stage 7/Gate 7 sections, relevant architecture, domain/persistence/lifecycle
+source and tests. Clean starting HEAD c571bb5 has full SUCCESS run 38110244628.
+No earlier defect or gate invalidation identified by source/adversarial review.
+
+Added a Foundation-only ChallengeCoordinator value reducer over PersistedSession.
+Events bind session UUID, index and kind. Ordered success delegates to existing
+session transitions; duplicate success is a semantic no-op. Progress/checkpoint
+updates require the current identity; accepted updates cannot regress timestamps.
+Candidate records are validated before assignment. Restoring never activates,
+solves, resets engine inputs, cancels backups or completes lifecycle cleanup.
+The caller must commit a candidate before presenting progression and discard it
+on commit failure. Storage/effects and engine verification remain outside this type.
+No Math/Memory/QR engine, UI, intent routing, audio or platform implementation added.
+
+Tests enumerate all 15 sequences with restore at each boundary, invalid/foreign/
+out-of-order events, duplicate callbacks, checkpoint/progress persistence and reset,
+nonfinite/regressing timestamps, inactive sessions and failed repository commits.
+Focused coordinator validation precedes the full package/Xcode/Simulator workflow.
+Local evidence: diff check/source review only; Windows has no Swift toolchain.
+Automated/Xcode/Simulator evidence PENDING; physical-device evidence NOT RUN.
+Stop after Gate 7; do not begin Stage 8.

@@ -457,3 +457,23 @@ https://github.com/teejayishere/PuzzleAlarm/actions/runs/37728785501 (full PASS)
 Native challenge additions use explicit Add Math / Add Memory / Add QR Code buttons;
 selected kinds disappear from the available actions. There is no nested popup menu.
 No earlier architecture was invalidated by Stage 6. Stage 7 is not started.
+
+## Stage 7 challenge framework
+
+ChallengeCoordinator is a Sendable value reducer restored from PersistedSession.
+The immutable session definition snapshot determines order and configuration.
+ChallengeIdentity binds callbacks to session UUID, index and kind; it contains no
+engine input or platform object. Only active sessions expose a current challenge.
+Trusted success advances through WakeUpSession, clears the previous checkpoint,
+and ends in completing. sequenceSucceeded does not mean cleanup or alarm completion.
+Repeated valid success for a previously solved index does not write or advance.
+Progress and checkpoints accept only the current identity; all changed records
+validate before assignment and preserve monotonic updatedAt.
+
+Persist record through the existing session/repository layer before presenting a
+next challenge. Discard an uncommitted candidate after failure and restore committed
+state. Repository CAS remains required for concurrent writers; this value has no
+storage owner or async effects. Future integration must serialize through the
+existing application owner and reapply events to freshly loaded state on conflict.
+The coordinator does not activate sessions or implement engines, UI navigation,
+AlarmKit, AVFoundation, audio, disk storage or lifecycle cleanup.

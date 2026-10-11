@@ -449,3 +449,16 @@ picker wheels; assertions were not weakened to obtain a green result.
 Physical VoiceOver, Settings, daemon behavior, firing, sound and file protection
 remain DEVICE REQUIRED. Final documentation HEAD must pass its own complete CI;
 its matching run is supplied in the final task report. STOP after Gate 6.
+## Stage 7 challenge framework — evidence pending
+
+ChallengeCoordinatorTests adds 34 executions: 15 complete/restored ordered sequences,
+15 invalid-identity/order matrices, and four focused adversarial tests (progress and
+checkpoint restoration, atomic timestamp rejection, inactive sessions, repository
+failure/relaunch). Existing 173 tests remain unchanged. Success moves to completing;
+five cancellation IDs remain until the existing lifecycle cleanup confirms them.
+
+Risks reviewed: stale occurrence callback, future index, duplicate callback after
+relaunch, checkpoint carrying into the next challenge, failed durable write. Tests
+bind identity, assert no mutation on failure, restore exact input, clear checkpoints
+on success and discard failed candidates. No earlier model defect was identified.
+Focused suite and full exact-HEAD CI pending. Device behavior and engines untested.
