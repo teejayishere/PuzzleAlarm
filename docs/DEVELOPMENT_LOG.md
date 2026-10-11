@@ -621,3 +621,37 @@ native suite and includes their log in diagnostics. Source review/diff checks on
 locally (Windows has no Swift/Xcode). Automated, Xcode and Simulator repair evidence
 PENDING; Gate 6 remains invalid until complete matching CI passes. Device NOT RUN.
 Coverage policy unchanged. Stop after Gate 6 closeout; do not begin Stage 8.
+
+## Gate 6 repair — PASS at immutable implementation revision
+
+Revision f1c2a136cdb7b75af55dc307cae312726d526b54:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38177986695 — SUCCESS.
+Every workflow step passed; focused authorization validation preceded the full
+native suite. The original authorization/large-text test passed twice (focused and
+full); the controlled pending-request test passed in application, focused and full
+runs. 123 core + 42 iOS unit/integration + 9 UI = 174 distinct tests. Focused reruns
+are not double-counted. The only new declaration is the pending-request regression.
+
+Source: test synchronization defect corrected with the existing bounded label
+predicate before the original exact Authorized assertion. All prior assertions
+remain. DEBUG-only scheduler hook controls request completion for the regression;
+production view/store/adapter/core behavior is unchanged. It proves a delivered
+request can retain Not requested while awaiting completion and produce Authorized
+only afterward, with exactly one request and no error. This validates the missing
+completion contract; no evidence justified altering product permission/busy logic.
+
+Automated: all tests pass. Core coverage unchanged 1840/1852 (99.35%); existing 12
+uncovered-count classifications remain. Application coverage unchanged 431/445
+(96.85%); no coverage policy or warning rule weakened.
+Xcode: reproducible generation, package/build, Debug/Release, platform compilation,
+usage description, Release fixture exclusion and diagnostics all pass. Xcode 26.6,
+Swift 6.3.3. No compiler/destination warnings; three SDK metadata advisories reported.
+Simulator: all native management/accessibility/authorization flows pass.
+Physical device: NOT RUN; existing device-required items remain unverified.
+
+Earliest affected stage was Stage 6 test validation; Gate 6 and closeout acceptance
+are restored on this line by the complete replay, with Gates 0–5 regressions also
+passing. No new feature stage begun. Main and the Stage 7 branch are preserved.
+The evidence-only follow-up must receive its own complete exact-HEAD workflow,
+reported with matching SHA/run in the final task answer. No source/test changes
+accompany that follow-up. STOP after Gate 6 closeout; do not begin Stage 8.

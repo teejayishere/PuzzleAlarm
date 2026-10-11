@@ -1,11 +1,40 @@
 # Project state
 
-Current stage: 6 — Alarm Management UI + Application Integration REOPENED
-Last passing gate: Gate 5; historical Gate 6 passes retained below, current Gate 6 invalidated
-Gates 0–5: core/build/platform regression checks passed; final diagnostics were skipped after UI failure
-Invalidated gates: Gate 6 and dependent acceptance; earliest affected stage is Stage 6 UI validation
-Blocker: None. User authorized Stage 6 repair; focused and complete exact-HEAD validation pending.
-Stop boundary: Gate 6 repair validation PENDING. Stop after closeout; do not begin Stage 8.
+Current stage: 6 — Alarm Management UI + Application Integration COMPLETE
+Last passing gate: Gate 6 — restored by exact-revision repair evidence below
+Gates 0–6: full workflow replayed successfully for the repair revision below
+Invalidated gates: None on this Gate 6 line; Gate 6 closeout acceptance restored
+Blocker: None
+Stop boundary: STOP after Gate 6 closeout. No Stage 7 work on this line; do not begin Stage 8.
+
+## Gate 6 repair acceptance — PASS
+
+Revision: f1c2a136cdb7b75af55dc307cae312726d526b54
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38177986695
+Result: SUCCESS, every step of the complete required workflow for that exact SHA.
+
+Source: the UI test asserted an asynchronous authorization result immediately
+after tapping. It now uses the existing bounded label predicate before retaining
+the original Authorized equality assertion. No assertion was removed or weakened.
+A DEBUG-only scheduler hook and controlled-continuation regression verify that
+Not requested is legitimate after one delivered request while completion is held;
+releasing and awaiting completion yields Authorized, one request and no error.
+Production view/store/adapter/core behavior remains unchanged.
+
+Automated: focused authorization UI and pending-request regression PASS before
+the full native suite; 123 core + 42 iOS + 9 UI = 174 distinct tests PASS. Reruns
+are excluded. Core 1840/1852 (99.35%); application 431/445 (96.85%), unchanged.
+No coverage policy weakened; prior uncovered-count classifications remain valid.
+Xcode: reproducible generation, Debug/Release, platform compilation, usage
+description, Release fixture exclusion and diagnostics PASS. Xcode 26.6 / Swift
+6.3.3. No compiler/destination warnings; three known SDK metadata advisories.
+Simulator: original authorization/large-text test PASS in focused and full runs;
+all other native management and integration flows PASS. Physical device NOT RUN.
+
+Gate 6 and closeout acceptance restored on this line; Gates 0–5 regressions also
+passed. Main and codex/stage-7-challenge-framework remain unchanged. No Stage 8
+work begun. The final documentation-only follow-up must pass its own complete
+exact-HEAD workflow; the final task report supplies that matching SHA/run.
 
 ## Prior closeout attempt — FAILURE / BLOCKED
 
@@ -163,5 +192,5 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 
 ## Next action
 
-STOP at blocked Gate 6 closeout. Diagnose and repair the authorization UI failure, run focused validation, then replay Gate 6 and dependent gates in order. Do not begin Stage 7.
-User authorized repair. No device or authentication action is currently required.
+STOP after repaired Gate 6 closeout. Final documentation-only HEAD must pass its own complete workflow before the task report. Do not begin Stage 8.
+No user action is currently required.

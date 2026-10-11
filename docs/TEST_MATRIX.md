@@ -449,3 +449,25 @@ picker wheels; assertions were not weakened to obtain a green result.
 Physical VoiceOver, Settings, daemon behavior, firing, sound and file protection
 remain DEVICE REQUIRED. Final documentation HEAD must pass its own complete CI;
 its matching run is supplied in the final task report. STOP after Gate 6.
+### Gate 6 authorization synchronization repair — PASS
+
+Implementation f1c2a136cdb7b75af55dc307cae312726d526b54:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38177986695 — SUCCESS.
+
+| Evidence | Verified result |
+| --- | --- |
+| Original authorization/large-text UI test | PASS in focused and full native runs; all assertions preserved |
+| Controlled pending-request regression | PASS; delivered request retains Not requested while pending, then Authorized after completion, exactly one request |
+| Full tests | 123 core + 42 iOS + 9 UI = 174 distinct tests; reruns excluded |
+| Core coverage | 1840/1852 (99.35%); prior 12 uncovered counts unchanged |
+| Application behavior coverage | 431/445 (96.85%); production files unchanged |
+| Xcode/Simulator | All workflow steps PASS, including Debug/Release, fixture exclusion and diagnostics |
+| Physical device | NOT RUN |
+
+The earliest defect was the Stage 6 test's synchronous assertion of an asynchronous
+result. Existing bounded expectLabel synchronization is added before the original
+Authorized equality assertion; no retry tap, sleep or accepted-outcome weakening.
+The DEBUG-only scheduler pause makes pending/completed state deterministic. No
+production permission/busy behavior, core, coverage policy or diagnostic rule changed.
+Gate 6 closeout restored by full replay; no feature-stage advance. The final
+source-identical documentation commit requires its own full matching CI.
