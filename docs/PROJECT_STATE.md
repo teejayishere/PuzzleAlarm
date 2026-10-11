@@ -1,13 +1,29 @@
 # Project state
 
-Current stage: 6 — Alarm Management UI + Application Integration COMPLETE
-Last passing gate: Gate 6 — restored by exact-revision repair evidence below
-Gates 0–6: full workflow replayed successfully for the repair revision below
-Invalidated gates: None on this Gate 6 line; Gate 6 closeout acceptance restored
-Blocker: None
+Current stage: 6 — Alarm Management UI + Application Integration REOPENED
+Last passing gate: Gate 5; historical Gate 6 repair PASS retained below, current Gate 6 reopened
+Gates 0–5: build/core/platform checks passed; final diagnostics skipped after new UI failure
+Invalidated gates: Gate 6 and current closeout acceptance; second Stage 6 UI helper defect
+Blocker: None; lazy-picker repair validation pending
 Stop boundary: STOP after Gate 6 closeout. No Stage 7 work on this line; do not begin Stage 8.
 
-## Gate 6 repair acceptance — PASS
+## Latest closeout attempt — FAILURE; lazy-picker repair pending
+
+Revision: 5ba669da207447e3ea5874dadaf825b810bcda97
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38179960936
+Result: FAILURE. Authorization passed focused/full again; edit test timed out on
+editor.sound readiness. Core 123 and iOS 42 PASS; UI 8 PASS, 1 FAIL. Coverage
+unchanged. Final fixture exclusion/diagnostics skipped after native failure.
+
+Earliest affected stage remains Stage 6 UI validation. The helper captured a generic
+fallback while the sound picker was outside the lazy Form, then retained that
+selection after scrolling materialized the concrete control. Role resolution now
+refreshes during/after scrolling and requires enabled plus hittable within the
+existing bound. A large-text/off-screen sound regression and focused edit replay
+are added. No production UI/store/core behavior or policy changed. Validation is
+pending; no PASS claimed for this new source. Physical device NOT RUN.
+
+## Authorization repair — historical PASS
 
 Revision: f1c2a136cdb7b75af55dc307cae312726d526b54
 CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38177986695

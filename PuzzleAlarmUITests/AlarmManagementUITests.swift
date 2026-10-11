@@ -27,22 +27,31 @@ final class AlarmManagementUITests: XCTestCase {
         let end = form.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: down ? 0.7 : 0.3))
         start.press(forDuration: 0.1, thenDragTo: end)
     }
-    private func tap(_ app: XCUIApplication, _ id: String) {
+    private func control(_ app: XCUIApplication, _ id: String) -> XCUIElement {
         let popup = app.popUpButtons.matching(identifier: id).firstMatch
         let button = app.buttons.matching(identifier: id).firstMatch
-        let target = popup.exists ? popup : (button.exists ? button : element(app, id))
+        return popup.exists ? popup : (button.exists ? button : element(app, id))
+    }
+    private func tap(_ app: XCUIApplication, _ id: String) {
+        var target = control(app, id)
         _ = target.waitForExistence(timeout: 3)
         for _ in 0..<6 {
+            target = control(app, id)
             if target.exists && target.isHittable { break }
             scroll(app, down: false)
         }
         for _ in 0..<6 {
+            target = control(app, id)
             if target.exists && target.isHittable { break }
             scroll(app, down: true)
         }
+        // Form rows are lazy: the concrete control may not exist until scrolling.
+        // Resolve its role again rather than retaining the off-screen fallback.
+        target = control(app, id)
         XCTAssertTrue(target.waitForExistence(timeout: 5), id + "\n" + app.debugDescription)
-        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: target)
-        XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 10), .completed, id)
+        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: target)
+        XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 10), .completed,
+                       id + "\n" + target.debugDescription + "\n" + app.debugDescription)
         if target.elementType == .switch {
             let inner = target.switches.firstMatch
             if inner.exists { inner.tap() }
@@ -235,5 +244,23 @@ final class AlarmManagementUITests: XCTestCase {
         XCTAssertEqual(denied.staticTexts["authorization.status"].label, "Denied")
         XCTAssertTrue(denied.buttons["authorization.settings"].exists)
         XCTAssertFalse(denied.buttons["authorization.request"].exists)
+    }
+
+    func testSoundPickerAfterChallengeRowsPushItOffScreen() {
+        let app = launch("lazySound", scenario: "healthy", largeText: true)
+        firstRow(app).tap()
+        choose(app, "editor.mode", "Challenges Required")
+        tap(app, "challenge.add.math")
+        tap(app, "challenge.add.memory")
+        tap(app, "challenge.add.qr")
+        // Return to the top so sound must be brought into the visible Form again.
+        for _ in 0..<6 { scroll(app, down: true) }
+        let offscreen = element(app, "editor.sound")
+        XCTAssertFalse(offscreen.exists && offscreen.isHittable)
+        choose(app, "editor.sound", "Rapid Beeps")
+        tap(app, "editor.save")
+        XCTAssertTrue(firstRow(app).waitForExistence(timeout: 10))
+        XCTAssertTrue(firstRow(app).label.contains("Rapid Beeps"))
+        XCTAssertTrue(firstRow(app).label.contains("Math → Memory → QR Code"))
     }
 }

@@ -105,7 +105,7 @@ jobs:
             -only-testing:PuzzleAlarmTests/AlarmStoreTests -only-testing:PuzzleAlarmTests/AlarmEditorDraftTests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/application-tests.log"
-      - name: Run focused authorization regression and native UI test
+      - name: Run focused Gate 6 authorization and lazy-picker regressions
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: |
@@ -115,6 +115,8 @@ jobs:
             -derivedDataPath DerivedData -resultBundlePath TestResults/Authorization.xcresult \
             -only-testing:PuzzleAlarmTests/AlarmStoreTests/testAuthorizationRemainsUnrequestedUntilPendingRequestCompletes \
             -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testAuthorizationAndLargeTextControls \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditChangesConfigurationWithoutChangingIdentity \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testSoundPickerAfterChallengeRowsPushItOffScreen \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/authorization-tests.log"
       - name: Run platform capability and native shell tests

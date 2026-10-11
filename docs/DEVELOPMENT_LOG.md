@@ -655,3 +655,26 @@ passing. No new feature stage begun. Main and the Stage 7 branch are preserved.
 The evidence-only follow-up must receive its own complete exact-HEAD workflow,
 reported with matching SHA/run in the final task answer. No source/test changes
 accompany that follow-up. STOP after Gate 6 closeout; do not begin Stage 8.
+
+## Gate 6 final evidence run — new lazy-control failure; recurse within Stage 6
+
+Revision 5ba669da207447e3ea5874dadaf825b810bcda97:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38179960936 — FAILURE.
+Authorization passed in focused/full native runs again; its repair is preserved.
+The edit test instead failed at the tap helper's enabled wait for editor.sound.
+The log shows Popup/Button queries both absent before scrolling, a generic Any
+fallback captured, then the sound Button materialized after scrolling. The helper
+retained its pre-scroll selection rather than resolving the now-present control.
+The product picker has no independent disabled condition and the draft-only edits
+issue no store effects; there is no evidence to change production sound behavior.
+
+Reopened Gate 6/current closeout. Source fix: resolve the concrete role during and
+after bounded scrolling, require both enabled and hittable within the same existing
+10-second bound, and include target/app hierarchy in failure diagnostics. No repeated
+business taps, longer timeout, sleep, weakened assertion or product change.
+Added a native regression using large text and three challenge rows: return to the
+Form top, verify sound is off-screen, scroll/select/save and verify exact sound and
+challenge order. Focused CI now includes authorization, the failing edit test, and
+this lazy-picker regression before the full native suite. Coverage policy unchanged.
+Source review/diff only locally; fresh automated/Xcode/Simulator evidence pending.
+Main and the Stage 7 branch preserved. Stop after Gate 6; no Stage 8 work.
