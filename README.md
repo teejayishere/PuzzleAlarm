@@ -4,7 +4,7 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 6 implements native alarm management over the durable Stage 5 lifecycle coordinator. See PROJECT_STATE for gate acceptance and exact CI evidence. Real-device alarm behavior remains unverified.**
+**Stage 7 adds the generic challenge framework over durable sessions. See PROJECT_STATE for gate acceptance and exact CI evidence. Engines and real-device alarm behavior remain unverified.**
 
 ## Evidence and scope
 
@@ -12,7 +12,7 @@ See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 [TEST_MATRIX](docs/TEST_MATRIX.md) distinguishes automated evidence from unimplemented
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
-See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. Stage 7 challenge execution has not started.
+See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. Stage 7 provides ordered coordination and restoration; challenge engines remain deferred.
 
 Implemented in dependency-free PuzzleAlarmCore:
 
@@ -22,6 +22,7 @@ Implemented in dependency-free PuzzleAlarmCore:
 - Deterministic local-time scheduling with explicit Gregorian calendar/timezone and DST rules.
 - Exactly five backup-plan entries at T, T+60s, T+120s, T+180s and T+240s.
 - Codable validation, recovery-state round trips and behavioral/invariant tests.
+- Generic ChallengeCoordinator with identity-bound events, all 15 ordered sequences, durable progress/checkpoint restoration and idempotent success.
 
 The app includes list/create/edit/enable/disable/delete, ordered challenge settings,
 authorization/status/retry and durable reload. Mutations use one lifecycle owner.
@@ -36,7 +37,7 @@ has been verified.
 CI uses a standard macos-26 runner, prints macOS/Xcode/SDK/Swift versions, parses
 the package, builds with warnings as errors, runs Swift tests and reports core
 line coverage. It also generates the Xcode project, builds the iOS app and runs
-seven platform capability tests, an iOS disk round-trip and one Simulator launch test. No paid runners, runtime dependencies or signing
+platform capability and disk integration tests, application state/draft tests, and native alarm management UI tests. No paid runners, runtime dependencies or signing
 credentials. Private-repository execution is guarded out to preserve the $0 rule.
 
 A local Mac or large Windows Swift toolchain is unnecessary for ordinary work.

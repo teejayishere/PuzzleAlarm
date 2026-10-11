@@ -1,11 +1,47 @@
 # Project state
 
-Current stage: 7 — Challenge Framework IMPLEMENTED; validation pending
-Last passing gate: Gate 6 — PASS; final documentation revision c571bb5 validated by run 38110244628
-Gates 0–5: replayed successfully in the same full workflow
-Earlier gates invalidated by Stage 6: None
+Current stage: 7 — Challenge Framework COMPLETE
+Last passing gate: Gate 7 — PASS at the exact implementation revision below
+Gates 0–6: replayed successfully in the same full workflow
+Earlier gates invalidated by Stage 7: None
 Blocker: None
-Stop boundary: Gate 7. Stage 8 must not begin.
+Stop boundary: STOP after Gate 7. Stage 8 NOT STARTED.
+
+## Stage 7 acceptance evidence
+
+Revision: c35f2c339fb11c42b76db4febb7bae903aa06f8f
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38161005452
+Result: SUCCESS, full workflow on the free standard macos-26 public runner.
+Toolchain: Xcode 26.6, Apple Swift 6.3.3.
+
+Source: Foundation-only ChallengeCoordinator over the existing PersistedSession.
+Ordered events bind session UUID, index and kind. Exact restoration preserves
+configuration, counters and checkpoints. Valid duplicate success does not advance
+or change timestamps. Changed records validate before assignment; completion
+enters completing and leaves all backup cleanup to AlarmLifecycleCoordinator.
+No earlier model/schema/lifecycle defect identified; no gate invalidated.
+
+Automated: focused six coordinator tests PASS, with 34 case executions: two
+15-order matrices and four adversarial tests. Full 129 core tests PASS; 41 iOS
+unit/integration and 9 UI tests PASS (179 distinct tests; focused reruns excluded).
+Swift Testing reports parameterized declarations as tests; the 34 coordinator
+cases are not counted as 34 distinct declarations. Coordinator coverage 58/58
+(100%); core coverage 1898/1910 (99.37%). The prior 12 uncovered counts remain
+unchanged and classified in TEST_MATRIX; no new uncovered coordinator line.
+
+Xcode: reproducible generation, package/build, Debug and Release, AlarmKit/App
+Intents, usage description and Release fixture exclusion PASS. No compiler or
+destination warnings; three known SDK metadata advisories reported explicitly.
+Simulator: all existing native state/draft, integration and management flows PASS.
+Application behavior coverage remains 431/445 lines (96.85%). This does not claim
+challenge execution UI or engine behavior.
+Physical device: NOT RUN. Engines, camera, audio and final routing NOT IMPLEMENTED.
+
+The final documentation-only follow-up requires its own complete exact-HEAD CI;
+the final task report supplies that matching SHA/run. No source/test changes
+accompany that follow-up. Work is on codex/stage-7-challenge-framework; main was
+not changed. Automatic approval review rejected default-branch publication, so
+CI validation used an isolated branch instead.
 
 ## Stage 6 acceptance evidence
 
@@ -107,7 +143,7 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 - Corrupt/lost ownership blocks safe automatic reconstruction. Unknown app-owned
   IDs are reported, never assigned invented parent/session links.
 - Sound identifiers map to future .caf resources; no audio files/playback implemented.
-- Engines, camera, sound playback and final intent routing in Stage 7+ remain
+- Challenge engines, camera, sound playback and final intent routing in Stage 8+ remain
   unimplemented. Tests do not claim these features.
 - Device required: authorization, real scheduling/firing, lock screen, Silent/Focus,
   Stop, snapshots/reconciliation, intent delivery, audio and file protection/power loss.
@@ -116,5 +152,5 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 
 ## Next action
 
-Run focused ChallengeCoordinator tests, then the complete exact-HEAD workflow. Stop after Gate 7 PASS.
+STOP after Gate 7. Validate the documentation-only follow-up at its exact HEAD, then report; do not begin Stage 8.
 No user action is currently required.

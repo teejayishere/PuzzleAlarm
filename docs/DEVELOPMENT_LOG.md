@@ -573,3 +573,34 @@ Focused coordinator validation precedes the full package/Xcode/Simulator workflo
 Local evidence: diff check/source review only; Windows has no Swift toolchain.
 Automated/Xcode/Simulator evidence PENDING; physical-device evidence NOT RUN.
 Stop after Gate 7; do not begin Stage 8.
+
+## Stage 7 full acceptance — PASS, stop before Stage 8
+
+Implementation c35f2c339fb11c42b76db4febb7bae903aa06f8f:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38161005452 — SUCCESS.
+Focused coordinator tests preceded full package and native regression validation.
+Six new test declarations execute 34 cases (two 15-order matrices plus four
+adversarial tests). Full workflow reports 129 core + 41 iOS + 9 UI = 179 distinct
+tests; parameterized cases and focused reruns are not added to that total.
+
+Source: strict UUID/index/kind identity, ordered transitions, exact checkpoint/
+progress restoration, validated candidate assignment, duplicates as semantic no-ops.
+Automated: all tests pass; coordinator 58/58 lines, core 1898/1910 = 99.37%.
+Coverage audit: no new uncovered lines; prior 12 counts retain their classifications.
+Xcode: reproducible generation, package, Debug/Release, AlarmKit/App Intents,
+usage description, fixture exclusion and diagnostics pass. Xcode 26.6 / Swift 6.3.3.
+Simulator: all native state/draft/integration/management regressions pass.
+Application behavior coverage unchanged at 431/445 = 96.85%.
+No compiler/destination warnings; three known SDK metadata advisories remain.
+Physical-device evidence NOT RUN; engines/audio/camera/routing remain deferred.
+
+No earlier defect found; no gate invalidated. Prior gates replayed in the same
+full workflow. Source self-review and adversarial tests require candidate commit
+before presentation and restoration of authoritative state after failed writes.
+No engine, UI or external effect knowledge entered the coordinator.
+
+Automatic review rejected pushing to main; an isolated codex/stage-7-challenge-framework
+branch was approved and used for CI, preserving the default branch. Final README,
+architecture, test matrix, state, log and device-plan evidence is documentation-only.
+Validate that final commit with its own full exact-HEAD workflow before reporting.
+STOP after Gate 7 PASS. Stage 8 has not begun.

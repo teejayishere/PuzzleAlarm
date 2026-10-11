@@ -54,3 +54,11 @@ https://github.com/teejayishere/PuzzleAlarm/actions/runs/37728785501 passed all 
 native UI tests and platform/unit checks with injected external effects. This does
 not satisfy any DEVICE REQUIRED item above. No physical iPhone validation was run.
 Stage 7 challenge execution is not implemented and is outside this acceptance.
+
+## Stage 7 framework boundary — DEVICE REQUIRED, not run
+
+Core coordination is tested with supplied trusted events and encoded session state.
+No challenge engines, final routing or execution UI exists yet. Future device work
+must verify termination during each engine phase, durable commits before presenting
+progression, stale callbacks across occurrence routing, and real backup cleanup
+only after every challenge succeeds. Core tests are not camera/audio/device evidence.

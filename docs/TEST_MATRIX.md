@@ -462,3 +462,22 @@ relaunch, checkpoint carrying into the next challenge, failed durable write. Tes
 bind identity, assert no mutation on failure, restore exact input, clear checkpoints
 on success and discard failed candidates. No earlier model defect was identified.
 Focused suite and full exact-HEAD CI pending. Device behavior and engines untested.
+
+### Stage 7 acceptance — full workflow PASS
+
+c35f2c339fb11c42b76db4febb7bae903aa06f8f:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38161005452 — SUCCESS.
+Six new Swift Testing declarations exercise 34 cases, including every one of the
+15 allowed sequences in ordered/restored completion and rejection matrices.
+129 core + 41 iOS unit/integration + 9 UI = 179 distinct reported tests. The prior
+173 are preserved; parameter cases/focused reruns are not double-counted.
+Coordinator coverage 58/58 (100%); core 1898/1910 (99.37%). The earlier 12 uncovered
+counts are unchanged; their existing classifications still apply. Application
+behavior coverage remains 431/445 (96.85%). All Xcode/Simulator regression and
+diagnostic checks passed; three known SDK metadata advisories remain reported.
+
+The coordinator imports only Foundation and has no engine/UI/platform/effect
+implementation references. The last success leaves five cancellation IDs pending
+and completedAt nil; only confirmed lifecycle cleanup can finalize completion.
+No earlier-stage defect found or gate invalidated. No engine/device claims added.
+Final documentation-only HEAD requires its own full CI, supplied in the final report.
