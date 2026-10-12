@@ -28,6 +28,34 @@ final class MathStoreTests: XCTestCase {
             makeMathProblem: { _ in try MathProblem(id: UUID(), prompt: "2 + 3", expectedAnswer: 5) },
             context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
     }
+    func testProductionGeneratorAndRevokedAccessDoNotClaimExternalConfirmation() async throws {
+        let repository = InMemoryRepository()
+        let effects = try TestAlarmScheduler()
+        let identity = try await seed(repository, effects, count: 1)
+        effects.configure { $0.authorization = .denied }
+        let date = UITestEnvironment.now
+        let store = AlarmStore(repository: repository, scheduler: effects, clock: { date },
+            context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
+        await store.refresh()
+        XCTAssertFalse(store.confirmed)
+        await store.prepareMath(identity)
+        let engine = try MathEngine(restoring: XCTUnwrap(store.session(identity.sessionID)))
+        let problem = try XCTUnwrap(engine.problem)
+        XCTAssertFalse(problem.prompt.isEmpty)
+        XCTAssertFalse(store.confirmed)
+        let invalid = await store.submitMath("1.5", problemID: problem.id, identity: identity)
+        XCTAssertEqual(invalid, .invalid)
+        let result = await store.submitMath(String(problem.expectedAnswer), problemID: problem.id, identity: identity)
+        XCTAssertEqual(result, .completed)
+        XCTAssertEqual(store.session(identity.sessionID)?.session.phase, .completing)
+        XCTAssertFalse(store.confirmed)
+        XCTAssertTrue(effects.values.cancellations.isEmpty && effects.values.schedules.isEmpty)
+        XCTAssertEqual(effects.values.authorizationRequests, 0)
+        effects.configure { $0.authorization = .authorized }
+        await store.refresh()
+        XCTAssertEqual(store.session(identity.sessionID)?.session.phase, .completed)
+        XCTAssertEqual(effects.values.cancellations.count, 5)
+    }
     func testPrepareFailedWriteRetryRestorationDuplicatesAndCleanup() async throws {
         let repository = InMemoryRepository()
         let effects = try TestAlarmScheduler()

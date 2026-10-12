@@ -643,3 +643,24 @@ fixture exclusion and final diagnostics were not reached. Missing Shell.xcresult
 is a consequence of that compile failure, not independent coverage evidence.
 Added meaningful owner identity rejection and conflict-with-concurrent-answer tests
 from coverage/adversarial review. No production policy or assertion weakened.
+
+## Stage 8 implementation gate — PASS; coverage audit adds wiring regression
+
+299285dd09a308a7c8dbd99c5b4979ae6ba1bc91:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38275260888 — SUCCESS,
+every required step. Focused six Math declarations, application test and UI smoke
+PASS before the full regressions. 135 core + 42 iOS + 10 UI = 187 distinct tests.
+Core 2038/2051 (99.37%); MathEngine 79/80, MathLifecycle 61/61. App 474/492.
+Xcode 26.6 / Swift 6.3.3, generation, Debug/Release, SDK/platform compilation,
+usage description, Release fixture exclusion and diagnostics PASS. No compiler or
+destination warnings; three SDK metadata advisories reported. Simulator UI PASS.
+Physical device NOT RUN. No earlier gate invalidation identified.
+
+Coverage/adversarial audit adds one meaningful native regression: production Math
+factory wiring (rather than only injected deterministic problems), revoked alarm
+access while solving, and confirmation remaining false after durable Math writes.
+Durable success remains completing until authorization permits lifecycle cleanup.
+This test-only addition requires focused/full validation at its own exact HEAD.
+The only new uncovered core count is a compiler-generated UnboundedRange closure;
+unsigned answer behavior is exercised directly. The redundant Math-kind throw is
+unreachable after engine/current-identity validation; no artificial fault hook added.
