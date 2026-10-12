@@ -664,3 +664,33 @@ This test-only addition requires focused/full validation at its own exact HEAD.
 The only new uncovered core count is a compiler-generated UnboundedRange closure;
 unsigned answer behavior is exercised directly. The redundant Math-kind throw is
 unreachable after engine/current-identity validation; no artificial fault hook added.
+
+## Stage 8 audit acceptance — PASS; documentation closeout
+
+e42bdaeea8c2a47d0cabe3d1700b323b01172347:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38278057686 — SUCCESS.
+Every step passed. Focused six Math declarations (ten case executions), two native
+application tests and UI smoke preceded full core/native regressions. Distinct
+count: 135 core + 43 iOS + 10 UI = 188; nine added declarations since Stage 7.
+Production factory/revoked-access test confirms durable Math success remains
+completing and scheduler-unconfirmed until authorized lifecycle cleanup succeeds.
+
+Core 2038/2051 (99.37%); MathEngine 79/80, MathLifecycle 61/61. App 478/492 (97.15%).
+Uncovered audit is in TEST_MATRIX: prior classifications unchanged; generated
+UnboundedRange closure and unreachable defensive inline branch explained; meaningful
+identity, concurrent-write and production-wiring gaps tested without chasing 100%.
+Source review preserves Core boundaries, immutable snapshots, one owner, schema,
+progress authority and cleanup policy. No earlier defect or gate invalidation found.
+The Stage 8 test-only clock compile failure was repaired at its earliest cause and
+focused/full gates replayed; skipped checks were never represented as passes.
+
+Xcode: generation, Debug/Release, public SDK compilation, usage description, Release
+fixture exclusion, diagnostics PASS on Xcode 26.6 / Swift 6.3.3. No compiler or
+destination warnings; three known SDK metadata advisories reported. Simulator:
+focused/full Math typed-answer, relaunch and completion plus existing management
+regressions PASS. Device NOT RUN; no real delivery/audio/camera/durability claim.
+
+README, architecture, matrix, state, device plan and this log now record Stage 8.
+The documentation-only follow-up must pass the same complete workflow at its own
+exact HEAD. Final report supplies its SHA/run; do not commit again to self-reference.
+STOP after that verification. Stage 9 NOT STARTED. No user action required.

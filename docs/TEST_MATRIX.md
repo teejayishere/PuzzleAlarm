@@ -481,3 +481,68 @@ implementation references. The last success leaves five cancellation IDs pending
 and completedAt nil; only confirmed lifecycle cleanup can finalize completion.
 No earlier-stage defect found or gate invalidated. No engine/device claims added.
 Final documentation-only HEAD requires its own full CI, supplied in the final report.
+
+## Stage 8 Math test mapping
+
+- MathEngineGenerationBoundsAndIndependentAnswers: three seeded difficulty cases,
+  1,000 generated problems each, reproducible stream, operand/operator bounds and
+  independently evaluated answers. No property-testing dependency.
+- MathEngineInvalidWrongAndSignedAnswers: blanks, syntax, Unicode, overflow, wrong
+  answers, negative and explicit positive integer input; no mutation on rejection.
+- MathEngineThresholdRestoreAndDuplicate: thresholds 1/2/20, exact JSON checkpoint
+  restoration between answers, idempotent preparation, duplicate old problem,
+  checkpoint clearing, threshold completion without premature backup cleanup.
+- MathEngineRejectsForeignIdentityBadNextAndRegressingTimeAtomically: identity,
+  missing/current next UUID, atomic timestamp rejection and Math-to-QR boundary.
+- MathEngineOwnerPersistenceFailureAndConflictReplay: failed commit discards progress,
+  reload/CAS replay, durable duplicate/final duplicate, foreign/wrong-kind rejection,
+  no scheduling/cancellation effect from answer verification.
+- MathEngineConflictReplaysAgainstAlreadyAcceptedProblem: concurrent writer commits
+  the answer before CAS; replay preserves its next problem and returns stale.
+- MathStoreTests: failed initial/answer write, retry, restoration, wrong/duplicate,
+  pending cancellation errors, recovery and final cleanup of all five IDs.
+- MathChallengeUITests: native typed-answer smoke, blank/wrong rejection, progress,
+  durable process relaunch with exact next problem, final completion and no revival.
+
+Focused Math core/application/UI checks run before full core/native regression
+checks. Parameterized case executions and focused reruns are not counted as new
+unique test declarations. Automated/compile/Simulator acceptance and uncovered
+behavior audit will be recorded after the complete required workflow. Device NOT RUN.
+
+### Stage 8 acceptance and uncovered audit — PASS
+
+e42bdaeea8c2a47d0cabe3d1700b323b01172347:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38278057686 — SUCCESS,
+every required workflow step. Xcode 26.6 / Swift 6.3.3. Six new core declarations
+execute ten cases (including 3,000 generated problems), plus two application tests
+and one UI smoke test: nine added declarations, 135 + 43 + 10 = 188 distinct tests.
+All prior tests are retained; focused reruns and argument cases are not added again.
+Focused Math/core/application/UI checks preceded full regression validation.
+
+Core: 2038/2051 (99.37%). MathEngine 79/80; MathLifecycle 61/61. Prior 12 uncovered
+counts retain their classifications. The single new count is Swift's generated
+UnboundedRange closure at MathEngine input[...]; unsigned inputs are independently
+exercised in wrong/correct/threshold tests. The zero inline Math-kind throw cannot
+be reached after restoration plus current-identity validation; no unsafe mutation
+hook or redundant test was added to force it. Owner-level wrong-kind and missing
+session rejections, and CAS replay over an already-accepted problem, are meaningful
+behaviors and now tested. No new uncovered whole core source line remains in LCOV.
+
+App: 478/492 (97.15%): AlarmStore 214/219, AppEnvironment 23/27, AlarmEditorDraft
+84/88, AlarmStorePresentation 71/72, AlarmFormatting 86/86. Production Math factory
+wiring is now exercised, including revoked permission and unconfirmed external
+state while a due challenge succeeds. The original 14 uncovered app counts retain
+prior classifications (clock/timezone composition, environment setup/error/default
+closures, picker formatting and protected-session presentation); no new whole-line
+behavior count is uncovered. Foreign/stale UI identity guards are source-reviewed
+and enforced/tested in the owner. SwiftUI rendering is not exhaustively line-covered:
+Start Math and error/unsupported-next-kind messages are source-reviewed; preparation,
+failed commits and Math-to-QR transitions have behavioral tests. Hardware keyboard,
+VoiceOver, largest text and real alarm presentation remain device-required.
+
+Generation, Debug/Release, public SDK/platform compilation, usage description,
+fixture exclusion and diagnostics PASS; no compiler/destination warnings, three
+known SDK metadata advisories. Simulator smoke/relaunch/completion and all existing
+native regressions PASS. Physical device NOT RUN. No earlier defect/invalidation,
+coverage-policy relaxation or arbitrary 100% target. Stop after Gate 8 and exact-HEAD
+closeout; no Stage 9 implementation. Final documentation HEAD needs its own full CI.

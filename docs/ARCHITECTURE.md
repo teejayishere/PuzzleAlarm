@@ -1,6 +1,6 @@
 # Architecture
 
-Current architecture is described in the Stage 5 and Stage 6 sections below. Earlier sections
+Current architecture is described in the Stage 5–8 sections below. Earlier sections
 are the historical stage record; their deferred-work statements are superseded
 by those later sections. Exact passing implementation evidence is in PROJECT_STATE.md.
 
@@ -483,3 +483,35 @@ https://github.com/teejayishere/PuzzleAlarm/actions/runs/38161005452 (full PASS)
 All six coordinator tests (34 cases) passed before full regressions; 58/58
 coordinator executable lines covered. No earlier architecture was invalidated.
 Stage 8 has not started; no engine or challenge execution UI is claimed.
+
+## Stage 8 Math architecture
+
+MathProblem and MathEngine import Foundation only. Caller-supplied RNG and UUID
+produce bounded integer expressions: Easy 1...99 addition/subtraction, Medium the
+same plus 1...12 multiplication, Hard a parenthesized 2...12 product plus/minus
+1...99. Default configuration remains Medium/five correct. Numeric input accepts
+trimmed ASCII signed integers; blank/malformed/overflow and wrong answers do not
+mutate durable state. Negative answers are supported by the native keyboard.
+
+MathEngine reduces the existing PersistedSession through ChallengeCoordinator.
+ResumeCheckpoint.math stores the exact UUID, prompt and expected answer; progress
+remains exclusively in WakeUpSession. Preparing an existing checkpoint preserves
+it. A correct submission validates session/index/kind and current problem UUID,
+then atomically replaces counter plus next checkpoint, or records trusted success
+at threshold and clears the checkpoint. Duplicate old UUIDs cannot count twice.
+No repository schema change or engine knowledge in ChallengeCoordinator.
+
+MathLifecycle extends the existing AlarmLifecycleCoordinator owner. It uses the
+same busy exclusion and three-attempt CAS update loop. Each conflict reloads and
+reapplies answer verification against committed state. No Math mutation performs
+OS effects or treats a write as scheduler-confirmation evidence. AlarmStore owns
+presentation, adopts only committed state and reloads after failure. The existing
+lifecycle cleanup is requested after durable success; failed cleanup remains pending.
+
+ContentView offers Continue Math for active Math records. MathChallengeView accepts
+typed answers, displays exact progress, handles save/answer errors and distinguishes
+Math success, pending cleanup and completed wake-up. Memory/QR engine navigation,
+final intent routing and audio remain deferred. UI fixtures inject only problems,
+clock and external alarms; production business logic and disk storage remain real.
+Physical-device delivery, durability under file protection/power loss and hardware
+accessibility are unverified. Current acceptance evidence is in PROJECT_STATE.

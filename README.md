@@ -4,7 +4,7 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 7 adds the generic challenge framework over durable sessions. See PROJECT_STATE for gate acceptance and exact CI evidence. Engines and real-device alarm behavior remain unverified.**
+**Stage 8 adds the Math engine and durable typed-answer flow. See PROJECT_STATE for gate acceptance and exact CI evidence. Physical-device alarm behavior remains unverified.**
 
 ## Evidence and scope
 
@@ -12,7 +12,7 @@ See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 [TEST_MATRIX](docs/TEST_MATRIX.md) distinguishes automated evidence from unimplemented
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
-See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. Stage 7 provides ordered coordination and restoration; challenge engines remain deferred.
+See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. The generic coordinator and Math engine provide ordered progression and restoration; Memory/QR engines remain deferred.
 
 Implemented in dependency-free PuzzleAlarmCore:
 
@@ -23,10 +23,12 @@ Implemented in dependency-free PuzzleAlarmCore:
 - Exactly five backup-plan entries at T, T+60s, T+120s, T+180s and T+240s.
 - Codable validation, recovery-state round trips and behavioral/invariant tests.
 - Generic ChallengeCoordinator with identity-bound events, all 15 ordered sequences, durable progress/checkpoint restoration and idempotent success.
+- Math generation with injected randomness, bounded difficulties, typed integer validation, atomic progress/problem checkpoints and duplicate protection.
 
 The app includes list/create/edit/enable/disable/delete, ordered challenge settings,
 authorization/status/retry and durable reload. Mutations use one lifecycle owner.
-Challenge engines, camera, final intent routing and sound files belong to later gates. No real alarm, device installation or camera/audio behavior
+Active Math sessions can be opened, solved and restored after relaunch. Memory/QR
+engines, camera, final intent routing and sound files belong to later gates. No real alarm, device installation or camera/audio behavior
 has been verified.
 
 ## Free CI-first development

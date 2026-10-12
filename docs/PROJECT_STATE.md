@@ -1,11 +1,48 @@
 # Project state
 
-Current stage: 7 — Challenge Framework COMPLETE
-Last passing gate: Gate 7 — PASS at the exact implementation revision below
-Gates 0–6: replayed successfully in the same full workflow
-Earlier gates invalidated by Stage 7: None
+Current stage: 8 — Math COMPLETE at the verified audit revision below
+Last passing gate: Gate 8 — PASS at e42bdaeea8c2a47d0cabe3d1700b323b01172347
+Gates 0–7: replayed successfully in the same full workflow
+Earlier gates invalidated by Stage 8: None
 Blocker: None
-Stop boundary: STOP after Gate 7. Stage 8 NOT STARTED.
+Stop boundary: STOP after Gate 8 and documentation exact-HEAD CI closeout. Stage 9 NOT STARTED.
+
+## Stage 8 acceptance evidence
+
+Revision: e42bdaeea8c2a47d0cabe3d1700b323b01172347
+CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38278057686
+Result: SUCCESS, every required step on the free standard macos-26 public runner.
+Toolchain: Xcode 26.6 / Apple Swift 6.3.3.
+
+Source: Foundation-only bounded Math generation with injected randomness/UUIDs,
+typed signed-integer validation, atomic progress/problem persistence through the
+existing lifecycle owner and coordinator, stale/duplicate protection and exact
+relaunch restoration. Native active-session continuation and Math UI implemented.
+Success invokes existing cleanup after durable commit; pending cleanup remains
+distinct from completed wake-up. Permission revocation cannot make a Math write
+claim external scheduler confirmation. No schema or earlier architecture change.
+
+Automated: focused six Math declarations (ten parameterized case executions),
+two application tests and UI smoke PASS before full regressions. Full 135 core +
+43 iOS + 10 UI = 188 distinct tests; focused reruns/cases are not double-counted.
+Core 2038/2051 (99.37%); MathEngine 79/80, MathLifecycle 61/61. Application behavior
+478/492 (97.15%). Prior uncovered classifications remain; the one new core count
+is a compiler-generated UnboundedRange closure, with unsigned behavior exercised.
+Meaningful identity/CAS and production-factory/revoked-access gaps gained tests.
+Coverage policy and assertions were not weakened. No earlier gate invalidated.
+
+Xcode: reproducible generation, package, Debug/Release, SDK/platform compilation,
+usage description, Release fixture exclusion and diagnostics PASS. No compiler or
+destination warnings; three known SDK metadata advisories reported explicitly.
+Simulator: Math smoke passed focused/full; all existing native regressions PASS.
+Physical device: NOT RUN. AlarmKit delivery, file protection/power loss, hardware
+accessibility, lock screen, final intent routing, camera and audio remain unverified.
+Memory/QR engines remain deferred. No Stage 9 work begun.
+
+Work remains on codex/stage-7-challenge-framework; main was not changed. The final
+documentation-only commit requires its own full matching workflow. The final task
+report supplies that exact HEAD/run. Do not create another commit to self-reference
+its hash. Stop after that verification; no physical action required for Gate 8.
 
 ## Stage 7 acceptance evidence
 
@@ -143,19 +180,19 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 - Corrupt/lost ownership blocks safe automatic reconstruction. Unknown app-owned
   IDs are reported, never assigned invented parent/session links.
 - Sound identifiers map to future .caf resources; no audio files/playback implemented.
-- Challenge engines, camera, sound playback and final intent routing in Stage 8+ remain
+- Memory/QR engines, camera, sound playback and final intent routing in Stage 9+ remain
   unimplemented. Tests do not claim these features.
 - Device required: authorization, real scheduling/firing, lock screen, Silent/Focus,
   Stop, snapshots/reconciliation, intent delivery, audio and file protection/power loss.
 - No paid runner/service, local Windows Swift installation, credentials or signing
   material introduced. Unrelated Investment Dashboard was not modified.
 
-## Next action
+## Historical Stage 7 next action
 
 STOP after Gate 7. Validate the documentation-only follow-up at its exact HEAD, then report; do not begin Stage 8.
 No user action is currently required.
 
-## Stage 8 in progress — Gate 8 pending
+## Historical Stage 8 implementation start — Gate 8 was pending
 
 Current stage: 8 — Math implemented, validation pending.
 Starting verified HEAD: b0a2cffb5d349f04d13e068c1747843fcc714d6d.

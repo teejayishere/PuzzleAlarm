@@ -62,3 +62,22 @@ No challenge engines, final routing or execution UI exists yet. Future device wo
 must verify termination during each engine phase, durable commits before presenting
 progression, stale callbacks across occurrence routing, and real backup cleanup
 only after every challenge succeeds. Core tests are not camera/audio/device evidence.
+
+## Stage 8 Math — DEVICE REQUIRED, not run
+
+The Math engine and native typed-answer UI are implemented. Automated/Simulator
+evidence covers supplied active sessions, persistence and injected alarm cleanup;
+it does not establish real AlarmKit delivery, intent routing, power-loss durability
+or file protection. No physical iPhone action is required for Gate 8's automated
+acceptance; these device checks remain open for the later device gate:
+
+- Open a due Math session, type positive/negative answers with the real keyboard,
+  and check VoiceOver/largest Dynamic Type in portrait and landscape.
+- Terminate during a problem and after accepted progress; verify exact UUID/prompt,
+  count and immutable configuration restore without bypassing later challenges.
+- Interrupt storage/cleanup under actual file protection; verify a failed answer
+  does not advance and pending cleanup never displays completed wake-up.
+- After all configured challenges succeed, verify all five real alarms are cleaned
+  and the recurrence policy is respected. No CI/Simulator result proves this.
+
+Stage 9 has not begun. No Memory, camera, audio or final intent-routing claim added.
