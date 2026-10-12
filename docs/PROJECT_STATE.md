@@ -154,3 +154,15 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 
 STOP after Gate 7. Validate the documentation-only follow-up at its exact HEAD, then report; do not begin Stage 8.
 No user action is currently required.
+
+## Stage 8 in progress — Gate 8 pending
+
+Current stage: 8 — Math implemented, validation pending.
+Starting verified HEAD: b0a2cffb5d349f04d13e068c1747843fcc714d6d.
+Exact-HEAD CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38162525401 — SUCCESS.
+User authorization supersedes the historical Stage 7 stop boundary above.
+Last passing gate: 7. Earlier invalidations: none identified during source review.
+Source: pure Math engine, owner-serialized atomic progress/checkpoint writes,
+typed-answer UI and deterministic fixtures/tests implemented.
+Automated/compile/Simulator: PENDING current implementation CI. Device: NOT RUN.
+Stop after Gate 8 and its exact-HEAD evidence closeout. Stage 9 NOT STARTED.

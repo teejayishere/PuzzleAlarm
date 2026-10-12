@@ -25,15 +25,21 @@ final class AlarmStore {
     @ObservationIgnored private let context: @Sendable () throws -> ScheduleContext
     @ObservationIgnored private let clock: @Sendable () -> Date
     @ObservationIgnored private let makeID: @Sendable () -> UUID
+    @ObservationIgnored private let makeMathProblem: @Sendable (Difficulty) throws -> MathProblem
 
     init(repository: any PuzzleAlarmRepository, scheduler: any AlarmScheduling,
          clock: @escaping @Sendable () -> Date = { Date() },
          makeID: @escaping @Sendable () -> UUID = { UUID() },
+         makeMathProblem: @escaping @Sendable (Difficulty) throws -> MathProblem = { difficulty in
+             var random = SystemRandomNumberGenerator()
+             return try MathProblem.generate(difficulty: difficulty, id: UUID(), using: &random)
+         },
          context: @escaping @Sendable () throws -> ScheduleContext = {
              try ScheduleContext(timeZoneIdentifier: TimeZone.current.identifier)
          }) {
         self.repository = repository; self.scheduler = scheduler
         self.clock = clock; self.makeID = makeID; self.context = context
+        self.makeMathProblem = makeMathProblem
         authorization = scheduler.authorization
         coordinator = AlarmLifecycleCoordinator(repository: repository, scheduler: scheduler, clock: clock, makeID: makeID)
     }
@@ -52,6 +58,33 @@ final class AlarmStore {
     func currentDate() -> Date { clock() }
     func displayContext() throws -> ScheduleContext { try context() }
     func clearError() { errorMessage = nil; editWasSuperseded = false }
+    func session(_ id: UUID) -> PersistedSession? { state?.sessions.first { $0.session.id == id } }
+
+    func prepareMath(_ identity: ChallengeIdentity) async {
+        _ = await perform {
+            guard let record = self.session(identity.sessionID),
+                  case let .math(configuration) = record.session.currentChallenge else { throw DomainError.outOfOrder }
+            let problem = try self.makeMathProblem(configuration.difficulty)
+            self.state = try await self.coordinator.prepareMath(for: identity, problem: problem).state
+            return nil
+        }
+    }
+
+    func submitMath(_ text: String, problemID: UUID, identity: ChallengeIdentity) async -> MathSubmission? {
+        var outcome: MathSubmission?
+        let saved = await perform {
+            guard let record = self.session(identity.sessionID),
+                  case let .math(configuration) = record.session.currentChallenge else { throw DomainError.outOfOrder }
+            let next = try self.makeMathProblem(configuration.difficulty)
+            let result = try await self.coordinator.submitMath(text, problemID: problemID, for: identity, next: next)
+            outcome = result.1
+            self.state = result.0.state
+            return nil
+        }
+        guard saved else { return nil }
+        if outcome == .completed { await refresh() }
+        return outcome
+    }
     func reportError(_ error: any Error) { errorMessage = AlarmFormatting.error(error) }
 
     func refresh() async {

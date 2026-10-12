@@ -9,6 +9,17 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
+                if let state = store.state {
+                    ForEach(state.sessions.filter { record in
+                        record.session.phase == .active && record.session.currentChallenge?.kind == .math
+                    }, id: \.session.id) { record in
+                        Section("Wake-up challenge") {
+                            NavigationLink("Continue Math") {
+                                MathChallengeView(store: store, sessionID: record.session.id)
+                            }.accessibilityIdentifier("math.open")
+                        }
+                    }
+                }
                 Section("Alarm access") {
                     Text(AlarmFormatting.authorization(store.authorization)).accessibilityIdentifier("authorization.status")
                     if store.authorization == .notDetermined {

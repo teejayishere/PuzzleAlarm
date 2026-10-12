@@ -604,3 +604,29 @@ branch was approved and used for CI, preserving the default branch. Final README
 architecture, test matrix, state, log and device-plan evidence is documentation-only.
 Validate that final commit with its own full exact-HEAD workflow before reporting.
 STOP after Gate 7 PASS. Stage 8 has not begun.
+
+## Stage 8 Math — implementation, validation pending
+
+Starting branch codex/stage-7-challenge-framework was synchronized from GitHub.
+Starting HEAD b0a2cffb5d349f04d13e068c1747843fcc714d6d has complete SUCCESS
+workflow 38162525401. GitHub exact-revision evidence was read directly.
+
+MathProblem generation and MathEngine are Foundation-only. Randomness/UUIDs are
+injected. Easy uses 1...99 addition/subtraction; Medium adds 1...12 multiplication;
+Hard uses explicit parenthesized 2...12 products plus/minus 1...99. Signed integer
+input rejects blank, malformed and overflow; wrong answers preserve progress.
+Problem UUID and session/index/kind bind submissions. A correct answer atomically
+updates progress plus a fresh problem, or enters the existing success transition.
+No persistence schema change. The lifecycle owner serializes writes and replays
+bounded CAS conflicts against authoritative state. Failed writes discard candidates.
+
+Native Math UI accepts typed answers, displays progress and offers continuation of
+active Math sessions. Durable completion invokes existing cleanup; the UI reports
+pending cleanup distinctly. Math-to-other-kind navigation remains a deferred engine
+boundary. No Memory/QR engine, camera, audio or final intent routing work added.
+
+Source/diff review PASS locally. Windows Swift/Xcode unavailable; focused Math core,
+application and UI checks precede full regression validation on free macos-26 CI.
+Automated, compile and Simulator evidence PENDING. Physical device NOT RUN.
+No earlier defect identified or gate invalidated during initial source review.
+Stop after Gate 8 and exact-HEAD evidence closeout; do not begin Stage 9.

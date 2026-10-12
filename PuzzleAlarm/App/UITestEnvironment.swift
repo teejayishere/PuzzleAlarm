@@ -96,9 +96,31 @@ enum UITestEnvironment {
         }
         let fixedDate = now
         let store = AlarmStore(repository: repository, scheduler: scheduler, clock: { fixedDate },
+            makeMathProblem: { _ in try MathProblem(id: UUID(), prompt: "3 + 4", expectedAnswer: 7) },
             context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
         return AppEnvironment(store: store) {
             guard try await repository.load() == .missing else { return }
+            if scenario == "math" {
+                var draft = try AlarmEditorDraft(id: alarmID, now: now)
+                try draft.setMode(.challengesRequired)
+                try draft.add(.math, token: alarmID)
+                draft.sequence = try ChallengeSequence([.math(try MathConfiguration(requiredCorrect: 2))])
+                let definition = try draft.definition(at: now)
+                let ids = (0..<5).map { _ in UUID() }
+                var session = try WakeUpSession(id: UUID(), definition: definition,
+                    context: ScheduleContext(timeZoneIdentifier: "UTC"),
+                    plan: BackupPlan(at: now, ids: ids), createdAt: now)
+                try session.beginScheduling()
+                for id in ids { try session.beginScheduleAttempt(id: id); try session.recordScheduled(id: id) }
+                try session.arm(); try session.activate(at: now)
+                var engine = try MathEngine(restoring: PersistedSession(session: session, updatedAt: now))
+                try engine.prepare(MathProblem(id: UUID(), prompt: "2 + 3", expectedAnswer: 5),
+                                   for: engine.coordinator.currentIdentity!, at: now)
+                _ = try await repository.commit(RepositoryState(definitions: [definition], sessions: [engine.record]),
+                                                expecting: .missing)
+                scheduler.configure { $0.alarms = ids.map { .init(id: $0, state: .scheduled) } }
+                return
+            }
             if ["healthy", "disabled", "challenge", "failed", "enableFailure", "deleteFailure"].contains(scenario) {
                 var draft = try AlarmEditorDraft(id: alarmID, now: now)
                 draft.weekdays = [.monday, .tuesday, .wednesday, .thursday, .friday]
