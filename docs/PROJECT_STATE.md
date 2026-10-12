@@ -1,10 +1,10 @@
 # Project state
 
-Current stage: 6 — Alarm Management UI + Application Integration COMPLETE
-Last passing gate: Gate 6 — restored by combined repair evidence below
-Gates 0–6: complete ordered workflow replay passed for the combined repair revision below
-Invalidated gates: None on this Gate 6 line; Gate 0 environment and Gate 6 closeout restored
-Blocker: None
+Current stage: 6 — Alarm Management UI + Application Integration; closeout replay pending
+Last passing gate: Gate 6 at historical combined revision below; current HEAD is not accepted
+Gates 0–5: prior evidence retained; full ordered replay required for current HEAD
+Invalidated gates: Gate 6 closeout
+Blocker: Gate 6 live control readiness replay pending
 Stop boundary: STOP after Gate 6 closeout. No Stage 7 work on this line; do not begin Stage 8.
 
 ## Combined repair acceptance — PASS at immutable revision
@@ -258,3 +258,22 @@ autoclosures) are individually justified there. Coverage policy was not weakened
 
 STOP after repaired Gate 6 closeout. Final documentation-only HEAD must pass its own complete workflow before the task report. Do not begin Stage 8.
 No user action is currently required.
+
+## Final documentation HEAD readiness failure — Gate 6 invalidated
+
+Revision cb69168a0e2f8f1f5cd65827a907d718a6b3f696:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38185397402 — FAILURE.
+Authorization and pending-request unit regression PASS; off-screen sound regression
+PASS. Edit test fails at helper enabled-and-hittable predicate. Core 123 and focused
+application tests PASS; full native/final checks skipped, Shell.xcresult absent.
+
+Primary log shows a concrete Button after scrolling, direct hittability checks
+succeeded, and failure snapshot contains enabled-looking sound button fully inside
+editor. This differs from the earlier generic fallback. Root cause of the predicate
+inconsistency is not conclusively established; do not claim product failure or pass.
+Use live XCTest exists/isEnabled/isHittable polling consistently with scrolling,
+keeping all three requirements and original 10-second timeout. Failure diagnostics
+now explicitly report those properties. No app behavior, assertion or coverage change.
+Existing edit and forced off-screen regressions reproduce both lazy-row layouts.
+Focused then complete ordered Gates 0–6 validation is pending for this change.
+Prior green revision remains historical evidence only. Main/Stage 7 untouched.

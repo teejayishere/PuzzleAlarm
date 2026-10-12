@@ -49,9 +49,15 @@ final class AlarmManagementUITests: XCTestCase {
         // Resolve its role again rather than retaining the off-screen fallback.
         target = control(app, id)
         XCTAssertTrue(target.waitForExistence(timeout: 5), id + "\n" + app.debugDescription)
-        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: target)
+        // Use XCTest's live properties, just as the scrolling checks do. A KVC
+        // snapshot predicate can disagree with those checks after a lazy row appears.
+        let readyTarget = target
+        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            readyTarget.exists && readyTarget.isEnabled && readyTarget.isHittable
+        }, object: readyTarget)
         XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 10), .completed,
-                       id + "\n" + target.debugDescription + "\n" + app.debugDescription)
+                       id + " exists=\(target.exists) enabled=\(target.isEnabled) hittable=\(target.isHittable)\n"
+                       + target.debugDescription + "\n" + app.debugDescription)
         if target.elementType == .switch {
             let inner = target.switches.firstMatch
             if inner.exists { inner.tap() }

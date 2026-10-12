@@ -494,3 +494,22 @@ remain reported. Prior failed/cancelled revisions remain history, not passing ev
 The hosted launch failure was not used to change product behavior; source-identical
 fresh execution passed. Main/Stage 7 branch untouched; do not begin Stage 8.
 Final documentation-only HEAD must receive complete matching CI before final report.
+
+## Final documentation HEAD readiness failure — Gate 6 invalidated
+
+Revision cb69168a0e2f8f1f5cd65827a907d718a6b3f696:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38185397402 — FAILURE.
+Authorization and pending-request unit regression PASS; off-screen sound regression
+PASS. Edit test fails at helper enabled-and-hittable predicate. Core 123 and focused
+application tests PASS; full native/final checks skipped, Shell.xcresult absent.
+
+Primary log shows a concrete Button after scrolling, direct hittability checks
+succeeded, and failure snapshot contains enabled-looking sound button fully inside
+editor. This differs from the earlier generic fallback. Root cause of the predicate
+inconsistency is not conclusively established; do not claim product failure or pass.
+Use live XCTest exists/isEnabled/isHittable polling consistently with scrolling,
+keeping all three requirements and original 10-second timeout. Failure diagnostics
+now explicitly report those properties. No app behavior, assertion or coverage change.
+Existing edit and forced off-screen regressions reproduce both lazy-row layouts.
+Focused then complete ordered Gates 0–6 validation is pending for this change.
+Prior green revision remains historical evidence only. Main/Stage 7 untouched.
