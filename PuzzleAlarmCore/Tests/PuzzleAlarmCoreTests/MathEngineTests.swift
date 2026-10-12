@@ -149,5 +149,36 @@ func MathEngineThresholdRestoreAndDuplicate(_ count: Int) throws {
     #expect(try await owner.submitMath("5", problemID: uuid(90), for: identity, next: problem(92)).1 == .stale)
     #expect(try await owner.submitMath("5", problemID: uuid(91), for: identity, next: nil).1 == .completed)
     #expect(try await owner.submitMath("5", problemID: uuid(91), for: identity, next: nil).1 == .stale)
+    let invalid = ChallengeIdentity(sessionID: identity.sessionID, index: 0, kind: .qr)
+    await #expect(throws: DomainError.outOfOrder) {
+        try await owner.submitMath("5", problemID: uuid(91), for: invalid, next: nil)
+    }
+    let foreign = ChallengeIdentity(sessionID: uuid(230), index: 0, kind: .math)
+    await #expect(throws: DomainError.outOfOrder) { try await owner.prepareMath(for: foreign, problem: problem()) }
+    await #expect(throws: DomainError.outOfOrder) {
+        try await owner.submitMath("5", problemID: uuid(90), for: foreign, next: nil)
+    }
     #expect(effects.values.calls.isEmpty)
+}
+
+@Test func MathEngineConflictReplaysAgainstAlreadyAcceptedProblem() async throws {
+    var engine = try mathEngine()
+    let identity = try #require(engine.coordinator.currentIdentity)
+    let date = engine.record.updatedAt
+    try engine.prepare(problem(), for: identity, at: date)
+    let repository = FaultRepository()
+    _ = try await repository.commit(RepositoryState(sessions: [engine.record]), expecting: .missing)
+    _ = try engine.submit("5", problemID: uuid(90), for: identity, next: problem(91), at: date)
+    let concurrent = engine.record
+    await repository.interfereOnce { storage in
+        let read = try await storage.load()
+        guard case let .loaded(snapshot, _) = read else { return }
+        var state = snapshot.state
+        state.sessions[0] = concurrent
+        _ = try await storage.commit(state, expecting: read.version)
+    }
+    let owner = AlarmLifecycleCoordinator(repository: repository, scheduler: FakeAlarmScheduler(), clock: { date })
+    let result = try await owner.submitMath("5", problemID: uuid(90), for: identity, next: problem(92))
+    #expect(result.1 == .stale)
+    #expect(result.0.state.sessions.first == concurrent)
 }

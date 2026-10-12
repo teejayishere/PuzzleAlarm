@@ -630,3 +630,16 @@ application and UI checks precede full regression validation on free macos-26 CI
 Automated, compile and Simulator evidence PENDING. Physical device NOT RUN.
 No earlier defect identified or gate invalidated during initial source review.
 Stop after Gate 8 and exact-HEAD evidence closeout; do not begin Stage 9.
+
+## Stage 8 first native validation — test compile failure
+
+6cdef2db99e73682a7d11fba8c6906b1d809940a / Actions 38274650878: FAILURE.
+Focused Math core and full 134 core tests PASS. Debug/Release and usage description
+PASS. New MathStoreTests clock closure illegally referenced MainActor fixture now
+from a Sendable closure. Capture its Date value before closure construction, as in
+existing AlarmStoreTests. Earliest cause: Stage 8 test compilation, no earlier gate
+defect identified. Gate 8 remains pending; focused application/UI, full native,
+fixture exclusion and final diagnostics were not reached. Missing Shell.xcresult
+is a consequence of that compile failure, not independent coverage evidence.
+Added meaningful owner identity rejection and conflict-with-concurrent-answer tests
+from coverage/adversarial review. No production policy or assertion weakened.

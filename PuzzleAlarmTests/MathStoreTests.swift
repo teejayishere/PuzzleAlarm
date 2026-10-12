@@ -23,7 +23,8 @@ final class MathStoreTests: XCTestCase {
         return ChallengeIdentity(sessionID: session.id, index: 0, kind: .math)
     }
     private func store(_ repository: any PuzzleAlarmRepository, _ effects: TestAlarmScheduler) -> AlarmStore {
-        AlarmStore(repository: repository, scheduler: effects, clock: { UITestEnvironment.now },
+        let date = UITestEnvironment.now
+        return AlarmStore(repository: repository, scheduler: effects, clock: { date },
             makeMathProblem: { _ in try MathProblem(id: UUID(), prompt: "2 + 3", expectedAnswer: 5) },
             context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
     }
