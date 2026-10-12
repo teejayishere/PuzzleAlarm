@@ -1,10 +1,10 @@
 # Project state
 
-Current stage: 6 — Alarm Management UI + Application Integration; closeout replay pending
-Last passing gate: Gate 6 at historical combined revision below; current HEAD is not accepted
-Gates 0–5: prior evidence retained; full ordered replay required for current HEAD
-Invalidated gates: Gate 6 closeout
-Blocker: Gate 6 live control readiness replay pending
+Current stage: 6 — Alarm Management UI + Application Integration COMPLETE at verified repair revision
+Last passing gate: Gate 6 — live-readiness repair revision below
+Gates 0–6: complete ordered replay PASS at verified live-readiness repair revision
+Invalidated gates: None at verified repair revision; final documentation HEAD verification pending
+Blocker: None; await final documentation-only exact-HEAD workflow
 Stop boundary: STOP after Gate 6 closeout. No Stage 7 work on this line; do not begin Stage 8.
 
 ## Combined repair acceptance — PASS at immutable revision
@@ -277,3 +277,31 @@ now explicitly report those properties. No app behavior, assertion or coverage c
 Existing edit and forced off-screen regressions reproduce both lazy-row layouts.
 Focused then complete ordered Gates 0–6 validation is pending for this change.
 Prior green revision remains historical evidence only. Main/Stage 7 untouched.
+
+## Live XCTest readiness repair — verified Gate 6 PASS
+
+Revision 278719539fac13ded691348753a5896359bbde89:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38199747075 — SUCCESS.
+Every required step passed at this exact revision. Authorization, edit, off-screen
+sound and controlled pending-request regression pass in focused and full runs.
+Core 123 + iOS 42 + UI 10 = 175 distinct tests, focused repetitions excluded.
+Core 1840/1852 (99.35%); application 431/445 (96.85%), unchanged policy/counts.
+
+Source: direct live exists/isEnabled/isHittable readiness polling aligns with scroll
+checks; same 10-second limit and all assertions retained. Failure diagnostics include
+all three properties. The cb69168 failure demonstrated disagreement between direct
+checks and the KVC predicate; its underlying XCTest snapshot mechanism is not proven.
+No product behavior change is inferred or made. Earlier generic lazy-role selection
+and asynchronous authorization assertion defects are independently documented above.
+
+Xcode: generation, Debug/Release, public SDK/platform compilation, usage description,
+Release fixture exclusion and diagnostics PASS. Xcode 26.6 / Swift 6.3.3. No compiler
+or destination warnings; three known SDK metadata advisories reported.
+Simulator: all ten UI tests PASS. Physical device NOT RUN.
+Ordered Gates 0–6 replay restores Gate 6 for this repair. Protected main and Stage 7
+refs unchanged. No Stage 8 work or user action required.
+
+The final documentation-only commit must also pass the complete workflow at its
+exact HEAD. This section records the immutable repair SHA/run, not a pass for an
+unrun successor. The final task report will provide that successor SHA and matching
+CI result; do not make another documentation commit merely to self-reference its hash.
