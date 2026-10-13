@@ -222,3 +222,12 @@ Source: pure Math engine, owner-serialized atomic progress/checkpoint writes,
 typed-answer UI and deterministic fixtures/tests implemented.
 Automated/compile/Simulator: PENDING current implementation CI. Device: NOT RUN.
 Stop after Gate 8 and its exact-HEAD evidence closeout. Stage 9 NOT STARTED.
+
+## Stage 9 corrected-source retry
+
+Correction HEAD: 4ae35d8f13cdc37f87fcf1791feb80d1cc502c45.
+Run 38331032978 failed at Xcode Simulator launch before Math product assertions;
+Memory UI and full native suite were not reached. Busy-owner Memory application
+regression passed. Gate 9 remains pending, not accepted. Exact-source full replay
+triggered on codex/stage-9-gate-replay after connector Actions rerun returned 403.
+No earlier product defect identified; Stage 10 NOT STARTED. Device NOT RUN.

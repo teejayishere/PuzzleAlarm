@@ -110,6 +110,7 @@ final class AlarmStore {
         // A bounded number of wake-ups handles competing interruption callbacks.
         for _ in 0..<3 {
             guard isBusy else { break }
+            guard memoryHideWaiters.count < 8 else { return false }
             await withCheckedContinuation { memoryHideWaiters.append($0) }
         }
         return await perform {
@@ -244,9 +245,9 @@ final class AlarmStore {
             catch { confirmed = false; if errorMessage == nil { errorMessage = AlarmFormatting.error(error) } }
         }
         isBusy = false
-        let waiters = memoryHideWaiters
-        memoryHideWaiters.removeAll()
-        for waiter in waiters { waiter.resume() }
+        // Hand availability to one waiter. Waking all scene/timer callbacks together
+        // would make them compete again and exhaust the bounded retry allowance.
+        if !memoryHideWaiters.isEmpty { memoryHideWaiters.removeFirst().resume() }
         return success
     }
     private enum StoreError: Error { case access }

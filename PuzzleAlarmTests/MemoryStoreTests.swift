@@ -98,7 +98,7 @@ import PuzzleAlarmCore
         XCTAssertEqual(store.session(identity.sessionID)?.session.phase, .completed)
         XCTAssertEqual(effects.values.cancellations.count, 5)
     }
-    func testSafeResumeWaitsForBusyOwnerAndCoalescedForegroundRefresh() async throws {
+    func testCompetingSafeResumesWaitForBusyOwnerAndCoalescedForegroundRefresh() async throws {
         let repository = InMemoryRepository(), effects = try TestAlarmScheduler()
         let identity = try await seed(repository, effects)
         let store = store(repository, effects)
@@ -110,12 +110,15 @@ import PuzzleAlarmCore
         let save = Task { await store.save(draft) }
         await pause.started()
         XCTAssertTrue(store.isBusy)
-        let hide = Task { await store.hideMemory(identity) }
+        var started = 0
+        let hides = (0..<4).map { _ in
+            Task { started += 1; return await store.hideMemory(identity) }
+        }
+        while started < 4 { await Task.yield() }
         await store.refresh() // Queue the same coalesced foreground refresh as production.
         await pause.release()
         _ = await save.value
-        let hidden = await hide.value
-        XCTAssertTrue(hidden)
+        for hide in hides { let hidden = await hide.value; XCTAssertTrue(hidden) }
         XCTAssertFalse(store.isBusy)
         XCTAssertEqual(try engine(store, identity).phase, .hidden)
         XCTAssertNil(try engine(store, identity).visibleDigits(at: date))

@@ -746,3 +746,33 @@ Replay focused and full gates in order on the correction, including shared store
 (Gate 6), coordinator (7), Math (8) and Memory (9). Current acceptance is PENDING.
 Core audit at the failed revision: 2197/2210 (99.41%), Memory 89/89 and owner 70/70;
 prior 13 uncovered counts unchanged. This does not substitute for corrected-revision CI.
+
+## Stage 9 corrected revision — Simulator launch failure; exact-source retry
+
+4ae35d8f13cdc37f87fcf1791feb80d1cc502c45 / Actions 38331032978: FAILURE.
+142 core, focused Memory and full core regressions, Debug/Release and 36 focused
+native application tests PASS, including the new busy-owner safe-resume reproduction.
+Math UI failed at app.launch before product assertions: Xcode timed out launching
+PuzzleAlarm on Simulator (75.849s). Memory UI/full native were not reached. This
+is runner-launch evidence, not proof of a Math/Memory behavior defect. Gate 9 remains
+pending; no skipped step passes. Core 2207/2220 (99.41%), Memory 89/89, owner 80/80;
+prior 13 uncovered counts unchanged. Exact corrected source still needs full CI.
+GitHub connector rerun returned 403 (integration lacks Actions write). Used the
+already-authorized Git push path to create codex/stage-9-gate-replay at the identical
+4ae35d8 HEAD, triggering a fresh full free workflow without changing source/tests.
+No additional permission, credentials or signing material was required.
+
+## Stage 9 exact-source retry — focused UI passed; final concurrency audit
+
+Actions 38332331062 at identical 4ae35d8: focused application, Math UI and both Memory
+UI flows PASS, including the original foreground failure assertion. Full native was
+still pending at audit, so this is not complete acceptance. Source/adversarial review
+found that resuming all waiting hide callbacks together causes repeated contention;
+four callbacks (inactive, background, active, timer) can exhaust the three-wake bound.
+Improve owner availability handoff to FIFO one waiter per completed action and cap
+waiting hides at eight. Overflow remains concealed with explicit safe retry. No
+unbounded command queue or polling; normal callbacks serialize without stampeding.
+Strengthen the busy/coalesced-refresh regression to four competing safe resumes,
+requiring all to commit/no-op successfully. This is a meaningful concurrency audit,
+not a line-coverage target. Earlier product gate defect still not identified; replay
+shared application/Math/Memory checks and the full gate at this final source revision.

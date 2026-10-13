@@ -553,3 +553,8 @@ Foreground safe-resume hides wait for the existing store owner to finish (includ
 its coalesced refresh), with at most three event-driven wake-ups for competing scene
 callbacks. Exhausted contention remains concealed with explicit safe retry. Late
 validated hide callbacks after challenge success are no-ops, never next-kind effects.
+
+Hide availability is handed to one FIFO waiter after each completed store action;
+up to eight hide requests may wait. All waking callbacks do not compete at once.
+Four concurrent scene/timer hides are covered by the busy/foreground regression.
+Overflow or exhausted external contention stays concealed with explicit safe retry.

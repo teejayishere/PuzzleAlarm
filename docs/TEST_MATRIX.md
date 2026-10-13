@@ -581,3 +581,10 @@ foreground resume UI. The recall flow passed; interruption assertion remains int
 Root cause/correction are in DEVELOPMENT_LOG. Added busy-owner/coalesced-refresh
 regression; late hide after success now verifies a no-op. Full native gate and app
 coverage were not reached. Corrected revision must replay the complete workflow.
+
+Final concurrency audit strengthens the busy-owner test to four simultaneous safe
+resume hides. Store availability uses FIFO one-waiter handoff (eight pending cap)
+to prevent all callbacks racing again after a wake-up. Overflow is source-reviewed
+fail-closed concealment/retry; no artificial UI fault hook or 100% target is added.
+Run 38332331062 passed focused Math and both Memory UI flows at 4ae35d8 before this
+source audit; final FIFO revision still requires the complete matching workflow.
