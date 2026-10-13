@@ -24,6 +24,7 @@ Implemented in dependency-free PuzzleAlarmCore:
 - Codable validation, recovery-state round trips and behavioral/invariant tests.
 - Generic ChallengeCoordinator with identity-bound events, all 15 ordered sequences, durable progress/checkpoint restoration and idempotent success.
 - Math generation with injected randomness, bounded difficulties, typed integer validation, atomic progress/problem checkpoints and duplicate protection.
+- Memory generation with injected time/randomness, timed hiding, exact recall, atomic round/progress checkpoints and safe interrupted/relaunch restoration.
 
 The app includes list/create/edit/enable/disable/delete, ordered challenge settings,
 authorization/status/retry and durable reload. Mutations use one lifecycle owner.

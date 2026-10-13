@@ -547,7 +547,7 @@ native regressions PASS. Physical device NOT RUN. No earlier defect/invalidation
 coverage-policy relaxation or arbitrary 100% target. Stop after Gate 8 and exact-HEAD
 closeout; no Stage 9 implementation. Final documentation HEAD needs its own full CI.
 
-## Stage 9 Memory mapping — acceptance pending
+## Stage 9 Memory test mapping
 
 - MemoryEngineDeterministicGeneration: three seeded difficulty cases, exact stream,
   lengths, all digits 0...9 and invalid digits/length rejection.
@@ -574,7 +574,7 @@ closeout; no Stage 9 implementation. Final documentation HEAD needs its own full
   without re-reveal. DEBUG fixture uses real reducer/owner/disk and injected effects.
 
 Focused Memory checks precede full required core/native regressions in ios.yml.
-Execution/coverage audit PENDING current exact revision. Physical device NOT RUN.
+Acceptance and coverage audit are recorded below. Physical device NOT RUN.
 
 Stage 9 run 38329292490 at 77ac2012eabc0b30cf74eaf77bd3ee53a3461c27 failed
 foreground resume UI. The recall flow passed; interruption assertion remains intact.
@@ -588,3 +588,54 @@ to prevent all callbacks racing again after a wake-up. Overflow is source-review
 fail-closed concealment/retry; no artificial UI fault hook or 100% target is added.
 Run 38332331062 passed focused Math and both Memory UI flows at 4ae35d8 before this
 source audit; final FIFO revision still requires the complete matching workflow.
+
+### Gate 9 acceptance and uncovered audit — PASS
+
+017218e893a72125b85402336adebb1c965b00ea:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38334048094 — SUCCESS,
+every required step. Xcode 26.6 / Swift 6.3.3 on free standard macos-26.
+Seven Memory declarations execute 11 cases; three new application tests and two
+UI tests add 12 distinct declarations since Stage 8. Full 142 core + 46 iOS + 12 UI
+= 200 distinct tests. Focused repetitions/argument cases are not counted again.
+
+| Evidence layer | Status | Result |
+| --- | --- | --- |
+| Source | IMPLEMENTED | Pure Memory reducer, existing checkpoint/schema/owner, exact ordered success and protected backup cleanup |
+| Automated | AUTOMATED PASS | Deterministic generation, deadlines, hiding, wrong/fresh round, failed writes, CAS, duplicates, thresholds, restoration, revoked access, four competing safe resumes |
+| Xcode | XCODE COMPILE PASS | Reproducible project/package, Debug/Release, SDK/platform, usage description, fixture exclusion; no compiler/destination warning |
+| Simulator | SIMULATOR PASS | Initial reveal, timed hiding, leading-zero recall, wrong/fresh round, progress, home/foreground, navigation recreation, relaunch, completion; full native regressions |
+| Physical device | DEVICE REQUIRED / NOT RUN | No real delivery, audio, camera, OS snapshot, power-loss/file-protection or hardware accessibility observations |
+
+Core: 2207/2220 (99.41%), MemoryEngine 89/89, MemoryLifecycle 80/80. Prior 13
+uncovered counts remain unchanged (10 LCOV source lines plus generated/default
+closure counts), with prior classifications retained. No new whole core line or
+SwiftPM executable count is uncovered. Validated Memory-kind defensive throws are
+unreachable after current-identity/restoration validation; do not manufacture an
+invalid engine state to drive these inline guards. Meaningful owner missing/stale
+identity, timer, late-completion hide and concurrent acceptance paths are tested.
+
+Application behavior: 557/570 (97.72%): AlarmStore 292/297, AppEnvironment 23/27,
+AlarmEditorDraft 84/88, AlarmFormatting 86/86, AlarmStorePresentation 72/72. The
+protected-session presentation fallback is now exercised. Remaining 13 counts:
+store default clock/timezone and reportError adapter; environment default preparation
+and production construction/error paths; draft closed-enum/calendar picker fallbacks.
+These retain prior source/device classifications. All new Memory whole application
+behavior lines are exercised. Source-reviewed inline queue-overflow/exhausted-contention
+returns stay concealed with explicit retry; artificial queue saturation is not added
+solely for coverage. Four realistic concurrent scene/timer hides now pass, along with
+production Memory generation, failed commits and revoked access without prompting.
+SwiftUI is not exhaustively line-covered: safe-resume/error/unavailable presentation
+is source-reviewed and write rejection is behavior-tested; hardware timing, keyboard,
+VoiceOver, largest text and OS snapshots remain device-required.
+
+The initial foreground-resume failure was traced to Stage 9's caller assuming the
+valid busy store was immediately available. Its unchanged UI assertion passed after
+correction; the final FIFO audit prevents waiting callbacks stampeding on availability.
+No earlier architectural defect identified. One correction run failed at Xcode app
+launch before Math assertions; identical source passed full replay on an isolated
+validation ref (Actions 38332331062). No skipped/cancelled check is counted as passing.
+
+Final source generation, Debug/Release, all focused/full tests, fixture exclusion
+and diagnostics PASS. Three known SDK metadata advisories reported. Coverage policy
+and valid tests were preserved. Final documentation HEAD still requires its matching
+complete workflow; final task report supplies that immutable SHA/run. Stage 10 NOT STARTED.

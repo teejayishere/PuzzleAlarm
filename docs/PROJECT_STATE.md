@@ -1,6 +1,56 @@
 # Project state
 
-## Stage 9 authorized implementation — Gate 9 FAILED, correction pending
+Current stage: 9 — Memory COMPLETE at the verified source revision below.
+Current / last passing gate: Gate 9 — PASS at 017218e893a72125b85402336adebb1c965b00ea.
+Earlier gates 0–8: required regression checks replayed successfully in the same full workflow.
+Invalidated earlier gates: None; the discovered busy-owner assumption belonged to Stage 9 integration.
+Current blocker: None for Gate 9. Physical-device validation remains open for the later device gate.
+Stop boundary: STOP after Gate 9 and exact-HEAD documentation CI closeout. Stage 10 NOT STARTED.
+Current version/status: native iOS 26+ application through Math and Memory; QR/audio/final routing deferred.
+
+## Stage 9 acceptance evidence
+
+Source revision: 017218e893a72125b85402336adebb1c965b00ea.
+Most recent full source CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38334048094 — SUCCESS, all required steps.
+Branch: codex/stage-7-challenge-framework. Main was not changed. Working tree was clean when assessed.
+Toolchain: Xcode 26.6 / Apple Swift 6.3.3, free standard macos-26 public runner.
+
+Source: Foundation-only independent Memory reducer with injected randomness, UUID and Date;
+exact leading-zero recall; durable round, phase and reveal deadline using the existing schema.
+Wrong recall replaces digits/UUID without progress. Correct recall atomically commits progress plus
+next round, or trusted ordered success; stale submissions and timer UUIDs cannot affect a replacement.
+One existing lifecycle owner serializes bounded CAS writes. Success leaves cleanup to that owner,
+and writes cannot claim scheduler confirmation. Entry/recreation/foreground/relaunch hides before
+readiness. Expired presentation stays concealed if a write fails or the clock reverses.
+Foreground hides wait behind refresh with bounded FIFO handoff; four competing callbacks are tested.
+
+Automated: seven focused Memory declarations (11 argument/case executions), three application
+tests and two UI flows PASS before full regressions. Full 142 core + 46 iOS + 12 UI = 200 distinct
+tests PASS (12 added declarations since Stage 8; focused reruns/cases are not double-counted).
+Core 2207/2220 (99.41%); MemoryEngine 89/89, MemoryLifecycle 80/80. Application behavior 557/570
+(97.72%). Prior 13 core uncovered counts are unchanged. One previously uncovered protected-session
+presentation count is now exercised; 13 application counts remain classified in TEST_MATRIX.
+Meaningful audit added stale timers, atomic next-round rejection, revoked access and competing
+foreground hides. Coverage policy/assertions were not weakened; no arbitrary 100% target.
+
+Xcode: package/generation reproducibility, Debug/Release, public SDK/platform compilation,
+usage description, Release fixture exclusion and diagnostics PASS. No compiler/destination warnings;
+three known SDK metadata advisories reported explicitly.
+Simulator: initial reveal/timed hiding, wrong/fresh sequence, leading-zero recall/progress,
+home/foreground interruption, navigation recreation, process relaunch and completion PASS,
+alongside all existing native regressions. External alarm effects are injected.
+Physical device: NOT RUN. Real AlarmKit firing/cleanup, hardware timing/VoiceOver, OS snapshots,
+file protection/power loss, lock screen/Silent/Focus, camera/audio and final intent routing unverified.
+
+Open engineering risks / unverified assumptions: one live lifecycle owner remains required;
+disk/AlarmKit are not one atomic transaction. Exhausted contention/eight-waiter overflow stays
+concealed and offers safe retry. Actual OS snapshots and hardware timing need device observations.
+No physical device action is required for automated Gate 9 acceptance.
+
+The final documentation-only commit must pass this same complete workflow at its own exact HEAD.
+The final task report supplies its immutable matching SHA/run; do not commit again to self-reference.
+STOP after that verification. The following sections are historical records, superseded by this summary.
+## Historical Stage 9 implementation and failed gate
 
 Starting branch: codex/stage-7-challenge-framework.
 Starting exact HEAD: 0900e1eb63e9b7b8b9a0766d91e47bd1bdc59e65, clean working tree.

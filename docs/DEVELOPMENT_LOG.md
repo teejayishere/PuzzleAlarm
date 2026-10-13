@@ -776,3 +776,39 @@ Strengthen the busy/coalesced-refresh regression to four competing safe resumes,
 requiring all to commit/no-op successfully. This is a meaningful concurrency audit,
 not a line-coverage target. Earlier product gate defect still not identified; replay
 shared application/Math/Memory checks and the full gate at this final source revision.
+
+## Stage 9 final source acceptance — PASS; documentation closeout
+
+017218e893a72125b85402336adebb1c965b00ea:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38334048094 — SUCCESS,
+every required workflow step on free standard macos-26. Xcode 26.6 / Swift 6.3.3.
+Seven focused Memory declarations (11 cases), three application tests (including
+four competing safe resumes) and two native UI flows pass before full regressions.
+142 core + 46 iOS + 12 UI = 200 distinct tests, 12 added since Stage 8; focused
+repetitions and parameter cases are not counted as new declarations.
+
+Core 2207/2220 (99.41%); MemoryEngine 89/89, owner 80/80. Prior 13 uncovered core
+counts unchanged. Application 557/570 (97.72%); protected-session presentation now
+covered, remaining 13 counts retain source/device classifications. Queue overflow
+and exhausted external contention are reviewed fail-closed fallback branches.
+Audit tested meaningful persistence/CAS/stale-timer/clock/foreground/next-round behavior
+without changing coverage policy or chasing an arbitrary 100% target.
+
+The original foreground interruption UI assertion passes. Root cause/correction,
+FIFO follow-up, cancelled initial run and transient Xcode launch failure are recorded
+above. Exact-source retry 4ae35d8 / Actions 38332331062 also passed full workflow;
+only the newer 017218e run accepts the final audited source. No earlier product
+architecture invalidation identified; shared store, coordinator, Math, persistence
+and platform/native regression gates replayed in the successful workflow.
+
+Source: independent Foundation state machine, existing schema and one lifecycle
+owner. Xcode: generation/package/Debug/Release/public SDK/usage description/fixture
+exclusion/diagnostics PASS. No compiler or destination warnings; three known SDK
+metadata advisories reported. Simulator: both Memory and all prior native flows PASS
+with injected alarm effects. Physical device NOT RUN; no real delivery/timing/OS
+snapshot/file-protection/power-loss/accessibility/audio/camera evidence inferred.
+
+State, matrix, architecture, README and device plan record Stage 9. The final
+consolidated documentation-only commit must run the identical complete workflow
+at its own exact HEAD. Final report supplies its SHA/run; no self-referencing follow-up
+commit. STOP after verification. Stage 10 NOT STARTED; no device action required now.

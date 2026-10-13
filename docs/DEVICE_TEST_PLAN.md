@@ -80,7 +80,7 @@ acceptance; these device checks remain open for the later device gate:
 - After all configured challenges succeed, verify all five real alarms are cleaned
   and the recurrence policy is respected. No CI/Simulator result proves this.
 
-Stage 9 has not begun. No Memory, camera, audio or final intent-routing claim added.
+At this historical Stage 8 record, Stage 9 had not begun. No Memory, camera, audio or final intent-routing claim was added.
 
 ## Stage 9 Memory — DEVICE REQUIRED, not run
 
@@ -96,3 +96,8 @@ Stage 9 has not begun. No Memory, camera, audio or final intent-routing claim ad
 
 Gate 9 is automated/Simulator acceptance; no physical device action is requested now.
 QR/camera, audio and final intent routing remain later gates. Stage 10 NOT STARTED.
+
+Gate 9 automated/Simulator boundary: 017218e893a72125b85402336adebb1c965b00ea,
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38334048094 passed both Memory
+UI flows and full regression checks using injected alarm effects. None of the
+DEVICE REQUIRED items above is satisfied by that workflow. Physical iPhone NOT RUN.

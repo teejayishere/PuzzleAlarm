@@ -558,3 +558,9 @@ Hide availability is handed to one FIFO waiter after each completed store action
 up to eight hide requests may wait. All waking callbacks do not compete at once.
 Four concurrent scene/timer hides are covered by the busy/foreground regression.
 Overflow or exhausted external contention stays concealed with explicit safe retry.
+
+Gate 9 final source evidence: 017218e893a72125b85402336adebb1c965b00ea,
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38334048094 (full PASS).
+200 distinct tests: 142 core, 46 iOS and 12 UI. No earlier model/schema/architecture
+defect was identified; the Stage 9 foreground contention failure was corrected and
+all required earlier regressions replayed. Physical device NOT RUN. Stage 10 NOT STARTED.
