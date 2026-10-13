@@ -575,3 +575,9 @@ closeout; no Stage 9 implementation. Final documentation HEAD needs its own full
 
 Focused Memory checks precede full required core/native regressions in ios.yml.
 Execution/coverage audit PENDING current exact revision. Physical device NOT RUN.
+
+Stage 9 run 38329292490 at 77ac2012eabc0b30cf74eaf77bd3ee53a3461c27 failed
+foreground resume UI. The recall flow passed; interruption assertion remains intact.
+Root cause/correction are in DEVELOPMENT_LOG. Added busy-owner/coalesced-refresh
+regression; late hide after success now verifies a no-op. Full native gate and app
+coverage were not reached. Corrected revision must replay the complete workflow.

@@ -1,13 +1,13 @@
 # Project state
 
-## Stage 9 authorized implementation — Gate 9 PENDING
+## Stage 9 authorized implementation — Gate 9 FAILED, correction pending
 
 Starting branch: codex/stage-7-challenge-framework.
 Starting exact HEAD: 0900e1eb63e9b7b8b9a0766d91e47bd1bdc59e65, clean working tree.
 Verified complete exact-HEAD CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38281431768 — SUCCESS, all required steps.
 The historical Stage 8 state omitted this final documentation run; reconciled directly against GitHub jobs.
 User authorization supersedes the historical Gate 8 stop boundary.
-Current stage/gate: 9 / PENDING. Last passing gate: 8. Invalidations: none identified.
+Current stage/gate: 9 / FAILED at 77ac2012eabc0b30cf74eaf77bd3ee53a3461c27; correction pending. Last passing gate: 8. Earlier defect invalidations: none identified.
 Source: independent Foundation Memory reducer, injected random/time/identity, durable round/deadline,
 strict ASCII recall (including leading zero), atomic progress/round replacement, stale UUID rejection.
 Wrong recall gets different digits and identity. Reopening/interruption hides before rendering.
@@ -16,6 +16,8 @@ Focused core/application/UI precede full workflow; execution evidence PENDING cu
 Local Windows has no Swift/Xcode; CI is the execution environment. Device: NOT RUN.
 STOP after Gate 9 and complete exact-HEAD documentation closeout. Stage 10 NOT STARTED.
 
+
+## Historical Stage 8 closeout (superseded by Stage 9 authorization above)
 
 Current stage: 8 — Math COMPLETE at the verified audit revision below
 Last passing gate: Gate 8 — PASS at e42bdaeea8c2a47d0cabe3d1700b323b01172347

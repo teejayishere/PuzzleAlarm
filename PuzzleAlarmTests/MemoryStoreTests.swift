@@ -98,4 +98,42 @@ import PuzzleAlarmCore
         XCTAssertEqual(store.session(identity.sessionID)?.session.phase, .completed)
         XCTAssertEqual(effects.values.cancellations.count, 5)
     }
+    func testSafeResumeWaitsForBusyOwnerAndCoalescedForegroundRefresh() async throws {
+        let repository = InMemoryRepository(), effects = try TestAlarmScheduler()
+        let identity = try await seed(repository, effects)
+        let store = store(repository, effects)
+        await store.refresh(); await store.prepareMemory(identity)
+        let pause = MemoryStorePause()
+        effects.configure { $0.afterSchedule = { await pause.wait() } }
+        let date = UITestEnvironment.now
+        let draft = try AlarmEditorDraft(id: UUID(), now: date)
+        let save = Task { await store.save(draft) }
+        await pause.started()
+        XCTAssertTrue(store.isBusy)
+        let hide = Task { await store.hideMemory(identity) }
+        await store.refresh() // Queue the same coalesced foreground refresh as production.
+        await pause.release()
+        _ = await save.value
+        let hidden = await hide.value
+        XCTAssertTrue(hidden)
+        XCTAssertFalse(store.isBusy)
+        XCTAssertEqual(try engine(store, identity).phase, .hidden)
+        XCTAssertNil(try engine(store, identity).visibleDigits(at: date))
+        XCTAssertEqual(try engine(store, identity).successfulRounds, 0)
+    }
+}
+
+private actor MemoryStorePause {
+    private var continuation: CheckedContinuation<Void, Never>?
+    private var observer: CheckedContinuation<Void, Never>?
+    private var entered = false
+    func wait() async {
+        entered = true; observer?.resume(); observer = nil
+        await withCheckedContinuation { continuation = $0 }
+    }
+    func started() async {
+        if entered { return }
+        await withCheckedContinuation { observer = $0 }
+    }
+    func release() { continuation?.resume(); continuation = nil }
 }

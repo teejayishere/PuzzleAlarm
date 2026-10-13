@@ -17,6 +17,11 @@ extension AlarmLifecycleCoordinator {
         let now = clock()
         let state = try await update { state in
             guard let index = state.sessions.firstIndex(where: { $0.session.id == identity.sessionID }) else { throw DomainError.outOfOrder }
+            let record = state.sessions[index]
+            let items = record.session.definitionSnapshot.challengeSequence.items
+            guard items.indices.contains(identity.index), items[identity.index].kind == identity.kind,
+                  identity.kind == .memory, identity.index <= record.session.currentChallengeIndex else { throw DomainError.outOfOrder }
+            guard identity.index == record.session.currentChallengeIndex else { return }
             var engine = try MemoryEngine(restoring: state.sessions[index])
             guard roundID == nil || engine.round?.id == roundID else { return }
             // Clock rollback must not prevent conservative hiding.

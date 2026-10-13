@@ -548,3 +548,8 @@ Resume safely. Native input and accessibility identifiers support Simulator veri
 physical VoiceOver, display timing, app-switcher snapshots, file protection/power loss
 and actual backup alarm behavior remain DEVICE REQUIRED. QR/camera/audio/final intent
 routing remain later stages. Stage 10 is not implemented.
+
+Foreground safe-resume hides wait for the existing store owner to finish (including
+its coalesced refresh), with at most three event-driven wake-ups for competing scene
+callbacks. Exhausted contention remains concealed with explicit safe retry. Late
+validated hide callbacks after challenge success are no-ops, never next-kind effects.

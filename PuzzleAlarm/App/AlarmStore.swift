@@ -19,6 +19,7 @@ final class AlarmStore {
     private(set) var errorMessage: String?
     private(set) var editWasSuperseded = false
     private var refreshPending = false
+    @ObservationIgnored private var memoryHideWaiters: [CheckedContinuation<Void, Never>] = []
     let coordinator: AlarmLifecycleCoordinator
     @ObservationIgnored private let repository: any PuzzleAlarmRepository
     @ObservationIgnored private let scheduler: any AlarmScheduling
@@ -104,7 +105,14 @@ final class AlarmStore {
     }
     @discardableResult
     func hideMemory(_ identity: ChallengeIdentity, roundID: UUID? = nil) async -> Bool {
-        await perform {
+        // Foreground refresh and scene hiding may arrive together. Wait for owner
+        // completion, rather than treating normal contention as failed safe resume.
+        // A bounded number of wake-ups handles competing interruption callbacks.
+        for _ in 0..<3 {
+            guard isBusy else { break }
+            await withCheckedContinuation { memoryHideWaiters.append($0) }
+        }
+        return await perform {
             self.state = try await self.coordinator.hideMemory(for: identity, roundID: roundID).state
             return nil
         }
@@ -236,6 +244,9 @@ final class AlarmStore {
             catch { confirmed = false; if errorMessage == nil { errorMessage = AlarmFormatting.error(error) } }
         }
         isBusy = false
+        let waiters = memoryHideWaiters
+        memoryHideWaiters.removeAll()
+        for waiter in waiters { waiter.resume() }
         return success
     }
     private enum StoreError: Error { case access }

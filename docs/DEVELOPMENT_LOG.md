@@ -723,3 +723,26 @@ core focused/full, coverage reporters, Debug/Release, usage description and focu
 native application tests passed. The run is superseded by the adversarial follow-up
 before full native completion; it is NOT full Gate 9 acceptance. The new revision
 must replay the entire workflow, including expanded UI/interruption checks.
+
+## Stage 9 first complete attempt — FAILED; recurse to Stage 9 integration
+
+77ac2012eabc0b30cf74eaf77bd3ee53a3461c27 / Actions 38329292490: FAILURE.
+142 core tests, focused Memory/core regressions, Debug/Release, focused application
+and Math UI passed. Memory recall/wrong/fresh/relaunch/completion UI passed, but
+home/foreground interruption did not restore the recall field until navigation reentry.
+Earliest cause: Stage 9 safe-resume hide can be rejected by the existing store's busy
+exclusion while normal foreground refresh runs. Existing Stage 6 busy semantics are
+correct; this new caller must coordinate rather than assume availability. Gate 9
+FAILED; full native regression not reached. Shell coverage missing is consequential,
+not an independent defect. No previous gate defect identified.
+
+Correction: Memory hide waits for owner completion via continuations, at most three
+wake-ups for competing scene callbacks; no polling, unbounded command queue or new
+lifecycle owner. The existing perform completion resumes waiters after coalesced
+refresh. Late hide after trusted success is a validated no-op, preserving next kind.
+New native test holds an owner operation, queues foreground refresh and safe resume,
+then verifies committed hiding and unchanged progress. Existing UI assertion remains.
+Replay focused and full gates in order on the correction, including shared store
+(Gate 6), coordinator (7), Math (8) and Memory (9). Current acceptance is PENDING.
+Core audit at the failed revision: 2197/2210 (99.41%), Memory 89/89 and owner 70/70;
+prior 13 uncovered counts unchanged. This does not substitute for corrected-revision CI.

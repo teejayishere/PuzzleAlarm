@@ -173,6 +173,7 @@ func MemoryEngineThresholdAndOrderedContinuation(_ count: Int) throws {
     }
     #expect(try await owner.submitMemory("0123", roundID: uuid(90), for: identity, next: nil).1 == .stale)
     #expect(try await repositoryState(repository).sessions.first == concurrent)
+    #expect(try await owner.hideMemory(for: identity, roundID: uuid(90)).state.sessions.first == concurrent)
     #expect(concurrent.session.phase == .completing && concurrent.session.remainingCancellationIDs.count == 5)
     #expect(effects.values.calls.isEmpty)
     let bad = ChallengeIdentity(sessionID: identity.sessionID, index: 0, kind: .qr)
