@@ -5,7 +5,8 @@
 Starting HEAD/main: 0b5c261da4eaab2f29317d3e58b23dab7f4ed7bc; clean checkout verified.
 Prerequisite exact-main CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38354985121
 completed SUCCESS before implementation. Current stage: 10; Gate 10 PENDING.
-Last passing gate: 9. Earlier invalidations: none identified in source review.
+Last passing gate: 9. Gate 10 FAILED at ffeecc9; correction pending replay.
+Earlier invalidations: none identified; failure is new Stage 10 test measurement.
 Stop after Gate 10 and exact-final-main CI. Stage 11 NOT STARTED.
 Source: Foundation exact-byte QR reducer; existing session snapshot/token/schema,
 owner CAS persistence and trusted ordered success. Core Image image/quiet zone and

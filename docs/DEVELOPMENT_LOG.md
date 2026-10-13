@@ -2,6 +2,17 @@
 
 ## Stage 10 implementation start
 
+First source ffeecc9 / https://github.com/teejayishere/PuzzleAlarm/actions/runs/38415421531
+FAILED at the new export quiet-zone test: its area-average filter without explicit
+input extent rendered zeros. Independent PNG QR decoding, other QR native tests,
+all Core tests and Debug/Release passed. UI/full native were not reached; missing
+Shell coverage is a consequence, not another root defect. Gate 10 FAILED; no earlier
+product assumption invalidated. Replace this incorrect measurement with direct
+16x16 exported corner RGBA pixels and require every component to be opaque white;
+this strengthens the intended requirement rather than changing production/assertions
+to match the failure. Audit revision 8916695 was pushed as the run finished, before
+logs were available; superseded by the measurement correction and complete replay.
+
 Read AGENTS/state, plan architecture/QR/tests/recursive rules, current source/tests,
 workflow and clean git diff. Local HEAD and remote main equal requested 0b5c261.
 Main run 38354985121 was in progress initially; waited for complete SUCCESS before

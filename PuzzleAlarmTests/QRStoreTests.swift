@@ -37,9 +37,15 @@ import PuzzleAlarmCore
         let features = detector.features(in: ciImage).compactMap { $0 as? CIQRCodeFeature }
         XCTAssertEqual(features.map(\.messageString), [configuration.expectedPayload])
         XCTAssertGreaterThan(image.size.width, 300)
-        let crop = try XCTUnwrap(ciImage.cropped(to: CGRect(x: 0, y: 0, width: 16, height: 16))
-            .applyingFilter("CIAreaAverage").outputImageForTest())
-        XCTAssertEqual(crop, [255, 255, 255, 255])
+        // Inspect every exported corner pixel directly. An area-average filter's
+        // default input extent is not a measurement of the cropped quiet zone.
+        var pixels = [UInt8](repeating: 0, count: 16 * 16 * 4)
+        pixels.withUnsafeMutableBytes { buffer in
+            CIContext().render(ciImage, toBitmap: buffer.baseAddress!, rowBytes: 16 * 4,
+                bounds: CGRect(x: 0, y: 0, width: 16, height: 16),
+                format: .RGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
+        }
+        XCTAssertEqual(Set(pixels), [255])
     }
     func testWriteFailureRelaunchDuplicateAndPendingCleanup() async throws {
         let repository = InMemoryRepository(), effects = try TestAlarmScheduler()
@@ -123,14 +129,5 @@ import PuzzleAlarmCore
         XCTAssertEqual(controller.status, .idle)
         XCTAssertEqual(store.session(identity.sessionID)?.session.currentChallenge?.kind, .math)
         XCTAssertTrue(effects.values.cancellations.isEmpty)
-    }
-}
-
-private extension CIImage {
-    func outputImageForTest() -> [UInt8]? {
-        var pixel = [UInt8](repeating: 0, count: 4)
-        CIContext().render(self, toBitmap: &pixel, rowBytes: 4, bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
-                           format: .RGBA8, colorSpace: CGColorSpaceCreateDeviceRGB())
-        return pixel
     }
 }
