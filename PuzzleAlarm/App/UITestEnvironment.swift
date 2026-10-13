@@ -120,11 +120,13 @@ enum UITestEnvironment {
                 scheduler.configure { $0.alarms = ids.map { .init(id: $0, state: .scheduled) } }
                 return
             }
-            if scenario == "math" {
+            if ["math", "qr", "qrThenMath"].contains(scenario) {
                 var draft = try AlarmEditorDraft(id: alarmID, now: now)
                 try draft.setMode(.challengesRequired)
                 try draft.add(.math, token: alarmID)
-                draft.sequence = try ChallengeSequence([.math(try MathConfiguration(requiredCorrect: 2))])
+                draft.sequence = try ChallengeSequence(scenario == "math" ? [.math(try MathConfiguration(requiredCorrect: 2))] :
+                    scenario == "qr" ? [.qr(QRConfiguration(token: alarmID))] :
+                    [.qr(QRConfiguration(token: alarmID)), .math(try MathConfiguration(requiredCorrect: 1))])
                 let definition = try draft.definition(at: now)
                 let ids = (0..<5).map { _ in UUID() }
                 var session = try WakeUpSession(id: UUID(), definition: definition,
@@ -133,10 +135,14 @@ enum UITestEnvironment {
                 try session.beginScheduling()
                 for id in ids { try session.beginScheduleAttempt(id: id); try session.recordScheduled(id: id) }
                 try session.arm(); try session.activate(at: now)
-                var engine = try MathEngine(restoring: PersistedSession(session: session, updatedAt: now))
-                try engine.prepare(MathProblem(id: UUID(), prompt: "2 + 3", expectedAnswer: 5),
-                                   for: engine.coordinator.currentIdentity!, at: now)
-                _ = try await repository.commit(RepositoryState(definitions: [definition], sessions: [engine.record]),
+                var record = try PersistedSession(session: session, updatedAt: now)
+                if scenario == "math" {
+                    var engine = try MathEngine(restoring: record)
+                    try engine.prepare(MathProblem(id: UUID(), prompt: "2 + 3", expectedAnswer: 5),
+                                       for: engine.coordinator.currentIdentity!, at: now)
+                    record = engine.record
+                }
+                _ = try await repository.commit(RepositoryState(definitions: [definition], sessions: [record]),
                                                 expecting: .missing)
                 scheduler.configure { $0.alarms = ids.map { .init(id: $0, state: .scheduled) } }
                 return

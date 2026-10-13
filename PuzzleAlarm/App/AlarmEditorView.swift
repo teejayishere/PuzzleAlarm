@@ -59,7 +59,7 @@ struct AlarmEditorView: View {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("\(index + 1). \(AlarmFormatting.challenge(configuration.kind))").font(.headline)
                                     .accessibilityIdentifier("challenge.order." + configuration.kind.rawValue)
-                                if configuration.kind != .qr {
+                                Group {
                                     NavigationLink("Configure " + AlarmFormatting.challenge(configuration.kind)) {
                                         ChallengeConfigurationEditor(configuration: configuration) { updated in
                                             change { try draft.replace(index, with: updated) }

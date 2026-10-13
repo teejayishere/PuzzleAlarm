@@ -1,5 +1,21 @@
 # Project state
 
+## Stage 10 active work (supersedes the historical stop boundaries below)
+
+Starting HEAD/main: 0b5c261da4eaab2f29317d3e58b23dab7f4ed7bc; clean checkout verified.
+Prerequisite exact-main CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38354985121
+completed SUCCESS before implementation. Current stage: 10; Gate 10 PENDING.
+Last passing gate: 9. Earlier invalidations: none identified in source review.
+Stop after Gate 10 and exact-final-main CI. Stage 11 NOT STARTED.
+Source: Foundation exact-byte QR reducer; existing session snapshot/token/schema,
+owner CAS persistence and trusted ordered success. Core Image image/quiet zone and
+native share sheet, camera permission/capture adapter and DEBUG fake scanner.
+Capture attempts invalidate on scene/navigation/interruption; explicit safe retry.
+Automated/Xcode/Simulator evidence PENDING current revision; local Windows has no Swift/Xcode.
+Physical camera, permission prompt, optical/printed image quality, interruptions,
+hardware accessibility and actual AlarmKit effects DEVICE REQUIRED / NOT RUN.
+
+
 Current stage: 9 — Memory COMPLETE at the verified source revision below.
 Current / last passing gate: Gate 9 — PASS at 017218e893a72125b85402336adebb1c965b00ea.
 Earlier gates 0–8: required regression checks replayed successfully in the same full workflow.

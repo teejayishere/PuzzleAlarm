@@ -1,5 +1,21 @@
 # Development log
 
+## Stage 10 implementation start
+
+Read AGENTS/state, plan architecture/QR/tests/recursive rules, current source/tests,
+workflow and clean git diff. Local HEAD and remote main equal requested 0b5c261.
+Main run 38354985121 was in progress initially; waited for complete SUCCESS before
+modifying source. No prior failed gate inferred from pending steps.
+QR matching uses exact UTF-8 bytes of the existing persisted UUID payload, never URL
+normalization or scanned-code registration. Owner commits ordered success before
+cleanup; no schema change or new owner. Core remains Foundation only.
+Public Core Image/AVFoundation APIs checked against Apple documentation; Debug/Release
+compilation and tests pending on free standard macos-26 CI. Added focused QR core/owner,
+native adapter/store/export and Simulator flows before full regression. Timeout grows
+55 to 70 minutes for additional focused/full UI flows; no checks removed/weakened.
+Source review added generation-bound stale notification handling and capture cleanup.
+Gate 10 PENDING. Stage 11 NOT STARTED. Physical camera evidence NOT RUN.
+
 ## Stage 0, attempt 1 — 2026-09-30
 
 Status: BLOCKED

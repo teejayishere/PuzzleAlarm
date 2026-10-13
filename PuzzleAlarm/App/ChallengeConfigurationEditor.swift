@@ -33,7 +33,7 @@ struct ChallengeConfigurationEditor: View {
                     update { .memory(try MemoryConfiguration(difficulty: value.difficulty, sequenceLength: value.sequenceLength,
                         displayDuration: value.displayDuration, requiredRounds: count)) }
                 }), in: 1...20).accessibilityIdentifier("memory.rounds")
-            case .qr: Text("QR Code")
+            case let .qr(value): QRCodeView(configuration: value)
             }
         }.navigationTitle(AlarmFormatting.challenge(configuration.kind))
     }

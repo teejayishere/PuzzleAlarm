@@ -11,17 +11,21 @@ struct ContentView: View {
             List {
                 if let state = store.state {
                     ForEach(state.sessions.filter { record in
-                        record.session.phase == .active && [.math, .memory].contains(record.session.currentChallenge?.kind)
+                        record.session.phase == .active && record.session.currentChallenge != nil
                     }, id: \.session.id) { record in
                         Section("Wake-up challenge") {
                             if record.session.currentChallenge?.kind == .math {
                                 NavigationLink("Continue Math") {
                                     MathChallengeView(store: store, sessionID: record.session.id)
                                 }.accessibilityIdentifier("math.open")
-                            } else {
+                            } else if record.session.currentChallenge?.kind == .memory {
                                 NavigationLink("Continue Memory") {
                                     MemoryChallengeView(store: store, sessionID: record.session.id)
                                 }.accessibilityIdentifier("memory.open")
+                            } else {
+                                NavigationLink("Continue QR") {
+                                    QRChallengeView(store: store, sessionID: record.session.id)
+                                }.accessibilityIdentifier("qr.open")
                             }
                         }
                     }

@@ -16,7 +16,7 @@ jobs:
     # Standard public-repository runner; no larger runners or signing credentials.
     if: github.event.repository.private == false
     runs-on: macos-26
-    timeout-minutes: 55
+    timeout-minutes: 70
     steps:
       - uses: actions/checkout@v4
         with:
@@ -57,6 +57,8 @@ jobs:
         run: swift test -Xswiftc -warnings-as-errors --filter MathEngine
       - name: Run focused Memory engine tests
         run: swift test -Xswiftc -warnings-as-errors --filter MemoryEngine
+      - name: Run focused QR engine and owner tests
+        run: swift test -Xswiftc -warnings-as-errors --filter 'QREngine|QRLifecycle'
       - name: Run full Swift package tests
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage
@@ -99,6 +101,10 @@ jobs:
           if not isinstance(value, str) or not value.strip():
               raise SystemExit("Built app is missing NSAlarmKitUsageDescription")
           print(f"Built app usage description: {value}")
+          camera = plistlib.loads(path.read_bytes()).get("NSCameraUsageDescription")
+          if not isinstance(camera, str) or not camera.strip():
+              raise SystemExit("Built app is missing NSCameraUsageDescription")
+          print(f"Built camera usage description: {camera}")
           PY
       - name: Run focused application state and draft tests
         env:
@@ -111,6 +117,7 @@ jobs:
             -only-testing:PuzzleAlarmTests/AlarmStoreTests -only-testing:PuzzleAlarmTests/AlarmEditorDraftTests \
             -only-testing:PuzzleAlarmTests/MathStoreTests \
             -only-testing:PuzzleAlarmTests/MemoryStoreTests \
+            -only-testing:PuzzleAlarmTests/QRStoreTests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/application-tests.log"
       - name: Run focused Math UI smoke flow
@@ -135,6 +142,17 @@ jobs:
             -only-testing:PuzzleAlarmUITests/MemoryChallengeUITests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/memory-ui-tests.log"
+      - name: Run focused QR UI flows
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/QR.xcresult \
+            -only-testing:PuzzleAlarmUITests/QRChallengeUITests \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/qr-ui-tests.log"
       - name: Run platform capability and native shell tests
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -155,10 +173,10 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           binary = Path("ReleaseDerivedData/Build/Products/Release-iphonesimulator/PuzzleAlarm.app/PuzzleAlarm").read_bytes()
-          for marker in [b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler"]:
+          for marker in [b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler", b"FakeQRCodeScanner", b"Simulate matching QR"]:
               if marker in binary:
                   raise SystemExit("DEBUG fixture leaked into Release: " + marker.decode())
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")
           PY
       - name: Review Xcode diagnostics
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log"

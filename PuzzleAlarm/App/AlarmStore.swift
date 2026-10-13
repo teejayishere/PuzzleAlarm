@@ -94,6 +94,18 @@ final class AlarmStore {
     }
     func reportError(_ error: any Error) { errorMessage = AlarmFormatting.error(error) }
 
+    func submitQR(_ payload: String, identity: ChallengeIdentity) async -> QRSubmission? {
+        var outcome: QRSubmission?
+        let saved = await perform {
+            let result = try await self.coordinator.submitQR(payload, for: identity)
+            outcome = result.1; self.state = result.0.state
+            return nil
+        }
+        guard saved else { return nil }
+        if outcome == .completed { await refresh() }
+        return outcome
+    }
+
     func prepareMemory(_ identity: ChallengeIdentity) async {
         _ = await perform {
             guard let record = self.session(identity.sessionID),
