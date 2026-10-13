@@ -26,6 +26,7 @@ final class AlarmStore {
     @ObservationIgnored private let clock: @Sendable () -> Date
     @ObservationIgnored private let makeID: @Sendable () -> UUID
     @ObservationIgnored private let makeMathProblem: @Sendable (Difficulty) throws -> MathProblem
+    @ObservationIgnored private let makeMemoryRound: @Sendable (MemoryConfiguration) throws -> MemoryRound
 
     init(repository: any PuzzleAlarmRepository, scheduler: any AlarmScheduling,
          clock: @escaping @Sendable () -> Date = { Date() },
@@ -34,12 +35,17 @@ final class AlarmStore {
              var random = SystemRandomNumberGenerator()
              return try MathProblem.generate(difficulty: difficulty, id: UUID(), using: &random)
          },
+         makeMemoryRound: @escaping @Sendable (MemoryConfiguration) throws -> MemoryRound = { configuration in
+             var random = SystemRandomNumberGenerator()
+             return try MemoryRound.generate(configuration: configuration, id: UUID(), using: &random)
+         },
          context: @escaping @Sendable () throws -> ScheduleContext = {
              try ScheduleContext(timeZoneIdentifier: TimeZone.current.identifier)
          }) {
         self.repository = repository; self.scheduler = scheduler
         self.clock = clock; self.makeID = makeID; self.context = context
         self.makeMathProblem = makeMathProblem
+        self.makeMemoryRound = makeMemoryRound
         authorization = scheduler.authorization
         coordinator = AlarmLifecycleCoordinator(repository: repository, scheduler: scheduler, clock: clock, makeID: makeID)
     }
@@ -86,6 +92,43 @@ final class AlarmStore {
         return outcome
     }
     func reportError(_ error: any Error) { errorMessage = AlarmFormatting.error(error) }
+
+    func prepareMemory(_ identity: ChallengeIdentity) async {
+        _ = await perform {
+            guard let record = self.session(identity.sessionID),
+                  case let .memory(configuration) = record.session.currentChallenge else { throw DomainError.outOfOrder }
+            let round = try self.makeMemoryRound(configuration)
+            self.state = try await self.coordinator.prepareMemory(for: identity, round: round).state
+            return nil
+        }
+    }
+    @discardableResult
+    func hideMemory(_ identity: ChallengeIdentity, roundID: UUID? = nil) async -> Bool {
+        await perform {
+            self.state = try await self.coordinator.hideMemory(for: identity, roundID: roundID).state
+            return nil
+        }
+    }
+    func submitMemory(_ text: String, roundID: UUID, identity: ChallengeIdentity) async -> MemorySubmission? {
+        var outcome: MemorySubmission?
+        let saved = await perform {
+            guard let record = self.session(identity.sessionID),
+                  case let .memory(configuration) = record.session.currentChallenge else { throw DomainError.outOfOrder }
+            var next = try self.makeMemoryRound(configuration)
+            // Independent random draws may coincide. A bounded deterministic adjustment
+            // guarantees different digits without an unbounded generation loop.
+            if let current = try MemoryEngine(restoring: record).round, next.digits == current.digits {
+                var digits = next.digits; digits[0] = (digits[0] + 1) % 10
+                next = try MemoryRound(id: next.id, digits: digits)
+            }
+            let result = try await self.coordinator.submitMemory(text, roundID: roundID, for: identity, next: next)
+            outcome = result.1; self.state = result.0.state
+            return nil
+        }
+        guard saved else { return nil }
+        if outcome == .completed { await refresh() }
+        return outcome
+    }
 
     func refresh() async {
         if isBusy { refreshPending = true; return }

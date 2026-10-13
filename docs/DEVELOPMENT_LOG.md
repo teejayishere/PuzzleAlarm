@@ -694,3 +694,15 @@ README, architecture, matrix, state, device plan and this log now record Stage 8
 The documentation-only follow-up must pass the same complete workflow at its own
 exact HEAD. Final report supplies its SHA/run; do not commit again to self-reference.
 STOP after that verification. Stage 9 NOT STARTED. No user action required.
+
+## Stage 9 implementation start
+
+Read PROJECT_STATE first; reconciled source, architecture, matrix, master plan and git.
+Clean base 0900e1eb63e9b7b8b9a0766d91e47bd1bdc59e65 on codex/stage-7-challenge-framework.
+Its complete exact-HEAD workflow 38281431768 passed every step; state omitted that final run.
+Stage 9 authorized. No earlier gate defect identified. New Memory implementation uses existing
+checkpoint shape, one owner and coordinator. Interruption/reentry hides before presentation;
+timer hides bind round UUID to avoid stale callbacks hiding a replacement. Wrong answers get
+different digits with bounded coincidence adjustment. Leading zeros use exact string matching.
+Source review and git diff whitespace check pass locally. Focused/full CI PENDING; Windows
+Swift/Xcode unavailable. Physical device NOT RUN. Stage 10 is outside this task.

@@ -55,6 +55,8 @@ jobs:
         run: swift test -Xswiftc -warnings-as-errors --filter ChallengeCoordinator
       - name: Run focused Math engine tests
         run: swift test -Xswiftc -warnings-as-errors --filter MathEngine
+      - name: Run focused Memory engine tests
+        run: swift test -Xswiftc -warnings-as-errors --filter MemoryEngine
       - name: Run full Swift package tests
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage
@@ -108,6 +110,7 @@ jobs:
             -derivedDataPath DerivedData -resultBundlePath TestResults/Application.xcresult \
             -only-testing:PuzzleAlarmTests/AlarmStoreTests -only-testing:PuzzleAlarmTests/AlarmEditorDraftTests \
             -only-testing:PuzzleAlarmTests/MathStoreTests \
+            -only-testing:PuzzleAlarmTests/MemoryStoreTests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/application-tests.log"
       - name: Run focused Math UI smoke flow
@@ -121,6 +124,17 @@ jobs:
             -only-testing:PuzzleAlarmUITests/MathChallengeUITests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/math-ui-tests.log"
+      - name: Run focused Memory UI smoke flow
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Memory.xcresult \
+            -only-testing:PuzzleAlarmUITests/MemoryChallengeUITests \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/memory-ui-tests.log"
       - name: Run platform capability and native shell tests
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -147,4 +161,4 @@ jobs:
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")
           PY
       - name: Review Xcode diagnostics
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/math-ui-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log"

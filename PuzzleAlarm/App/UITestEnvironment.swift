@@ -95,11 +95,31 @@ enum UITestEnvironment {
             if scenario == "deleteFailure" { $0.failCancellation = true }
         }
         let fixedDate = now
-        let store = AlarmStore(repository: repository, scheduler: scheduler, clock: { fixedDate },
+        let store = AlarmStore(repository: repository, scheduler: scheduler, clock: { scenario == "memory" ? Date() : fixedDate },
             makeMathProblem: { _ in try MathProblem(id: UUID(), prompt: "3 + 4", expectedAnswer: 7) },
+            makeMemoryRound: { _ in try MemoryRound(id: UUID(), digits: [0, 1, 2, 3]) },
             context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
         return AppEnvironment(store: store) {
             guard try await repository.load() == .missing else { return }
+            if scenario == "memory" {
+                let date = Date()
+                var draft = try AlarmEditorDraft(id: alarmID, now: date)
+                try draft.setMode(.challengesRequired)
+                draft.sequence = try ChallengeSequence([.memory(try MemoryConfiguration(sequenceLength: 4,
+                    displayDuration: 1, requiredRounds: 2))])
+                let definition = try draft.definition(at: date)
+                let ids = (0..<5).map { _ in UUID() }
+                var session = try WakeUpSession(id: UUID(), definition: definition,
+                    context: ScheduleContext(timeZoneIdentifier: "UTC"),
+                    plan: BackupPlan(at: date, ids: ids), createdAt: date)
+                try session.beginScheduling()
+                for id in ids { try session.beginScheduleAttempt(id: id); try session.recordScheduled(id: id) }
+                try session.arm(); try session.activate(at: date)
+                _ = try await repository.commit(RepositoryState(definitions: [definition],
+                    sessions: [PersistedSession(session: session, updatedAt: date)]), expecting: .missing)
+                scheduler.configure { $0.alarms = ids.map { .init(id: $0, state: .scheduled) } }
+                return
+            }
             if scenario == "math" {
                 var draft = try AlarmEditorDraft(id: alarmID, now: now)
                 try draft.setMode(.challengesRequired)
