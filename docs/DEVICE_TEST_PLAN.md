@@ -1,5 +1,24 @@
 # Physical iPhone acceptance plan
 
+## Stage 10 QR checklist (DEVICE REQUIRED / NOT RUN)
+
+- Save a QR alarm, share/save/print its image and scan both screen and paper under
+  varied lighting/distance. Another alarm's code and unrelated/malformed/normalized
+  values must never advance. Confirm saved token survives edit/relaunch.
+- Verify actual permission prompt, allow/deny/restricted policy, Settings revocation
+  and regrant. Retry must recheck access without skipping QR or cancelling backups.
+- Interrupt with background/lock/app switch, another camera client and system capture
+  interruption/runtime error. Camera must stop, explicit retry safely resumes, and stale
+  permission/metadata callbacks must not finish another challenge.
+- Recreate navigation and terminate/relaunch before/after matching; interruption grants
+  no progress, durable success restores, and pending cleanup is displayed truthfully.
+- Test QR before/between/after Math and Memory with actual primary/four backups. Only
+  the complete sequence triggers cleanup; failed cleanup remains recoverable.
+- Verify preview framing/rotation, VoiceOver/Dynamic Type, native share/save/print,
+  thermal/resource release and privacy indicator. Injected Simulator capture and image
+  decoding do not prove these hardware/system behaviors. Existing AlarmKit delivery,
+  Silent/Focus/file-protection/power-loss/intent checks remain open. Stage 11 is out of scope.
+
 Status: DEVICE REQUIRED for every item. No device test has run.
 
 Record app revision, iPhone model, iOS version, provisioning method, exact steps,

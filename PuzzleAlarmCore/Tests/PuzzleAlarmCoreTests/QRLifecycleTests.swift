@@ -43,9 +43,14 @@ import Testing
     let owner = AlarmLifecycleCoordinator(repository: repository, scheduler: scheduler, clock: { date })
     let identity = ChallengeIdentity(sessionID: session.id, index: 0, kind: .qr)
     await #expect(throws: DomainError.outOfOrder) { try await owner.submitQR("", for: identity) }
-    let state = try RepositoryState(definitions: [session.definitionSnapshot],
+    // Parent definition changed after occurrence activation. Its new token must
+    // neither replace the snapshot nor satisfy the protected occurrence.
+    let edited = try definition(sequence: [.qr(QRConfiguration(token: uuid(100)))])
+    let state = try RepositoryState(definitions: [edited],
         sessions: [PersistedSession(session: session, updatedAt: date)])
     _ = try await repository.commit(state, expecting: .missing)
+    let foreign = try await owner.submitQR(QRConfiguration(token: uuid(100)).expectedPayload, for: identity)
+    #expect(foreign.1 == .wrong && foreign.0.state == state)
     await repository.failNext(.write)
     await #expect(throws: PersistenceError.self) {
         try await owner.submitQR(QRConfiguration(token: uuid(99)).expectedPayload, for: identity)

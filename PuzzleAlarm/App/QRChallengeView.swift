@@ -62,10 +62,13 @@ struct QRChallengeView: View {
                 }
                 #endif
             } else if let record = store.session(sessionID) {
-                Text(record.session.phase == .completed ? "Wake-up complete" : "QR complete")
-                    .accessibilityIdentifier("qr.completed")
-                if record.session.phase == .active { Text("Continue with the next challenge.") }
-                else if record.session.phase != .completed { Text("Alarm cleanup is pending.") }
+                let qrIndex = record.session.definitionSnapshot.challengeSequence.items.firstIndex { $0.kind == .qr }
+                if let qrIndex, record.session.currentChallengeIndex > qrIndex {
+                    Text(record.session.phase == .completed ? "Wake-up complete" : "QR complete")
+                        .accessibilityIdentifier("qr.completed")
+                    if record.session.phase == .active { Text("Continue with the next challenge.") }
+                    else if record.session.phase != .completed { Text("Alarm cleanup is pending.") }
+                } else { Text("This challenge is not active.") }
             } else { Text("Session unavailable.") }
             if !controller.feedback.isEmpty { Text(controller.feedback).accessibilityIdentifier("qr.feedback") }
             if let error = store.errorMessage { Text(error).accessibilityIdentifier("qr.error") }

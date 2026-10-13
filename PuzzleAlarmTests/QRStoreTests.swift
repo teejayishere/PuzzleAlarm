@@ -103,6 +103,27 @@ import PuzzleAlarmCore
         XCTAssertEqual(controller.status, .idle)
         XCTAssertEqual(effects.values.cancellations.count, 5)
     }
+    func testScannerFailedCommitRetryAndStaleOrderedCallback() async throws {
+        let repository = InMemoryRepository(), effects = try TestAlarmScheduler()
+        let identity = try await seed(repository, effects, followedByMath: true)
+        let store = store(repository, effects); await store.refresh()
+        let fake = FakeQRCodeScanner(), controller = QRScanController(store: store, scanner: fake)
+        controller.start(identity)
+        await repository.failNext(.write)
+        fake.emit(.payload(configuration.expectedPayload))
+        for _ in 0..<1000 where controller.isSubmitting { await Task.yield() }
+        XCTAssertEqual(controller.feedback, "Scan was not saved. Try again.")
+        XCTAssertEqual(store.session(identity.sessionID)?.session.currentChallengeIndex, 0)
+        // Another legitimate presentation wins; this presentation's later scan is stale.
+        let winner = await store.submitQR(configuration.expectedPayload, identity: identity)
+        XCTAssertEqual(winner, .completed)
+        fake.emit(.payload(configuration.expectedPayload))
+        for _ in 0..<1000 where controller.isSubmitting { await Task.yield() }
+        XCTAssertEqual(controller.feedback, "This challenge has already changed.")
+        XCTAssertEqual(controller.status, .idle)
+        XCTAssertEqual(store.session(identity.sessionID)?.session.currentChallenge?.kind, .math)
+        XCTAssertTrue(effects.values.cancellations.isEmpty)
+    }
 }
 
 private extension CIImage {

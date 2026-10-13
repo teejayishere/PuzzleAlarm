@@ -10,6 +10,7 @@ import Foundation
         stop()
         let id = UUID(); attempt = id
         Task { [weak self] in
+            guard self?.attempt == id else { return }
             let permission = AVCaptureDevice.authorizationStatus(for: .video)
             if permission == .notDetermined {
                 receive(.status(.notDetermined))

@@ -1,5 +1,28 @@
 # Evidence ledger
 
+## Stage 10 — Gate PENDING
+
+Prerequisite main 0b5c261da4eaab2f29317d3e58b23dab7f4ed7bc / run 38354985121
+completed full SUCCESS before implementation. Earlier Gate 9 evidence remains valid.
+Current source revision must finish the complete workflow; partial runs are not a pass.
+
+| Capability | Tests / evidence boundary |
+| --- | --- |
+| Exact matching and restore | QREngineTests: all 11 orders containing QR; wrong/empty/malformed/other token, whitespace/case/escaped/query variants; exact bytes, stale duplicates, foreign/future identities, clock rollback atomicity |
+| Ordered owner persistence | QRLifecycleTests: missing session, rejected write, three-conflict limit, CAS competing success revalidation, edited parent token vs protected occurrence snapshot; no external effects before committed sequence success |
+| App success and cleanup | QRStoreTests: rejected write/reload, relaunch, duplicate, revoked AlarmKit access, QR→Math, partial cleanup/recovery; no false scheduler confirmation |
+| Scanner behavior | QRStoreTests: all permission/status states, duplicate metadata, stopped/replaced callback, interruption/retry, failed commit feedback and stale ordered callback |
+| Generated export | QRStoreTests: PNG decode through independent CIDetector matches saved payload; opaque white quiet zone. Printing/optical detection DEVICE REQUIRED |
+| Native UI | QRChallengeUITests: wrong scan, interruption, background, navigation recreation, relaunch, correct completion; denied/unavailable/retry and QR→Math; configuration image and native sharing |
+| Compile/regression | Focused QR before full Core; existing Gates 1–9 checks, Debug/Release, generated camera usage text, fake exclusion and diagnostics. Execution PENDING current exact HEAD |
+| Physical camera | DEVICE REQUIRED / NOT RUN: actual prompt/restriction/revocation, AV metadata/notifications/hardware unavailable, preview/orientation/resource lifecycle, optical scan, save/print and accessibility |
+
+Meaningful source audit added stopped-before-permission guard, generation-bound capture
+notifications, truthful inactive-session presentation, failed/stale scanner feedback and
+edited-parent snapshot tests. No coverage assertion or valid earlier test was weakened.
+Core adapter/persistence architecture is unchanged; no earlier defect found so far.
+AVFoundation branches cannot be inferred from fake coverage. Stage 11 NOT STARTED.
+
 Observed 2026-10-01 America/Chicago (CI timestamps 2026-10-02 UTC).
 
 ## Gate 0 — PASS

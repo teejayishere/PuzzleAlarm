@@ -1,6 +1,39 @@
 # Architecture
 
-Current architecture is described in the Stage 5–9 sections below. Earlier sections
+## Stage 10 QR design
+
+QREngine compares exact UTF-8 bytes with QRConfiguration.expectedPayload from the
+active session's immutable definition snapshot. It rejects whitespace/case/URL
+normalization, other tokens, malformed values, foreign identities and future indices.
+Trusted success uses ChallengeCoordinator and clears the existing checkpoint. No
+camera state is durable: interrupted/recreated capture must explicitly start again.
+QRLifecycle uses the same owner and three-attempt CAS update; every conflict revalidates
+the committed snapshot/index. Writes never claim external scheduler confirmation.
+AlarmStore refreshes existing cleanup only after committed success. A failed commit
+discards success; partial cleanup and next-kind progress remain distinct from wake-up
+completion. No schema, AlarmKit signatures or additional lifecycle owner changed.
+
+QRCodeScanning isolates camera events. QRScanController binds each callback to a new
+attempt UUID and captures ChallengeIdentity; duplicates while submitting are ignored.
+Navigation/scene changes, scanner interruption/unavailability/denial invalidate attempts
+and stop capture. Late permission, metadata and interruption callbacks cannot restart
+or solve a replacement attempt. Retry is explicit and permission is re-read each start.
+AVFoundationQRCodeScanner requests permission only on start; unavailable device/input/
+output/QR support fails safely. Capture configuration/start/stop/delegates share one
+serial queue; main-actor callbacks drive presentation. Notification observers are
+generation-bound and removed on stop. Runtime errors/interruptions require retry.
+Preview attaches an AVCaptureVideoPreviewLayer without moving matching into the adapter.
+FakeQRCodeScanner and simulated scanning UI are DEBUG only and checked absent in Release.
+
+QR creation retains the existing UUID generation/edit persistence. Core Image exports
+an opaque, integer-scaled image with a four-module white quiet zone. Configuration shows
+the image and native UIActivityViewController for normal save/share/print. No camera/photo
+library access is requested to display/export. Export decode tests verify the exact saved
+payload independently through CIDetector. Optical scanning, system permission behavior,
+capture notifications and printing/accessibility remain physical-device checks.
+Current execution evidence and gate status live in PROJECT_STATE, not inferred here.
+
+Current architecture is described in the Stage 5–10 sections below. Earlier sections
 are the historical stage record; their deferred-work statements are superseded
 by those later sections. Exact passing implementation evidence is in PROJECT_STATE.md.
 

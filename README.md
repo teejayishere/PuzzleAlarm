@@ -4,7 +4,7 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 9 adds Memory generation, timed hiding and durable recall alongside Math. See PROJECT_STATE for gate acceptance and exact CI evidence. Physical-device alarm behavior remains unverified.**
+**Stage 10 adds QR generation/share, exact matching and safe camera capture alongside Math and Memory. See PROJECT_STATE for gate status and exact CI evidence. Physical camera and alarm behavior remain unverified.**
 
 ## Evidence and scope
 
@@ -12,7 +12,7 @@ See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 [TEST_MATRIX](docs/TEST_MATRIX.md) distinguishes automated evidence from unimplemented
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
-See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. The generic coordinator and Math/Memory engines provide ordered progression and restoration; QR remains deferred.
+See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. The generic coordinator and Math/Memory/QR engines provide ordered progression and restoration.
 
 Implemented in dependency-free PuzzleAlarmCore:
 
@@ -25,11 +25,13 @@ Implemented in dependency-free PuzzleAlarmCore:
 - Generic ChallengeCoordinator with identity-bound events, all 15 ordered sequences, durable progress/checkpoint restoration and idempotent success.
 - Math generation with injected randomness, bounded difficulties, typed integer validation, atomic progress/problem checkpoints and duplicate protection.
 - Memory generation with injected time/randomness, timed hiding, exact recall, atomic round/progress checkpoints and safe interrupted/relaunch restoration.
+- Exact-byte QR matching against the saved occurrence token, atomic ordered success and stale callback protection.
 
 The app includes list/create/edit/enable/disable/delete, ordered challenge settings,
 authorization/status/retry and durable reload. Mutations use one lifecycle owner.
-Active Math and Memory sessions can be opened, solved and restored after relaunch. QR
-engines, camera, final intent routing and sound files belong to later gates. No real alarm, device installation or camera/audio behavior
+Active Math, Memory and QR sessions can be opened, solved and restored after relaunch.
+QR settings display/export a generated image; capture uses public AVFoundation with safe
+permission/interruption handling. Final intent routing and sound files belong to later gates. No real alarm, device installation or physical camera/audio behavior
 has been verified.
 
 ## Free CI-first development
