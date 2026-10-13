@@ -106,7 +106,7 @@ enum UITestEnvironment {
                 var draft = try AlarmEditorDraft(id: alarmID, now: date)
                 try draft.setMode(.challengesRequired)
                 draft.sequence = try ChallengeSequence([.memory(try MemoryConfiguration(sequenceLength: 4,
-                    displayDuration: 1, requiredRounds: 2))])
+                    displayDuration: 3, requiredRounds: 2))])
                 let definition = try draft.definition(at: date)
                 let ids = (0..<5).map { _ in UUID() }
                 var session = try WakeUpSession(id: UUID(), definition: definition,

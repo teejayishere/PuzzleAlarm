@@ -706,3 +706,20 @@ timer hides bind round UUID to avoid stale callbacks hiding a replacement. Wrong
 different digits with bounded coincidence adjustment. Leading zeros use exact string matching.
 Source review and git diff whitespace check pass locally. Focused/full CI PENDING; Windows
 Swift/Xcode unavailable. Physical device NOT RUN. Stage 10 is outside this task.
+
+Stage 9 adversarial follow-up: UI locally latches an expired round as concealed,
+so a failed hide write plus clock reversal cannot reveal it again in the same view.
+Reentry still requires durable hiding before readiness. Expanded UI checks explicitly
+observe initial reveal and home/foreground, navigation recreation and relaunch hiding.
+These checks require a new complete exact-revision run; no Gate 9 pass claimed yet.
+
+The prior passing workflow spent 5m20s on focused native application checks, 5m41s
+on focused Math UI and 13m25s on full native regression. Stage 9 adds a second UI
+suite; extend the bounded job timeout from 40 to 55 minutes to accommodate required
+checks on the same free standard runner. No check is removed or weakened.
+
+Initial revision 70b75487c0258c2185518e0d2b08afc98f0e7908 / run 38328434336:
+core focused/full, coverage reporters, Debug/Release, usage description and focused
+native application tests passed. The run is superseded by the adversarial follow-up
+before full native completion; it is NOT full Gate 9 acceptance. The new revision
+must replay the entire workflow, including expanded UI/interruption checks.

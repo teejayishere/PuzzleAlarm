@@ -8,6 +8,7 @@ struct MemoryChallengeView: View {
     @State private var answer = ""
     @State private var feedback = ""
     @State private var ready = false
+    @State private var concealedRoundID: UUID?
     private var engine: MemoryEngine? {
         guard let record = store.session(sessionID) else { return nil }
         return try? MemoryEngine(restoring: record)
@@ -27,11 +28,12 @@ struct MemoryChallengeView: View {
                         }
                     } else if let round = engine.round {
                         TimelineView(.periodic(from: .now, by: 0.1)) { _ in
-                            if let digits = engine.visibleDigits(at: store.currentDate()) {
+                            if concealedRoundID != round.id, let digits = engine.visibleDigits(at: store.currentDate()) {
                                 Text(digits).font(.largeTitle).monospacedDigit()
                                     .accessibilityIdentifier("memory.sequence")
                             } else {
                                 Text("Recall the sequence").accessibilityIdentifier("memory.hidden")
+                                    .onAppear { concealedRoundID = round.id }
                                 TextField("Digits in order", text: $answer).keyboardType(.numberPad)
                                     .accessibilityIdentifier("memory.answer")
                                 Button("Submit") {

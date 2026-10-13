@@ -1,6 +1,6 @@
 # Architecture
 
-Current architecture is described in the Stage 5–8 sections below. Earlier sections
+Current architecture is described in the Stage 5–9 sections below. Earlier sections
 are the historical stage record; their deferred-work statements are superseded
 by those later sections. Exact passing implementation evidence is in PROJECT_STATE.md.
 
@@ -515,3 +515,36 @@ final intent routing and audio remain deferred. UI fixtures inject only problems
 clock and external alarms; production business logic and disk storage remain real.
 Physical-device delivery, durability under file protection/power loss and hardware
 accessibility are unverified. Current acceptance evidence is in PROJECT_STATE.
+
+## Stage 9 Memory architecture
+
+MemoryRound/MemoryEngine import Foundation only, with caller-supplied randomness,
+UUID and Date. Digits include leading zeros; recall compares exact trimmed ASCII
+digit strings of the configured length. Default lengths remain Easy 4, Medium 6,
+Hard 8, with configurable duration/round threshold from the existing configuration.
+
+The existing memory checkpoint stores UUID, digits, visible/hidden phase and deadline;
+progress remains exclusively in WakeUpSession. Preparation never resets an existing
+round. A reveal is committed before presentation. At the deadline presentation hides
+and the owner persists hidden state. Submission before hiding/deadline is rejected.
+Wrong recall replaces the round with a fresh UUID and different digits without progress;
+correct recall atomically replaces progress plus the next round, or clears the checkpoint
+and records ordered trusted success at threshold. Coincident random digits receive one
+bounded first-digit adjustment, avoiding an unbounded redraw loop. Old UUIDs are stale.
+
+MemoryLifecycle uses the existing owner's busy exclusion and bounded CAS replay, reloading
+and verifying against current durable state on conflict. Failed candidates are discarded;
+Memory writes never claim scheduler confirmation. Final sequence success invokes existing
+cleanup through AlarmStore; pending cleanup remains distinct from completed wake-up.
+No schema change, platform coupling in Core, or AlarmKit signature change was needed.
+
+MemoryChallengeView defaults to concealed until a safe-resume hide write succeeds.
+Navigation entry/recreation, foreground interruption and relaunch hide the saved round
+without restarting its deadline or awarding progress. New explicitly started/replaced
+rounds reveal for their saved duration. A locally expired round remains concealed even
+if persistence fails and the clock reverses. Timer callbacks bind the round UUID; stale
+timers cannot hide a replacement. Missing/failed resume exposes no answer and offers
+Resume safely. Native input and accessibility identifiers support Simulator verification;
+physical VoiceOver, display timing, app-switcher snapshots, file protection/power loss
+and actual backup alarm behavior remain DEVICE REQUIRED. QR/camera/audio/final intent
+routing remain later stages. Stage 10 is not implemented.

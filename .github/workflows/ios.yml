@@ -16,7 +16,7 @@ jobs:
     # Standard public-repository runner; no larger runners or signing credentials.
     if: github.event.repository.private == false
     runs-on: macos-26
-    timeout-minutes: 40
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
         with:

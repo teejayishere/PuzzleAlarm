@@ -4,7 +4,7 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 8 adds the Math engine and durable typed-answer flow. See PROJECT_STATE for gate acceptance and exact CI evidence. Physical-device alarm behavior remains unverified.**
+**Stage 9 adds Memory generation, timed hiding and durable recall alongside Math. See PROJECT_STATE for gate acceptance and exact CI evidence. Physical-device alarm behavior remains unverified.**
 
 ## Evidence and scope
 
@@ -12,7 +12,7 @@ See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 [TEST_MATRIX](docs/TEST_MATRIX.md) distinguishes automated evidence from unimplemented
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
-See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. The generic coordinator and Math engine provide ordered progression and restoration; Memory/QR engines remain deferred.
+See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. The generic coordinator and Math/Memory engines provide ordered progression and restoration; QR remains deferred.
 
 Implemented in dependency-free PuzzleAlarmCore:
 
@@ -27,7 +27,7 @@ Implemented in dependency-free PuzzleAlarmCore:
 
 The app includes list/create/edit/enable/disable/delete, ordered challenge settings,
 authorization/status/retry and durable reload. Mutations use one lifecycle owner.
-Active Math sessions can be opened, solved and restored after relaunch. Memory/QR
+Active Math and Memory sessions can be opened, solved and restored after relaunch. QR
 engines, camera, final intent routing and sound files belong to later gates. No real alarm, device installation or camera/audio behavior
 has been verified.
 

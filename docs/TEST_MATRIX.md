@@ -546,3 +546,32 @@ known SDK metadata advisories. Simulator smoke/relaunch/completion and all exist
 native regressions PASS. Physical device NOT RUN. No earlier defect/invalidation,
 coverage-policy relaxation or arbitrary 100% target. Stop after Gate 8 and exact-HEAD
 closeout; no Stage 9 implementation. Final documentation HEAD needs its own full CI.
+
+## Stage 9 Memory mapping — acceptance pending
+
+- MemoryEngineDeterministicGeneration: three seeded difficulty cases, exact stream,
+  lengths, all digits 0...9 and invalid digits/length rejection.
+- MemoryEngineDeadlineHidingRestoreAndNoLeakage: strict reveal boundary, leading zero,
+  pre-deadline submission rejection, idempotent prepare, JSON restore, interruption hide,
+  hidden restore without answer presentation and no clock-regression reveal.
+- MemoryEngineWrongInvalidAndFreshRoundAtomically: wrong recall changes digits/UUID,
+  invalid ASCII/length syntax, missing fresh digits and wrong-length next candidate
+  rejection without partial progress, stale old submission.
+- MemoryEngineThresholdAndOrderedContinuation: 1/2/20 rounds restored between answers,
+  exact progress, threshold clears checkpoint, Memory-to-Math preserves active sequence.
+- MemoryEngineRejectsForeignIdentityLengthAndTime: foreign identity, invalid preparation
+  length, atomic time regression rejection.
+- MemoryEngineOwnerFailureConflictDuplicateAndCleanupBoundary: failed hide retains the
+  committed round; conflict replay over accepted final recall does not double count;
+  completing still owns five cancellation IDs and has no external effects.
+- MemoryEngineOwnerClockRollbackStaleTimerAndForeignSession: conservative owner hide
+  despite clock reversal, stale timer does not affect a new round, missing session guards.
+- MemoryStoreTests: failed prepare/hide/answer writes, safe resume, bounded coincident
+  generation, wrong/new round, stale timer/submission, restored progress, failed cleanup,
+  production factory and revoked access without prompt or scheduler confirmation.
+- MemoryChallengeUITests: initial reveal, timed hiding, wrong/fresh recall, progress,
+  process relaunch, completion, home/foreground interruption and navigation recreation
+  without re-reveal. DEBUG fixture uses real reducer/owner/disk and injected effects.
+
+Focused Memory checks precede full required core/native regressions in ios.yml.
+Execution/coverage audit PENDING current exact revision. Physical device NOT RUN.

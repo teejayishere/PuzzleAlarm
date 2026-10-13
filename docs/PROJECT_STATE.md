@@ -220,4 +220,3 @@ Source: pure Math engine, owner-serialized atomic progress/checkpoint writes,
 typed-answer UI and deterministic fixtures/tests implemented.
 Automated/compile/Simulator: PENDING current implementation CI. Device: NOT RUN.
 Stop after Gate 8 and its exact-HEAD evidence closeout. Stage 9 NOT STARTED.
-

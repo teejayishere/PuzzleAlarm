@@ -8,6 +8,7 @@ final class MemoryChallengeUITests: XCTestCase {
         app.launch(); openMemory(app)
         let start = app.buttons["memory.start"]
         XCTAssertTrue(start.waitForExistence(timeout: 10)); start.tap()
+        waitLabel(app.staticTexts["memory.sequence"], "0123")
         XCTAssertTrue(app.textFields["memory.answer"].waitForExistence(timeout: 10))
         XCTAssertFalse(app.staticTexts["memory.sequence"].exists)
         enter("9999", app)
@@ -27,6 +28,26 @@ final class MemoryChallengeUITests: XCTestCase {
         app.terminate(); app.launch()
         XCTAssertTrue(app.navigationBars["PuzzleAlarm"].waitForExistence(timeout: 15))
         XCTAssertFalse(app.buttons["memory.open"].exists)
+    }
+    @MainActor func testInterruptVisibleRoundAndRecreateViewWithoutReveal() {
+        let app = XCUIApplication()
+        app.launchEnvironment = ["PUZZLE_UI_TEST": "1", "PUZZLE_RESET": "1",
+            "PUZZLE_TEST_NAME": "memory-interruption", "PUZZLE_SCENARIO": "memory"]
+        app.launch(); openMemory(app)
+        XCTAssertTrue(app.buttons["memory.start"].waitForExistence(timeout: 10))
+        app.buttons["memory.start"].tap()
+        waitLabel(app.staticTexts["memory.sequence"], "0123")
+        XCUIDevice.shared.press(.home); app.activate()
+        XCTAssertTrue(app.textFields["memory.answer"].waitForExistence(timeout: 10))
+        XCTAssertFalse(app.staticTexts["memory.sequence"].exists)
+        app.navigationBars["Memory Challenge"].buttons.element(boundBy: 0).tap()
+        openMemory(app)
+        XCTAssertTrue(app.textFields["memory.answer"].waitForExistence(timeout: 10))
+        XCTAssertFalse(app.staticTexts["memory.sequence"].exists)
+        app.terminate(); app.launchEnvironment["PUZZLE_RESET"] = "0"; app.launch(); openMemory(app)
+        XCTAssertTrue(app.textFields["memory.answer"].waitForExistence(timeout: 10))
+        XCTAssertFalse(app.staticTexts["memory.sequence"].exists)
+        XCTAssertEqual(app.staticTexts["memory.progress"].label, "0 of 2 rounds")
     }
     @MainActor private func openMemory(_ app: XCUIApplication) {
         let link = app.buttons["memory.open"]

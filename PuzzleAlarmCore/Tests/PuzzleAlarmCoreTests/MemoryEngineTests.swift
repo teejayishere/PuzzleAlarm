@@ -72,6 +72,11 @@ func MemoryEngineDeterministicGeneration(_ difficulty: Difficulty) throws {
         try engine.submit("9999", roundID: uuid(90), for: identity, next: memoryRound(91), at: hiddenAt)
     }
     #expect(engine == before)
+    #expect(throws: DomainError.self) {
+        try engine.submit("0123", roundID: uuid(90), for: identity,
+                          next: memoryRound(91, digits: [1, 2]), at: hiddenAt)
+    }
+    #expect(engine == before)
     let next = try memoryRound(91, digits: [4, 5, 6, 7])
     #expect(try engine.submit("9999", roundID: uuid(90), for: identity, next: next, at: hiddenAt) == .wrong)
     #expect(engine.successfulRounds == 0 && engine.round == next)
@@ -117,6 +122,28 @@ func MemoryEngineThresholdAndOrderedContinuation(_ count: Int) throws {
     #expect(throws: DomainError.self) { try engine.submit("0123", roundID: uuid(90), for: identity, next: nil, at: date.addingTimeInterval(-1)) }
     #expect(throws: DomainError.self) { try engine.hide(for: identity, at: date.addingTimeInterval(-1)) }
     #expect(engine == before)
+}
+
+@Test func MemoryEngineOwnerClockRollbackStaleTimerAndForeignSession() async throws {
+    let engine = try memoryEngine()
+    let identity = try #require(engine.coordinator.currentIdentity), date = engine.record.updatedAt
+    let repository = FaultRepository(), clock = TestClock(date)
+    _ = try await repository.commit(RepositoryState(sessions: [engine.record]), expecting: .missing)
+    let owner = AlarmLifecycleCoordinator(repository: repository, scheduler: FakeAlarmScheduler(), clock: { clock.now() })
+    _ = try await owner.prepareMemory(for: identity, round: memoryRound())
+    clock.set(date.addingTimeInterval(-10))
+    let hidden = try await owner.hideMemory(for: identity)
+    #expect(try MemoryEngine(restoring: #require(hidden.state.sessions.first)).phase == .hidden)
+    clock.set(date)
+    let result = try await owner.submitMemory("9999", roundID: uuid(90), for: identity,
+                                            next: memoryRound(91, digits: [4, 5, 6, 7]))
+    #expect(result.1 == .wrong)
+    let stale = try await owner.hideMemory(for: identity, roundID: uuid(90))
+    #expect(stale.state == result.0.state)
+    let foreign = ChallengeIdentity(sessionID: uuid(230), index: 0, kind: .memory)
+    await #expect(throws: DomainError.outOfOrder) { try await owner.prepareMemory(for: foreign, round: memoryRound()) }
+    await #expect(throws: DomainError.outOfOrder) { try await owner.hideMemory(for: foreign) }
+    await #expect(throws: DomainError.outOfOrder) { try await owner.submitMemory("0123", roundID: uuid(90), for: foreign, next: nil) }
 }
 
 @Test func MemoryEngineOwnerFailureConflictDuplicateAndCleanupBoundary() async throws {

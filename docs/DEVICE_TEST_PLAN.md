@@ -81,3 +81,18 @@ acceptance; these device checks remain open for the later device gate:
   and the recurrence policy is respected. No CI/Simulator result proves this.
 
 Stage 9 has not begun. No Memory, camera, audio or final intent-routing claim added.
+
+## Stage 9 Memory — DEVICE REQUIRED, not run
+
+- Verify configured reveal duration, hidden screen and typed leading-zero recall on
+  real hardware with VoiceOver and largest Dynamic Type, portrait/landscape.
+- Interrupt visible/hidden rounds using lock, home, app switcher, background and kill;
+  reopen without re-reveal, progress loss or automatic success. Inspect OS snapshots.
+- Interrupt writes under file protection/power loss; failed hiding must keep the UI
+  concealed and failed submissions must not advance or replace the committed round.
+- Check wall-clock changes during reveal and after expiry without answer reappearance.
+- Check wrong recall gets different digits, and later configured challenges/real backup
+  cleanup remain mandatory. No build, mock, CI or Simulator result satisfies this list.
+
+Gate 9 is automated/Simulator acceptance; no physical device action is requested now.
+QR/camera, audio and final intent routing remain later gates. Stage 10 NOT STARTED.
