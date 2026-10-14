@@ -22,7 +22,8 @@ Remote branch/main verified; no history rewritten. Final documentation HEAD must
 complete CI before history-preserving main publication and exact-final-main CI.
 Actual share hierarchy confirms Copy is an actionGroupCell, not a Button. The
 management timeout lacked a full failure hierarchy/result artifact; retain both
-and reproduce that exact test before downstream UI gates, preserving all assertions.
+and replay the affected management suite, including that exact test, before downstream
+UI gates, preserving all assertions.
 Physical camera, permission prompt, optical/printed image quality, interruptions,
 hardware accessibility and actual AlarmKit effects DEVICE REQUIRED / NOT RUN.
 

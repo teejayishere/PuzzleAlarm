@@ -124,7 +124,7 @@ jobs:
             -only-testing:PuzzleAlarmTests/QRStoreTests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/application-tests.log"
-      - name: Reproduce management edit readiness regression
+      - name: Replay Gate 6 management UI before downstream flows
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: |
@@ -132,7 +132,7 @@ jobs:
           xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData -resultBundlePath TestResults/Management.xcresult \
-            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditChangesConfigurationWithoutChangingIdentity \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/management-ui-tests.log"
       - name: Run focused Math UI smoke flow

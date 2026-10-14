@@ -11,8 +11,8 @@ predicate for editor.repeat, after changing time. Logs show unusually slow snaps
 queries (4–12 seconds) and next launch (38 seconds), but contain no enabled-failure
 hierarchy; that alone cannot prove an infrastructure or production cause. Preserve
 the original 10-second readiness assertion, add failure hierarchy/screenshot and
-Management/Shell result retention, and reproduce the exact test before downstream
-UI checks. Gate 6 replay FAILED; dependent Gates 7–10 invalid pending diagnostic
+Management/Shell result retention, and replay the affected management suite (including
+the exact failing edit test) before downstream UI gates. Gate 6 replay FAILED; dependent Gates 7–10 invalid pending diagnostic
 replay. All 146 Core and 51 native unit tests passed; 14/15 full UI passed. Coverage
 is partial failed-run evidence only. Release exclusion/diagnostic steps skipped.
 No confirmed earlier domain/owner defect; do not publish main while this is open.
