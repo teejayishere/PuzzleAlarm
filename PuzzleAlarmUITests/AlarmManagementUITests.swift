@@ -42,7 +42,13 @@ final class AlarmManagementUITests: XCTestCase {
         }
         XCTAssertTrue(target.waitForExistence(timeout: 5), id + "\n" + app.debugDescription)
         let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: target)
-        XCTAssertEqual(XCTWaiter.wait(for: [enabled], timeout: 10), .completed, id)
+        let readiness = XCTWaiter.wait(for: [enabled], timeout: 10)
+        if readiness != .completed {
+            print("Management readiness failure for \(id):\n" + app.debugDescription)
+            let attachment = XCTAttachment(screenshot: app.screenshot())
+            attachment.name = "Management readiness \(id)"; attachment.lifetime = .keepAlways; add(attachment)
+        }
+        XCTAssertEqual(readiness, .completed, id)
         if target.elementType == .switch {
             let inner = target.switches.firstMatch
             if inner.exists { inner.tap() }

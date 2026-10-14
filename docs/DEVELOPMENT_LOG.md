@@ -2,6 +2,21 @@
 
 ## Stage 10 implementation start
 
+8d01038 / run 38512236768: focused and full QR flows PASS. Actual hierarchy shows
+Cell identifier actionGroupCell, label Copy (plus child cellTitleLabel); Button-only
+lookup was the wrong test assumption. Real action tap/dismissal passed without
+production sharing changes. QR xcresult retained as artifact 11871645970.
+Full native regression FAILED at the existing Gate 6 management edit readiness
+predicate for editor.repeat, after changing time. Logs show unusually slow snapshot
+queries (4–12 seconds) and next launch (38 seconds), but contain no enabled-failure
+hierarchy; that alone cannot prove an infrastructure or production cause. Preserve
+the original 10-second readiness assertion, add failure hierarchy/screenshot and
+Management/Shell result retention, and reproduce the exact test before downstream
+UI checks. Gate 6 replay FAILED; dependent Gates 7–10 invalid pending diagnostic
+replay. All 146 Core and 51 native unit tests passed; 14/15 full UI passed. Coverage
+is partial failed-run evidence only. Release exclusion/diagnostic steps skipped.
+No confirmed earlier domain/owner defect; do not publish main while this is open.
+
 Resume on codex/stage-10-qr at c37a67ac4c02d84f8a3df967063250859c81d4f0;
 fetch verified remote branch unchanged and main still 0b5c261. Preserve the four
 existing local adapter/plist/workflow/log edits. Exact-HEAD run 38438577131 FAILED

@@ -5,8 +5,10 @@
 Starting HEAD/main: 0b5c261da4eaab2f29317d3e58b23dab7f4ed7bc; clean checkout verified.
 Prerequisite exact-main CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38354985121
 completed SUCCESS before implementation. Current stage: 10; Gate 10 PENDING.
-Last passing gate: 9. Gate 10 FAILED at c37a67a / run 38438577131; correction pending replay.
-Earlier invalidations: none identified; failure is new Stage 10 test measurement.
+Last accepted baseline gate: 9. Gate 10 NOT ACCEPTED.
+Run 38512236768 at 8d01038 passes focused/full QR, but Gate 6 management edit
+regression times out on editor.repeat readiness; Gates 6–10 replay invalidated
+pending diagnostic reproduction. No earlier domain/owner defect identified yet.
 Stop after Gate 10 and exact-final-main CI. Stage 11 NOT STARTED.
 Source: Foundation exact-byte QR reducer; existing session snapshot/token/schema,
 owner CAS persistence and trusted ordered success. Core Image image/quiet zone and
@@ -18,6 +20,9 @@ capture retry). Failed sharing test's Button-only Copy lookup is corrected to th
 same required native action across element types, with hierarchy/screenshot retention.
 Remote branch/main verified; no history rewritten. Final documentation HEAD must pass
 complete CI before history-preserving main publication and exact-final-main CI.
+Actual share hierarchy confirms Copy is an actionGroupCell, not a Button. The
+management timeout lacked a full failure hierarchy/result artifact; retain both
+and reproduce that exact test before downstream UI gates, preserving all assertions.
 Physical camera, permission prompt, optical/printed image quality, interruptions,
 hardware accessibility and actual AlarmKit effects DEVICE REQUIRED / NOT RUN.
 
