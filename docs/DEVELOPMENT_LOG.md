@@ -1,5 +1,42 @@
 # Development log
 
+## Stage 10 source acceptance — PASS; final documentation/main closeout
+
+abc38481f3c2b1678c6e08db35de608e410bc5d1 /
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38515725575 — complete SUCCESS,
+all required steps verified directly against jobs/logs. Observed 2026-10-14 America/Chicago.
+Source: resumed c37a67a on existing branch, fetched remote without discarding four
+local edits; exact-byte reducer, one owner/CAS, native image/share, isolated capture
+and DEBUG fake retained. No source history rewrite, schema or AlarmKit API change.
+Tests: four QR Core declarations/14 cases, five native QR tests, three QR UI flows.
+Full 146 Core + 51 native + 15 UI = 212 distinct tests PASS. Existing assertions and
+coverage policy preserved; no arbitrary 100% target. Focused repeats are excluded.
+Xcode: Xcode 26.6 / Swift 6.3.3, free standard macos-26 public runner. Generation,
+package, Debug/Release, SDK/platform compile, built alarm/camera/Photos purpose text,
+Release fixture exclusion and diagnostics PASS; zero compiler/destination warnings,
+three known SDK metadata advisories. Local Windows verified source and git only.
+Simulator: QR lifecycle/relaunch/permission-state/ordered flows and native Copy PASS;
+logs show Copy as actionGroupCell, not Button. This resolves the test-type assumption
+without a sharing production change. Independent exported PNG decoding/quiet-zone
+assertions remain. Actual optical capture, save/print and permission prompts NOT RUN.
+Self/adversarial review: snapshot edits, duplicates/late callbacks, persistence/CAS,
+cleanup/revoked access and export/capture boundaries challenged; one-owner assumption
+retained. Coverage 2243/2256 Core; app per-file/uncovered boundaries in TEST_MATRIX.
+Real AV adapter 0/173 is explicitly source/compile evidence, not fake-device evidence.
+Recursive replay: the management readiness timeout held Gates 6–10 invalid; unchanged
+management assertions now pass all eight tests before downstream UI and again in full.
+Attribution to runner/accessibility latency remains an inference; diagnostic bundles
+are retained for future recurrence. No earlier production defect was established.
+f431239 run was superseded/cancelled to move full management replay before downstream
+UI; never counted as a pass. No invalidated gate remains at this accepted source.
+Evidence artifacts: QR 11873133286; Management/Shell 11873746573, seven-day retention.
+Physical device: DEVICE REQUIRED / NOT RUN for real camera/permissions/optics/preview,
+resource interruptions, accessibility and AlarmKit effects. Stage 11 NOT STARTED.
+Next: documentation-only revision must pass complete exact-HEAD CI, then publish to
+main by fast-forward preserving commits and verify complete exact-final-main CI.
+Final task report supplies that matching SHA/run; no commit solely to self-reference.
+STOP after this closeout. No physical action is needed for automated Gate 10 acceptance.
+
 ## Stage 10 implementation start
 
 8d01038 / run 38512236768: focused and full QR flows PASS. Actual hierarchy shows

@@ -1,10 +1,12 @@
 # Evidence ledger
 
-## Stage 10 — Gate PENDING
+## Stage 10 — Gate PASS
 
 Prerequisite main 0b5c261da4eaab2f29317d3e58b23dab7f4ed7bc / run 38354985121
 completed full SUCCESS before implementation. Earlier Gate 9 evidence remains valid.
-Current source revision must finish the complete workflow; partial runs are not a pass.
+Accepted source abc38481f3c2b1678c6e08db35de608e410bc5d1:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38515725575 — complete SUCCESS.
+All required steps passed; partial failed/cancelled runs are not acceptance evidence.
 
 | Capability | Tests / evidence boundary |
 | --- | --- |
@@ -13,8 +15,8 @@ Current source revision must finish the complete workflow; partial runs are not 
 | App success and cleanup | QRStoreTests: rejected write/reload, relaunch, duplicate, revoked AlarmKit access, QR→Math, partial cleanup/recovery; no false scheduler confirmation |
 | Scanner behavior | QRStoreTests: all permission/status states, duplicate metadata, stopped/replaced callback, interruption/retry, failed commit feedback and stale ordered callback |
 | Generated export | QRStoreTests: PNG decode through independent CIDetector matches saved payload; opaque white quiet zone. Printing/optical detection DEVICE REQUIRED |
-| Native UI | QRChallengeUITests: wrong scan, interruption, background, navigation recreation, relaunch, correct completion; denied/unavailable/retry and QR→Math; configuration image and native sharing |
-| Compile/regression | Focused QR before full Core; existing Gates 1–9 checks, Debug/Release, generated camera usage text, fake exclusion and diagnostics. Execution PENDING current exact HEAD |
+| Native UI | SIMULATOR PASS: wrong scan, interruption, background, navigation recreation, relaunch, correct completion; denied/unavailable/retry and QR→Math; configuration image, native Copy action and dismissal |
+| Compile/regression | PASS: focused QR before full Core; Gates 0–9 regressions, affected Gate 6 management UI before downstream flows, Debug/Release, built camera/Photos/alarm purpose strings, Release fake exclusion and diagnostics |
 | Physical camera | DEVICE REQUIRED / NOT RUN: actual prompt/restriction/revocation, AV metadata/notifications/hardware unavailable, preview/orientation/resource lifecycle, optical scan, save/print and accessibility |
 
 Meaningful source audit added stopped-before-permission guard, generation-bound capture
@@ -22,6 +24,55 @@ notifications, truthful inactive-session presentation, failed/stale scanner feed
 edited-parent snapshot tests. No coverage assertion or valid earlier test was weakened.
 Core adapter/persistence architecture is unchanged; no earlier defect found so far.
 AVFoundation branches cannot be inferred from fake coverage. Stage 11 NOT STARTED.
+
+### Stage 10 acceptance and uncovered-behavior audit
+
+Source IMPLEMENTED; automated AUTOMATED PASS; Xcode XCODE COMPILE PASS; Simulator
+SIMULATOR PASS; physical device DEVICE REQUIRED / NOT RUN. Toolchain Xcode 26.6 /
+Swift 6.3.3 on free standard macos-26. No compiler/destination warnings; three known
+SDK metadata advisories. Four QR Core declarations execute 14 cases; five application
+and three UI declarations add 12 tests since Stage 9. Full 146 + 51 + 15 = 212 distinct
+tests PASS; focused reruns and argument cases are not counted again.
+
+Core 2243/2256 (99.42%), QREngine 15/15, QRLifecycle 21/21. Prior 13 uncovered counts
+(10 merged LCOV lines plus closure counts) retain their earlier classifications.
+The important inline identity, clock, competing CAS, changed parent snapshot and
+failed-write behaviors are exercised; validated invariants are not broken for coverage.
+
+Application counts at this exact source: AlarmStore 308/313, AppEnvironment 23/27,
+AlarmEditorDraft 84/88, AlarmFormatting 86/86, AlarmStorePresentation 71/72,
+QRCodeScanning 82/82, QRCodeView 39/40, AVFoundationQRCodeScanner 0/173.
+Total 693/881 (78.66%); excluding the explicitly unexecuted physical capture adapter,
+693/708 (97.88%). This subtotal does not turn adapter mocks into production evidence.
+Store/environment/draft default, error and closed-enum/calendar fallbacks retain prior
+source/device classifications. The existing status fallback count varies (71/72 here,
+72/72 in failed 8d01038); status regressions remain green and no percentage decides
+acceptance. QRCodeView's uncalled _sharing initialization is a compiler-generated
+State initialization count; actual native sheet creation and Copy/dismissal execute.
+Image allocation/failure presentation is source-reviewed, not deliberately faulted
+to seek 100%. AV permission, input/output/device/QR availability, start/stop, observer
+generation, metadata and preview/resource branches are compiled/source-reviewed;
+real execution, OS prompts and optical behavior remain DEVICE REQUIRED.
+
+Five risks challenged: wrong/normalized/other-alarm token (exact-byte/order matrix),
+late or duplicate metadata (attempt-bound controller), failed write/competing CAS
+(owner rejection/revalidation), edited parent token (immutable occurrence snapshot),
+and export/capture boundaries (independent PNG decoder plus native Copy; hardware
+capture/save/print remains unverified). The most damaging architectural assumption,
+one live lifecycle owner with durable success before effects, remains explicit and
+is revalidated by CAS/write/cleanup tests. No schema or framework coupling added.
+No coverage assertion, real product requirement or readiness assertion was weakened.
+
+Run 38438577131 at c37a67a failed the Button-only Copy lookup. Run 38512236768 at
+8d01038 confirms Copy is Cell actionGroupCell and passes focused/full QR, but fails
+one existing management enabled predicate amid slow snapshots. Dependent Gates 6–10
+were held invalid pending replay. Diagnostic/order commits preserve the original
+enabled expectation/10-second limit; management passes both focused and full at the
+accepted source before closeout. Runner/accessibility latency is an inference, not a
+proven production cause. f431239's superseded run was cancelled, never counted PASS.
+Accepted-source artifacts: QR 11873133286, Management/Shell 11873746573 (seven days).
+Final documentation HEAD and final main must each pass the complete matching workflow;
+the task report provides final immutable SHA/run without a self-reference commit.
 
 Observed 2026-10-01 America/Chicago (CI timestamps 2026-10-02 UTC).
 

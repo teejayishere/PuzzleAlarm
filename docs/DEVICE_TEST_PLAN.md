@@ -5,6 +5,8 @@
 - Save a QR alarm, share/save/print its image and scan both screen and paper under
   varied lighting/distance. Another alarm's code and unrelated/malformed/normalized
   values must never advance. Confirm saved token survives edit/relaunch.
+- Verify user-selected Save Image's add-only Photos purpose/prompt, denial and retry;
+  displaying the code or opening sharing must not request camera/Photos access.
 - Verify actual permission prompt, allow/deny/restricted policy, Settings revocation
   and regrant. Retry must recheck access without skipping QR or cancelling backups.
 - Interrupt with background/lock/app switch, another camera client and system capture

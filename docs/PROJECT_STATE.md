@@ -1,32 +1,55 @@
 # Project state
 
-## Stage 10 active work (supersedes the historical stop boundaries below)
+## Stage 10 — Gate 10 PASS (supersedes historical stop boundaries below)
 
-Starting HEAD/main: 0b5c261da4eaab2f29317d3e58b23dab7f4ed7bc; clean checkout verified.
-Prerequisite exact-main CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38354985121
-completed SUCCESS before implementation. Current stage: 10; Gate 10 PENDING.
-Last accepted baseline gate: 9. Gate 10 NOT ACCEPTED.
-Run 38512236768 at 8d01038 passes focused/full QR, but Gate 6 management edit
-regression times out on editor.repeat readiness; Gates 6–10 replay invalidated
-pending diagnostic reproduction. No earlier domain/owner defect identified yet.
-Stop after Gate 10 and exact-final-main CI. Stage 11 NOT STARTED.
-Source: Foundation exact-byte QR reducer; existing session snapshot/token/schema,
-owner CAS persistence and trusted ordered success. Core Image image/quiet zone and
-native share sheet, camera permission/capture adapter and DEBUG fake scanner.
-Capture attempts invalidate on scene/navigation/interruption; explicit safe retry.
-Automated/Xcode/Simulator evidence PENDING current revision; local Windows has no Swift/Xcode.
-Resume preserved four existing local edits (Photos purpose string/check and interrupted
-capture retry). Failed sharing test's Button-only Copy lookup is corrected to the
-same required native action across element types, with hierarchy/screenshot retention.
-Remote branch/main verified; no history rewritten. Final documentation HEAD must pass
-complete CI before history-preserving main publication and exact-final-main CI.
-Actual share hierarchy confirms Copy is an actionGroupCell, not a Button. The
-management timeout lacked a full failure hierarchy/result artifact; retain both
-and replay the affected management suite, including that exact test, before downstream
-UI gates, preserving all assertions.
-Physical camera, permission prompt, optical/printed image quality, interruptions,
-hardware accessibility and actual AlarmKit effects DEVICE REQUIRED / NOT RUN.
+Accepted source: abc38481f3c2b1678c6e08db35de608e410bc5d1 on codex/stage-10-qr.
+Complete exact-source CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38515725575
+SUCCESS, every required step. Observed 2026-10-14 America/Chicago.
+Starting main 0b5c261 / prerequisite run 38354985121 passed before implementation.
+Resume began at c37a67a; all four local adapter/plist/workflow/log edits were preserved.
+Current / last passing gate: 10. Gates 0–9 required regressions replayed successfully.
+The Gate 6 readiness timeout invalidated dependent replay acceptance; the affected
+management suite passed before downstream UI flows and again in full native tests.
+No invalidation remains. No earlier domain/owner defect identified. Blocker: none
+for automated Gate 10. Stop after exact-final-main CI; Stage 11 NOT STARTED.
 
+Source: Foundation exact-byte QR reducer over the existing occurrence snapshot/token,
+schema and owner CAS. Trusted ordered success commits before lifecycle cleanup.
+Core Image exports an opaque image with quiet zone; native sharing exposes normal
+activities. AVFoundation capture/permission adapter is isolated from Core; DEBUG fake
+scanner drives Simulator flows. Navigation/scene/interruption invalidates attempts.
+Photos add-only purpose string and interrupted retry check are present; no startup
+camera/Photos request or new lifecycle owner. No AlarmKit signature/schema change.
+
+Automated: four QR Core declarations (14 case executions), five native QR tests and
+three QR UI flows; full 146 Core + 51 native + 15 UI = 212 distinct tests PASS.
+Focused repetitions/parameterized cases are not double-counted. Core 2243/2256
+(99.42%); QREngine 15/15, QRLifecycle 21/21. Prior 13 core uncovered counts unchanged.
+Application coverage and meaningful uncovered boundaries are classified in TEST_MATRIX;
+the real AVFoundation adapter has 0/173 executed counts and is not mock-verified.
+
+Xcode: Xcode 26.6 / Swift 6.3.3, free standard macos-26 public runner. Reproducible
+generation/package, Debug/Release, SDK compilation, built alarm/camera/Photos purpose
+strings and Release fixture exclusion PASS. No compiler/destination warnings; three
+known SDK metadata advisories recorded. Local Windows evidence is source/git only.
+Simulator: wrong/denied/unavailable/interrupted/stale scans, explicit retry, background,
+navigation recreation, relaunch, completion and QR→Math PASS. PNG independently decodes
+the saved payload and quiet-zone pixels are opaque white. Actual sharing hierarchy is
+Cell actionGroupCell, label Copy; required native Copy tap and dismissal PASS. The
+original Button-only lookup was a test assumption defect, not broken sharing.
+Management readiness passed unchanged twice; latency attribution remains an inference.
+QR and Management/Shell result bundles are retained for seven days in source CI.
+
+Physical device: DEVICE REQUIRED / NOT RUN. Real permission/revocation, camera metadata,
+interruptions/preview/resource lifecycle, optical/paper image quality, Save Image/print,
+hardware accessibility and actual AlarmKit effects remain unverified.
+
+Closeout requires complete CI for this documentation HEAD, then history-preserving
+fast-forward publication to main and complete exact-final-main CI. The final task
+report supplies the immutable final SHA/run; do not commit again to self-reference.
+No device action is required for automated Gate 10 closeout. STOP; no Stage 11 work.
+
+## Historical Stage 9 state (superseded by Stage 10 above)
 
 Current stage: 9 — Memory COMPLETE at the verified source revision below.
 Current / last passing gate: Gate 9 — PASS at 017218e893a72125b85402336adebb1c965b00ea.

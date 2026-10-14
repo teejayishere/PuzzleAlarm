@@ -27,8 +27,10 @@ FakeQRCodeScanner and simulated scanning UI are DEBUG only and checked absent in
 
 QR creation retains the existing UUID generation/edit persistence. Core Image exports
 an opaque, integer-scaled image with a four-module white quiet zone. Configuration shows
-the image and native UIActivityViewController for normal save/share/print. No camera/photo
-library access is requested to display/export. Export decode tests verify the exact saved
+the image and native UIActivityViewController for normal save/share/print. Display and
+share-sheet presentation request no camera/Photos access. User-selected Save Image may
+request add-only Photos access; NSPhotoLibraryAddUsageDescription supplies its purpose.
+Actual native save/prompt/print remains device-required. Export decode tests verify the exact saved
 payload independently through CIDetector. Optical scanning, system permission behavior,
 capture notifications and printing/accessibility remain physical-device checks.
 Current execution evidence and gate status live in PROJECT_STATE, not inferred here.
