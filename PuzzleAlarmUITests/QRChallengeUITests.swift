@@ -3,6 +3,8 @@ import XCTest
 final class QRChallengeUITests: XCTestCase {
     @MainActor private func launch(_ name: String, scenario: String = "qr", permission: String = "authorized") -> XCUIApplication {
         let app = XCUIApplication()
+        continueAfterFailure = false
+        app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launchEnvironment = ["PUZZLE_UI_TEST": "1", "PUZZLE_RESET": "1", "PUZZLE_TEST_NAME": name,
             "PUZZLE_SCENARIO": scenario, "PUZZLE_CAMERA_STATUS": permission]
         app.launch(); openQR(app); return app
@@ -61,8 +63,18 @@ final class QRChallengeUITests: XCTestCase {
         XCTAssertTrue(configure.waitForExistence(timeout: 10)); configure.tap()
         XCTAssertTrue(app.images["qr.image"].waitForExistence(timeout: 10))
         app.buttons["qr.share"].tap()
-        XCTAssertTrue(app.buttons["Copy"].waitForExistence(timeout: 10))
-        app.buttons["Copy"].tap()
+        // Native activity actions need not expose the Button accessibility type.
+        // Keep the actual Copy action required, independent of its UIKit element type.
+        let copy = app.descendants(matching: .any).matching(identifier: "Copy").firstMatch
+        XCTAssertTrue(copy.waitForExistence(timeout: 10), app.debugDescription)
+        print("QR native share hierarchy:\n" + app.debugDescription)
+        let share = XCTAttachment(screenshot: app.screenshot())
+        share.name = "QR native share sheet"; share.lifetime = .keepAlways; add(share)
+        XCTAssertTrue(copy.isHittable, app.debugDescription)
+        copy.tap()
+        XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "exists == false"),
+            object: app.buttons["header.closeButton"])], timeout: 10) == .completed)
         XCTAssertTrue(app.images["qr.image"].waitForExistence(timeout: 10))
         app.terminate(); app.launchEnvironment["PUZZLE_RESET"] = "0"; app.launch()
         XCTAssertTrue(app.buttons["qr.open"].waitForExistence(timeout: 15))

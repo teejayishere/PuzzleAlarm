@@ -39,6 +39,7 @@ targets:
         CFBundleDisplayName: PuzzleAlarm
         NSAlarmKitUsageDescription: PuzzleAlarm uses alarms to wake you at the times you schedule.
         NSCameraUsageDescription: PuzzleAlarm uses the camera to scan the QR code you configured for your alarm.
+        NSPhotoLibraryAddUsageDescription: PuzzleAlarm saves your QR code image when you choose Save Image.
         LSRequiresIPhoneOS: true
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false

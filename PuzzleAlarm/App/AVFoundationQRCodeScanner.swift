@@ -80,7 +80,7 @@ private final class QRCaptureWorker: NSObject, AVCaptureMetadataOutputObjectsDel
                     session.commitConfiguration()
                 }
                 session.startRunning()
-                send(.status(session.isRunning ? .authorized : .unavailable))
+                send(.status(session.isInterrupted ? .interrupted : session.isRunning ? .authorized : .unavailable))
             } catch { send(.status(.unavailable)) }
         }
     }

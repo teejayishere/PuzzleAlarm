@@ -2,6 +2,30 @@
 
 ## Stage 10 implementation start
 
+Resume on codex/stage-10-qr at c37a67ac4c02d84f8a3df967063250859c81d4f0;
+fetch verified remote branch unchanged and main still 0b5c261. Preserve the four
+existing local adapter/plist/workflow/log edits. Exact-HEAD run 38438577131 FAILED
+at QRChallengeUITests.testDisplayShareAndPersistedConfiguration. Actual logs show
+native header.closeButton (Close) and editButton (Edit Actions), but no Copy Button.
+No xcresult artifact was retained by that workflow. UIKit activity actions need not
+be Buttons: query the same required Copy action across accessibility element types,
+require hittability and native dismissal, and retain hierarchy/screenshot/xcresult.
+This is an evidence-based test-type correction hypothesis, pending execution; no
+assertion replaced with merely opening/closing sharing. PNG exact-token decode and
+quiet-zone assertions remain required. Fail-fast avoids misleading secondary taps.
+Core, Debug/Release, focused native QR, Math/Memory UI passed in the failed run;
+full native/coverage/release exclusion/diagnostics were not completed. Missing Shell
+coverage follows the earlier QR failure, not a new product defect. Gate 10 stays
+FAILED pending ordered replay; no earlier gate defect identified. Physical camera
+DEVICE REQUIRED. Stage 11 NOT STARTED.
+
+Platform source audit while the correction waited for a free runner: native Save Image
+needs an add-only Photos purpose string. Add NSPhotoLibraryAddUsageDescription and verify
+it in the built plist alongside camera/alarm descriptions; no startup photo request or
+library read access. Check capture isInterrupted on retry, not isRunning alone. Apple
+public API documentation supports both checks; actual save/prompt/capture remains DEVICE
+REQUIRED. These are new Stage 10 adapter edges, not earlier architectural defects.
+
 First source ffeecc9 / https://github.com/teejayishere/PuzzleAlarm/actions/runs/38415421531
 FAILED at the new export quiet-zone test: its area-average filter without explicit
 input extent rendered zeros. Independent PNG QR decoding, other QR native tests,

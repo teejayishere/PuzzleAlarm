@@ -5,7 +5,7 @@
 Starting HEAD/main: 0b5c261da4eaab2f29317d3e58b23dab7f4ed7bc; clean checkout verified.
 Prerequisite exact-main CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38354985121
 completed SUCCESS before implementation. Current stage: 10; Gate 10 PENDING.
-Last passing gate: 9. Gate 10 FAILED at ffeecc9; correction pending replay.
+Last passing gate: 9. Gate 10 FAILED at c37a67a / run 38438577131; correction pending replay.
 Earlier invalidations: none identified; failure is new Stage 10 test measurement.
 Stop after Gate 10 and exact-final-main CI. Stage 11 NOT STARTED.
 Source: Foundation exact-byte QR reducer; existing session snapshot/token/schema,
@@ -13,6 +13,11 @@ owner CAS persistence and trusted ordered success. Core Image image/quiet zone a
 native share sheet, camera permission/capture adapter and DEBUG fake scanner.
 Capture attempts invalidate on scene/navigation/interruption; explicit safe retry.
 Automated/Xcode/Simulator evidence PENDING current revision; local Windows has no Swift/Xcode.
+Resume preserved four existing local edits (Photos purpose string/check and interrupted
+capture retry). Failed sharing test's Button-only Copy lookup is corrected to the
+same required native action across element types, with hierarchy/screenshot retention.
+Remote branch/main verified; no history rewritten. Final documentation HEAD must pass
+complete CI before history-preserving main publication and exact-final-main CI.
 Physical camera, permission prompt, optical/printed image quality, interruptions,
 hardware accessibility and actual AlarmKit effects DEVICE REQUIRED / NOT RUN.
 
