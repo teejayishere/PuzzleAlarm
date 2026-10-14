@@ -2,6 +2,21 @@
 
 ## Stage 10 — Gate 10 PASS (supersedes historical stop boundaries below)
 
+Final-main closeout is still required. b52c58caeb435329f5c2b19814d62d1fe9ebb581
+passed complete documentation-HEAD CI 38521348992 and was fast-forwarded to main,
+preserving history. Its first main run 38526380709 FAILED at Xcode app launch:
+timeout before the first management product assertion, then a PID 0 background
+assertion failure. The six remaining management tests, including the original edit
+readiness reproduction, passed. Downstream Gates 7–10 were correctly not reached;
+that Gate 6 launch replay is BLOCKED for acceptance, never counted PASS.
+The source acceptance below remains immutable evidence, not a substitute for
+exact-final-main CI. No product defect was established by this pre-assertion failure.
+Management xcresult artifact 11877480716 retains launch diagnostics. Actions rerun
+returns 403 (integration lacks write access); the available browser is signed out.
+A documentation-only follow-up records this evidence and triggers a fresh complete
+free workflow without source/assertion changes. It must pass before a new preserving
+main fast-forward and exact-final-main verification. No device action is needed.
+
 Accepted source: abc38481f3c2b1678c6e08db35de608e410bc5d1 on codex/stage-10-qr.
 Complete exact-source CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38515725575
 SUCCESS, every required step. Observed 2026-10-14 America/Chicago.

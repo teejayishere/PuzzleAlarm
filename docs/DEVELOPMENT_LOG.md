@@ -1,5 +1,28 @@
 # Development log
 
+## Stage 10 exact-main launch failure and evidence-based replay
+
+Documentation HEAD b52c58caeb435329f5c2b19814d62d1fe9ebb581 passed complete run
+38521348992 (all required steps, 146 Core / 51 native / 15 UI). Fetch/clean-tree,
+exact HEAD and ancestor checks preceded fast-forward main publication; 0b5c261→b52c58c
+preserved every Stage 10 commit. No source changes accompanied documentation closeout.
+Main run 38526380709 FAILED at the first management app launch via Xcode, before
+any product assertion: launch timed out and IDELaunchParametersSnapshot reported
+DebuggerLLDB.DebuggerVersionStore.StoreError / no debugger version. The next launch
+failed to obtain a background assertion for PID 0. Remaining six management tests,
+including the original edit readiness case, passed. Downstream flows were skipped;
+the absent Shell coverage report follows that launch failure, not a separate defect.
+Source/compile evidence is distinct from this blocked final-main replay. No product
+defect established; Gates 6–10 replay acceptance remains held until complete replay.
+Actual logs inspected; Management xcresult artifact 11877480716 retains diagnostics.
+Rerun-failed-jobs connector returned 403 Resource not accessible by integration.
+Browser inspection showed signed-out GitHub with no rerun controls; no credentials,
+permission expansion or source/assertion changes attempted. Use a documentation-only
+evidence follow-up as a new full CI trigger, validate that exact branch HEAD before
+preserving main fast-forward and verify complete exact-final-main CI. This is one
+diagnosed launch-infrastructure replay, not a blind product-test retry. Device NOT RUN.
+STOP after successful closeout; Stage 11 NOT STARTED. No user action required yet.
+
 ## Stage 10 source acceptance — PASS; final documentation/main closeout
 
 abc38481f3c2b1678c6e08db35de608e410bc5d1 /

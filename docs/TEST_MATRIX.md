@@ -27,6 +27,17 @@ AVFoundation branches cannot be inferred from fake coverage. Stage 11 NOT STARTE
 
 ### Stage 10 acceptance and uncovered-behavior audit
 
+First final-main attempt: b52c58c passed complete documentation branch run
+38521348992, then main run 38526380709 failed before two management tests could
+reach product assertions (Xcode launch timeout, then PID 0 background assertion).
+The other six management tests passed, including the previous readiness failure.
+Dependent UI gates were not executed; missing Shell coverage is a consequence.
+Launch diagnostic bundle: artifact 11877480716 (seven days). No product assertions
+or timeouts are relaxed. Connector rerun is unavailable (403); a documentation-only
+revision provides a legitimate new full workflow trigger, followed by exact-main
+replay. This failed main attempt is not accepted; final task report must identify a
+completed matching main run. Source/automated acceptance below names its own revision.
+
 Source IMPLEMENTED; automated AUTOMATED PASS; Xcode XCODE COMPILE PASS; Simulator
 SIMULATOR PASS; physical device DEVICE REQUIRED / NOT RUN. Toolchain Xcode 26.6 /
 Swift 6.3.3 on free standard macos-26. No compiler/destination warnings; three known
