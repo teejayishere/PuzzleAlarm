@@ -1,6 +1,22 @@
 # Project state
 
-## Stage 10 — Gate 10 PASS (supersedes historical stop boundaries below)
+## Stage 10 — Gate 10 FAILED pending synchronization correction replay
+
+Latest assessment: ed39d259820dd41499d2e23957744650718a2592 / run 38529408523
+fails QRStoreTests.testScannerPermissionsLateCallbacksRetryAndInterruptionNeverSucceed.
+The test's 1,000 Task.yield iterations expire while submission is still asynchronously
+finishing cleanup: phase is completing and scanner authorized, not yet completed/idle.
+Replace iteration budgeting with a bounded continuous-clock wait for isSubmitting=false;
+require that condition and retain exact completed/idle/five-cancellation assertions.
+All scanner feedback/commit waits use that completion barrier. Production unchanged.
+Gate 10 acceptance at the historical source below is held invalid until replay; no
+earlier production defect identified. The new focused QR native class precedes full
+application and ordered UI regressions; its result bundle is retained even on failure.
+Final corrected source, documentation HEAD and final main each require complete CI.
+Current main remains b52c58c with failed launch-only run; no further publication yet.
+Stage 11 NOT STARTED. Physical camera DEVICE REQUIRED. No user action needed yet.
+
+## Historical Stage 10 acceptance and first closeout (superseded above)
 
 Final-main closeout is still required. b52c58caeb435329f5c2b19814d62d1fe9ebb581
 passed complete documentation-HEAD CI 38521348992 and was fast-forwarded to main,

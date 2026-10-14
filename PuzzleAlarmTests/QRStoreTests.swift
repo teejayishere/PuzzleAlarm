@@ -28,6 +28,16 @@ import PuzzleAlarmCore
         return AlarmStore(repository: repository, scheduler: effects, clock: { now },
             context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
     }
+    private func waitForSubmission(_ controller: QRScanController) async throws {
+        // A yield count is not a completion barrier: cleanup can still be awaiting
+        // the repository after the final cancellation. Release the main actor and
+        // require the actual submission task to finish within a bounded deadline.
+        let clock = ContinuousClock(), deadline = clock.now.advanced(by: .seconds(5))
+        while controller.isSubmitting && clock.now < deadline {
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        XCTAssertFalse(controller.isSubmitting, "QR submission did not finish within five seconds")
+    }
     func testGeneratedExportDecodesExactTokenAndHasWhiteQuietZone() throws {
         let image = try XCTUnwrap(QRCodeImage.generate(configuration))
         let data = try XCTUnwrap(image.pngData())
@@ -101,10 +111,10 @@ import PuzzleAlarmCore
         fake.emit(.status(.interrupted))
         XCTAssertEqual(controller.status, .interrupted)
         controller.start(identity); fake.emit(.payload("wrong"))
-        for _ in 0..<100 where controller.feedback.isEmpty { await Task.yield() }
+        try await waitForSubmission(controller)
         XCTAssertEqual(controller.feedback, "This is not the configured QR code.")
         fake.emit(.payload(configuration.expectedPayload)); fake.emit(.payload(configuration.expectedPayload))
-        for _ in 0..<1000 where controller.isSubmitting { await Task.yield() }
+        try await waitForSubmission(controller)
         XCTAssertEqual(store.session(identity.sessionID)?.session.phase, .completed)
         XCTAssertEqual(controller.status, .idle)
         XCTAssertEqual(effects.values.cancellations.count, 5)
@@ -117,14 +127,14 @@ import PuzzleAlarmCore
         controller.start(identity)
         await repository.failNext(.write)
         fake.emit(.payload(configuration.expectedPayload))
-        for _ in 0..<1000 where controller.isSubmitting { await Task.yield() }
+        try await waitForSubmission(controller)
         XCTAssertEqual(controller.feedback, "Scan was not saved. Try again.")
         XCTAssertEqual(store.session(identity.sessionID)?.session.currentChallengeIndex, 0)
         // Another legitimate presentation wins; this presentation's later scan is stale.
         let winner = await store.submitQR(configuration.expectedPayload, identity: identity)
         XCTAssertEqual(winner, .completed)
         fake.emit(.payload(configuration.expectedPayload))
-        for _ in 0..<1000 where controller.isSubmitting { await Task.yield() }
+        try await waitForSubmission(controller)
         XCTAssertEqual(controller.feedback, "This challenge has already changed.")
         XCTAssertEqual(controller.status, .idle)
         XCTAssertEqual(store.session(identity.sessionID)?.session.currentChallenge?.kind, .math)

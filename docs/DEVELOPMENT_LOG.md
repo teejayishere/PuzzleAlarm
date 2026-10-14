@@ -1,5 +1,22 @@
 # Development log
 
+## Stage 10 async test synchronization correction — replay required
+
+ed39d259820dd41499d2e23957744650718a2592 / run 38529408523 failed in QRStoreTests,
+after Core/Debug/Release passed. Actual assertions see phase completing and scanner
+authorized, while five cancellations have occurred; the 1,000-yield loop has exhausted
+its iteration budget before owner refresh/final persistence/controller stop finishes.
+This is a new Stage 10 measurement defect, not the earlier Xcode launch episode.
+Gate 10 acceptance is held invalid; no earlier production assumption disproved.
+Replace all four QR submission/feedback yield budgets with one five-second continuous
+clock condition wait. Async sleep releases the main actor; require isSubmitting=false
+before asserting exact completed/idle, feedback, progress and cancellation count.
+No production behavior, deadline in the product or existing assertion weakened.
+Add focused QR native reproduction before broader app/UI gates and retain early native
+result bundles. Core/owner architecture untouched. Updated evidence remains pending
+corrected source/full CI, documentation exact HEAD and preserving exact-final-main CI.
+Device NOT RUN; Stage 11 NOT STARTED. Windows evidence: source/diff only.
+
 ## Stage 10 exact-main launch failure and evidence-based replay
 
 Documentation HEAD b52c58caeb435329f5c2b19814d62d1fe9ebb581 passed complete run

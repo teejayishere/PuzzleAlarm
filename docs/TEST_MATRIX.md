@@ -1,6 +1,19 @@
 # Evidence ledger
 
-## Stage 10 — Gate PASS
+## Stage 10 — Gate FAILED pending corrected exact-HEAD replay
+
+Run 38529408523 at ed39d25 reveals another Stage 10 test measurement assumption:
+1,000 yields are not an async completion barrier. The QR permission/stale/duplicate
+test observes completing/authorized while cleanup still awaits final persistence.
+Require isSubmitting=false under a five-second ContinuousClock deadline, releasing
+the main actor with async sleep. Keep completed, idle and five cancellations exact.
+All submission/feedback waits share this bounded condition; no production relaxation.
+Focused QRStoreTests precede broader app/UI replay; native result retention includes
+QRApplication/Application/Management/Shell, so future early failures retain evidence.
+The historical acceptance below is invalidated for Gate 10 until corrected full CI.
+No earlier product defect demonstrated. Final documentation/main require exact CI.
+
+### Historical Stage 10 source acceptance (superseded by correction above)
 
 Prerequisite main 0b5c261da4eaab2f29317d3e58b23dab7f4ed7bc / run 38354985121
 completed full SUCCESS before implementation. Earlier Gate 9 evidence remains valid.
