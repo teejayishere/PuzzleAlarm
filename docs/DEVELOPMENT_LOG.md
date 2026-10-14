@@ -1,5 +1,24 @@
 # Development log
 
+## Recursive Gate 6 readiness measurement correction — replay required
+
+1a16f1d / run 38530656775 passes QRStoreTests twice (focused five and broader 41
+application tests). The completing/authorized premature assertions are resolved by
+waiting for isSubmitting=false; all exact completion/cleanup assertions remain.
+Management edit then fails enabled polling for editor.sound. Actual retained
+hierarchy shows Button editor.sound at {{32,690},{338,34}}, on screen and not Disabled;
+only Move Up/Down boundary controls are explicitly Disabled. The first role lookup
+was Any while the row was offscreen. Logs show Find/retry round trips taking 31
+seconds, followed by the ten-second predicate timeout despite this ready control.
+Source view/store behavior remains unchanged. Fix the earlier test-helper measurement:
+re-resolve concrete role after scrolling; use a directly observed enabled state before
+polling. Keep the ten-second wait if disabled and explicitly require enabled plus
+hittable before native tap. No time/repeat/mode/sound/identity/save/relaunch assertion
+or product requirement removed. Root is Gate 6 measurement; Gates 6–10 replay invalid
+until ordered completion. Artifact 11878925772 retains native result/diagnostic bundles.
+No rerun without this evidence-driven correction. Core/owner/source architecture and
+the real camera boundary are unchanged; physical device NOT RUN; Stage 11 NOT STARTED.
+
 ## Stage 10 async test synchronization correction — replay required
 
 ed39d259820dd41499d2e23957744650718a2592 / run 38529408523 failed in QRStoreTests,

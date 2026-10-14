@@ -1,6 +1,20 @@
 # Project state
 
-## Stage 10 — Gate 10 FAILED pending synchronization correction replay
+## Stage 10 — Gates 6–10 INVALID pending measurement correction replay
+
+1a16f1d / run 38530656775 passes focused QR native (five) and broader application
+(41) tests with the semantic submission barrier. Its management edit flow times out
+on editor.sound readiness. Retained actual hierarchy shows the sound Button visible,
+without Disabled, while only boundary Move Up/Down controls are Disabled; logs show
+the original offscreen Any query and 31-second accessibility lookup round trips.
+This disproves treating every readiness polling timeout as a disabled product control.
+Re-resolve the concrete role after scrolling; accept a directly observed isEnabled
+state before polling, retain the ten-second wait for genuinely disabled controls,
+and explicitly require isEnabled plus isHittable before tapping. All edit/time/repeat/
+mode/sound/stable-ID/relaunch assertions remain. Production unchanged.
+Earliest affected gate: 6 test helper; invalidate dependent 7–10 replay acceptance.
+Native artifact 11878925772 retains QR/Application/Management bundles. Corrected
+source, final documentation HEAD and exact-final-main each need complete ordered CI.
 
 Latest assessment: ed39d259820dd41499d2e23957744650718a2592 / run 38529408523
 fails QRStoreTests.testScannerPermissionsLateCallbacksRetryAndInterruptionNeverSucceed.

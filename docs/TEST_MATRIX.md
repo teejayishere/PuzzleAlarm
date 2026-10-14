@@ -1,6 +1,17 @@
 # Evidence ledger
 
-## Stage 10 — Gate FAILED pending corrected exact-HEAD replay
+## Stage 10 — Gates 6–10 INVALID pending corrected exact-HEAD replay
+
+1a16f1d / run 38530656775: all five focused QR native and 41 broader application
+tests PASS with actual completion waiting. Management edit readiness then fails for
+editor.sound. Full retained hierarchy shows the control as Button, on screen, with
+no Disabled state (boundary move controls are explicitly Disabled). Initial lookup
+was Any while offscreen; accessibility Find retries take 31 seconds. Re-resolve role
+after scrolling, observe isEnabled directly before deciding to poll, retain ten
+seconds for actually disabled controls, and require enabled/hittable before tap.
+All product/save/relaunch assertions stay exact. Earliest cause is Gate 6 helper
+measurement; dependent Gates 7–10 held invalid until full ordered replay.
+Native artifact 11878925772 retains early native evidence. No production change.
 
 Run 38529408523 at ed39d25 reveals another Stage 10 test measurement assumption:
 1,000 yields are not an async completion barrier. The QR permission/stale/duplicate

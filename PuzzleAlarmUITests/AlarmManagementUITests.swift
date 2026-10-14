@@ -30,7 +30,7 @@ final class AlarmManagementUITests: XCTestCase {
     private func tap(_ app: XCUIApplication, _ id: String) {
         let popup = app.popUpButtons.matching(identifier: id).firstMatch
         let button = app.buttons.matching(identifier: id).firstMatch
-        let target = popup.exists ? popup : (button.exists ? button : element(app, id))
+        var target = popup.exists ? popup : (button.exists ? button : element(app, id))
         _ = target.waitForExistence(timeout: 3)
         for _ in 0..<6 {
             if target.exists && target.isHittable { break }
@@ -40,15 +40,24 @@ final class AlarmManagementUITests: XCTestCase {
             if target.exists && target.isHittable { break }
             scroll(app, down: true)
         }
+        // Offscreen SwiftUI rows can be absent from the initial snapshot. Resolve
+        // their concrete role again after scrolling instead of keeping a broad query.
+        target = popup.exists ? popup : (button.exists ? button : element(app, id))
         XCTAssertTrue(target.waitForExistence(timeout: 5), id + "\n" + app.debugDescription)
-        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: target)
-        let readiness = XCTWaiter.wait(for: [enabled], timeout: 10)
-        if readiness != .completed {
-            print("Management readiness failure for \(id):\n" + app.debugDescription)
-            let attachment = XCTAttachment(screenshot: app.screenshot())
-            attachment.name = "Management readiness \(id)"; attachment.lifetime = .keepAlways; add(attachment)
+        // A fresh positive state needs no polling. Slow accessibility round trips
+        // must not turn an already-enabled control into a timed-out expectation.
+        if !target.isEnabled {
+            let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: target)
+            let readiness = XCTWaiter.wait(for: [enabled], timeout: 10)
+            if readiness != .completed {
+                print("Management readiness failure for \(id):\n" + app.debugDescription)
+                let attachment = XCTAttachment(screenshot: app.screenshot())
+                attachment.name = "Management readiness \(id)"; attachment.lifetime = .keepAlways; add(attachment)
+            }
+            XCTAssertEqual(readiness, .completed, id)
         }
-        XCTAssertEqual(readiness, .completed, id)
+        XCTAssertTrue(target.isEnabled, id + "\n" + app.debugDescription)
+        XCTAssertTrue(target.isHittable, id + "\n" + app.debugDescription)
         if target.elementType == .switch {
             let inner = target.switches.firstMatch
             if inner.exists { inner.tap() }
