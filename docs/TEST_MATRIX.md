@@ -1,6 +1,29 @@
 # Evidence ledger
 
-## Stage 10 — Gates 6–10 INVALID pending corrected exact-HEAD replay
+## Stage 10 — corrected source PASS; documentation/main replay pending
+
+e5c43ae6d457abff838bcf3fa448b5805b22ffc9 /
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38533688088 — complete SUCCESS,
+every required step. Ordered management-first replay and full native replay clear
+Gates 6–10 invalidation; earlier required regressions pass. 146 Core / 51 native /
+15 UI = 212 distinct tests. Source IMPLEMENTED; automated AUTOMATED PASS; Xcode
+XCODE COMPILE PASS; Simulator SIMULATOR PASS; device DEVICE REQUIRED / NOT RUN.
+Seven-day artifacts: QR 11882141611; native 11881762952. Actual native Copy remains a
+Cell, tapped with dismissal asserted; independent PNG payload decode and opaque quiet
+zone remain exact. Completion wait and enabled/hittable checks preserve outcomes.
+
+Meaningful uncovered audit is unchanged: Core 2243/2256 (99.42%), QR reducer 15/15,
+QR owner 21/21; prior uncovered invariants retain classifications below. App counts:
+Store 308/313, Environment 23/27, Draft 84/88, Formatting 86/86, Presentation 72/72,
+QR scanning 82/82, QR view 39/40, real capture 0/173. Total 694/881 (78.77%);
+excluding explicitly unexecuted capture 694/708 (98.02%). Generated sharing initializer,
+default/error/calendar fallbacks and camera/device boundaries remain source/device
+evidence, not reasons to manufacture coverage. No arbitrary percentage gates acceptance.
+Xcode 26.6 / Swift 6.3.3; no compiler/destination warnings; three known SDK advisories.
+Complete documentation-HEAD CI and exact-final-main CI are still required. Main b52c58c
+is not final accepted evidence. Stage 11 NOT STARTED.
+
+### Historical correction evidence (resolved by complete replay above)
 
 1a16f1d / run 38530656775: all five focused QR native and 41 broader application
 tests PASS with actual completion waiting. Management edit readiness then fails for

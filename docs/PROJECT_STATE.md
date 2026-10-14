@@ -1,6 +1,36 @@
 # Project state
 
-## Stage 10 — Gates 6–10 INVALID pending measurement correction replay
+## Stage 10 — Gate 10 PASS at corrected source; final publication pending
+
+Accepted source: e5c43ae6d457abff838bcf3fa448b5805b22ffc9.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38533688088 — complete
+SUCCESS, every required step, observed 2026-10-14. Gates 6–10 invalidation is cleared
+by the ordered management-first replay and full native regression replay. Gates 0–9
+required checks also pass. No production defect was established by the three test
+measurement failures: Copy is a native Cell, submission needs a completion barrier,
+and scrolled controls need fresh concrete-role readiness observation. Exact sharing,
+export, completion/cleanup and management assertions remain enforced.
+
+Automated: 146 Core + 51 native + 15 UI = 212 distinct tests PASS. Xcode: 26.6 /
+Swift 6.3.3; Debug/Release, generation, usage strings and Release fake exclusion PASS;
+no compiler/destination warnings, three known SDK metadata advisories. Simulator:
+focused QR, eight management flows, downstream Math/Memory/QR and full native PASS.
+Copy Cell tap/dismissal and independent PNG decode/opaque quiet zone remain verified.
+Artifacts 11882141611 (QR) and 11881762952 (native) retain evidence for seven days.
+Core remains 2243/2256; application 694/881, or 694/708 excluding actual camera adapter.
+Physical camera remains DEVICE REQUIRED / NOT RUN; source/mock evidence is not hardware
+evidence. Meaningful uncovered boundaries remain classified in TEST_MATRIX.
+
+Self/adversarial review: direct enabled observation does not accept disabled controls;
+the original ten-second wait remains for that state, with enabled and hittable checks
+before tap. The bounded QR wait requires completion, preserving all exact outcomes.
+Production behavior and architecture are unchanged by these measurement corrections.
+Current main b52c58c has a failed launch-only run and is not final acceptance evidence.
+Next: complete CI at this documentation HEAD, preserving fast-forward publication,
+then complete exact-final-main CI. Final report records immutable SHA/run without a
+self-referencing follow-up commit. No user action required yet. Stage 11 NOT STARTED.
+
+## Historical correction evidence (resolved by complete replay above)
 
 1a16f1d / run 38530656775 passes focused QR native (five) and broader application
 (41) tests with the semantic submission barrier. Its management edit flow times out

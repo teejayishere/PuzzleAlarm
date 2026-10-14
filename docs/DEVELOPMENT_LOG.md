@@ -1,5 +1,31 @@
 # Development log
 
+## Stage 10 corrected source accepted — final documentation/main replay
+
+e5c43ae6d457abff838bcf3fa448b5805b22ffc9 /
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38533688088 completes every
+required step successfully. Ordered Gate 6 management replay (eight tests) precedes
+downstream Math/Memory/QR; full native replay repeats all 51 unit and 15 UI tests.
+146 Core + 51 native + 15 UI = 212 distinct tests. Recursive Gates 6–10 invalidation
+is cleared at this revision. Original Copy action is observed as Cell in both focused
+and full UI evidence. Independent export decode and persisted configuration remain exact.
+
+Self/adversarial review finds no assertion relaxation: disabled controls still wait
+ten seconds, every tap requires enabled/hittable, and fresh role resolution handles
+previously offscreen rows. QR waits require isSubmitting=false under a bounded clock
+before exact completion/idle/five-cancellation checks. These are evidence-driven test
+measurement corrections; production source is unchanged. Earlier preserved adapter,
+Photos string and QR owner/reducer changes retain accepted evidence.
+
+Core 2243/2256; app 694/881 (694/708 excluding actual capture), including presentation
+72/72. Meaningful uncovered/device classifications remain in TEST_MATRIX. Xcode 26.6 /
+Swift 6.3.3, free public macos-26; Debug/Release, usage strings, generation and fixture
+exclusion pass. No compiler/destination warnings; three known SDK metadata advisories.
+Seven-day artifacts 11882141611 and 11881762952 retain QR/native Simulator bundles.
+Physical camera NOT RUN / DEVICE REQUIRED. Windows evidence is source/git only.
+Final documentation HEAD must pass complete CI before preserving main fast-forward;
+exact-final-main complete CI then closes Stage 10. Stage 11 NOT STARTED.
+
 ## Recursive Gate 6 readiness measurement correction — replay required
 
 1a16f1d / run 38530656775 passes QRStoreTests twice (focused five and broader 41
