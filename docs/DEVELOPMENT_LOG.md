@@ -1076,3 +1076,10 @@ Coverage is diagnostic only at this failed revision: catalog 10/10, preview 47/4
 configuration 52/62 (26.0 initializer and compile-only named probe), prior core
 2243/2256. Store presentation 70/72 reflects the failed retry flow, not a gap to
 paper over. No device observation or Stage 12 work.
+
+Focused reproduction is a separate required free macos-26 job so its request traces
+and xcresult are available as soon as the five unchanged iterations complete. The
+full validation job depends on it and still replays all original ordered gates;
+a failed/skipped prerequisite cannot count as acceptance. This improves diagnostic
+feedback without changing product behavior or assertion timeouts. The initial
+single-job diagnostic revision is superseded, not accepted.

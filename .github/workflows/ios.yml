@@ -12,7 +12,45 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  toggle-reproduction:
+    # Focused diagnostic evidence is available before the full ordered gate job.
+    if: github.event.repository.private == false
+    runs-on: macos-26
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install pinned XcodeGen
+        run: bash Scripts/install_xcodegen.sh
+      - name: Generate project and select iPhone Simulator
+        run: |
+          xcodegen generate --spec project.yml
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
+          xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
+          simulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"
+          echo "SIMULATOR_ID=$simulator_id" >> "$GITHUB_ENV"
+      - name: Reproduce Gate 6 enable failure and retry
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Toggle.xcresult \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest \
+            -test-iterations 5 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/toggle-ui-tests.log"
+      - name: Review diagnostic Xcode warnings
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/toggle-ui-tests.log"
+      - name: Preserve focused toggle evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: toggle-simulator-evidence
+          path: TestResults/Toggle.xcresult
+          if-no-files-found: ignore
+          retention-days: 7
   validate:
+    needs: toggle-reproduction
     # Standard public-repository runner; no larger runners or signing credentials.
     if: github.event.repository.private == false
     runs-on: macos-26
@@ -85,17 +123,6 @@ jobs:
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build \
             2>&1 | tee "$RUNNER_TEMP/ios-build.log"
-      - name: Reproduce Gate 6 enable failure and retry before downstream checks
-        env:
-          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
-        run: |
-          set -o pipefail
-          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
-            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
-            -derivedDataPath DerivedData -resultBundlePath TestResults/Toggle.xcresult \
-            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest \
-            -test-iterations 5 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
-            2>&1 | tee "$RUNNER_TEMP/toggle-ui-tests.log"
       - name: Build Release without UI-test fixtures
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -229,7 +256,7 @@ jobs:
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")
           PY
       - name: Review Xcode diagnostics
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/toggle-ui-tests.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log"
       - name: Preserve QR Simulator evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -245,7 +272,6 @@ jobs:
           name: native-simulator-evidence
           path: |
             TestResults/Audio.xcresult
-            TestResults/Toggle.xcresult
             TestResults/QRApplication.xcresult
             TestResults/Application.xcresult
             TestResults/Management.xcresult
