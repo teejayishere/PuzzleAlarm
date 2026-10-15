@@ -42,6 +42,8 @@ final class AudioTests: XCTestCase {
         try Data("not audio".utf8).write(to: url)
         XCTAssertEqual(AlarmConfigurationFactory.selectedSound(selection, catalog: catalog), .default)
         let format = try XCTUnwrap(AVAudioFormat(standardFormatWithSampleRate: 22050, channels: 1))
+        do { _ = try AVAudioFile(forWriting: url, settings: format.settings) }
+        XCTAssertNil(catalog.resource(for: selection), "A valid header with zero frames is not a usable sound")
         do {
             let file = try AVAudioFile(forWriting: url, settings: format.settings)
             let buffer = try XCTUnwrap(AVAudioPCMBuffer(pcmFormat: format, frameCapacity: 22050 * 30))
@@ -117,8 +119,13 @@ final class AudioTests: XCTestCase {
             guard case let .loaded(snapshot, _) = read else { return XCTFail("Missing saved sound") }
             let loaded = try XCTUnwrap(snapshot.state.definitions.first)
             XCTAssertEqual(AlarmEditorDraft(loaded).sound, choice)
-            for alarm in session.plan.alarms {
-                XCTAssertEqual(try AlarmRequest(session: session, alarmID: alarm.id).selectedSound, choice.selection)
+            let restoredSession = try XCTUnwrap(snapshot.state.sessions.first).session
+            let edited = try loaded.replacing(time: loaded.time, weekdays: loaded.weekdays,
+                enabled: loaded.enabled, mode: loaded.dismissalMode, challenges: loaded.challengeSequence,
+                sound: choice == .systemDefault ? .bundled(.siren) : .systemDefault, at: now.addingTimeInterval(1))
+            XCTAssertNotEqual(edited.selectedSound, restoredSession.definitionSnapshot.selectedSound)
+            for alarm in restoredSession.plan.alarms {
+                XCTAssertEqual(try AlarmRequest(session: restoredSession, alarmID: alarm.id).selectedSound, choice.selection)
             }
         }
     }

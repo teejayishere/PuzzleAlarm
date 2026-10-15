@@ -1021,3 +1021,18 @@ Local generator/reproducibility and diff check pass; Xcode/Simulator unavailable
 Windows. Hardware playback DEVICE REQUIRED. No earlier defect identified so far;
 any later failure must trace to earliest gate and replay dependencies in order.
 STOP at Stage 11 closeout; Stage 12 outside scope.
+
+### Gate 11 first run FAILED — generator CAF byte order
+
+6589e18 / run 38660099133 passes Core, Debug/Release and four of five audio
+native tests. The unchanged decoded-amplitude headroom assertion fails on all four
+assets (peaks ~1). Earliest cause is Stage 11 generator using ASBD flags (12) in
+CAF, whose flags differ. Apple's CAF specification explicitly defines little-endian
+as bit 1 (2), integer as float-bit clear and reserved bits zero. Old header instead
+causes big-endian decoding of little-endian samples. Correct flags to 2, regenerate
+all assets, retain exact headroom assertion. No prior gate defect established;
+Gate 11 FAILED until correction/full replay. Later UI/full checks were not reached;
+missing Shell coverage is consequential, not a separate product defect. Native
+artifact 11938812323 preserves the failing audio result. No device playback claim.
+Audit additionally covers valid zero-frame container rejection, restored snapshot
+sound immutability after definition edit, and exact saved sound in relaunch UI row.

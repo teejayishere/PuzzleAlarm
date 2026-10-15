@@ -24,7 +24,10 @@ def asset(name):
         # Short fades and headroom; preview also uses a reduced player volume.
         envelope = min(1, t / .01, (DURATION - t) / .01)
         samples.extend(struct.pack("<h", round(14000 * envelope * value)))
-    desc = struct.pack(">d4sIIIII", RATE, b"lpcm", 12, 2, 1, 1, 16)
+    # CAF flags differ from AudioStreamBasicDescription: bit 1 means LITTLE endian,
+    # signed integer is implicit with float bit 0 clear; reserved bits must be zero.
+    # Apple CAF_spec: mFormatFlags / Linear PCM.
+    desc = struct.pack(">d4sIIIII", RATE, b"lpcm", 2, 2, 1, 1, 16)
     return (b"caff\x00\x01\x00\x00" + b"desc" + struct.pack(">q", len(desc)) + desc
             + b"data" + struct.pack(">q", len(samples) + 4) + b"\x00" * 4 + samples)
 

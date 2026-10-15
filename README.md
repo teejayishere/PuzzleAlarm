@@ -81,4 +81,3 @@ No accounts, backend, telemetry, payments or App Store infrastructure are planne
 
 [GitHub standard runner rules](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)
 confirm standard public-repository runner usage is free.
-
