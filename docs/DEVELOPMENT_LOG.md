@@ -1116,3 +1116,33 @@ DEBUG print calls were not captured in UI-app result logs; remove that ineffecti
 instrumentation. AlarmStore and ContentView return to their prior production source.
 Use retained hierarchy/daemon evidence and strengthened executable postconditions.
 Re-run the focused unchanged product flow five times, then all held gates in order.
+
+### Stage 11 source acceptance — 2026-10-15
+
+83fb473828295e83bc3184de7b74edffef5fb682 / run 38679302330 is complete SUCCESS:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38679302330.
+Both required jobs and every required step passed. Five toggle repetitions pass,
+then the complete ordered package, Debug/Release, focused Audio/application,
+management-first, downstream Math/Memory/QR and full native checks pass.
+146 Core + 57 native + 16 UI = 219 distinct tests; repeated runs are not extra tests.
+Core 2243/2256; application 803/1000, excluding real camera 803/827.
+Xcode 26.6 / Swift 6.3.3; no compiler/destination warnings; three SDK metadata advisories.
+Artifacts (seven days): toggle 11947033995, QR 11950105373, native 11950290116.
+
+Resolved invalidation: Stage 11 CAF flag defect was corrected at its generator,
+retaining the decoded-headroom assertion. Later Gate 6 management regression held
+Gates 6–11 until retained daemon evidence identified observation before owner
+completion. A bounded existing-busy-indicator barrier, exact switch transition and
+direct positive label observation preserve every product outcome. Five-repeat,
+ordered replay and full replay now pass. Original Off/0 input attribution remains
+unproven; no production scheduling defect is claimed. Temporary ineffective tracing
+was removed; AlarmStore and ContentView production source is unchanged.
+No assertion weakening, repeated input taps or prior-gate bypass.
+
+Reconcile stale Stage 10 main-closeout claims with verified 95d781f / run 38587030123
+attempt 2. Current state/matrix distinguish accepted Stage 11 source from final-main
+verification. Publish the evidence-only descendant by fast-forward; its own full
+main workflow is mandatory. Final report supplies final SHA/run without a further
+self-referencing documentation commit. Physical audio/AlarmKit/camera evidence is
+NOT RUN; device plan remains required. Stop after exact-final-main closeout.
+Stage 12 NOT STARTED.

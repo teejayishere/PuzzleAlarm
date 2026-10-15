@@ -1,22 +1,45 @@
 # Project state
 
-## Stage 11 — Audio implementation; Gate 11 PENDING
+## Stage 11 — Gate 11 PASS at verified source
 
-Prerequisite reconciled: main and local starting HEAD are
-95d781f8f2c684a9424db82f734fb1df24ac8b0e. Run 38587030123, attempt 2,
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38587030123/attempts/2
-is complete SUCCESS at that exact main SHA; every required job step passed.
-This resolves the stale Stage 10 publication/main-closeout text below. Gates 0–10
-are accepted prerequisites. User authorized Stage 11; historical stop text is superseded.
+Current stage: 11. Last passing gate: 11. Gates 0–10 required regressions also
+PASS; the held Gate 6 replay and dependent Gates 7–11 are cleared by the required
+five-repeat enable/failure/retry check, management-first replay, downstream flows
+and full native regression. No unresolved source blocker. Stage 12 NOT STARTED.
 
-Current stage/gate: 11 / FAILED full management regression at 72c0bd3. Last passing prerequisite: 5 while Gate 6 replay is held. Invalidate Gate 6 replay and dependent Gates 7–11 acceptance until diagnosis and ordered replay; no earlier domain defect established.
-Source: four original reproducible CAF sounds, validated name/default fallback,
-one foreground preview owner and editor cleanup, unchanged schema/occurrence authority.
-Imported audio separately probed and deferred; see AUDIO_CAPABILITIES.md.
-Local Windows: generator and byte reproducibility PASS; git whitespace/source review PASS.
-First run 38660099133: Core and Debug/Release PASS; audio decoded-headroom test FAILED due to CAF generator flags. Corrected flags/assets require exact-source replay. Native artifact 11938812323 retained. Correction 6e562a0 / run 38661461973 passes focused audio and management UI, but is superseded before full acceptance by the main-run-loop/category-notification audit. Complete new-source replay required. Physical device: NOT RUN.
-No audible/locked/Silent/Focus/AlarmKit custom playback inferred from Simulator.
-Stop after Gate 11 and exact-final-main CI. Do not begin Stage 12.
+Accepted source: 83fb473828295e83bc3184de7b74edffef5fb682.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38679302330 — complete
+SUCCESS, both required jobs and every required step, observed 2026-10-15.
+Automated: 146 Core + 57 native + 16 UI = 219 distinct tests PASS; focused reruns,
+five repetitions and parameterized cases are not counted again. Xcode 26.6 /
+Swift 6.3.3; Debug/Release, generated resources, usage strings, Release fixture
+exclusion PASS. No compiler/destination warnings; three known SDK metadata advisories.
+Simulator: six focused Audio tests, nine management flows, Math/Memory/QR and full
+native PASS. Seven-day artifacts: toggle 11947033995, QR 11950105373,
+native 11950290116. Core 2243/2256; app behavior 803/1000, or 803/827 excluding the
+unexecuted real camera adapter. Meaningful uncovered boundaries remain classified
+in TEST_MATRIX; line coverage does not establish audible or physical behavior.
+
+Implemented: four original reproducible bundled CAF sounds, persisted stable choices
+and immutable occurrence snapshots, validated AlarmKit name/default fallback,
+one foreground preview owner with editor/scene/notification cleanup.
+Optional imported audio separately probed and deferred. System default selection
+uses AlarmKit default; foreground Preview explains the platform limitation.
+See AUDIO_CAPABILITIES.md. Core framework boundaries and schema remain unchanged.
+
+Prerequisite reconciliation: starting main was 95d781f8f2c684a9424db82f734fb1df24ac8b0e.
+Run 38587030123 attempt 2 was verified complete SUCCESS at that exact main SHA:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38587030123/attempts/2.
+Historical Stage 10 pending-publication claims below are superseded.
+
+Physical device: DEVICE REQUIRED / NOT RUN for actual default/custom/fallback alarm
+playback, lock/Silent/Focus, interruption/route behavior, and existing AlarmKit/camera
+acceptance in DEVICE_TEST_PLAN. Simulator playback APIs are not audible evidence.
+
+Closeout rule: publish this evidence revision by fast-forward and verify the complete
+workflow at the final main SHA. This source acceptance does not claim CI for an
+untested descendant. The final task report records immutable final-main SHA/run
+without a self-referencing follow-up commit. Stop after that verification; no Stage 12.
 
 ## Historical Stage 10 records (closeout superseded above)
 

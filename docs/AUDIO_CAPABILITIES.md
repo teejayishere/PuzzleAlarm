@@ -39,7 +39,8 @@ the system tone is heard when the alarm fires rather than substituting another t
 Bundled preview uses one AVAudioPlayer with reduced volume and ambient session,
 respecting Silent Mode, and has no background mode. Selection changes, Save, Cancel,
 navigation, dismissal, inactive/background, interruption, route change and media
-reset stop/release playback and relinquish an activated audio session. Preview and
+reset stop/release playback and request deactivation of an activated audio session.
+OS deactivation success and audible hardware effects remain device evidence. Preview and
 camera are independent; no recording category or microphone permission is used.
 
 System audio notifications are delivered to preview UI on the main run loop. The

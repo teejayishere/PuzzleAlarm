@@ -609,9 +609,17 @@ resources; AlarmConfigurationFactory maps a validated filename to existing publi
 AlarmKit `.named` or `.default` without rewriting persisted selection or catching
 scheduler failures. SoundPreview owns one injected playback adapter, synchronously
 stops before replacement and reports failure. The real foreground AVAudioPlayer
-uses ambient audio with reduced volume and releases player/session on stop. Editor
+uses ambient audio with reduced volume and releases the player and requests session deactivation on stop. Editor
 hooks stop on selection, Save/Cancel, navigation/dismissal, scene inactivity, audio
 interruption/route changes/media reset. No background playback entitlement, new
 lifecycle owner, microphone request, persistence schema or Stage 12 routing.
 See AUDIO_CAPABILITIES for the separate import/default-preview capability boundary.
 Actual alarm playback remains device-only; AVAudioPlayer does not replace AlarmKit.
+
+
+Management UI tests wait for the existing owner-busy indicator to disappear after
+enable/disable and Retry before checking exact switch/status outcomes. This measures
+the asynchronous owner completion boundary; AlarmStore/ContentView production
+behavior is unchanged. One input tap must yield the expected switch transition;
+a bounded busy wait or wrong value fails. Five-repeat and complete ordered replay
+at 83fb473 / run 38679302330 clear the held Gate 6 and dependent replay acceptance.

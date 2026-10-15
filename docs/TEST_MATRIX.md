@@ -1,5 +1,48 @@
 # Evidence ledger
 
+## Stage 11 — accepted source and meaningful coverage audit
+
+83fb473828295e83bc3184de7b74edffef5fb682 /
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38679302330 — complete
+SUCCESS, both required jobs and every required step, observed 2026-10-15.
+Required five-repeat toggle check, ordered management/downstream replay and full
+native pass clear Gates 6–11 invalidation. 146 Core / 57 native / 16 UI = 219 distinct
+tests; repetitions and focused subsets are not extra tests.
+Source IMPLEMENTED; automated AUTOMATED PASS; Xcode XCODE COMPILE PASS; Simulator
+SIMULATOR PASS; physical device DEVICE REQUIRED / NOT RUN. Xcode 26.6 / Swift 6.3.3;
+no compiler/destination warnings, three known SDK metadata advisories.
+Seven-day artifacts: toggle 11947033995, QR 11950105373, native 11950290116.
+
+| Gate 11 requirement | Executed evidence |
+| --- | --- |
+| Resources | Deterministic Python byte check; real bundle AVAudioFile decode, frames/rate/channels/headroom for all four original CAF files |
+| Selection persistence | All five choices saved/reloaded through DiskRepository; immutable session snapshot survives definition edit; every backup request keeps snapshot choice |
+| Fallback/integration | Missing, empty, corrupt, valid zero-frame and overlong assets select default; persisted choice unchanged; real public AlarmKit configuration compiles |
+| Preview lifecycle | Replacement, idempotent stop, injected failure, default/missing messages; real AVAudioPlayer start/replace/stop integration; own queued category notification preserved, external/unknown/missing route events stop |
+| Editor cleanup | Preview/Stop, selection, pushed navigation, background, Save/Cancel and relaunch UI; source hooks for inactive/dismissal/interruption/media reset |
+
+The native decoded-headroom assertion caught the original CAF flag defect and stayed
+unchanged through correction. Coverage is audited for behavior, not manufactured
+to meet a percentage. Current Core: 2243/2256 (99.42%), prior classifications below
+unchanged. App: Catalog 10/10, Preview 47/47, ConfigurationFactory 52/62, Store 308/313,
+Environment 23/27, Draft 84/88, Formatting 86/86, Presentation 72/72, QR scanning 82/82,
+QR view 39/40, real camera 0/173. Total 803/1000 (80.30%); excluding real camera
+803/827 (97.10%). The factory's seven iOS 26.0 availability-initializer lines need
+that OS; three unused namedSoundConfiguration probe lines are compile-only.
+Remaining default closures, generated sharing initialization, error/calendar fallbacks
+and camera adapter retain their earlier source/device classifications. Preview/catalog
+100% line coverage does not prove every AVAudioSession failure or prepare/play false
+branch, audible output, session deactivation success, or alarm playback.
+Physical notification delivery, actual hardware routes and lock/Silent/Focus remain
+device requirements; injected callbacks and Simulator are separate evidence.
+Optional import is probed/deferred; exact system-default foreground preview is not
+provided by a documented API. See AUDIO_CAPABILITIES.md and DEVICE_TEST_PLAN.md.
+
+Final publication must have its own exact-SHA full main run; final immutable SHA/run
+are recorded in the task report. No Stage 12 work.
+
+## Historical Stage 10 evidence (pending claims superseded above)
+
 ## Stage 10 — corrected source PASS; documentation/main replay pending
 
 e5c43ae6d457abff838bcf3fa448b5805b22ffc9 /

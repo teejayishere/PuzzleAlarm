@@ -1,5 +1,12 @@
 # Stage 3 — installed SDK capability evidence
 
+Historical SDK spike: Stage 11 supersedes deferred-audio notes below. See
+[AUDIO_CAPABILITIES.md](AUDIO_CAPABILITIES.md) for validated bundled resources,
+name/default fallback and foreground preview. Source 83fb473 / run 38679302330
+passes compilation and Simulator integration; actual alarm playback remains
+DEVICE REQUIRED / NOT RUN.
+
+
 Scope: compile/integration spike only. No alarm scheduling is triggered by app
 launch or tests. No permission dialog, persistence, orchestration or product UI.
 Gate 3 compilation and tests passed at 6e750fd in run 37095598366. Final follow-ups require their own exact-HEAD green workflow before acceptance.
