@@ -112,6 +112,7 @@ final class AlarmManagementUITests: XCTestCase {
             let before = control.value as? String
             XCTAssertTrue(before == "0" || before == "1", "Missing concrete switch value: " + id)
             control.tap()
+            if id.hasPrefix("alarm.enabled.") { waitForOwner(app) }
             let expected = before == "0" ? "1" : "0"
             if (control.value as? String) != expected {
                 let changed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", expected), object: control)
@@ -119,6 +120,7 @@ final class AlarmManagementUITests: XCTestCase {
                                "Switch input did not commit: " + id + "\n" + app.debugDescription)
             }
         } else { target.tap() }
+        if id.hasPrefix("alarm.retry.") { waitForOwner(app) }
         if id == "alarms.add" {
             XCTAssertTrue(app.buttons["editor.save"].waitForExistence(timeout: 10))
         } else if id == "editor.repeat" {
@@ -141,6 +143,15 @@ final class AlarmManagementUITests: XCTestCase {
         if element.label == text { return }
         let condition = XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", text), object: element)
         XCTAssertEqual(XCTWaiter.wait(for: [condition], timeout: 10), .completed, "Expected \(text), found \(element.label)")
+    }
+    private func waitForOwner(_ app: XCUIApplication) {
+        let busy = element(app, "application.busy")
+        if busy.exists {
+            let finished = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: busy)
+            XCTAssertEqual(XCTWaiter.wait(for: [finished], timeout: 30), .completed,
+                           "Alarm operation did not finish\n" + app.debugDescription)
+        }
+        XCTAssertFalse(busy.exists, "Alarm owner is still busy\n" + app.debugDescription)
     }
     private func back(_ app: XCUIApplication, from title: String) {
         app.navigationBars[title].buttons.element(boundBy: 0).tap()

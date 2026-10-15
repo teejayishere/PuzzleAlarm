@@ -191,22 +191,12 @@ final class AlarmStore {
     }
 
     func setEnabled(_ alarm: AlarmDefinition, _ enabled: Bool) async {
-        #if DEBUG
-        if ProcessInfo.processInfo.environment["PUZZLE_SCENARIO"] == "enableFailure" {
-            print("PUZZLE_TOGGLE begin requested=\(enabled) busy=\(isBusy) stored=\(String(describing: definition(alarm.id)?.enabled))")
-        }
-        #endif
         _ = await perform {
             if enabled { try await self.requireAccess() }
             let context = try self.context()
             if enabled { return try await self.coordinator.enable(alarm.id, context: context) }
             return try await self.coordinator.disable(alarm.id, context: context)
         }
-        #if DEBUG
-        if ProcessInfo.processInfo.environment["PUZZLE_SCENARIO"] == "enableFailure" {
-            print("PUZZLE_TOGGLE end stored=\(String(describing: definition(alarm.id)?.enabled)) status=\(definition(alarm.id).map { status($0) } ?? "missing")")
-        }
-        #endif
     }
     func delete(_ id: UUID) async -> Bool {
         let success = await perform { try await self.coordinator.delete(id, context: self.context()) }

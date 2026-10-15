@@ -1100,3 +1100,19 @@ On/Off assertions. This locates any repeated lost input at the actual transition
 The original Off/0 observation remains distinct from the confirmed label-poll issue;
 no production fault has been established. DEBUG command traces remain available for
 further diagnosis. Hold Gates 6–11 until focused and complete ordered replay pass.
+
+Detailed retained XCTest daemon data refines the Gate 6 cause: at 03:50:05–09 the
+On-label poll is observing "Needs attention, Disabled" after Retry, proving it
+started before the asynchronous owner operation had completed. The final On read
+comes after the timeout. The correct phase boundary is owner completion, not merely
+the existence of the status label. Add a bounded 30-second wait for the existing
+application.busy indicator to disappear after enable/disable and Retry, then retain
+the exact switch transition and original ten-second label wait. No retry tap, wrong
+value acceptance or scheduling policy change. A forever-busy owner still fails.
+Direct positive label observation remains useful for accessibility query latency,
+but alone was not a full explanation of the detailed record. The original Off/0
+case remains unproven input loss and is now checked at the switch transition.
+DEBUG print calls were not captured in UI-app result logs; remove that ineffective
+instrumentation. AlarmStore and ContentView return to their prior production source.
+Use retained hierarchy/daemon evidence and strengthened executable postconditions.
+Re-run the focused unchanged product flow five times, then all held gates in order.
