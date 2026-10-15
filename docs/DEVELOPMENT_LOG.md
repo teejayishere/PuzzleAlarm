@@ -1184,3 +1184,14 @@ hypothesis to validate, not a proven OS cause. Require ten unchanged product-flo
 iterations, 30-minute free standard-runner cap, before ordered/full downstream replay.
 Retain the effective fixture-only DEBUG file trace and Release binary exclusion
 as diagnostic evidence; no production command policy, model or schema change.
+
+The duration remedy is disproved as sufficient: 9ee27d1 / run 38817610136 is 9/10
+focused PASS, iteration 1 fails its third switch input. PID 6005 journal records
+successful true and false requests/owner completion, then no third binding request.
+The failure is after a 23-second XCTest interrupting-element check, before which
+the native switch was enabled/hittable and 0; it remains 0 after synthesis.
+No busy rejection or scheduling fault. Keep Gates 6–11 held; validate skipped.
+Use one horizontal native thumb drag from observed current side to opposite side
+instead of a center tap/press; require real binding/owner work and the same exact
+switch/status outcomes. Ten repetitions remain required. This is a test input
+delivery remedy to validate, not a claimed OS root cause or production policy change.

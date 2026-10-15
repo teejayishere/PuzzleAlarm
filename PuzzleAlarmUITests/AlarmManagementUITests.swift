@@ -111,10 +111,12 @@ final class AlarmManagementUITests: XCTestCase {
             XCTAssertTrue(control.isHittable, id)
             let before = control.value as? String
             XCTAssertTrue(before == "0" || before == "1", "Missing concrete switch value: " + id)
-            // The retained fixture journal shows some synthesized 50 ms taps
-            // never reach the native binding under Simulator load. Send one
-            // deliberate press, still requiring the exact committed transition.
-            control.press(forDuration: 0.15)
+            // A single horizontal thumb gesture avoids relying on the Simulator's
+            // intermittently undelivered center tap/press. The fixture journal
+            // and exact state postconditions still require real binding/owner work.
+            let start = control.coordinate(withNormalizedOffset: CGVector(dx: before == "0" ? 0.2 : 0.8, dy: 0.5))
+            let end = control.coordinate(withNormalizedOffset: CGVector(dx: before == "0" ? 0.8 : 0.2, dy: 0.5))
+            start.press(forDuration: 0.1, thenDragTo: end)
             if id.hasPrefix("alarm.enabled.") { waitForOwner(app) }
             let expected = before == "0" ? "1" : "0"
             if (control.value as? String) != expected {
