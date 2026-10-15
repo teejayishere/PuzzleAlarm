@@ -43,10 +43,18 @@ jobs:
         if: always()
         run: |
           set -euo pipefail
-          container="$(xcrun simctl get_app_container "$SIMULATOR_ID" com.teejayishere.PuzzleAlarm data)"
-          test -f "$container/tmp/toggle-input-diagnostic.log"
-          cp "$container/tmp/toggle-input-diagnostic.log" TestResults/toggle-input-diagnostic.log
-          cat TestResults/toggle-input-diagnostic.log
+          # Xcode may execute in clones and shut them down before this step.
+          # Read journals from this ephemeral runner's Simulator data containers.
+          python3 - <<'PY'
+          from pathlib import Path
+          files = list((Path.home() / "Library/Developer/CoreSimulator/Devices").glob(
+              "*/data/Containers/Data/Application/*/tmp/toggle-input-diagnostic.log"))
+          if not files:
+              raise SystemExit("No fixture input journal found in Simulator containers")
+          output = Path("TestResults/toggle-input-diagnostic.log")
+          output.write_text("\n".join(file.read_text() for file in files))
+          print(output.read_text())
+          PY
       - name: Review diagnostic Xcode warnings
         run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/toggle-ui-tests.log"
       - name: Preserve focused toggle evidence

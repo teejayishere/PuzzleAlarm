@@ -1159,3 +1159,9 @@ distinguish no input, rejected busy owner and failed/persisted result. Trace fil
 survives per-iteration data reset and is copied into the retained toggle artifact
 by an always step; original print-only tracing was unavailable. No scheduling or
 assertion change. Reproduce before selecting a correction, then replay held gates.
+
+Diagnostic source 0e0412b / run 38778865397: all five input flows PASS. Collection
+then fails (CoreSimulator 405, selected device Shutdown), full validate skipped.
+Do not treat it as complete acceptance. Xcode can use cloned test devices and shut
+them down; gather journals directly from ephemeral runner Simulator data containers
+rather than querying only the selected booted device. No product hypothesis change.
