@@ -16,7 +16,7 @@ jobs:
     # Standard public-repository runner; no larger runners or signing credentials.
     if: github.event.repository.private == false
     runs-on: macos-26
-    timeout-minutes: 70
+    timeout-minutes: 85
     steps:
       - uses: actions/checkout@v4
         with:
@@ -85,6 +85,17 @@ jobs:
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build \
             2>&1 | tee "$RUNNER_TEMP/ios-build.log"
+      - name: Reproduce Gate 6 enable failure and retry before downstream checks
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Toggle.xcresult \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest \
+            -test-iterations 5 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/toggle-ui-tests.log"
       - name: Build Release without UI-test fixtures
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -212,13 +223,13 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           binary = Path("ReleaseDerivedData/Build/Products/Release-iphonesimulator/PuzzleAlarm.app/PuzzleAlarm").read_bytes()
-          for marker in [b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler", b"FakeQRCodeScanner", b"Simulate matching QR"]:
+          for marker in [b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler", b"FakeQRCodeScanner", b"Simulate matching QR", b"PUZZLE_TOGGLE"]:
               if marker in binary:
                   raise SystemExit("DEBUG fixture leaked into Release: " + marker.decode())
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")
           PY
       - name: Review Xcode diagnostics
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/toggle-ui-tests.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log"
       - name: Preserve QR Simulator evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -234,6 +245,7 @@ jobs:
           name: native-simulator-evidence
           path: |
             TestResults/Audio.xcresult
+            TestResults/Toggle.xcresult
             TestResults/QRApplication.xcresult
             TestResults/Application.xcresult
             TestResults/Management.xcresult

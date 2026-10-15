@@ -1051,3 +1051,28 @@ unchanged. Publish this audit revision for complete replay rather than treating 
 older run as evidence for changed source. Superseded in-progress checks are not passes.
 No earlier gate defect found; Gate 11 remains pending at the new source. Local diff
 check passes; physical-device notifications/playback remain DEVICE REQUIRED.
+
+### Gate 6 full regression failure — hold dependent Gates 7–11
+
+72c0bd3 / run 38665848267 FAILS full native at existing management test
+EnableDisableAndFailureRetryAreHonest, Retry existence assertion (line 213).
+Focused management (nine) passed; all six audio native tests and audio UI pass,
+including full-native replay. Full native: 57 unit PASS; 15/16 UI PASS. No Gate 11
+acceptance. Gate 6 replay evidence is held invalid and dependent Gates 7–11 held
+until reproduction/diagnosis and complete ordered replay. Native artifact
+11944049367 and QR artifact 11943569515 retain results for seven days.
+Downloaded immutable result and decoded its zstd data with the bundled Node runtime,
+without needing a Mac or altering original evidence. Failure hierarchy proves
+switch value 0 and status Off, with no error/Retry. XCTest daemon log computes a
+hittable point (340.5,468) inside inner switch (309,454,63,28). This does NOT show
+failed scheduling being reported healthy; it shows no accepted enable action at
+that observation. Input loss versus binding/busy race remains unproven. Add DEBUG-
+only fixture request tracing and repeat the unchanged existing test five times
+before downstream checks. No assertion or production behavior changed. Release
+must exclude the trace marker. Measured full run took ~67 minutes; new focused
+repetitions require a bounded 85-minute free standard-runner budget. No test wait
+or semantic assertion is extended. Source compile/full follow-up pending.
+Coverage is diagnostic only at this failed revision: catalog 10/10, preview 47/47,
+configuration 52/62 (26.0 initializer and compile-only named probe), prior core
+2243/2256. Store presentation 70/72 reflects the failed retry flow, not a gap to
+paper over. No device observation or Stage 12 work.

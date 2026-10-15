@@ -9,7 +9,7 @@ is complete SUCCESS at that exact main SHA; every required job step passed.
 This resolves the stale Stage 10 publication/main-closeout text below. Gates 0–10
 are accepted prerequisites. User authorized Stage 11; historical stop text is superseded.
 
-Current stage/gate: 11 / PENDING notification-audit replay; prior CAF failure corrected in focused tests. Last passing gate: 10. Invalidations: none identified.
+Current stage/gate: 11 / FAILED full management regression at 72c0bd3. Last passing prerequisite: 5 while Gate 6 replay is held. Invalidate Gate 6 replay and dependent Gates 7–11 acceptance until diagnosis and ordered replay; no earlier domain defect established.
 Source: four original reproducible CAF sounds, validated name/default fallback,
 one foreground preview owner and editor cleanup, unchanged schema/occurrence authority.
 Imported audio separately probed and deferred; see AUDIO_CAPABILITIES.md.
