@@ -93,6 +93,22 @@ final class AudioTests: XCTestCase {
         // Simulator execution proves API/resource integration, not audible hardware playback.
     }
 
+    func testQueuedCategoryChangeDoesNotCancelPreviewButExternalAndUnknownRoutesStop() {
+        let player = RecordingPreview()
+        let preview = SoundPreview(playback: player)
+        preview.play(.bundled(.siren))
+        preview.routeChanged(reason: AVAudioSession.RouteChangeReason.categoryChange.rawValue)
+        XCTAssertTrue(preview.isPlaying)
+        XCTAssertNotNil(player.current)
+        for reason: UInt? in [AVAudioSession.RouteChangeReason.oldDeviceUnavailable.rawValue,
+                             AVAudioSession.RouteChangeReason.newDeviceAvailable.rawValue, nil, UInt.max] {
+            preview.play(.bundled(.siren))
+            preview.routeChanged(reason: reason)
+            XCTAssertFalse(preview.isPlaying)
+            XCTAssertNil(player.current)
+        }
+    }
+
     func testAllSoundSelectionsSurviveDiskReloadAndOccurrenceSnapshot() async throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         defer { try? FileManager.default.removeItem(at: directory) }

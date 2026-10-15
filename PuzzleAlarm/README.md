@@ -1,12 +1,13 @@
-# Native iOS shell — Stage 2
+# Native iOS application through Stage 11
 
-PuzzleAlarmApp opens ContentView, which displays only the PuzzleAlarm title.
-The application links the existing PuzzleAlarmCore product as a local Swift
-package through project.yml. Core sources are not copied into the app target.
+The app links the Foundation-only PuzzleAlarmCore package through project.yml.
+It provides alarm management, persisted ordered Math/Memory/QR challenges,
+AlarmKit adapters, QR generation/sharing/capture and bundled audio selection,
+preview cleanup and validated default fallback. App Intent wake-up routing is
+deferred to Stage 12 and is outside the Stage 11 task.
 
-The UI test launches the app on a dynamically selected iPhone Simulator and
-checks the displayed title. This is shell-launch evidence only.
-
-No AlarmKit, App Intents, scheduling, storage, challenge UI, camera or audio is
-implemented. Generate PuzzleAlarm.xcodeproj with pinned XcodeGen; generated
-projects and Info.plist files are intentionally ignored.
+Generate PuzzleAlarm.xcodeproj with pinned XcodeGen. Generated projects and
+Info.plist files are ignored. See ../docs/PROJECT_STATE.md for current gate status
+and exact-revision CI, ../docs/TEST_MATRIX.md for separate automated/Simulator
+evidence, and ../docs/DEVICE_TEST_PLAN.md for unperformed hardware validation.
+No physical alarm, camera or audio success is inferred from source or Simulator.

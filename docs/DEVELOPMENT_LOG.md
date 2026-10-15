@@ -1036,3 +1036,18 @@ missing Shell coverage is consequential, not a separate product defect. Native
 artifact 11938812323 preserves the failing audio result. No device playback claim.
 Audit additionally covers valid zero-frame container rejection, restored snapshot
 sound immutability after definition edit, and exact saved sound in relaunch UI row.
+
+### Stage 11 notification delivery audit — new exact-source replay required
+
+6e562a0 / run 38661461973 passes Core, Debug/Release, all five audio tests,
+QR/broader application tests and management UI including the new audio flow.
+This is partial evidence, not complete acceptance. Source review adds explicit
+main-run-loop delivery for system audio notifications before touching main-actor UI
+state. Because setCategory can enqueue its own category-change notification, ignore
+that reason while stopping on external/unknown device-route changes. A sixth focused
+audio test verifies delayed category change preserves the new preview, while removed/
+added/unknown/missing route reasons release it. Existing UI lifecycle assertions stay
+unchanged. Publish this audit revision for complete replay rather than treating the
+older run as evidence for changed source. Superseded in-progress checks are not passes.
+No earlier gate defect found; Gate 11 remains pending at the new source. Local diff
+check passes; physical-device notifications/playback remain DEVICE REQUIRED.

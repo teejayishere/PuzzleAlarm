@@ -145,9 +145,14 @@ struct AlarmEditorView: View {
         .onChange(of: draft.sound) { _, _ in preview.stop() }
         .onChange(of: scenePhase) { _, phase in if phase != .active { preview.stop() } }
         .onDisappear { preview.stop() }
-        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in preview.stop() }
-        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification)) { _ in preview.stop() }
-        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.mediaServicesWereResetNotification)) { _ in preview.stop() }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)
+            .receive(on: RunLoop.main)) { _ in preview.stop() }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification)
+            .receive(on: RunLoop.main)) { notification in
+                preview.routeChanged(reason: notification.userInfo?[AVAudioSessionRouteChangeReasonKey] as? UInt)
+            }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.mediaServicesWereResetNotification)
+            .receive(on: RunLoop.main)) { _ in preview.stop() }
     }
     private func change(_ body: () throws -> Void) {
         do { try body(); localError = nil }

@@ -34,6 +34,12 @@ final class SoundPreview {
     func stop() {
         playback.stop(); isPlaying = false; message = nil
     }
+    func routeChanged(reason: UInt?) {
+        // Our own setCategory can enqueue this notification. It is not a device
+        // route loss and must not cancel the preview immediately after start.
+        guard reason != AVAudioSession.RouteChangeReason.categoryChange.rawValue else { return }
+        stop()
+    }
 }
 
 @MainActor

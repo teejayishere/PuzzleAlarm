@@ -9,12 +9,12 @@ is complete SUCCESS at that exact main SHA; every required job step passed.
 This resolves the stale Stage 10 publication/main-closeout text below. Gates 0–10
 are accepted prerequisites. User authorized Stage 11; historical stop text is superseded.
 
-Current stage/gate: 11 / FAILED at 6589e18; correction replay pending. Last passing gate: 10. Invalidations: none identified.
+Current stage/gate: 11 / PENDING notification-audit replay; prior CAF failure corrected in focused tests. Last passing gate: 10. Invalidations: none identified.
 Source: four original reproducible CAF sounds, validated name/default fallback,
 one foreground preview owner and editor cleanup, unchanged schema/occurrence authority.
 Imported audio separately probed and deferred; see AUDIO_CAPABILITIES.md.
 Local Windows: generator and byte reproducibility PASS; git whitespace/source review PASS.
-First run 38660099133: Core and Debug/Release PASS; audio decoded-headroom test FAILED due to CAF generator flags. Corrected flags/assets require exact-source replay. Native artifact 11938812323 retained; downstream UI/full checks not reached. Physical device: NOT RUN.
+First run 38660099133: Core and Debug/Release PASS; audio decoded-headroom test FAILED due to CAF generator flags. Corrected flags/assets require exact-source replay. Native artifact 11938812323 retained. Correction 6e562a0 / run 38661461973 passes focused audio and management UI, but is superseded before full acceptance by the main-run-loop/category-notification audit. Complete new-source replay required. Physical device: NOT RUN.
 No audible/locked/Silent/Focus/AlarmKit custom playback inferred from Simulator.
 Stop after Gate 11 and exact-final-main CI. Do not begin Stage 12.
 

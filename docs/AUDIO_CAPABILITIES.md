@@ -14,6 +14,10 @@ Current Apple references checked 2026-10-14:
   conservative format guidance, not evidence that AlarmKit playback works.
 - [Audio interruptions](https://developer.apple.com/documentation/avfaudio/handling-audio-interruptions)
   informs preview interruption cleanup; previews never resume automatically.
+- [CAF specification](https://developer.apple.com/library/archive/documentation/MusicAudio/Reference/CAFSpec/CAF_spec/CAF_spec.html)
+  defines CAF LPCM flags separately from ASBD: integer little-endian uses 2, with
+  reserved bits zero. The first native decode/headroom regression caught the
+  incorrect ASBD flags; the generator/assets were corrected without weakening it.
 
 Generated assets are original deterministic 4-second 22050Hz mono signed 16-bit
 LPCM CAF, with fades/headroom. The generator uses only Python's standard library.
@@ -37,3 +41,8 @@ respecting Silent Mode, and has no background mode. Selection changes, Save, Can
 navigation, dismissal, inactive/background, interruption, route change and media
 reset stop/release playback and relinquish an activated audio session. Preview and
 camera are independent; no recording category or microphone permission is used.
+
+System audio notifications are delivered to preview UI on the main run loop. The
+preview ignores its own category-change route notification; device additions/loss
+and unknown/missing route reasons stop it. A queued category event cannot cancel a
+new preview merely because its foreground category was configured.
