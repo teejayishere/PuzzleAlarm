@@ -106,8 +106,18 @@ final class AlarmManagementUITests: XCTestCase {
         XCTAssertTrue(target.isHittable, id + "\n" + app.debugDescription)
         if target.elementType == .switch {
             let inner = target.switches.firstMatch
-            if inner.exists { inner.tap() }
-            else { target.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap() }
+            let control = inner.exists ? inner : target
+            XCTAssertTrue(control.isEnabled, id)
+            XCTAssertTrue(control.isHittable, id)
+            let before = control.value as? String
+            XCTAssertTrue(before == "0" || before == "1", "Missing concrete switch value: " + id)
+            control.tap()
+            let expected = before == "0" ? "1" : "0"
+            if (control.value as? String) != expected {
+                let changed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", expected), object: control)
+                XCTAssertEqual(XCTWaiter.wait(for: [changed], timeout: 10), .completed,
+                               "Switch input did not commit: " + id + "\n" + app.debugDescription)
+            }
         } else { target.tap() }
         if id == "alarms.add" {
             XCTAssertTrue(app.buttons["editor.save"].waitForExistence(timeout: 10))
@@ -126,6 +136,9 @@ final class AlarmManagementUITests: XCTestCase {
         choice.tap()
     }
     private func expectLabel(_ element: XCUIElement, _ text: String) {
+        // A positive concrete observation needs no polling. A slow AX request can
+        // consume the poll budget even when its resulting label already matches.
+        if element.label == text { return }
         let condition = XCTNSPredicateExpectation(predicate: NSPredicate(format: "label == %@", text), object: element)
         XCTAssertEqual(XCTWaiter.wait(for: [condition], timeout: 10), .completed, "Expected \(text), found \(element.label)")
     }

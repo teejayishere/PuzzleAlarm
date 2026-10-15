@@ -1083,3 +1083,20 @@ full validation job depends on it and still replays all original ordered gates;
 a failed/skipped prerequisite cannot count as acceptance. This improves diagnostic
 feedback without changing product behavior or assertion timeouts. The initial
 single-job diagnostic revision is superseded, not accepted.
+
+### Gate 6 focused reproduction confirms status-observation defect
+
+0b6500d / run 38677624472 diagnostic job: 4/5 repetitions PASS; iteration 3
+fails the existing expectLabel helper with "Expected On, found On" after a timed-
+out XCTWaiter. This proves a polling-budget/positive-observation mismatch; it does
+not prove incorrect persisted state. Artifact 11947756526 retains the exact result.
+Use the same correction principle accepted in Stage 10: directly observe an exact
+matching label before polling, retaining the original ten-second wait when it is
+actually different. Do not accept an incorrect label or add a post-timeout pass.
+Also strengthen switch interaction: check concrete inner switch enabled/hittable,
+read its 0/1 value, tap once, require its expected transition under the original
+ten-second bound. Do not retry taps or weaken the existing Retry/Needs attention/
+On/Off assertions. This locates any repeated lost input at the actual transition.
+The original Off/0 observation remains distinct from the confirmed label-poll issue;
+no production fault has been established. DEBUG command traces remain available for
+further diagnosis. Hold Gates 6–11 until focused and complete ordered replay pass.
