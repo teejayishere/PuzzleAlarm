@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 
 document = json.loads(Path(sys.argv[1]).read_text())
-behavior = {"AlarmStore.swift", "AlarmStorePresentation.swift", "AlarmEditorDraft.swift", "AlarmFormatting.swift", "AppEnvironment.swift", "QRCodeScanning.swift", "QRCodeView.swift", "AVFoundationQRCodeScanner.swift"}
+behavior = {"AlarmStore.swift", "AlarmStorePresentation.swift", "AlarmEditorDraft.swift", "AlarmFormatting.swift", "AppEnvironment.swift", "QRCodeScanning.swift", "QRCodeView.swift", "AVFoundationQRCodeScanner.swift", "AlarmSoundCatalog.swift", "SoundPreview.swift", "AlarmConfigurationFactory.swift"}
 found = []
 for target in document.get("targets", []):
     if target.get("name") != "PuzzleAlarm.app":

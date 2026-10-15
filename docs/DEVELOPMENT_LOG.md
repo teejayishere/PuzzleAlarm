@@ -1000,3 +1000,24 @@ State, matrix, architecture, README and device plan record Stage 9. The final
 consolidated documentation-only commit must run the identical complete workflow
 at its own exact HEAD. Final report supplies its SHA/run; no self-referencing follow-up
 commit. STOP after verification. Stage 10 NOT STARTED; no device action required now.
+
+## Stage 10 closeout reconciliation and Stage 11 start
+
+Read PROJECT_STATE first. Clean base/main 95d781f8f2c684a9424db82f734fb1df24ac8b0e
+verified against GitHub branch and run 38587030123 attempt 2: complete SUCCESS,
+every required step. Stale Stage 10 pending-publication text is historical now.
+Stage 11 source adds deterministic original 4s mono LPCM CAF resources, pre-schedule
+validation/default fallback without persisted mutation, and one foreground preview
+with selection/navigation/dismissal/scene/interruption/route/reset cleanup. Default
+preview explains the public capability limit; no substitute system tone is claimed.
+Optional imports separately probed/deferred in AUDIO_CAPABILITIES. Core stays free
+of Apple UI/audio frameworks; no scheduling semantics/schema/intent routing change.
+Meaningful focused native tests cover real resource decoding, malformed/missing/
+overlong fallback, playback replacement/errors/idempotent cleanup and every saved
+choice through DiskRepository plus all five occurrence requests. UI checks selection,
+stop, navigation, background, dismissal/relaunch. Existing ordered regression replay
+is retained, with focused audio before full native tests. CI execution pending.
+Local generator/reproducibility and diff check pass; Xcode/Simulator unavailable on
+Windows. Hardware playback DEVICE REQUIRED. No earlier defect identified so far;
+any later failure must trace to earliest gate and replay dependencies in order.
+STOP at Stage 11 closeout; Stage 12 outside scope.

@@ -599,3 +599,19 @@ https://github.com/teejayishere/PuzzleAlarm/actions/runs/38334048094 (full PASS)
 200 distinct tests: 142 core, 46 iOS and 12 UI. No earlier model/schema/architecture
 defect was identified; the Stage 9 foreground contention failure was corrected and
 all required earlier regressions replayed. Physical device NOT RUN. Stage 10 NOT STARTED.
+
+## Stage 11 Audio (supersedes earlier deferred-audio notes)
+
+Stable Core sound identifiers and immutable definition snapshots remain unchanged.
+Four original reproducible LPCM CAF files are copied to the main bundle by XcodeGen.
+AlarmSoundCatalog uses AVAudioFile to reject unavailable, malformed, empty/overlong
+resources; AlarmConfigurationFactory maps a validated filename to existing public
+AlarmKit `.named` or `.default` without rewriting persisted selection or catching
+scheduler failures. SoundPreview owns one injected playback adapter, synchronously
+stops before replacement and reports failure. The real foreground AVAudioPlayer
+uses ambient audio with reduced volume and releases player/session on stop. Editor
+hooks stop on selection, Save/Cancel, navigation/dismissal, scene inactivity, audio
+interruption/route changes/media reset. No background playback entitlement, new
+lifecycle owner, microphone request, persistence schema or Stage 12 routing.
+See AUDIO_CAPABILITIES for the separate import/default-preview capability boundary.
+Actual alarm playback remains device-only; AVAudioPlayer does not replace AlarmKit.

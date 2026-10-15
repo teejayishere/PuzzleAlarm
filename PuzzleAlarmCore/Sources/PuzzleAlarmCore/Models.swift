@@ -49,7 +49,7 @@ public enum BundledSound: String, Codable, CaseIterable, Sendable {
     case escalating
 }
 
-// Selection identifiers only; no claim that these resources exist before Stage 11.
+// Stable identifiers only; resource validation/playback belongs to the iOS adapter.
 public enum SoundSelection: Codable, Equatable, Sendable {
     case systemDefault
     case bundled(BundledSound)

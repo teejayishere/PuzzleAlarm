@@ -43,6 +43,8 @@ jobs:
           test -z "$(git ls-files '*.xcodeproj/*' '.generated/*')"
       - name: Validate package manifest
         run: swift package dump-package
+      - name: Verify reproducible generated audio resources
+        run: python3 Scripts/generate_alarm_sounds.py --check
       - name: Build PuzzleAlarmCore
         run: swift build -Xswiftc -warnings-as-errors
       - name: Run focused persistence tests
@@ -110,6 +112,17 @@ jobs:
               raise SystemExit("Built app is missing NSPhotoLibraryAddUsageDescription")
           print(f"Built QR image save usage description: {photos}")
           PY
+      - name: Run focused audio tests
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Audio.xcresult \
+            -only-testing:PuzzleAlarmTests/AudioTests \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/audio-tests.log"
       - name: Run focused QR application and scanner tests
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -205,7 +218,7 @@ jobs:
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")
           PY
       - name: Review Xcode diagnostics
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log"
       - name: Preserve QR Simulator evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -220,6 +233,7 @@ jobs:
         with:
           name: native-simulator-evidence
           path: |
+            TestResults/Audio.xcresult
             TestResults/QRApplication.xcresult
             TestResults/Application.xcresult
             TestResults/Management.xcresult

@@ -44,14 +44,14 @@ enum AlarmConfigurationFactory {
         }
     }
 
-    static func selectedSound(_ selection: SoundSelection) -> AlertConfiguration.AlertSound {
-        switch selection {
-        case .systemDefault: .default
-        case let .bundled(sound): .named(sound.rawValue + ".caf")
-        }
+    static func selectedSound(
+        _ selection: SoundSelection, catalog: AlarmSoundCatalog = .init()
+    ) -> AlertConfiguration.AlertSound {
+        guard let url = catalog.resource(for: selection) else { return .default }
+        return .named(url.lastPathComponent)
     }
 
-    // Compile-only named-sound path. No resource is supplied or playback claimed.
+    // Separate capability probe for imported names; not a product import path.
     static func namedSoundConfiguration(
         for request: AlarmRequest, filename: String
     ) -> AlarmManager.AlarmConfiguration<OccurrenceMetadata> {

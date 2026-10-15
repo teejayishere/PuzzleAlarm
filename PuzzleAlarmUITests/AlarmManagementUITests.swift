@@ -2,6 +2,50 @@ import XCTest
 
 @MainActor
 final class AlarmManagementUITests: XCTestCase {
+    func testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch() {
+        let app = launch("audio-preview")
+        tap(app, "alarms.add")
+        choose(app, "editor.sound", "Siren")
+        tap(app, "editor.preview")
+        expectPreview(app, playing: true)
+        tap(app, "editor.preview")
+        expectPreview(app, playing: false)
+        tap(app, "editor.preview")
+        expectPreview(app, playing: true)
+        choose(app, "editor.sound", "Rapid Beeps")
+        expectPreview(app, playing: false)
+        tap(app, "editor.preview")
+        expectPreview(app, playing: true)
+        tap(app, "editor.repeat")
+        back(app, from: "Repeat")
+        tap(app, "editor.sound")
+        let rapid = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Rapid Beeps")).firstMatch
+        XCTAssertTrue(rapid.waitForExistence(timeout: 5)); rapid.tap()
+        expectPreview(app, playing: false)
+        tap(app, "editor.preview")
+        expectPreview(app, playing: true)
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        expectPreview(app, playing: false)
+        tap(app, "editor.save")
+        let row = firstRow(app)
+        XCTAssertTrue(row.waitForExistence(timeout: 10)); row.tap()
+        tap(app, "editor.preview")
+        expectPreview(app, playing: true)
+        tap(app, "editor.cancel")
+        relaunch(app)
+        let restored = firstRow(app)
+        XCTAssertTrue(restored.waitForExistence(timeout: 10)); restored.tap()
+        tap(app, "editor.sound")
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Rapid Beeps")).firstMatch.waitForExistence(timeout: 5))
+        app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", "Rapid Beeps")).firstMatch.tap()
+        expectPreview(app, playing: false)
+    }
+    private func expectPreview(_ app: XCUIApplication, playing: Bool) {
+        let button = app.buttons["editor.preview"]
+        let state = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", playing ? "Playing" : "Stopped"), object: button)
+        XCTAssertEqual(XCTWaiter.wait(for: [state], timeout: 10), .completed, app.debugDescription)
+    }
     private let seededID = "00000000-0000-0000-0000-000000000001"
 
     private func launch(_ name: String, scenario: String = "empty", largeText: Bool = false) -> XCUIApplication {

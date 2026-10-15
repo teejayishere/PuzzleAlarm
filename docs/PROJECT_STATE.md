@@ -1,5 +1,25 @@
 # Project state
 
+## Stage 11 — Audio implementation; Gate 11 PENDING
+
+Prerequisite reconciled: main and local starting HEAD are
+95d781f8f2c684a9424db82f734fb1df24ac8b0e. Run 38587030123, attempt 2,
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38587030123/attempts/2
+is complete SUCCESS at that exact main SHA; every required job step passed.
+This resolves the stale Stage 10 publication/main-closeout text below. Gates 0–10
+are accepted prerequisites. User authorized Stage 11; historical stop text is superseded.
+
+Current stage/gate: 11 / PENDING. Last passing gate: 10. Invalidations: none identified.
+Source: four original reproducible CAF sounds, validated name/default fallback,
+one foreground preview owner and editor cleanup, unchanged schema/occurrence authority.
+Imported audio separately probed and deferred; see AUDIO_CAPABILITIES.md.
+Local Windows: generator and byte reproducibility PASS; git whitespace/source review PASS.
+Automated/Xcode/Simulator: PENDING exact-source CI. Physical device: NOT RUN.
+No audible/locked/Silent/Focus/AlarmKit custom playback inferred from Simulator.
+Stop after Gate 11 and exact-final-main CI. Do not begin Stage 12.
+
+## Historical Stage 10 records (closeout superseded above)
+
 ## Stage 10 — Gate 10 PASS at corrected source; final publication pending
 
 Accepted source: e5c43ae6d457abff838bcf3fa448b5805b22ffc9.
@@ -407,3 +427,4 @@ Memory UI and full native suite were not reached. Busy-owner Memory application
 regression passed. Gate 9 remains pending, not accepted. Exact-source full replay
 triggered on codex/stage-9-gate-replay after connector Actions rerun returned 403.
 No earlier product defect identified; Stage 10 NOT STARTED. Device NOT RUN.
+

@@ -25,6 +25,8 @@ targets:
       - path: PuzzleAlarm/App
       - path: PuzzleAlarm/AlarmKit
       - path: PuzzleAlarm/Intents
+      - path: PuzzleAlarm/Resources/Sounds
+        buildPhase: resources
     dependencies:
       - package: PuzzleAlarmCore
         product: PuzzleAlarmCore

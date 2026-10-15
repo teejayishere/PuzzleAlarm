@@ -122,3 +122,18 @@ Gate 9 automated/Simulator boundary: 017218e893a72125b85402336adebb1c965b00ea,
 https://github.com/teejayishere/PuzzleAlarm/actions/runs/38334048094 passed both Memory
 UI flows and full regression checks using injected alarm effects. None of the
 DEVICE REQUIRED items above is satisfied by that workflow. Physical iPhone NOT RUN.
+
+## Stage 11 Audio — DEVICE REQUIRED / NOT RUN
+
+For system default and every bundled sound, verify an actual AlarmKit primary and
+backup uses the intended tone, in ordinary/challenge modes, locked/unlocked,
+foreground/background/terminated, Silent Mode and Focus. Test fallback with a
+controlled missing/invalid resource build; a mock name/default assertion is not
+proof of daemon fallback or audible delivery. Check next recurrence/cleanup too.
+Check preview identity and comfortable volume on real hardware; Stop, selection,
+Save/Cancel, pushed navigation, sheet dismissal, home/lock, call interruption,
+headphones/Bluetooth route changes and media reset must stop with no auto-resume.
+Check VoiceOver, large text and screen rotation. Default preview explains that its
+exact tone is heard at firing. Preview respects ambient/Silent semantics; AlarmKit
+behavior needs its own observations. No device observation has been supplied yet.
+Optional import is deferred. No Stage 12 action/routing acceptance is implied.

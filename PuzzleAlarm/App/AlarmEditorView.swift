@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 import PuzzleAlarmCore
 
 struct AlarmEditorView: View {
@@ -6,6 +7,8 @@ struct AlarmEditorView: View {
     @State private var draft: AlarmEditorDraft
     @State private var localError: String?
     @State private var confirmingDelete = false
+    @State private var preview = SoundPreview()
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dismiss) private var dismiss
     init(store: AlarmStore, initial: AlarmEditorDraft) {
         self.store = store; _draft = State(initialValue: initial)
@@ -90,6 +93,12 @@ struct AlarmEditorView: View {
                     Picker("Sound", selection: $draft.sound) {
                         ForEach(SoundChoice.allCases) { sound in Text(sound.title).tag(sound) }
                     }.accessibilityIdentifier("editor.sound")
+                    Button(preview.isPlaying ? "Stop Preview" : "Preview") {
+                        if preview.isPlaying { preview.stop() }
+                        else { preview.play(draft.sound.selection) }
+                    }.accessibilityIdentifier("editor.preview")
+                        .accessibilityValue(preview.isPlaying ? "Playing" : "Stopped")
+                    if let message = preview.message { Text(message).foregroundStyle(.secondary) }
                 }
                 if draft.original != nil {
                     Section {
@@ -99,13 +108,15 @@ struct AlarmEditorView: View {
                 }
             }
             .navigationTitle(draft.original == nil ? "Add Alarm" : "Edit Alarm")
+            .onDisappear { preview.stop() }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }.accessibilityIdentifier("editor.cancel")
+                    Button("Cancel") { preview.stop(); dismiss() }.accessibilityIdentifier("editor.cancel")
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
+                        preview.stop()
                         Task {
                             localError = nil
                             switch await store.save(draft) {
@@ -131,6 +142,12 @@ struct AlarmEditorView: View {
                 Button("Keep Alarm", role: .cancel) {}.accessibilityIdentifier("editor.keep")
             }
         }
+        .onChange(of: draft.sound) { _, _ in preview.stop() }
+        .onChange(of: scenePhase) { _, phase in if phase != .active { preview.stop() } }
+        .onDisappear { preview.stop() }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in preview.stop() }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.routeChangeNotification)) { _ in preview.stop() }
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.mediaServicesWereResetNotification)) { _ in preview.stop() }
     }
     private func change(_ body: () throws -> Void) {
         do { try body(); localError = nil }
