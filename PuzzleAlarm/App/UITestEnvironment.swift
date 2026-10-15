@@ -74,9 +74,22 @@ final class TestAlarmScheduler: AlarmScheduling, @unchecked Sendable {
 
 @MainActor
 enum UITestEnvironment {
+    static func traceToggle(_ message: String) {
+        let environment = ProcessInfo.processInfo.environment
+        guard environment["PUZZLE_UI_TEST"] == "1", environment["PUZZLE_SCENARIO"] == "enableFailure" else { return }
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("toggle-input-diagnostic.log")
+        let line = "\(Date().timeIntervalSince1970) pid=\(ProcessInfo.processInfo.processIdentifier) \(message)\n"
+        guard let data = line.data(using: .utf8) else { return }
+        if !FileManager.default.fileExists(atPath: url.path) { _ = FileManager.default.createFile(atPath: url.path, contents: nil) }
+        guard let file = try? FileHandle(forWritingTo: url) else { return }
+        defer { try? file.close() }
+        _ = try? file.seekToEnd()
+        try? file.write(contentsOf: data)
+    }
     static let now = Date(timeIntervalSince1970: 1_790_812_800)
     static let alarmID = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
     static func make(_ environment: [String: String]) throws -> AppEnvironment {
+        traceToggle("fixture launch")
         // Test-run names are reduced to safe path characters, never accepted as paths.
         let name = (environment["PUZZLE_TEST_NAME"] ?? "unit-host").filter { $0.isLetter || $0.isNumber || $0 == "-" }
         let root = FileManager.default.temporaryDirectory.appendingPathComponent("PuzzleAlarmUITests", isDirectory: true)

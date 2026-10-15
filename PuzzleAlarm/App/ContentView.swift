@@ -72,6 +72,9 @@ struct ContentView: View {
                             }.foregroundStyle(.primary).frame(maxWidth: .infinity, alignment: .leading)
                         }.accessibilityIdentifier("alarm.edit." + alarm.id.uuidString)
                         Toggle("Alarm enabled", isOn: Binding(get: { alarm.enabled }, set: { value in
+                            #if DEBUG
+                            UITestEnvironment.traceToggle("binding requested=\(value) captured=\(alarm.enabled) busy=\(store.isBusy)")
+                            #endif
                             Task { await store.setEnabled(alarm, value) }
                         })).accessibilityIdentifier("alarm.enabled." + alarm.id.uuidString)
                         Text(store.status(alarm)).accessibilityIdentifier("alarm.status." + alarm.id.uuidString)

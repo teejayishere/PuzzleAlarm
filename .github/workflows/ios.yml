@@ -39,6 +39,14 @@ jobs:
             -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest \
             -test-iterations 5 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/toggle-ui-tests.log"
+      - name: Preserve binding and owner input trace
+        if: always()
+        run: |
+          set -euo pipefail
+          container="$(xcrun simctl get_app_container "$SIMULATOR_ID" com.teejayishere.PuzzleAlarm data)"
+          test -f "$container/tmp/toggle-input-diagnostic.log"
+          cp "$container/tmp/toggle-input-diagnostic.log" TestResults/toggle-input-diagnostic.log
+          cat TestResults/toggle-input-diagnostic.log
       - name: Review diagnostic Xcode warnings
         run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/toggle-ui-tests.log"
       - name: Preserve focused toggle evidence
@@ -46,7 +54,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: toggle-simulator-evidence
-          path: TestResults/Toggle.xcresult
+          path: |
+            TestResults/Toggle.xcresult
+            TestResults/toggle-input-diagnostic.log
           if-no-files-found: ignore
           retention-days: 7
   validate:
@@ -250,7 +260,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           binary = Path("ReleaseDerivedData/Build/Products/Release-iphonesimulator/PuzzleAlarm.app/PuzzleAlarm").read_bytes()
-          for marker in [b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler", b"FakeQRCodeScanner", b"Simulate matching QR"]:
+          for marker in [b"toggle-input-diagnostic.log", b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler", b"FakeQRCodeScanner", b"Simulate matching QR"]:
               if marker in binary:
                   raise SystemExit("DEBUG fixture leaked into Release: " + marker.decode())
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")

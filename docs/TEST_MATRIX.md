@@ -1,5 +1,20 @@
 # Evidence ledger
 
+
+## Final-main replay failure — Gates 6–11 HELD
+
+f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED the required
+five-repeat toggle job: iteration 3 switch transition remained 0 / Off after the
+first enable tap. Other four pass; full validate correctly SKIPPED, not acceptance.
+Artifact 11992958226 retained for seven days. Prior 83fb473 complete source pass
+below is historical evidence, not acceptance for failed final main.
+Retained daemon data shows a 50 ms synthesized tap at (340.5,468) within the
+visible switch, followed by unchanged Off/0. It does not establish whether binding
+received input. Add DEBUG fixture-only persistent input/owner tracing (outside reset
+directory), retain it even on failure, reproduce before any product correction.
+No speculative domain change or repeated tap. Invalidate Gate 6 replay and dependent
+7–11 until new evidence and complete ordered replay. Stage 12 NOT STARTED.
+
 ## Stage 11 — accepted source and meaningful coverage audit
 
 83fb473828295e83bc3184de7b74edffef5fb682 /

@@ -1146,3 +1146,16 @@ main workflow is mandatory. Final report supplies final SHA/run without a furthe
 self-referencing documentation commit. Physical audio/AlarmKit/camera evidence is
 NOT RUN; device plan remains required. Stop after exact-final-main closeout.
 Stage 12 NOT STARTED.
+
+### Final main reveals the distinct Off/0 input failure
+
+f187ade / run 38773355992: five-repeat job 4/5 PASS; iteration 3 fails the new strict
+switch transition after first enable. validate skipped. Hold Gates 6–11 again.
+Artifact 11992958226 shows correct visible point (340.5,468), synthesized 50 ms tap,
+unchanged concrete switch 0 and status Off, no Retry/error. Prior owner-completion
+fix addresses the proven On-poll race but does not explain this distinct case.
+Add fixture-only DEBUG persistent tracing at binding and owner entry/result to
+distinguish no input, rejected busy owner and failed/persisted result. Trace file
+survives per-iteration data reset and is copied into the retained toggle artifact
+by an always step; original print-only tracing was unavailable. No scheduling or
+assertion change. Reproduce before selecting a correction, then replay held gates.

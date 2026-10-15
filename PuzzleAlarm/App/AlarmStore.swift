@@ -191,12 +191,19 @@ final class AlarmStore {
     }
 
     func setEnabled(_ alarm: AlarmDefinition, _ enabled: Bool) async {
-        _ = await perform {
+        #if DEBUG
+        UITestEnvironment.traceToggle("owner received=\(enabled) current=\(definition(alarm.id)?.enabled.description ?? "missing") busy=\(isBusy)")
+        #endif
+        let accepted = await perform {
             if enabled { try await self.requireAccess() }
             let context = try self.context()
             if enabled { return try await self.coordinator.enable(alarm.id, context: context) }
             return try await self.coordinator.disable(alarm.id, context: context)
         }
+        #if DEBUG
+        UITestEnvironment.traceToggle("owner finished accepted=\(accepted) current=\(definition(alarm.id)?.enabled.description ?? "missing") busy=\(isBusy) error=\(errorMessage ?? "none")")
+        #endif
+        _ = accepted
     }
     func delete(_ id: UUID) async -> Bool {
         let success = await perform { try await self.coordinator.delete(id, context: self.context()) }
