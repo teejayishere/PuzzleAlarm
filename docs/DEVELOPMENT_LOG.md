@@ -1165,3 +1165,22 @@ then fails (CoreSimulator 405, selected device Shutdown), full validate skipped.
 Do not treat it as complete acceptance. Xcode can use cloned test devices and shut
 them down; gather journals directly from ephemeral runner Simulator data containers
 rather than querying only the selected booted device. No product hypothesis change.
+
+### Persistent trace isolates missing input before the binding
+
+199fb2a / run 38794836392: focused 3/5 PASS, iterations 2 and 4 fail the switch
+transition. Trace collection PASS. Failed app PIDs 7803 and 11548 contain only
+fixture launch, no binding request or owner call. Passing PIDs 4847, 9687, 12640
+record true/false/true binding requests, busy=false owner entry and accepted=true
+matching persisted state. No rejected busy call or scheduling fault accounts for
+the failed input. This isolates the distinct Off/0 case before the binding, separate
+from the earlier owner-completion observation defect. Full validate correctly skipped.
+
+Correct the XCTest input to one deliberate 150 ms press on the enabled/hittable
+concrete switch, retaining exact transition, Retry, Needs attention, On/Off and
+owner completion assertions. No repeated taps or acceptance of unchanged state.
+The 50 ms native synthesized tap was not received; duration as a remedy is a
+hypothesis to validate, not a proven OS cause. Require ten unchanged product-flow
+iterations, 30-minute free standard-runner cap, before ordered/full downstream replay.
+Retain the effective fixture-only DEBUG file trace and Release binary exclusion
+as diagnostic evidence; no production command policy, model or schema change.

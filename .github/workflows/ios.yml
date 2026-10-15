@@ -16,7 +16,7 @@ jobs:
     # Focused diagnostic evidence is available before the full ordered gate job.
     if: github.event.repository.private == false
     runs-on: macos-26
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -37,7 +37,7 @@ jobs:
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData -resultBundlePath TestResults/Toggle.xcresult \
             -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest \
-            -test-iterations 5 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            -test-iterations 10 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/toggle-ui-tests.log"
       - name: Preserve binding and owner input trace
         if: always()

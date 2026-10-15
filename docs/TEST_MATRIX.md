@@ -12,6 +12,10 @@ Retained daemon data shows a 50 ms synthesized tap at (340.5,468) within the
 visible switch, followed by unchanged Off/0. It does not establish whether binding
 received input. Add DEBUG fixture-only persistent input/owner tracing (outside reset
 directory), retain it even on failure, reproduce before any product correction.
+Run 38794836392 now isolates failed iterations to no binding input (launch-only
+journals); passing inputs complete through the owner without busy rejection.
+Try one deliberate 150 ms switch press with ten repetitions; retain every exact
+outcome and the fixture-only trace. Remedy acceptance requires complete replay.
 No speculative domain change or repeated tap. Invalidate Gate 6 replay and dependent
 7–11 until new evidence and complete ordered replay. Stage 12 NOT STARTED.
 
