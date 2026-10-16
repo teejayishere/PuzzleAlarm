@@ -8,22 +8,21 @@ Main f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED;
 there is no successful exact-final-main closeout. Historical 83fb473 source success
 below does not substitute for it. Stage 12 NOT STARTED.
 
-Latest diagnostic 20a0c3f / run 38845398506: Toggle label activation is unsupported,
-0/10; restore the ordinary native switch input. Prior passive-window diagnostic
-6c117a8 / run 38843851982: 9/10 pass, failed PID 23823 receives began/ended at the
-lens while app active, with no binding/owner call. Center tap, 150 ms press, thumb
-drag and explicit boot readiness have not resolved the native interaction.
-The ineffective native-target probe and effective passive window probe are removed
-from the working source after diagnosis; fixture-only binding/owner journal remains.
-Do not claim a scheduling/model defect, a native-control fix or pass by retrying
-until green, weakening outcomes, skipping prerequisites, or inventing device evidence.
+Latest deterministic regression: 5fa500a / run 38855208213 FAILS the retained
+list binding contract at four assertions, without UI timing. Extracted unchanged
+getter closes over an immutable AlarmDefinition; it stays stale after authoritative
+enable/disable, failure/retry and deletion. Artifact 12027118564 retains that result.
+Correct the getter to query current store definition by stable ID, defaulting Off
+when removed. Keep native Toggle appearance and async scheduling action unchanged.
+This proves a binding data-flow defect, not that every earlier ignored input had
+the same cause. Require corrected native regression, ten ordinary list-input flows
+before editor baseline, then complete ordered regressions and exact-final-main CI.
 
 User chose to keep the native switch and authorized continued investigation.
-No replacement UI is authorized or needed to investigate. Product-choice hold is
-superseded. Compare the real editor's local draft Toggle binding with the list's
-asynchronous binding using the same native input helper, and inspect rendered
-failure evidence before selecting a correction. Do not assume a framework defect
-from app-window touch receipt alone. No gesture retry or outcome relaxation.
+No replacement UI is implemented. Native touch receipt and prior passing batches
+do not establish a framework defect or resolution. Both temporary UI probes remain
+removed. Fixture-only input/owner journal remains; no input retry or assertion
+relaxation. Gates 6–11 remain held until complete corrected-source replay.
 Audio source/resources and earlier exact-source compile/automated/Simulator evidence
 remain recorded below. Actual alarm playback remains DEVICE REQUIRED / NOT RUN.
 

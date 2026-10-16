@@ -1312,3 +1312,23 @@ Run this regression before UI comparisons. This revision deliberately preserves
 the old getter to establish actual failing evidence, not a claimed fix. The native
 switch and scheduling behavior are unchanged. The prior successful whole source
 is not substituted for required new-source evidence; Gates 6–11 remain held.
+
+### Deterministic binding defect confirmed; correct at Gate 6
+
+5fa500a / run 38855208213 fails the extracted UNCHANGED binding contract with four
+assertions: captured-disabled binding remains false after enable and scheduling
+failure; captured-enabled binding remains true after disable and deletion.
+Test completes in 0.568 seconds without UI gestures/timing. Artifact 12027118564.
+Later UI and full validate correctly skipped. No CI acceptance.
+
+Change only the getter to query the current store definition by stable ID, with
+Off when the record is absent. Native Toggle, setter Task, lifecycle owner, status/
+health authority, persistence schema and scheduling policies remain unchanged.
+No optimistic enabled/healthy state is invented. This is a confirmed data-flow
+defect; causality for every prior intermittent input is not yet established.
+Replay native contract then ten ordinary list-input flows BEFORE editor baseline,
+so editor control use cannot act as an assumed warm-up remedy. Retain exact
+switch/status/failure/retry assertions and no repeat taps. Focused runner cap is
+40 minutes to include the added native contract and real editor regression;
+standard free public macos-26 only. Full ordered job remains required and bounded.
+User's native-control preference is preserved. Gates 6–11 acceptance is still held.
