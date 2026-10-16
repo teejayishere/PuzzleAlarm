@@ -1427,3 +1427,32 @@ CI at the final documentation/main SHA. This entry does not claim an unobserved
 main pass. The immutable final-main SHA/run belongs in the task report after that
 verification, avoiding a self-reference commit loop. Reopen earliest affected gate
 and dependents if final replay fails. Stage 12 NOT STARTED; stop after closeout.
+
+
+### Exact-main failure reopens Gate 6 — synchronous native input experiment
+
+f21f46949c9bbc8d70940213f7219ac322fbd134 / 38877456923 FAILED. Independent editor
+passes again; retained-binding contract passes. Original list reproduction 8/10:
+iterations 5 and 6 first enable has no binding or owner call (PIDs 19516, 21732,
+launch only). Broad validation correctly skipped. Artifact 12037565266 retains
+failure; editor 12036462545. Reopen Gate 6 and dependent 7–11, not acceptance.
+Do not rerun unchanged CI until green or substitute the prior complete source pass.
+
+The controlled cold comparison has repeatedly passed the real local draft binding,
+while the owner-backed computed binding still misses inputs. Test synchronous native
+presentation input with the same public SwiftUI Toggle and unchanged appearance.
+A row-local Bool accepts the gesture immediately; onChange submits the existing
+owner command and disables pending input. Explicit completion reconciles even when
+busy changes coalesce, including denied access, failed persistence and partial
+scheduling. The durable owner remains authoritative: denial rolls back, scheduling
+failure may retain enabled with Needs attention, never invented healthy status.
+Idle presentation follows external owner changes. No new lifecycle owner, Core
+framework dependency, schema, permission request, intent route or On/Off replacement.
+This is a tested hypothesis, not proof about the prior internal native lens.
+
+Add native command-completion regression through real store access denial, scheduling
+failure, disable and successful enable; existing retained-binding contract remains
+production-used. Add UI denied native enable -> Off, pending released, error visible,
+Off after relaunch. Keep original ten ordinary list repetitions, independent cold
+editor, all exact transitions and ordered full regression. No repeat tap/longer wait
+or outcome weakening. Updated source/CI and then exact final main are required.

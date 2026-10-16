@@ -45,6 +45,38 @@ final class AlarmStoreTests: XCTestCase {
         XCTAssertFalse(original.enabled, "The captured definition is still an immutable snapshot")
     }
 
+    func testAlarmListCommandCompletionObservesOwnerAfterDenialFailureAndSuccess() async throws {
+        let (store, effect) = try make()
+        let value = try draft(enabled: false)
+        _ = await store.save(value)
+        let original = try XCTUnwrap(store.definition(value.id))
+        var completions = 0
+        func command(_ enabled: Bool) async {
+            await withCheckedContinuation { continuation in
+                let binding = AlarmEnabledBinding.make(for: original, store: store) {
+                    XCTAssertFalse(store.isBusy, "Completion must follow owner reconciliation")
+                    completions += 1
+                    continuation.resume()
+                }
+                binding.wrappedValue = enabled
+            }
+        }
+        effect.configure { $0.authorization = .denied }
+        await command(true)
+        XCTAssertFalse(try XCTUnwrap(store.definition(value.id)).enabled)
+        XCTAssertNotNil(store.errorMessage)
+        XCTAssertTrue(effect.values.schedules.isEmpty)
+        effect.configure { $0.authorization = .authorized; $0.failSchedules = 1 }
+        await command(true)
+        XCTAssertTrue(try XCTUnwrap(store.definition(value.id)).enabled)
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "Needs attention")
+        await command(false)
+        XCTAssertFalse(try XCTUnwrap(store.definition(value.id)).enabled)
+        await command(true)
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "On")
+        XCTAssertEqual(completions, 4)
+    }
+
     func testMissingAndCommittedEmptyStartupDoNotScheduleOrPrompt() async throws {
         for committed in [false, true] {
             let repository = InMemoryRepository()

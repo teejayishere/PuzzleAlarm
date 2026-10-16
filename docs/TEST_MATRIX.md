@@ -1,5 +1,29 @@
 # Test matrix
 
+## Current closeout HELD — final-main replay failed
+
+Final main f21f46949c9bbc8d70940213f7219ac322fbd134 / run 38877456923 FAILED:
+list reproduction 8/10, iterations 5 and 6 first enable ignored; their journals
+contain only launches (PIDs 19516, 21732), no binding/owner input. Native contract
+and independent cold editor PASS; broad validation SKIPPED, not acceptance.
+Artifact 12037565266 preserves failure evidence; editor 12036462545 (seven days).
+Gate 6 and dependent Gates 7–11 acceptance are reopened. Earlier source replay
+below is historical and does not substitute for this failed exact-main result.
+Stage 12 NOT STARTED.
+
+Keep native Toggle appearance. Test a synchronous local input binding, as used by
+the repeatedly passing editor, followed by the existing asynchronous owner command
+and explicit reconciliation on completion. Pending input disables the control;
+access/write rejection reverts to current durable state; failed scheduling retains
+owner-enabled plus Needs attention. Health/persistence/OS effects remain exclusively
+owned by AlarmStore/coordinator. External owner changes refresh idle presentation.
+This is a hypothesis under validation, not a proven cause or accepted fix. Retain
+all single-input exact outcomes and cold comparisons. Add meaningful command-
+completion and native denied-enable rollback/relaunch regressions. Complete ordered
+source replay and final-main CI are still required; no passing subset closes gates.
+
+## Historical corrected-source replay (superseded for current acceptance)
+
 ## Stage 11 — accepted source and meaningful coverage audit
 
 2b1135214995d20b7eb429e68594f1c2ab65d9ad /

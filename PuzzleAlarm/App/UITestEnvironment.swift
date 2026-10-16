@@ -103,7 +103,7 @@ enum UITestEnvironment {
         let scenario = environment["PUZZLE_SCENARIO"] ?? "empty"
         scheduler.configure {
             if scenario == "notDetermined" { $0.authorization = .notDetermined }
-            if scenario == "denied" { $0.authorization = .denied }
+            if ["denied", "disabledDenied"].contains(scenario) { $0.authorization = .denied }
             if ["failed", "enableFailure"].contains(scenario) { $0.failSchedules = 1 }
             if scenario == "deleteFailure" { $0.failCancellation = true }
         }
@@ -160,10 +160,10 @@ enum UITestEnvironment {
                 scheduler.configure { $0.alarms = ids.map { .init(id: $0, state: .scheduled) } }
                 return
             }
-            if ["healthy", "disabled", "challenge", "failed", "enableFailure", "deleteFailure"].contains(scenario) {
+            if ["healthy", "disabled", "disabledDenied", "challenge", "failed", "enableFailure", "deleteFailure"].contains(scenario) {
                 var draft = try AlarmEditorDraft(id: alarmID, now: now)
                 draft.weekdays = [.monday, .tuesday, .wednesday, .thursday, .friday]
-                draft.enabled = !["disabled", "enableFailure"].contains(scenario)
+                draft.enabled = !["disabled", "disabledDenied", "enableFailure"].contains(scenario)
                 if scenario == "challenge" {
                     try draft.setMode(.challengesRequired)
                     try draft.add(.math, token: alarmID)

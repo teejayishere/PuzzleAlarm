@@ -2,6 +2,30 @@ import XCTest
 
 @MainActor
 final class AlarmManagementUITests: XCTestCase {
+    func testDeniedNativeEnableReconcilesOffAndRemainsUsableAfterRelaunch() {
+        let app = launch("toggle-denied", scenario: "disabledDenied")
+        let id = "alarm.enabled." + seededID
+        let status = app.staticTexts["alarm.status." + seededID]
+        expectLabel(status, "Off")
+        let row = app.switches.matching(identifier: id).firstMatch
+        XCTAssertTrue(row.waitForExistence(timeout: 5))
+        let inner = row.switches.firstMatch
+        let control = inner.exists ? inner : row
+        XCTAssertTrue(control.isEnabled && control.isHittable)
+        XCTAssertEqual(control.value as? String, "0")
+        // This command is rejected, so the exact required result is rollback to
+        // Off, rather than the successful transition required by the tap helper.
+        control.tap()
+        XCTAssertTrue(app.staticTexts["application.error"].waitForExistence(timeout: 10))
+        waitForOwner(app)
+        XCTAssertEqual(control.value as? String, "0")
+        XCTAssertTrue(control.isEnabled, "A rejected command must release pending input")
+        expectLabel(status, "Off")
+        relaunch(app)
+        expectLabel(status, "Off")
+        XCTAssertEqual(app.switches.matching(identifier: id).firstMatch.value as? String, "0")
+    }
+
     func testEditorEnabledTogglePersistsAfterRepeatedNativeInput() {
         let app = launch("editor-toggle-baseline", scenario: "disabled")
         let rowID = "alarm.edit." + seededID

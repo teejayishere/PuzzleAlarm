@@ -71,8 +71,7 @@ struct ContentView: View {
                                 Text(SoundChoice(alarm.selectedSound).title).foregroundStyle(.secondary)
                             }.foregroundStyle(.primary).frame(maxWidth: .infinity, alignment: .leading)
                         }.accessibilityIdentifier("alarm.edit." + alarm.id.uuidString)
-                        Toggle("Alarm enabled", isOn: AlarmEnabledBinding.make(for: alarm, store: store))
-                            .accessibilityIdentifier("alarm.enabled." + alarm.id.uuidString)
+                        AlarmEnabledToggle(alarm: alarm, store: store)
                         Text(store.status(alarm)).accessibilityIdentifier("alarm.status." + alarm.id.uuidString)
                         if let date = store.nextOccurrence(alarm) {
                             Text(date, format: .dateTime.weekday().hour().minute()).foregroundStyle(.secondary)
