@@ -1332,3 +1332,18 @@ switch/status/failure/retry assertions and no repeat taps. Focused runner cap is
 40 minutes to include the added native contract and real editor regression;
 standard free public macos-26 only. Full ordered job remains required and bounded.
 User's native-control preference is preserved. Gates 6–11 acceptance is still held.
+
+49bbe63 / run 38856155404: retained binding native regression PASS (0.060s), all
+ten ordinary list-input flows PASS before editor baseline, editor eleven taps plus
+save/relaunch PASS. Focused job complete SUCCESS, artifact 12027668812. No compiler/
+destination warnings; one known SDK metadata advisory. Broad job Core full 146
+and coverage pass, then new boot-readiness step fails "Invalid device:" because
+SIMULATOR_ID was not mapped from steps.simulator.outputs.id. This is an introduced
+CI configuration defect, not an application/Core failure. App coverage's missing
+Shell bundle is a downstream consequence. No downstream iOS acceptance.
+
+Fix the boot step env to match all neighboring build/test steps. Earliest invalid
+prerequisite is Gate 0 workflow infrastructure; hold dependent gate execution
+acceptance and replay the complete ordered pipeline at the corrected workflow SHA.
+Prior focused data remains diagnostic evidence only. No product change beyond the
+already confirmed live binding correction. Native switch remains unchanged.

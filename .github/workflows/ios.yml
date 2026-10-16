@@ -162,6 +162,8 @@ jobs:
           simulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"
           echo "id=$simulator_id" >> "$GITHUB_OUTPUT"
       - name: Wait for regression Simulator boot readiness
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: xcrun simctl bootstatus "$SIMULATOR_ID" -b
       - name: Build iOS application for Simulator
         env:
