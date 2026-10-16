@@ -17,6 +17,34 @@ final class AlarmStoreTests: XCTestCase {
         value.weekdays = [.monday]; value.enabled = enabled
         return value
     }
+    func testAlarmListBindingTracksOwnerStateAndRemovalWithoutRebuilding() async throws {
+        let (store, effect) = try make()
+        let value = try draft(enabled: false)
+        _ = await store.save(value)
+        let original = try XCTUnwrap(store.definition(value.id))
+        let binding = AlarmEnabledBinding.make(for: original, store: store)
+        XCTAssertFalse(binding.wrappedValue)
+        await store.setEnabled(original, true)
+        let enabled = try XCTUnwrap(store.definition(value.id))
+        XCTAssertTrue(binding.wrappedValue, "A retained binding must read current owner state")
+        XCTAssertEqual(store.status(enabled), "On")
+        let enabledBinding = AlarmEnabledBinding.make(for: enabled, store: store)
+        await store.setEnabled(enabled, false)
+        XCTAssertFalse(binding.wrappedValue)
+        XCTAssertFalse(enabledBinding.wrappedValue, "An old enabled snapshot must not remain On")
+        effect.configure { $0.failSchedules = 1 }
+        await store.setEnabled(try XCTUnwrap(store.definition(value.id)), true)
+        XCTAssertTrue(binding.wrappedValue)
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "Needs attention")
+        await store.retry(value.id)
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "On")
+        let deleted = await store.delete(value.id)
+        XCTAssertTrue(deleted)
+        XCTAssertFalse(binding.wrappedValue)
+        XCTAssertFalse(enabledBinding.wrappedValue, "A removed row cannot invent enabled state")
+        XCTAssertFalse(original.enabled, "The captured definition is still an immutable snapshot")
+    }
+
     func testMissingAndCommittedEmptyStartupDoNotScheduleOrPrompt() async throws {
         for committed in [false, true] {
             let repository = InMemoryRepository()

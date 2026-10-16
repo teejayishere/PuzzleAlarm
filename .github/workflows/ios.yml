@@ -35,6 +35,15 @@ jobs:
           xcrun simctl help bootstatus
           xcrun simctl bootstatus "$SIMULATOR_ID" -b
           xcrun simctl list devices booted
+      - name: Verify retained alarm binding follows owner state
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/EnabledBinding.xcresult \
+            -only-testing:PuzzleAlarmTests/AlarmStoreTests/testAlarmListBindingTracksOwnerStateAndRemovalWithoutRebuilding \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/enabled-binding-tests.log"
       - name: Compare native editor draft binding
         run: |
           set -o pipefail
@@ -74,7 +83,7 @@ jobs:
           print(output.read_text())
           PY
       - name: Review diagnostic Xcode warnings
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/toggle-ui-tests.log" "$RUNNER_TEMP/editor-toggle-ui-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/toggle-ui-tests.log" "$RUNNER_TEMP/editor-toggle-ui-tests.log" "$RUNNER_TEMP/enabled-binding-tests.log"
       - name: Preserve focused toggle evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -83,6 +92,7 @@ jobs:
           path: |
             TestResults/Toggle.xcresult
             TestResults/EditorToggle.xcresult
+            TestResults/EnabledBinding.xcresult
             TestResults/toggle-input-diagnostic.log
           if-no-files-found: ignore
           retention-days: 7

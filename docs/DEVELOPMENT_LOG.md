@@ -1293,3 +1293,22 @@ ten enable/failure/retry repetitions and retain its result separately. This test
 actual editor persistence, not a fake diagnostic control. App-window touch receipt
 alone has not proven an OS defect; inspect actual rendered failure video as well.
 No production UI or owner policy change is made for this comparison.
+
+### Deterministic retained-binding contract, before selecting a correction
+
+9a29e89 / run 38853622918: editor eleven native taps plus disabled save/relaunch
+PASS; original list flow ten repetitions PASS. This batch does not prove the
+intermittency resolved or establish editor prewarming as a fix. Inspecting original
+main failure video (run 38773355992, retained locally) shows a visually Off thumb
+before and after the ignored tap, matching AX. Free FFmpeg decoder is workspace-
+local/ignored; no dependency is introduced to the application.
+
+The source's computed binding getter captures an immutable AlarmDefinition rather
+than reading authoritative store state. Extract the SAME getter/setter into
+AlarmEnabledBinding and add a deterministic native regression retaining bindings
+created from both disabled and enabled snapshots across owner enable/disable,
+schedule failure, retry and deletion. Configuration and health remain distinct.
+Run this regression before UI comparisons. This revision deliberately preserves
+the old getter to establish actual failing evidence, not a claimed fix. The native
+switch and scheduling behavior are unchanged. The prior successful whole source
+is not substituted for required new-source evidence; Gates 6–11 remain held.
