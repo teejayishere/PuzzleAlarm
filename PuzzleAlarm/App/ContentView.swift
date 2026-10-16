@@ -90,6 +90,14 @@ struct ContentView: View {
                     }
                 }
             }
+            #if DEBUG
+            .background {
+                if ProcessInfo.processInfo.environment["PUZZLE_SCENARIO"] == "enableFailure",
+                   ProcessInfo.processInfo.environment["PUZZLE_UI_TEST"] == "1" {
+                    ToggleInputProbe()
+                }
+            }
+            #endif
             .navigationTitle("PuzzleAlarm")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {

@@ -1195,3 +1195,16 @@ Use one horizontal native thumb drag from observed current side to opposite side
 instead of a center tap/press; require real binding/owner work and the same exact
 switch/status outcomes. Ten repetitions remain required. This is a test input
 delivery remedy to validate, not a claimed OS root cause or production policy change.
+
+### Re-examine native delivery rather than continue gesture variants
+
+d6b5625 / run 38820487839: 9/10 focused PASS; first iteration third input fails.
+PID 7524 records successful true and false requests/owner completion, no third
+binding request. Native thumb drag is also insufficient. Gates 6–11 remain held.
+Stop duration/gesture remedies. Restore ordinary concrete-switch tap and add a
+fixture-only public UIControl target observer: native touch phases/valueChanged,
+enabled/tracking state, alongside existing binding/owner journal. It changes no
+control property and adds no gesture recognizer or method swizzling. Confirm
+observer attachment for each process before interpreting absence of native events.
+This separates native cancellation/delivery from SwiftUI binding dispatch. Release
+binary exclusion includes the probe. No production scheduling or model change.
