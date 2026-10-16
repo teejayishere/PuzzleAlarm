@@ -36,6 +36,9 @@ struct AlarmEnabledToggle: View {
             .accessibilityIdentifier("alarm.enabled." + alarm.id.uuidString)
             .disabled(submitting || store.isBusy)
             .onChange(of: input) { _, value in
+                #if DEBUG
+                UITestEnvironment.traceToggle("native input=\(value) submitting=\(submitting) owner=\(owner.wrappedValue)")
+                #endif
                 guard !submitting, value != owner.wrappedValue else { return }
                 submitting = true
                 let command = AlarmEnabledBinding.make(for: alarm, store: store) {
