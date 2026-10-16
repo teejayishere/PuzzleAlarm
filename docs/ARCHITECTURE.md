@@ -59,7 +59,7 @@ Annoying-only definitions require an empty challenge sequence. Challenge definit
 require 1...3 unique Math/Memory/QR configurations in order. Sequence editing provides
 append, remove, replace and index-based move operations. Configuration settings are
 bounded (Math count 1...20; Memory length 2...12, duration 1...30s, rounds 1...20).
-Sound enums identify intended resources; Stage 11 must supply and verify them.
+Sound enums identify resources validated by the Stage 11 catalog described below.
 
 ## Calendar contract
 
@@ -617,9 +617,18 @@ See AUDIO_CAPABILITIES for the separate import/default-preview capability bounda
 Actual alarm playback remains device-only; AVAudioPlayer does not replace AlarmKit.
 
 
-Management UI tests wait for the existing owner-busy indicator to disappear after
-enable/disable and Retry before checking exact switch/status outcomes. This measures
-the asynchronous owner completion boundary; AlarmStore/ContentView production
-behavior is unchanged. One input tap must yield the expected switch transition;
-a bounded busy wait or wrong value fails. Five-repeat and complete ordered replay
-at 83fb473 / run 38679302330 clear the held Gate 6 and dependent replay acceptance.
+The alarm list retains the native SwiftUI Toggle. AlarmEnabledBinding reads the
+current authoritative store definition by stable ID, returning Off if removed;
+it does not retain the immutable row snapshot as its current value. The existing
+asynchronous setEnabled command remains responsible for scheduling and persistence.
+A retained-binding regression covers enable/disable, failure/retry and deletion
+without rebuilding the binding. Health and enabled configuration remain separate.
+
+Management UI tests resolve known switches through their concrete accessibility
+role. After one input, the existing owner-busy indicator must disappear within the
+bound before exact switch/status outcomes are checked. No repeat taps or optimistic
+state. Independent cold comparison jobs precede ordered broad replay. Complete
+source replay 2b11352 / run 38868972349 passes, including ten list repetitions and
+editor On/Off persistence. This does not establish the cause of every previously
+ignored Simulator input or prove physical native-control behavior. Final publication
+requires its own exact-main full CI. See DEVELOPMENT_LOG and DEVICE_TEST_PLAN.

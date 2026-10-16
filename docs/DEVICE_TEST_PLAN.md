@@ -19,7 +19,7 @@
 - Verify preview framing/rotation, VoiceOver/Dynamic Type, native share/save/print,
   thermal/resource release and privacy indicator. Injected Simulator capture and image
   decoding do not prove these hardware/system behaviors. Existing AlarmKit delivery,
-  Silent/Focus/file-protection/power-loss/intent checks remain open. Stage 11 is out of scope.
+  Silent/Focus/file-protection/power-loss/intent checks remain open. Audio has a separate Stage 11 checklist below.
 
 Status: DEVICE REQUIRED for every item. No device test has run.
 
@@ -143,6 +143,9 @@ including enable/failure/retry/disable/re-enable and resulting persisted/OS stat
 On iOS 26.5 Simulator the internal glass lens received began/ended while the app was
 active without dispatching its binding in one of ten instrumented iterations.
 Label tapping is NOT an activation path for this control (0/10; no binding calls).
-No passing native/Simulator batch proves physical thumb behavior or fixes this
-framework interaction. Current Gate 6 and dependent Gates 7–11 remain held pending
-a product decision about replacing the list control or device/platform evidence.
+No passing native/Simulator batch proves physical thumb behavior or establishes
+the cause of every intermittent ignored input. The user chose to retain the native
+switch; no replacement decision is pending. A deterministic retained-binding test
+separately confirmed and corrected a stale getter. Automated gate acceptance
+requires complete ordered replay at the assessed revision; physical input and OS
+scheduling effects still require this device checklist.

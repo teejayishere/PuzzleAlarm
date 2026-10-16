@@ -1,77 +1,33 @@
-# Evidence ledger
-
-
-## Current closeout HELD — investigate with native control unchanged
-
-2026-10-16: Gate 6 replay and dependent Gates 7–11 are HELD, not passed.
-Main f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED;
-there is no successful exact-final-main closeout. Historical 83fb473 source success
-below does not substitute for it. Stage 12 NOT STARTED.
-
-Latest 9f1886b / run 38866667055: native binding contract PASS; list reproduction
-8/10 with two ignored first inputs (launch-only owner journals). Full validation
-skipped, not pass. Fixed stale getter is not the whole input failure explanation.
-Compare a real editor draft starting Off on an independent cold Simulator; retain
-eleven transitions plus persisted On and Off across relaunch. Both comparison jobs
-must pass before ordered broad replay. Native control appearance is unchanged.
-
-Latest 4743619 / run 38858511805: focused job SUCCESS; broad build/Core/Audio,
-all focused UI and downstream checks PASS. Full native 58 unit and 16/17 UI pass.
-New editor test fails on broad Any accessibility query timeout before next tap;
-not an incorrect switch transition. Artifact 12030829283 retains native evidence.
-Resolve known Switch IDs through app.switches; retain all taps, readiness, exact
-values, persistence and original waits. Gate 0 env mapping is resolved. Gate 6
-measurement and dependent 7–11 acceptance remain held pending complete replay.
-
-Latest deterministic regression: 5fa500a / run 38855208213 FAILS the retained
-list binding contract at four assertions, without UI timing. Extracted unchanged
-getter closes over an immutable AlarmDefinition; it stays stale after authoritative
-enable/disable, failure/retry and deletion. Artifact 12027118564 retains that result.
-Correct the getter to query current store definition by stable ID, defaulting Off
-when removed. Keep native Toggle appearance and async scheduling action unchanged.
-This proves a binding data-flow defect, not that every earlier ignored input had
-the same cause. Require corrected native regression, ten ordinary list-input flows
-before editor baseline, then complete ordered regressions and exact-final-main CI.
-
-User chose to keep the native switch and authorized continued investigation.
-No replacement UI is implemented. Native touch receipt and prior passing batches
-do not establish a framework defect or resolution. Both temporary UI probes remain
-removed. Fixture-only input/owner journal remains; no input retry or assertion
-relaxation. Gates 6–11 remain held until complete corrected-source replay.
-Audio source/resources and earlier exact-source compile/automated/Simulator evidence
-remain recorded below. Actual alarm playback remains DEVICE REQUIRED / NOT RUN.
-
-
-## Final-main replay failure — Gates 6–11 HELD
-
-f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED the required
-five-repeat toggle job: iteration 3 switch transition remained 0 / Off after the
-first enable tap. Other four pass; full validate correctly SKIPPED, not acceptance.
-Artifact 11992958226 retained for seven days. Prior 83fb473 complete source pass
-below is historical evidence, not acceptance for failed final main.
-Retained daemon data shows a 50 ms synthesized tap at (340.5,468) within the
-visible switch, followed by unchanged Off/0. It does not establish whether binding
-received input. Add DEBUG fixture-only persistent input/owner tracing (outside reset
-directory), retain it even on failure, reproduce before any product correction.
-Run 38794836392 now isolates failed iterations to no binding input (launch-only
-journals); passing inputs complete through the owner without busy rejection.
-Try one deliberate 150 ms switch press with ten repetitions; retain every exact
-outcome and the fixture-only trace. Remedy acceptance requires complete replay.
-No speculative domain change or repeated tap. Invalidate Gate 6 replay and dependent
-7–11 until new evidence and complete ordered replay. Stage 12 NOT STARTED.
+# Test matrix
 
 ## Stage 11 — accepted source and meaningful coverage audit
 
-83fb473828295e83bc3184de7b74edffef5fb682 /
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38679302330 — complete
-SUCCESS, both required jobs and every required step, observed 2026-10-15.
-Required five-repeat toggle check, ordered management/downstream replay and full
-native pass clear Gates 6–11 invalidation. 146 Core / 57 native / 16 UI = 219 distinct
-tests; repetitions and focused subsets are not extra tests.
+2b1135214995d20b7eb429e68594f1c2ab65d9ad /
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38868972349 — complete
+SUCCESS, attempt 1, all three required jobs and every step, observed 2026-10-16.
+Retained-binding contract, ten ordinary list enable/failure/retry repetitions,
+independent cold editor initially Off with eleven inputs and On/Off save/relaunch,
+ordered management/downstream replay and full native pass clear Gates 6–11
+invalidation at this revision. 146 Core / 58 native unit / 17 UI = 221 distinct tests;
+repetitions, focused subsets and parameterized cases are not extra tests.
 Source IMPLEMENTED; automated AUTOMATED PASS; Xcode XCODE COMPILE PASS; Simulator
 SIMULATOR PASS; physical device DEVICE REQUIRED / NOT RUN. Xcode 26.6 / Swift 6.3.3;
-no compiler/destination warnings, three known SDK metadata advisories.
-Seven-day artifacts: toggle 11947033995, QR 11950105373, native 11950290116.
+no compiler/destination warnings; three broad SDK metadata advisories and one in
+each comparison job. Seven-day artifacts: editor 12032742063, toggle 12033301147,
+QR 12035084334, native 12035393743.
+
+The captured getter's deterministic four-assertion failure (5fa500a / 38855208213)
+justifies reading live authoritative owner state by stable ID. The production native
+Toggle remains, with no optimistic state or scheduling-policy change. Concrete-role
+queries correct a separately observed broad Any-query timeout. One input must still
+yield the exact opposite 0/1 state, after the existing owner's bounded busy barrier;
+all enabled/hittable/status/failure/retry/persistence outcomes remain enforced.
+Earlier missed inputs remain recorded, not discarded or conclusively attributed to
+that getter or an OS defect. Complete passes are revision-specific execution evidence,
+not proof that an intermittent interaction can never recur or that hardware works.
+Temporary UI probes were removed; fixture-only input journal is absent in Release.
+Failed f187ade main / 38773355992 and historical 83fb473 / 38679302330 are superseded
+by this source replay. Final main still requires its own complete exact-SHA workflow.
 
 | Gate 11 requirement | Executed evidence |
 | --- | --- |
@@ -84,10 +40,10 @@ Seven-day artifacts: toggle 11947033995, QR 11950105373, native 11950290116.
 The native decoded-headroom assertion caught the original CAF flag defect and stayed
 unchanged through correction. Coverage is audited for behavior, not manufactured
 to meet a percentage. Current Core: 2243/2256 (99.42%), prior classifications below
-unchanged. App: Catalog 10/10, Preview 47/47, ConfigurationFactory 52/62, Store 308/313,
+unchanged. App: Catalog 10/10, Preview 47/47, ConfigurationFactory 52/62, Store 314/319,
 Environment 23/27, Draft 84/88, Formatting 86/86, Presentation 72/72, QR scanning 82/82,
-QR view 39/40, real camera 0/173. Total 803/1000 (80.30%); excluding real camera
-803/827 (97.10%). The factory's seven iOS 26.0 availability-initializer lines need
+QR view 39/40, real camera 0/173. AlarmEnabledBinding 15/15. Total 824/1021 (80.71%); excluding real camera
+824/848 (97.17%). The factory's seven iOS 26.0 availability-initializer lines need
 that OS; three unused namedSoundConfiguration probe lines are compile-only.
 Remaining default closures, generated sharing initialization, error/calendar fallbacks
 and camera adapter retain their earlier source/device classifications. Preview/catalog
@@ -875,9 +831,10 @@ and diagnostics PASS. Three known SDK metadata advisories reported. Coverage pol
 and valid tests were preserved. Final documentation HEAD still requires its matching
 complete workflow; final task report supplies that immutable SHA/run. Stage 10 NOT STARTED.
 
-## Stage 11 implementation — execution PENDING
+## Historical Stage 11 initial implementation — pending claims superseded above
 
-Prerequisite exact-main 95d781f / run 38587030123 attempt 2 is SUCCESS, every step;
+At initial implementation, prerequisite exact-main 95d781f / run 38587030123
+attempt 2 was verified SUCCESS, every step;
 this supersedes Stage 10 pending closeout text above. Gate 11 source IMPLEMENTED.
 Generator byte reproducibility: local PASS. Native resource/fallback/persistence/
 preview tests and management audio UI: PENDING exact-source CI. Xcode/Simulator:

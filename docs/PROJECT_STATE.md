@@ -1,105 +1,61 @@
 # Project state
 
+## Stage 11 — Gate 11 PASS at verified source; final-main CI required
 
-## Current closeout HELD — investigate with native control unchanged
+Current stage: 11. Last passing gate: 11. Stage 12 NOT STARTED.
+Accepted source: 2b1135214995d20b7eb429e68594f1c2ab65d9ad.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38868972349 — complete
+SUCCESS, attempt 1, all three required jobs and every step, observed 2026-10-16.
+Gates 0–10 required regressions PASS. The held Gate 6 replay and dependent Gates
+7–11 acceptance are cleared at this revision by the retained-binding regression,
+ten ordinary enable/failure/retry repetitions, independent cold editor Off/On/Off
+persistence test, management-first replay, downstream flows and full native suite.
 
-2026-10-16: Gate 6 replay and dependent Gates 7–11 are HELD, not passed.
-Main f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED;
-there is no successful exact-final-main closeout. Historical 83fb473 source success
-below does not substitute for it. Stage 12 NOT STARTED.
+Source IMPLEMENTED: four original reproducible bundled CAF sounds; persisted stable
+choices and immutable occurrence snapshots; validated AlarmKit named/default fallback;
+one foreground preview owner with editor/scene/notification cleanup. Optional imported
+audio was separately probed and deferred. Default Preview explains that the system
+tone is heard at alarm firing. Core boundaries, schema and lifecycle ownership remain
+unchanged. See AUDIO_CAPABILITIES.md.
 
-Latest 9f1886b / run 38866667055: native binding contract PASS; list reproduction
-8/10 with two ignored first inputs (launch-only owner journals). Full validation
-skipped, not pass. Fixed stale getter is not the whole input failure explanation.
-Compare a real editor draft starting Off on an independent cold Simulator; retain
-eleven transitions plus persisted On and Off across relaunch. Both comparison jobs
-must pass before ordered broad replay. Native control appearance is unchanged.
+Automated AUTOMATED PASS: 146 Core + 58 native unit + 17 UI = 221 distinct tests.
+Focused subsets, ten repetitions and parameterized cases are not counted again.
+Xcode XCODE COMPILE PASS: Xcode 26.6 / Swift 6.3.3; Debug/Release, generated resources,
+usage strings and Release fixture exclusion pass. No compiler/destination warnings;
+three known SDK metadata advisories in broad validation (one per comparison job).
+Simulator SIMULATOR PASS: six Audio tests, ten management flows, Math/Memory/QR and
+full native regression. Seven-day artifacts: editor 12032742063, toggle 12033301147,
+QR 12035084334, native 12035393743. Core coverage 2243/2256; app behavior 824/1021,
+or 824/848 excluding the unexecuted real camera adapter. Meaningful uncovered
+boundaries remain classified in TEST_MATRIX; percentages do not prove hardware effects.
 
-Latest 4743619 / run 38858511805: focused job SUCCESS; broad build/Core/Audio,
-all focused UI and downstream checks PASS. Full native 58 unit and 16/17 UI pass.
-New editor test fails on broad Any accessibility query timeout before next tap;
-not an incorrect switch transition. Artifact 12030829283 retains native evidence.
-Resolve known Switch IDs through app.switches; retain all taps, readiness, exact
-values, persistence and original waits. Gate 0 env mapping is resolved. Gate 6
-measurement and dependent 7–11 acceptance remain held pending complete replay.
-
-Latest deterministic regression: 5fa500a / run 38855208213 FAILS the retained
-list binding contract at four assertions, without UI timing. Extracted unchanged
-getter closes over an immutable AlarmDefinition; it stays stale after authoritative
-enable/disable, failure/retry and deletion. Artifact 12027118564 retains that result.
-Correct the getter to query current store definition by stable ID, defaulting Off
-when removed. Keep native Toggle appearance and async scheduling action unchanged.
-This proves a binding data-flow defect, not that every earlier ignored input had
-the same cause. Require corrected native regression, ten ordinary list-input flows
-before editor baseline, then complete ordered regressions and exact-final-main CI.
-
-User chose to keep the native switch and authorized continued investigation.
-No replacement UI is implemented. Native touch receipt and prior passing batches
-do not establish a framework defect or resolution. Both temporary UI probes remain
-removed. Fixture-only input/owner journal remains; no input retry or assertion
-relaxation. Gates 6–11 remain held until complete corrected-source replay.
-Audio source/resources and earlier exact-source compile/automated/Simulator evidence
-remain recorded below. Actual alarm playback remains DEVICE REQUIRED / NOT RUN.
-
-
-## Final-main replay failure — Gates 6–11 HELD
-
-f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED the required
-five-repeat toggle job: iteration 3 switch transition remained 0 / Off after the
-first enable tap. Other four pass; full validate correctly SKIPPED, not acceptance.
-Artifact 11992958226 retained for seven days. Prior 83fb473 complete source pass
-below is historical evidence, not acceptance for failed final main.
-Retained daemon data shows a 50 ms synthesized tap at (340.5,468) within the
-visible switch, followed by unchanged Off/0. It does not establish whether binding
-received input. Add DEBUG fixture-only persistent input/owner tracing (outside reset
-directory), retain it even on failure, reproduce before any product correction.
-Run 38794836392 now isolates failed iterations to no binding input (launch-only
-journals); passing inputs complete through the owner without busy rejection.
-Try one deliberate 150 ms switch press with ten repetitions; retain every exact
-outcome and the fixture-only trace. Remedy acceptance requires complete replay.
-No speculative domain change or repeated tap. Invalidate Gate 6 replay and dependent
-7–11 until new evidence and complete ordered replay. Stage 12 NOT STARTED.
-
-## Stage 11 — Gate 11 PASS at verified source
-
-Current stage: 11. Last passing gate: 11. Gates 0–10 required regressions also
-PASS; the held Gate 6 replay and dependent Gates 7–11 are cleared by the required
-five-repeat enable/failure/retry check, management-first replay, downstream flows
-and full native regression. No unresolved source blocker. Stage 12 NOT STARTED.
-
-Accepted source: 83fb473828295e83bc3184de7b74edffef5fb682.
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38679302330 — complete
-SUCCESS, both required jobs and every required step, observed 2026-10-15.
-Automated: 146 Core + 57 native + 16 UI = 219 distinct tests PASS; focused reruns,
-five repetitions and parameterized cases are not counted again. Xcode 26.6 /
-Swift 6.3.3; Debug/Release, generated resources, usage strings, Release fixture
-exclusion PASS. No compiler/destination warnings; three known SDK metadata advisories.
-Simulator: six focused Audio tests, nine management flows, Math/Memory/QR and full
-native PASS. Seven-day artifacts: toggle 11947033995, QR 11950105373,
-native 11950290116. Core 2243/2256; app behavior 803/1000, or 803/827 excluding the
-unexecuted real camera adapter. Meaningful uncovered boundaries remain classified
-in TEST_MATRIX; line coverage does not establish audible or physical behavior.
-
-Implemented: four original reproducible bundled CAF sounds, persisted stable choices
-and immutable occurrence snapshots, validated AlarmKit name/default fallback,
-one foreground preview owner with editor/scene/notification cleanup.
-Optional imported audio separately probed and deferred. System default selection
-uses AlarmKit default; foreground Preview explains the platform limitation.
-See AUDIO_CAPABILITIES.md. Core framework boundaries and schema remain unchanged.
+The native switch remains. A deterministic regression first failed four assertions
+with the captured immutable getter, then passed after querying current store state by
+stable ID (Off if removed). UI tests use the concrete Switch role, retain enabled/
+hittable checks, one input, exact 0/1 transitions, bounded owner completion and honest
+status/persistence assertions. No retry taps, skipped tests or weakened outcomes.
+Earlier intermittent ignored Simulator inputs are recorded in DEVELOPMENT_LOG; neither
+touch receipt nor later passes establish an OS defect or explain every missed input.
+Temporary UI probes are removed. Fixture-only owner/input journaling is excluded
+from Release. Device switch behavior remains unverified.
 
 Prerequisite reconciliation: starting main was 95d781f8f2c684a9424db82f734fb1df24ac8b0e.
 Run 38587030123 attempt 2 was verified complete SUCCESS at that exact main SHA:
 https://github.com/teejayishere/PuzzleAlarm/actions/runs/38587030123/attempts/2.
-Historical Stage 10 pending-publication claims below are superseded.
+The earlier 83fb473 source pass and failed f187ade main / run 38773355992 are
+historical evidence, superseded by the corrected-source replay above; neither is a
+final-main acceptance claim. Earlier Stage 10 pending-publication text below is historical.
 
-Physical device: DEVICE REQUIRED / NOT RUN for actual default/custom/fallback alarm
-playback, lock/Silent/Focus, interruption/route behavior, and existing AlarmKit/camera
-acceptance in DEVICE_TEST_PLAN. Simulator playback APIs are not audible evidence.
+Physical device DEVICE REQUIRED / NOT RUN: actual default/custom/fallback alarm
+playback, lock/Silent/Focus, interruptions/routes, native control behavior, and existing
+AlarmKit/camera/provisioning acceptance in DEVICE_TEST_PLAN. No device observation
+has been supplied. Simulator API playback is not audible delivery evidence.
 
-Closeout rule: publish this evidence revision by fast-forward and verify the complete
-workflow at the final main SHA. This source acceptance does not claim CI for an
-untested descendant. The final task report records immutable final-main SHA/run
-without a self-referencing follow-up commit. Stop after that verification; no Stage 12.
+Publication rule: fast-forward this evidence revision to main, then verify the complete
+workflow at that exact final main SHA. Source acceptance above does not claim CI for
+an untested descendant. The final task report records immutable final-main SHA/run
+without a self-referencing follow-up commit. If that run fails, reopen the earliest
+affected gate and invalidate dependents. Stop after successful closeout; no Stage 12.
 
 ## Historical Stage 10 records (closeout superseded above)
 

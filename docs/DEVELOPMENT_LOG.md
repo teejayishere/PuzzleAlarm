@@ -1382,3 +1382,48 @@ unchanged cold list reproduction, with both required before broad validation.
 This distinguishes local-draft binding behavior from the owner-backed control
 without editor/list warm-up or initial-On differences. No production UI/state
 change is made based on this hypothesis. All exact outcome assertions remain.
+
+
+### Stage 11 corrected-source acceptance — 2026-10-16
+
+2b1135214995d20b7eb429e68594f1c2ab65d9ad / run 38868972349 attempt 1 is complete
+SUCCESS: all three required jobs and every step. Independent cold editor starting
+Off passes eleven native inputs, On save/relaunch and Off save/relaunch. Separate
+cold list runner passes retained-binding contract and ten ordinary failure/retry
+repetitions before broad replay. Broad management-first ten flows, downstream
+Math/Memory/QR and full 58 native unit / 17 UI all pass; Core 146 pass. Total 221
+distinct tests; focused subsets/repetitions are not counted again. No further
+production control/state change was made for this comparison. The user preference
+to retain the native switch is fulfilled; no replacement decision is pending.
+
+This complete revision-specific replay clears the held Gate 6 and dependent Gates
+7–11 execution acceptance. It does not erase failed runs or prove that every prior
+ignored input came from the confirmed stale getter. That deterministic defect was
+independently established by failing assertions and corrected with a live owner
+lookup. Touch delivery is not valueChanged evidence or proof of an OS defect.
+Previous temporary native/window UI probes remain removed. No repeat input, skipped
+test, relaxed exact value/status assertion, fabricated invalid state or coverage
+threshold change. Fixture-only owner journaling is checked absent from Release.
+
+Xcode 26.6 / Swift 6.3.3; Debug/Release, reproducible resources, usage strings,
+Release exclusion PASS. No compiler/destination warnings; broad validation has
+three known SDK metadata advisories, each comparison has one. Core 2243/2256;
+application 824/1021, or 824/848 excluding real camera 0/173. New live binding
+15/15; Store 314/319; catalog 10/10; preview 47/47. Remaining platform/default/
+defensive boundaries retain the meaningful audit classifications in TEST_MATRIX.
+Full line coverage is not full branch coverage, audible output or session-deactivation
+success. Seven-day artifacts: editor 12032742063, toggle 12033301147,
+QR 12035084334, native 12035393743.
+
+Reconcile PROJECT_STATE/TEST_MATRIX stale held and initial-pending prefixes; preserve
+forensics here and historical Stage 10 records below their explicit headings.
+Update architecture/capability source anchors and remove stale pending replacement
+wording from device plan. Physical default/custom/fallback AlarmKit playback,
+lock/Silent/Focus, interruptions/routes, native touch behavior and existing
+camera/provisioning requirements remain DEVICE REQUIRED / NOT RUN.
+
+Publication must be a non-force fast-forward from main f187ade followed by complete
+CI at the final documentation/main SHA. This entry does not claim an unobserved
+main pass. The immutable final-main SHA/run belongs in the task report after that
+verification, avoiding a self-reference commit loop. Reopen earliest affected gate
+and dependents if final replay fails. Stage 12 NOT STARTED; stop after closeout.

@@ -2,7 +2,7 @@
 
 Historical SDK spike: Stage 11 supersedes deferred-audio notes below. See
 [AUDIO_CAPABILITIES.md](AUDIO_CAPABILITIES.md) for validated bundled resources,
-name/default fallback and foreground preview. Source 83fb473 / run 38679302330
+name/default fallback and foreground preview. Source 2b11352 / run 38868972349
 passes compilation and Simulator integration; actual alarm playback remains
 DEVICE REQUIRED / NOT RUN.
 
