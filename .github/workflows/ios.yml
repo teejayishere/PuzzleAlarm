@@ -54,15 +54,6 @@ jobs:
             -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest \
             -test-iterations 10 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/toggle-ui-tests.log"
-      - name: Compare native editor draft binding
-        run: |
-          set -o pipefail
-          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
-            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
-            -derivedDataPath DerivedData -resultBundlePath TestResults/EditorToggle.xcresult \
-            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditorEnabledTogglePersistsAfterRepeatedNativeInput \
-            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
-            2>&1 | tee "$RUNNER_TEMP/editor-toggle-ui-tests.log"
       - name: Preserve binding and owner input trace
         if: always()
         run: |
@@ -83,7 +74,7 @@ jobs:
           print(output.read_text())
           PY
       - name: Review diagnostic Xcode warnings
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/toggle-ui-tests.log" "$RUNNER_TEMP/editor-toggle-ui-tests.log" "$RUNNER_TEMP/enabled-binding-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/toggle-ui-tests.log" "$RUNNER_TEMP/enabled-binding-tests.log"
       - name: Preserve focused toggle evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -91,13 +82,50 @@ jobs:
           name: toggle-simulator-evidence
           path: |
             TestResults/Toggle.xcresult
-            TestResults/EditorToggle.xcresult
             TestResults/EnabledBinding.xcresult
             TestResults/toggle-input-diagnostic.log
           if-no-files-found: ignore
           retention-days: 7
+  editor-native-comparison:
+    # Independent cold Simulator, so prior list/editor use cannot warm this input.
+    if: github.event.repository.private == false
+    runs-on: macos-26
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install pinned XcodeGen
+        run: bash Scripts/install_xcodegen.sh
+      - name: Generate project and select cold Simulator
+        run: |
+          xcodegen generate --spec project.yml
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
+          xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
+          simulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"
+          echo "SIMULATOR_ID=$simulator_id" >> "$GITHUB_ENV"
+          xcrun simctl bootstatus "$simulator_id" -b
+      - name: Exercise editor native Off input and durable On Off changes
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/EditorToggle.xcresult \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditorEnabledTogglePersistsAfterRepeatedNativeInput \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/editor-toggle-ui-tests.log"
+      - name: Review editor diagnostics
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/editor-toggle-ui-tests.log"
+      - name: Preserve independent editor evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: editor-toggle-simulator-evidence
+          path: TestResults/EditorToggle.xcresult
+          if-no-files-found: ignore
+          retention-days: 7
   validate:
-    needs: toggle-reproduction
+    needs: [toggle-reproduction, editor-native-comparison]
     # Standard public-repository runner; no larger runners or signing credentials.
     if: github.event.repository.private == false
     runs-on: macos-26

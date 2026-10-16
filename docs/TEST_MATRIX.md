@@ -8,6 +8,13 @@ Main f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED;
 there is no successful exact-final-main closeout. Historical 83fb473 source success
 below does not substitute for it. Stage 12 NOT STARTED.
 
+Latest 9f1886b / run 38866667055: native binding contract PASS; list reproduction
+8/10 with two ignored first inputs (launch-only owner journals). Full validation
+skipped, not pass. Fixed stale getter is not the whole input failure explanation.
+Compare a real editor draft starting Off on an independent cold Simulator; retain
+eleven transitions plus persisted On and Off across relaunch. Both comparison jobs
+must pass before ordered broad replay. Native control appearance is unchanged.
+
 Latest 4743619 / run 38858511805: focused job SUCCESS; broad build/Core/Audio,
 all focused UI and downstream checks PASS. Full native 58 unit and 16/17 UI pass.
 New editor test fails on broad Any accessibility query timeout before next tap;

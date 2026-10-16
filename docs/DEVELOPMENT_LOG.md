@@ -1366,3 +1366,19 @@ The introduced CI env issue is resolved by actual broad execution; no Gate 0
 configuration blocker remains. Hold Gate 6 and dependent 7–11 until exact-source
 complete ordered replay. Confirmed live binding correction and native interface
 remain unchanged. Do not accept this failed run as a full CI pass.
+
+9f1886b / run 38866667055: deterministic live-binding contract PASS, but list
+input 8/10 PASS, iterations 1 and 9 fail first transition. Both failed process
+journals (10560, 28164) contain launch only, no binding/owner call. Artifact
+12031354419. Broad validate skipped. The live getter defect is corrected, but
+it is not a sufficient explanation or correction of every ignored input.
+Do not infer resolution from the two previous ten-pass batches.
+
+Control the remaining comparison confounds: editor regression now starts with
+the same Off value by editing an actual persisted disabled alarm. Preserve eleven
+input transitions, verify enabled save/relaunch, then disable/save/relaunch too.
+Run it on an independent cold standard macos-26 Simulator job, parallel to the
+unchanged cold list reproduction, with both required before broad validation.
+This distinguishes local-draft binding behavior from the owner-backed control
+without editor/list warm-up or initial-On differences. No production UI/state
+change is made based on this hypothesis. All exact outcome assertions remain.

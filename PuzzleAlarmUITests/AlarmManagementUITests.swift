@@ -3,20 +3,29 @@ import XCTest
 @MainActor
 final class AlarmManagementUITests: XCTestCase {
     func testEditorEnabledTogglePersistsAfterRepeatedNativeInput() {
-        let app = launch("editor-toggle-baseline")
-        tap(app, "alarms.add")
+        let app = launch("editor-toggle-baseline", scenario: "disabled")
+        let rowID = "alarm.edit." + seededID
+        let statusID = "alarm.status." + seededID
+        expectLabel(app.staticTexts[statusID], "Off")
+        tap(app, rowID)
         let control = app.switches.matching(identifier: "editor.enabled").firstMatch
         XCTAssertTrue(control.waitForExistence(timeout: 5))
-        XCTAssertEqual(control.value as? String, "1")
-        // Contrast the real draft's synchronous local binding with the alarm
-        // list's asynchronous owner binding, using the same native input helper.
+        XCTAssertEqual(control.value as? String, "0")
+        // Start Off, matching the list regression. Exercise the real local draft
+        // binding with the same native input helper, without owner work per tap.
         for _ in 0..<11 { tap(app, "editor.enabled") }
+        XCTAssertEqual(control.value as? String, "1")
+        tap(app, "editor.save")
+        XCTAssertTrue(app.buttons[rowID].waitForExistence(timeout: 10))
+        expectLabel(app.staticTexts[statusID], "On")
+        relaunch(app)
+        XCTAssertTrue(app.buttons[rowID].waitForExistence(timeout: 10))
+        expectLabel(app.staticTexts[statusID], "On")
+        tap(app, rowID)
+        tap(app, "editor.enabled")
         XCTAssertEqual(control.value as? String, "0")
         tap(app, "editor.save")
-        let row = firstRow(app)
-        XCTAssertTrue(row.waitForExistence(timeout: 10))
-        let rowID = row.identifier
-        let statusID = rowID.replacingOccurrences(of: "alarm.edit.", with: "alarm.status.")
+        XCTAssertTrue(app.buttons[rowID].waitForExistence(timeout: 10))
         expectLabel(app.staticTexts[statusID], "Off")
         relaunch(app)
         XCTAssertTrue(app.buttons[rowID].waitForExistence(timeout: 10))
