@@ -337,6 +337,17 @@ jobs:
           PY
       - name: Review Xcode diagnostics
         run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log"
+      - name: Export Windows-friendly visual demo
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: python3 Scripts/export_visual_demo.py
+      - name: Publish PuzzleAlarm visual demo
+        uses: actions/upload-artifact@v4
+        with:
+          name: PuzzleAlarm-iPhone-Visual-Demo-${{ github.sha }}
+          path: TestResults/PuzzleAlarm-Visual-Demo/
+          if-no-files-found: error
+          retention-days: 30
       - name: Preserve QR Simulator evidence
         if: always()
         uses: actions/upload-artifact@v4

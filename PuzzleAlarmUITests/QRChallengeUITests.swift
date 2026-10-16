@@ -21,6 +21,7 @@ final class QRChallengeUITests: XCTestCase {
     @MainActor func testWrongInterruptionBackgroundRecreationRelaunchAndCompletion() {
         let app = launch("qr-smoke")
         app.buttons["qr.start"].tap(); label(app, "qr.status", "Authorized")
+        captureDemo("10-qr-challenge", app: app)
         app.buttons["qr.fake.wrong"].tap(); label(app, "qr.feedback", "This is not the configured QR code.")
         app.buttons["qr.fake.interrupt"].tap(); label(app, "qr.status", "Interrupted")
         app.buttons["qr.fake.correct"].tap(); XCTAssertFalse(app.staticTexts["qr.completed"].exists)
@@ -62,6 +63,7 @@ final class QRChallengeUITests: XCTestCase {
         if !configure.isHittable { app.swipeUp() }
         XCTAssertTrue(configure.waitForExistence(timeout: 10)); configure.tap()
         XCTAssertTrue(app.images["qr.image"].waitForExistence(timeout: 10))
+        captureDemo("11-qr-code-display", app: app)
         app.buttons["qr.share"].tap()
         // Native activity actions need not expose the Button accessibility type.
         // Keep the actual Copy action required, independent of its UIKit element type.

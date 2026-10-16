@@ -197,6 +197,9 @@ final class AlarmManagementUITests: XCTestCase {
         tap(app, id)
         let choice = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", title)).firstMatch
         XCTAssertTrue(choice.waitForExistence(timeout: 5), title + "\n" + app.debugDescription)
+        if id == "editor.sound" && title == "Siren" && app.launchEnvironment["PUZZLE_TEST_NAME"] == "add" {
+            captureDemo("07-sound-selection", app: app)
+        }
         choice.tap()
     }
     private func expectLabel(_ element: XCUIElement, _ text: String) {
@@ -245,7 +248,10 @@ final class AlarmManagementUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["No alarms"].waitForExistence(timeout: 10))
         tap(app, "alarms.add")
         time(app, hour: "8", minute: "30")
-        tap(app, "editor.repeat"); tap(app, "repeat.weekdays"); back(app, from: "Repeat")
+        captureDemo("02-create-alarm", app: app)
+        tap(app, "editor.repeat"); tap(app, "repeat.weekdays")
+        captureDemo("04-repeat", app: app)
+        back(app, from: "Repeat")
         choose(app, "editor.sound", "Siren")
         tap(app, "editor.save")
         let row = firstRow(app)
@@ -253,6 +259,7 @@ final class AlarmManagementUITests: XCTestCase {
         let id = row.identifier
         XCTAssertTrue(row.label.contains("8:30") && row.label.contains("Weekdays"))
         XCTAssertTrue(row.label.contains("Annoying Alarm Only") && row.label.contains("Siren"))
+        captureDemo("01-alarm-list", app: app)
         relaunch(app)
         XCTAssertTrue(app.buttons[id].waitForExistence(timeout: 10))
         XCTAssertTrue(app.buttons[id].label.contains("8:30"))
@@ -269,9 +276,11 @@ final class AlarmManagementUITests: XCTestCase {
         tap(app, "challenge.configure.memory")
         choose(app, "memory.difficulty", "Hard")
         increment(app, "memory.length"); increment(app, "memory.duration"); increment(app, "memory.rounds")
+        captureDemo("06-memory-configuration", app: app)
         back(app, from: "Memory")
         tap(app, "challenge.configure.math")
         choose(app, "math.difficulty", "Hard"); increment(app, "math.count")
+        captureDemo("05-math-configuration", app: app)
         back(app, from: "Math")
         tap(app, "challenge.up.math")
         tap(app, "editor.save")
@@ -312,6 +321,7 @@ final class AlarmManagementUITests: XCTestCase {
         let id = "alarm.edit." + seededID
         XCTAssertTrue(app.buttons[id].waitForExistence(timeout: 10))
         app.buttons[id].tap()
+        captureDemo("03-edit-alarm", app: app)
         time(app, hour: "9", minute: "15")
         tap(app, "editor.repeat"); tap(app, "repeat.weekends"); back(app, from: "Repeat")
         choose(app, "editor.mode", "Challenges Required")

@@ -1,5 +1,19 @@
 # Project state
 
+## Documentation-only visual demo — October 16, 2026
+
+Main `10be76a4b071c7c32b7f8e1938a0883f78d9e66e` final-main closeout is verified:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38923363999 — complete
+SUCCESS, attempt 1, all three required jobs and every step. This resolves the
+final-main requirement in the historical Stage 11 record below.
+
+Current work adds only XCTest screenshot attachments, offline gallery export and
+documentation. Production source and existing DEBUG fixtures are unchanged.
+Capture-revision automated/Xcode/Simulator result: PENDING its exact-HEAD CI.
+The final report supplies the immutable SHA/run/artifact after completion.
+Physical device: NOT RUN. Current/last passing stage remains 11; Stage 12 NOT
+STARTED. See VISUAL_DEMO.md for scope and Windows viewing instructions.
+
 ## Stage 11 — Gate 11 PASS at verified source; final-main CI required
 
 Current stage: 11. Last passing gate: 11. Stage 12 NOT STARTED.

@@ -1,5 +1,20 @@
 # Development log
 
+## Documentation-only visual demo — October 16, 2026
+
+Read project state first and inspected main, CI jobs/steps, source and fixtures.
+Main 10be76a4b071c7c32b7f8e1938a0883f78d9e66e has exact-main complete SUCCESS
+run 38923363999, all three jobs/every step. No gate remains blocked at baseline.
+Add named screenshot attachments at existing UI-test checkpoints, reusing the
+ordered standard free macos-26 pipeline and unchanged DEBUG fixtures. Preserve
+all assertions and production source. Export eleven ordinary PNGs with offline
+HTML/README and provenance metadata; fail export for missing/duplicate images.
+Publish a clearly named SHA-specific Actions artifact for 30 days after existing
+checks. No video capture infrastructure added; gallery is a still walkthrough.
+Local exporter validation and exact capture-revision CI are recorded in the final
+task report, avoiding a self-reference commit. Physical device NOT RUN.
+Stage 12 NOT STARTED. Stop after delivering the demo.
+
 ## Stage 10 corrected source accepted — final documentation/main replay
 
 e5c43ae6d457abff838bcf3fa448b5805b22ffc9 /

@@ -11,6 +11,7 @@ final class MemoryChallengeUITests: XCTestCase {
         waitLabel(app.staticTexts["memory.sequence"], "0123")
         XCTAssertTrue(app.textFields["memory.answer"].waitForExistence(timeout: 10))
         XCTAssertFalse(app.staticTexts["memory.sequence"].exists)
+        captureDemo("09-memory-challenge", app: app)
         enter("9999", app)
         waitLabel(app.staticTexts["memory.feedback"], "Try a new sequence.")
         XCTAssertEqual(app.staticTexts["memory.progress"].label, "0 of 2 rounds")

@@ -10,6 +10,7 @@ final class MathChallengeUITests: XCTestCase {
         openMath(app)
         XCTAssertEqual(app.staticTexts["math.prompt"].label, "2 + 3")
         XCTAssertEqual(app.staticTexts["math.progress"].label, "0 of 2 correct")
+        captureDemo("08-math-challenge", app: app)
         app.buttons["math.submit"].tap()
         waitLabel(app.staticTexts["math.feedback"], "Enter a whole number.")
         enter("9", app)
