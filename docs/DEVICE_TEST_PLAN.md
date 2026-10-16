@@ -146,6 +146,8 @@ Label tapping is NOT an activation path for this control (0/10; no binding calls
 No passing native/Simulator batch proves physical thumb behavior or establishes
 the cause of every intermittent ignored input. The user chose to retain the native
 switch; no replacement decision is pending. A deterministic retained-binding test
-separately confirmed and corrected a stale getter. Automated gate acceptance
+separately confirmed and corrected a stale getter. Native input now uses local
+pending presentation and reconciles on owner completion; verify real denial rollback
+and failed scheduling without healthy-state claims too. Automated gate acceptance
 requires complete ordered replay at the assessed revision; physical input and OS
 scheduling effects still require this device checklist.

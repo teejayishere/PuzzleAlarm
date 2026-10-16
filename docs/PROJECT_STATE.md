@@ -1,39 +1,16 @@
 # Project state
 
-## Current closeout HELD — final-main replay failed
-
-Final main f21f46949c9bbc8d70940213f7219ac322fbd134 / run 38877456923 FAILED:
-list reproduction 8/10, iterations 5 and 6 first enable ignored; their journals
-contain only launches (PIDs 19516, 21732), no binding/owner input. Native contract
-and independent cold editor PASS; broad validation SKIPPED, not acceptance.
-Artifact 12037565266 preserves failure evidence; editor 12036462545 (seven days).
-Gate 6 and dependent Gates 7–11 acceptance are reopened. Earlier source replay
-below is historical and does not substitute for this failed exact-main result.
-Stage 12 NOT STARTED.
-
-Keep native Toggle appearance. Test a synchronous local input binding, as used by
-the repeatedly passing editor, followed by the existing asynchronous owner command
-and explicit reconciliation on completion. Pending input disables the control;
-access/write rejection reverts to current durable state; failed scheduling retains
-owner-enabled plus Needs attention. Health/persistence/OS effects remain exclusively
-owned by AlarmStore/coordinator. External owner changes refresh idle presentation.
-This is a hypothesis under validation, not a proven cause or accepted fix. Retain
-all single-input exact outcomes and cold comparisons. Add meaningful command-
-completion and native denied-enable rollback/relaunch regressions. Complete ordered
-source replay and final-main CI are still required; no passing subset closes gates.
-
-## Historical corrected-source replay (superseded for current acceptance)
-
 ## Stage 11 — Gate 11 PASS at verified source; final-main CI required
 
 Current stage: 11. Last passing gate: 11. Stage 12 NOT STARTED.
-Accepted source: 2b1135214995d20b7eb429e68594f1c2ab65d9ad.
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38868972349 — complete
+Accepted source: 28869311cc2a4474f412d4eab150205ef0afb799.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38879910505 — complete
 SUCCESS, attempt 1, all three required jobs and every step, observed 2026-10-16.
 Gates 0–10 required regressions PASS. The held Gate 6 replay and dependent Gates
 7–11 acceptance are cleared at this revision by the retained-binding regression,
 ten ordinary enable/failure/retry repetitions, independent cold editor Off/On/Off
-persistence test, management-first replay, downstream flows and full native suite.
+persistence test, command-completion/denied-enable rollback regressions, management-
+first replay, downstream flows and full native suite.
 
 Source IMPLEMENTED: four original reproducible bundled CAF sounds; persisted stable
 choices and immutable occurrence snapshots; validated AlarmKit named/default fallback;
@@ -42,20 +19,24 @@ audio was separately probed and deferred. Default Preview explains that the syst
 tone is heard at alarm firing. Core boundaries, schema and lifecycle ownership remain
 unchanged. See AUDIO_CAPABILITIES.md.
 
-Automated AUTOMATED PASS: 146 Core + 58 native unit + 17 UI = 221 distinct tests.
+Automated AUTOMATED PASS: 146 Core + 59 native unit + 18 UI = 223 distinct tests.
 Focused subsets, ten repetitions and parameterized cases are not counted again.
 Xcode XCODE COMPILE PASS: Xcode 26.6 / Swift 6.3.3; Debug/Release, generated resources,
 usage strings and Release fixture exclusion pass. No compiler/destination warnings;
 three known SDK metadata advisories in broad validation (one per comparison job).
-Simulator SIMULATOR PASS: six Audio tests, ten management flows, Math/Memory/QR and
-full native regression. Seven-day artifacts: editor 12032742063, toggle 12033301147,
-QR 12035084334, native 12035393743. Core coverage 2243/2256; app behavior 824/1021,
-or 824/848 excluding the unexecuted real camera adapter. Meaningful uncovered
+Simulator SIMULATOR PASS: six Audio tests, eleven management flows, Math/Memory/QR and
+full native regression. Seven-day artifacts: editor 12037896723, toggle 12037882222,
+QR 12040981214, native 12040377372. Core coverage 2243/2256; app behavior 872/1071,
+or 872/898 excluding the unexecuted real camera adapter. Meaningful uncovered
 boundaries remain classified in TEST_MATRIX; percentages do not prove hardware effects.
 
 The native switch remains. A deterministic regression first failed four assertions
 with the captured immutable getter, then passed after querying current store state by
-stable ID (Off if removed). UI tests use the concrete Switch role, retain enabled/
+stable ID (Off if removed). Native input now updates synchronous row-local state,
+disables pending input and reconciles to the owner on explicit command completion.
+Idle input follows external owner changes. Configuration, health and OS effects
+remain store/coordinator-owned. Denied enable rolls back to Off, releases pending
+input and remains Off after relaunch. UI tests use the concrete Switch role, retain enabled/
 hittable checks, one input, exact 0/1 transitions, bounded owner completion and honest
 status/persistence assertions. No retry taps, skipped tests or weakened outcomes.
 Earlier intermittent ignored Simulator inputs are recorded in DEVELOPMENT_LOG; neither
@@ -66,9 +47,10 @@ from Release. Device switch behavior remains unverified.
 Prerequisite reconciliation: starting main was 95d781f8f2c684a9424db82f734fb1df24ac8b0e.
 Run 38587030123 attempt 2 was verified complete SUCCESS at that exact main SHA:
 https://github.com/teejayishere/PuzzleAlarm/actions/runs/38587030123/attempts/2.
-The earlier 83fb473 source pass and failed f187ade main / run 38773355992 are
-historical evidence, superseded by the corrected-source replay above; neither is a
-final-main acceptance claim. Earlier Stage 10 pending-publication text below is historical.
+Earlier 83fb473/2b11352 source passes and failed f187ade/f21f469 main runs
+38773355992/38877456923 are historical evidence, superseded by corrected-source
+replay above; none is a final-main acceptance claim. Earlier Stage 10 pending-
+publication text below is historical.
 
 Physical device DEVICE REQUIRED / NOT RUN: actual default/custom/fallback alarm
 playback, lock/Silent/Focus, interruptions/routes, native control behavior, and existing

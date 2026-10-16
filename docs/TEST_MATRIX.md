@@ -1,57 +1,40 @@
 # Test matrix
 
-## Current closeout HELD — final-main replay failed
-
-Final main f21f46949c9bbc8d70940213f7219ac322fbd134 / run 38877456923 FAILED:
-list reproduction 8/10, iterations 5 and 6 first enable ignored; their journals
-contain only launches (PIDs 19516, 21732), no binding/owner input. Native contract
-and independent cold editor PASS; broad validation SKIPPED, not acceptance.
-Artifact 12037565266 preserves failure evidence; editor 12036462545 (seven days).
-Gate 6 and dependent Gates 7–11 acceptance are reopened. Earlier source replay
-below is historical and does not substitute for this failed exact-main result.
-Stage 12 NOT STARTED.
-
-Keep native Toggle appearance. Test a synchronous local input binding, as used by
-the repeatedly passing editor, followed by the existing asynchronous owner command
-and explicit reconciliation on completion. Pending input disables the control;
-access/write rejection reverts to current durable state; failed scheduling retains
-owner-enabled plus Needs attention. Health/persistence/OS effects remain exclusively
-owned by AlarmStore/coordinator. External owner changes refresh idle presentation.
-This is a hypothesis under validation, not a proven cause or accepted fix. Retain
-all single-input exact outcomes and cold comparisons. Add meaningful command-
-completion and native denied-enable rollback/relaunch regressions. Complete ordered
-source replay and final-main CI are still required; no passing subset closes gates.
-
-## Historical corrected-source replay (superseded for current acceptance)
-
 ## Stage 11 — accepted source and meaningful coverage audit
 
-2b1135214995d20b7eb429e68594f1c2ab65d9ad /
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38868972349 — complete
+28869311cc2a4474f412d4eab150205ef0afb799 /
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38879910505 — complete
 SUCCESS, attempt 1, all three required jobs and every step, observed 2026-10-16.
 Retained-binding contract, ten ordinary list enable/failure/retry repetitions,
 independent cold editor initially Off with eleven inputs and On/Off save/relaunch,
 ordered management/downstream replay and full native pass clear Gates 6–11
-invalidation at this revision. 146 Core / 58 native unit / 17 UI = 221 distinct tests;
+invalidation at this revision. 146 Core / 59 native unit / 18 UI = 223 distinct tests;
 repetitions, focused subsets and parameterized cases are not extra tests.
 Source IMPLEMENTED; automated AUTOMATED PASS; Xcode XCODE COMPILE PASS; Simulator
 SIMULATOR PASS; physical device DEVICE REQUIRED / NOT RUN. Xcode 26.6 / Swift 6.3.3;
 no compiler/destination warnings; three broad SDK metadata advisories and one in
-each comparison job. Seven-day artifacts: editor 12032742063, toggle 12033301147,
-QR 12035084334, native 12035393743.
+each comparison job. Seven-day artifacts: editor 12037896723, toggle 12037882222,
+QR 12040981214, native 12040377372.
 
 The captured getter's deterministic four-assertion failure (5fa500a / 38855208213)
 justifies reading live authoritative owner state by stable ID. The production native
-Toggle remains, with no optimistic state or scheduling-policy change. Concrete-role
-queries correct a separately observed broad Any-query timeout. One input must still
+Toggle remains. Its synchronous local input is pending presentation, then reconciled
+to the owner after the existing async command. It never grants healthy/persisted/OS
+state. Explicit completion handles coalesced busy changes and rejection; idle input
+follows external owner updates. Native command-completion regression covers access
+denial, scheduling failure, disable and successful enable. UI denial requires Off,
+error, pending released and Off across relaunch, in both focused and full replay.
+Concrete-role queries correct a separately observed broad Any-query timeout. One input must still
 yield the exact opposite 0/1 state, after the existing owner's bounded busy barrier;
 all enabled/hittable/status/failure/retry/persistence outcomes remain enforced.
 Earlier missed inputs remain recorded, not discarded or conclusively attributed to
 that getter or an OS defect. Complete passes are revision-specific execution evidence,
 not proof that an intermittent interaction can never recur or that hardware works.
 Temporary UI probes were removed; fixture-only input journal is absent in Release.
-Failed f187ade main / 38773355992 and historical 83fb473 / 38679302330 are superseded
-by this source replay. Final main still requires its own complete exact-SHA workflow.
+Failed main runs f187ade / 38773355992 and f21f469 / 38877456923, plus earlier
+83fb473 and 2b11352 source successes, are superseded for current acceptance by this
+corrected-source replay. Superseded a6393b5 / 38879858529 was cancelled, not passed.
+Final main still requires its own complete exact-SHA workflow.
 
 | Gate 11 requirement | Executed evidence |
 | --- | --- |
@@ -66,9 +49,16 @@ unchanged through correction. Coverage is audited for behavior, not manufactured
 to meet a percentage. Current Core: 2243/2256 (99.42%), prior classifications below
 unchanged. App: Catalog 10/10, Preview 47/47, ConfigurationFactory 52/62, Store 314/319,
 Environment 23/27, Draft 84/88, Formatting 86/86, Presentation 72/72, QR scanning 82/82,
-QR view 39/40, real camera 0/173. AlarmEnabledBinding 15/15. Total 824/1021 (80.71%); excluding real camera
-824/848 (97.17%). The factory's seven iOS 26.0 availability-initializer lines need
+QR view 39/40, real camera 0/173. AlarmEnabledBinding 63/65. Total 872/1071 (81.42%); excluding real camera
+872/898 (97.10%). The factory's seven iOS 26.0 availability-initializer lines need
 that OS; three unused namedSoundConfiguration probe lines are compile-only.
+The two uncalled native-input regions are classified, not percentage-filled:
+line 7's empty default completion is NON-MEANINGFUL (production command supplies its
+completion); line 29's nil-coalescing initial Off closure is DEFENSIVE for a row
+constructed synchronously from a present store definition. Removed-ID getter behavior
+is separately tested. Do not fabricate a missing parent to inflate rendering coverage.
+Pending/coalesced input guards retain source review alongside actual denial/success/
+failure UI and owner tests; line execution does not establish all interleavings.
 Remaining default closures, generated sharing initialization, error/calendar fallbacks
 and camera adapter retain their earlier source/device classifications. Preview/catalog
 100% line coverage does not prove every AVAudioSession failure or prepare/play false

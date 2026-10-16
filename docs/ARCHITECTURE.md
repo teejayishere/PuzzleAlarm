@@ -617,18 +617,27 @@ See AUDIO_CAPABILITIES for the separate import/default-preview capability bounda
 Actual alarm playback remains device-only; AVAudioPlayer does not replace AlarmKit.
 
 
-The alarm list retains the native SwiftUI Toggle. AlarmEnabledBinding reads the
-current authoritative store definition by stable ID, returning Off if removed;
-it does not retain the immutable row snapshot as its current value. The existing
-asynchronous setEnabled command remains responsible for scheduling and persistence.
-A retained-binding regression covers enable/disable, failure/retry and deletion
-without rebuilding the binding. Health and enabled configuration remain separate.
+The alarm list retains the native SwiftUI Toggle, bound to synchronous row-local
+input like the editor. While a command is pending, that control is disabled. Its
+onChange submits through AlarmEnabledBinding to the existing store command, then
+explicit completion resets input to the current owner value and releases pending
+input, including denial/failure or busy changes coalesced within one render. Idle
+input follows external owner changes. This is presentation state, with no durable
+or health authority and no added lifecycle owner. Status remains store-owned.
 
-Management UI tests resolve known switches through their concrete accessibility
-role. After one input, the existing owner-busy indicator must disappear within the
-bound before exact switch/status outcomes are checked. No repeat taps or optimistic
-state. Independent cold comparison jobs precede ordered broad replay. Complete
-source replay 2b11352 / run 38868972349 passes, including ten list repetitions and
-editor On/Off persistence. This does not establish the cause of every previously
-ignored Simulator input or prove physical native-control behavior. Final publication
-requires its own exact-main full CI. See DEVELOPMENT_LOG and DEVICE_TEST_PLAN.
+AlarmEnabledBinding reads the current store definition by stable ID (Off if removed),
+rather than retaining an immutable snapshot as current value. A retained-binding
+regression covers enable/disable, failure/retry and deletion without rebuilding.
+Command-completion tests cover denial, scheduling failure and successful changes.
+Native denied enable requires an error, Off rollback, released pending input and Off
+after relaunch, in both focused and full UI. Scheduling failure may retain enabled
+plus Needs attention; presentation never invents a healthy result.
+
+Management UI tests resolve switches by concrete accessibility role. One input must
+yield the exact expected value after the bounded existing owner-busy barrier. No
+repeat taps, assertion weakening or replacement On/Off button. Independent cold
+comparison jobs precede ordered broad replay. Complete source 2886931 / 38879910505
+passes ten list repetitions, editor On/Off persistence and the full native suite.
+This does not prove the cause of every prior ignored Simulator input or physical
+native behavior. Final publication requires its own exact-main full CI. See
+DEVELOPMENT_LOG and DEVICE_TEST_PLAN. No Stage 12 work.

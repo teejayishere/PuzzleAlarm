@@ -1456,3 +1456,44 @@ production-used. Add UI denied native enable -> Off, pending released, error vis
 Off after relaunch. Keep original ten ordinary list repetitions, independent cold
 editor, all exact transitions and ordered full regression. No repeat tap/longer wait
 or outcome weakening. Updated source/CI and then exact final main are required.
+
+
+### Synchronous native input — complete corrected-source acceptance
+
+28869311cc2a4474f412d4eab150205ef0afb799 / run 38879910505 attempt 1 complete SUCCESS,
+all three jobs and every required step, observed 2026-10-16. Superseded a6393b5 /
+38879858529 cancelled by concurrency after fixture-only handoff logging was added;
+never counted PASS. Focused retained-binding and command-completion tests pass;
+ten original cold list flows pass. Journal records all thirty native input ->
+binding -> owner handoffs and completed owner results, with no busy rejection.
+Independent cold editor Off/On/Off persistence passes. Broad eleven management
+flows pass before Math/Memory/QR; full native 59 unit and 18 UI pass. Denied-enable
+native rollback/released-pending/Off-relaunch passes in both focused (18.928s) and
+full (19.985s) UI. Core 146 pass; 223 distinct tests, no extra count for repetitions.
+
+This complete revision-specific replay clears Gate 6 and dependent Gates 7–11
+execution holds. Native switch retained, synchronous presentation reconciled on
+explicit owner completion; no health, persistence or OS effect authority transferred.
+Prior failed runs remain evidence. Neither passing batches nor lens touch receipt
+prove an OS defect or establish causality for every missed input. Physical behavior
+remains DEVICE REQUIRED. No retry-until-green run of unchanged code, repeated tap,
+weakened assertion, skipped prerequisite or Stage 12 work.
+
+Xcode 26.6 / Swift 6.3.3; Debug/Release, assets, usage strings, Release exclusion
+PASS. No compiler/destination warnings; broad three known SDK metadata advisories,
+each comparison one. Core coverage unchanged 2243/2256. App 872/1071 (81.42%),
+excluding real camera 872/898 (97.10%); native-input file 63/65. Its remaining empty
+default completion (line 7) is non-meaningful; initial nil-coalescing fallback (29)
+is defensive for synchronously constructed current owner rows. Removed-ID getter is
+independently tested. No fabricated invalid state/percentage filler; actual hardware,
+all AVAudioSession failure branches and all interleavings are not inferred from lines.
+Prior meaningful Core/app uncovered classifications remain in TEST_MATRIX.
+Seven-day artifacts: editor 12037896723, toggle 12037882222, QR 12040981214,
+native 12040377372. Source success does not substitute for exact-final-main CI.
+
+Reconcile held/current prefixes and architecture/capability/device records again.
+Publish this documentation descendant by non-force fast-forward from f21f469; then
+verify the complete exact-main workflow. If final replay fails, reopen earliest
+affected gate and dependents. Final immutable SHA/run belongs in task report without
+a follow-up self-reference commit. Actual audio/AlarmKit/camera/provisioning/native
+input device requirements remain NOT RUN. Stop after closeout; no Stage 12.
