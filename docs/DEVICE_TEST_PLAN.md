@@ -137,3 +137,10 @@ Check VoiceOver, large text and screen rotation. Default preview explains that i
 exact tone is heard at firing. Preview respects ambient/Silent semantics; AlarmKit
 behavior needs its own observations. No device observation has been supplied yet.
 Optional import is deferred. No Stage 12 action/routing acceptance is implied.
+
+Stage 11 regression boundary: explicitly verify native Toggle thumb tap/drag and
+label activation on an iPhone, including enable/failure/retry/disable/re-enable.
+On iOS 26.5 Simulator an internal glass lens received began/ended while active
+without dispatching its binding; the semantic label path is verified separately.
+No passing label-based UI flow proves physical thumb behavior or fixes that
+framework interaction. Record both input paths and resulting persisted/OS state.

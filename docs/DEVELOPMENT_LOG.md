@@ -1242,3 +1242,24 @@ An explicit attachment record is required before interpreting event absence.
 The ineffective UISwitch-target probe stays removed. No private API or swizzling.
 Release exclusion covers the new diagnostic type. Ordinary one-tap flow and exact
 outcome assertions remain. This is diagnostic instrumentation, not acceptance.
+
+### Passive event evidence identifies the visual lens boundary
+
+6c117a8 / run 38843851982: 9/10 PASS, iteration 8 PID 23823 fails first enable.
+Observer attachment confirmed. Both began and ended arrive at (340.667,468) on the
+internal glass lens hit UIView; UIApplication is active (raw 0). No binding request
+or owner call follows. This disproves missing app-window delivery and inactive-app
+hypotheses for this case. Private class name is diagnostic data only, never an API
+invocation. Scene=-99 in event logs is unavailable via the root window lookup, not
+evidence of scene inactivity. Do not infer native valueChanged from touch receipt.
+
+Correct test activation to the public Toggle's visible label, retaining enabled/
+hittable checks, observed 0/1 switch value and its exact transition, owner completion,
+Retry/Needs attention/On/Off assertions. One label tap, no repeated input. This
+validates the standard semantic Toggle activation path rather than its internal
+visual lens child. Native switch lens behavior remains an explicitly observed
+Simulator limitation requiring physical-device verification; it is not claimed
+fixed or silently reported passing. Do not change production scheduling/UI to
+compensate for a framework-internal path without hardware evidence.
+Retain the passive recorder for this focused reproduction to confirm label hit path.
+Ten repetitions and complete ordered replay remain required before gate acceptance.

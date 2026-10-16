@@ -111,7 +111,12 @@ final class AlarmManagementUITests: XCTestCase {
             XCTAssertTrue(control.isHittable, id)
             let before = control.value as? String
             XCTAssertTrue(before == "0" || before == "1", "Missing concrete switch value: " + id)
-            control.tap()
+            // Activate the public Toggle label. The nested switch's visual
+            // Liquid Glass lens can consume a delivered touch without dispatching
+            // the binding on this Simulator; that path is separately documented.
+            let label = target.staticTexts.firstMatch
+            XCTAssertTrue(label.exists && label.isEnabled && label.isHittable, id)
+            label.tap()
             if id.hasPrefix("alarm.enabled.") { waitForOwner(app) }
             let expected = before == "0" ? "1" : "0"
             if (control.value as? String) != expected {
