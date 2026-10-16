@@ -8,12 +8,13 @@ Main f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED;
 there is no successful exact-final-main closeout. Historical 83fb473 source success
 below does not substitute for it. Stage 12 NOT STARTED.
 
-Latest 49bbe63 / run 38856155404: focused job SUCCESS (live-binding native contract,
-ten list flows before editor baseline, editor save/relaunch), then broad execution
-fails at the added boot step's missing SIMULATOR_ID env mapping. Core 146/coverage
-pass; downstream iOS checks did not run. Correct that CI mapping and replay all
-ordered gates. Gate 0 workflow execution and dependent acceptance are held; no
-earlier application/Core defect is implied by this configuration failure.
+Latest 4743619 / run 38858511805: focused job SUCCESS; broad build/Core/Audio,
+all focused UI and downstream checks PASS. Full native 58 unit and 16/17 UI pass.
+New editor test fails on broad Any accessibility query timeout before next tap;
+not an incorrect switch transition. Artifact 12030829283 retains native evidence.
+Resolve known Switch IDs through app.switches; retain all taps, readiness, exact
+values, persistence and original waits. Gate 0 env mapping is resolved. Gate 6
+measurement and dependent 7–11 acceptance remain held pending complete replay.
 
 Latest deterministic regression: 5fa500a / run 38855208213 FAILS the retained
 list binding contract at four assertions, without UI timing. Extracted unchanged

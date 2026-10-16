@@ -1347,3 +1347,22 @@ prerequisite is Gate 0 workflow infrastructure; hold dependent gate execution
 acceptance and replay the complete ordered pipeline at the corrected workflow SHA.
 Prior focused data remains diagnostic evidence only. No product change beyond the
 already confirmed live binding correction. Native switch remains unchanged.
+
+4743619 / run 38858511805: required focused job complete SUCCESS again; all ten
+list inputs before editor baseline pass. Broad configuration/boot, Core 146,
+Debug/Release, Audio, application tests, all ten focused management UI, Math,
+Memory and QR PASS. Full native: 58 unit PASS; 16/17 UI PASS. New editor regression
+fails at helper isEnabled read (line 116): remote "Any" query times out before
+next tap, not a wrong 0/1 transition. Exact log shows broad identifier query
+retrying three times (~30s each), despite already seeing the concrete Switch role.
+Native artifact 12030829283, QR 12031417400, toggle 12028832723 (seven days).
+
+Fix the test measurement at Gate 6: resolve known editor.enabled/alarm.enabled
+identifiers directly through app.switches before readiness and after scrolling,
+rather than via Any. Preserve all eleven editor taps, exact 0/1 transitions,
+enabled/hittable checks, owner completion and save/relaunch outcomes. No timeout
+increase, repeated tap, production control change or discarded assertion.
+The introduced CI env issue is resolved by actual broad execution; no Gate 0
+configuration blocker remains. Hold Gate 6 and dependent 7–11 until exact-source
+complete ordered replay. Confirmed live binding correction and native interface
+remain unchanged. Do not accept this failed run as a full CI pass.

@@ -97,7 +97,15 @@ final class AlarmManagementUITests: XCTestCase {
     private func tap(_ app: XCUIApplication, _ id: String) {
         let popup = app.popUpButtons.matching(identifier: id).firstMatch
         let button = app.buttons.matching(identifier: id).firstMatch
-        var target = popup.exists ? popup : (button.exists ? button : element(app, id))
+        // Switch roles are known from the product view. A broad Any query can
+        // stall exporting the editor's large wheel-picker subtree during toggles.
+        let toggle = app.switches.matching(identifier: id).firstMatch
+        let isToggle = id == "editor.enabled" || id.hasPrefix("alarm.enabled.")
+        func resolvedTarget() -> XCUIElement {
+            if isToggle { return toggle }
+            return popup.exists ? popup : (button.exists ? button : element(app, id))
+        }
+        var target = resolvedTarget()
         _ = target.waitForExistence(timeout: 3)
         for _ in 0..<6 {
             if target.exists && target.isHittable { break }
@@ -109,7 +117,7 @@ final class AlarmManagementUITests: XCTestCase {
         }
         // Offscreen SwiftUI rows can be absent from the initial snapshot. Resolve
         // their concrete role again after scrolling instead of keeping a broad query.
-        target = popup.exists ? popup : (button.exists ? button : element(app, id))
+        target = resolvedTarget()
         XCTAssertTrue(target.waitForExistence(timeout: 5), id + "\n" + app.debugDescription)
         // A fresh positive state needs no polling. Slow accessibility round trips
         // must not turn an already-enabled control into a timed-out expectation.
