@@ -1263,3 +1263,18 @@ fixed or silently reported passing. Do not change production scheduling/UI to
 compensate for a framework-internal path without hardware evidence.
 Retain the passive recorder for this focused reproduction to confirm label hit path.
 Ten repetitions and complete ordered replay remain required before gate acceptance.
+
+### Label assumption rejected; stop speculative input variants
+
+20a0c3f / run 38845398506: 0/10 label activations; passive window records touches
+on the label host, no binding calls. The native Toggle label is not an activation
+path in this UI. The prior semantic-label assumption is wrong, not a remedy.
+Restore ordinary native switch input, remove both UI probes after diagnosis, retain
+the effective fixture-only binding/owner journal and exact assertions. No hidden
+retry, timeout relaxation, skipped prerequisite or source-pass substitution.
+
+Product decision requested: replace list native switch with explicit On/Off button
+and validate real owner behavior, or retain native switch with device/platform
+investigation. This changes visible UI, so do not implement dependent replacement
+without the user's choice. Gate 6 and dependent 7–11 remain HELD. Main f187ade run
+38773355992 failed; exact-final-main closeout is incomplete. Stage 12 NOT STARTED.

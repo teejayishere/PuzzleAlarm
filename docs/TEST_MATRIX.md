@@ -1,6 +1,32 @@
 # Evidence ledger
 
 
+## Current closeout BLOCKED — native control product decision required
+
+2026-10-16: Gate 6 replay and dependent Gates 7–11 are HELD, not passed.
+Main f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED;
+there is no successful exact-final-main closeout. Historical 83fb473 source success
+below does not substitute for it. Stage 12 NOT STARTED.
+
+Latest diagnostic 20a0c3f / run 38845398506: Toggle label activation is unsupported,
+0/10; restore the ordinary native switch input. Prior passive-window diagnostic
+6c117a8 / run 38843851982: 9/10 pass, failed PID 23823 receives began/ended at the
+lens while app active, with no binding/owner call. Center tap, 150 ms press, thumb
+drag and explicit boot readiness have not resolved the native interaction.
+The ineffective native-target probe and effective passive window probe are removed
+from the working source after diagnosis; fixture-only binding/owner journal remains.
+Do not claim a scheduling/model defect, a native-control fix or pass by retrying
+until green, weakening outcomes, skipping prerequisites, or inventing device evidence.
+
+Pending product decision: replace the alarm list native switch with an explicit
+On/Off button preserving owner/persistence behavior, then replay Gate 6 and every
+dependent gate in order; or keep native control and hold closeout for device/platform
+investigation. No replacement UI is implemented without that decision. User asked
+only for product decisions/external blockers/device actions; this is such a boundary.
+Audio source/resources and earlier exact-source compile/automated/Simulator evidence
+remain recorded below. Actual alarm playback remains DEVICE REQUIRED / NOT RUN.
+
+
 ## Final-main replay failure — Gates 6–11 HELD
 
 f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED the required

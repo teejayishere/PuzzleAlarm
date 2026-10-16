@@ -138,9 +138,11 @@ exact tone is heard at firing. Preview respects ambient/Silent semantics; AlarmK
 behavior needs its own observations. No device observation has been supplied yet.
 Optional import is deferred. No Stage 12 action/routing acceptance is implied.
 
-Stage 11 regression boundary: explicitly verify native Toggle thumb tap/drag and
-label activation on an iPhone, including enable/failure/retry/disable/re-enable.
-On iOS 26.5 Simulator an internal glass lens received began/ended while active
-without dispatching its binding; the semantic label path is verified separately.
-No passing label-based UI flow proves physical thumb behavior or fixes that
-framework interaction. Record both input paths and resulting persisted/OS state.
+Stage 11 regression boundary: verify native Toggle thumb tap/drag on an iPhone,
+including enable/failure/retry/disable/re-enable and resulting persisted/OS state.
+On iOS 26.5 Simulator the internal glass lens received began/ended while the app was
+active without dispatching its binding in one of ten instrumented iterations.
+Label tapping is NOT an activation path for this control (0/10; no binding calls).
+No passing native/Simulator batch proves physical thumb behavior or fixes this
+framework interaction. Current Gate 6 and dependent Gates 7–11 remain held pending
+a product decision about replacing the list control or device/platform evidence.

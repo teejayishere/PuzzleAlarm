@@ -1,7 +1,5 @@
 #if DEBUG
 import Foundation
-import SwiftUI
-import UIKit
 import PuzzleAlarmCore
 
 // DEBUG only. All business behavior still runs through the production coordinator.
@@ -177,43 +175,4 @@ enum UITestEnvironment {
 }
 
 
-// Passive public-event recorder: never recognizes or competes with app gestures.
-@MainActor
-struct ToggleWindowProbe: UIViewRepresentable {
-    final class Recorder: UIGestureRecognizer {
-        override func canPrevent(_ preventedGestureRecognizer: UIGestureRecognizer) -> Bool { false }
-        override func canBePrevented(by preventingGestureRecognizer: UIGestureRecognizer) -> Bool { false }
-        private func record(_ phase: String, _ touches: Set<UITouch>) {
-            for touch in touches {
-                let point = touch.location(in: view)
-                let hit = touch.view.map { NSStringFromClass(type(of: $0)) } ?? "none"
-                UITestEnvironment.traceToggle("window \(phase) point=\(point) hit=\(hit) appState=\(UIApplication.shared.applicationState.rawValue) scene=\(view?.window?.windowScene?.activationState.rawValue ?? -99)")
-            }
-        }
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) { record("began", touches) }
-        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
-            record("ended", touches); state = .failed
-        }
-        override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
-            record("cancelled", touches); state = .failed
-        }
-    }
-    final class ProbeView: UIView {
-        private let recorder = Recorder(target: nil, action: nil)
-        override func didMoveToWindow() {
-            super.didMoveToWindow()
-            recorder.view?.removeGestureRecognizer(recorder)
-            guard let window else { return }
-            recorder.cancelsTouchesInView = false
-            recorder.delaysTouchesBegan = false
-            recorder.delaysTouchesEnded = false
-            window.addGestureRecognizer(recorder)
-            UITestEnvironment.traceToggle("window observer attached appState=\(UIApplication.shared.applicationState.rawValue) scene=\(window.windowScene?.activationState.rawValue ?? -99)")
-        }
-    }
-    func makeUIView(context: Context) -> ProbeView {
-        let view = ProbeView(); view.isUserInteractionEnabled = false; return view
-    }
-    func updateUIView(_ view: ProbeView, context: Context) {}
-}
 #endif
