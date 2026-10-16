@@ -1278,3 +1278,18 @@ and validate real owner behavior, or retain native switch with device/platform
 investigation. This changes visible UI, so do not implement dependent replacement
 without the user's choice. Gate 6 and dependent 7–11 remain HELD. Main f187ade run
 38773355992 failed; exact-final-main closeout is incomplete. Stage 12 NOT STARTED.
+
+### Resume investigation; preserve native switch
+
+User declined UI replacement and explicitly authorized investigation to continue.
+The prior product-choice hold was too broad and is superseded; Gates 6–11 remain
+held by the failed input regression. Do not replace the native switch.
+
+Next discriminating evidence: the real editor's native Toggle uses a synchronous
+local draft binding, unlike the list binding that queues owner work. Add a real
+UI regression that taps the editor control eleven times with the same exact-value
+helper, saves disabled, and verifies Off after relaunch. Run it before the existing
+ten enable/failure/retry repetitions and retain its result separately. This tests
+actual editor persistence, not a fake diagnostic control. App-window touch receipt
+alone has not proven an OS defect; inspect actual rendered failure video as well.
+No production UI or owner policy change is made for this comparison.

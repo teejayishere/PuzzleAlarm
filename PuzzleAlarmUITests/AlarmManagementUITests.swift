@@ -2,6 +2,27 @@ import XCTest
 
 @MainActor
 final class AlarmManagementUITests: XCTestCase {
+    func testEditorEnabledTogglePersistsAfterRepeatedNativeInput() {
+        let app = launch("editor-toggle-baseline")
+        tap(app, "alarms.add")
+        let control = app.switches.matching(identifier: "editor.enabled").firstMatch
+        XCTAssertTrue(control.waitForExistence(timeout: 5))
+        XCTAssertEqual(control.value as? String, "1")
+        // Contrast the real draft's synchronous local binding with the alarm
+        // list's asynchronous owner binding, using the same native input helper.
+        for _ in 0..<11 { tap(app, "editor.enabled") }
+        XCTAssertEqual(control.value as? String, "0")
+        tap(app, "editor.save")
+        let row = firstRow(app)
+        XCTAssertTrue(row.waitForExistence(timeout: 10))
+        let rowID = row.identifier
+        let statusID = rowID.replacingOccurrences(of: "alarm.edit.", with: "alarm.status.")
+        expectLabel(app.staticTexts[statusID], "Off")
+        relaunch(app)
+        XCTAssertTrue(app.buttons[rowID].waitForExistence(timeout: 10))
+        expectLabel(app.staticTexts[statusID], "Off")
+    }
+
     func testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch() {
         let app = launch("audio-preview")
         tap(app, "alarms.add")

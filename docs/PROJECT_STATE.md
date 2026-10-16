@@ -1,7 +1,7 @@
 # Project state
 
 
-## Current closeout BLOCKED — native control product decision required
+## Current closeout HELD — investigate with native control unchanged
 
 2026-10-16: Gate 6 replay and dependent Gates 7–11 are HELD, not passed.
 Main f187ade2f7b54853d36d31bbc9d19a68aba29ae0 / run 38773355992 FAILED;
@@ -18,11 +18,12 @@ from the working source after diagnosis; fixture-only binding/owner journal rema
 Do not claim a scheduling/model defect, a native-control fix or pass by retrying
 until green, weakening outcomes, skipping prerequisites, or inventing device evidence.
 
-Pending product decision: replace the alarm list native switch with an explicit
-On/Off button preserving owner/persistence behavior, then replay Gate 6 and every
-dependent gate in order; or keep native control and hold closeout for device/platform
-investigation. No replacement UI is implemented without that decision. User asked
-only for product decisions/external blockers/device actions; this is such a boundary.
+User chose to keep the native switch and authorized continued investigation.
+No replacement UI is authorized or needed to investigate. Product-choice hold is
+superseded. Compare the real editor's local draft Toggle binding with the list's
+asynchronous binding using the same native input helper, and inspect rendered
+failure evidence before selecting a correction. Do not assume a framework defect
+from app-window touch receipt alone. No gesture retry or outcome relaxation.
 Audio source/resources and earlier exact-source compile/automated/Simulator evidence
 remain recorded below. Actual alarm playback remains DEVICE REQUIRED / NOT RUN.
 

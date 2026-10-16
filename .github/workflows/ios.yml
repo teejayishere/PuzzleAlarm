@@ -35,7 +35,17 @@ jobs:
           xcrun simctl help bootstatus
           xcrun simctl bootstatus "$SIMULATOR_ID" -b
           xcrun simctl list devices booted
+      - name: Compare native editor draft binding
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/EditorToggle.xcresult \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditorEnabledTogglePersistsAfterRepeatedNativeInput \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/editor-toggle-ui-tests.log"
       - name: Reproduce Gate 6 enable failure and retry
+        id: enable_flow
         run: |
           set -o pipefail
           xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
@@ -55,13 +65,16 @@ jobs:
           files = list((Path.home() / "Library/Developer/CoreSimulator/Devices").glob(
               "*/data/Containers/Data/Application/*/tmp/toggle-input-diagnostic.log"))
           if not files:
+              if "${{ steps.enable_flow.outcome }}" == "skipped":
+                  print("Owner flow skipped after earlier failure; no owner journal expected.")
+                  raise SystemExit(0)
               raise SystemExit("No fixture input journal found in Simulator containers")
           output = Path("TestResults/toggle-input-diagnostic.log")
           output.write_text("\n".join(str(file) + "\n" + file.read_text() for file in files))
           print(output.read_text())
           PY
       - name: Review diagnostic Xcode warnings
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/toggle-ui-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/toggle-ui-tests.log" "$RUNNER_TEMP/editor-toggle-ui-tests.log"
       - name: Preserve focused toggle evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -69,6 +82,7 @@ jobs:
           name: toggle-simulator-evidence
           path: |
             TestResults/Toggle.xcresult
+            TestResults/EditorToggle.xcresult
             TestResults/toggle-input-diagnostic.log
           if-no-files-found: ignore
           retention-days: 7
