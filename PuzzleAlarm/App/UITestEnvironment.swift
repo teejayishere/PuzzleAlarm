@@ -1,7 +1,5 @@
 #if DEBUG
 import Foundation
-import SwiftUI
-import UIKit
 import PuzzleAlarmCore
 
 // DEBUG only. All business behavior still runs through the production coordinator.
@@ -176,48 +174,4 @@ enum UITestEnvironment {
     }
 }
 
-// Observe public UIControl events only; no gesture recognizer, mutation or swizzling.
-// This distinguishes native delivery/cancellation from SwiftUI binding dispatch.
-@MainActor
-struct ToggleInputProbe: UIViewRepresentable {
-    @MainActor final class Observer: NSObject {
-        func attach(_ root: UIView) {
-            if let control = root as? UISwitch, !control.allTargets.contains(self) {
-                control.addTarget(self, action: #selector(touch(_:event:)), for: .allTouchEvents)
-                control.addTarget(self, action: #selector(changed(_:)), for: .valueChanged)
-                UITestEnvironment.traceToggle("native attached frame=\(control.frame)")
-            }
-            for child in root.subviews { attach(child) }
-        }
-        @objc func touch(_ control: UISwitch, event: UIEvent) {
-            let phases = event.allTouches?.map { $0.phase.rawValue }.sorted() ?? []
-            UITestEnvironment.traceToggle("native touch phases=\(phases) on=\(control.isOn) enabled=\(control.isEnabled) tracking=\(control.isTracking)")
-        }
-        @objc func changed(_ control: UISwitch) {
-            UITestEnvironment.traceToggle("native changed on=\(control.isOn) enabled=\(control.isEnabled)")
-        }
-    }
-    final class ProbeView: UIView {
-        var observer: Observer?
-        override func didMoveToWindow() {
-            super.didMoveToWindow()
-            scan()
-        }
-        func scan() {
-            DispatchQueue.main.async { [weak self] in
-                guard let self, let window = self.window else { return }
-                self.observer?.attach(window)
-            }
-        }
-    }
-    func makeCoordinator() -> Observer { Observer() }
-    func makeUIView(context: Context) -> ProbeView {
-        let view = ProbeView()
-        view.isUserInteractionEnabled = false
-        view.observer = context.coordinator
-        return view
-    }
-    func updateUIView(_ view: ProbeView, context: Context) { view.scan() }
-}
 #endif
-

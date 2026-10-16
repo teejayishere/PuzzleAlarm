@@ -1208,3 +1208,20 @@ control property and adds no gesture recognizer or method swizzling. Confirm
 observer attachment for each process before interpreting absence of native events.
 This separates native cancellation/delivery from SwiftUI binding dispatch. Release
 binary exclusion includes the probe. No production scheduling or model change.
+
+a7e1093 / run 38840601704 focused ordinary taps 10/10 PASS, but native probe records
+zero attached UISwitch objects, zero native touches and zero native changes.
+The probe is ineffective and provides no native-event evidence; a passing batch
+does not establish its causality. Remove it entirely rather than ship intrusive
+diagnostic UI or infer a root cause. Full validation of this superseded probe
+revision is not accepted.
+
+Re-examine runner readiness: prior jobs selected a Simulator but never explicitly
+booted/waited for its setup before launching test work. Add installed simctl
+bootstatus help and blocking bootstatus -b before the focused test, plus the same
+boot readiness before downstream regression. Collect the actual journal container
+path to compare selected versus Xcode test devices. Retain the ordinary one-tap
+input and exact outcomes, ten repetitions, and binding/owner file trace.
+This is a bounded environment-readiness hypothesis, not a claim that cold boot is
+proven to explain every loss. No production scheduling/model change. Held Gates
+6–11 still require complete exact-source ordered replay; Stage 12 NOT STARTED.

@@ -30,6 +30,11 @@ jobs:
           xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
           simulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"
           echo "SIMULATOR_ID=$simulator_id" >> "$GITHUB_ENV"
+      - name: Wait for selected Simulator boot readiness
+        run: |
+          xcrun simctl help bootstatus
+          xcrun simctl bootstatus "$SIMULATOR_ID" -b
+          xcrun simctl list devices booted
       - name: Reproduce Gate 6 enable failure and retry
         run: |
           set -o pipefail
@@ -52,7 +57,7 @@ jobs:
           if not files:
               raise SystemExit("No fixture input journal found in Simulator containers")
           output = Path("TestResults/toggle-input-diagnostic.log")
-          output.write_text("\n".join(file.read_text() for file in files))
+          output.write_text("\n".join(str(file) + "\n" + file.read_text() for file in files))
           print(output.read_text())
           PY
       - name: Review diagnostic Xcode warnings
@@ -132,6 +137,8 @@ jobs:
           xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -showdestinations
           simulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"
           echo "id=$simulator_id" >> "$GITHUB_OUTPUT"
+      - name: Wait for regression Simulator boot readiness
+        run: xcrun simctl bootstatus "$SIMULATOR_ID" -b
       - name: Build iOS application for Simulator
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -268,7 +275,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           binary = Path("ReleaseDerivedData/Build/Products/Release-iphonesimulator/PuzzleAlarm.app/PuzzleAlarm").read_bytes()
-          for marker in [b"ToggleInputProbe", b"toggle-input-diagnostic.log", b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler", b"FakeQRCodeScanner", b"Simulate matching QR"]:
+          for marker in [b"toggle-input-diagnostic.log", b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler", b"FakeQRCodeScanner", b"Simulate matching QR"]:
               if marker in binary:
                   raise SystemExit("DEBUG fixture leaked into Release: " + marker.decode())
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")
