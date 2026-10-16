@@ -1225,3 +1225,20 @@ input and exact outcomes, ten repetitions, and binding/owner file trace.
 This is a bounded environment-readiness hypothesis, not a claim that cold boot is
 proven to explain every loss. No production scheduling/model change. Held Gates
 6–11 still require complete exact-source ordered replay; Stage 12 NOT STARTED.
+
+a879798 / run 38842119366 fails first of ten; remaining nine pass. Explicit boot
+readiness is not a sufficient correction. Installed simctl help confirms -b boots
+and waits for setup. The logged journal path matches selected device
+10B884BF-749F-4E8B-AFCD-26AB8F1DBD01, so it is not an unobserved clone.
+First PID 14857 has launch only; all subsequent input/owner chains complete.
+Full validation skipped; Gates 6–11 held. Keep useful explicit readiness, but
+do not claim cold boot caused or corrected the lost input.
+
+Next primary evidence: fixture-only public window UIGestureRecognizer observes
+began/ended/cancelled touch position, hit UIView class, application/scene state.
+It never recognizes, prevents or can be prevented by another recognizer, and has
+all touch cancellation/delay flags false. It changes no product control property.
+An explicit attachment record is required before interpreting event absence.
+The ineffective UISwitch-target probe stays removed. No private API or swizzling.
+Release exclusion covers the new diagnostic type. Ordinary one-tap flow and exact
+outcome assertions remain. This is diagnostic instrumentation, not acceptance.
