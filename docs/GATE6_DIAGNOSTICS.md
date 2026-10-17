@@ -180,3 +180,19 @@ unsupported xcodebuild `-test-iterations 1`, before UI test execution. Actual Sw
 writer/decoder validation passed. Zero switch and zero editor/audio declarations
 executed; one Simulator job, no retry. Capture absent; no product conclusion.
 The original invocation-created xcresult and full logs are preserved. Gates 6–12 HELD.
+
+## Corrected buffered experiment authorization — October 17, 2026
+
+User authorized exactly one corrected bounded Simulator job after the zero-execution
+invocation failure. Remove `-test-iterations 1`; use default single execution, never
+increase iterations. Preserve diagnose_gate6.py, recorder/decoder, all original
+readiness/selectors/single taps/assertions and the existing bounded batch.
+Selected Xcode help and an exact-command dry-run must pass before UI execution.
+Accounting now distinguishes invocation, actual starts, completed xcresult test cases,
+tooling failure, incomplete capture, captured assertion failure and successful samples.
+Seven local accounting tests and six existing decoder tests PASS on Windows; these
+are tooling tests, not Xcode/Simulator/product evidence. Actual Swift validation still
+runs on the selected Mac toolchain before Simulator boot. One thirty-minute job,
+setup included; test execution stops before minute 25, no retries or repair-and-repeat.
+Exact run, capture and outcome will be archived separately after this sole job.
+Gate 6 FAILED; dependent 7–12 HELD; no remedy, promotion, downstream replay or Stage 13.

@@ -2,7 +2,7 @@ name: Bounded Gate 6 buffered passive capture
 on:
   push:
     branches: [codex/stage-12-routing]
-    paths: [Scripts/diagnose_gate6.py, .github/workflows/gate6-diagnostic.yml]
+    paths: [Scripts/diagnose_gate6.py, Scripts/run_gate6_buffered.py, Scripts/gate6_accounting.py, .github/workflows/gate6-diagnostic.yml]
 permissions:
   contents: read
   actions: read
@@ -12,6 +12,8 @@ jobs:
     runs-on: macos-26
     timeout-minutes: 30
     steps:
+      - name: Start absolute experiment budget
+        run: echo "GATE6_START=$(date +%s)" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
@@ -21,7 +23,15 @@ jobs:
           mkdir -p TestResults/selftest
           git rev-parse HEAD > TestResults/exact-sha.txt
           { xcodebuild -version; swift --version; sw_vers; uname -a; } > TestResults/toolchain.txt 2>&1
+          xcodebuild -help > TestResults/xcodebuild-help.txt 2>&1
+          python3 - <<'PYHELP'
+          from pathlib import Path
+          help = Path('TestResults/xcodebuild-help.txt').read_text()
+          for option in ['-dry-run', '-only-testing', '-parallel-testing-enabled', '-test-timeouts-enabled', '-maximum-test-execution-time-allowance']:
+              assert option in help, f'Selected Xcode does not advertise {option}'
+          PYHELP
           python3 Scripts/test_gate6_buffer.py > TestResults/decoder-selftest.log 2>&1
+          python3 Scripts/test_gate6_accounting.py > TestResults/accounting-selftest.log 2>&1
           swiftc -swift-version 6 -warnings-as-errors -parse-as-library Scripts/Gate6Recorder.swift Scripts/gate6_recorder_selftest.swift -o "$RUNNER_TEMP/recorder-check" > TestResults/writer-compile.log 2>&1
           "$RUNNER_TEMP/recorder-check" "$PWD/TestResults/selftest" > TestResults/writer-selftest.log 2>&1
           python3 Scripts/gate6_writer_check.py TestResults/selftest >> TestResults/writer-selftest.log 2>&1
@@ -30,7 +40,7 @@ jobs:
       - name: Instrument ephemeral checkout and boot Simulator
         run: |
           set -euo pipefail
-          python3 -c 'import time; assert time.time() < 1792281273, "test budget expired"'
+          python3 -c 'import os, time; assert time.time() < float(os.environ["GATE6_START"])+25*60-15, "test budget expired"'
           python3 Scripts/diagnose_gate6.py
           git add -N PuzzleAlarm/App/Gate6Recorder.swift PuzzleAlarm/App/Gate6InputProbe.swift
           git diff --binary > TestResults/ci-instrumentation.patch
@@ -41,8 +51,8 @@ jobs:
           simulator_id="$(python3 Scripts/select_simulator.py TestResults/devices.json TestResults/runtimes.json 26.0)"
           echo "SIMULATOR_ID=$simulator_id" >> "$GITHUB_ENV"
           python3 - "$simulator_id" <<'PYBOOT'
-          import subprocess, sys, time
-          subprocess.run(['xcrun', 'simctl', 'bootstatus', sys.argv[1], '-b'], check=True, timeout=max(1, 1792281273-time.time()))
+          import os, subprocess, sys, time
+          subprocess.run(['xcrun', 'simctl', 'bootstatus', sys.argv[1], '-b'], check=True, timeout=max(1, float(os.environ['GATE6_START'])+25*60-15-time.time()))
           PYBOOT
       - name: One declaration each, sequential; stop at first failure or deadline
         run: python3 Scripts/run_gate6_buffered.py
@@ -62,7 +72,7 @@ jobs:
           from pathlib import Path
           p = Path('TestResults/outcome-manifest.json')
           if not p.exists():
-              p.write_text(json.dumps(dict(sha=os.environ['GITHUB_SHA'], outcome='SETUP_OR_INSTRUMENTATION_FAILURE', complete_capture=False, negative_conclusion_allowed=False, gates='6–12 HELD'), indent=2))
+              p.write_text(json.dumps(dict(sha=os.environ['GITHUB_SHA'], run_id=os.environ['GITHUB_RUN_ID'], run_attempt=os.environ['GITHUB_RUN_ATTEMPT'], outcome='TOOLING_FAILURE', actual_test_executions=0, xcodebuild_ui_invocations=0, complete_capture=False, negative_conclusion_allowed=False, gates='6–12 HELD'), indent=2))
           PY
       - uses: actions/upload-artifact@v4
         if: always()
