@@ -1,4 +1,4 @@
-name: Bounded Gate 6 input diagnosis
+name: Bounded Gate 6 buffered passive capture
 on:
   push:
     branches: [codex/stage-12-routing]
@@ -15,61 +15,58 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Validate actual recorder and decoder before Simulator allocation
+        run: |
+          set -euo pipefail
+          mkdir -p TestResults/selftest
+          git rev-parse HEAD > TestResults/exact-sha.txt
+          { xcodebuild -version; swift --version; sw_vers; uname -a; } > TestResults/toolchain.txt 2>&1
+          python3 Scripts/test_gate6_buffer.py > TestResults/decoder-selftest.log 2>&1
+          swiftc -swift-version 6 -warnings-as-errors -parse-as-library Scripts/Gate6Recorder.swift Scripts/gate6_recorder_selftest.swift -o "$RUNNER_TEMP/recorder-check" > TestResults/writer-compile.log 2>&1
+          "$RUNNER_TEMP/recorder-check" "$PWD/TestResults/selftest" > TestResults/writer-selftest.log 2>&1
+          python3 Scripts/gate6_writer_check.py TestResults/selftest >> TestResults/writer-selftest.log 2>&1
       - name: Install pinned XcodeGen
         run: bash Scripts/install_xcodegen.sh
       - name: Instrument ephemeral checkout and boot Simulator
         run: |
           set -euo pipefail
+          python3 -c 'import time; assert time.time() < 1792281273, "test budget expired"'
           python3 Scripts/diagnose_gate6.py
-          git diff > ci-instrumentation.patch
+          git add -N PuzzleAlarm/App/Gate6Recorder.swift PuzzleAlarm/App/Gate6InputProbe.swift
+          git diff --binary > TestResults/ci-instrumentation.patch
+          cp PuzzleAlarm/App/Gate6*.swift TestResults/
           xcodegen generate --spec project.yml
-          xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
-          xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
-          simulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"
+          xcrun simctl list devices available --json > TestResults/devices.json
+          xcrun simctl list runtimes --json > TestResults/runtimes.json
+          simulator_id="$(python3 Scripts/select_simulator.py TestResults/devices.json TestResults/runtimes.json 26.0)"
           echo "SIMULATOR_ID=$simulator_id" >> "$GITHUB_ENV"
-          xcrun simctl bootstatus "$simulator_id" -b
-          xcodebuild -version
-      - name: Fixed sample budget; retain every failure; no retry-to-green
-        run: |
-          set +e
-          set -uo pipefail
-          mkdir -p TestResults
-          result=0
-          for spec in toggle:3:testEnableDisableAndFailureRetryAreHonest editor:3:testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch; do
-            IFS=: read -r name count method <<< "$spec"
-            xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
-              -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
-              -derivedDataPath DerivedData -resultBundlePath "TestResults/$name.xcresult" \
-              -only-testing:"PuzzleAlarmUITests/AlarmManagementUITests/$method" \
-              -test-iterations "$count" -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
-              2>&1 | tee "TestResults/$name.log"
-            code=$?
-            echo "$name exit=$code" | tee -a TestResults/outcomes.txt
-            if [ "$code" -ne 0 ]; then result=1; fi
-          done
-          exit "$result"
-      - name: Preserve all process journals and xcresult exports
+          python3 - "$simulator_id" <<'PYBOOT'
+          import subprocess, sys, time
+          subprocess.run(['xcrun', 'simctl', 'bootstatus', sys.argv[1], '-b'], check=True, timeout=max(1, 1792281273-time.time()))
+          PYBOOT
+      - name: One declaration each, sequential; stop at first failure or deadline
+        run: python3 Scripts/run_gate6_buffered.py
+      - name: Export complete xcresults and activity records
         if: always()
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          files = sorted((Path.home() / 'Library/Developer/CoreSimulator/Devices').glob('*/data/Containers/Data/Application/*/tmp/toggle-input-diagnostic.log'))
-          Path('TestResults').mkdir(exist_ok=True)
-          Path('TestResults/input-journals.log').write_text('\n'.join(str(p) + '\n' + p.read_text() for p in files))
-          print(Path('TestResults/input-journals.log').read_text())
-          PY
+          mkdir -p TestResults
           for name in toggle editor; do
             if [ -d "TestResults/$name.xcresult" ]; then
-              xcrun xcresulttool get test-results tests --path "TestResults/$name.xcresult" > "TestResults/$name-tests.json"
-              xcrun xcresulttool export attachments --path "TestResults/$name.xcresult" --output-path "TestResults/$name-attachments"
+              xcrun xcresulttool get test-results tests --path "TestResults/$name.xcresult" > "TestResults/$name-tests.json" 2> "TestResults/$name-export-errors.log" || true
+              xcrun xcresulttool export attachments --path "TestResults/$name.xcresult" --output-path "TestResults/$name-attachments" >> "TestResults/$name-export-errors.log" 2>&1 || true
             fi
           done
+          if [ -d DerivedData/Logs ]; then cp -R DerivedData/Logs TestResults/activity-logs; fi
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path('TestResults/outcome-manifest.json')
+          if not p.exists():
+              p.write_text(json.dumps(dict(sha=os.environ['GITHUB_SHA'], outcome='SETUP_OR_INSTRUMENTATION_FAILURE', complete_capture=False, negative_conclusion_allowed=False, gates='6–12 HELD'), indent=2))
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: gate6-input-boundaries
-          path: |
-            TestResults
-            ci-instrumentation.patch
-            PuzzleAlarm/App/Gate6InputProbe.swift
+          name: gate6-buffered-passive-capture
+          path: TestResults
           retention-days: 7

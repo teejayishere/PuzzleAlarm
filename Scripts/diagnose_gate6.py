@@ -9,9 +9,16 @@ def replace(path, old, new):
     file.write_text(text.replace(old, new))
 
 
-replace('PuzzleAlarm/App/UITestEnvironment.swift',
-        'environment["PUZZLE_SCENARIO"] == "enableFailure"', 'environment["PUZZLE_INPUT_TRACE"] == "1"')
+fixture = Path('PuzzleAlarm/App/UITestEnvironment.swift')
+source = fixture.read_text()
+start = source.index('        let environment = ProcessInfo.processInfo.environment', source.index('static func traceToggle'))
+end = source.index('    static let now', start)
+source = source[:start] + '        Gate6Recorder.shared.record(message)\n    }\n' + source[end:]
+fixture.write_text(source)
+Path('PuzzleAlarm/App/Gate6Recorder.swift').write_text(Path('Scripts/Gate6Recorder.swift').read_text())
 replace('PuzzleAlarm/App/NativeAlarmSwitch.swift', 'let control = UISwitch()', 'let control = Gate6TraceSwitch()')
+replace('PuzzleAlarm/App/NativeAlarmSwitch.swift', r'native control=\(control.isOn)',
+        r'native id=\(ObjectIdentifier(control)) target=\(ObjectIdentifier(self)) action=valueChanged control=\(control.isOn)')
 replace('PuzzleAlarm/App/NativeAlarmSwitch.swift',
         'control.accessibilityLabel = "Alarm enabled"',
         r'''control.accessibilityLabel = "Alarm enabled"
@@ -43,25 +50,10 @@ replace(test, '"PUZZLE_TEST_NAME": name, "PUZZLE_SCENARIO": scenario]',
         '"PUZZLE_TEST_NAME": name, "PUZZLE_SCENARIO": scenario, "PUZZLE_INPUT_TRACE": "1"]')
 replace(test, 'XCTAssertTrue(row.waitForExistence(timeout: 10)); row.tap()\n        tap(app, "editor.preview")',
         '''XCTAssertTrue(row.waitForExistence(timeout: 10))
-        traceInput(app, row, "reopen before")
         row.tap()
-        traceInput(app, row, "reopen after")
         // Stop at the first missing presentation, before unrelated scroll gestures.
         XCTAssertTrue(app.buttons["editor.save"].waitForExistence(timeout: 10), app.debugDescription)
         tap(app, "editor.preview")''')
-replace(test, '            control.tap()',
-        '''            traceInput(app, control, "switch before")
-            control.tap()
-            traceInput(app, control, "switch after")''')
-replace(test, '    private func firstRow(', r'''    private func traceInput(_ app: XCUIApplication, _ target: XCUIElement, _ name: String) {
-        print("INPUT \(Date().timeIntervalSince1970) \(name) id=\(target.identifier) type=\(target.elementType.rawValue) frame=\(target.frame) enabled=\(target.isEnabled) hittable=\(target.isHittable) value=\(String(describing: target.value)) app=\(app.state.rawValue)")
-        let hierarchy = XCTAttachment(string: app.debugDescription)
-        hierarchy.name = name + " hierarchy"; hierarchy.lifetime = .keepAlways; add(hierarchy)
-        let shot = XCTAttachment(screenshot: app.screenshot())
-        shot.name = name; shot.lifetime = .keepAlways; add(shot)
-    }
-    private func firstRow(''')
-
 Path('PuzzleAlarm/App/Gate6InputProbe.swift').write_text(r'''
 import SwiftUI
 import UIKit
@@ -73,14 +65,20 @@ final class Gate6WindowProbe: UIGestureRecognizer {
     private func record(_ touches: Set<UITouch>, _ phase: String) {
         guard let window = view as? UIWindow else { return }
         for touch in touches {
-            var ancestors: [String] = []
             var current = touch.view
-            while let item = current {
-                let gestures = (item.gestureRecognizers ?? []).map { "\(type(of: $0)):\($0.state.rawValue):enabled=\($0.isEnabled)" }.joined(separator: ",")
-                ancestors.append("\(type(of: item)) id=\(item.accessibilityIdentifier ?? "none") gestures=[\(gestures)]")
+            UITestEnvironment.traceToggle("touch \(phase) timestamp=\(touch.timestamp) point=\(touch.location(in: window)) window=\(ObjectIdentifier(window)) app=\(UIApplication.shared.applicationState.rawValue) scene=\(window.windowScene?.activationState.rawValue ?? -99)")
+            var depth = 0
+            while let item = current, depth < 24 {
+                UITestEnvironment.traceToggle("ancestor phase=\(phase) depth=\(depth) object=\(ObjectIdentifier(item)) type=\(type(of: item)) id=\(item.accessibilityIdentifier ?? "none")")
+                let gestures = item.gestureRecognizers ?? []
+                for gesture in gestures.prefix(16) {
+                    UITestEnvironment.traceToggle("gesture depth=\(depth) object=\(ObjectIdentifier(gesture)) type=\(type(of: gesture)) state=\(gesture.state.rawValue) enabled=\(gesture.isEnabled)")
+                }
+                if gestures.count > 16 { UITestEnvironment.traceToggle("capture limited gestures") }
                 current = item.superview
+                depth += 1
             }
-            UITestEnvironment.traceToggle("touch \(phase) timestamp=\(touch.timestamp) point=\(touch.location(in: window)) app=\(UIApplication.shared.applicationState.rawValue) scene=\(window.windowScene?.activationState.rawValue ?? -99) path=\(ancestors.joined(separator: " / "))")
+            if current != nil { UITestEnvironment.traceToggle("capture limited ancestors") }
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) { record(touches, "began") }
@@ -110,20 +108,6 @@ final class Gate6TraceSwitch: UISwitch {
         super.didMoveToWindow()
         UITestEnvironment.traceToggle("switch attached=\(window != nil) id=\(ObjectIdentifier(self)) targets=\(allTargets.count)")
     }
-    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        let accepted = super.beginTracking(touch, with: event)
-        UITestEnvironment.traceToggle("tracking began accepted=\(accepted) on=\(isOn) enabled=\(isEnabled) id=\(ObjectIdentifier(self))")
-        return accepted
-    }
-    override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-        UITestEnvironment.traceToggle("tracking end before on=\(isOn) id=\(ObjectIdentifier(self))")
-        super.endTracking(touch, with: event)
-        UITestEnvironment.traceToggle("tracking end after on=\(isOn) id=\(ObjectIdentifier(self))")
-    }
-    override func cancelTracking(with event: UIEvent?) {
-        UITestEnvironment.traceToggle("tracking cancel on=\(isOn) id=\(ObjectIdentifier(self))")
-        super.cancelTracking(with: event)
-    }
 }
 ''')
-print('CI-only input instrumentation applied; product assertions and single taps retained.')
+print('CI-only buffered passive capture applied; original selectors/readiness/taps/assertions retained.')

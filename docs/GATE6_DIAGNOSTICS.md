@@ -132,3 +132,41 @@ without this missing evidence. No further experiment is queued in this closeout.
 Only an evidence-supported correction can start ordered Gate 6â€“12 replay and the
 required complete exact-final-main workflow. Stop after Gate 12; no Stage 13 or UX
 redesign. Physical alarm, intent, camera and audio observations remain separate.
+
+
+## Authorized buffered passive-capture experiment — October 17, 2026
+
+User authorized one materially changed batch on verified branch HEAD
+`420a52ef46722dcd9fcea0e5b20beac018cc3894`. CI-only generated instrumentation
+replaces synchronous file journals with main-actor serialized, preallocated and
+prefaulted MAP_SHARED storage (16,384 fixed 1,024-byte slots plus header per
+process). No file open, append, flush or lock occurs in record callbacks. String
+formatting, public property observation, clock reads, memory stores and possible
+later paging still cost time; this is not zero overhead or proof of nonperturbation.
+
+Remove all traceInput-added queries, screenshots and hierarchy reads; remove
+ineffective tracking overrides. Preserve the passive window recognizer and control
+attachment, valueChanged, setter, binding, owner, row action, draft, route and sheet
+boundaries. Touch and ancestor/gesture observations use separate bounded records;
+record/path/gesture truncation invalidates complete capture. Overflow/truncation
+counters are persisted before a fail-stop. Sequence, process launch UUID/PID,
+monotonic/wall clocks, length/flags and metadata/payload checksum support decoding.
+Files are unique per process and never wrap or overwrite old records.
+
+Before Simulator boot, compile/run the actual Swift writer and independently decode
+normal/Unicode, overflow and truncation fixtures; run decoder corruption/gap/partial
+write/missing-attachment tests. A validation failure stops without Simulator tests.
+Original test selectors, readiness checks, single taps and exact assertions stay;
+only the existing bounded post-tap editor.save presentation assertion is retained.
+No added pre-tap inspection, wait or retry. Each of the existing switch and
+audio/editor declarations runs once, sequentially, with no automatic retries.
+Stop at the first relevant or instrumentation failure. Fixed absolute request cap:
+23:59:33 UTC; terminate test execution before 23:54:33 UTC, including setup time.
+Always retain the artifact even on failure. Both passing means INCONCLUSIVE.
+
+Export exact source SHA, generated patch including added Swift files, toolchain and
+runtime inventory, complete xcresults, build/test activity logs, raw mapped files,
+decoded process timelines, integrity counters and outcome manifest. Missing
+attachment, overflow, truncation or incomplete capture prohibit negative conclusions.
+Only diagnostic tooling is published; no production remedy or gate acceptance.
+Gates 6–12 stay HELD, Stage 13 is not started; stop after reporting this experiment.
