@@ -63,6 +63,11 @@ all original preview, value, status, and persistence assertions remain.
 
 ## Stop rule and missing observation
 
+Setup-only attempt: `3a92799` / run `39073944312` FAILED before test execution:
+XcodeGen was installed and used in one step, before GITHUB_PATH takes effect.
+Separate installation into its own step. No input sample or product conclusion
+comes from that setup failure; the fixed diagnostic is still the planned batch.
+
 If this batch provides no failing correlated trace, stop with Gates 6–12 held.
 Do not add gesture/state remedies or another unchanged batch. The missing evidence
 is a failed input correlated across test target/readiness, actual window touch and

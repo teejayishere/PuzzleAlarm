@@ -15,12 +15,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Install pinned XcodeGen
+        run: bash Scripts/install_xcodegen.sh
       - name: Instrument ephemeral checkout and boot Simulator
         run: |
           set -euo pipefail
           python3 Scripts/diagnose_gate6.py
           git diff > ci-instrumentation.patch
-          bash Scripts/install_xcodegen.sh
           xcodegen generate --spec project.yml
           xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
           xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
