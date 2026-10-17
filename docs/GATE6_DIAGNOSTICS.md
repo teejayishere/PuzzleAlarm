@@ -134,7 +134,7 @@ required complete exact-final-main workflow. Stop after Gate 12; no Stage 13 or 
 redesign. Physical alarm, intent, camera and audio observations remain separate.
 
 
-## Authorized buffered passive-capture experiment — October 17, 2026
+## Authorized buffered passive-capture experiment â€” October 17, 2026
 
 User authorized one materially changed batch on verified branch HEAD
 `420a52ef46722dcd9fcea0e5b20beac018cc3894`. CI-only generated instrumentation
@@ -169,14 +169,14 @@ runtime inventory, complete xcresults, build/test activity logs, raw mapped file
 decoded process timelines, integrity counters and outcome manifest. Missing
 attachment, overflow, truncation or incomplete capture prohibit negative conclusions.
 Only diagnostic tooling is published; no production remedy or gate acceptance.
-Gates 6–12 stay HELD, Stage 13 is not started; stop after reporting this experiment.
+Gates 6â€“12 stay HELD, Stage 13 is not started; stop after reporting this experiment.
 
 
-## Buffered experiment outcome — STOP
+## Buffered experiment outcome â€” STOP
 
 See [complete archived evidence](evidence/gate6-buffered-39079559751/README.md).
 Run 39079559751 at 4b0e1c126bec45723e30481cd6eab59a40fe2fa9 failed on
 unsupported xcodebuild `-test-iterations 1`, before UI test execution. Actual Swift
 writer/decoder validation passed. Zero switch and zero editor/audio declarations
 executed; one Simulator job, no retry. Capture absent; no product conclusion.
-The original invocation-created xcresult and full logs are preserved. Gates 6–12 HELD.
+The original invocation-created xcresult and full logs are preserved. Gates 6â€“12 HELD.

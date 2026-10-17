@@ -1796,7 +1796,7 @@ a follow-up self-reference commit. Actual audio/AlarmKit/camera/provisioning/nat
 input device requirements remain NOT RUN. Stop after closeout; no Stage 12.
 
 
-### Buffered passive-capture experiment — stopped on tooling invocation
+### Buffered passive-capture experiment â€” stopped on tooling invocation
 
 Source 4b0e1c126bec45723e30481cd6eab59a40fe2fa9 / run 39079559751 attempt 1.
 Actual mmap writer/decoder normal/Unicode/overflow/truncation validation PASS before
@@ -1804,4 +1804,4 @@ Simulator boot; six decoder tests PASS. First xcodebuild invocation exits 64 bec
 `-test-iterations 1` is unsupported. Zero actual UI executions; editor not attempted.
 One Simulator job, no rerun, stopped within nine minutes of initial handling.
 No product trace or negative conclusion. Full original artifact and corrected manifest
-archived under docs/evidence/gate6-buffered-39079559751. Gates 6–12 stay HELD. STOP.
+archived under docs/evidence/gate6-buffered-39079559751. Gates 6â€“12 stay HELD. STOP.

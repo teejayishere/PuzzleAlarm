@@ -1,4 +1,4 @@
-# Buffered passive capture — stopped on tooling invocation failure
+# Buffered passive capture â€” stopped on tooling invocation failure
 
 Source: `4b0e1c126bec45723e30481cd6eab59a40fe2fa9`, based on verified
 `420a52ef46722dcd9fcea0e5b20beac018cc3894` on `codex/stage-12-routing`.
@@ -41,5 +41,5 @@ expires 2026-10-24 23:37:49 UTC. Independently verified archive SHA-256:
 The full archive is also retained here to survive artifact expiry.
 
 Both historical failures remain unresolved. No negative conclusion is permitted.
-Gates 6–12 remain HELD, last unheld gate 5, Stage 13 NOT STARTED. No production
+Gates 6â€“12 remain HELD, last unheld gate 5, Stage 13 NOT STARTED. No production
 remedy, main promotion, downstream replay or redesign. Experiment STOPPED.

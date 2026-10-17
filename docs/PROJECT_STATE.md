@@ -101,7 +101,7 @@ confirms no Mac is available; no iPhone build is installed. This is settled.
 See GATE6_DIAGNOSTICS.md for the separate latest editor failure, one bounded CI-only
 diagnostic and its stop rule. CI/mocks do not establish physical observations.
 
-## Latest authorized buffered experiment — STOP
+## Latest authorized buffered experiment â€” STOP
 
 Buffered tooling source `4b0e1c126bec45723e30481cd6eab59a40fe2fa9` /
 [39079559751](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39079559751),
@@ -118,7 +118,7 @@ outcome manifest are archived in
 Product capture is absent/incomplete; no negative conclusion is permitted. The
 original runner manifest counts an invocation as one execution and calls it a
 relevant failure; the reviewed manifest records zero actual UI test executions
-and classifies tooling failure. Gates 6–12 remain HELD. No further experiment queued.
+and classifies tooling failure. Gates 6â€“12 remain HELD. No further experiment queued.
 
 ## Next action and scope
 
