@@ -101,6 +101,25 @@ confirms no Mac is available; no iPhone build is installed. This is settled.
 See GATE6_DIAGNOSTICS.md for the separate latest editor failure, one bounded CI-only
 diagnostic and its stop rule. CI/mocks do not establish physical observations.
 
+## Latest authorized buffered experiment — STOP
+
+Buffered tooling source `4b0e1c126bec45723e30481cd6eab59a40fe2fa9` /
+[39079559751](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39079559751),
+attempt 1, FAILED on tooling invocation before either UI declaration executed.
+Actual Swift recorder/decoder validation passed before Simulator boot. The agent
+supplied unsupported `-test-iterations 1`; xcodebuild exited 64 and requires more
+than one iteration when that option is present. No observed product input, no
+editor attempt, no rerun. One Simulator job consumed; stop rule applied.
+
+The complete original artifact and Actions log, generated ephemeral patch, toolchain/
+runtime, empty invocation xcresult, self-test raw/decoded records and corrected
+outcome manifest are archived in
+[buffered evidence](evidence/gate6-buffered-39079559751/README.md).
+Product capture is absent/incomplete; no negative conclusion is permitted. The
+original runner manifest counts an invocation as one execution and calls it a
+relevant failure; the reviewed manifest records zero actual UI test executions
+and classifies tooling failure. Gates 6–12 remain HELD. No further experiment queued.
+
 ## Next action and scope
 
 Correct the earliest demonstrated cause, invalidate affected evidence, then replay

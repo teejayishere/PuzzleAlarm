@@ -1,0 +1,103 @@
+{
+  "normal.bin": {
+    "pid": 2074,
+    "attempted": 3,
+    "committed": 3,
+    "overflow": 0,
+    "truncation": 0,
+    "attachment": true,
+    "errors": [],
+    "records": [
+      {
+        "pid": 2074,
+        "sequence": 1,
+        "monotonic_ns": 154342940000,
+        "wall_ns": 1792280100708239104,
+        "truncated": false,
+        "message": "process start uuid=BBF3FE2B-F8EF-482C-8FD7-868DD26A2792 pid=2074"
+      },
+      {
+        "pid": 2074,
+        "sequence": 2,
+        "monotonic_ns": 154343109958,
+        "wall_ns": 1792280100708408832,
+        "truncated": false,
+        "message": "probe attached window=selftest"
+      },
+      {
+        "pid": 2074,
+        "sequence": 3,
+        "monotonic_ns": 154343117291,
+        "wall_ns": 1792280100708416000,
+        "truncated": false,
+        "message": "unicode \u03c0 \u2713"
+      }
+    ]
+  },
+  "overflow.bin": {
+    "pid": 2074,
+    "attempted": 3,
+    "committed": 2,
+    "overflow": 1,
+    "truncation": 0,
+    "attachment": true,
+    "errors": [
+      "lost/truncated records"
+    ],
+    "records": [
+      {
+        "pid": 2074,
+        "sequence": 1,
+        "monotonic_ns": 154343210791,
+        "wall_ns": 1792280100708508928,
+        "truncated": false,
+        "message": "process start uuid=EAD6C43F-A6EB-4D17-93D6-C6DB502A4B0C pid=2074"
+      },
+      {
+        "pid": 2074,
+        "sequence": 2,
+        "monotonic_ns": 154343218791,
+        "wall_ns": 1792280100708517120,
+        "truncated": false,
+        "message": "probe attached window=selftest"
+      }
+    ]
+  },
+  "truncated.bin": {
+    "pid": 2074,
+    "attempted": 3,
+    "committed": 3,
+    "overflow": 0,
+    "truncation": 1,
+    "attachment": true,
+    "errors": [
+      "lost/truncated records"
+    ],
+    "records": [
+      {
+        "pid": 2074,
+        "sequence": 1,
+        "monotonic_ns": 154343277375,
+        "wall_ns": 1792280100708576000,
+        "truncated": false,
+        "message": "process start uuid=99BAE5B0-0EA6-4A61-9007-695CB2229E48 pid=2074"
+      },
+      {
+        "pid": 2074,
+        "sequence": 2,
+        "monotonic_ns": 154343285083,
+        "wall_ns": 1792280100708583936,
+        "truncated": false,
+        "message": "probe attached window=selftest"
+      },
+      {
+        "pid": 2074,
+        "sequence": 3,
+        "monotonic_ns": 154343314291,
+        "wall_ns": 1792280100708612864,
+        "truncated": true,
+        "message": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      }
+    ]
+  }
+}

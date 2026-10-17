@@ -170,3 +170,13 @@ decoded process timelines, integrity counters and outcome manifest. Missing
 attachment, overflow, truncation or incomplete capture prohibit negative conclusions.
 Only diagnostic tooling is published; no production remedy or gate acceptance.
 Gates 6–12 stay HELD, Stage 13 is not started; stop after reporting this experiment.
+
+
+## Buffered experiment outcome — STOP
+
+See [complete archived evidence](evidence/gate6-buffered-39079559751/README.md).
+Run 39079559751 at 4b0e1c126bec45723e30481cd6eab59a40fe2fa9 failed on
+unsupported xcodebuild `-test-iterations 1`, before UI test execution. Actual Swift
+writer/decoder validation passed. Zero switch and zero editor/audio declarations
+executed; one Simulator job, no retry. Capture absent; no product conclusion.
+The original invocation-created xcresult and full logs are preserved. Gates 6–12 HELD.
