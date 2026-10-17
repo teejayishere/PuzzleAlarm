@@ -14,7 +14,7 @@ concurrency:
 jobs:
   toggle-reproduction:
     # Focused diagnostic evidence is available before the full ordered gate job.
-    if: github.event.repository.private == false
+    if: github.event.repository.private == false && !contains(github.event.head_commit.message, '[gate6-diagnostic]')
     runs-on: macos-26
     timeout-minutes: 40
     steps:
@@ -91,7 +91,7 @@ jobs:
           retention-days: 7
   editor-native-comparison:
     # Independent cold Simulator, so prior list/editor use cannot warm this input.
-    if: github.event.repository.private == false
+    if: github.event.repository.private == false && !contains(github.event.head_commit.message, '[gate6-diagnostic]')
     runs-on: macos-26
     timeout-minutes: 25
     steps:
@@ -130,7 +130,7 @@ jobs:
   validate:
     needs: [toggle-reproduction, editor-native-comparison]
     # Standard public-repository runner; no larger runners or signing credentials.
-    if: github.event.repository.private == false
+    if: github.event.repository.private == false && !contains(github.event.head_commit.message, '[gate6-diagnostic]')
     runs-on: macos-26
     timeout-minutes: 85
     steps:

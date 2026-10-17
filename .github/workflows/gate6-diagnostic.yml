@@ -1,0 +1,73 @@
+name: Bounded Gate 6 input diagnosis
+on:
+  push:
+    branches: [codex/stage-12-routing]
+    paths: [Scripts/diagnose_gate6.py, .github/workflows/gate6-diagnostic.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  input-boundaries:
+    if: github.event.repository.private == false
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Instrument ephemeral checkout and boot Simulator
+        run: |
+          set -euo pipefail
+          python3 Scripts/diagnose_gate6.py
+          git diff > ci-instrumentation.patch
+          bash Scripts/install_xcodegen.sh
+          xcodegen generate --spec project.yml
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
+          xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
+          simulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"
+          echo "SIMULATOR_ID=$simulator_id" >> "$GITHUB_ENV"
+          xcrun simctl bootstatus "$simulator_id" -b
+          xcodebuild -version
+      - name: Fixed sample budget; retain every failure; no retry-to-green
+        run: |
+          set -uo pipefail
+          mkdir -p TestResults
+          result=0
+          for spec in toggle:3:testEnableDisableAndFailureRetryAreHonest editor:3:testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch; do
+            IFS=: read -r name count method <<< "$spec"
+            xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+              -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+              -derivedDataPath DerivedData -resultBundlePath "TestResults/$name.xcresult" \
+              -only-testing:"PuzzleAlarmUITests/AlarmManagementUITests/$method" \
+              -test-iterations "$count" -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+              2>&1 | tee "TestResults/$name.log"
+            code=$?
+            echo "$name exit=$code" | tee -a TestResults/outcomes.txt
+            if [ "$code" -ne 0 ]; then result=1; fi
+          done
+          exit "$result"
+      - name: Preserve all process journals and xcresult exports
+        if: always()
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          files = sorted((Path.home() / 'Library/Developer/CoreSimulator/Devices').glob('*/data/Containers/Data/Application/*/tmp/toggle-input-diagnostic.log'))
+          Path('TestResults').mkdir(exist_ok=True)
+          Path('TestResults/input-journals.log').write_text('\n'.join(str(p) + '\n' + p.read_text() for p in files))
+          print(Path('TestResults/input-journals.log').read_text())
+          PY
+          for name in toggle editor; do
+            if [ -d "TestResults/$name.xcresult" ]; then
+              xcrun xcresulttool get test-results tests --path "TestResults/$name.xcresult" > "TestResults/$name-tests.json"
+              xcrun xcresulttool export attachments --path "TestResults/$name.xcresult" --output-path "TestResults/$name-attachments"
+            fi
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gate6-input-boundaries
+          path: |
+            TestResults
+            ci-instrumentation.patch
+            PuzzleAlarm/App/Gate6InputProbe.swift
+          retention-days: 7

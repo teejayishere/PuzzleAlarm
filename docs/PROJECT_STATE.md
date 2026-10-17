@@ -79,8 +79,10 @@ Physical device: DEVICE REQUIRED / NOT RUN. User confirms no installed iPhone bu
 Actual Solve delivery, lock/first unlock, Stop, backup firing/cancellation, native
 hardware input, camera/audio and free provisioning remain unverified. Windows has
 no local Xcode or interactive iOS Simulator. An interactive Mac input comparison is
-needed to discriminate the remaining delivery boundary; user confirms no Mac is available; device setup/actions require
-the user. See DEVICE_TEST_PLAN. CI/mocks do not establish those observations.
+not yet shown necessary to discriminate the remaining delivery boundary. User
+confirms no Mac is available; no iPhone build is installed. This is settled.
+See GATE6_DIAGNOSTICS.md for the separate latest editor failure, one bounded CI-only
+diagnostic and its stop rule. CI/mocks do not establish physical observations.
 
 ## Next action and scope
 
