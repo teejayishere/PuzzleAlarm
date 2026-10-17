@@ -196,3 +196,15 @@ runs on the selected Mac toolchain before Simulator boot. One thirty-minute job,
 setup included; test execution stops before minute 25, no retries or repair-and-repeat.
 Exact run, capture and outcome will be archived separately after this sole job.
 Gate 6 FAILED; dependent 7–12 HELD; no remedy, promotion, downstream replay or Stage 13.
+
+## Corrected buffered experiment outcome — STOP
+
+6ba4de1dbadff8c1233fed0488a99d1fbe57c335 / run 39080779760 attempt 1
+stopped on selected-Xcode help check: the new -dry-run preflight option is not
+advertised. Zero Simulator boots, UI invocations and actual UI executions; one
+macOS job. No repair or repeat. Iterations=1 removed without increasing iterations;
+final invocation remains unvalidated. Correct TOOLING_FAILURE manifest, absent/
+incomplete product capture, no successful sample or captured product failure.
+See evidence/gate6-buffered-39080779760/README.md for original artifact/log and
+explicit absent xcresult/trace/integrity evidence. No further experiment queued.
+Historical failures remain unresolved; Gates 6–12 HELD. STOP.

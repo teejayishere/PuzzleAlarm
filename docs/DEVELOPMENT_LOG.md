@@ -1805,3 +1805,22 @@ Simulator boot; six decoder tests PASS. First xcodebuild invocation exits 64 bec
 One Simulator job, no rerun, stopped within nine minutes of initial handling.
 No product trace or negative conclusion. Full original artifact and corrected manifest
 archived under docs/evidence/gate6-buffered-39079559751. Gates 6–12 stay HELD. STOP.
+
+### Corrected bounded experiment — stopped at selected-toolchain preflight
+
+October 17, 2026: user authorized one correction after unsupported iterations=1.
+6ba4de1dbadff8c1233fed0488a99d1fbe57c335 / run 39080779760 attempt 1 FAILED.
+Removed the iterations option; no increased/repeated executions. Selected Xcode
+26.6 / 17F113 help does not advertise the agent-added -dry-run preflight option.
+The check stopped before Simulator boot, generated patch, Swift validation or UI.
+One macOS job allocated; zero boots, UI invocations and actual test executions.
+Manifest correctly says TOOLING_FAILURE and complete_capture=false. No product
+sample/failure, xcresult, raw/decoded product trace or integrity counters exists.
+No repair-and-repeat, rerun or further job. Ordinary CI three jobs all skipped.
+Full original artifact and Actions log archived at
+ docs/evidence/gate6-buffered-39080779760/README.md (ZIP digest independently verified).
+Windows tooling validation: seven accounting and six existing decoder tests PASS;
+these do not validate final Xcode invocation or product behavior. Buffered source,
+original readiness/selectors/single taps/assertions untouched. No production remedy.
+Historical switch/editor failures unresolved; Gates 6–12 HELD, last unheld 5;
+Stage 13 NOT STARTED. Evidence-only publication follows; STOP.

@@ -101,7 +101,7 @@ confirms no Mac is available; no iPhone build is installed. This is settled.
 See GATE6_DIAGNOSTICS.md for the separate latest editor failure, one bounded CI-only
 diagnostic and its stop rule. CI/mocks do not establish physical observations.
 
-## Latest authorized buffered experiment — STOP
+## Previous buffered experiment — STOP
 
 Buffered tooling source `4b0e1c126bec45723e30481cd6eab59a40fe2fa9` /
 [39079559751](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39079559751),
@@ -120,7 +120,30 @@ original runner manifest counts an invocation as one execution and calls it a
 relevant failure; the reviewed manifest records zero actual UI test executions
 and classifies tooling failure. Gates 6–12 remain HELD. No further experiment queued.
 
-## Next action and scope
+## Latest corrected bounded experiment — STOP
+
+User authorized one corrected experiment. Source
+`6ba4de1dbadff8c1233fed0488a99d1fbe57c335` /
+[39080779760](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39080779760),
+attempt 1, FAILED toolchain preflight before Simulator boot or UI execution.
+Unsupported `-test-iterations 1` was removed, with no increased iterations.
+The added preflight assumed `-dry-run`; selected Xcode 26.6 help does not advertise
+it, so the check fail-stopped. No repair-and-repeat. One macOS job allocated,
+zero Simulator boots, zero UI invocations, zero actual test executions.
+The corrected manifest classifies TOOLING_FAILURE and incomplete/absent capture;
+zero captured product failures and zero successful samples. Final invocation
+remains unvalidated; no tooling or product pass is claimed.
+
+Seven Windows accounting tests and six existing decoder tests PASS. Selected-Mac
+writer/decoder/accounting checks were not reached after preflight failure.
+Full original artifact, help/toolchain, accurate manifest and complete job log are
+[archived](evidence/gate6-buffered-39080779760/README.md). No xcresults, decoded
+product traces or integrity counters were generated; missing counters do not mean
+zero loss. Gates 6–12 stay HELD; both historical failures remain unresolved.
+STOP: no further experiment, production remedy, main promotion, downstream replay,
+Stage 13 or redesign is queued. A green batch alone cannot clear historical failures.
+
+## Future scope after this stopped experiment
 
 Correct the earliest demonstrated cause, invalidate affected evidence, then replay
 Gate 6 and dependent Gates 7–12 in order. Publish only with complete exact-final-HEAD

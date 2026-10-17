@@ -2,6 +2,14 @@
 
 ## Current acceptance — Gates 6–12 held
 
+Latest bounded diagnostic: 6ba4de1dbadff8c1233fed0488a99d1fbe57c335 /
+[39080779760](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39080779760)
+attempt 1 FAILS selected-toolchain help preflight (`-dry-run` not advertised).
+One macOS job; no Simulator boot, UI invocation or actual UI execution. Correct
+manifest: TOOLING_FAILURE, capture incomplete/absent, no product failure or success
+sample. Seven local accounting and six decoder tests pass; Mac writer validation
+not reached. No rerun. [Full evidence](evidence/gate6-buffered-39080779760/README.md).
+
 The requested baseline main 10be76a / run 38923363999 and preserved demo 3a872db /
 38972785748 were verified complete SUCCESS. Stage 12 source cc76307 / 39053886103
 also passed completely (234 distinct tests), but main bd069f2 / 39058576894 FAILED

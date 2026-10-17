@@ -1,0 +1,11 @@
+{
+  "sha": "6ba4de1dbadff8c1233fed0488a99d1fbe57c335",
+  "run_id": "39080779760",
+  "run_attempt": "1",
+  "outcome": "TOOLING_FAILURE",
+  "actual_test_executions": 0,
+  "xcodebuild_ui_invocations": 0,
+  "complete_capture": false,
+  "negative_conclusion_allowed": false,
+  "gates": "6\u201312 HELD"
+}
