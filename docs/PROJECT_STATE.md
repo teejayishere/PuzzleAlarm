@@ -1,5 +1,27 @@
 # Project state
 
+## Gate 6 reopened by final-main replay — October 17, 2026
+
+Main bd069f29c6d045d5bc27fc56212edcbde2090855 / run 39058576894 FAILED:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/39058576894.
+Gate 6 FAILED; dependent Gates 7–12 INVALIDATED pending correction and ordered replay.
+Current stage: 12, recursing to Gate 6. Last unheld prerequisite gate: 5.
+Independent editor and retained-binding/command-completion checks pass. Cold list
+9/10 passes; iteration 5 first enable remains 0/Off, failing exact switch transition.
+PID 22681 journal has fixture launch only, no native onChange, binding or owner entry.
+Hierarchy proves visible enabled inner Switch at (309,454,63,28), value 0; ordinary
+one-tap synthesis does not establish actual setter or valueChanged delivery.
+Artifact 12110817237 retains failed toggle/owner evidence; editor 12110562808.
+Broad validation skipped correctly. Prior complete cc76307 / 39053886103 is historical
+source evidence, not acceptance for this failed main or proof of a permanent fix.
+
+Investigate the earliest input dispatch boundary. The native Toggle currently writes
+synchronous State but submits only from render-time onChange. Its journal cannot
+distinguish a missing binding setter from a coalesced callback. Preserve the native
+switch and ordinary single input; no gesture variants, retries, skipped/relaxed
+assertions or unchanged reruns until green. Correction IMPLEMENTED, validation PENDING: production-used binding setter now claims pending and dispatches synchronously; onChange observes idle owner state only. A focused native setter contract precedes unchanged ten one-tap repetitions, then full ordered replay. The failed interaction cause remains an inference until discriminating evidence supports it. Stage 13 NOT STARTED. Physical device NOT RUN.
+
+## Historical Stage 12 source acceptance (held by failure above)
 ## Stage 12 — Gate 12 PASS at verified source — October 17, 2026
 
 Current stage: 12. Current / last passing gate: 12 at the exact source below.

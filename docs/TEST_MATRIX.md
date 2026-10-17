@@ -1,5 +1,25 @@
 # Test matrix
 
+## Gate 6 FAILED on final main — Gates 7–12 INVALIDATED
+
+bd069f29c6d045d5bc27fc56212edcbde2090855 / run 39058576894: cold list 9/10;
+iteration 5 first enable fails exact 0-to-1 transition, remains Off. PID 22681 has
+launch but no onChange/binding/owner journal entries. Native retained binding and
+command completion plus independent cold editor PASS; broad validation SKIPPED.
+Artifacts toggle 12110817237 and editor 12110562808 retain evidence seven days.
+No current Gate 12 acceptance from the source pass below may override this failure.
+
+Correction under validation: synchronous native input binding setter owns immediate
+pending/dispatch, then existing owner completion reconciles; onChange only observes
+idle external owner state. Same native Toggle and unchanged ten ordinary single-tap
+UI flow/role/exact transition/status/persistence assertions. Added native deterministic
+setter contract before repetitions; all invalidated gates require ordered complete
+replay. No claim that the missing onChange marker proves absent setter delivery or
+that historical framework input causes are solved. Source/automated/Xcode/Simulator
+acceptance PENDING at corrected source; device NOT RUN. Stage 13 NOT STARTED.
+
+## Historical Stage 12 acceptance (held by final-main failure above)
+
 ## Stage 12 — accepted source; final publication requires exact-HEAD replay
 
 Source cc76307e7890ab29ee73471291485a7c3e59f8f0 / run 39053886103, October 17, 2026:

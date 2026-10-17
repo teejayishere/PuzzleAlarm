@@ -43,6 +43,7 @@ jobs:
             -derivedDataPath DerivedData -resultBundlePath TestResults/EnabledBinding.xcresult \
             -only-testing:PuzzleAlarmTests/AlarmStoreTests/testAlarmListBindingTracksOwnerStateAndRemovalWithoutRebuilding \
             -only-testing:PuzzleAlarmTests/AlarmStoreTests/testAlarmListCommandCompletionObservesOwnerAfterDenialFailureAndSuccess \
+            -only-testing:PuzzleAlarmTests/AlarmStoreTests/testNativeInputSetterClaimsPendingSynchronouslyAndReconcilesEveryOutcome \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/enabled-binding-tests.log"
       - name: Reproduce Gate 6 enable failure and retry

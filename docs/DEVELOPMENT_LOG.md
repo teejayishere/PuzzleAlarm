@@ -1,5 +1,45 @@
 # Development log
 
+## Final-main Gate 6 failure — direct setter dispatch correction under validation
+
+bd069f29c6d045d5bc27fc56212edcbde2090855 / run 39058576894 FAILED. Independent
+cold editor and retained-binding/owner-completion native checks PASS; ten cold list
+repetitions 9/10, iteration 5 first enable remains 0/Off at line 181. PID 22681
+journals launch only, with no input onChange, binding request or owner call. Retained
+hierarchy shows enabled/hittable inner Switch (309,454,63,28), value 0; XCTest ordinary
+single tap synthesis is not proof that its native binding setter ran. Artifacts:
+toggle 12110817237, editor 12110562808. Broad job correctly SKIPPED. Reopen Gate 6
+and INVALIDATE dependent Gates 7–12 acceptance. Prior cc76307 complete success is
+revision-specific history; it cannot substitute for failed final-main replay.
+
+Read the relevant prior input forensics: duration, drag, label, boot-only remedies
+were already disproved; zero UISwitch-target attachments did not yield native event
+evidence; passive window touch receipt never proved valueChanged. Preserve ordinary
+one-tap tests, native Switch role, exact 0/1/status/persistence results and the user's
+native switch preference. No speculative gesture variant or unchanged retry-to-green.
+
+Earliest defensible correction: submit commands from the synchronous native binding
+setter, not an onChange observation of presentation during a later render. The old
+journal was inside onChange, so its absence did not distinguish no setter delivery
+from a coalesced callback. This remains an inference about the failed interaction,
+not proof of its framework cause. The new production-used input binding sets local
+input and claims pending synchronously, dispatches the existing owner command once,
+blocks duplicate pending input and reconciles through explicit owner completion.
+Idle owner observation remains; no input submission from onChange. Native Toggle,
+configuration, health, persistence, lifecycle and scheduling authority are unchanged.
+DEBUG journal now records the actual binding setter boundary before its guard.
+
+A deterministic native contract test does not render any SwiftUI view: first setter
+must synchronously set input/pending, a duplicate pending setter cannot replace it,
+and denied/scheduling-failure/disable/success/unchanged inputs retain exact owner and
+completion semantics. Existing retained-binding and owner-completion assertions stay.
+Run that test before the unchanged ten UI repetitions, then all invalidated gates
+in order and full native regression. Acceptance PENDING corrected-source evidence.
+If the failure recurs, the setter trace provides discriminating evidence for the next
+hypothesis; do not attribute all historical misses to onChange or an OS defect.
+Reference: https://developer.apple.com/documentation/swiftui/view/onchange(of:initial:_:)
+Physical device still NOT RUN; Stage 13 NOT STARTED.
+
 ## Stage 12 — complete source acceptance and final publication
 
 cc76307e7890ab29ee73471291485a7c3e59f8f0 / run 39053886103 completes SUCCESS,

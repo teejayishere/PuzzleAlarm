@@ -1,4 +1,5 @@
 import XCTest
+import SwiftUI
 import PuzzleAlarmCore
 @testable import PuzzleAlarm
 
@@ -75,6 +76,50 @@ final class AlarmStoreTests: XCTestCase {
         await command(true)
         XCTAssertEqual(store.status(try XCTUnwrap(store.definition(value.id))), "On")
         XCTAssertEqual(completions, 4)
+    }
+
+    func testNativeInputSetterClaimsPendingSynchronouslyAndReconcilesEveryOutcome() async throws {
+        let (store, effect) = try make()
+        _ = await store.save(try draft(enabled: false))
+        let original = try XCTUnwrap(store.alarms.first)
+        var presentation = false, submitting = false
+        let binding = AlarmEnabledBinding.input(for: original, store: store,
+            presentation: Binding(get: { presentation }, set: { presentation = $0 }),
+            submitting: Binding(get: { submitting }, set: { submitting = $0 }))
+        func finish() async throws {
+            let deadline = ContinuousClock.now.advanced(by: .seconds(10))
+            while submitting && ContinuousClock.now < deadline { try await Task.sleep(for: .milliseconds(10)) }
+            XCTAssertFalse(submitting, "Native input must release pending on owner completion")
+            XCTAssertEqual(presentation, store.definition(original.id)?.enabled)
+        }
+        effect.configure { $0.authorization = .denied }
+        binding.wrappedValue = true
+        // No SwiftUI render/onChange is driven by this test. Submission belongs
+        // to the setter itself, before a pending input can be coalesced or replaced.
+        XCTAssertTrue(presentation && submitting)
+        binding.wrappedValue = false
+        XCTAssertTrue(presentation && submitting, "Duplicate pending input must not replace the first request")
+        try await finish()
+        XCTAssertFalse(presentation)
+        XCTAssertNotNil(store.errorMessage)
+        XCTAssertTrue(effect.values.schedules.isEmpty)
+        effect.configure { $0.authorization = .authorized; $0.failSchedules = 1 }
+        binding.wrappedValue = true
+        XCTAssertTrue(presentation && submitting)
+        try await finish()
+        XCTAssertTrue(presentation)
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(original.id))), "Needs attention")
+        binding.wrappedValue = false
+        XCTAssertFalse(presentation); XCTAssertTrue(submitting)
+        try await finish()
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(original.id))), "Off")
+        binding.wrappedValue = true
+        try await finish()
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(original.id))), "On")
+        let count = effect.values.schedules.count
+        binding.wrappedValue = true
+        XCTAssertFalse(submitting, "An unchanged owner value must not issue another command")
+        XCTAssertEqual(effect.values.schedules.count, count)
     }
 
     func testMissingAndCommittedEmptyStartupDoNotScheduleOrPrompt() async throws {
