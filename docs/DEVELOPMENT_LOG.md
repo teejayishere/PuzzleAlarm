@@ -1,5 +1,38 @@
 # Development log
 
+## Setter trace disproves onChange as sufficient — public native control adapter
+
+d973dbf5dc31460cfd583d35d29147408b3d828d / run 39060200894 FAILED. Three focused
+native contracts PASS, independent editor PASS; first of ten list iterations fails
+0-to-1, remaining nine PASS. PID 8495 has launch only and no actual native binding
+setter. This is discriminating new evidence: moving command dispatch out of onChange
+is not sufficient to restore this input. No binding guard/owner rejection or scheduler
+fault accounts for it. Keep the useful direct event/pending contract but stop that
+causal theory. Broad validation correctly skipped. Artifacts toggle 12111655975 and
+editor 12111805296 retain evidence seven days. Gate 6 and dependent 7–12 remain held.
+
+Correct the earlier platform input adapter: host public UIKit UISwitch using
+UIViewRepresentable and explicit valueChanged target-action. Preserve the user's
+native switch preference, native Switch accessibility role, visible label and all
+unchanged ordinary one-tap 0/1/status/owner/persistence tests. No gesture variation,
+private API, fake activation, manual switch-value change in UI tests, retry-until-green
+or timeout relaxation. This is a functional adapter correction, not the deferred UX pass.
+
+The coordinator forwards only actual control values to the same synchronous binding;
+store/coordinator retain all configuration, health, persistence and OS effect authority.
+UIView updates rebind to the latest binding and programmatically reconcile without
+emitting valueChanged. Disabled late events are ignored; dismantle disconnects the
+target. Intrinsic native size and normal SwiftUI label keep standard system rendering.
+A native test uses the real control's public sendActions to verify target wiring,
+rebinding, programmatic-update silence, disabled events and teardown; it is control-
+contract evidence, not proof of gesture or device behavior. Unchanged Simulator UI
+taps must independently pass before any gate acceptance. Add this focused test beside
+three input/owner contracts before ten repetitions, then full ordered replay.
+
+No new AlarmKit API/signature, Core framework coupling, schema, lifecycle owner or
+challenge behavior. Physical input and an OS defect remain unproven. Compile/native/
+Simulator validation PENDING at changed source; no acceptance yet. Stage 13 NOT STARTED.
+
 ## Final-main Gate 6 failure — direct setter dispatch correction under validation
 
 bd069f29c6d045d5bc27fc56212edcbde2090855 / run 39058576894 FAILED. Independent

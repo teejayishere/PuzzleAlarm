@@ -1,5 +1,20 @@
 # Test matrix
 
+## Gate 6 control adapter correction — PENDING, dependents held
+
+d973dbf / 39060200894 fails first of ten list inputs; three native contracts and
+independent editor pass. Failed PID 8495 records no actual binding setter. The
+onChange-only explanation is insufficient. Artifact toggle 12111655975 / editor
+12111805296. Gate 6 and dependent 7–12 acceptance remain invalidated.
+
+Public UIKit UISwitch target-action now forwards to the existing synchronous input
+binding and owner. Focused real-control test checks target wiring/rebinding, silent
+programmatic reconciliation, disabled events and teardown. All ordinary one-tap
+Simulator UI/value/status/persistence assertions remain unchanged and required.
+No private API, button substitution, skipped tests or claim of hardware/OS causality.
+Source IMPLEMENTED; Xcode/native/Simulator PENDING changed exact-source CI.
+Device NOT RUN. No redesign or Stage 13 work.
+
 ## Gate 6 FAILED on final main — Gates 7–12 INVALIDATED
 
 bd069f29c6d045d5bc27fc56212edcbde2090855 / run 39058576894: cold list 9/10;

@@ -44,6 +44,7 @@ jobs:
             -only-testing:PuzzleAlarmTests/AlarmStoreTests/testAlarmListBindingTracksOwnerStateAndRemovalWithoutRebuilding \
             -only-testing:PuzzleAlarmTests/AlarmStoreTests/testAlarmListCommandCompletionObservesOwnerAfterDenialFailureAndSuccess \
             -only-testing:PuzzleAlarmTests/AlarmStoreTests/testNativeInputSetterClaimsPendingSynchronouslyAndReconcilesEveryOutcome \
+            -only-testing:PuzzleAlarmTests/NativeAlarmSwitchTests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/enabled-binding-tests.log"
       - name: Reproduce Gate 6 enable failure and retry

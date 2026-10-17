@@ -1,5 +1,25 @@
 # Project state
 
+## Gate 6 — native control boundary correction awaiting validation
+
+Current corrected source replaces the list's SwiftUI Toggle rendering adapter with
+public UIKit UISwitch target-action through UIViewRepresentable. The native Switch
+role, label, one ordinary UI input and all exact transition/status/persistence tests
+remain. No button substitute or UX redesign. The existing synchronous input binding
+and store-owned completion remain; update does not synthesize user actions, rebinding
+uses current owner, disabled callbacks are ignored and dismantle removes the target.
+
+New evidence: d973dbf / run 39060200894 FAILED first of ten list inputs. PID 8495
+has launch only, no actual binding setter. Three focused native contracts and cold
+editor PASS; remaining nine list repetitions PASS; broad validation SKIPPED. This
+disproves onChange coalescing as a sufficient correction. It locates the observed
+failure before the SwiftUI native binding setter, not inside lifecycle/scheduling.
+Artifacts: toggle 12111655975, editor 12111805296 (seven days).
+The new UIKit adapter has native control-event/rebinding/disable/teardown checks
+before the same ten ordinary one-tap UI repetitions. Validation PENDING. Gate 6
+and dependent Gates 7–12 remain INVALIDATED; no earlier source pass overrides this.
+Actual human/device input and an OS framework cause remain unverified. Stage 13 NOT STARTED.
+
 ## Gate 6 reopened by final-main replay — October 17, 2026
 
 Main bd069f29c6d045d5bc27fc56212edcbde2090855 / run 39058576894 FAILED:

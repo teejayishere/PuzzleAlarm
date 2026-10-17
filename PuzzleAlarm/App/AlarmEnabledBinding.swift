@@ -36,7 +36,7 @@ enum AlarmEnabledBinding {
     }
 }
 
-// A native Toggle edits synchronous presentation state, like the alarm editor.
+// A native switch edits synchronous presentation state, like the alarm editor.
 // The store remains the only authority for durable configuration and OS effects.
 struct AlarmEnabledToggle: View {
     let alarm: AlarmDefinition
@@ -52,10 +52,13 @@ struct AlarmEnabledToggle: View {
     private var owner: Binding<Bool> { AlarmEnabledBinding.make(for: alarm, store: store) }
 
     var body: some View {
-        Toggle("Alarm enabled", isOn: AlarmEnabledBinding.input(for: alarm, store: store,
-            presentation: $input, submitting: $submitting))
-            .accessibilityIdentifier("alarm.enabled." + alarm.id.uuidString)
-            .disabled(submitting || store.isBusy)
+        HStack {
+            Text("Alarm enabled").accessibilityHidden(true)
+            Spacer()
+            NativeAlarmSwitch(binding: AlarmEnabledBinding.input(for: alarm, store: store,
+                presentation: $input, submitting: $submitting), enabled: !submitting && !store.isBusy,
+                identifier: "alarm.enabled." + alarm.id.uuidString)
+        }
             .onChange(of: owner.wrappedValue) { _, value in
                 if !submitting { input = value }
             }
