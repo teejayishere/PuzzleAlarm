@@ -1,5 +1,24 @@
 # Physical iPhone acceptance plan
 
+## Stage 12 routing checklist (DEVICE REQUIRED / NOT RUN)
+
+- Record exact revision, iPhone/iOS and free provisioning method. Trigger the real
+  AlarmKit Solve action from primary and backup alerts, cold and warm, unlocked and
+  locked. Confirm foreground opens the due saved challenge without an alarm-list detour.
+- Use system Stop without solving; reopen the app and verify the same durable due
+  obligation, saved progress and independent backups. Stop never grants success.
+- Repeat Solve and foreground events, including a stale completed occurrence action;
+  no duplicate navigation, reset progress, early completion or cancelled other IDs.
+- Interrupt cleanup by terminating; reopen and verify only owned remaining IDs are
+  reconciled. Completed sessions stay excluded; no-session launch opens normal UI.
+- Revoke alarm access while a session is active. Confirm no implicit permission prompt
+  or healthy scheduling claim, preserved obligation and truthful retry/error feedback.
+
+Direct App Intent perform(), SDK compilation and injected Simulator effects do not
+verify OS intent delivery, lock-screen launch, AlarmKit firing/cancellation or audibility.
+No physical observation has been supplied. Any failure reopens the earliest affected
+gate and invalidates dependent acceptance until corrected and replayed in order.
+
 ## Stage 10 QR checklist (DEVICE REQUIRED / NOT RUN)
 
 - Save a QR alarm, share/save/print its image and scan both screen and paper under

@@ -2,6 +2,16 @@
 
 ## Stage 12 — routing implementation — October 17, 2026
 
+First source 407fca5 / run 39053360539 FAILED native test compile in both comparison
+jobs: WakeUpRoutingTests malformed-intent local var is never mutated because the
+App Intents @Parameter setter is nonmutating. Earliest cause: Stage 12 test declaration,
+not the existing Gate 6 control/lifecycle. Change var to let without assertion changes;
+no warning-policy relaxation. Test execution blocked and broad job skipped; no CI pass.
+Rerun the full ordered workflow on the corrected source. Gate 12 acceptance invalid;
+earlier replay held pending execution, no earlier production gate invalidation identified.
+Preserved demo commit 3a872db / run 38972785748 also verified complete SUCCESS,
+all three jobs/every step; reconcile its stale pending statements.
+
 Read PROJECT_STATE first; inspected clean git status/diff, relevant Stage 12 rules,
 architecture, lifecycle recovery, app owner, intent and challenge/UI tests. GitHub
 main is exactly expected 10be76a, run 38923363999 complete SUCCESS attempt 1, all

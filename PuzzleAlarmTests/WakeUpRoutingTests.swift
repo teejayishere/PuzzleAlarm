@@ -90,7 +90,7 @@ final class WakeUpRoutingTests: XCTestCase {
         let store = store(repository, effects), environment = AppEnvironment(store: nil)
         await environment.foreground()
         let live = AppEnvironment(store: store)
-        var invalid = OpenOccurrenceIntent()
+        let invalid = OpenOccurrenceIntent()
         invalid.occurrenceID = "invalid"
         await invalid.route(to: live)
         XCTAssertFalse(live.ready)

@@ -2,7 +2,7 @@
 
 ## Stage 12 — implementation under validation — October 17, 2026
 
-Current stage: 12. Gate 12: PENDING exact-source CI. Last passing gate: 11.
+Current stage: 12. Gate 12: FAILED compile at 407fca5; correction awaiting CI. Last passing gate: 11.
 Invalidated gates: none identified. Stage 13 NOT STARTED; stop after Gate 12.
 Verified main: 10be76a4b071c7c32b7f8e1938a0883f78d9e66e.
 https://github.com/teejayishere/PuzzleAlarm/actions/runs/38923363999 — complete
@@ -21,7 +21,16 @@ An already presented sequence retains completion/cleanup feedback; relaunch excl
 completed sessions. Normal back navigation remains available; foreground reasserts
 the due obligation. Persistence schema and AlarmKit configuration are unchanged.
 
-Automated: PENDING. Xcode: PENDING. Simulator: PENDING. Windows has no Swift/Xcode;
+407fca5 / run 39053360539 fails native test compilation: the App Intents parameter
+wrapper setter is nonmutating, so the malformed-intent test binding must be let,
+not var (warnings are errors). Correct that test declaration; keep every assertion.
+Earlier prerequisite execution is BLOCKED at this revision; broad validation skipped.
+No earlier production defect identified; prior Gate 11 evidence remains revision-specific.
+Also verified preserved screenshot commit 3a872db / run 38972785748 complete SUCCESS,
+all jobs/steps; its previously pending documentation was stale.
+
+Automated: NOT RUN at failed compile. Xcode: FAILED, correction pending. Simulator:
+NOT RUN at failed compile. Windows has no Swift/Xcode;
 local evidence is source review and git whitespace checks only. Focused/adversarial,
 ordered prerequisite regressions, Debug/Release and full native CI are required.
 Physical device: DEVICE REQUIRED / NOT RUN. OS Solve delivery, cold/warm foreground,

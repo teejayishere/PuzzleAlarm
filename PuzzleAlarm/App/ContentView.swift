@@ -87,7 +87,7 @@ struct ContentView: View {
             }
             .navigationTitle("PuzzleAlarm")
             .navigationDestination(for: UUID.self) { id in
-                WakeUpDestination(store: store, sessionID: id)
+                WakeUpDestination(store: store, sessionID: id).id(id)
             }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {

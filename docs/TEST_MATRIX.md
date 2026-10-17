@@ -4,7 +4,10 @@
 
 Baseline main 10be76a / run 38923363999 verified complete SUCCESS, three jobs and
 all steps, October 17, 2026. This resolves the historical Stage 11 final-main hold.
-Source IMPLEMENTED. Automated / Xcode / Simulator PENDING. Device REQUIRED / NOT RUN.
+Source IMPLEMENTED. 407fca5 / run 39053360539 FAILED native test compilation on a
+Stage 12 var/let warning-as-error; assertions unchanged in correction. Automated
+and Simulator NOT RUN there, prerequisite replay BLOCKED, broad job skipped.
+Corrected-source Automated / Xcode / Simulator PENDING. Device REQUIRED / NOT RUN.
 Gate 12 must verify due routing, normal no-session UI, completed exclusion,
 interrupted cancellation recovery, duplicate/stale idempotence and real intent compile.
 Added pure deterministic selector tests, native real-intent handoff/owner/recovery/

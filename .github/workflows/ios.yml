@@ -352,7 +352,7 @@ jobs:
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")
           PY
       - name: Review Xcode diagnostics
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log" "$RUNNER_TEMP/routing-tests.log"
       - name: Export Windows-friendly visual demo
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}

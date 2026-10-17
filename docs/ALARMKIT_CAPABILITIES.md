@@ -1,5 +1,10 @@
 # Stage 3 — installed SDK capability evidence
 
+Stage 12 current routing supersedes the original no-op intent described historically
+below. Real perform() hands off to AppEnvironment.live and the existing reconciliation
+owner. SDK declarations and Debug/Release compile are checked in CI; physical system
+Solve delivery/foreground/first-unlock behavior remains DEVICE REQUIRED / NOT RUN.
+
 Historical SDK spike: Stage 11 supersedes deferred-audio notes below. See
 [AUDIO_CAPABILITIES.md](AUDIO_CAPABILITIES.md) for validated bundled resources,
 name/default fallback and foreground preview. Source 2886931 / run 38879910505
@@ -38,7 +43,7 @@ Compilation status for all API rows: XCODE COMPILE PASS in [run 37095598366](htt
 | Metadata | AlarmMetadata: Decodable, Encodable, Hashable, Sendable | OccurrenceMetadata: session UUID, parent UUID, ordinal; primary role derives from ordinal 0 | OS acceptance required |
 | Presentation | AlarmPresentation(alert:countdown:paused:); AlarmAttributes(presentation:metadata:tintColor:) | Alert only, PuzzleAlarm title, Solve button, custom behavior; no countdown/paused values | Lock-screen rendering required |
 | Secondary intent | AlarmConfiguration secondaryIntent: (any LiveActivityIntent)? | OpenOccurrenceIntent, one String parameter containing the session UUID | Invocation and opening required after first unlock |
-| Open behavior | AppIntent.supportedModes: IntentModes; IntentModes.foreground | Explicit foreground request; perform returns .result(), no effects | OS launch behavior required |
+| Open behavior | AppIntent.supportedModes: IntentModes; IntentModes.foreground | Explicit foreground request; perform awaits shared app owner reconciliation/routing, then returns .result(); no intent-owned effects or success | OS launch behavior required |
 | Default sound | ActivityKit.AlertConfiguration.AlertSound.default | Default configuration | Audible firing required |
 | Named sound | AlertConfiguration.AlertSound.named(_ name: String) | Named configuration compile path only; no sound resources | Actual custom playback required |
 | Schedule | AlarmManager.schedule(id: Alarm.ID, configuration: AlarmConfiguration<Metadata>) async throws -> Alarm | Externally supplied PlannedAlarm.id; return mapped to RegisteredAlarm | OS scheduling/limits required |

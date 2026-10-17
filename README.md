@@ -4,7 +4,7 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 11 adds generated bundled sounds, foreground preview cleanup and safe sound fallback. See PROJECT_STATE for current gate and exact CI evidence. Physical camera and alarm/audio behavior remain unverified.**
+**Stage 12 adds App Intent and foreground wake-up routing. See PROJECT_STATE for current gate and exact CI evidence. Physical launch, camera and alarm/audio behavior remain unverified.**
 
 ## Evidence and scope
 
@@ -31,7 +31,9 @@ The app includes list/create/edit/enable/disable/delete, ordered challenge setti
 authorization/status/retry and durable reload. Mutations use one lifecycle owner.
 Active Math, Memory and QR sessions can be opened, solved and restored after relaunch.
 QR settings display/export a generated image; capture uses public AVFoundation with safe
-permission/interruption handling. Bundled sounds include preview and validated default fallback. Final intent routing belongs to a later gate. No real alarm, device installation or physical camera/audio behavior
+permission/interruption handling. Bundled sounds include preview and validated default fallback.
+The real App Intent and foreground callbacks reconcile through one shared owner and
+open the deterministic due session's saved current challenge. No real alarm, device installation or physical camera/audio behavior
 has been verified.
 
 ## Free CI-first development

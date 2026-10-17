@@ -1,5 +1,40 @@
 # Architecture
 
+## Stage 12 routing and foreground reconciliation
+
+AppEnvironment.live is the single process-local owner shared by the App and
+OpenOccurrenceIntent. Its shared startup Task prevents cold concurrent entry from
+exposing the list before preparation/reconciliation. The real SDK LiveActivityIntent
+retains supportedModes.foreground and its occurrence UUID parameter; perform awaits
+the shared environment. There is no intent-owned repository, coordinator or OS effect.
+Public runtime references are recorded in DEVELOPMENT_LOG; real OS launch is device-only.
+
+AlarmStore retains command serialization and bounded coalesced refresh. A route
+revision is published after final authoritative state acceptance, including a refresh
+queued during another command. Intent identity is an untrusted hint: malformed IDs
+are ignored; every valid hint reconciles existing state. It cannot activate a future,
+missing or completed occurrence. Existing lifecycle recovery owns due activation and
+interrupted cancellation; persistence schema, snapshots and ownership CAS are unchanged.
+
+WakeUpRouting selects active, due, unfinished sessions by ascending scheduled date,
+then UUID string, independent of storage order or the requested intent ID. Unexpected
+multiple active sessions are preserved and presented in that deterministic order;
+no session is discarded or implicitly completed. Denied authorization loads durable
+active obligations without prompting or claiming OS confirmation. Refresh errors
+retain known due obligations and expose retry feedback without fabricating success.
+
+ContentView seeds its navigation path from reconciled state. Foreground/intent
+refresh replaces the path only when necessary and dismisses an open editor before
+routing. WakeUpDestination follows the saved current challenge, so QR-to-Math routes
+directly while each existing engine verifies ordered success. Back/recreation remains
+available; the next foreground reasserts the due obligation. A presented solved
+sequence displays completion or pending cleanup; completed cold launch uses normal UI.
+Math checkpoints, Memory concealment and QR attempt invalidation stay in their
+existing owners/views. No challenge redesign, new schema or Stage 13 work is included.
+
+The sections below retain earlier stage architecture and evidence. Their deferred
+routing statements describe those historical stages and are superseded here.
+
 ## Stage 10 QR design
 
 QREngine compares exact UTF-8 bytes with QRConfiguration.expectedPayload from the
