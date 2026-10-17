@@ -1,5 +1,21 @@
 # Test matrix
 
+## Stage 12 — pending exact-source validation
+
+Baseline main 10be76a / run 38923363999 verified complete SUCCESS, three jobs and
+all steps, October 17, 2026. This resolves the historical Stage 11 final-main hold.
+Source IMPLEMENTED. Automated / Xcode / Simulator PENDING. Device REQUIRED / NOT RUN.
+Gate 12 must verify due routing, normal no-session UI, completed exclusion,
+interrupted cancellation recovery, duplicate/stale idempotence and real intent compile.
+Added pure deterministic selector tests, native real-intent handoff/owner/recovery/
+concurrency/error tests and foreground/no-session UI tests. Existing Math/Memory/QR
+flows now assert automatic presentation; QR-to-Math asserts direct ordered transition.
+Back/recreation, exact progress, relaunch, permission, completion, sharing and earlier
+management assertions remain. Full ordered CI and exact-final-main replay are required.
+No arbitrary coverage target. Real OS launch and physical alarm effects are excluded
+from automated claims. Historical evidence below applies only to its recorded SHA.
+
+
 ## Stage 11 — accepted source and meaningful coverage audit
 
 28869311cc2a4474f412d4eab150205ef0afb799 /

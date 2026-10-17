@@ -2432,6 +2432,12 @@ Actual alarm playback remains DEVICE REQUIRED.
 
 ## STAGE 12 — App Intent / Wake-Up Routing
 
+UX roadmap: Stages 12–13 finish functional routing and orchestration. After Gate 13,
+schedule a dedicated UX pass: simplify alarm creation and alarm-list hierarchy;
+improve challenge navigation and large focused Math/Memory/QR layouts; clarify
+countdown, progress and feedback. Defer cosmetic polish. This redesign is outside
+Stage 12; stop after Gate 12 before beginning Stage 13.
+
 Implement real routing from alarm interaction into active session.
 
 Build foreground reconciliation.

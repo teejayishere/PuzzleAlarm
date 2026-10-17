@@ -4,10 +4,16 @@ import PuzzleAlarmCore
 struct ContentView: View {
     @Bindable var store: AlarmStore
     @State private var draft: AlarmEditorDraft?
+    @State private var path: [UUID]
     @Environment(\.openURL) private var openURL
 
+    init(store: AlarmStore) {
+        self.store = store
+        _path = State(initialValue: store.wakeUpSessionID.map { [$0] } ?? [])
+    }
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List {
                 if let state = store.state {
                     ForEach(state.sessions.filter { record in
@@ -15,17 +21,11 @@ struct ContentView: View {
                     }, id: \.session.id) { record in
                         Section("Wake-up challenge") {
                             if record.session.currentChallenge?.kind == .math {
-                                NavigationLink("Continue Math") {
-                                    MathChallengeView(store: store, sessionID: record.session.id)
-                                }.accessibilityIdentifier("math.open")
+                                NavigationLink("Continue Math", value: record.session.id).accessibilityIdentifier("math.open")
                             } else if record.session.currentChallenge?.kind == .memory {
-                                NavigationLink("Continue Memory") {
-                                    MemoryChallengeView(store: store, sessionID: record.session.id)
-                                }.accessibilityIdentifier("memory.open")
+                                NavigationLink("Continue Memory", value: record.session.id).accessibilityIdentifier("memory.open")
                             } else {
-                                NavigationLink("Continue QR") {
-                                    QRChallengeView(store: store, sessionID: record.session.id)
-                                }.accessibilityIdentifier("qr.open")
+                                NavigationLink("Continue QR", value: record.session.id).accessibilityIdentifier("qr.open")
                             }
                         }
                     }
@@ -86,6 +86,9 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("PuzzleAlarm")
+            .navigationDestination(for: UUID.self) { id in
+                WakeUpDestination(store: store, sessionID: id)
+            }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("Add Alarm", systemImage: "plus") {
@@ -99,6 +102,12 @@ struct ContentView: View {
             .disabled(store.isBusy)
             .refreshable { await store.refresh() }
             .sheet(item: $draft) { value in AlarmEditorView(store: store, initial: value) }
+            .onChange(of: store.routeRevision) { _, _ in
+                if let id = store.wakeUpSessionID, path != [id] {
+                    draft = nil
+                    path = [id]
+                }
+            }
         }
     }
 }

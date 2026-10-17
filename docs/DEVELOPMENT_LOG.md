@@ -1,5 +1,39 @@
 # Development log
 
+## Stage 12 — routing implementation — October 17, 2026
+
+Read PROJECT_STATE first; inspected clean git status/diff, relevant Stage 12 rules,
+architecture, lifecycle recovery, app owner, intent and challenge/UI tests. GitHub
+main is exactly expected 10be76a, run 38923363999 complete SUCCESS attempt 1, all
+three jobs/every step. Preserved local later visual-demo commit. Reconcile stale
+current/pending statements with a new authoritative Stage 12 prefix; history retained.
+
+Implement shared AppEnvironment.live used by actual intent and SwiftUI. Shared
+startup task awaits preparation/reconciliation even with concurrent cold callbacks.
+Intent validates UUID then requests existing owner refresh; no intent-owned writes,
+permissions, scheduling or success. Existing busy owner coalesces foreground refresh
+and publishes a routing revision after accepting authoritative final state. Foundation
+selector requires active, due, unfinished; deterministic oldest date then UUID handles
+multiple sessions. No hint can bypass that order. Destination follows persisted
+challenge changes. Cold UI waits for startup; completed relaunch stays on normal UI.
+Back/recreation retained, foreground reasserts due route without stacking duplicates.
+
+Tests cover cold intent, stale/duplicate/foreground races, shared startup, no/future/
+completed sessions, cleanup retry, denied permission and snapshot failure. Existing
+UI tests adapt to the new explicit Stage 12 auto-routing requirement, retaining
+progress/order/persistence/interruption and earlier valid assertions. Actual perform()
+uses the shared application environment in a native test; SDK inspection plus real
+Debug/Release compile remains required. No new AlarmKit signature. Apple references:
+https://developer.apple.com/documentation/appintents/liveactivityintent
+https://developer.apple.com/documentation/appintents/configuring-the-runtime-behavior-of-your-app-intents
+Windows source/git checks only; automated/Xcode/Simulator results pending exact CI.
+Physical system launch/lock/Stop/audio/camera remain NOT RUN. No gate invalidation
+identified at source review. Any failure will be traced to the earliest cause, with
+affected dependent gates invalidated before ordered replay. Stop after Gate 12.
+
+Record requested post-Gate-13 UX roadmap in MASTER_PLAN; no redesign in this stage.
+
+
 ## Documentation-only visual demo — October 16, 2026
 
 Read project state first and inspected main, CI jobs/steps, source and fixtures.

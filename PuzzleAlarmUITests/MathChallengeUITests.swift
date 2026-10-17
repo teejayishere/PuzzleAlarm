@@ -37,9 +37,8 @@ final class MathChallengeUITests: XCTestCase {
         XCTAssertFalse(app.buttons["math.open"].exists)
     }
     @MainActor private func openMath(_ app: XCUIApplication) {
-        let link = app.buttons["math.open"]
-        XCTAssertTrue(link.waitForExistence(timeout: 15)); link.tap()
-        XCTAssertTrue(app.staticTexts["math.prompt"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["math.prompt"].waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["alarms.add"].exists)
     }
     @MainActor private func enter(_ value: String, _ app: XCUIApplication) {
         let field = app.textFields["math.answer"]

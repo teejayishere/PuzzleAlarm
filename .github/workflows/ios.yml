@@ -175,6 +175,8 @@ jobs:
         run: swift test -Xswiftc -warnings-as-errors --filter MemoryEngine
       - name: Run focused QR engine and owner tests
         run: swift test -Xswiftc -warnings-as-errors --filter 'QREngine|QRLifecycle'
+      - name: Run focused deterministic wake-up routing tests
+        run: swift test -Xswiftc -warnings-as-errors --filter wakeUpRouting
       - name: Run full Swift package tests
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage
@@ -203,6 +205,8 @@ jobs:
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData CODE_SIGNING_ALLOWED=NO build \
             2>&1 | tee "$RUNNER_TEMP/ios-build.log"
+      - name: Inspect public AlarmKit and App Intents declarations
+        run: python3 Scripts/inspect_alarmkit_sdk.py
       - name: Build Release without UI-test fixtures
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -310,6 +314,18 @@ jobs:
             -only-testing:PuzzleAlarmUITests/QRChallengeUITests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/qr-ui-tests.log"
+      - name: Verify Gate 12 App Intent and foreground routing
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Routing.xcresult \
+            -only-testing:PuzzleAlarmTests/WakeUpRoutingTests \
+            -only-testing:PuzzleAlarmUITests/WakeUpRoutingUITests \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/routing-tests.log"
       - name: Run platform capability and native shell tests
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -363,6 +379,7 @@ jobs:
           name: native-simulator-evidence
           path: |
             TestResults/Audio.xcresult
+            TestResults/Routing.xcresult
             TestResults/QRApplication.xcresult
             TestResults/Application.xcresult
             TestResults/Management.xcresult

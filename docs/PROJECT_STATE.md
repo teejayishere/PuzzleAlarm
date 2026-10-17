@@ -1,5 +1,42 @@
 # Project state
 
+## Stage 12 — implementation under validation — October 17, 2026
+
+Current stage: 12. Gate 12: PENDING exact-source CI. Last passing gate: 11.
+Invalidated gates: none identified. Stage 13 NOT STARTED; stop after Gate 12.
+Verified main: 10be76a4b071c7c32b7f8e1938a0883f78d9e66e.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/38923363999 — complete
+SUCCESS, attempt 1, all three required jobs and every step, observed October 17.
+This resolves historical final-main-pending text below. Preserve local screenshot
+commit 3a872db6b0334a1a921f8415fa8c55d2f39b4e10; its stale Stage 12 stop statements
+are superseded by this request. No CI pass is inferred for that descendant.
+
+Source IMPLEMENTED: real LiveActivityIntent handoff to one shared application
+owner; startup readiness barrier; coalesced foreground reconciliation; deterministic
+active due-session selection by date then UUID; current saved challenge destination.
+Navigation never grants success, changes ownership or snapshots, or starts a new
+lifecycle coordinator. Valid stale intent hints reconcile the current obligation;
+malformed UUIDs do nothing. Completed/cleanup/future sessions are not challenge routes.
+An already presented sequence retains completion/cleanup feedback; relaunch excludes
+completed sessions. Normal back navigation remains available; foreground reasserts
+the due obligation. Persistence schema and AlarmKit configuration are unchanged.
+
+Automated: PENDING. Xcode: PENDING. Simulator: PENDING. Windows has no Swift/Xcode;
+local evidence is source review and git whitespace checks only. Focused/adversarial,
+ordered prerequisite regressions, Debug/Release and full native CI are required.
+Physical device: DEVICE REQUIRED / NOT RUN. OS Solve delivery, cold/warm foreground,
+lock/unlock, system Stop, backup firing, Silent/Focus, camera/audio and provisioning
+remain unverified. Mocks and direct perform() invocation do not prove system launch.
+
+UX roadmap is recorded under Stage 12 in MASTER_PLAN: finish functional routing and
+orchestration in Stages 12–13, dedicated UX pass after Gate 13, cosmetic polish later.
+No redesign or Stage 13 implementation is included. If a later failure exposes an
+earlier defect, invalidate its gate and dependents and rerun them in order.
+Final publication requires complete exact-final-main CI; final immutable SHA/run
+belongs in the task report without a self-reference documentation commit.
+
+## Historical state (superseded by Stage 12 summary above)
+
 ## Documentation-only visual demo — October 16, 2026
 
 Main `10be76a4b071c7c32b7f8e1938a0883f78d9e66e` final-main closeout is verified:

@@ -16,8 +16,12 @@ struct OpenOccurrenceIntent: LiveActivityIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        // Stage 3: the system opens the app. Routing and persistence are Stage 12.
-        // Opening or stopping an alarm never implies challenge completion.
-        .result()
+        await route(to: AppEnvironment.live)
+        return .result()
+    }
+
+    @MainActor
+    func route(to environment: AppEnvironment) async {
+        await environment.openOccurrence(occurrenceID)
     }
 }

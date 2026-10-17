@@ -18,7 +18,9 @@ final class AlarmStore {
     private(set) var confirmed = false
     private(set) var errorMessage: String?
     private(set) var editWasSuperseded = false
+    private(set) var routeRevision = 0
     private var refreshPending = false
+    private var routingPending = false
     @ObservationIgnored private var memoryHideWaiters: [CheckedContinuation<Void, Never>] = []
     let coordinator: AlarmLifecycleCoordinator
     @ObservationIgnored private let repository: any PuzzleAlarmRepository
@@ -66,6 +68,9 @@ final class AlarmStore {
     func displayContext() throws -> ScheduleContext { try context() }
     func clearError() { errorMessage = nil; editWasSuperseded = false }
     func session(_ id: UUID) -> PersistedSession? { state?.sessions.first { $0.session.id == id } }
+    var wakeUpSessionID: UUID? {
+        state.flatMap { WakeUpRouting.sessionID(in: $0, at: clock()) }
+    }
 
     func prepareMath(_ identity: ChallengeIdentity) async {
         _ = await perform {
@@ -152,6 +157,7 @@ final class AlarmStore {
     }
 
     func refresh() async {
+        routingPending = true
         if isBusy { refreshPending = true; return }
         _ = await perform { try await self.reconcile() }
     }
@@ -263,6 +269,9 @@ final class AlarmStore {
             do { accept(try await reconcile()) }
             catch { confirmed = false; if errorMessage == nil { errorMessage = AlarmFormatting.error(error) } }
         }
+        // A foreground event arriving during another command is not dropped.
+        // Publish navigation only after accepting the final authoritative state.
+        if routingPending { routingPending = false; routeRevision += 1 }
         isBusy = false
         // Hand availability to one waiter. Waking all scene/timer callbacks together
         // would make them compete again and exhaust the bounded retry allowance.

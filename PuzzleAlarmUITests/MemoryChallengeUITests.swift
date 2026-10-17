@@ -42,7 +42,8 @@ final class MemoryChallengeUITests: XCTestCase {
         XCTAssertTrue(app.textFields["memory.answer"].waitForExistence(timeout: 10))
         XCTAssertFalse(app.staticTexts["memory.sequence"].exists)
         app.navigationBars["Memory Challenge"].buttons.element(boundBy: 0).tap()
-        openMemory(app)
+        XCTAssertTrue(app.buttons["memory.open"].waitForExistence(timeout: 10))
+        app.buttons["memory.open"].tap()
         XCTAssertTrue(app.textFields["memory.answer"].waitForExistence(timeout: 10))
         XCTAssertFalse(app.staticTexts["memory.sequence"].exists)
         app.terminate(); app.launchEnvironment["PUZZLE_RESET"] = "0"; app.launch(); openMemory(app)
@@ -51,9 +52,8 @@ final class MemoryChallengeUITests: XCTestCase {
         XCTAssertEqual(app.staticTexts["memory.progress"].label, "0 of 2 rounds")
     }
     @MainActor private func openMemory(_ app: XCUIApplication) {
-        let link = app.buttons["memory.open"]
-        XCTAssertTrue(link.waitForExistence(timeout: 15)); link.tap()
-        XCTAssertTrue(app.staticTexts["memory.progress"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["memory.progress"].waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["alarms.add"].exists)
     }
     @MainActor private func enter(_ value: String, _ app: XCUIApplication) {
         let field = app.textFields["memory.answer"]

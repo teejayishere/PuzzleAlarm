@@ -10,8 +10,8 @@ final class QRChallengeUITests: XCTestCase {
         app.launch(); openQR(app); return app
     }
     @MainActor private func openQR(_ app: XCUIApplication) {
-        XCTAssertTrue(app.buttons["qr.open"].waitForExistence(timeout: 15)); app.buttons["qr.open"].tap()
-        XCTAssertTrue(app.buttons["qr.start"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["qr.start"].waitForExistence(timeout: 15))
+        XCTAssertFalse(app.buttons["alarms.add"].exists)
     }
     @MainActor private func label(_ app: XCUIApplication, _ id: String, _ text: String) {
         let element = app.staticTexts[id]
@@ -28,7 +28,8 @@ final class QRChallengeUITests: XCTestCase {
         app.buttons["qr.start"].tap(); label(app, "qr.status", "Authorized")
         XCUIDevice.shared.press(.home); app.activate(); label(app, "qr.status", "Idle")
         app.buttons["qr.fake.correct"].tap(); XCTAssertFalse(app.staticTexts["qr.completed"].exists)
-        app.navigationBars["QR Challenge"].buttons.element(boundBy: 0).tap(); openQR(app)
+        app.navigationBars["QR Challenge"].buttons.element(boundBy: 0).tap()
+        XCTAssertTrue(app.buttons["qr.open"].waitForExistence(timeout: 10)); app.buttons["qr.open"].tap()
         label(app, "qr.status", "Idle")
         app.terminate(); app.launchEnvironment["PUZZLE_RESET"] = "0"; app.launch(); openQR(app)
         label(app, "qr.status", "Idle")
@@ -47,9 +48,9 @@ final class QRChallengeUITests: XCTestCase {
         app.buttons["qr.start"].tap(); label(app, "qr.status", "Unavailable")
         app.buttons["qr.fake.correct"].tap(); XCTAssertFalse(app.staticTexts["qr.completed"].exists)
         app.terminate(); app.launchEnvironment["PUZZLE_CAMERA_STATUS"] = "authorized"; app.launch(); openQR(app)
-        app.buttons["qr.start"].tap(); app.buttons["qr.fake.correct"].tap(); label(app, "qr.completed", "QR complete")
-        app.navigationBars["QR Challenge"].buttons.element(boundBy: 0).tap()
-        XCTAssertTrue(app.buttons["math.open"].waitForExistence(timeout: 10)); app.buttons["math.open"].tap()
+        app.buttons["qr.start"].tap(); app.buttons["qr.fake.correct"].tap()
+        // Stage 12 follows durable challenge order immediately, without a list detour.
+        XCTAssertFalse(app.buttons["math.open"].exists)
         XCTAssertTrue(app.buttons["math.start"].waitForExistence(timeout: 10)); app.buttons["math.start"].tap()
         let field = app.textFields["math.answer"]
         XCTAssertTrue(field.waitForExistence(timeout: 10)); field.tap(); field.typeText("7")
@@ -79,6 +80,6 @@ final class QRChallengeUITests: XCTestCase {
             object: app.buttons["header.closeButton"])], timeout: 10) == .completed)
         XCTAssertTrue(app.images["qr.image"].waitForExistence(timeout: 10))
         app.terminate(); app.launchEnvironment["PUZZLE_RESET"] = "0"; app.launch()
-        XCTAssertTrue(app.buttons["qr.open"].waitForExistence(timeout: 15))
+        openQR(app)
     }
 }

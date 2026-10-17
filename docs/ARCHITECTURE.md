@@ -172,7 +172,12 @@ probe, not recurrence orchestration. Named sound construction is compile-only.
 
 OpenOccurrenceIntent conforms to the SDK-required LiveActivityIntent. Its sole
 String parameter contains the session UUID; supportedModes requests foreground.
-It performs no routing, persistence, cancellation or completion. There is no
+Stage 12 replaces its original no-op with a handoff to AppEnvironment.live, the same
+MainActor environment used by SwiftUI. It awaits the shared startup task and asks
+the existing store to reconcile; it never writes progress or completes/cancels an
+occurrence itself. A malformed UUID is ignored. Unknown, future or completed IDs
+cannot activate a session; all valid hints reconcile the durable due obligation.
+There is no
 custom Stop intent. The alert uses the iOS 26.1 system-owned Stop UI and a guarded
 26.0 initializer for compatibility.
 
