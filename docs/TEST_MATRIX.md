@@ -1,25 +1,56 @@
 # Test matrix
 
-## Stage 12 — pending exact-source validation
+## Stage 12 — accepted source; final publication requires exact-HEAD replay
 
-Baseline main 10be76a / run 38923363999 verified complete SUCCESS, three jobs and
-all steps, October 17, 2026. This resolves the historical Stage 11 final-main hold.
-Source IMPLEMENTED. 407fca5 / run 39053360539 FAILED native test compilation on a
-Stage 12 var/let warning-as-error; assertions unchanged in correction. Automated
-and Simulator NOT RUN there, prerequisite replay BLOCKED, broad job skipped.
-Corrected-source Automated / Xcode / Simulator PENDING. Device REQUIRED / NOT RUN.
-Gate 12 must verify due routing, normal no-session UI, completed exclusion,
-interrupted cancellation recovery, duplicate/stale idempotence and real intent compile.
-Added pure deterministic selector tests, native real-intent handoff/owner/recovery/
-concurrency/error tests and foreground/no-session UI tests. Existing Math/Memory/QR
-flows now assert automatic presentation; QR-to-Math asserts direct ordered transition.
-Back/recreation, exact progress, relaunch, permission, completion, sharing and earlier
-management assertions remain. Full ordered CI and exact-final-main replay are required.
-No arbitrary coverage target. Real OS launch and physical alarm effects are excluded
-from automated claims. Historical evidence below applies only to its recorded SHA.
+Source cc76307e7890ab29ee73471291485a7c3e59f8f0 / run 39053886103, October 17, 2026:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/39053886103 — complete
+SUCCESS, attempt 1, all three required jobs and every step. Gates 0–11 regressions
+and Gate 12 PASS at that source. 148 Core + 66 native unit + 20 UI = 234 distinct
+tests; focused reruns, ten repetitions and parameterized cases are not extra tests.
 
+| Gate 12 requirement | Executed source evidence |
+| --- | --- |
+| Active due routing | Native cold intent activates armed due session through existing owner; UI Math/Memory/QR open directly after reconciliation |
+| No-session normal UI | Pure empty selector; native no-session intent; normal Add Alarm UI through foreground/relaunch |
+| Completed exclusion | Pure terminal/completing selector; native failed-cleanup recovery then repeated completed hint causes no new scheduling/cancellation; completed Math/Memory/QR UI relaunch opens list |
+| Interrupted cancellation | Trusted success persisted before injected cancel failure; recreated owner retries existing IDs to completed, no challenge reopening |
+| Duplicate/stale events | Concurrent valid/stale/foreground events preserve exact saved checkpoint/session; future UUID stays armed; two foreground/back cycles do not stack destinations |
+| Ownership/concurrency | Shared cold startup executes preparation once; event while another owner command is suspended is coalesced until final commit; denial does not prompt/claim confirmation |
+| Error recovery | Snapshot failure retains known active obligation and uncertainty; retry keeps same session without new effects; startup failure stays unavailable |
+| Deterministic multiple sessions | Date then stable UUID, storage permutations and equal dates; no discarded sessions or requested-ID priority |
+| Real integration | SDK inspection, Debug/Release compilation, actual perform() invocation plus injected real intent handoff; system launch remains device-required |
+| Earlier gates | Retained-binding/command completion, ten ordinary list failure/retry inputs, independent cold editor input/persistence, management first, then Math/Memory/QR, full native suite |
 
-## Stage 11 — accepted source and meaningful coverage audit
+Source IMPLEMENTED. Automated AUTOMATED PASS. Xcode XCODE COMPILE PASS: 26.6 /
+Swift 6.3.3. Simulator SIMULATOR PASS: iPhone 17 / iOS 26.5. No compiler/destination
+warnings; broad job has three known SDK metadata advisories and each comparison one.
+Seven-day artifacts: native/Routing 12110840666, QR 12110153546, editor 12109067201,
+toggle 12108333372; thirty-day eleven-screen gallery 12110352804.
+Physical device DEVICE REQUIRED / NOT RUN for actual Solve, lock/unlock/first unlock,
+Stop, AlarmKit playback/cancellation/independent backups, camera/audio and provisioning.
+
+Core coverage: 2266/2279; WakeUpRouting 23/23. Existing thirteen uncovered Core
+counts retain their prior audit classifications below. The current-challenge guard
+is defensive for a validated active session; no invalid session was fabricated to
+exercise it. A line pass does not prove every comparator/clock/OS interleaving.
+Source app subset: Store 323/329, Environment 43/46. Unexecuted real production
+setup/catch, default clock/context, nil state, reportError presentation fallback,
+picker/date/default sound fallbacks, iOS 26.0 initializer/probe and actual camera
+retain source/device classification; do not add percentage-filler assertions.
+The final publication extends the existing coverage report to the intent adapter
+and strengthens direct perform() to require a routing event on the identical live
+owner, even if SwiftUI already completed startup. These final assertions require
+complete exact-final-main CI; no descendant pass is inferred here.
+
+407fca5 / run 39053360539 failed new test compilation on a var/let warning-as-error.
+No test assertions, warnings policy or prerequisite requirements were relaxed.
+The corrected complete source run above clears that blocked replay. No earlier
+production defect was identified; any later failure invalidates the earliest affected
+gate and dependents until corrected and rerun in order. Baseline main 10be76a /
+38923363999 and preserved demo 3a872db / 38972785748 were separately verified complete
+SUCCESS, every job/step. Historical statements below apply to their recorded SHA.
+
+## Historical Stage 11 — accepted source and meaningful coverage audit
 
 28869311cc2a4474f412d4eab150205ef0afb799 /
 https://github.com/teejayishere/PuzzleAlarm/actions/runs/38879910505 — complete
@@ -53,7 +84,7 @@ Temporary UI probes were removed; fixture-only input journal is absent in Releas
 Failed main runs f187ade / 38773355992 and f21f469 / 38877456923, plus earlier
 83fb473 and 2b11352 source successes, are superseded for current acceptance by this
 corrected-source replay. Superseded a6393b5 / 38879858529 was cancelled, not passed.
-Final main still requires its own complete exact-SHA workflow.
+That historical final-main requirement was resolved by 10be76a / run 38923363999.
 
 | Gate 11 requirement | Executed evidence |
 | --- | --- |

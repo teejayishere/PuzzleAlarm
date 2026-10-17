@@ -35,8 +35,7 @@ final class WakeUpRoutingTests: XCTestCase {
     func testColdIntentUsesSameOwnerActivatesDueAndDuplicateStaleEventsPreserveProgress() async throws {
         let repository = InMemoryRepository(), effects = try TestAlarmScheduler()
         let id = try await seed(repository, effects)
-        let store = store(repository, effects), environment = AppEnvironment(store: nil)
-        await environment.start()
+        let store = store(repository, effects)
         let live = AppEnvironment(store: store)
         let intent = OpenOccurrenceIntent(occurrenceID: id)
         await intent.route(to: live)
@@ -87,8 +86,7 @@ final class WakeUpRoutingTests: XCTestCase {
     }
     func testNoSessionFutureSessionMalformedIntentAndDeniedAccess() async throws {
         let repository = InMemoryRepository(), effects = try TestAlarmScheduler()
-        let store = store(repository, effects), environment = AppEnvironment(store: nil)
-        await environment.foreground()
+        let store = store(repository, effects)
         let live = AppEnvironment(store: store)
         let invalid = OpenOccurrenceIntent()
         invalid.occurrenceID = "invalid"
@@ -133,7 +131,19 @@ final class WakeUpRoutingTests: XCTestCase {
         XCTAssertNotNil(failed.failure)
     }
     func testRealIntentPerformUsesApplicationEnvironment() async throws {
+        await AppEnvironment.live.start()
+        let store = try XCTUnwrap(AppEnvironment.live.store)
+        let owner = store.coordinator
+        let revision = store.routeRevision
         _ = try await OpenOccurrenceIntent(occurrenceID: UUID()).perform()
+        // A no-op perform() must fail even when SwiftUI already finished startup.
+        // Coalesced events may finish with the in-flight owner's pending refresh.
+        let deadline = ContinuousClock.now.advanced(by: .seconds(10))
+        while store.routeRevision <= revision && ContinuousClock.now < deadline {
+            try await Task.sleep(for: .milliseconds(10))
+        }
+        XCTAssertGreaterThan(store.routeRevision, revision)
+        XCTAssertTrue(AppEnvironment.live.store?.coordinator === owner)
         XCTAssertTrue(AppEnvironment.live.ready)
     }
     func testFailedRefreshRetainsDueObligationAndRetryUsesSameSession() async throws {
@@ -160,8 +170,7 @@ final class WakeUpRoutingTests: XCTestCase {
     func testIntentDuringSuspendedOwnerCommandIsCoalescedAndRoutedAfterCommit() async throws {
         let repository = InMemoryRepository(), effects = try TestAlarmScheduler()
         let id = try await seed(repository, effects, active: true)
-        let store = store(repository, effects), environment = AppEnvironment(store: nil)
-        await environment.start()
+        let store = store(repository, effects)
         let live = AppEnvironment(store: store)
         await live.start()
         let revision = store.routeRevision

@@ -1,48 +1,73 @@
 # Project state
 
-## Stage 12 — implementation under validation — October 17, 2026
+## Stage 12 — Gate 12 PASS at verified source — October 17, 2026
 
-Current stage: 12. Gate 12: FAILED compile at 407fca5; correction awaiting CI. Last passing gate: 11.
-Invalidated gates: none identified. Stage 13 NOT STARTED; stop after Gate 12.
-Verified main: 10be76a4b071c7c32b7f8e1938a0883f78d9e66e.
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38923363999 — complete
+Current stage: 12. Current / last passing gate: 12 at the exact source below.
+Invalidated gates: none. Earlier Gates 0–11 required regressions replayed successfully.
+Stage 13 NOT STARTED. Stop after Gate 12 and exact-final-main CI closeout.
+Accepted source: cc76307e7890ab29ee73471291485a7c3e59f8f0.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/39053886103 — complete
 SUCCESS, attempt 1, all three required jobs and every step, observed October 17.
-This resolves historical final-main-pending text below. Preserve local screenshot
-commit 3a872db6b0334a1a921f8415fa8c55d2f39b4e10; its stale Stage 12 stop statements
-are superseded by this request. No CI pass is inferred for that descendant.
+No pass is claimed for an untested descendant. The publication revision strengthens
+the real perform() test to require a route event on the same application owner;
+its complete exact-final-main workflow must pass. The final task report records
+that immutable SHA/run without a self-referencing follow-up commit.
 
-Source IMPLEMENTED: real LiveActivityIntent handoff to one shared application
-owner; startup readiness barrier; coalesced foreground reconciliation; deterministic
-active due-session selection by date then UUID; current saved challenge destination.
-Navigation never grants success, changes ownership or snapshots, or starts a new
-lifecycle coordinator. Valid stale intent hints reconcile the current obligation;
-malformed UUIDs do nothing. Completed/cleanup/future sessions are not challenge routes.
-An already presented sequence retains completion/cleanup feedback; relaunch excludes
-completed sessions. Normal back navigation remains available; foreground reasserts
-the due obligation. Persistence schema and AlarmKit configuration are unchanged.
+Source IMPLEMENTED: real LiveActivityIntent hands off to AppEnvironment.live, shared
+with SwiftUI; one startup task waits for preparation/reconciliation. Existing store
+serialization coalesces foreground events during commands and publishes navigation
+after accepting authoritative state. Deterministic selection requires active, due,
+unfinished sessions, ordered by scheduled date then UUID. An intent ID is a hint,
+not proof of firing or success. Malformed IDs are ignored; stale/unknown/completed
+hints cannot activate future sessions or override the durable due obligation.
+Cold presentation waits for startup. The destination follows the saved current
+challenge; back/recreation remains available and foreground reasserts the obligation.
+A presented solved sequence shows completion or pending cleanup; completed cold
+launch uses normal UI. Schema, ownership, immutable snapshots and engines unchanged.
 
-407fca5 / run 39053360539 fails native test compilation: the App Intents parameter
-wrapper setter is nonmutating, so the malformed-intent test binding must be let,
-not var (warnings are errors). Correct that test declaration; keep every assertion.
-Earlier prerequisite execution is BLOCKED at this revision; broad validation skipped.
-No earlier production defect identified; prior Gate 11 evidence remains revision-specific.
-Also verified preserved screenshot commit 3a872db / run 38972785748 complete SUCCESS,
-all jobs/steps; its previously pending documentation was stale.
+Automated AUTOMATED PASS: 148 Core + 66 native unit + 20 UI = 234 distinct tests.
+Focused subsets, ten repetitions and parameterized cases are not counted again.
+Native routing checks cover cold intent/shared owner, duplicate/stale/foreground
+races, future/no/completed exclusion, interrupted cancellation recovery, denied
+access, failed snapshot retry, concurrent startup and an event during a suspended
+owner command. UI checks prove direct entry, ordered QR-to-Math, saved progress,
+Memory concealment, QR teardown/retry, foreground without stacked destinations and
+normal no-session/completed relaunch. Existing management and sharing assertions pass.
 
-Automated: NOT RUN at failed compile. Xcode: FAILED, correction pending. Simulator:
-NOT RUN at failed compile. Windows has no Swift/Xcode;
-local evidence is source review and git whitespace checks only. Focused/adversarial,
-ordered prerequisite regressions, Debug/Release and full native CI are required.
-Physical device: DEVICE REQUIRED / NOT RUN. OS Solve delivery, cold/warm foreground,
-lock/unlock, system Stop, backup firing, Silent/Focus, camera/audio and provisioning
-remain unverified. Mocks and direct perform() invocation do not prove system launch.
+Xcode XCODE COMPILE PASS: Xcode 26.6 / Swift 6.3.3; Debug/Release, public SDK
+inspection, real App Intent compilation/invocation, reproducible generation/resources,
+usage strings and Release fixture exclusion. No compiler/destination warnings;
+three known SDK metadata advisories in broad validation, one per comparison job.
+Simulator SIMULATOR PASS: iPhone 17 / iOS 26.5, focused routing and full regression.
+Seven-day artifacts: native (including Routing.xcresult) 12110840666; QR 12110153546;
+editor 12109067201; toggle 12108333372. Thirty-day visual gallery: 12110352804.
+Core coverage 2266/2279; routing selector 23/23. No arbitrary 100% target. Known
+uncovered Core counts and meaningful platform/default/error boundaries remain
+classified in TEST_MATRIX; line counts do not prove exhaustive interleavings or OS effects.
 
-UX roadmap is recorded under Stage 12 in MASTER_PLAN: finish functional routing and
-orchestration in Stages 12–13, dedicated UX pass after Gate 13, cosmetic polish later.
-No redesign or Stage 13 implementation is included. If a later failure exposes an
-earlier defect, invalidate its gate and dependents and rerun them in order.
-Final publication requires complete exact-final-main CI; final immutable SHA/run
-belongs in the task report without a self-reference documentation commit.
+First source 407fca5 / run 39053360539 failed native test compilation: @Parameter's
+setter is nonmutating, so the malformed-intent binding must be let, not var.
+No assertion or warning-policy relaxation. Prerequisite execution was blocked and
+broad validation skipped there; the corrected complete run above clears replay.
+No earlier production defect was identified. Any later failure reopens its earliest
+affected gate, invalidates dependents and requires ordered replay before acceptance.
+
+Baseline reconciliation: main 10be76a4b071c7c32b7f8e1938a0883f78d9e66e / run
+38923363999 and preserved screenshot commit 3a872db6b0334a1a921f8415fa8c55d2f39b4e10 /
+run 38972785748 were independently verified complete SUCCESS, all jobs/steps.
+Historical pending-main and Stage-12-not-started text below is superseded here.
+Publish by non-force fast-forward, then verify complete CI at exact final main SHA.
+
+Physical device DEVICE REQUIRED / NOT RUN: real Solve delivery and identity,
+cold/warm foreground, first unlock/lock, system Stop, independent backup firing and
+cancellation, Silent/Focus, camera/audio, native hardware controls and provisioning.
+Direct perform(), mocks and Simulator UI do not establish physical launch or alarm
+behavior. See DEVICE_TEST_PLAN. No device observation has been supplied.
+
+UX roadmap is under Stage 12 in MASTER_PLAN: Stages 12–13 finish functional routing
+and orchestration; a dedicated UX pass follows Gate 13 for alarm creation/list
+hierarchy, challenge navigation, focused Math/Memory/QR layouts and clearer countdown,
+progress/feedback. Cosmetic polish is deferred. No redesign or Stage 13 work included.
 
 ## Historical state (superseded by Stage 12 summary above)
 

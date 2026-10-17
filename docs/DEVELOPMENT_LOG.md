@@ -1,5 +1,52 @@
 # Development log
 
+## Stage 12 — complete source acceptance and final publication
+
+cc76307e7890ab29ee73471291485a7c3e59f8f0 / run 39053886103 completes SUCCESS,
+attempt 1, all three required jobs and every step, observed October 17, 2026.
+148 Core, 66 native unit and 20 UI = 234 distinct tests. Focused routing is two
+Core declarations, seven native and two UI; subsets/repetitions are not additional
+counts. Existing retained binding plus command completion, ten ordinary list input
+repetitions, independent cold editor Off/On/Off persistence pass. Management-first
+replay precedes Math/Memory/QR and routing; the full native suite repeats all tests.
+Source Gate 12 PASS; Gates 0–11 required regressions pass with no held invalidation.
+
+Real intent/shared cold startup, due/future/no/completed selection, deterministic
+multiple-session arbitration, duplicate/stale hints preserving checkpoint/session,
+failed snapshot retry, denied access, suspended-command handoff, interrupted cleanup
+and no stacked foreground navigation all pass. Direct QR-to-Math progression and
+existing exact progress/restoration/concealment/scanner/share assertions pass.
+No production Core, persistence, lifecycle or ownership defect identified. The first
+407fca5 / 39053360539 compile failure was corrected at its new test binding; no valid
+assertion or warning policy was weakened. Failed/blocked evidence remains below.
+
+Xcode 26.6 / Swift 6.3.3, SDK inspection, Debug/Release compile, real perform()
+invocation, generated resources/usage strings and Release fixture exclusion PASS.
+iPhone 17 / iOS 26.5 Simulator PASS. No compiler/destination warnings; three known
+SDK metadata advisories in broad job and one per comparison. Core 2266/2279,
+routing 23/23; prior thirteen counts unchanged. App source subset Store 323/329,
+Environment 43/46; meaningful production/default/error/camera boundaries classified
+in TEST_MATRIX. No arbitrary coverage goal or physical effect inferred from lines.
+Native/Routing artifact 12110840666, QR 12110153546, editor 12109067201, toggle
+12108333372 retained seven days; eleven-screen gallery 12110352804 thirty days.
+
+Self/adversarial review strengthens the actual perform() test: capture the live
+owner and route revision, execute real perform(), await bounded coalesced completion,
+require a newer route event and identical owner. A former no-op body must fail even
+if startup was already ready. Remove unused nil-store setup calls, retaining every
+assertion. Extend selected app coverage reporting to OpenOccurrenceIntent.swift;
+no production behavior changes in this publication follow-up. These changes need
+complete exact-final-main CI; source success is not a pass for an untested descendant.
+
+Reconcile state/matrix/architecture/README/capability/device/demo wording, retaining
+history and both independently verified prior successes: main 10be76a / 38923363999
+and demo 3a872db / 38972785748. The requested concise post-Gate-13 UX roadmap is in
+MASTER_PLAN. No redesign and no Stage 13 implementation. Publish by preserving
+fast-forward, verify complete CI on exact final main, and report immutable SHA/run
+without another self-referencing commit. Reopen earliest affected gate/dependents
+if final replay fails. Physical OS intent launch, first unlock/lock, Stop, alarms,
+backups, audio/camera and provisioning remain DEVICE REQUIRED / NOT RUN.
+
 ## Stage 12 — routing implementation — October 17, 2026
 
 First source 407fca5 / run 39053360539 FAILED native test compile in both comparison
