@@ -4,7 +4,7 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 12 adds App Intent and foreground wake-up routing. See PROJECT_STATE for current gate and exact CI evidence. Physical launch, camera and alarm/audio behavior remain unverified.**
+**Stage 12 routing is implemented but acceptance is held: an unresolved Gate 6 native-input failure invalidates Gates 7–12. See PROJECT_STATE for exact CI evidence. Physical launch, camera and alarm/audio behavior remain unverified.**
 
 ## Evidence and scope
 

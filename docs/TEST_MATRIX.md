@@ -1,5 +1,38 @@
 # Test matrix
 
+## Current acceptance — Gates 6–12 held
+
+The requested baseline main 10be76a / run 38923363999 and preserved demo 3a872db /
+38972785748 were verified complete SUCCESS. Stage 12 source cc76307 / 39053886103
+also passed completely (234 distinct tests), but main bd069f2 / 39058576894 FAILED
+an ordinary one-tap list input. That reopens Gate 6 and invalidates dependent 7–12.
+The source-level Gate 12 requirement mapping below remains useful historical evidence;
+it is not current acceptance. Last unheld prerequisite: Gate 5. Stage 13 NOT STARTED.
+
+| Candidate / run | Focused native / editor | Ordinary list flow | Downstream |
+| --- | --- | --- | --- |
+| bd069f2 / 39058576894 | 2 / pass | 9 of 10 pass; fifth first-enable stays Off | skipped |
+| d973dbf / 39060200894 | 3 / pass | 9 of 10 pass; first enable has no binding setter | skipped |
+| 0d9de07 / 39061680552 | 4 / pass | 9 of 10 pass; first enable has no native valueChanged | skipped |
+| a763a42 / 39063276440 diagnostic | 4 / pass | 20 instrumented flows pass; no failing delivery captured | superseded by probe-removal replay; no complete-run claim |
+
+The last diagnostic verified positive attachment, active actual window scene,
+registered native target and successful touch-to-event-to-owner delivery. It did
+not find the earlier miss's cause. Toggle artifact 12112741722 and editor
+12112202972 expire October 24, 2026. Its temporary DEBUG probe/subclass is removed;
+normal ten repetitions and all original one-tap/exact-outcome assertions remain.
+No unchanged reruns are used to establish acceptance. The cleanup publication must
+have its own exact-HEAD CI result; even a pass cannot alone clear the known failure.
+
+Current candidate adds two meaningful native contract tests beyond the historical
+234 declarations; simulated sendActions covers factory wiring/rebinding/disable/
+teardown, not physical gestures. Core selector, app-state/error/race/cancellation
+cases and direct perform() event proof remain. No valid assertion was weakened.
+Xcode/Simulator evidence is revision-specific; physical device is DEVICE REQUIRED /
+NOT RUN. User has no installed build or Mac; interactive input comparison is an
+external blocker. See PROJECT_STATE and DEVICE_TEST_PLAN for continuation.
+
+## Historical evidence (all pass/pending labels below apply only to their recorded revision)
 ## Native adapter is insufficient — bounded passive-delivery diagnosis
 
 0d9de07ab6aad617fba7a3ebe894c67cea590ffa / run 39061680552 FAILED first of ten

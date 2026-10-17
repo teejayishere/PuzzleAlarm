@@ -1,627 +1,97 @@
 # Project state
 
-## Native adapter is insufficient — bounded passive-delivery diagnosis
+Current stage: 12, recursing to the unresolved Gate 6 native-input boundary.
+Gate 6 is FAILED; dependent Gates 7–12 are INVALIDATED / HELD. Last unheld gate: 5.
+Stage 13 NOT STARTED. A later green run alone cannot clear a known unexplained failure.
 
-0d9de07ab6aad617fba7a3ebe894c67cea590ffa / run 39061680552 FAILED first of ten
-ordinary list inputs; four focused native event/owner contracts and independent
-editor PASS, remaining nine list repetitions PASS. PID 15554 journals launch only,
-no UIKit valueChanged, binding setter or owner entry. Hierarchy shows the real public
-UISwitch visible/enabled, value 0 at (309,457,61,28). Four focused native tests prove
-factory target wiring and sendActions behavior, not actual UI gesture delivery.
-This disproves the UIKit adapter as sufficient. Do not claim either implementation
-remedy resolved the missing native event. Gate 6 and dependent 7–12 remain held.
-Artifacts: toggle 12112061434, editor 12111683709 (seven days); broad job skipped.
+## Verified starting point and publication
 
-Stop production-remedy speculation. Add one bounded diagnostic comparison: DEBUG-
-fixture-only UISwitch window/layout lifecycle and target-count records, with passive
-window UIGestureRecognizer observing touch phase/timestamp/location, actual window
-scene activation and public ancestor control identity/enabled/tracking/value. It
-never recognizes, prevents, cancels or delays gestures and uses no private API.
-Positive attachment is required before event absence means anything. Trace the
-actual control window rather than the former unavailable root-window scene lookup.
-Run twenty original single-input flows to collect a failing delivery trace, preserving
-all exact outcomes and the existing forty-minute free-runner cap. This is diagnostic
-sampling, not retry-to-green or acceptance; a passing instrumented batch alone cannot
-clear the known failure. Release must exclude probe types; remove probes after diagnosis.
-No new production state/gesture remedy is selected without discriminating evidence.
-Device input remains unverified. Stage 13 NOT STARTED.
+The requested main baseline 10be76a4b071c7c32b7f8e1938a0883f78d9e66e / run
+[38923363999](https://github.com/teejayishere/PuzzleAlarm/actions/runs/38923363999)
+was independently verified complete SUCCESS, all jobs and every step. The preserved
+visual-demo descendant 3a872db6b0334a1a921f8415fa8c55d2f39b4e10 / run
+[38972785748](https://github.com/teejayishere/PuzzleAlarm/actions/runs/38972785748)
+also passed completely. Earlier pending-main documentation is superseded.
 
-## Gate 6 — native control boundary correction awaiting validation
+Main currently contains Stage 12 at bd069f29c6d045d5bc27fc56212edcbde2090855,
+whose exact run [39058576894](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39058576894)
+FAILED Gate 6: one of ten ordinary list-switch inputs stayed 0/Off. Independent
+editor and retained-owner binding checks passed; downstream validation skipped.
+Do not describe current main or Gate 12 as accepted. Further investigation is on
+codex/stage-12-routing; do not promote it until the cause is corrected and all
+required gates replay in order at the exact publication HEAD.
 
-Current corrected source replaces the list's SwiftUI Toggle rendering adapter with
-public UIKit UISwitch target-action through UIViewRepresentable. The native Switch
-role, label, one ordinary UI input and all exact transition/status/persistence tests
-remain. No button substitute or UX redesign. The existing synchronous input binding
-and store-owned completion remain; update does not synthesize user actions, rebinding
-uses current owner, disabled callbacks are ignored and dismantle removes the target.
+## Stage 12 source implemented
 
-New evidence: d973dbf / run 39060200894 FAILED first of ten list inputs. PID 8495
-has launch only, no actual binding setter. Three focused native contracts and cold
-editor PASS; remaining nine list repetitions PASS; broad validation SKIPPED. This
-disproves onChange coalescing as a sufficient correction. It locates the observed
-failure before the SwiftUI native binding setter, not inside lifecycle/scheduling.
-Artifacts: toggle 12111655975, editor 12111805296 (seven days).
-The new UIKit adapter has native control-event/rebinding/disable/teardown checks
-before the same ten ordinary one-tap UI repetitions. Validation PENDING. Gate 6
-and dependent Gates 7–12 remain INVALIDATED; no earlier source pass overrides this.
-Actual human/device input and an OS framework cause remain unverified. Stage 13 NOT STARTED.
+The real LiveActivityIntent hands off to AppEnvironment.live, shared with SwiftUI.
+One startup task waits for preparation/reconciliation. The existing store owner
+coalesces foreground events during commands, then publishes routing after accepting
+authoritative state. Foundation-only selection requires active, due, unfinished
+sessions, ordered by scheduled date then UUID. Intent IDs are untrusted hints:
+stale/unknown/completed hints cannot activate future sessions or override a due
+obligation; malformed IDs are ignored.
 
-## Gate 6 reopened by final-main replay — October 17, 2026
-
-Main bd069f29c6d045d5bc27fc56212edcbde2090855 / run 39058576894 FAILED:
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/39058576894.
-Gate 6 FAILED; dependent Gates 7–12 INVALIDATED pending correction and ordered replay.
-Current stage: 12, recursing to Gate 6. Last unheld prerequisite gate: 5.
-Independent editor and retained-binding/command-completion checks pass. Cold list
-9/10 passes; iteration 5 first enable remains 0/Off, failing exact switch transition.
-PID 22681 journal has fixture launch only, no native onChange, binding or owner entry.
-Hierarchy proves visible enabled inner Switch at (309,454,63,28), value 0; ordinary
-one-tap synthesis does not establish actual setter or valueChanged delivery.
-Artifact 12110817237 retains failed toggle/owner evidence; editor 12110562808.
-Broad validation skipped correctly. Prior complete cc76307 / 39053886103 is historical
-source evidence, not acceptance for this failed main or proof of a permanent fix.
-
-Investigate the earliest input dispatch boundary. The native Toggle currently writes
-synchronous State but submits only from render-time onChange. Its journal cannot
-distinguish a missing binding setter from a coalesced callback. Preserve the native
-switch and ordinary single input; no gesture variants, retries, skipped/relaxed
-assertions or unchanged reruns until green. Correction IMPLEMENTED, validation PENDING: production-used binding setter now claims pending and dispatches synchronously; onChange observes idle owner state only. A focused native setter contract precedes unchanged ten one-tap repetitions, then full ordered replay. The failed interaction cause remains an inference until discriminating evidence supports it. Stage 13 NOT STARTED. Physical device NOT RUN.
-
-## Historical Stage 12 source acceptance (held by failure above)
-## Stage 12 — Gate 12 PASS at verified source — October 17, 2026
-
-Current stage: 12. Current / last passing gate: 12 at the exact source below.
-Invalidated gates: none. Earlier Gates 0–11 required regressions replayed successfully.
-Stage 13 NOT STARTED. Stop after Gate 12 and exact-final-main CI closeout.
-Accepted source: cc76307e7890ab29ee73471291485a7c3e59f8f0.
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/39053886103 — complete
-SUCCESS, attempt 1, all three required jobs and every step, observed October 17.
-No pass is claimed for an untested descendant. The publication revision strengthens
-the real perform() test to require a route event on the same application owner;
-its complete exact-final-main workflow must pass. The final task report records
-that immutable SHA/run without a self-referencing follow-up commit.
-
-Source IMPLEMENTED: real LiveActivityIntent hands off to AppEnvironment.live, shared
-with SwiftUI; one startup task waits for preparation/reconciliation. Existing store
-serialization coalesces foreground events during commands and publishes navigation
-after accepting authoritative state. Deterministic selection requires active, due,
-unfinished sessions, ordered by scheduled date then UUID. An intent ID is a hint,
-not proof of firing or success. Malformed IDs are ignored; stale/unknown/completed
-hints cannot activate future sessions or override the durable due obligation.
 Cold presentation waits for startup. The destination follows the saved current
-challenge; back/recreation remains available and foreground reasserts the obligation.
-A presented solved sequence shows completion or pending cleanup; completed cold
-launch uses normal UI. Schema, ownership, immutable snapshots and engines unchanged.
-
-Automated AUTOMATED PASS: 148 Core + 66 native unit + 20 UI = 234 distinct tests.
-Focused subsets, ten repetitions and parameterized cases are not counted again.
-Native routing checks cover cold intent/shared owner, duplicate/stale/foreground
-races, future/no/completed exclusion, interrupted cancellation recovery, denied
-access, failed snapshot retry, concurrent startup and an event during a suspended
-owner command. UI checks prove direct entry, ordered QR-to-Math, saved progress,
-Memory concealment, QR teardown/retry, foreground without stacked destinations and
-normal no-session/completed relaunch. Existing management and sharing assertions pass.
-
-Xcode XCODE COMPILE PASS: Xcode 26.6 / Swift 6.3.3; Debug/Release, public SDK
-inspection, real App Intent compilation/invocation, reproducible generation/resources,
-usage strings and Release fixture exclusion. No compiler/destination warnings;
-three known SDK metadata advisories in broad validation, one per comparison job.
-Simulator SIMULATOR PASS: iPhone 17 / iOS 26.5, focused routing and full regression.
-Seven-day artifacts: native (including Routing.xcresult) 12110840666; QR 12110153546;
-editor 12109067201; toggle 12108333372. Thirty-day visual gallery: 12110352804.
-Core coverage 2266/2279; routing selector 23/23. No arbitrary 100% target. Known
-uncovered Core counts and meaningful platform/default/error boundaries remain
-classified in TEST_MATRIX; line counts do not prove exhaustive interleavings or OS effects.
-
-First source 407fca5 / run 39053360539 failed native test compilation: @Parameter's
-setter is nonmutating, so the malformed-intent binding must be let, not var.
-No assertion or warning-policy relaxation. Prerequisite execution was blocked and
-broad validation skipped there; the corrected complete run above clears replay.
-No earlier production defect was identified. Any later failure reopens its earliest
-affected gate, invalidates dependents and requires ordered replay before acceptance.
-
-Baseline reconciliation: main 10be76a4b071c7c32b7f8e1938a0883f78d9e66e / run
-38923363999 and preserved screenshot commit 3a872db6b0334a1a921f8415fa8c55d2f39b4e10 /
-run 38972785748 were independently verified complete SUCCESS, all jobs/steps.
-Historical pending-main and Stage-12-not-started text below is superseded here.
-Publish by non-force fast-forward, then verify complete CI at exact final main SHA.
-
-Physical device DEVICE REQUIRED / NOT RUN: real Solve delivery and identity,
-cold/warm foreground, first unlock/lock, system Stop, independent backup firing and
-cancellation, Silent/Focus, camera/audio, native hardware controls and provisioning.
-Direct perform(), mocks and Simulator UI do not establish physical launch or alarm
-behavior. See DEVICE_TEST_PLAN. No device observation has been supplied.
-
-UX roadmap is under Stage 12 in MASTER_PLAN: Stages 12–13 finish functional routing
-and orchestration; a dedicated UX pass follows Gate 13 for alarm creation/list
-hierarchy, challenge navigation, focused Math/Memory/QR layouts and clearer countdown,
-progress/feedback. Cosmetic polish is deferred. No redesign or Stage 13 work included.
-
-## Historical state (superseded by Stage 12 summary above)
-
-## Documentation-only visual demo — October 16, 2026
-
-Main `10be76a4b071c7c32b7f8e1938a0883f78d9e66e` final-main closeout is verified:
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38923363999 — complete
-SUCCESS, attempt 1, all three required jobs and every step. This resolves the
-final-main requirement in the historical Stage 11 record below.
-
-Current work adds only XCTest screenshot attachments, offline gallery export and
-documentation. Production source and existing DEBUG fixtures are unchanged.
-Capture-revision automated/Xcode/Simulator result: PENDING its exact-HEAD CI.
-The final report supplies the immutable SHA/run/artifact after completion.
-Physical device: NOT RUN. Current/last passing stage remains 11; Stage 12 NOT
-STARTED. See VISUAL_DEMO.md for scope and Windows viewing instructions.
-
-## Stage 11 — Gate 11 PASS at verified source; final-main CI required
-
-Current stage: 11. Last passing gate: 11. Stage 12 NOT STARTED.
-Accepted source: 28869311cc2a4474f412d4eab150205ef0afb799.
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38879910505 — complete
-SUCCESS, attempt 1, all three required jobs and every step, observed 2026-10-16.
-Gates 0–10 required regressions PASS. The held Gate 6 replay and dependent Gates
-7–11 acceptance are cleared at this revision by the retained-binding regression,
-ten ordinary enable/failure/retry repetitions, independent cold editor Off/On/Off
-persistence test, command-completion/denied-enable rollback regressions, management-
-first replay, downstream flows and full native suite.
-
-Source IMPLEMENTED: four original reproducible bundled CAF sounds; persisted stable
-choices and immutable occurrence snapshots; validated AlarmKit named/default fallback;
-one foreground preview owner with editor/scene/notification cleanup. Optional imported
-audio was separately probed and deferred. Default Preview explains that the system
-tone is heard at alarm firing. Core boundaries, schema and lifecycle ownership remain
-unchanged. See AUDIO_CAPABILITIES.md.
-
-Automated AUTOMATED PASS: 146 Core + 59 native unit + 18 UI = 223 distinct tests.
-Focused subsets, ten repetitions and parameterized cases are not counted again.
-Xcode XCODE COMPILE PASS: Xcode 26.6 / Swift 6.3.3; Debug/Release, generated resources,
-usage strings and Release fixture exclusion pass. No compiler/destination warnings;
-three known SDK metadata advisories in broad validation (one per comparison job).
-Simulator SIMULATOR PASS: six Audio tests, eleven management flows, Math/Memory/QR and
-full native regression. Seven-day artifacts: editor 12037896723, toggle 12037882222,
-QR 12040981214, native 12040377372. Core coverage 2243/2256; app behavior 872/1071,
-or 872/898 excluding the unexecuted real camera adapter. Meaningful uncovered
-boundaries remain classified in TEST_MATRIX; percentages do not prove hardware effects.
-
-The native switch remains. A deterministic regression first failed four assertions
-with the captured immutable getter, then passed after querying current store state by
-stable ID (Off if removed). Native input now updates synchronous row-local state,
-disables pending input and reconciles to the owner on explicit command completion.
-Idle input follows external owner changes. Configuration, health and OS effects
-remain store/coordinator-owned. Denied enable rolls back to Off, releases pending
-input and remains Off after relaunch. UI tests use the concrete Switch role, retain enabled/
-hittable checks, one input, exact 0/1 transitions, bounded owner completion and honest
-status/persistence assertions. No retry taps, skipped tests or weakened outcomes.
-Earlier intermittent ignored Simulator inputs are recorded in DEVELOPMENT_LOG; neither
-touch receipt nor later passes establish an OS defect or explain every missed input.
-Temporary UI probes are removed. Fixture-only owner/input journaling is excluded
-from Release. Device switch behavior remains unverified.
-
-Prerequisite reconciliation: starting main was 95d781f8f2c684a9424db82f734fb1df24ac8b0e.
-Run 38587030123 attempt 2 was verified complete SUCCESS at that exact main SHA:
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38587030123/attempts/2.
-Earlier 83fb473/2b11352 source passes and failed f187ade/f21f469 main runs
-38773355992/38877456923 are historical evidence, superseded by corrected-source
-replay above; none is a final-main acceptance claim. Earlier Stage 10 pending-
-publication text below is historical.
-
-Physical device DEVICE REQUIRED / NOT RUN: actual default/custom/fallback alarm
-playback, lock/Silent/Focus, interruptions/routes, native control behavior, and existing
-AlarmKit/camera/provisioning acceptance in DEVICE_TEST_PLAN. No device observation
-has been supplied. Simulator API playback is not audible delivery evidence.
-
-Publication rule: fast-forward this evidence revision to main, then verify the complete
-workflow at that exact final main SHA. Source acceptance above does not claim CI for
-an untested descendant. The final task report records immutable final-main SHA/run
-without a self-referencing follow-up commit. If that run fails, reopen the earliest
-affected gate and invalidate dependents. Stop after successful closeout; no Stage 12.
-
-## Historical Stage 10 records (closeout superseded above)
-
-## Stage 10 — Gate 10 PASS at corrected source; final publication pending
-
-Accepted source: e5c43ae6d457abff838bcf3fa448b5805b22ffc9.
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/38533688088 — complete
-SUCCESS, every required step, observed 2026-10-14. Gates 6–10 invalidation is cleared
-by the ordered management-first replay and full native regression replay. Gates 0–9
-required checks also pass. No production defect was established by the three test
-measurement failures: Copy is a native Cell, submission needs a completion barrier,
-and scrolled controls need fresh concrete-role readiness observation. Exact sharing,
-export, completion/cleanup and management assertions remain enforced.
-
-Automated: 146 Core + 51 native + 15 UI = 212 distinct tests PASS. Xcode: 26.6 /
-Swift 6.3.3; Debug/Release, generation, usage strings and Release fake exclusion PASS;
-no compiler/destination warnings, three known SDK metadata advisories. Simulator:
-focused QR, eight management flows, downstream Math/Memory/QR and full native PASS.
-Copy Cell tap/dismissal and independent PNG decode/opaque quiet zone remain verified.
-Artifacts 11882141611 (QR) and 11881762952 (native) retain evidence for seven days.
-Core remains 2243/2256; application 694/881, or 694/708 excluding actual camera adapter.
-Physical camera remains DEVICE REQUIRED / NOT RUN; source/mock evidence is not hardware
-evidence. Meaningful uncovered boundaries remain classified in TEST_MATRIX.
-
-Self/adversarial review: direct enabled observation does not accept disabled controls;
-the original ten-second wait remains for that state, with enabled and hittable checks
-before tap. The bounded QR wait requires completion, preserving all exact outcomes.
-Production behavior and architecture are unchanged by these measurement corrections.
-Current main b52c58c has a failed launch-only run and is not final acceptance evidence.
-Next: complete CI at this documentation HEAD, preserving fast-forward publication,
-then complete exact-final-main CI. Final report records immutable SHA/run without a
-self-referencing follow-up commit. No user action required yet. Stage 11 NOT STARTED.
-
-## Historical correction evidence (resolved by complete replay above)
-
-1a16f1d / run 38530656775 passes focused QR native (five) and broader application
-(41) tests with the semantic submission barrier. Its management edit flow times out
-on editor.sound readiness. Retained actual hierarchy shows the sound Button visible,
-without Disabled, while only boundary Move Up/Down controls are Disabled; logs show
-the original offscreen Any query and 31-second accessibility lookup round trips.
-This disproves treating every readiness polling timeout as a disabled product control.
-Re-resolve the concrete role after scrolling; accept a directly observed isEnabled
-state before polling, retain the ten-second wait for genuinely disabled controls,
-and explicitly require isEnabled plus isHittable before tapping. All edit/time/repeat/
-mode/sound/stable-ID/relaunch assertions remain. Production unchanged.
-Earliest affected gate: 6 test helper; invalidate dependent 7–10 replay acceptance.
-Native artifact 11878925772 retains QR/Application/Management bundles. Corrected
-source, final documentation HEAD and exact-final-main each need complete ordered CI.
-
-Latest assessment: ed39d259820dd41499d2e23957744650718a2592 / run 38529408523
-fails QRStoreTests.testScannerPermissionsLateCallbacksRetryAndInterruptionNeverSucceed.
-The test's 1,000 Task.yield iterations expire while submission is still asynchronously
-finishing cleanup: phase is completing and scanner authorized, not yet completed/idle.
-Replace iteration budgeting with a bounded continuous-clock wait for isSubmitting=false;
-require that condition and retain exact completed/idle/five-cancellation assertions.
-All scanner feedback/commit waits use that completion barrier. Production unchanged.
-Gate 10 acceptance at the historical source below is held invalid until replay; no
-earlier production defect identified. The new focused QR native class precedes full
-application and ordered UI regressions; its result bundle is retained even on failure.
-Final corrected source, documentation HEAD and final main each require complete CI.
-Current main remains b52c58c with failed launch-only run; no further publication yet.
-Stage 11 NOT STARTED. Physical camera DEVICE REQUIRED. No user action needed yet.
-
-## Historical Stage 10 acceptance and first closeout (superseded above)
-
-Final-main closeout is still required. b52c58caeb435329f5c2b19814d62d1fe9ebb581
-passed complete documentation-HEAD CI 38521348992 and was fast-forwarded to main,
-preserving history. Its first main run 38526380709 FAILED at Xcode app launch:
-timeout before the first management product assertion, then a PID 0 background
-assertion failure. The six remaining management tests, including the original edit
-readiness reproduction, passed. Downstream Gates 7–10 were correctly not reached;
-that Gate 6 launch replay is BLOCKED for acceptance, never counted PASS.
-The source acceptance below remains immutable evidence, not a substitute for
-exact-final-main CI. No product defect was established by this pre-assertion failure.
-Management xcresult artifact 11877480716 retains launch diagnostics. Actions rerun
-returns 403 (integration lacks write access); the available browser is signed out.
-A documentation-only follow-up records this evidence and triggers a fresh complete
-free workflow without source/assertion changes. It must pass before a new preserving
-main fast-forward and exact-final-main verification. No device action is needed.
-
-Accepted source: abc38481f3c2b1678c6e08db35de608e410bc5d1 on codex/stage-10-qr.
-Complete exact-source CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38515725575
-SUCCESS, every required step. Observed 2026-10-14 America/Chicago.
-Starting main 0b5c261 / prerequisite run 38354985121 passed before implementation.
-Resume began at c37a67a; all four local adapter/plist/workflow/log edits were preserved.
-Current / last passing gate: 10. Gates 0–9 required regressions replayed successfully.
-The Gate 6 readiness timeout invalidated dependent replay acceptance; the affected
-management suite passed before downstream UI flows and again in full native tests.
-No invalidation remains. No earlier domain/owner defect identified. Blocker: none
-for automated Gate 10. Stop after exact-final-main CI; Stage 11 NOT STARTED.
-
-Source: Foundation exact-byte QR reducer over the existing occurrence snapshot/token,
-schema and owner CAS. Trusted ordered success commits before lifecycle cleanup.
-Core Image exports an opaque image with quiet zone; native sharing exposes normal
-activities. AVFoundation capture/permission adapter is isolated from Core; DEBUG fake
-scanner drives Simulator flows. Navigation/scene/interruption invalidates attempts.
-Photos add-only purpose string and interrupted retry check are present; no startup
-camera/Photos request or new lifecycle owner. No AlarmKit signature/schema change.
-
-Automated: four QR Core declarations (14 case executions), five native QR tests and
-three QR UI flows; full 146 Core + 51 native + 15 UI = 212 distinct tests PASS.
-Focused repetitions/parameterized cases are not double-counted. Core 2243/2256
-(99.42%); QREngine 15/15, QRLifecycle 21/21. Prior 13 core uncovered counts unchanged.
-Application coverage and meaningful uncovered boundaries are classified in TEST_MATRIX;
-the real AVFoundation adapter has 0/173 executed counts and is not mock-verified.
-
-Xcode: Xcode 26.6 / Swift 6.3.3, free standard macos-26 public runner. Reproducible
-generation/package, Debug/Release, SDK compilation, built alarm/camera/Photos purpose
-strings and Release fixture exclusion PASS. No compiler/destination warnings; three
-known SDK metadata advisories recorded. Local Windows evidence is source/git only.
-Simulator: wrong/denied/unavailable/interrupted/stale scans, explicit retry, background,
-navigation recreation, relaunch, completion and QR→Math PASS. PNG independently decodes
-the saved payload and quiet-zone pixels are opaque white. Actual sharing hierarchy is
-Cell actionGroupCell, label Copy; required native Copy tap and dismissal PASS. The
-original Button-only lookup was a test assumption defect, not broken sharing.
-Management readiness passed unchanged twice; latency attribution remains an inference.
-QR and Management/Shell result bundles are retained for seven days in source CI.
-
-Physical device: DEVICE REQUIRED / NOT RUN. Real permission/revocation, camera metadata,
-interruptions/preview/resource lifecycle, optical/paper image quality, Save Image/print,
-hardware accessibility and actual AlarmKit effects remain unverified.
-
-Closeout requires complete CI for this documentation HEAD, then history-preserving
-fast-forward publication to main and complete exact-final-main CI. The final task
-report supplies the immutable final SHA/run; do not commit again to self-reference.
-No device action is required for automated Gate 10 closeout. STOP; no Stage 11 work.
-
-## Historical Stage 9 state (superseded by Stage 10 above)
-
-Current stage: 9 — Memory COMPLETE at the verified source revision below.
-Current / last passing gate: Gate 9 — PASS at 017218e893a72125b85402336adebb1c965b00ea.
-Earlier gates 0–8: required regression checks replayed successfully in the same full workflow.
-Invalidated earlier gates: None; the discovered busy-owner assumption belonged to Stage 9 integration.
-Current blocker: None for Gate 9. Physical-device validation remains open for the later device gate.
-Stop boundary: STOP after Gate 9 and exact-HEAD documentation CI closeout. Stage 10 NOT STARTED.
-Current version/status: native iOS 26+ application through Math and Memory; QR/audio/final routing deferred.
-
-## Stage 9 acceptance evidence
-
-Source revision: 017218e893a72125b85402336adebb1c965b00ea.
-Most recent full source CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38334048094 — SUCCESS, all required steps.
-Branch: codex/stage-7-challenge-framework. Main was not changed. Working tree was clean when assessed.
-Toolchain: Xcode 26.6 / Apple Swift 6.3.3, free standard macos-26 public runner.
-
-Source: Foundation-only independent Memory reducer with injected randomness, UUID and Date;
-exact leading-zero recall; durable round, phase and reveal deadline using the existing schema.
-Wrong recall replaces digits/UUID without progress. Correct recall atomically commits progress plus
-next round, or trusted ordered success; stale submissions and timer UUIDs cannot affect a replacement.
-One existing lifecycle owner serializes bounded CAS writes. Success leaves cleanup to that owner,
-and writes cannot claim scheduler confirmation. Entry/recreation/foreground/relaunch hides before
-readiness. Expired presentation stays concealed if a write fails or the clock reverses.
-Foreground hides wait behind refresh with bounded FIFO handoff; four competing callbacks are tested.
-
-Automated: seven focused Memory declarations (11 argument/case executions), three application
-tests and two UI flows PASS before full regressions. Full 142 core + 46 iOS + 12 UI = 200 distinct
-tests PASS (12 added declarations since Stage 8; focused reruns/cases are not double-counted).
-Core 2207/2220 (99.41%); MemoryEngine 89/89, MemoryLifecycle 80/80. Application behavior 557/570
-(97.72%). Prior 13 core uncovered counts are unchanged. One previously uncovered protected-session
-presentation count is now exercised; 13 application counts remain classified in TEST_MATRIX.
-Meaningful audit added stale timers, atomic next-round rejection, revoked access and competing
-foreground hides. Coverage policy/assertions were not weakened; no arbitrary 100% target.
-
-Xcode: package/generation reproducibility, Debug/Release, public SDK/platform compilation,
-usage description, Release fixture exclusion and diagnostics PASS. No compiler/destination warnings;
-three known SDK metadata advisories reported explicitly.
-Simulator: initial reveal/timed hiding, wrong/fresh sequence, leading-zero recall/progress,
-home/foreground interruption, navigation recreation, process relaunch and completion PASS,
-alongside all existing native regressions. External alarm effects are injected.
-Physical device: NOT RUN. Real AlarmKit firing/cleanup, hardware timing/VoiceOver, OS snapshots,
-file protection/power loss, lock screen/Silent/Focus, camera/audio and final intent routing unverified.
-
-Open engineering risks / unverified assumptions: one live lifecycle owner remains required;
-disk/AlarmKit are not one atomic transaction. Exhausted contention/eight-waiter overflow stays
-concealed and offers safe retry. Actual OS snapshots and hardware timing need device observations.
-No physical device action is required for automated Gate 9 acceptance.
-
-The final documentation-only commit must pass this same complete workflow at its own exact HEAD.
-The final task report supplies its immutable matching SHA/run; do not commit again to self-reference.
-STOP after that verification. The following sections are historical records, superseded by this summary.
-## Historical Stage 9 implementation and failed gate
-
-Starting branch: codex/stage-7-challenge-framework.
-Starting exact HEAD: 0900e1eb63e9b7b8b9a0766d91e47bd1bdc59e65, clean working tree.
-Verified complete exact-HEAD CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38281431768 — SUCCESS, all required steps.
-The historical Stage 8 state omitted this final documentation run; reconciled directly against GitHub jobs.
-User authorization supersedes the historical Gate 8 stop boundary.
-Current stage/gate: 9 / FAILED at 77ac2012eabc0b30cf74eaf77bd3ee53a3461c27; correction pending. Last passing gate: 8. Earlier defect invalidations: none identified.
-Source: independent Foundation Memory reducer, injected random/time/identity, durable round/deadline,
-strict ASCII recall (including leading zero), atomic progress/round replacement, stale UUID rejection.
-Wrong recall gets different digits and identity. Reopening/interruption hides before rendering.
-Existing lifecycle owner serializes bounded CAS writes; no schema change or new external effects.
-Focused core/application/UI precede full workflow; execution evidence PENDING current implementation.
-Local Windows has no Swift/Xcode; CI is the execution environment. Device: NOT RUN.
-STOP after Gate 9 and complete exact-HEAD documentation closeout. Stage 10 NOT STARTED.
-
-
-## Historical Stage 8 closeout (superseded by Stage 9 authorization above)
-
-Current stage: 8 — Math COMPLETE at the verified audit revision below
-Last passing gate: Gate 8 — PASS at e42bdaeea8c2a47d0cabe3d1700b323b01172347
-Gates 0–7: replayed successfully in the same full workflow
-Earlier gates invalidated by Stage 8: None
-Blocker: None
-Stop boundary: STOP after Gate 8 and documentation exact-HEAD CI closeout. Stage 9 NOT STARTED.
-
-## Stage 8 acceptance evidence
-
-Revision: e42bdaeea8c2a47d0cabe3d1700b323b01172347
-CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38278057686
-Result: SUCCESS, every required step on the free standard macos-26 public runner.
-Toolchain: Xcode 26.6 / Apple Swift 6.3.3.
-
-Source: Foundation-only bounded Math generation with injected randomness/UUIDs,
-typed signed-integer validation, atomic progress/problem persistence through the
-existing lifecycle owner and coordinator, stale/duplicate protection and exact
-relaunch restoration. Native active-session continuation and Math UI implemented.
-Success invokes existing cleanup after durable commit; pending cleanup remains
-distinct from completed wake-up. Permission revocation cannot make a Math write
-claim external scheduler confirmation. No schema or earlier architecture change.
-
-Automated: focused six Math declarations (ten parameterized case executions),
-two application tests and UI smoke PASS before full regressions. Full 135 core +
-43 iOS + 10 UI = 188 distinct tests; focused reruns/cases are not double-counted.
-Core 2038/2051 (99.37%); MathEngine 79/80, MathLifecycle 61/61. Application behavior
-478/492 (97.15%). Prior uncovered classifications remain; the one new core count
-is a compiler-generated UnboundedRange closure, with unsigned behavior exercised.
-Meaningful identity/CAS and production-factory/revoked-access gaps gained tests.
-Coverage policy and assertions were not weakened. No earlier gate invalidated.
-
-Xcode: reproducible generation, package, Debug/Release, SDK/platform compilation,
-usage description, Release fixture exclusion and diagnostics PASS. No compiler or
-destination warnings; three known SDK metadata advisories reported explicitly.
-Simulator: Math smoke passed focused/full; all existing native regressions PASS.
-Physical device: NOT RUN. AlarmKit delivery, file protection/power loss, hardware
-accessibility, lock screen, final intent routing, camera and audio remain unverified.
-Memory/QR engines remain deferred. No Stage 9 work begun.
-
-Work remains on codex/stage-7-challenge-framework; main was not changed. The final
-documentation-only commit requires its own full matching workflow. The final task
-report supplies that exact HEAD/run. Do not create another commit to self-reference
-its hash. Stop after that verification; no physical action required for Gate 8.
-
-## Stage 7 acceptance evidence
-
-Revision: c35f2c339fb11c42b76db4febb7bae903aa06f8f
-CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38161005452
-Result: SUCCESS, full workflow on the free standard macos-26 public runner.
-Toolchain: Xcode 26.6, Apple Swift 6.3.3.
-
-Source: Foundation-only ChallengeCoordinator over the existing PersistedSession.
-Ordered events bind session UUID, index and kind. Exact restoration preserves
-configuration, counters and checkpoints. Valid duplicate success does not advance
-or change timestamps. Changed records validate before assignment; completion
-enters completing and leaves all backup cleanup to AlarmLifecycleCoordinator.
-No earlier model/schema/lifecycle defect identified; no gate invalidated.
-
-Automated: focused six coordinator tests PASS, with 34 case executions: two
-15-order matrices and four adversarial tests. Full 129 core tests PASS; 41 iOS
-unit/integration and 9 UI tests PASS (179 distinct tests; focused reruns excluded).
-Swift Testing reports parameterized declarations as tests; the 34 coordinator
-cases are not counted as 34 distinct declarations. Coordinator coverage 58/58
-(100%); core coverage 1898/1910 (99.37%). The prior 12 uncovered counts remain
-unchanged and classified in TEST_MATRIX; no new uncovered coordinator line.
-
-Xcode: reproducible generation, package/build, Debug and Release, AlarmKit/App
-Intents, usage description and Release fixture exclusion PASS. No compiler or
-destination warnings; three known SDK metadata advisories reported explicitly.
-Simulator: all existing native state/draft, integration and management flows PASS.
-Application behavior coverage remains 431/445 lines (96.85%). This does not claim
-challenge execution UI or engine behavior.
-Physical device: NOT RUN. Engines, camera, audio and final routing NOT IMPLEMENTED.
-
-The final documentation-only follow-up requires its own complete exact-HEAD CI;
-the final task report supplies that matching SHA/run. No source/test changes
-accompany that follow-up. Work is on codex/stage-7-challenge-framework; main was
-not changed. Automatic approval review rejected default-branch publication, so
-CI validation used an isolated branch instead.
-
-## Stage 6 acceptance evidence
-
-Revision: 73971f054d4e74949e6aa0eb32aa026d0d6dc93d
-CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37728785501
-Result: SUCCESS, full workflow on the free standard macos-26 public-repository runner.
-Toolchain recorded by CI: Xcode 26.6, Apple Swift 6.3.3.
-173 distinct tests PASS: 123 core + 41 iOS unit/integration + 9 native UI.
-New Stage 6 tests: 39 (31 application/draft unit tests + 8 management UI tests).
-The original 134 tests are preserved or legitimately evolved; focused reruns are
-not counted again. Core coverage: 1840/1852 (99.35%).
-Application behavior files: 431/445 lines (96.85%): AlarmStore 167/172,
-AppEnvironment 23/27, AlarmEditorDraft 84/88, AlarmFormatting 86/86,
-AlarmStorePresentation 71/72. Remaining paths are classified in TEST_MATRIX.md;
-this is not a claim of exhaustive SwiftUI or device coverage.
-
-Package/build/tests, focused persistence/lifecycle regressions, skipped-local-date
-regression, reproducible Xcode generation, Debug and Release builds, AlarmKit and
-App Intents compilation, usage description, all native tests and diagnostics passed.
-Release excludes UI-test switches, fake scheduler and simulated-system storage.
-No unexpected compiler/destination warnings. Three known SDK metadata advisories
-were reported; the advisory remains documented and is not suppressed.
-
-One production composition root owns DiskRepository → AlarmStore → one lifecycle
-coordinator plus AlarmManagerService. Views edit value drafts and call the store.
-Startup/foreground refresh is bounded, permission requests are intentional, and
-saved enabled intent is never treated as proof of a healthy schedule.
-Native list/create/edit/enable/disable/delete, Once/weekdays, ordered challenge
-configuration, stable QR token, sound identifiers, status/retry and stale-editor
-reload are implemented and tested. UI tests use the real lifecycle coordinator
-with DEBUG-only external effects and durable relaunch fixtures.
-
-This record names immutable source/test evidence. The documentation-only follow-up
-must also pass its complete exact-HEAD workflow before final task acceptance; the
-final report supplies that matching SHA/run. No code or test changes accompany it.
-
-## Prior Stage 5 implementation evidence
-
-Revision: 8118e44dc007143813edf668cca223459cd97b88
-CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/37236486724
-Result: SUCCESS, full workflow on free standard macos-26.
-123 core + 10 iOS unit/integration + one shell UI = 134 distinct tests.
-New since Stage 4: 65 tests (61 lifecycle, two domain recovery, two iOS).
-Focused persistence: 32 core; original iOS disk and new lifecycle disk composition pass.
-Core coverage: 1840/1852 line counts = 99.35%.
-Package validation/build, generated project reproducibility, AlarmKit/AppIntents,
-iOS build, usage-description verification and Simulator tests all passed.
-No avoidable production warnings. Known UI-test SDK advisory remains:
-"Metadata extraction skipped. No AppIntents.framework dependency found."
-
-This is the immutable source/test evidence. A documentation-only follow-up must
-also pass its own complete workflow before final task acceptance. The final task
-report supplies that exact HEAD/run; no old run substitutes for current CI.
-
-## Architecture and behavior
-
-One actor-isolated AlarmLifecycleCoordinator owns lifecycle effects through the
-shared AlarmScheduling protocol. Reentrant commands fail as busy. Repository CAS
-retries at most three times; conflicts re-read and preserve newer state.
-
-Schema 2 adds a durable operation journal; schema 1 loads and upgrades on write.
-Session/detached ledgers retain primary/backup UUID ownership. Every schedule/cancel
-intent precedes the external effect; acknowledgment is separate. Unknown ownership
-is never reconstructed from AlarmKit metadata or silently cancelled.
-
-Challenge scheduling persists all five stable IDs, schedules in order and arms only
-after acknowledgment and observed presence. Failures roll back every relevant
-owned/uncertain sibling; cancellation errors preserve ownership and do not stop
-other siblings. Explicit safe retry retains IDs; automatic recovery retries cleanup.
-
-Ordinary weekly alarms use a single relative schedule; one-time uses a fixed date.
-Challenge recurrence creates one concrete successor after trusted completion and
-cleanup. One-time consumption disables and does not rearm on startup/enable.
-
-Enable, disable, delete, edit and mode changes are idempotent. New replacements
-become healthy before old retirement; replacement failure preserves the old target.
-Active/ringing session snapshots are protected. Delete waits for cleanup/protected
-sessions and retains minimal history/tombstones.
-
-## Recursive findings and coverage audit
-
-Stage 1 required missing-armed and fully-rolled-back retry transitions. Further
-review corrected missing presence to degraded, preserving historical acknowledgments.
-Due degraded sessions become active, never completed by absence. Gates 1–4 were
-invalidated during correction and fully restored by the current passing replay.
-
-The original 771/777 six-count audit is preserved in TEST_MATRIX.md, including the
-earlier skipped-local-date defect and regression. New Stage 5 audit tested whole
-lines and inline regions. Remaining 12 counts (10 LCOV lines + two completion
-autoclosures) are individually justified there. Coverage policy was not weakened.
-
-## Known limitations / device-required items
-
-- One live lifecycle owner per repository. Separate concurrent coordinator processes
-  are not supported; future extensions must route through the owner or add a tested
-  cross-process effect serialization design.
-- No disk/AlarmKit atomic transaction or guarantee of daemon snapshot freshness.
-  Replacement may temporarily overlap old/new IDs; real capacity/delivery is unproven.
-- Corrupt/lost ownership blocks safe automatic reconstruction. Unknown app-owned
-  IDs are reported, never assigned invented parent/session links.
-- Sound identifiers map to future .caf resources; no audio files/playback implemented.
-- Memory/QR engines, camera, sound playback and final intent routing in Stage 9+ remain
-  unimplemented. Tests do not claim these features.
-- Device required: authorization, real scheduling/firing, lock screen, Silent/Focus,
-  Stop, snapshots/reconciliation, intent delivery, audio and file protection/power loss.
-- No paid runner/service, local Windows Swift installation, credentials or signing
-  material introduced. Unrelated Investment Dashboard was not modified.
-
-## Historical Stage 7 next action
-
-STOP after Gate 7. Validate the documentation-only follow-up at its exact HEAD, then report; do not begin Stage 8.
-No user action is currently required.
-
-## Historical Stage 8 implementation start — Gate 8 was pending
-
-Current stage: 8 — Math implemented, validation pending.
-Starting verified HEAD: b0a2cffb5d349f04d13e068c1747843fcc714d6d.
-Exact-HEAD CI: https://github.com/teejayishere/PuzzleAlarm/actions/runs/38162525401 — SUCCESS.
-User authorization supersedes the historical Stage 7 stop boundary above.
-Last passing gate: 7. Earlier invalidations: none identified during source review.
-Source: pure Math engine, owner-serialized atomic progress/checkpoint writes,
-typed-answer UI and deterministic fixtures/tests implemented.
-Automated/compile/Simulator: PENDING current implementation CI. Device: NOT RUN.
-Stop after Gate 8 and its exact-HEAD evidence closeout. Stage 9 NOT STARTED.
-
-## Stage 9 corrected-source retry
-
-Correction HEAD: 4ae35d8f13cdc37f87fcf1791feb80d1cc502c45.
-Run 38331032978 failed at Xcode Simulator launch before Math product assertions;
-Memory UI and full native suite were not reached. Busy-owner Memory application
-regression passed. Gate 9 remains pending, not accepted. Exact-source full replay
-triggered on codex/stage-9-gate-replay after connector Actions rerun returned 403.
-No earlier product defect identified; Stage 10 NOT STARTED. Device NOT RUN.
+challenge and order. Foreground reasserts the obligation without stacking duplicate
+destinations or resetting progress. A presented solved sequence shows completion
+or pending cleanup; completed cold launch uses normal UI. Persistence schema,
+immutable snapshots, lifecycle ownership and challenge engines remain intact.
+
+The candidate also retains synchronous native input submission and a public UIKit
+UISwitch adapter, with contract tests for pending state, owner reconciliation,
+current binding, target-action, disabled callbacks and teardown. Neither change
+has explained or resolved the intermittent single-tap failure. These are unaccepted
+candidate changes, not a verified Gate 6 fix. Original product UI assertions and
+one ordinary tap remain. No retry taps, relaxed assertions, skipped valid tests,
+button replacement or UX redesign were introduced.
+
+## Evidence and unresolved prerequisite
+
+| Evidence | Exact observation |
+| --- | --- |
+| Historical complete Stage 12 source | cc76307e7890ab29ee73471291485a7c3e59f8f0 / [39053886103](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39053886103): all three jobs/every step SUCCESS; acceptance subsequently held by final-main failure |
+| Setter-boundary candidate | d973dbf5dc31460cfd583d35d29147408b3d828d / [39060200894](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39060200894): focused native contracts/editor pass, first list input fails, no actual binding setter; broad skipped |
+| Native-control candidate | 0d9de07ab6aad617fba7a3ebe894c67cea590ffa / [39061680552](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39061680552): four focused native contracts/editor pass; first list input fails, no valueChanged/binding/owner entry; broad skipped |
+| Bounded diagnostic | a763a420d0c1de0f34db261a0074c953b9395779 / [39063276440](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39063276440): twenty instrumented list flows and independent editor pass; unfinished broad job superseded by cleanup replay; no complete-run claim |
+
+The diagnostic positively attached a passive public window recognizer and recorded
+actual app/scene activation, touch coordinates, public control ancestor, target
+identity/count and control state. All observed inputs succeeded; no failing trace
+was collected. Successful samples show touch began/ended on an attached enabled
+UISwitch in active app/scene, followed by valueChanged, binding and owner completion.
+This is not evidence of the earlier miss's cause, nor proof of an OS defect.
+Temporary probe/subclass are removed and the original ten-flow check restored.
+An uninstrumented pass after removal still cannot alone establish root-cause correction.
+
+Source / automated: Gate 12 mappings and adversarial cases are in TEST_MATRIX;
+the historical source passed 148 Core, 66 native and 20 UI declarations. The final
+real perform() test additionally requires an actual routing revision on the same
+live owner, rather than merely observing startup readiness. Candidate tests also
+cover the native switch contracts. Current acceptance remains held.
+
+Xcode / Simulator (historical complete source): Xcode 26.6, Swift 6.3.3, iPhone 17 /
+iOS 26.5. Debug/Release, public SDK inspection and actual App Intent compilation,
+resources/plists, Release fixture exclusion and full ordered regression passed.
+Core coverage 2266/2279; routing selector 23/23. Existing uncovered boundaries are
+audited in TEST_MATRIX; no arbitrary 100% target or physical inference.
+
+Physical device: DEVICE REQUIRED / NOT RUN. User confirms no installed iPhone build.
+Actual Solve delivery, lock/first unlock, Stop, backup firing/cancellation, native
+hardware input, camera/audio and free provisioning remain unverified. Windows has
+no local Xcode or interactive iOS Simulator. An interactive Mac input comparison is
+needed to discriminate the remaining delivery boundary; user confirms no Mac is available; device setup/actions require
+the user. See DEVICE_TEST_PLAN. CI/mocks do not establish those observations.
+
+## Next action and scope
+
+Correct the earliest demonstrated cause, invalidate affected evidence, then replay
+Gate 6 and dependent Gates 7–12 in order. Publish only with complete exact-final-HEAD
+CI; the final task report must state immutable SHA/run and the actual gate outcome.
+A blocked gate is not a pass. Historical records are retained in DEVELOPMENT_LOG
+and TEST_MATRIX, not mixed into this current-state summary.
+
+MASTER_PLAN records the requested roadmap: Stages 12–13 finish functional routing /
+orchestration; after Gate 13, schedule a dedicated UX pass for simpler alarm creation
+and list hierarchy, challenge navigation, large focused Math/Memory/QR layouts and
+clear countdown/progress/feedback. Cosmetic polish is deferred. No redesign or
+Stage 13 implementation belongs in this task.

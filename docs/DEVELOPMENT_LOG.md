@@ -1,5 +1,35 @@
 # Development log
 
+## Stage 12 blocked closeout — probe removed, acceptance remains held
+
+October 17, 2026: user confirms no installed iPhone build and no Mac with Xcode.
+The external interactive native-input comparison is unavailable. Do not ask for
+credentials or imply Simulator/device verification that has not occurred.
+
+Bounded diagnostic a763a420d0c1de0f34db261a0074c953b9395779 / run 39063276440
+passed all twenty original one-tap list flows, four native contracts and the
+independent editor flow. Positive attachment and target/lifecycle records show
+successful touches on the intended attached/enabled UISwitch in active app/scene,
+then native valueChanged, synchronous binding, and owner completion. No failing
+sample was captured, so neither cause nor remedy was established. This does not
+clear failed Gate 6 or dependent 7–12. Toggle artifact 12112741722, editor
+12112202972 retain seven-day evidence. The unfinished broad diagnostic job is
+superseded by the cleanup replay; no complete CI success is claimed for this SHA.
+
+Remove the temporary DEBUG window probe/subclass and lifecycle logging; restore
+ten ordinary UI repetitions. Keep original UI assertions and all useful native
+contract tests. The synchronous binding and public UIKit control remain candidate
+source, explicitly not accepted remedies. No further production speculation is
+justified by this passing sample. A final cleanup commit/run reports its actual
+exact-HEAD result separately; green sampling alone cannot clear the known failure.
+
+Consolidate PROJECT_STATE into one authoritative current summary, superseding
+stale implementation/acceptance/next-stage statements; preserve the revision-specific
+history here and in TEST_MATRIX. README reflects the held status. DEVICE_TEST_PLAN
+contains a concrete interactive Mac comparison and the separate physical routing
+checks. MASTER_PLAN retains the requested post-Gate-13 UX roadmap; no redesign or
+Stage 13 work. Main bd069f2 remains failed; investigation is published on
+codex/stage-12-routing without promoting another unaccepted candidate to main.
 ## Native adapter is insufficient — bounded passive-delivery diagnosis
 
 0d9de07ab6aad617fba7a3ebe894c67cea590ffa / run 39061680552 FAILED first of ten

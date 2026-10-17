@@ -25,15 +25,8 @@ struct NativeAlarmSwitch: UIViewRepresentable {
     func makeCoordinator() -> Coordinator { Coordinator(binding: binding) }
 
     static func makeControl(coordinator: Coordinator) -> UISwitch {
-        #if DEBUG
-        let control: UISwitch = UITestEnvironment.tracingToggle ? AlarmInputTraceSwitch() : UISwitch()
-        #else
         let control = UISwitch()
-        #endif
         control.addTarget(coordinator, action: #selector(Coordinator.changed(_:)), for: .valueChanged)
-        #if DEBUG
-        UITestEnvironment.traceToggle("control make id=\(ObjectIdentifier(control)) target=\(ObjectIdentifier(coordinator)) targets=\(control.allTargets.count)")
-        #endif
         return control
     }
 
@@ -45,9 +38,6 @@ struct NativeAlarmSwitch: UIViewRepresentable {
         control.isEnabled = enabled
         control.accessibilityIdentifier = identifier
         control.accessibilityLabel = "Alarm enabled"
-        #if DEBUG
-        UITestEnvironment.traceToggle("control update id=\(ObjectIdentifier(control)) target=\(ObjectIdentifier(coordinator)) targets=\(control.allTargets.count) enabled=\(enabled) on=\(control.isOn) window=\(control.window != nil)")
-        #endif
     }
 
     func makeUIView(context: Context) -> UISwitch { Self.makeControl(coordinator: context.coordinator) }
@@ -62,9 +52,6 @@ struct NativeAlarmSwitch: UIViewRepresentable {
     }
 
     static func dismantleUIView(_ control: UISwitch, coordinator: Coordinator) {
-        #if DEBUG
-        UITestEnvironment.traceToggle("control dismantle id=\(ObjectIdentifier(control)) target=\(ObjectIdentifier(coordinator)) window=\(control.window != nil)")
-        #endif
         control.removeTarget(coordinator, action: #selector(Coordinator.changed(_:)), for: .valueChanged)
     }
 }

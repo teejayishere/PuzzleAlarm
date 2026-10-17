@@ -1,5 +1,28 @@
 # Physical iPhone acceptance plan
 
+## Gate 6 interactive comparison (EXTERNAL BLOCKER / NOT RUN)
+
+User confirms no installed iPhone build and no Mac with Xcode available. This
+Windows workspace can run hosted automated checks but cannot perform interactive
+native iOS input or free personal-team device provisioning. No device result is
+implied by CI. Preserve the original one-tap assertions and switch control.
+
+When a Mac is available, use codex/stage-12-routing at the recorded final SHA,
+generate the project with Scripts/install_xcodegen.sh and project.yml, and run
+AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest on a cold
+Simulator. Separately run the app interactively: create an Off alarm and tap its
+list switch once, recording visible state and durable state after relaunch. Compare
+the independent editor Off/On/Off flow on the same OS. Record exact Xcode, runtime,
+revision, first-input timing, screenshots and whether a real control event/owner
+command arrived; distinguish human input from XCTest synthesis. Capture a failed
+delivery trace before selecting another production remedy. A native-contract
+sendActions test does not establish gesture delivery or an OS defect.
+
+If a device is later available, install using free personal-team signing locally;
+keep credentials/signing material out of the repository. Repeat native list/editor
+input, then the Stage 12 physical checklist. Any actual failure reopens its earliest
+gate; do not clear the known CI miss merely because this comparison passes.
+
 ## Stage 12 routing checklist (DEVICE REQUIRED / NOT RUN)
 
 - Record exact revision, iPhone/iOS and free provisioning method. Trigger the real

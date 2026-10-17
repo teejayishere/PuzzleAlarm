@@ -1,4 +1,4 @@
-# Native iOS application through Stage 11
+# Native iOS application — Stage 12 candidate
 
 The app links the Foundation-only PuzzleAlarmCore package through project.yml.
 It provides alarm management, persisted ordered Math/Memory/QR challenges,
@@ -6,6 +6,8 @@ AlarmKit adapters, QR generation/sharing/capture and bundled audio selection,
 preview cleanup and validated default fallback. Stage 12 adds the real App Intent
 handoff, shared startup and foreground reconciliation, and saved current-challenge
 routing. Stage 13 and the post-Gate-13 UX pass remain outside this task.
+Acceptance is held behind the unresolved Gate 6 native-input failure; Gates 7–12
+are invalidated. An instrumented passing sample does not establish its cause.
 
 Generate PuzzleAlarm.xcodeproj with pinned XcodeGen. Generated projects and
 Info.plist files are ignored. See ../docs/PROJECT_STATE.md for current gate status
