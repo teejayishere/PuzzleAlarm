@@ -1,11 +1,14 @@
 # Physical iPhone acceptance plan
 
-## Gate 6 interactive comparison (EXTERNAL BLOCKER / NOT RUN)
+## Gate 6 interactive comparison (OPTIONAL FUTURE EVIDENCE / NOT RUN)
 
 User confirms no installed iPhone build and no Mac with Xcode available. This
 Windows workspace can run hosted automated checks but cannot perform interactive
 native iOS input or free personal-team device provisioning. No device result is
 implied by CI. Preserve the original one-tap assertions and switch control.
+The no-Mac/no-installed-build constraint is settled; do not ask again. CI-only
+diagnosis and its stop rule are in GATE6_DIAGNOSTICS.md. This comparison is not a
+proven prerequisite and does not require the user to acquire hardware for speculation.
 
 When a Mac is available, use codex/stage-12-routing at the recorded final SHA,
 generate the project with Scripts/install_xcodegen.sh and project.yml, and run

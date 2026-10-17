@@ -61,26 +61,73 @@ can affect timing; passing instrumented runs cannot prove correction. A new boun
 editor.save assertion stops at missing reopening before unrelated preview scrolling;
 all original preview, value, status, and persistence assertions remain.
 
-## Stop rule and missing observation
+## Verified diagnostic outcome — STOP / Gates 6–12 HELD
+
+Source `d9a585bd3d17a93a6512dff031a21345296a8f4a`, run
+[39074041807](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39074041807),
+attempt 1: complete diagnostic workflow SUCCESS, every step. Xcode 26.6 / build
+17F113; Simulator only. Three switch flows and three audio/editor flows PASS.
+This is six executions of two existing declarations, not six additional tests.
+No failing input was captured. No gate acceptance, production correction, complete
+regression, Release validation, final-main validation or physical evidence follows.
+
+Artifact [12116418876](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39074041807/artifacts/12116418876)
+contains both xcresults, exported attachments/tests JSON, complete per-flow logs,
+outcomes, all process journals, generated patch and probe source. Expires October
+24, 2026, 22:29 UTC. SHA-256 of archive:
+`e22995aa2af822384a25e7c5db68ae88b1c3f0e45f674d291cf9a830b5dc115d`.
+
+Observed limits and findings:
+
+- 24 immediate test snapshots: before/after nine switch inputs and three saved-row
+  reopenings. All before-input targets are enabled/hittable with the expected
+  concrete role and ID; these are successful samples only.
+- Nine positively attached window probes across processes. Nine switch inputs
+  have paired window touches with the intended native switch in the ancestor path,
+  followed by nine valueChanged, nine setter/binding requests, nine owner entries
+  and nine owner completions. App/scene raw states are 0. Private class names are
+  diagnostic data only; no private API is invoked. Seeing a glass-lens class is
+  therefore not itself proof of a wrong target: successful inputs also hit it.
+- **Zero public beginTracking/endTracking/cancelTracking callbacks, including on
+  successful inputs.** These overrides are ineffective for identifying this
+  runtime's recognition path. Do not interpret their absence as rejection or
+  delivery loss. Ancestor recognizer snapshots are observations at probe callback
+  time, not a complete recognizer decision history.
+- All three saved-row reopenings show sheet binding nil/editor disappearance
+  before the input, row action with existing owner/busy=false, draft assignment,
+  sheet binding set and editor appearance. Three later relaunch reopenings also
+  reach action/draft/appearance. No failure path exists to compare. This neither
+  proves nor rejects a dismissal-transition race in the historical failed run.
+- Additional screenshots/hierarchy reads add time before input. Instrumentation
+  can mask timing-sensitive failures. Passing this batch cannot clear prior misses.
+
+Stop after this fixed batch. Do not repeat it unchanged or alter production input,
+binding, owner or presentation state based on these successful observations.
+
+## Missing observation and minimum external action
 
 Setup-only attempt: `3a92799` / run `39073944312` FAILED before test execution:
 XcodeGen was installed and used in one step, before GITHUB_PATH takes effect.
 Separate installation into its own step. No input sample or product conclusion
 comes from that setup failure; the fixed diagnostic is still the planned batch.
 
-If this batch provides no failing correlated trace, stop with Gates 6–12 held.
-Do not add gesture/state remedies or another unchanged batch. The missing evidence
-is a failed input correlated across test target/readiness, actual window touch and
-control recognition, binding/action entry, and authoritative owner/presentation
-state. Successful traces cannot retroactively supply it.
+| Failure | Precise missing observation |
+| --- | --- |
+| Current UIKit switch miss | For one actual missed input, the paired concrete target/frame/readiness and window began/ended/cancelled trace, effective recognizer decision/event outcome, then valueChanged/setter/owner presence or absence in that same process. Historical no-event records lack that paired trace; earlier SwiftUI window delivery cannot substitute. |
+| Saved editor reopening miss | For one actual failed reopening, the pre-input saved-row target/readiness and dismissal state, actual touch path, row-action receipt, draft before/after and sheet/route publication. The historical failed run has only XCTest synthesis and the later alarm-list hierarchy. |
 
-Minimum next action then is an executor able to capture one failing input with
-those boundaries in the same process (existing free macOS CI or another available
-Simulator executor). A Mac purchase or iPhone installation is not required to
-continue speculative debugging. If UIKit's public traces still cannot distinguish
-recognizer rejection from Simulator synthesis after an actual failure, the minimum
-external action is review of that failing xcresult/video/journal and a platform
-input trace for that single interaction, rather than a redesign or blind retry.
+Minimum external action to unblock is **capture one actual failure with the missing
+same-process boundary records**, then review its xcresult/video/journal. An existing
+free CI runner or another available Simulator executor can supply that observation;
+no user hardware acquisition or iPhone installation is requested. Successful samples,
+more unchanged green runs and sendActions contract tests cannot supply it.
+
+If a missed input reaches the intended control but public recognizer snapshots
+still cannot distinguish recognition rejection from synthesis/transition behavior,
+the next external artifact must be a platform input/recognizer decision trace for
+that failing interaction (runtime/tooling support). The ineffective public tracking
+overrides are not that artifact. No production remedy or OS attribution is justified
+without this missing evidence. No further experiment is queued in this closeout.
 
 Only an evidence-supported correction can start ordered Gate 6–12 replay and the
 required complete exact-final-main workflow. Stop after Gate 12; no Stage 13 or UX

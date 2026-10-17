@@ -15,6 +15,8 @@ it is not current acceptance. Last unheld prerequisite: Gate 5. Stage 13 NOT STA
 | d973dbf / 39060200894 | 3 / pass | 9 of 10 pass; first enable has no binding setter | skipped |
 | 0d9de07 / 39061680552 | 4 / pass | 9 of 10 pass; first enable has no native valueChanged | skipped |
 | a763a42 / 39063276440 diagnostic | 4 / pass | 20 instrumented flows pass; no failing delivery captured | superseded by probe-removal replay; no complete-run claim |
+| 480df32 / 39064851750 | focused native/editor pass | ten flows pass; historical misses remain unresolved | full regression FAIL: saved-row input does not reopen editor; editor.preview absent on list |
+| d9a585b / 39074041807 CI-only diagnostic | no new native-unit run; three audio/editor flows pass | three flows pass, nine event/setter/owner chains; no failed trace | STOP, 6–12 held; no ordered acceptance replay |
 
 The last diagnostic verified positive attachment, active actual window scene,
 registered native target and successful touch-to-event-to-owner delivery. It did
@@ -29,8 +31,13 @@ Current candidate adds two meaningful native contract tests beyond the historica
 teardown, not physical gestures. Core selector, app-state/error/race/cancellation
 cases and direct perform() event proof remain. No valid assertion was weakened.
 Xcode/Simulator evidence is revision-specific; physical device is DEVICE REQUIRED /
-NOT RUN. User has no installed build or Mac; interactive input comparison is an
-external blocker. See PROJECT_STATE and DEVICE_TEST_PLAN for continuation.
+NOT RUN. User has no installed build or Mac; that constraint is settled. Interactive
+comparison is optional future evidence, not a demonstrated prerequisite for further
+CI diagnosis. See GATE6_DIAGNOSTICS for the bounded follow-up and precise stop rule.
+The follow-up completed but captured only successful inputs. Public tracking overrides
+did not fire even on success; do not count them as recognition evidence. Artifact
+12116418876 preserves the actual records. No additional batch is authorized by a
+green sample alone; capture of an actual failed boundary remains missing.
 
 ## Historical evidence (all pass/pending labels below apply only to their recorded revision)
 ## Native adapter is insufficient — bounded passive-delivery diagnosis

@@ -53,6 +53,7 @@ button replacement or UX redesign were introduced.
 | Setter-boundary candidate | d973dbf5dc31460cfd583d35d29147408b3d828d / [39060200894](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39060200894): focused native contracts/editor pass, first list input fails, no actual binding setter; broad skipped |
 | Native-control candidate | 0d9de07ab6aad617fba7a3ebe894c67cea590ffa / [39061680552](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39061680552): four focused native contracts/editor pass; first list input fails, no valueChanged/binding/owner entry; broad skipped |
 | Bounded diagnostic | a763a420d0c1de0f34db261a0074c953b9395779 / [39063276440](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39063276440): twenty instrumented list flows and independent editor pass; unfinished broad job superseded by cleanup replay; no complete-run claim |
+| Cleanup candidate | 480df32f58b82f6320d90739fcb74a8b6e72acd5 / [39064851750](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39064851750): focused switch/editor and initial management pass, full native regression FAILS reopening saved editor; list remains visible, editor.preview absent |
 
 The diagnostic positively attached a passive public window recognizer and recorded
 actual app/scene activation, touch coordinates, public control ancestor, target
@@ -62,6 +63,22 @@ UISwitch in active app/scene, followed by valueChanged, binding and owner comple
 This is not evidence of the earlier miss's cause, nor proof of an OS defect.
 Temporary probe/subclass are removed and the original ten-flow check restored.
 An uninstrumented pass after removal still cannot alone establish root-cause correction.
+The editor-reopening failure is independently unresolved. The failed input has no
+row-action/draft/sheet trace; it does not establish an audio fault or the switch's
+cause. See GATE6_DIAGNOSTICS for the bounded CI-only follow-up and stop rule.
+
+Bounded follow-up d9a585bd3d17a93a6512dff031a21345296a8f4a /
+[39074041807](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39074041807)
+completed diagnostic SUCCESS: three switch and three editor/audio flows PASS,
+no failing sample. Nine switch event/binding/owner chains and successful row/draft/
+sheet chains are recorded. Public tracking overrides produced zero callbacks even
+on success and are ineffective evidence of recognition. Artifact 12116418876 expires
+October 24. No production source changed; the probes were generated only in the
+runner's ephemeral checkout. This does not clear either failure or accept any gate.
+STOP: remaining cause cannot be distinguished by the bounded available samples.
+The precise missing failure records and minimum external capture are documented
+in GATE6_DIAGNOSTICS.md. No more unchanged sampling, main promotion or downstream
+replay is queued; no Mac/device setup is requested.
 
 Source / automated: Gate 12 mappings and adversarial cases are in TEST_MATRIX;
 the historical source passed 148 Core, 66 native and 20 UI declarations. The final

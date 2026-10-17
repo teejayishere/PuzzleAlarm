@@ -1,5 +1,67 @@
 # Development log
 
+## Gate 6 continuation — separate switch and editor boundaries
+
+October 17, 2026: user confirms no Mac and no installed iPhone build; treat this as
+settled and continue with useful free macOS CI evidence. An interactive comparison
+is not yet demonstrated necessary. Do not ask again or invent a production remedy.
+
+Read current state, MASTER_PLAN, historical input findings and actual CI job logs.
+Remote candidate remains 480df32 and main bd069f2; the desktop source matches the
+candidate archive after newline normalization and remains untouched. Work is in an
+isolated snapshot. Gate 6 remains failed; dependent 7–12 held; last unheld gate 5.
+
+480df32 / run 39064851750 passed focused management/audio, then full Shell regression
+failed after Save and one saved-row tap. At 20:49:42 UTC editor.save is absent;
+20:49:43–44 XCTest resolves the saved Rapid Beeps row and synthesizes input. The
+test then scrolls the alarm list searching for editor.preview, failing at 20:50:49.
+This does not establish audio failure, actual row-action receipt or a shared switch
+cause. The same run's ten switch flows do not clear historical switch failures.
+
+One new bounded CI-only diagnostic adds immediate target/readiness snapshots,
+ancestor recognizer states, public UISwitch tracking boundaries, and separate row
+action/draft/sheet/routing records beside existing valueChanged/binding/owner traces.
+The instrumented code is generated in an ephemeral runner checkout; no production
+source changes are committed. Three switch flows plus three audio/editor flows,
+thirty-minute cap, original single taps and exact assertions retained. A new exact
+editor.save existence assertion localizes missing reopening before unrelated scrolls.
+
+3a92799 / 39073944312 FAILED setup: XcodeGen installation's GITHUB_PATH was used
+in the same step. Separate installation into its own step; no input samples were
+executed and no product inference follows. Corrected diagnostic source d9a585b /
+39074041807 runs the planned fixed batch. See GATE6_DIAGNOSTICS.md for results,
+artifact identifiers, exact missing observation and stop rule. Normal gate workflow
+is explicitly skipped on diagnostic-marked commits, never counted as acceptance.
+
+Verified d9a585bd3d17a93a6512dff031a21345296a8f4a / 39074041807 attempt 1 complete
+diagnostic SUCCESS, every step: three switch flows and three audio/editor flows
+pass. Nine switch valueChanged/setter/binding/owner chains, 24 immediate input
+snapshots, nine positively attached window probes and six row-action/draft/sheet
+chains (three post-save and three post-relaunch) are present. Public tracking
+overrides produced zero callbacks even on successful input: ineffective recognition
+evidence, not proof of rejection. Successful touches also use the glass-lens hit
+view; that class name alone cannot identify wrong targeting. Xcode 26.6 build
+17F113, Simulator only. One known App Intents test-target metadata advisory.
+
+Artifact 12116418876 contains xcresults, exported screenshots/hierarchies and JSON,
+logs/journals/outcomes and the actual generated instrumentation; expires October 24.
+No failed correlated sample exists. Observation adds time and may mask a timing
+failure. Neither switch misses nor the separate editor failure is explained.
+Stop here with 6–12 held. GATE6_DIAGNOSTICS records the exact missing per-failure
+boundary observations and minimum next external capture from a failing Simulator
+session. No Mac purchase/setup or device installation is requested, no further
+unchanged CI batch is queued, and no production change is supported.
+
+Closeout also makes the diagnostic shell explicitly disable inherited errexit so
+a future failing first flow cannot suppress the second evidence collection; adds
+record-only workflow guard. The completed batch had both exits 0, so this shell
+correction does not change its observed outcome. No rerun is needed or claimed
+for this documentation/workflow closeout; normal gate workflow is intentionally
+skipped, not accepted, and production source remains byte-for-byte unchanged.
+
+No Stage 13, redesign or main promotion. Only evidence-supported correction may
+start recursive Gate 6–12 replay and complete exact-final-main CI.
+
 ## Stage 12 blocked closeout — probe removed, acceptance remains held
 
 October 17, 2026: user confirms no installed iPhone build and no Mac with Xcode.
