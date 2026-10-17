@@ -55,7 +55,7 @@ jobs:
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData -resultBundlePath TestResults/Toggle.xcresult \
             -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest \
-            -test-iterations 10 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            -test-iterations 20 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/toggle-ui-tests.log"
       - name: Preserve binding and owner input trace
         if: always()
@@ -348,7 +348,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           binary = Path("ReleaseDerivedData/Build/Products/Release-iphonesimulator/PuzzleAlarm.app/PuzzleAlarm").read_bytes()
-          for marker in [b"toggle-input-diagnostic.log", b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler", b"FakeQRCodeScanner", b"Simulate matching QR"]:
+          for marker in [b"AlarmInputWindowProbe", b"AlarmInputTraceSwitch", b"toggle-input-diagnostic.log", b"PUZZLE_UI_TEST", b"simulated-system.json", b"TestAlarmScheduler", b"FakeQRCodeScanner", b"Simulate matching QR"]:
               if marker in binary:
                   raise SystemExit("DEBUG fixture leaked into Release: " + marker.decode())
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")

@@ -74,9 +74,12 @@ final class TestAlarmScheduler: AlarmScheduling, @unchecked Sendable {
 
 @MainActor
 enum UITestEnvironment {
-    static func traceToggle(_ message: String) {
+    static var tracingToggle: Bool {
         let environment = ProcessInfo.processInfo.environment
-        guard environment["PUZZLE_UI_TEST"] == "1", environment["PUZZLE_SCENARIO"] == "enableFailure" else { return }
+        return environment["PUZZLE_UI_TEST"] == "1" && environment["PUZZLE_SCENARIO"] == "enableFailure"
+    }
+    static func traceToggle(_ message: String) {
+        guard tracingToggle else { return }
         let url = FileManager.default.temporaryDirectory.appendingPathComponent("toggle-input-diagnostic.log")
         let line = "\(Date().timeIntervalSince1970) pid=\(ProcessInfo.processInfo.processIdentifier) \(message)\n"
         guard let data = line.data(using: .utf8) else { return }

@@ -1,5 +1,31 @@
 # Development log
 
+## Native adapter is insufficient — bounded passive-delivery diagnosis
+
+0d9de07ab6aad617fba7a3ebe894c67cea590ffa / run 39061680552 FAILED first of ten
+ordinary list inputs; four focused native event/owner contracts and independent
+editor PASS, remaining nine list repetitions PASS. PID 15554 journals launch only,
+no UIKit valueChanged, binding setter or owner entry. Hierarchy shows the real public
+UISwitch visible/enabled, value 0 at (309,457,61,28). Four focused native tests prove
+factory target wiring and sendActions behavior, not actual UI gesture delivery.
+This disproves the UIKit adapter as sufficient. Do not claim either implementation
+remedy resolved the missing native event. Gate 6 and dependent 7–12 remain held.
+Artifacts: toggle 12112061434, editor 12111683709 (seven days); broad job skipped.
+
+Stop production-remedy speculation. Add one bounded diagnostic comparison: DEBUG-
+fixture-only UISwitch window/layout lifecycle and target-count records, with passive
+window UIGestureRecognizer observing touch phase/timestamp/location, actual window
+scene activation and public ancestor control identity/enabled/tracking/value. It
+never recognizes, prevents, cancels or delays gestures and uses no private API.
+Positive attachment is required before event absence means anything. Trace the
+actual control window rather than the former unavailable root-window scene lookup.
+Run twenty original single-input flows to collect a failing delivery trace, preserving
+all exact outcomes and the existing forty-minute free-runner cap. This is diagnostic
+sampling, not retry-to-green or acceptance; a passing instrumented batch alone cannot
+clear the known failure. Release must exclude probe types; remove probes after diagnosis.
+No new production state/gesture remedy is selected without discriminating evidence.
+Device input remains unverified. Stage 13 NOT STARTED.
+
 ## Setter trace disproves onChange as sufficient — public native control adapter
 
 d973dbf5dc31460cfd583d35d29147408b3d828d / run 39060200894 FAILED. Three focused
