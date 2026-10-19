@@ -1,4 +1,5 @@
 name: Bounded Gate 6 buffered passive capture
+# October 18 authorized single execution; stop after diagnostic closeout.
 on:
   push:
     branches: [codex/stage-12-routing]
