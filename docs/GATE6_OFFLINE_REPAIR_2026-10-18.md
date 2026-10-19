@@ -145,7 +145,7 @@ instrumentation perturbation or guarantee root-cause resolution. If those record
 still cannot distinguish causes, stop and identify the missing boundary evidence;
 do not substitute a green run or a tooling classification for causation.
 
-## Authorized execution review � October 18, 2026
+## Authorized execution review — October 18, 2026
 
 The user explicitly authorized this single diagnostic and closeout. Branch and
 local/remote HEAD confirmed at 31ed9af36031dd4cfa28b03b5fffea45c65f989e.
@@ -166,3 +166,40 @@ only the one diagnostic job (30-minute cap); ordinary three jobs stay skipped.
 Closeout uses both markers and documentation-only changes. Exact experiment SHA
 and allocation/execution/capture evidence will be recorded after that one run.
 Swift/UIKit selected-toolchain validation remains pending until that run.
+
+## Authorized experiment closeout — STOP
+
+October 18 (America/Chicago): authorized experiment source
+`7bfeca92401a577f770a97bc074bf40124f1f66f` /
+[run 39199089437](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39199089437),
+attempt 1: **INCOMPLETE_CAPTURE / Actions FAILURE**. The one original audio/editor
+declaration executed once and passed (230.991s). No retry or further experiment.
+
+Accounting: 1 allocated macOS job, 1 explicit boot requested/completed, 1 UI
+invocation, 1 actual execution/completed passed case; separate preboot compile
+invocation executed no test. One post-save target row tap plus the original
+post-relaunch restored-row tap, each with touch/action/draft/sheet/editor records;
+0 captured failed target interactions. Job duration 11 minutes under 30-minute cap.
+Repair publication and ordinary workflow jobs all skipped with no runners.
+
+Source / Windows: 31 focused checks PASS; original product/Core/native/UI sources
+and one-tap assertions preserved. Selected Xcode 26.6: option checks, 31 tooling
+checks, actual Swift writer/decoder roundtrips and generated app/UI-runner compilation
+PASS before boot. Simulator iPhone 17 / iOS 26.5: original declaration PASS once.
+Physical device NOT RUN. This is no gate or broad CI pass.
+
+Two unique raw PIDs contain 2,586 + 455 committed records, valid byte structure/
+checksums/sequences and zero overflow/truncation. All 622 counted gesture lists
+validate, zero gesture omission markers. **Capture incomplete:** first PID has
+2 ancestor-depth omission markers; exported attachment manifest empty and no usable
+exported video. Fallback raw copies are identical duplicates. Complete original ZIP,
+both xcresults, raw buffers and full Actions log are
+[durably archived](evidence/gate6-repaired-single-editor-39199089437/README.md),
+with independent integrity and correlation review. ZIP digest matches GitHub.
+
+Home/activation and audio-stop return boundaries are observed in this successful
+sample, followed by successful saved-row chains. This establishes no historical
+cause or remedy. Both historical input/editor failures and prior activation failure
+remain unresolved. Gate 6 FAILED / HELD; Gates 7–12 INVALIDATED / HELD; last
+unheld gate 5. STOP after evidence-only closeout: no repair/rerun, production remedy,
+main promotion, gate replay, redesign or Stage 13. No further execution queued.

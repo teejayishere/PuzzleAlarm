@@ -1,0 +1,9 @@
+{
+  "files_scanned": 122,
+  "credential_pattern_findings": [],
+  "prohibited_credential_or_signing_paths": [],
+  "provenance": "Only metadata and outputs of public repository run 39199089437; same original artifact already uploaded by that public workflow",
+  "source": "Public GitHub-hosted ephemeral runner, synthetic UI-test fixture. No local personal-device data.",
+  "credential_handling": "Archival authentication used only in memory; no credential or request header file written.",
+  "limits": "Pattern checks are not a universal sensitive-data detector; raw messages independently inspected as synthetic control/lifecycle/timestamp records."
+}

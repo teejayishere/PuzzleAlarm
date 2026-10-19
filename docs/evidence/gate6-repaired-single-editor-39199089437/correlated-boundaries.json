@@ -1,0 +1,378 @@
+{
+  "test_boundaries": [
+    "GATE6 boundary home begin wall=1792384265.0304198",
+    "GATE6 boundary home returned wall=1792384265.503552",
+    "GATE6 boundary activate begin wall=1792384265.5035958",
+    "GATE6 boundary activate returned wall=1792384267.962964"
+  ],
+  "app_records": [
+    {
+      "pid": 16308,
+      "sequence": 158,
+      "monotonic_ns": 736921548416,
+      "wall_ns": 1792384318469966848,
+      "truncated": false,
+      "message": "row action id=87653D84-2839-4FD1-81A7-C991DA2B1859 busy=false exists=true route=2"
+    },
+    {
+      "pid": 16308,
+      "sequence": 159,
+      "monotonic_ns": 736921610333,
+      "wall_ns": 1792384318470028032,
+      "truncated": false,
+      "message": "row draft assigned=true"
+    },
+    {
+      "pid": 16308,
+      "sequence": 160,
+      "monotonic_ns": 736930371958,
+      "wall_ns": 1792384318478790912,
+      "truncated": false,
+      "message": "sheet binding id=Optional(87653D84-2839-4FD1-81A7-C991DA2B1859) busy=false"
+    },
+    {
+      "pid": 16308,
+      "sequence": 162,
+      "monotonic_ns": 737120735958,
+      "wall_ns": 1792384318669154048,
+      "truncated": false,
+      "message": "editor appeared id=87653D84-2839-4FD1-81A7-C991DA2B1859"
+    },
+    {
+      "pid": 9303,
+      "sequence": 119,
+      "monotonic_ns": 571487244541,
+      "wall_ns": 1792384153035664128,
+      "truncated": false,
+      "message": "sheet binding id=Optional(87653D84-2839-4FD1-81A7-C991DA2B1859) busy=false"
+    },
+    {
+      "pid": 9303,
+      "sequence": 120,
+      "monotonic_ns": 571759745041,
+      "wall_ns": 1792384153308166912,
+      "truncated": false,
+      "message": "editor appeared id=87653D84-2839-4FD1-81A7-C991DA2B1859"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2093,
+      "monotonic_ns": 683966259333,
+      "wall_ns": 1792384265514685184,
+      "truncated": false,
+      "message": "lifecycle name=UISceneWillDeactivateNotification app=0 scene=0"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2094,
+      "monotonic_ns": 683972378125,
+      "wall_ns": 1792384265520795904,
+      "truncated": false,
+      "message": "lifecycle name=UIApplicationWillResignActiveNotification app=0 scene=1"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2095,
+      "monotonic_ns": 684022884291,
+      "wall_ns": 1792384265571302912,
+      "truncated": false,
+      "message": "app scene phase=inactive"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2096,
+      "monotonic_ns": 684042831875,
+      "wall_ns": 1792384265591249920,
+      "truncated": false,
+      "message": "editor scene begin phase=inactive"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2097,
+      "monotonic_ns": 684042848666,
+      "wall_ns": 1792384265591280896,
+      "truncated": false,
+      "message": "audio stop begin ownsSession=true"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2098,
+      "monotonic_ns": 684046234250,
+      "wall_ns": 1792384265594653184,
+      "truncated": false,
+      "message": "audio player stopped"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2099,
+      "monotonic_ns": 684046250166,
+      "wall_ns": 1792384265594667008,
+      "truncated": false,
+      "message": "audio deactivate begin"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2100,
+      "monotonic_ns": 684046298750,
+      "wall_ns": 1792384265594716160,
+      "truncated": false,
+      "message": "audio deactivate returned"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2101,
+      "monotonic_ns": 684046305000,
+      "wall_ns": 1792384265594722048,
+      "truncated": false,
+      "message": "audio stop end"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2102,
+      "monotonic_ns": 684046383666,
+      "wall_ns": 1792384265594800896,
+      "truncated": false,
+      "message": "editor scene end phase=inactive"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2103,
+      "monotonic_ns": 686066857875,
+      "wall_ns": 1792384267615284992,
+      "truncated": false,
+      "message": "lifecycle name=UISceneDidEnterBackgroundNotification app=2 scene=2"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2104,
+      "monotonic_ns": 686130493791,
+      "wall_ns": 1792384267678913024,
+      "truncated": false,
+      "message": "lifecycle name=UIApplicationDidEnterBackgroundNotification app=2 scene=2"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2105,
+      "monotonic_ns": 686182826708,
+      "wall_ns": 1792384267731246080,
+      "truncated": false,
+      "message": "app scene phase=background"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2106,
+      "monotonic_ns": 686300211291,
+      "wall_ns": 1792384267848630016,
+      "truncated": false,
+      "message": "editor scene begin phase=background"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2107,
+      "monotonic_ns": 686300229000,
+      "wall_ns": 1792384267848646144,
+      "truncated": false,
+      "message": "audio stop begin ownsSession=false"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2108,
+      "monotonic_ns": 686300233583,
+      "wall_ns": 1792384267848651008,
+      "truncated": false,
+      "message": "audio player stopped"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2109,
+      "monotonic_ns": 686300238083,
+      "wall_ns": 1792384267848655104,
+      "truncated": false,
+      "message": "audio stop end"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2110,
+      "monotonic_ns": 686300246166,
+      "wall_ns": 1792384267848662784,
+      "truncated": false,
+      "message": "editor scene end phase=background"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2111,
+      "monotonic_ns": 687018356833,
+      "wall_ns": 1792384268566776064,
+      "truncated": false,
+      "message": "lifecycle name=UISceneWillEnterForegroundNotification app=2 scene=2"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2112,
+      "monotonic_ns": 687019982750,
+      "wall_ns": 1792384268568402176,
+      "truncated": false,
+      "message": "lifecycle name=UIApplicationWillEnterForegroundNotification app=2 scene=1"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2113,
+      "monotonic_ns": 687159954875,
+      "wall_ns": 1792384268708428032,
+      "truncated": false,
+      "message": "app scene phase=inactive"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2114,
+      "monotonic_ns": 687181403875,
+      "wall_ns": 1792384268729822208,
+      "truncated": false,
+      "message": "editor scene begin phase=inactive"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2115,
+      "monotonic_ns": 687181424916,
+      "wall_ns": 1792384268729841920,
+      "truncated": false,
+      "message": "audio stop begin ownsSession=false"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2116,
+      "monotonic_ns": 687181430500,
+      "wall_ns": 1792384268729847808,
+      "truncated": false,
+      "message": "audio player stopped"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2117,
+      "monotonic_ns": 687181435666,
+      "wall_ns": 1792384268729853184,
+      "truncated": false,
+      "message": "audio stop end"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2118,
+      "monotonic_ns": 687181444083,
+      "wall_ns": 1792384268729861120,
+      "truncated": false,
+      "message": "editor scene end phase=inactive"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2119,
+      "monotonic_ns": 687557567708,
+      "wall_ns": 1792384269105986048,
+      "truncated": false,
+      "message": "lifecycle name=UISceneDidActivateNotification app=1 scene=0"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2120,
+      "monotonic_ns": 687560066625,
+      "wall_ns": 1792384269108484864,
+      "truncated": false,
+      "message": "lifecycle name=UIApplicationDidBecomeActiveNotification app=0 scene=0"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2121,
+      "monotonic_ns": 687732415875,
+      "wall_ns": 1792384269280834048,
+      "truncated": false,
+      "message": "app scene phase=active"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2122,
+      "monotonic_ns": 687747196958,
+      "wall_ns": 1792384269295614976,
+      "truncated": false,
+      "message": "editor scene begin phase=active"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2123,
+      "monotonic_ns": 687747213125,
+      "wall_ns": 1792384269295630080,
+      "truncated": false,
+      "message": "editor scene end phase=active"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2124,
+      "monotonic_ns": 688500042875,
+      "wall_ns": 1792384270048461056,
+      "truncated": false,
+      "message": "route revision=3 destination=nil draft=true"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2182,
+      "monotonic_ns": 693660377333,
+      "wall_ns": 1792384275208795136,
+      "truncated": false,
+      "message": "capture limited ancestors"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2187,
+      "monotonic_ns": 694279931541,
+      "wall_ns": 1792384275828350976,
+      "truncated": false,
+      "message": "sheet binding id=nil busy=false"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2341,
+      "monotonic_ns": 697555277333,
+      "wall_ns": 1792384279103694848,
+      "truncated": false,
+      "message": "row action id=87653D84-2839-4FD1-81A7-C991DA2B1859 busy=false exists=true route=3"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2342,
+      "monotonic_ns": 697555319416,
+      "wall_ns": 1792384279103736832,
+      "truncated": false,
+      "message": "row draft assigned=true"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2343,
+      "monotonic_ns": 697559638833,
+      "wall_ns": 1792384279108057088,
+      "truncated": false,
+      "message": "sheet binding id=Optional(87653D84-2839-4FD1-81A7-C991DA2B1859) busy=false"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2345,
+      "monotonic_ns": 697634063250,
+      "wall_ns": 1792384279182481920,
+      "truncated": false,
+      "message": "editor appeared id=87653D84-2839-4FD1-81A7-C991DA2B1859"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2570,
+      "monotonic_ns": 724329722833,
+      "wall_ns": 1792384305878139904,
+      "truncated": false,
+      "message": "capture limited ancestors"
+    },
+    {
+      "pid": 9303,
+      "sequence": 2577,
+      "monotonic_ns": 724585921333,
+      "wall_ns": 1792384306134913024,
+      "truncated": false,
+      "message": "sheet binding id=nil busy=false"
+    }
+  ]
+}

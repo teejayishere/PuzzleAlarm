@@ -1,0 +1,50 @@
+[
+  {
+    "pid": 16308,
+    "attempted": 455,
+    "committed": 455,
+    "overflow": 0,
+    "truncation": 0,
+    "attachment": true,
+    "errors": [],
+    "file": "raw/editor/gate6-16308-84E9E439-82B1-42EB-8E45-07C893DFEAE4.bin",
+    "sha256": "f4fb9e502613d7073b05b52bafa262282f6c7684b8bee6712fa34d6372fe8c89"
+  },
+  {
+    "pid": 9303,
+    "attempted": 2586,
+    "committed": 2586,
+    "overflow": 0,
+    "truncation": 0,
+    "attachment": true,
+    "errors": [
+      "bounded path/gesture capture incomplete"
+    ],
+    "file": "raw/editor/gate6-9303-4591FFAC-2D67-4AC3-AD48-183D56065DEC.bin",
+    "sha256": "3e931a5e9b1f02c5a829213a8db723b99e19be0c8e9417810377a9db566d3b65"
+  },
+  {
+    "pid": 16308,
+    "attempted": 455,
+    "committed": 455,
+    "overflow": 0,
+    "truncation": 0,
+    "attachment": true,
+    "errors": [],
+    "file": "raw-fallback/8D30D736-C537-4C05-9E0E-6D415316A04E/gate6-16308-84E9E439-82B1-42EB-8E45-07C893DFEAE4.bin",
+    "sha256": "f4fb9e502613d7073b05b52bafa262282f6c7684b8bee6712fa34d6372fe8c89"
+  },
+  {
+    "pid": 9303,
+    "attempted": 2586,
+    "committed": 2586,
+    "overflow": 0,
+    "truncation": 0,
+    "attachment": true,
+    "errors": [
+      "bounded path/gesture capture incomplete"
+    ],
+    "file": "raw-fallback/8D30D736-C537-4C05-9E0E-6D415316A04E/gate6-9303-4591FFAC-2D67-4AC3-AD48-183D56065DEC.bin",
+    "sha256": "3e931a5e9b1f02c5a829213a8db723b99e19be0c8e9417810377a9db566d3b65"
+  }
+]

@@ -1,0 +1,437 @@
+[
+  {
+    "name": "Gate6InputProbe.swift",
+    "bytes": 4635,
+    "compressed": 1352
+  },
+  {
+    "name": "Gate6Recorder.swift",
+    "bytes": 3633,
+    "compressed": 1424
+  },
+  {
+    "name": "accounting-selftest.log",
+    "bytes": 105,
+    "compressed": 36
+  },
+  {
+    "name": "activity-logs/Build/818EB83A-EC8F-462A-A5AB-0CE7D61E3754.xcactivitylog",
+    "bytes": 114535,
+    "compressed": 114480
+  },
+  {
+    "name": "activity-logs/Build/LogStoreManifest.plist",
+    "bytes": 1725,
+    "compressed": 619
+  },
+  {
+    "name": "activity-logs/Launch/LogStoreManifest.plist",
+    "bytes": 266,
+    "compressed": 196
+  },
+  {
+    "name": "activity-logs/Localization/LogStoreManifest.plist",
+    "bytes": 266,
+    "compressed": 196
+  },
+  {
+    "name": "activity-logs/Package/54B8F771-A185-421C-9B97-64DEC75CF29E.xcactivitylog",
+    "bytes": 266,
+    "compressed": 271
+  },
+  {
+    "name": "activity-logs/Package/6AA00419-F22E-499A-B27B-C7EB94631ADB.xcactivitylog",
+    "bytes": 268,
+    "compressed": 273
+  },
+  {
+    "name": "activity-logs/Package/81B1A88C-4AC8-413E-A1F5-F37176979F1A.xcactivitylog",
+    "bytes": 265,
+    "compressed": 270
+  },
+  {
+    "name": "activity-logs/Package/9DF9FB45-D2DA-443E-B597-85F08550951E.xcactivitylog",
+    "bytes": 267,
+    "compressed": 272
+  },
+  {
+    "name": "activity-logs/Package/6CFB1F0A-2343-4FD2-9AB4-3ED3FFC5C2DF.xcactivitylog",
+    "bytes": 270,
+    "compressed": 275
+  },
+  {
+    "name": "activity-logs/Package/B65557D6-7F38-4B30-923E-7C1A10565C23.xcactivitylog",
+    "bytes": 266,
+    "compressed": 271
+  },
+  {
+    "name": "activity-logs/Package/DD4F34C7-F2E1-46FE-9A94-DECA0E529385.xcactivitylog",
+    "bytes": 268,
+    "compressed": 273
+  },
+  {
+    "name": "activity-logs/Package/EC9D7690-CE33-4C4E-9F57-06FAA3BB2340.xcactivitylog",
+    "bytes": 267,
+    "compressed": 272
+  },
+  {
+    "name": "activity-logs/Package/LogStoreManifest.plist",
+    "bytes": 9291,
+    "compressed": 1020
+  },
+  {
+    "name": "activity-logs/Test/LogStoreManifest.plist",
+    "bytes": 266,
+    "compressed": 196
+  },
+  {
+    "name": "allocation.json",
+    "bytes": 149,
+    "compressed": 106
+  },
+  {
+    "name": "ci-instrumentation.patch",
+    "bytes": 18778,
+    "compressed": 5353
+  },
+  {
+    "name": "decoder-selftest.log",
+    "bytes": 111,
+    "compressed": 37
+  },
+  {
+    "name": "devices.json",
+    "bytes": 32912,
+    "compressed": 2836
+  },
+  {
+    "name": "editor-attachments/manifest.json",
+    "bytes": 4,
+    "compressed": 6
+  },
+  {
+    "name": "editor-decode.log",
+    "bytes": 0,
+    "compressed": 2
+  },
+  {
+    "name": "editor-export-errors.log",
+    "bytes": 271,
+    "compressed": 189
+  },
+  {
+    "name": "editor-tests.json",
+    "bytes": 1771,
+    "compressed": 511
+  },
+  {
+    "name": "editor.log",
+    "bytes": 33554,
+    "compressed": 4562
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~4VqMqsI5lOfxRppnud6-VDWcNsU8J7VgFCJfW2dXPwOcAkvU-I8Um5yp9n0Zv6nr3VmcxYggaVMDFfR0U_vjKw==",
+    "bytes": 2,
+    "compressed": 4
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~6voVjoOZ0CDsw8uE27ITrwkJdEQT2NFWziggekk_HgBlfxOWL-QMnv786ZuJRlTM_8TyVvpe3FRmcaLk3xNMBg==",
+    "bytes": 112,
+    "compressed": 101
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~CH8RJkfcC8SrtB1lMzJejOe4ZBSBmBMOA-bWxMCcTMAsv8PBR7GylRJY0pqda4uyI6OxjUx53F3wnqPCvuR4IQ==",
+    "bytes": 282,
+    "compressed": 287
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~Gl1ehqfCcC4fCjQHwODNcc-eEGpLu9JIHAlK2d0u8O4W-dZirR6ucJ407rvuPOw75Yyz2sJLKvqHh6G2ywdc5g==",
+    "bytes": 38,
+    "compressed": 40
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~Hg-dIYfuqoASM9wbv7og7udS8Bq7yQrbdJmisfk6fDxw3myLSA721ZQL27WmIrIUcXM6H_mNybN_AAIb7ZntjQ==",
+    "bytes": 200,
+    "compressed": 205
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~HEG-6nEZh2bowySwYwIJ0vnRC_-vggVMA6GsXmH2eo_5lrJvMNXdb28LYwx-rpAiQb18fVsc0T9yq2gC5l30JA==",
+    "bytes": 1576,
+    "compressed": 1581
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~Looke8Tk2ChoNbbu5KaTEQFssLfRpKCo9bSFroigtlA_Q7TDFiWpLmI99lmbiSAjIL8OvOoGowVxbFGABemEeg==",
+    "bytes": 294,
+    "compressed": 299
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~Rw-Dl8I_SFyFBAt6M4Gi7WMK1hRVwWOxnk5q_1WLXfgx2HVnJbfJoscMzZZKXxVkwgcCXAQUQQEs26PttV-n_Q==",
+    "bytes": 17315,
+    "compressed": 17325
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~WSoovIJ0KtWI9KOOfK7UMnxQ8QyWR2UZnlCGFCJlIL-Ymi334J0SKTt0FlkI6EMXgMIcfvdiFcIHQlzlLaqV8A==",
+    "bytes": 820,
+    "compressed": 825
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~TI-Nm3qrXYTnRcEuRe9_mNuCEFkFKb_Na6wPTHCKs2txhS5NwsQ3Kfmz172Bi5NKGQmpWUE7BgV-EZGVEqxVBg==",
+    "bytes": 142,
+    "compressed": 147
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~ZDMlECoghzyreF62-TTvghs3jb8SHmdNAEZeekf_GkXhL7pv-LaKr8ErGRp2RhvA48no-XXrRQ_KV4HpSyE9jg==",
+    "bytes": 868,
+    "compressed": 873
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~cXS49xHEpAtGG2DaEKzd-ax9OHc-5nPWTJvtTB1dInCcOIt28rrAYpy4Op5E5RfTpaG0_61VqVkxEtl00AYoWA==",
+    "bytes": 180431,
+    "compressed": 180488
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~e5zTuqjKusZ4-eCEpx58d8ptSRdPIcOUo7jg52e85kOzc7JgBdUXocWjysUI2lXB4k_BMpkDGa5lOc6U80njBw==",
+    "bytes": 2444456,
+    "compressed": 2443581
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~rwPoJk1E-oU1hHK4-Nh72etk-skaTv5A8CQvOqf0Xu3hrYsLtEkwsG99tmfdcd13KbWSxbzhsyZpzvWhta85PQ==",
+    "bytes": 7068,
+    "compressed": 7073
+  },
+  {
+    "name": "editor.xcresult/Data/data.0~vPlZp57O9C4wkD1ly0ZHHd5nDgW4EWESnSciA_BWY_gl-DjEibvdfixoGCDs7t5HKC18NDcGAQjj5Yytoahdeg==",
+    "bytes": 3982,
+    "compressed": 3987
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~4VqMqsI5lOfxRppnud6-VDWcNsU8J7VgFCJfW2dXPwOcAkvU-I8Um5yp9n0Zv6nr3VmcxYggaVMDFfR0U_vjKw==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~6voVjoOZ0CDsw8uE27ITrwkJdEQT2NFWziggekk_HgBlfxOWL-QMnv786ZuJRlTM_8TyVvpe3FRmcaLk3xNMBg==",
+    "bytes": 133,
+    "compressed": 138
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~CH8RJkfcC8SrtB1lMzJejOe4ZBSBmBMOA-bWxMCcTMAsv8PBR7GylRJY0pqda4uyI6OxjUx53F3wnqPCvuR4IQ==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~Gl1ehqfCcC4fCjQHwODNcc-eEGpLu9JIHAlK2d0u8O4W-dZirR6ucJ407rvuPOw75Yyz2sJLKvqHh6G2ywdc5g==",
+    "bytes": 67,
+    "compressed": 72
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~HEG-6nEZh2bowySwYwIJ0vnRC_-vggVMA6GsXmH2eo_5lrJvMNXdb28LYwx-rpAiQb18fVsc0T9yq2gC5l30JA==",
+    "bytes": 265,
+    "compressed": 270
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~Hg-dIYfuqoASM9wbv7og7udS8Bq7yQrbdJmisfk6fDxw3myLSA721ZQL27WmIrIUcXM6H_mNybN_AAIb7ZntjQ==",
+    "bytes": 199,
+    "compressed": 204
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~Looke8Tk2ChoNbbu5KaTEQFssLfRpKCo9bSFroigtlA_Q7TDFiWpLmI99lmbiSAjIL8OvOoGowVxbFGABemEeg==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~Rw-Dl8I_SFyFBAt6M4Gi7WMK1hRVwWOxnk5q_1WLXfgx2HVnJbfJoscMzZZKXxVkwgcCXAQUQQEs26PttV-n_Q==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~TI-Nm3qrXYTnRcEuRe9_mNuCEFkFKb_Na6wPTHCKs2txhS5NwsQ3Kfmz172Bi5NKGQmpWUE7BgV-EZGVEqxVBg==",
+    "bytes": 199,
+    "compressed": 204
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~WSoovIJ0KtWI9KOOfK7UMnxQ8QyWR2UZnlCGFCJlIL-Ymi334J0SKTt0FlkI6EMXgMIcfvdiFcIHQlzlLaqV8A==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~cXS49xHEpAtGG2DaEKzd-ax9OHc-5nPWTJvtTB1dInCcOIt28rrAYpy4Op5E5RfTpaG0_61VqVkxEtl00AYoWA==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~ZDMlECoghzyreF62-TTvghs3jb8SHmdNAEZeekf_GkXhL7pv-LaKr8ErGRp2RhvA48no-XXrRQ_KV4HpSyE9jg==",
+    "bytes": 67,
+    "compressed": 72
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~e5zTuqjKusZ4-eCEpx58d8ptSRdPIcOUo7jg52e85kOzc7JgBdUXocWjysUI2lXB4k_BMpkDGa5lOc6U80njBw==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~rwPoJk1E-oU1hHK4-Nh72etk-skaTv5A8CQvOqf0Xu3hrYsLtEkwsG99tmfdcd13KbWSxbzhsyZpzvWhta85PQ==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "editor.xcresult/Data/refs.0~vPlZp57O9C4wkD1ly0ZHHd5nDgW4EWESnSciA_BWY_gl-DjEibvdfixoGCDs7t5HKC18NDcGAQjj5Yytoahdeg==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "editor.xcresult/Info.plist",
+    "bytes": 715,
+    "compressed": 405
+  },
+  {
+    "name": "editor.xcresult/database.sqlite3",
+    "bytes": 319488,
+    "compressed": 29313
+  },
+  {
+    "name": "exact-sha.txt",
+    "bytes": 41,
+    "compressed": 41
+  },
+  {
+    "name": "instrumentation-selftest.log",
+    "bytes": 103,
+    "compressed": 38
+  },
+  {
+    "name": "invocation-options.log",
+    "bytes": 86,
+    "compressed": 75
+  },
+  {
+    "name": "invocation-selftest.log",
+    "bytes": 101,
+    "compressed": 36
+  },
+  {
+    "name": "outcome-manifest.json",
+    "bytes": 2261,
+    "compressed": 1076
+  },
+  {
+    "name": "preboot-build.log",
+    "bytes": 451032,
+    "compressed": 24339
+  },
+  {
+    "name": "preboot-build.xcresult/Data/data.0~Rvqyx7McdSUIMjjJPdNy2bAKe8fMk1r1471b4CXwc5ZQtDZxJqqxWUhc5I55ADCRhdGnEKZQuXnS5kpUSdYPXg==",
+    "bytes": 1381,
+    "compressed": 1386
+  },
+  {
+    "name": "preboot-build.xcresult/Data/data.0~Xqrt-Kd-hEdKAMJzYk-7HgAt1H8YXToNKcXMkTYReuWMn69kQ6PQk6cfezvOIoDRYe2UZp55_JAOhPKhp6SCqg==",
+    "bytes": 283,
+    "compressed": 288
+  },
+  {
+    "name": "preboot-build.xcresult/Data/data.0~plJ-enx-7nImazCMCgW0xdapFz2pSNwb9upvoWwPuFn371ZBxyfMNCcGsZUzyLf4yt_J27CrB9vQSNKPwuwdUQ==",
+    "bytes": 56262,
+    "compressed": 56282
+  },
+  {
+    "name": "preboot-build.xcresult/Data/refs.0~Rvqyx7McdSUIMjjJPdNy2bAKe8fMk1r1471b4CXwc5ZQtDZxJqqxWUhc5I55ADCRhdGnEKZQuXnS5kpUSdYPXg==",
+    "bytes": 133,
+    "compressed": 138
+  },
+  {
+    "name": "preboot-build.xcresult/Data/refs.0~Xqrt-Kd-hEdKAMJzYk-7HgAt1H8YXToNKcXMkTYReuWMn69kQ6PQk6cfezvOIoDRYe2UZp55_JAOhPKhp6SCqg==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "preboot-build.xcresult/Data/refs.0~plJ-enx-7nImazCMCgW0xdapFz2pSNwb9upvoWwPuFn371ZBxyfMNCcGsZUzyLf4yt_J27CrB9vQSNKPwuwdUQ==",
+    "bytes": 1,
+    "compressed": 3
+  },
+  {
+    "name": "preboot-build.xcresult/Info.plist",
+    "bytes": 715,
+    "compressed": 405
+  },
+  {
+    "name": "raw/editor/gate6-16308-84E9E439-82B1-42EB-8E45-07C893DFEAE4.bin",
+    "bytes": 16777344,
+    "compressed": 35225
+  },
+  {
+    "name": "raw/editor/gate6-9303-4591FFAC-2D67-4AC3-AD48-183D56065DEC.bin",
+    "bytes": 16777344,
+    "compressed": 118591
+  },
+  {
+    "name": "raw/editor/integrity.json",
+    "bytes": 495,
+    "compressed": 243
+  },
+  {
+    "name": "raw/editor/timelines.json",
+    "bytes": 888646,
+    "compressed": 67507
+  },
+  {
+    "name": "raw-fallback/8D30D736-C537-4C05-9E0E-6D415316A04E/gate6-16308-84E9E439-82B1-42EB-8E45-07C893DFEAE4.bin",
+    "bytes": 16777344,
+    "compressed": 35225
+  },
+  {
+    "name": "runner-selftest.log",
+    "bytes": 102,
+    "compressed": 37
+  },
+  {
+    "name": "raw-fallback/8D30D736-C537-4C05-9E0E-6D415316A04E/gate6-9303-4591FFAC-2D67-4AC3-AD48-183D56065DEC.bin",
+    "bytes": 16777344,
+    "compressed": 118591
+  },
+  {
+    "name": "runtimes.json",
+    "bytes": 96648,
+    "compressed": 2847
+  },
+  {
+    "name": "selftest/gestures.bin",
+    "bytes": 131200,
+    "compressed": 2228
+  },
+  {
+    "name": "selftest/normal.bin",
+    "bytes": 4224,
+    "compressed": 250
+  },
+  {
+    "name": "selftest/overflow.bin",
+    "bytes": 2176,
+    "compressed": 197
+  },
+  {
+    "name": "selftest/truncated.bin",
+    "bytes": 4224,
+    "compressed": 237
+  },
+  {
+    "name": "toolchain.txt",
+    "bytes": 419,
+    "compressed": 299
+  },
+  {
+    "name": "writer-compile.log",
+    "bytes": 0,
+    "compressed": 2
+  },
+  {
+    "name": "writer-selftest.log",
+    "bytes": 73,
+    "compressed": 70
+  },
+  {
+    "name": "xcodebuild-help.txt",
+    "bytes": 24217,
+    "compressed": 6297
+  }
+]

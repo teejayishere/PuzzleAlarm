@@ -1,0 +1,65 @@
+{
+  "start_utc": 1792383718.0,
+  "test_deadline_utc": 1792385203.0,
+  "absolute_deadline_utc": 1792385518.0,
+  "sha": "7bfeca92401a577f770a97bc074bf40124f1f66f",
+  "run_id": "39199089437",
+  "run_attempt": "1",
+  "outcomes": [
+    {
+      "name": "editor",
+      "declaration": "testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch",
+      "executions": 1,
+      "completed_tests": 1,
+      "status": "SUCCESSFUL_SAMPLE",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "PuzzleAlarm.xcodeproj",
+        "-scheme",
+        "PuzzleAlarm",
+        "-configuration",
+        "Debug",
+        "-destination",
+        "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64",
+        "-derivedDataPath",
+        "DerivedData",
+        "-resultBundlePath",
+        "TestResults/editor.xcresult",
+        "-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch",
+        "-parallel-testing-enabled",
+        "NO",
+        "-test-timeouts-enabled",
+        "YES",
+        "-maximum-test-execution-time-allowance",
+        "600",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test-without-building"
+      ],
+      "invocation_started": true,
+      "complete_capture": false,
+      "raw_integrity_valid": false,
+      "capture_completeness": "UNVERIFIED_PROCESS_CORRELATION",
+      "exit": 0,
+      "started_log_records": 1,
+      "result_export_exit": 0,
+      "integrity_exit": 1
+    }
+  ],
+  "outcome": "INCOMPLETE_CAPTURE",
+  "gates": "6\u201312 HELD",
+  "overhead": "Nonzero; formatting, clock reads, mapped stores and page residency effects remain.",
+  "seen_raw": [
+    "gate6-16308-84E9E439-82B1-42EB-8E45-07C893DFEAE4.bin",
+    "gate6-9303-4591FFAC-2D67-4AC3-AD48-183D56065DEC.bin"
+  ],
+  "negative_conclusion_allowed": false,
+  "complete_capture": false,
+  "actual_test_executions": 1,
+  "xcodebuild_ui_invocations": 1,
+  "finished_utc": 1792384350.189013,
+  "raw_sha256": {
+    "editor/gate6-16308-84E9E439-82B1-42EB-8E45-07C893DFEAE4.bin": "f4fb9e502613d7073b05b52bafa262282f6c7684b8bee6712fa34d6372fe8c89",
+    "editor/gate6-9303-4591FFAC-2D67-4AC3-AD48-183D56065DEC.bin": "3e931a5e9b1f02c5a829213a8db723b99e19be0c8e9417810377a9db566d3b65"
+  }
+}

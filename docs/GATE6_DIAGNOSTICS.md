@@ -1,6 +1,41 @@
 # Gate 6 bounded input investigation — October 17, 2026
 
-Latest work: [October 18 offline repair/review](GATE6_OFFLINE_REPAIR_2026-10-18.md).
+October 18 (America/Chicago): authorized experiment source
+`7bfeca92401a577f770a97bc074bf40124f1f66f` /
+[run 39199089437](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39199089437),
+attempt 1: **INCOMPLETE_CAPTURE / Actions FAILURE**. The one original audio/editor
+declaration executed once and passed (230.991s). No retry or further experiment.
+
+Accounting: 1 allocated macOS job, 1 explicit boot requested/completed, 1 UI
+invocation, 1 actual execution/completed passed case; separate preboot compile
+invocation executed no test. One post-save target row tap plus the original
+post-relaunch restored-row tap, each with touch/action/draft/sheet/editor records;
+0 captured failed target interactions. Job duration 11 minutes under 30-minute cap.
+Repair publication and ordinary workflow jobs all skipped with no runners.
+
+Source / Windows: 31 focused checks PASS; original product/Core/native/UI sources
+and one-tap assertions preserved. Selected Xcode 26.6: option checks, 31 tooling
+checks, actual Swift writer/decoder roundtrips and generated app/UI-runner compilation
+PASS before boot. Simulator iPhone 17 / iOS 26.5: original declaration PASS once.
+Physical device NOT RUN. This is no gate or broad CI pass.
+
+Two unique raw PIDs contain 2,586 + 455 committed records, valid byte structure/
+checksums/sequences and zero overflow/truncation. All 622 counted gesture lists
+validate, zero gesture omission markers. **Capture incomplete:** first PID has
+2 ancestor-depth omission markers; exported attachment manifest empty and no usable
+exported video. Fallback raw copies are identical duplicates. Complete original ZIP,
+both xcresults, raw buffers and full Actions log are
+[durably archived](evidence/gate6-repaired-single-editor-39199089437/README.md),
+with independent integrity and correlation review. ZIP digest matches GitHub.
+
+Home/activation and audio-stop return boundaries are observed in this successful
+sample, followed by successful saved-row chains. This establishes no historical
+cause or remedy. Both historical input/editor failures and prior activation failure
+remain unresolved. Gate 6 FAILED / HELD; Gates 7–12 INVALIDATED / HELD; last
+unheld gate 5. STOP after evidence-only closeout: no repair/rerun, production remedy,
+main promotion, gate replay, redesign or Stage 13. No further execution queued.
+
+Earlier offline work: [October 18 offline repair/review](GATE6_OFFLINE_REPAIR_2026-10-18.md).
 31 Windows tooling checks pass; no new CI/Simulator/device run. Full gesture-list
 capture remains bounded with strict count/index/loss validation; original archive
 still incomplete. Lifecycle/audio boundary instrumentation is source-checked only.

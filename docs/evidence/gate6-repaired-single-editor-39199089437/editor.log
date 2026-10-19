@@ -1,0 +1,508 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/editor.xcresult "-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch" -parallel-testing-enabled NO -test-timeouts-enabled YES -maximum-test-execution-time-allowance 600 CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/editor.xcresult
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+2026-10-19 04:28:02.995314+0000 PuzzleAlarmUITests-Runner[8493:30654] [Default] Running tests...
+objc[8493]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x106f48310) and /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x1062d4398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-19 04:28:25.144.
+Test Suite 'PuzzleAlarmUITests.xctest' started at 2026-10-19 04:28:25.145.
+Test Suite 'AlarmManagementUITests' started at 2026-10-19 04:28:25.145.
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch]' started.
+    t =     0.00s Start Test at 2026-10-19 04:28:25.146
+    t =     1.13s Set Up
+    t =     1.16s Open com.teejayishere.PuzzleAlarm
+    t =     1.16s     Launch com.teejayishere.PuzzleAlarm
+2026-10-19 04:28:29.435 xcodebuild[6597:25909] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-19 04:28:29.435 xcodebuild[6597:25909] [MT] IDELaunchParametersSnapshot: no debugger version
+Resolve Package Graph
+    t =     7.63s         Setting up automation session
+
+    t =     9.54s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    10.92s Waiting 20.0s for "alarms.add" Button to exist
+    t =    11.97s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =    11.97s         Checking existence of `"alarms.add" Button`
+    t =    12.09s Checking existence of `"alarms.add" PopUpButton`
+    t =    12.15s Checking existence of `"alarms.add" Button`
+    t =    12.17s Waiting 3.0s for "alarms.add" Button to exist
+    t =    13.20s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =    13.21s         Checking existence of `"alarms.add" Button`
+    t =    13.23s Checking existence of `"alarms.add" Button`
+    t =    13.25s Find the "alarms.add" Button
+    t =    33.74s Checking existence of `"alarms.add" Button`
+    t =    33.80s Find the "alarms.add" Button
+    t =    35.86s Checking existence of `"alarms.add" PopUpButton`
+    t =    35.91s Checking existence of `"alarms.add" Button`
+    t =    35.93s Waiting 5.0s for "alarms.add" Button to exist
+    t =    36.96s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =    36.96s         Checking existence of `"alarms.add" Button`
+    t =    36.98s Find the "alarms.add" Button
+    t =    36.99s Find the "alarms.add" Button
+    t =    37.01s Find the "alarms.add" Button
+    t =    37.04s Find the "alarms.add" Button
+    t =    37.06s Tap "alarms.add" Button
+    t =    37.06s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    37.06s     Find the "alarms.add" Button
+    t =    37.08s     Check for interrupting elements affecting "alarms.add" Button
+    t =    47.33s     Synthesize event
+    t =    48.06s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    49.24s Waiting 10.0s for "editor.save" Button to exist
+    t =    50.25s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.save" Button`
+    t =    50.25s         Checking existence of `"editor.save" Button`
+    t =    50.54s Checking existence of `"editor.sound" PopUpButton`
+    t =    50.85s Checking existence of `"editor.sound" Button`
+    t =    51.14s Waiting 3.0s for "editor.sound" Button to exist
+    t =    52.20s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.sound" Button`
+    t =    52.20s         Checking existence of `"editor.sound" Button`
+    t =    52.69s Checking existence of `"editor.sound" Button`
+    t =    52.90s Find the "editor.sound" Button
+    t =    53.08s Checking existence of `"editor.sound" Button`
+    t =    53.28s Find the "editor.sound" Button
+    t =    53.52s Checking existence of `"editor.sound" PopUpButton`
+    t =    53.83s Checking existence of `"editor.sound" Button`
+    t =    54.00s Waiting 5.0s for "editor.sound" Button to exist
+    t =    55.06s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.sound" Button`
+    t =    55.06s         Checking existence of `"editor.sound" Button`
+    t =    55.27s Find the "editor.sound" Button
+    t =    55.46s Find the "editor.sound" Button
+    t =    55.63s Find the "editor.sound" Button
+    t =    55.83s Find the "editor.sound" Button
+    t =    56.04s Tap "editor.sound" Button
+    t =    56.05s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    56.05s     Find the "editor.sound" Button
+    t =    56.37s     Check for interrupting elements affecting "editor.sound" Button
+    t =    56.46s     Synthesize event
+    t =    56.76s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    59.73s Waiting 5.0s for Any (First Match) to exist
+    t =    60.83s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =    60.83s         Checking existence of `Any (First Match)`
+    t =    60.91s Tap Any (First Match)
+    t =    60.91s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    60.91s     Find the Any (First Match)
+    t =    60.97s     Check for interrupting elements affecting "Siren" Button
+    t =    61.07s     Synthesize event
+    t =    61.37s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    63.00s Checking existence of `"editor.preview" PopUpButton`
+    t =    64.77s Checking existence of `"editor.preview" Button`
+    t =    65.30s Waiting 3.0s for "editor.preview" Button to exist
+    t =    66.34s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =    66.34s         Checking existence of `"editor.preview" Button`
+    t =    66.86s Checking existence of `"editor.preview" Button`
+    t =    67.74s Find the "editor.preview" Button
+    t =    68.18s Checking existence of `"editor.preview" Button`
+    t =    68.48s Find the "editor.preview" Button
+    t =    68.90s Checking existence of `"editor.preview" PopUpButton`
+    t =    69.47s Checking existence of `"editor.preview" Button`
+    t =    70.13s Waiting 5.0s for "editor.preview" Button to exist
+    t =    71.17s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =    71.17s         Checking existence of `"editor.preview" Button`
+    t =    71.33s Find the "editor.preview" Button
+    t =    71.49s Find the "editor.preview" Button
+    t =    71.65s Find the "editor.preview" Button
+    t =    71.81s Find the "editor.preview" Button
+    t =    71.96s Tap "editor.preview" Button
+    t =    71.96s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    71.96s     Find the "editor.preview" Button
+    t =    72.10s     Check for interrupting elements affecting "editor.preview" Button
+    t =    72.19s     Synthesize event
+    t =    72.50s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    78.03s Checking `Expect predicate `value == "Playing"` for object "editor.preview" Button`
+    t =    78.04s     Find the "editor.preview" Button
+    t =    78.19s Checking existence of `"editor.preview" PopUpButton`
+    t =    78.42s Checking existence of `"editor.preview" Button`
+    t =    78.65s Waiting 3.0s for "editor.preview" Button to exist
+    t =    79.70s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =    79.70s         Checking existence of `"editor.preview" Button`
+    t =    80.01s Checking existence of `"editor.preview" Button`
+    t =    80.22s Find the "editor.preview" Button
+    t =    80.55s Checking existence of `"editor.preview" Button`
+    t =    80.85s Find the "editor.preview" Button
+    t =    81.05s Checking existence of `"editor.preview" PopUpButton`
+    t =    81.28s Checking existence of `"editor.preview" Button`
+    t =    81.58s Waiting 5.0s for "editor.preview" Button to exist
+    t =    82.64s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =    82.64s         Checking existence of `"editor.preview" Button`
+    t =    82.98s Find the "editor.preview" Button
+    t =    83.37s Find the "editor.preview" Button
+    t =    83.72s Find the "editor.preview" Button
+    t =    84.12s Find the "editor.preview" Button
+    t =    84.38s Tap "editor.preview" Button
+    t =    84.38s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    84.38s     Find the "editor.preview" Button
+    t =    84.61s     Check for interrupting elements affecting "editor.preview" Button
+    t =    84.72s     Synthesize event
+    t =    85.10s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    86.36s Checking `Expect predicate `value == "Stopped"` for object "editor.preview" Button`
+    t =    86.37s     Find the "editor.preview" Button
+    t =    86.45s Checking existence of `"editor.preview" PopUpButton`
+    t =    86.68s Checking existence of `"editor.preview" Button`
+    t =    86.96s Waiting 3.0s for "editor.preview" Button to exist
+    t =    87.99s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =    87.99s         Checking existence of `"editor.preview" Button`
+    t =    88.35s Checking existence of `"editor.preview" Button`
+    t =    88.57s Find the "editor.preview" Button
+    t =    88.81s Checking existence of `"editor.preview" Button`
+    t =    89.01s Find the "editor.preview" Button
+    t =    89.18s Checking existence of `"editor.preview" PopUpButton`
+    t =    89.32s Checking existence of `"editor.preview" Button`
+    t =    89.45s Waiting 5.0s for "editor.preview" Button to exist
+    t =    90.50s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =    90.50s         Checking existence of `"editor.preview" Button`
+    t =    90.77s Find the "editor.preview" Button
+    t =    90.91s Find the "editor.preview" Button
+    t =    91.05s Find the "editor.preview" Button
+    t =    91.38s Find the "editor.preview" Button
+    t =    91.55s Tap "editor.preview" Button
+    t =    91.55s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    91.55s     Find the "editor.preview" Button
+    t =    91.70s     Check for interrupting elements affecting "editor.preview" Button
+    t =    91.77s     Synthesize event
+    t =    92.07s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    93.41s Checking `Expect predicate `value == "Playing"` for object "editor.preview" Button`
+    t =    93.41s     Find the "editor.preview" Button
+    t =    93.51s Checking existence of `"editor.sound" PopUpButton`
+    t =    93.67s Checking existence of `"editor.sound" Button`
+    t =    93.83s Waiting 3.0s for "editor.sound" Button to exist
+    t =    94.87s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.sound" Button`
+    t =    94.87s         Checking existence of `"editor.sound" Button`
+    t =    95.05s Checking existence of `"editor.sound" Button`
+    t =    95.20s Find the "editor.sound" Button
+    t =    95.37s Checking existence of `"editor.sound" Button`
+    t =    95.50s Find the "editor.sound" Button
+    t =    95.65s Checking existence of `"editor.sound" PopUpButton`
+    t =    95.78s Checking existence of `"editor.sound" Button`
+    t =    95.93s Waiting 5.0s for "editor.sound" Button to exist
+    t =    96.99s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.sound" Button`
+    t =    96.99s         Checking existence of `"editor.sound" Button`
+    t =    97.17s Find the "editor.sound" Button
+    t =    97.36s Find the "editor.sound" Button
+    t =    97.57s Find the "editor.sound" Button
+    t =    97.79s Find the "editor.sound" Button
+    t =    97.94s Tap "editor.sound" Button
+    t =    97.94s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    97.94s     Find the "editor.sound" Button
+    t =    98.11s     Check for interrupting elements affecting "editor.sound" Button
+    t =    99.16s     Synthesize event
+    t =    99.46s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   100.88s Waiting 5.0s for Any (First Match) to exist
+    t =   101.92s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   101.92s         Checking existence of `Any (First Match)`
+    t =   102.02s Tap Any (First Match)
+    t =   102.02s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   102.03s     Find the Any (First Match)
+    t =   102.17s     Check for interrupting elements affecting "Rapid Beeps" Button
+    t =   102.29s     Synthesize event
+    t =   102.60s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   105.30s Checking `Expect predicate `value == "Stopped"` for object "editor.preview" Button`
+    t =   105.30s     Find the "editor.preview" Button
+    t =   106.31s Checking existence of `"editor.preview" PopUpButton`
+    t =   106.54s Checking existence of `"editor.preview" Button`
+    t =   106.77s Waiting 3.0s for "editor.preview" Button to exist
+    t =   107.81s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =   107.81s         Checking existence of `"editor.preview" Button`
+    t =   108.10s Checking existence of `"editor.preview" Button`
+    t =   108.32s Find the "editor.preview" Button
+    t =   108.63s Checking existence of `"editor.preview" Button`
+    t =   108.88s Find the "editor.preview" Button
+    t =   109.18s Checking existence of `"editor.preview" PopUpButton`
+    t =   109.50s Checking existence of `"editor.preview" Button`
+    t =   109.77s Waiting 5.0s for "editor.preview" Button to exist
+    t =   110.80s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =   110.81s         Checking existence of `"editor.preview" Button`
+    t =   111.07s Find the "editor.preview" Button
+    t =   111.42s Find the "editor.preview" Button
+    t =   111.71s Find the "editor.preview" Button
+    t =   112.11s Find the "editor.preview" Button
+    t =   112.51s Tap "editor.preview" Button
+    t =   112.51s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   112.52s     Find the "editor.preview" Button
+    t =   112.92s     Check for interrupting elements affecting "editor.preview" Button
+    t =   113.09s     Synthesize event
+    t =   113.51s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   114.76s Checking `Expect predicate `value == "Playing"` for object "editor.preview" Button`
+    t =   114.76s     Find the "editor.preview" Button
+    t =   114.89s Checking existence of `"editor.repeat" PopUpButton`
+    t =   115.16s Checking existence of `"editor.repeat" Button`
+    t =   115.48s Waiting 3.0s for "editor.repeat" Button to exist
+    t =   116.53s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.repeat" Button`
+    t =   116.53s         Checking existence of `"editor.repeat" Button`
+    t =   117.13s Checking existence of `"editor.repeat" Button`
+    t =   117.95s Find the "editor.repeat" Button
+    t =   118.47s Checking existence of `"editor.repeat" Button`
+    t =   119.07s Find the "editor.repeat" Button
+    t =   119.65s Checking existence of `"editor.repeat" PopUpButton`
+    t =   120.58s Checking existence of `"editor.repeat" Button`
+    t =   121.39s Waiting 5.0s for "editor.repeat" Button to exist
+    t =   122.42s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.repeat" Button`
+    t =   122.43s         Checking existence of `"editor.repeat" Button`
+    t =   122.99s Find the "editor.repeat" Button
+    t =   123.48s Find the "editor.repeat" Button
+    t =   124.06s Find the "editor.repeat" Button
+    t =   124.86s Find the "editor.repeat" Button
+    t =   125.44s Tap "editor.repeat" Button
+    t =   125.44s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   125.45s     Find the "editor.repeat" Button
+    t =   125.97s     Check for interrupting elements affecting "editor.repeat" Button
+    t =   126.14s     Synthesize event
+    t =   126.47s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   127.11s Waiting 10.0s for "Repeat" NavigationBar to exist
+    t =   128.13s     Checking `Expect predicate `existsNoRetry == 1` for object "Repeat" NavigationBar`
+    t =   128.13s         Checking existence of `"Repeat" NavigationBar`
+    t =   128.67s Tap Button (Element at index 0)
+    t =   128.67s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   128.68s     Find the Button (Element at index 0)
+    t =   128.84s     Check for interrupting elements affecting "BackButton" Button
+    t =   128.96s     Synthesize event
+    t =   129.32s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   130.29s Checking existence of `"editor.sound" PopUpButton`
+    t =   131.33s Checking existence of `"editor.sound" Button`
+    t =   131.75s Waiting 3.0s for "editor.sound" Button to exist
+    t =   132.78s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.sound" Button`
+    t =   132.78s         Checking existence of `"editor.sound" Button`
+    t =   133.01s Checking existence of `"editor.sound" Button`
+    t =   133.34s Find the "editor.sound" Button
+    t =   133.67s Checking existence of `"editor.sound" Button`
+    t =   133.99s Find the "editor.sound" Button
+    t =   134.37s Checking existence of `"editor.sound" PopUpButton`
+    t =   134.68s Checking existence of `"editor.sound" Button`
+    t =   135.03s Waiting 5.0s for "editor.sound" Button to exist
+    t =   136.09s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.sound" Button`
+    t =   136.09s         Checking existence of `"editor.sound" Button`
+    t =   136.67s Find the "editor.sound" Button
+    t =   137.29s Find the "editor.sound" Button
+    t =   137.89s Find the "editor.sound" Button
+    t =   138.82s Find the "editor.sound" Button
+    t =   139.66s Tap "editor.sound" Button
+    t =   139.66s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   139.68s     Find the "editor.sound" Button
+    t =   140.27s     Check for interrupting elements affecting "editor.sound" Button
+    t =   140.41s     Synthesize event
+    t =   140.75s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   142.54s Waiting 5.0s for Any (First Match) to exist
+    t =   143.58s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   143.58s         Checking existence of `Any (First Match)`
+    t =   143.81s Tap Any (First Match)
+    t =   143.81s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   143.82s     Find the Any (First Match)
+    t =   144.13s     Check for interrupting elements affecting "Rapid Beeps" Button
+    t =   144.35s     Synthesize event
+    t =   144.66s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   147.44s Checking `Expect predicate `value == "Stopped"` for object "editor.preview" Button`
+    t =   147.44s     Find the "editor.preview" Button
+    t =   147.61s Checking existence of `"editor.preview" PopUpButton`
+    t =   148.12s Checking existence of `"editor.preview" Button`
+    t =   148.65s Waiting 3.0s for "editor.preview" Button to exist
+    t =   149.70s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =   149.70s         Checking existence of `"editor.preview" Button`
+    t =   150.15s Checking existence of `"editor.preview" Button`
+    t =   150.65s Find the "editor.preview" Button
+    t =   151.15s Checking existence of `"editor.preview" Button`
+    t =   151.66s Find the "editor.preview" Button
+    t =   152.50s Checking existence of `"editor.preview" PopUpButton`
+    t =   153.32s Checking existence of `"editor.preview" Button`
+    t =   153.87s Waiting 5.0s for "editor.preview" Button to exist
+    t =   154.89s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =   154.89s         Checking existence of `"editor.preview" Button`
+    t =   155.53s Find the "editor.preview" Button
+    t =   156.10s Find the "editor.preview" Button
+    t =   156.59s Find the "editor.preview" Button
+    t =   157.00s Find the "editor.preview" Button
+    t =   157.50s Tap "editor.preview" Button
+    t =   157.50s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   157.51s     Find the "editor.preview" Button
+    t =   157.96s     Check for interrupting elements affecting "editor.preview" Button
+    t =   158.11s     Synthesize event
+    t =   158.44s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   159.78s Checking `Expect predicate `value == "Playing"` for object "editor.preview" Button`
+    t =   159.78s     Find the "editor.preview" Button
+GATE6 boundary home begin wall=1792384265.0304198
+    t =   159.89s Pressing Home button
+GATE6 boundary home returned wall=1792384265.503552
+GATE6 boundary activate begin wall=1792384265.5035958
+    t =   160.36s Open com.teejayishere.PuzzleAlarm
+    t =   160.36s     Activate com.teejayishere.PuzzleAlarm
+    t =   162.82s         Wait for com.teejayishere.PuzzleAlarm to idle
+GATE6 boundary activate returned wall=1792384267.962964
+    t =   163.82s Checking `Expect predicate `value == "Stopped"` for object "editor.preview" Button`
+    t =   163.82s     Find the "editor.preview" Button
+    t =   164.24s Checking existence of `"editor.save" PopUpButton`
+    t =   164.92s Checking existence of `"editor.save" Button`
+    t =   165.13s Waiting 3.0s for "editor.save" Button to exist
+    t =   166.18s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.save" Button`
+    t =   166.18s         Checking existence of `"editor.save" Button`
+    t =   166.32s Checking existence of `"editor.save" Button`
+    t =   166.44s Find the "editor.save" Button
+    t =   166.64s Checking existence of `"editor.save" Button`
+    t =   166.79s Find the "editor.save" Button
+    t =   166.94s Checking existence of `"editor.save" PopUpButton`
+    t =   167.28s Checking existence of `"editor.save" Button`
+    t =   167.44s Waiting 5.0s for "editor.save" Button to exist
+    t =   168.49s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.save" Button`
+    t =   168.49s         Checking existence of `"editor.save" Button`
+    t =   168.67s Find the "editor.save" Button
+    t =   168.92s Find the "editor.save" Button
+    t =   169.10s Find the "editor.save" Button
+    t =   169.49s Find the "editor.save" Button
+    t =   169.70s Tap "editor.save" Button
+    t =   169.70s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   169.70s     Find the "editor.save" Button
+    t =   169.86s     Check for interrupting elements affecting "editor.save" Button
+    t =   170.00s     Synthesize event
+    t =   170.38s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   172.29s Checking `Expect predicate `exists == 0` for object "editor.save" Button`
+    t =   172.29s     Checking existence of `"editor.save" Button`
+    t =   172.38s Waiting 10.0s for Button (First Match) to exist
+    t =   173.41s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =   173.41s         Checking existence of `Button (First Match)`
+    t =   173.55s Tap Button (First Match)
+    t =   173.55s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   173.55s     Find the Button (First Match)
+    t =   173.77s     Check for interrupting elements affecting "alarm.edit.87653D84-2839-4FD1-81A7-C991DA2B1859" Button
+    t =   173.82s     Synthesize event
+    t =   174.16s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   174.71s Waiting 10.0s for "editor.save" Button to exist
+    t =   175.76s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.save" Button`
+    t =   175.76s         Checking existence of `"editor.save" Button`
+    t =   175.94s Checking existence of `"editor.preview" PopUpButton`
+    t =   176.45s Checking existence of `"editor.preview" Button`
+    t =   177.12s Waiting 3.0s for "editor.preview" Button to exist
+    t =   178.14s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =   178.14s         Checking existence of `"editor.preview" Button`
+    t =   178.63s Checking existence of `"editor.preview" Button`
+    t =   179.16s Find the "editor.preview" Button
+    t =   179.69s Checking existence of `"editor.preview" Button`
+    t =   180.22s Find the "editor.preview" Button
+    t =   181.00s Checking existence of `"editor.preview" PopUpButton`
+    t =   181.38s Checking existence of `"editor.preview" Button`
+    t =   181.85s Waiting 5.0s for "editor.preview" Button to exist
+    t =   182.87s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Button`
+    t =   182.87s         Checking existence of `"editor.preview" Button`
+    t =   183.19s Find the "editor.preview" Button
+    t =   183.51s Find the "editor.preview" Button
+    t =   183.90s Find the "editor.preview" Button
+    t =   184.46s Find the "editor.preview" Button
+    t =   184.84s Tap "editor.preview" Button
+    t =   184.84s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   184.84s     Find the "editor.preview" Button
+    t =   185.18s     Check for interrupting elements affecting "editor.preview" Button
+    t =   185.29s     Synthesize event
+    t =   185.72s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   186.91s Checking `Expect predicate `value == "Playing"` for object "editor.preview" Button`
+    t =   186.91s     Find the "editor.preview" Button
+    t =   187.07s Checking existence of `"editor.cancel" PopUpButton`
+    t =   187.61s Checking existence of `"editor.cancel" Button`
+    t =   187.73s Waiting 3.0s for "editor.cancel" Button to exist
+    t =   188.79s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.cancel" Button`
+    t =   188.79s         Checking existence of `"editor.cancel" Button`
+    t =   188.98s Checking existence of `"editor.cancel" Button`
+    t =   189.12s Find the "editor.cancel" Button
+    t =   189.34s Checking existence of `"editor.cancel" Button`
+    t =   189.70s Find the "editor.cancel" Button
+    t =   190.12s Checking existence of `"editor.cancel" PopUpButton`
+    t =   193.41s Checking existence of `"editor.cancel" Button`
+    t =   193.98s Waiting 5.0s for "editor.cancel" Button to exist
+    t =   195.02s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.cancel" Button`
+    t =   195.02s         Checking existence of `"editor.cancel" Button`
+    t =   196.35s Find the "editor.cancel" Button
+    t =   196.69s Find the "editor.cancel" Button
+    t =   196.98s Find the "editor.cancel" Button
+    t =   197.33s Find the "editor.cancel" Button
+    t =   198.50s Tap "editor.cancel" Button
+    t =   198.50s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   198.51s     Find the "editor.cancel" Button
+    t =   200.40s     Check for interrupting elements affecting "editor.cancel" Button
+    t =   200.62s     Synthesize event
+    t =   201.05s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   201.93s Terminate com.teejayishere.PuzzleAlarm:9303
+    t =   204.01s Open com.teejayishere.PuzzleAlarm
+    t =   204.01s     Launch com.teejayishere.PuzzleAlarm
+2026-10-19 04:31:49.534 xcodebuild[6597:25909] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-19 04:31:49.535 xcodebuild[6597:25909] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =   206.46s         Setting up automation session
+    t =   208.81s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   210.36s Waiting 20.0s for "alarms.add" Button to exist
+    t =   211.42s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =   211.42s         Checking existence of `"alarms.add" Button`
+    t =   211.57s Waiting 10.0s for Button (First Match) to exist
+    t =   212.58s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =   212.58s         Checking existence of `Button (First Match)`
+    t =   212.80s Find the Button (First Match)
+    t =   213.00s Tap "alarm.edit.87653D84-2839-4FD1-81A7-C991DA2B1859" Button
+    t =   213.00s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   213.00s     Find the "alarm.edit.87653D84-2839-4FD1-81A7-C991DA2B1859" Button
+    t =   213.15s     Check for interrupting elements affecting "alarm.edit.87653D84-2839-4FD1-81A7-C991DA2B1859" Button
+    t =   213.22s     Synthesize event
+    t =   213.52s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   214.39s Checking existence of `"editor.sound" PopUpButton`
+    t =   216.21s Checking existence of `"editor.sound" Button`
+    t =   216.51s Waiting 3.0s for "editor.sound" Button to exist
+    t =   217.54s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.sound" Button`
+    t =   217.54s         Checking existence of `"editor.sound" Button`
+    t =   217.79s Checking existence of `"editor.sound" Button`
+    t =   218.07s Find the "editor.sound" Button
+    t =   218.37s Checking existence of `"editor.sound" Button`
+    t =   218.63s Find the "editor.sound" Button
+    t =   218.98s Checking existence of `"editor.sound" PopUpButton`
+    t =   219.39s Checking existence of `"editor.sound" Button`
+    t =   219.71s Waiting 5.0s for "editor.sound" Button to exist
+    t =   220.74s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.sound" Button`
+    t =   220.74s         Checking existence of `"editor.sound" Button`
+    t =   221.15s Find the "editor.sound" Button
+    t =   221.79s Find the "editor.sound" Button
+    t =   222.31s Find the "editor.sound" Button
+    t =   223.04s Find the "editor.sound" Button
+    t =   223.54s Tap "editor.sound" Button
+    t =   223.54s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   223.55s     Find the "editor.sound" Button
+    t =   223.93s     Check for interrupting elements affecting "editor.sound" Button
+    t =   224.07s     Synthesize event
+    t =   224.39s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   224.87s Waiting 5.0s for Any (First Match) to exist
+    t =   225.92s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   225.92s         Checking existence of `Any (First Match)`
+    t =   226.73s Tap Any (First Match)
+    t =   226.73s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   226.74s     Find the Any (First Match)
+    t =   226.94s     Check for interrupting elements affecting "Rapid Beeps" Button
+    t =   227.12s     Synthesize event
+    t =   227.43s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =   230.14s Checking `Expect predicate `value == "Stopped"` for object "editor.preview" Button`
+    t =   230.14s     Find the "editor.preview" Button
+    t =   230.31s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch]' passed (230.991 seconds).
+Test Suite 'AlarmManagementUITests' passed at 2026-10-19 04:32:16.140.
+	 Executed 1 test, with 0 failures (0 unexpected) in 230.991 (230.995) seconds
+Test Suite 'PuzzleAlarmUITests.xctest' passed at 2026-10-19 04:32:16.142.
+	 Executed 1 test, with 0 failures (0 unexpected) in 230.991 (230.998) seconds
+Test Suite 'Selected tests' passed at 2026-10-19 04:32:16.143.
+	 Executed 1 test, with 0 failures (0 unexpected) in 230.991 (230.999) seconds
+Resolve Package Graph
+
+2026-10-19 04:32:18.201 xcodebuild[6597:25909] [MT] IDETestOperationsObserverDebug: 279.950 elapsed -- Testing started completed.
+2026-10-19 04:32:18.201 xcodebuild[6597:25909] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-19 04:32:18.201 xcodebuild[6597:25909] [MT] IDETestOperationsObserverDebug: 279.950 sec, +279.950 sec -- end
+Resolve Package Graph
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/editor.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started
