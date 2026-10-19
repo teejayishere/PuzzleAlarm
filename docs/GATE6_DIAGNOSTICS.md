@@ -1,5 +1,11 @@
 # Gate 6 bounded input investigation — October 17, 2026
 
+October 18 update: [evidence review and local tooling correction](GATE6_REVIEW_2026-10-18.md)
+supersedes the historical dry-run requirement and automatic product-failure attribution
+below. No new experiment is authorized or executed. Help inspection is option-name
+evidence only; exact invocation remains unvalidated. Raw decoder integrity does not
+establish complete process coverage. Gate 6 held; Gates 7–12 invalidated/held.
+
 Gates 6–12 remain HELD; last unheld gate is 5. No Mac and no installed iPhone
 build are available. That constraint is settled. An interactive comparison is
 one possible future observation, not a prerequisite for useful CI investigation.

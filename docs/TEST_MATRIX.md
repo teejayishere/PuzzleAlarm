@@ -2,6 +2,11 @@
 
 ## Current acceptance — Gates 6–12 held
 
+October 18 local review: exact starting HEAD c4b74506ef51aaa53de7e34c41a9329bd9d26571 /
+39080917448 SKIPPED. No new CI. Local tooling corrections: 19 focused Python tests
+PASS; no Xcode/Simulator/device execution. Original one-tap/native/UI protections
+unchanged; both unresolved causes remain unknown. [Review](GATE6_REVIEW_2026-10-18.md).
+
 Latest bounded diagnostic: 6ba4de1dbadff8c1233fed0488a99d1fbe57c335 /
 [39080779760](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39080779760)
 attempt 1 FAILS selected-toolchain help preflight (`-dry-run` not advertised).

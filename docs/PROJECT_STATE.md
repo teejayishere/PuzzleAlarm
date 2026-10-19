@@ -4,6 +4,15 @@ Current stage: 12, recursing to the unresolved Gate 6 native-input boundary.
 Gate 6 is FAILED; dependent Gates 7–12 are INVALIDATED / HELD. Last unheld gate: 5.
 Stage 13 NOT STARTED. A later green run alone cannot clear a known unexplained failure.
 
+October 18 evidence-only review: exact starting HEAD c4b74506ef51aaa53de7e34c41a9329bd9d26571
+has latest CI 39080917448 SKIPPED, not PASS. Original input/editor logs were reexamined;
+neither unresolved failure has a proven current application root cause. Local tooling
+removes unsupported dry-run assumptions and product-blame accounting, retains observed
+starts across export failure, and separates raw integrity from capture completeness.
+19 focused Windows tooling tests PASS; Xcode/Simulator/device NOT RUN. No CI triggered,
+commit, push or production change. See [review](GATE6_REVIEW_2026-10-18.md) for proven
+facts, missing evidence and the smallest proposed experiment; none is queued.
+
 ## Verified starting point and publication
 
 The requested main baseline 10be76a4b071c7c32b7f8e1938a0883f78d9e66e / run

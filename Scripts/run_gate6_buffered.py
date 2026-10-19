@@ -8,6 +8,7 @@ import signal
 import subprocess
 import time
 from gate6_accounting import assess
+from gate6_invocation import METHODS, test_command
 
 ROOT = Path('TestResults')
 ROOT.mkdir(exist_ok=True)
@@ -62,50 +63,45 @@ def capture(name):
 
 try:
     save()
-    methods = [('toggle', 'testEnableDisableAndFailureRetryAreHonest'),
-               ('editor', 'testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch')]
-    for name, method in methods:
-        args = ['xcodebuild', '-project', 'PuzzleAlarm.xcodeproj', '-scheme', 'PuzzleAlarm',
-                '-configuration', 'Debug', '-destination', f'platform=iOS Simulator,id={os.environ["SIMULATOR_ID"]},arch={os.uname().machine}',
-                '-derivedDataPath', 'DerivedData', '-resultBundlePath', str(ROOT / f'{name}.xcresult'),
-                f'-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/{method}',
-                '-parallel-testing-enabled', 'NO',
-                '-test-timeouts-enabled', 'YES', '-maximum-test-execution-time-allowance', '600',
-                'CODE_SIGNING_ALLOWED=NO', 'test']
-        # The selected Xcode parses this exact invocation without UI execution.
-        preflight = [a for a in args]
-        index = preflight.index('-resultBundlePath')
-        del preflight[index:index + 2]
-        preflight.insert(1, '-dry-run')
-        preflight_code = command(preflight, name + '-invocation-preflight.log')
+    for name, method in METHODS:
+        args = test_command(os.environ['SIMULATOR_ID'], os.uname().machine,
+                            ROOT / f'{name}.xcresult', method)
+        # No nonexecuting exact-command validation is claimed. The first real
+        # invocation can still fail on setup/options; count it separately.
         item = dict(name=name, declaration=method, executions=0, completed_tests=0,
-                    status='TOOLING_FAILURE', command=args, preflight_exit=preflight_code,
-                    invocation_started=False, complete_capture=False)
+                    status='TOOLING_FAILURE', command=args,
+                    invocation_started=False, complete_capture=False, raw_integrity_valid=False,
+                    capture_completeness='UNVERIFIED_PROCESS_CORRELATION')
         manifest['outcomes'].append(item)
         save()
-        if preflight_code:
-            manifest['reason'] = 'selected-toolchain invocation preflight failed; no UI execution'
-            break
         item['invocation_started'] = True
         save()
         try:
             code = command(args, name + '.log')
             item['exit'] = code
         finally:
-            export = command(['xcrun', 'xcresulttool', 'get', 'test-results', 'tests', '--path',
-                              str(ROOT / f'{name}.xcresult')], name + '-tests.json', END)
-            item['result_export_exit'] = export
-            tree = json.loads((ROOT / f'{name}-tests.json').read_text()) if export == 0 else {}
-            item.update(assess(tree, (ROOT / f'{name}.log').read_text(), method, item.get('exit')))
-            item['integrity_exit'] = capture(name)
-            item['complete_capture'] = item['integrity_exit'] == 0
+            # Preserve observed starts even if export/capture later times out.
+            item.update(assess({}, (ROOT / f'{name}.log').read_text(), method, item.get('exit')))
             save()
-        if item['status'] == 'PRODUCT_FAILURE':
-            manifest['outcome'] = 'CAPTURED_PRODUCT_FAILURE' if item['complete_capture'] else 'PRODUCT_FAILURE_INCOMPLETE_CAPTURE'
+            try:
+                export = command(['xcrun', 'xcresulttool', 'get', 'test-results', 'tests', '--path',
+                                  str(ROOT / f'{name}.xcresult')], name + '-tests.json', END)
+                item['result_export_exit'] = export
+                tree = json.loads((ROOT / f'{name}-tests.json').read_text()) if export == 0 else {}
+                item.update(assess(tree, (ROOT / f'{name}.log').read_text(), method, item.get('exit')))
+            finally:
+                # Raw capture remains independent of fallible xcresult export.
+                item['integrity_exit'] = capture(name)
+                item['raw_integrity_valid'] = item['integrity_exit'] == 0
+            # A valid set of copied files cannot prove that every test process
+            # and interaction is represented. Correlation needs evidence review.
+            save()
+        if item['status'] == 'ASSERTION_FAILURE_CAUSE_UNKNOWN':
+            manifest['outcome'] = 'ASSERTION_FAILURE_CAUSE_UNKNOWN'
             break
         if item['status'] == 'TOOLING_FAILURE':
             break
-        if not item['complete_capture']:
+        if not item['raw_integrity_valid']:
             manifest['outcome'] = 'INCOMPLETE_CAPTURE'
             break
     else:

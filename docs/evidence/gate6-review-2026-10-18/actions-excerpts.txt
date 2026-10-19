@@ -1,0 +1,69 @@
+Read-only Actions log excerpts reviewed October 18, 2026. Timestamps are UTC.
+These are selected lines, not complete logs or new test execution.
+
+
+run 38843851982 / job 116789770801 / SwiftUI failed PID 23823
+2026-10-16T03:22:38.7810390Z 1792120795.729445 pid=23823 fixture launch
+2026-10-16T03:22:38.7811020Z 1792120798.684997 pid=23823 window observer attached appState=1 scene=1
+2026-10-16T03:22:38.7811910Z 1792120810.6527948 pid=23823 window began point=(340.66666666666663, 468.0) hit=_UILiquidLensView appState=0 scene=-99
+2026-10-16T03:22:38.7812880Z 1792120810.663785 pid=23823 window ended point=(340.66666666666663, 468.0) hit=_UILiquidLensView appState=0 scene=-99
+
+run 39058576894 / job 117471536082 / main failed input
+2026-10-17T18:46:05.8517960Z /Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarmUITests/AlarmManagementUITests.swift:181: error: -[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest] : XCTAssertEqual failed: ("XCTWaiterResult(rawValue: 2)") is not equal to ("XCTWaiterResult(rawValue: 1)") - Switch input did not commit: alarm.enabled.00000000-0000-0000-0000-000000000001
+2026-10-17T18:50:55.5090310Z 1792262740.453357 pid=22681 fixture launch
+
+run 39061680552 / job 117480761259 / UIKit failed input
+2026-10-17T19:24:04.6932790Z     t =    16.85s Tap "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+2026-10-17T19:24:38.2059020Z /Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarmUITests/AlarmManagementUITests.swift:181: error: -[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest] : XCTAssertEqual failed: ("XCTWaiterResult(rawValue: 2)") is not equal to ("XCTWaiterResult(rawValue: 1)") - Switch input did not commit: alarm.enabled.00000000-0000-0000-0000-000000000001
+2026-10-17T19:24:38.3714800Z                                   Switch, 0x11345b840, {{309.0, 457.0}, {61.0, 28.0}}, identifier: 'alarm.enabled.00000000-0000-0000-0000-000000000001', label: 'Alarm enabled', value: 0
+2026-10-17T19:31:03.2661110Z 1792265035.835897 pid=15554 fixture launch
+
+run 39064851750 / job 117492933440 / saved editor reopening
+2026-10-17T20:49:40.0467230Z     t =   133.84s     Check for interrupting elements affecting "editor.save" Button
+2026-10-17T20:49:40.1465560Z     t =   133.94s     Synthesize event
+2026-10-17T20:49:40.7119860Z     t =   134.27s     Wait for com.teejayishere.PuzzleAlarm to idle
+2026-10-17T20:49:42.6045320Z     t =   136.40s Checking `Expect predicate `exists == 0` for object "editor.save" Button`
+2026-10-17T20:49:42.6071660Z     t =   136.40s     Checking existence of `"editor.save" Button`
+2026-10-17T20:49:42.6538990Z     t =   136.45s Waiting 10.0s for Button (First Match) to exist
+2026-10-17T20:49:43.6888150Z     t =   137.49s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+2026-10-17T20:49:43.6889940Z     t =   137.49s         Checking existence of `Button (First Match)`
+2026-10-17T20:49:43.8844030Z     t =   137.68s Tap Button (First Match)
+2026-10-17T20:49:43.8919960Z     t =   137.68s     Wait for com.teejayishere.PuzzleAlarm to idle
+2026-10-17T20:49:43.8934460Z     t =   137.68s     Find the Button (First Match)
+2026-10-17T20:49:44.0139530Z     t =   137.81s     Check for interrupting elements affecting "alarm.edit.0254BF0F-3B6B-42D8-AFA6-F7AC2109E8F7" Button
+2026-10-17T20:49:44.0536560Z     t =   137.85s     Synthesize event
+2026-10-17T20:49:44.3828430Z     t =   138.15s     Wait for com.teejayishere.PuzzleAlarm to idle
+2026-10-17T20:49:44.3837060Z     t =   138.16s Checking existence of `"editor.preview" PopUpButton`
+2026-10-17T20:49:44.5609570Z     t =   138.36s Checking existence of `"editor.preview" Button`
+2026-10-17T20:49:44.6941500Z     t =   138.49s Waiting 3.0s for "editor.preview" Any to exist
+2026-10-17T20:49:45.7222940Z     t =   139.52s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Any`
+2026-10-17T20:49:45.7268510Z     t =   139.52s         Checking existence of `"editor.preview" Any`
+2026-10-17T20:49:46.0328290Z     t =   139.82s         Capturing element debug description
+2026-10-17T20:49:46.7335860Z     t =   140.53s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Any`
+2026-10-17T20:49:46.7395530Z     t =   140.53s         Checking existence of `"editor.preview" Any`
+2026-10-17T20:49:47.0751560Z     t =   140.87s         Capturing element debug description
+2026-10-17T20:49:47.7077460Z     t =   141.50s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.preview" Any`
+2026-10-17T20:49:47.7266210Z     t =   141.50s         Checking existence of `"editor.preview" Any`
+2026-10-17T20:49:48.0381960Z     t =   141.82s         Capturing element debug description
+2026-10-17T20:49:48.0495330Z     t =   141.82s     Checking existence of `"editor.preview" Any`
+2026-10-17T20:49:48.6436270Z     t =   142.43s Collecting debug information to assist test failure triage
+2026-10-17T20:49:48.6536790Z     t =   142.43s     Requesting snapshot of accessibility hierarchy for app with pid 81576
+2026-10-17T20:49:48.7259090Z     t =   142.52s Checking existence of `"editor.preview" Any`
+2026-10-17T20:49:49.1076000Z     t =   142.90s Get all elements bound by index for: Descendants matching type CollectionView
+2026-10-17T20:49:49.1924250Z     t =   142.96s Find the CollectionView (Element at index 0)
+2026-10-17T20:49:49.2374530Z     t =   143.02s Find the Target Application 'com.teejayishere.PuzzleAlarm'
+2026-10-17T20:49:49.2938370Z     t =   143.08s Press CollectionView at {{0.0, 0.0}, {402.0, 874.0}}[0.95, 0.70] for 0.1 seconds, then drag to CollectionView at {{0.0, 0.0}, {402.0, 874.0}}[0.95, 0.30] with velocity of 500.00 pixels per second, and then hold for 0.0 seconds 
+2026-10-17T20:49:49.3007940Z     t =   143.08s     Wait for com.teejayishere.PuzzleAlarm to idle
+2026-10-17T20:49:49.3012120Z     t =   143.09s     Find the CollectionView at {{0.0, 0.0}, {402.0, 874.0}}
+2026-10-17T20:49:49.3451820Z     t =   143.14s     Check for interrupting elements affecting CollectionView
+2026-10-17T20:49:49.4044950Z     t =   143.19s     Synthesize event
+2026-10-17T20:49:49.4058330Z     t =   143.19s         Find the CollectionView at {{0.0, 0.0}, {402.0, 874.0}}
+2026-10-17T20:49:49.4734350Z     t =   143.26s         Find the CollectionView at {{0.0, 0.0}, {402.0, 874.0}}
+2026-10-17T20:49:49.5190300Z     t =   143.31s         Find the CollectionView at {{0.0, 0.0}, {402.0, 874.0}}
+2026-10-17T20:49:49.5601790Z     t =   143.35s         Find the CollectionView at {{0.0, 0.0}, {402.0, 874.0}}
+2026-10-17T20:49:49.6317930Z     t =   143.43s         Find the CollectionView at {{0.0, 0.0}, {402.0, 874.0}}
+2026-10-17T20:50:49.4121370Z /Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarmUITests/AlarmManagementUITests.swift:154: error: -[PuzzleAlarmUITests.AlarmManagementUITests testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch] : XCTAssertTrue failed - editor.preview
+2026-10-17T20:50:49.5884710Z                                   Button, 0x117c703c0, {{16.0, 295.3}, {370.0, 146.7}}, identifier: 'alarm.edit.0254BF0F-3B6B-42D8-AFA6-F7AC2109E8F7', label: '7:00 AM, Once, Annoying Alarm Only, Rapid Beeps'
+2026-10-17T20:50:49.5891410Z                                     StaticText, 0x117c708c0, {{32.0, 406.7}, {95.7, 20.3}}, label: 'Rapid Beeps'
+2026-10-17T20:50:49.5928450Z                                   StaticText, 0x117c71cc0, {{16.0, 500.0}, {370.0, 52.0}}, identifier: 'alarm.status.0254BF0F-3B6B-42D8-AFA6-F7AC2109E8F7', label: 'On'
+

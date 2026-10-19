@@ -1,5 +1,24 @@
 # Development log
 
+## October 18, 2026 — evidence-first review and local tooling correction
+
+Started clean at c4b74506ef51aaa53de7e34c41a9329bd9d26571; latest exact-HEAD Actions
+39080917448 is SKIPPED. Reexamined original SwiftUI/main/UIKit failure logs and the
+later saved-editor reopening log. Confirmed historical stale-getter defect remains
+distinct from unexplained later input failures; post-reopening list scrolling is an
+automation consequence, not proof of an audio or row-action defect. Archived evidence
+cannot supply missing failed-interaction recognition/row/draft/sheet boundaries.
+
+Removed unsupported dry-run preflight, checked all generated option names against
+archived selected-Xcode help, and retained default single execution. Changed assertion
+accounting to cause unknown, preserved observed starts before fallible exports, and
+separated decoded raw integrity from unproven capture completeness. Added focused
+offline command and mocked-runner tests. Final 19 focused Python tests PASS on Windows;
+new harness temp/path failures corrected locally. Product source, native/UI tests,
+single taps and exact outcomes unchanged. No CI, Simulator, commit/push or promotion.
+Xcode and device NOT RUN. See GATE6_REVIEW_2026-10-18.md and its original log excerpts.
+Gate 6 remains failed/held; dependent 7–12 invalidated/held. No Stage 13. STOP.
+
 ## Gate 6 continuation — separate switch and editor boundaries
 
 October 17, 2026: user confirms no Mac and no installed iPhone build; treat this as

@@ -21,7 +21,7 @@ class AccountingTests(unittest.TestCase):
         self.assertEqual(assess(tree('Passed'), START, METHOD, 0)['status'], 'SUCCESSFUL_SAMPLE')
 
     def test_captured_assertion(self):
-        self.assertEqual(assess(tree('Failed'), START + '\nXCTAssertEqual failed', METHOD, 65)['status'], 'PRODUCT_FAILURE')
+        self.assertEqual(assess(tree('Failed'), START + '\nXCTAssertEqual failed', METHOD, 65)['status'], 'ASSERTION_FAILURE_CAUSE_UNKNOWN')
 
     def test_runner_failure_is_not_product_failure(self):
         self.assertEqual(assess(tree('Failed'), START + '\nRunner crashed', METHOD, 65)['status'], 'TOOLING_FAILURE')
