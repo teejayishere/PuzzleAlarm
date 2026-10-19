@@ -1,0 +1,47 @@
+{
+  "starting_branch": "codex/stage-12-routing",
+  "starting_head": "31ed9af36031dd4cfa28b03b5fffea45c65f989e",
+  "archive": "gate6-single-editor-39185410894/artifact.zip",
+  "raw_member": "raw/editor/gate6-12938-9FA3DBBF-5129-422F-A4B4-551205C36AB9.bin",
+  "raw_sha256": "97261c2f23316e5fe980043d47a658e3dadd904741af5709701c52a379ca2fe4",
+  "committed": 1374,
+  "overflow": 0,
+  "truncation": 0,
+  "omission_markers": 24,
+  "decoder_errors": [
+    "bounded path/gesture capture incomplete"
+  ],
+  "video_member": "editor-attachments/C3358138-6E5A-402A-9D97-B3136EF7DA36.mp4",
+  "video_sha256": "9ea01984f31cec5d91b76fc54645ae009bf5da8b25a473aeb13ab9e30bb43f2d",
+  "native_decoded_frames": 1271,
+  "selected_native_frame_pts_seconds": [
+    {
+      "index": 0,
+      "pts": 0.0
+    },
+    {
+      "index": 1264,
+      "pts": 194.125
+    },
+    {
+      "index": 1265,
+      "pts": 194.141667
+    },
+    {
+      "index": 1266,
+      "pts": 336.918333
+    },
+    {
+      "index": 1268,
+      "pts": 339.066667
+    },
+    {
+      "index": 1270,
+      "pts": 346.268333
+    }
+  ],
+  "largest_adjacent_decoded_pts_gap_seconds": 142.776666,
+  "root_cause": "UNDETERMINED",
+  "complete_capture": false,
+  "negative_conclusion_allowed": false
+}

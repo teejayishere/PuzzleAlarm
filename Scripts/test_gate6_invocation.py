@@ -6,7 +6,7 @@ from gate6_invocation import METHODS, check_advertised_options, test_command
 
 class InvocationTests(unittest.TestCase):
     def test_archived_selected_xcode_advertises_all_emitted_options(self):
-        help_path = Path(__file__).resolve().parents[1] / 'docs/evidence/gate6-buffered-39080779760/xcodebuild-help.txt'
+        help_path = Path(__file__).resolve().parents[1] / 'docs/evidence/gate6-single-editor-39185410894/xcodebuild-help.txt'
         check_advertised_options(help_path.read_text())
 
     def test_missing_option_fails_closed(self):
@@ -17,7 +17,7 @@ class InvocationTests(unittest.TestCase):
         self.assertEqual(METHODS, [('editor', 'testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch')])
         for name, method in METHODS:
             args = test_command('ID', 'arm64', f'{name}.xcresult', method)
-            self.assertEqual(args[-1], 'test')
+            self.assertEqual(args[-1], 'test-without-building')
             self.assertEqual([a for a in args if a.startswith('-only-testing:')],
                              [f'-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/{method}'])
             for forbidden in ('-dry-run', '-test-iterations', '-retry-tests-on-failure',

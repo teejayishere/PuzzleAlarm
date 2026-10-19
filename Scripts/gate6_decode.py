@@ -1,6 +1,7 @@
 """Decode quiescent mapped files; fail closed on loss, corruption or absent attachment."""
 import argparse
 import json
+import re
 import struct
 from pathlib import Path
 
@@ -40,6 +41,35 @@ def decode(data):
         errors.append('missing attachment')
     if any('capture limited' in r['message'] for r in records):
         errors.append('bounded path/gesture capture incomplete')
+    # New probes announce each snapshot, including empty lists. Validate cardinality
+    # and order independently of byte/sequence integrity. Legacy omission markers
+    # above remain fatal; old archives are never upgraded into complete captures.
+    pending = None
+    counted_gestures = any(r['message'].startswith('gesture list ') for r in records)
+    for record in records:
+        message = record['message']
+        entry = re.fullmatch(r'gesture depth=(\d+) index=(\d+) object=.+', message)
+        if counted_gestures and message.startswith('gesture depth=') and not entry:
+            errors.append('invalid counted gesture')
+        if pending is not None and entry:
+            depth, count, seen = pending
+            if (int(entry[1]), int(entry[2])) != (depth, seen) or seen >= count:
+                errors.append('gesture list index/count mismatch')
+            pending = (depth, count, seen + 1)
+            continue
+        if pending is not None and pending[1] != pending[2]:
+            errors.append('gesture list incomplete')
+        pending = None
+        if message.startswith('gesture list '):
+            listing = re.fullmatch(r'gesture list depth=(\d+) count=(\d+)', message)
+            if listing:
+                pending = (int(listing[1]), int(listing[2]), 0)
+            else:
+                errors.append('invalid gesture list')
+        elif entry:
+            errors.append('gesture missing list')
+    if pending is not None and pending[1] != pending[2]:
+        errors.append('gesture list incomplete')
     if overflow or truncation:
         errors.append('lost/truncated records')
     if not records or not records[0]['message'].startswith('process start uuid='):

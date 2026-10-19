@@ -69,11 +69,16 @@ records. The target row interaction and switch declaration were not reached or
 selected; absence cannot establish a dropped input or unentered command.
 The raw file has 1,374 attempted/committed records, zero overflow and zero string
 truncation; independent checksum/sequence/hash decoding agrees with the runner.
-However, 26 `capture limited gestures` markers show recognizer lists exceeded the
+However, 24 `capture limited gestures` markers show recognizer lists exceeded the
 existing limit of 16. Decoder rejection is correct: raw_integrity_valid=false,
 complete_capture=false, negative_conclusion_allowed=false. Zero counters do not
 override incomplete gesture enumeration or missing failed-boundary correlation.
 No second process or complete activation-failure trace is established.
+
+Offline recount/review on October 18 corrects the earlier prose count of 26 to 24,
+agreeing with the original raw bytes and existing reviewed-summary.json. Original
+ZIP/raw/manifests are unchanged. [Separate repair evidence and native-video limits](../../GATE6_OFFLINE_REPAIR_2026-10-18.md)
+do not establish activation causation or change this run's failed/incomplete result.
 
 ## Durable original archive
 

@@ -30,12 +30,13 @@ jobs:
           python3 Scripts/test_gate6_runner.py > TestResults/runner-selftest.log 2>&1
           python3 Scripts/test_gate6_buffer.py > TestResults/decoder-selftest.log 2>&1
           python3 Scripts/test_gate6_accounting.py > TestResults/accounting-selftest.log 2>&1
+          python3 Scripts/test_gate6_instrumentation.py > TestResults/instrumentation-selftest.log 2>&1
           swiftc -swift-version 6 -warnings-as-errors -parse-as-library Scripts/Gate6Recorder.swift Scripts/gate6_recorder_selftest.swift -o "$RUNNER_TEMP/recorder-check" > TestResults/writer-compile.log 2>&1
           "$RUNNER_TEMP/recorder-check" "$PWD/TestResults/selftest" > TestResults/writer-selftest.log 2>&1
           python3 Scripts/gate6_writer_check.py TestResults/selftest >> TestResults/writer-selftest.log 2>&1
       - name: Install pinned XcodeGen
         run: bash Scripts/install_xcodegen.sh
-      - name: Instrument ephemeral checkout and boot Simulator
+      - name: Instrument and compile selected-Xcode app and UI runner before boot
         run: |
           set -euo pipefail
           python3 -c 'import os, time; assert time.time() < float(os.environ["GATE6_START"])+25*60-15, "test budget expired"'
@@ -48,6 +49,31 @@ jobs:
           xcrun simctl list runtimes --json > TestResults/runtimes.json
           simulator_id="$(python3 Scripts/select_simulator.py TestResults/devices.json TestResults/runtimes.json 26.0)"
           echo "SIMULATOR_ID=$simulator_id" >> "$GITHUB_ENV"
+          python3 - "$simulator_id" <<'PYBUILD'
+          import os, signal, subprocess, sys, time
+          remaining = float(os.environ['GATE6_START'])+25*60-15-time.time()
+          if remaining <= 0: raise SystemExit('preboot build budget expired')
+          args = ['xcodebuild', '-project', 'PuzzleAlarm.xcodeproj', '-scheme', 'PuzzleAlarm',
+                  '-configuration', 'Debug', '-destination', 'generic/platform=iOS Simulator',
+                  '-derivedDataPath', 'DerivedData', '-resultBundlePath', 'TestResults/preboot-build.xcresult',
+                  'CODE_SIGNING_ALLOWED=NO', 'build-for-testing']
+          with open('TestResults/preboot-build.log', 'w') as log:
+              process = subprocess.Popen(args, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+              try:
+                  code = process.wait(timeout=remaining)
+              except subprocess.TimeoutExpired:
+                  os.killpg(process.pid, signal.SIGINT)
+                  try: process.wait(timeout=8)
+                  except subprocess.TimeoutExpired:
+                      os.killpg(process.pid, signal.SIGKILL)
+                      process.wait()
+                  raise SystemExit('preboot build deadline reached; no boot permitted')
+              if code: raise SystemExit(code)
+          PYBUILD
+      - name: Boot selected Simulator once after validated compilation
+        run: |
+          set -euo pipefail
+          simulator_id="$SIMULATOR_ID"
           python3 - "$simulator_id" <<'PYBOOT'
           import json, os, subprocess, sys, time
           from pathlib import Path
@@ -72,6 +98,19 @@ jobs:
             fi
           done
           if [ -d DerivedData/Logs ]; then cp -R DerivedData/Logs TestResults/activity-logs; fi
+          # Fallback preservation if the runner/export was interrupted. These
+          # bytes may be nonquiescent and never imply complete capture.
+          python3 - <<'PYRAW'
+          import os, shutil
+          from pathlib import Path
+          simulator = os.environ.get('SIMULATOR_ID')
+          if simulator:
+              source = Path.home() / 'Library/Developer/CoreSimulator/Devices' / simulator / 'data/Containers/Data/Application'
+              for raw in source.glob('*/tmp/gate6-*.bin'):
+                  target = Path('TestResults/raw-fallback') / raw.parent.parent.name / raw.name
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copyfile(raw, target)
+          PYRAW
           python3 - <<'PY'
           import json, os
           from pathlib import Path

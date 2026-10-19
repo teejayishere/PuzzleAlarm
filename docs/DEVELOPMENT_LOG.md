@@ -1,5 +1,54 @@
 # Development log
 
+## Authorized execution review � October 18, 2026
+
+The user explicitly authorized this single diagnostic and closeout. Branch and
+local/remote HEAD confirmed at 31ed9af36031dd4cfa28b03b5fffea45c65f989e.
+Reviewed uncommitted tooling repair; 31 focused Windows checks PASS again.
+Original product/Core/native/UI sources unchanged. No historical failure resolved.
+
+Scope tightened to the current instruction: selected-Xcode generated app/UI runner
+`build-for-testing` must succeed before the sole explicit Simulator boot; the
+original declaration then uses `test-without-building` once. No extra declaration,
+retry, sampling, test iteration, product remedy or gate replay. Preboot build shares
+the absolute T+1,485s deadline and 8s interrupt grace. Recorder/decoder checks remain
+before boot. Timeout during app termination no longer prevents raw-file copying;
+an always-step fallback preserves available bytes without claiming quiescence.
+
+Publish reviewed changes with [gate6-diagnostic] [record-only], skipping every
+runner job. A separate workflow-comment commit with [gate6-diagnostic] triggers
+only the one diagnostic job (30-minute cap); ordinary three jobs stay skipped.
+Closeout uses both markers and documentation-only changes. Exact experiment SHA
+and allocation/execution/capture evidence will be recorded after that one run.
+Swift/UIKit selected-toolchain validation remains pending until that run.
+
+## October 18, 2026 — offline diagnostic repair and activation review, STOP
+
+Started clean at 31ed9af36031dd4cfa28b03b5fffea45c65f989e on codex/stage-12-routing;
+read PROJECT_STATE first and verified branch/HEAD/diff. Inspected latest archived
+run 39185410894 only, diagnostic tooling and relevant original UI/lifecycle/audio
+source. Native video decoding reveals a 194.142–336.918s PTS gap spanning Home/
+activation, plus an invalid timestamp warning; duplicate resampled frames cannot
+establish screen state during that gap. Failure classification does not prove
+cause. App/harness/instrumentation/platform causes remain undetermined.
+
+Corrected generated per-ancestor prefix(16) omission: full gesture snapshots now
+announce counts/indexes under the unchanged fixed recorder bound. Decoder rejects
+missing/index/order/count faults and still rejects all omission markers/loss.
+Archive recount is 24 markers (existing reviewed-summary agrees); earlier prose
+below saying 26 is a counting error, not altered original evidence. Added buffered
+passive lifecycle/editor/audio-stop boundaries and test-side Home/activation
+timestamps; original operations/one-tap assertions unchanged. Extended future
+Swift writer check and preboot generator checks, without running Apple tools.
+
+31 Windows Python checks PASS, including generator application, UI source
+equivalence, adversarial decoder and original archive rejection, mocked activation
+stop accounting. New Swift self-test and UIKit compilation/runtime UNVALIDATED.
+Xcode/Simulator/device NOT RUN; no CI, commit/push, production remedy, promotion,
+downstream replay, redesign or Stage 13. Exact capped single-declaration proposal
+prepared only, not authorized/queued. Gate 6 FAILED / HELD, 7–12 INVALIDATED / HELD.
+See GATE6_OFFLINE_REPAIR_2026-10-18.md and its separate offline evidence directory.
+
 ## October 18, 2026 — one authorized editor diagnostic, stopped on tooling failure
 
 Preserved and published the existing corrections/review on codex/stage-12-routing,

@@ -4,6 +4,38 @@ Current stage: 12, recursing to the unresolved Gate 6 native-input boundary.
 Gate 6 is FAILED; dependent Gates 7â€“12 are INVALIDATED / HELD. Last unheld gate: 5.
 Stage 13 NOT STARTED. A later green run alone cannot clear a known unexplained failure.
 
+## Authorized capped diagnostic — in preparation
+
+October 18: user authorized one original editor/audio declaration, at most one
+macOS job, one Simulator boot, one UI invocation/execution, 30-minute job cap.
+Reviewed repair and reran 31 Windows checks PASS. Generated UIKit app/UI runner
+compilation now precedes boot; fail-stop without retry. Publication first skips
+all jobs; the separate immutable trigger revision is recorded in closeout.
+Gate 6 remains FAILED; 7–12 INVALIDATED / HELD; Stage 13 NOT STARTED.
+
+## Latest work â€” offline tooling repair only, STOP
+
+October 18 (America/Chicago): started clean on `codex/stage-12-routing` at
+`31ed9af36031dd4cfa28b03b5fffea45c65f989e`. No CI trigger, commit/push, Simulator
+boot or product change. Latest archive only: activation cause remains unknown;
+native video has a 142.777-second decoded-frame PTS gap spanning Home/activation,
+with an invalid timestamp warning. Neither video nor TOOLING_FAILURE establishes
+app, harness, instrumentation or platform causation.
+
+CI-only generated tooling now records entire gesture snapshots under the unchanged
+fixed recorder capacity, with declared counts/indexes checked by the decoder.
+Overflow/truncation fail-stop and omission-marker rejection remain intact. New
+passive lifecycle, editor/audio stop boundaries and test-side Home/activation
+timestamps cover the previously silent boundary. Original flow and assertions
+remain intact. Archive recount confirms **24**, not 26, gesture omission markers.
+
+Windows automated: **31 focused tooling tests PASS**; latest original capture
+still rejected as incomplete. Product/Core/native/UI sources unchanged. Updated
+Swift writer self-test and UIKit instrumentation compile/runtime **UNVALIDATED**;
+Xcode, Simulator, physical device NOT RUN. No CI pass for this worktree is claimed.
+[Review, tested limits and exact one-execution proposal](GATE6_OFFLINE_REPAIR_2026-10-18.md).
+Proposal is prepared only; no experiment is authorized or queued. Gates unchanged.
+
 ## Latest authorized single-editor diagnostic â€” STOP
 
 October 18 (America/Chicago): source `6966ab56572e7268799d2fc02a04a179e5ed9bb9`,
@@ -23,7 +55,7 @@ preserved; 19 focused tooling tests and ephemeral instrumentation application PA
 Xcode: selected 26.6 option-name check, 19 tooling tests, Swift recorder compilation
 and writer/decoder integrity self-checks PASS before boot; Debug instrumented app/test
 runner compiled. Simulator: iPhone 17 / iOS 26.5, declaration FAILED on activation.
-One raw PID has 1,374 committed records, zero overflow/string truncation, but 26
+One raw PID has 1,374 committed records, zero overflow/string truncation, but 24
 bounded gesture omission markers: decoder correctly rejects complete capture.
 Earlier 14 touch pairs correlate with XCTest events; initial sheet presentation
 recorded. No target row/action/binding/owner chain exists because it was not reached.

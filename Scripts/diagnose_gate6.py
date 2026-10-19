@@ -46,6 +46,44 @@ replace('PuzzleAlarm/App/ContentView.swift',
                 UITestEnvironment.traceToggle("route revision=\(store.routeRevision) destination=\(String(describing: store.wakeUpSessionID)) draft=\(draft != nil)")''')
 
 test = 'PuzzleAlarmUITests/AlarmManagementUITests.swift'
+replace(test, '        XCUIDevice.shared.press(.home)\n        app.activate()',
+        r'''        print("GATE6 boundary home begin wall=\(Date().timeIntervalSince1970)")
+        XCUIDevice.shared.press(.home)
+        print("GATE6 boundary home returned wall=\(Date().timeIntervalSince1970)")
+        print("GATE6 boundary activate begin wall=\(Date().timeIntervalSince1970)")
+        app.activate()
+        print("GATE6 boundary activate returned wall=\(Date().timeIntervalSince1970)")''')
+replace('PuzzleAlarm/App/PuzzleAlarmApp.swift',
+        '            .onChange(of: scenePhase) { _, phase in',
+        r'''            .onChange(of: scenePhase) { _, phase in
+                UITestEnvironment.traceToggle("app scene phase=\(phase)")''')
+replace('PuzzleAlarm/App/AlarmEditorView.swift',
+        '.onChange(of: scenePhase) { _, phase in if phase != .active { preview.stop() } }',
+        r'''.onChange(of: scenePhase) { _, phase in
+            UITestEnvironment.traceToggle("editor scene begin phase=\(phase)")
+            if phase != .active { preview.stop() }
+            UITestEnvironment.traceToggle("editor scene end phase=\(phase)")
+        }''')
+replace('PuzzleAlarm/App/SoundPreview.swift',
+        '''    func stop() {
+        player?.stop(); player = nil
+        if ownsSession {
+            try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+            ownsSession = false
+        }
+    }''',
+        r'''    func stop() {
+        UITestEnvironment.traceToggle("audio stop begin ownsSession=\(ownsSession)")
+        player?.stop(); player = nil
+        UITestEnvironment.traceToggle("audio player stopped")
+        if ownsSession {
+            UITestEnvironment.traceToggle("audio deactivate begin")
+            try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+            UITestEnvironment.traceToggle("audio deactivate returned")
+            ownsSession = false
+        }
+        UITestEnvironment.traceToggle("audio stop end")
+    }''')
 replace(test, '"PUZZLE_TEST_NAME": name, "PUZZLE_SCENARIO": scenario]',
         '"PUZZLE_TEST_NAME": name, "PUZZLE_SCENARIO": scenario, "PUZZLE_INPUT_TRACE": "1"]')
 replace(test, 'XCTAssertTrue(row.waitForExistence(timeout: 10)); row.tap()\n        tap(app, "editor.preview")',
@@ -71,10 +109,12 @@ final class Gate6WindowProbe: UIGestureRecognizer {
             while let item = current, depth < 24 {
                 UITestEnvironment.traceToggle("ancestor phase=\(phase) depth=\(depth) object=\(ObjectIdentifier(item)) type=\(type(of: item)) id=\(item.accessibilityIdentifier ?? "none")")
                 let gestures = item.gestureRecognizers ?? []
-                for gesture in gestures.prefix(16) {
-                    UITestEnvironment.traceToggle("gesture depth=\(depth) object=\(ObjectIdentifier(gesture)) type=\(type(of: gesture)) state=\(gesture.state.rawValue) enabled=\(gesture.isEnabled)")
+                // Enumerate the entire snapshot. The fixed recorder capacity is
+                // the bound: exhaustion increments overflow and fail-stops, never wraps.
+                UITestEnvironment.traceToggle("gesture list depth=\(depth) count=\(gestures.count)")
+                for (index, gesture) in gestures.enumerated() {
+                    UITestEnvironment.traceToggle("gesture depth=\(depth) index=\(index) object=\(ObjectIdentifier(gesture)) type=\(type(of: gesture)) state=\(gesture.state.rawValue) enabled=\(gesture.isEnabled)")
                 }
-                if gestures.count > 16 { UITestEnvironment.traceToggle("capture limited gestures") }
                 current = item.superview
                 depth += 1
             }
@@ -89,8 +129,27 @@ final class Gate6WindowProbe: UIGestureRecognizer {
 @MainActor
 struct Gate6WindowBridge: UIViewRepresentable {
     final class Host: UIView {
+        private var observingLifecycle = false
+        @objc private func lifecycle(_ notification: Notification) {
+            UITestEnvironment.traceToggle("lifecycle name=\(notification.name.rawValue) app=\(UIApplication.shared.applicationState.rawValue) scene=\(window?.windowScene?.activationState.rawValue ?? -99)")
+        }
         override func didMoveToWindow() {
             super.didMoveToWindow()
+            if !observingLifecycle {
+                observingLifecycle = true
+                for name in [UIApplication.willResignActiveNotification,
+                             UIApplication.didEnterBackgroundNotification,
+                             UIApplication.willEnterForegroundNotification,
+                             UIApplication.didBecomeActiveNotification,
+                             UIApplication.willTerminateNotification,
+                             UIScene.willDeactivateNotification,
+                             UIScene.didEnterBackgroundNotification,
+                             UIScene.willEnterForegroundNotification,
+                             UIScene.didActivateNotification] {
+                    NotificationCenter.default.addObserver(self, selector: #selector(lifecycle(_:)), name: name, object: nil)
+                }
+                UITestEnvironment.traceToggle("lifecycle observing app=\(UIApplication.shared.applicationState.rawValue) scene=\(window?.windowScene?.activationState.rawValue ?? -99)")
+            }
             guard let window, !(window.gestureRecognizers ?? []).contains(where: { $0 is Gate6WindowProbe }) else { return }
             let probe = Gate6WindowProbe(target: nil, action: nil)
             probe.cancelsTouchesInView = false; probe.delaysTouchesBegan = false; probe.delaysTouchesEnded = false

@@ -1,0 +1,16 @@
+{
+  "Scripts/diagnose_gate6.py": "71c8139da1de58445d2ca5497be68bbc7d304f32cb0b2eccd04eaa8afb6b9a38",
+  "Scripts/gate6_decode.py": "bf903496aaaf42efc44a40dfc7f0d39a79338e1471fedd3cd130da29cdde4de5",
+  "Scripts/Gate6Recorder.swift": "0a0b4ff9af43ded714b3c490bc699ab1a1631fd54b42fcb232bb25d539de29a1",
+  "Scripts/gate6_recorder_selftest.swift": "af14b4378f5d757bf7aad8f0469f6123a2cdd45bae1541ec3b113ab3fe4e24ef",
+  "Scripts/gate6_writer_check.py": "eb1082fcbc0352408f2eb876b0e3117d1c5f089654247d7135637ea62e2b0557",
+  "Scripts/gate6_invocation.py": "d164b925ec28f882541caef3fb9430de49cbbe7de996e9609e7d3494da44c99a",
+  "Scripts/gate6_accounting.py": "5105ee96132634f8416811e560059854052ea8e49dfa6c3adefb11d4b622db3d",
+  "Scripts/run_gate6_buffered.py": "e3ced1cbc38e7b3c1ce2227c691e1813c1f1e2d9592d39f77a863198b2468430",
+  ".github/workflows/gate6-diagnostic.yml": "2b92967aeaeadc6740216c06fc29bb820fb8b90af5dba34fd64d1c6de0a596e7",
+  "Scripts/test_gate6_accounting.py": "a7fc780566f72e939f7abe18e468c6cbea736b3261b500beb181539b59a42394",
+  "Scripts/test_gate6_buffer.py": "eac0eadfd03d90419d4467ed9492c27a5b5e493934dcc1d0eed203255c096abe",
+  "Scripts/test_gate6_instrumentation.py": "dd35d3d691d0c0ed399c55f20ba7133092d2a7a1af2cbb4337ff562170408bb3",
+  "Scripts/test_gate6_invocation.py": "b5e3ddb0e5d1befe96cb63fa227d28bef3948ae6f26c21e637224f6939e8c5e0",
+  "Scripts/test_gate6_runner.py": "b80571e6ff819617dbb8e05a475c8ddbec346f903bef515cc8bf98035c8f1c1b"
+}

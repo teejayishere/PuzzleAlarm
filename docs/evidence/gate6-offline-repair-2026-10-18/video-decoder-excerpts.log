@@ -1,0 +1,21 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'TestResults/offline-review/activation.mp4':
+  Metadata:
+    major_brand     : qt  
+    minor_version   : 0
+    compatible_brands: qt  
+    creation_time   : 2026-10-19T01:32:08.000000Z
+  Duration: 00:05:46.33, start: 0.000000, bitrate: 213 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709/bt709/iec61966-2-1, progressive), 1206x2622, 211 kb/s, 3.65 fps, 600 tbr, 600 tbn (default)
+      Metadata:
+        creation_time   : 2026-10-19T01:32:08.000000Z
+        handler_name    : Core Media Video
+        vendor_id       : [0][0][0][0]
+        encoder         : H.264
+Stream mapping:
+[Parsed_showinfo_0 @ 0000019AD4371CC0] n:   0 pts:      0 pts_time:0       duration:      1 duration_time:0.00166667 fmt:yuv420p cl:left sar:0/1 s:1206x2622 i:P iskey:1 type:I checksum:4B0A6F16 plane_checksum:[9897992B F5D6999F 45AF3C3D] mean:[157 145 105] stdev:[53.9 19.4 15.5]
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0000019AD438E000] Invalid timestamps stream=0, pts=120806, dts=202151, size=175
+[Parsed_showinfo_0 @ 0000019AD4371CC0] n:1264 pts: 116475 pts_time:194.125 duration:      1 duration_time:0.00166667 fmt:yuv420p cl:left sar:0/1 s:1206x2622 i:P iskey:0 type:P checksum:0C0C149D plane_checksum:[7332800B 8971B422 A753E052] mean:[221 129 128] stdev:[32.7 2.7 3.5]
+[Parsed_showinfo_0 @ 0000019AD4371CC0] n:1265 pts: 116485 pts_time:194.141667 duration:      1 duration_time:0.00166667 fmt:yuv420p cl:left sar:0/1 s:1206x2622 i:P iskey:0 type:B checksum:C60F14F8 plane_checksum:[85EE7FFD E54EB47F B388E05E] mean:[221 129 128] stdev:[32.7 2.7 3.5]
+[Parsed_showinfo_0 @ 0000019AD4371CC0] n:1266 pts: 202151 pts_time:336.918333 duration:      1 duration_time:0.00166667 fmt:yuv420p cl:left sar:0/1 s:1206x2622 i:P iskey:0 type:B checksum:A14B153B plane_checksum:[A5F58044 9C42B47B B388E05E] mean:[221 129 128] stdev:[32.7 2.7 3.5]
+[Parsed_showinfo_0 @ 0000019AD4371CC0] n:1268 pts: 203440 pts_time:339.066667 duration:      1 duration_time:0.00166667 fmt:yuv420p cl:left sar:0/1 s:1206x2622 i:P iskey:0 type:P checksum:FDEA7AF6 plane_checksum:[7C3BE5BA B892B4CC A753E052] mean:[221 129 128] stdev:[32.6 2.7 3.5]
+[Parsed_showinfo_0 @ 0000019AD4371CC0] n:1270 pts: 207761 pts_time:346.268333 duration:      1 duration_time:0.00166667 fmt:yuv420p cl:left sar:0/1 s:1206x2622 i:P iskey:0 type:P checksum:0534C661 plane_checksum:[560C345C 56C76329 2AEB2EDC] mean:[221 129 128] stdev:[32.6 2.4 3.3]

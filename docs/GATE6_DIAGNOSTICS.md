@@ -1,5 +1,13 @@
 # Gate 6 bounded input investigation — October 17, 2026
 
+Latest work: [October 18 offline repair/review](GATE6_OFFLINE_REPAIR_2026-10-18.md).
+31 Windows tooling checks pass; no new CI/Simulator/device run. Full gesture-list
+capture remains bounded with strict count/index/loss validation; original archive
+still incomplete. Lifecycle/audio boundary instrumentation is source-checked only.
+Activation cause remains undetermined, including a native-video PTS gap across the
+boundary. The exact one-execution/30-minute proposal there supersedes historical
+batch proposals below; it is prepared only, **not authorized or queued**. STOP.
+
 Latest authorized one-editor diagnostic: source 6966ab5 /
 [39185410894](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39185410894)
 attempt 1 TOOLING_FAILURE. Preflight passed; one boot, invocation and actual execution.

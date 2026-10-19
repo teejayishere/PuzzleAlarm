@@ -47,8 +47,13 @@ def command(args, log, deadline=TEST_END):
 
 
 def capture(name):
-    subprocess.run(['xcrun', 'simctl', 'terminate', os.environ['SIMULATOR_ID'],
-                    'com.teejayishere.PuzzleAlarm'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=15)
+    try:
+        subprocess.run(['xcrun', 'simctl', 'terminate', os.environ['SIMULATOR_ID'],
+                        'com.teejayishere.PuzzleAlarm'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=15)
+    except subprocess.TimeoutExpired:
+        # Preserve even nonquiescent bytes; independent integrity review must
+        # reject partial records rather than lose the entire timeout capture.
+        manifest['termination_timeout'] = True
     source = Path.home() / 'Library/Developer/CoreSimulator/Devices' / os.environ['SIMULATOR_ID'] / 'data/Containers/Data/Application'
     destination = RAW / name
     destination.mkdir(exist_ok=True)

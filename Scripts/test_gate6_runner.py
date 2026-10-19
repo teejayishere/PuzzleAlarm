@@ -15,7 +15,7 @@ RUNNER = Path(__file__).with_name('run_gate6_buffered.py').resolve()
 
 
 class RunnerTests(unittest.TestCase):
-    def simulate(self, assertion=False, export_error=False):
+    def simulate(self, assertion=False, export_error=False, activation=False):
         invocations = []
 
         def popen(args, stdout, **kwargs):
@@ -26,13 +26,15 @@ class RunnerTests(unittest.TestCase):
                 stdout.write(f"Test Case '-[AlarmManagementUITests {declaration}]' started.\n")
                 if assertion:
                     stdout.write('XCTAssertEqual failed\n')
-                code = 65 if assertion else 0
+                if activation:
+                    stdout.write('Failed to launch com.teejayishere.PuzzleAlarm: Timed out attempting to launch app.\n')
+                code = 65 if assertion or activation else 0
             elif args[:2] == ['xcrun', 'xcresulttool']:
                 if export_error:
                     raise RuntimeError('simulated export failure')
                 declaration = dict(METHODS)[Path(args[-1]).stem]
                 json.dump({'testNodes': [{'nodeType': 'Test Case', 'name': declaration,
-                                         'result': 'Failed' if assertion else 'Passed'}]}, stdout)
+                                         'result': 'Failed' if assertion or activation else 'Passed'}]}, stdout)
                 code = 0
             else:
                 # Decoder success is deliberately insufficient for complete capture.
@@ -70,6 +72,14 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(manifest['actual_test_executions'], 1)
         self.assertEqual(manifest['outcome'], 'TOOLING_FAILURE')
         self.assertFalse(manifest['complete_capture'])
+
+    def test_activation_timeout_stops_without_cause_or_completeness_claim(self):
+        manifest, calls = self.simulate(activation=True)
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(manifest['actual_test_executions'], 1)
+        self.assertEqual(manifest['outcome'], 'TOOLING_FAILURE')
+        self.assertFalse(manifest['complete_capture'])
+        self.assertFalse(manifest['negative_conclusion_allowed'])
 
     def test_one_success_remains_inconclusive_and_integrity_is_not_completeness(self):
         manifest, calls = self.simulate()

@@ -11,7 +11,7 @@ def test_command(simulator_id, architecture, result_path, method):
             '-derivedDataPath', 'DerivedData', '-resultBundlePath', str(result_path),
             f'-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/{method}',
             '-parallel-testing-enabled', 'NO', '-test-timeouts-enabled', 'YES',
-            '-maximum-test-execution-time-allowance', '600', 'CODE_SIGNING_ALLOWED=NO', 'test']
+            '-maximum-test-execution-time-allowance', '600', 'CODE_SIGNING_ALLOWED=NO', 'test-without-building']
 
 
 def check_advertised_options(help_text):

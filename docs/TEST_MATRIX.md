@@ -2,13 +2,22 @@
 
 ## Current acceptance — Gates 6–12 held
 
+Latest work: [October 18 offline diagnostic repair](GATE6_OFFLINE_REPAIR_2026-10-18.md),
+starting HEAD 31ed9af36031dd4cfa28b03b5fffea45c65f989e, clean branch
+codex/stage-12-routing. **31 Windows tooling tests PASS**, actual generator applied
+to disposable copies; entire original UI flow/assertions preserved. Counted full
+gesture enumeration retains global buffer bound and strict loss rejection. Archived
+capture still incomplete (24 omission markers). Video PTS gap spans Home/activation;
+cause unknown. New lifecycle/audio instrumentation and Swift self-test are NOT
+Xcode-compiled/runtime-validated. CI/Simulator/device NOT RUN. No gate acceptance.
+
 Latest single-editor diagnostic: `6966ab56572e7268799d2fc02a04a179e5ed9bb9` /
 [39185410894](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39185410894)
 attempt 1 **TOOLING_FAILURE / incomplete capture**. Selected-Mac options, 19 tooling
 tests, Swift recorder compile/roundtrip/integrity self-checks PASS before boot.
 1 allocated job / 1 boot / 1 UI invocation / 1 actual declaration execution, failed
 XCTest activation before Save/reopening; 0 captured failing target interactions.
-1,374 records, zero overflow/string truncation, 26 gesture omission markers; decoder
+1,374 records, zero overflow/string truncation, 24 gesture omission markers; decoder
 rejected completeness. Ordinary CI skipped. Device NOT RUN; no gate acceptance.
 [Full original archive and accounting](evidence/gate6-single-editor-39185410894/README.md).
 

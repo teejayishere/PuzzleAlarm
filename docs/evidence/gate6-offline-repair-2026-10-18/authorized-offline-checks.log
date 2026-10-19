@@ -1,0 +1,36 @@
+test_captured_assertion (test_gate6_accounting.AccountingTests.test_captured_assertion) ... ok
+test_empty_green_is_not_sample (test_gate6_accounting.AccountingTests.test_empty_green_is_not_sample) ... ok
+test_interrupted_execution (test_gate6_accounting.AccountingTests.test_interrupted_execution) ... ok
+test_invocation_rejected (test_gate6_accounting.AccountingTests.test_invocation_rejected) ... ok
+test_pass (test_gate6_accounting.AccountingTests.test_pass) ... ok
+test_repeated_execution_rejected (test_gate6_accounting.AccountingTests.test_repeated_execution_rejected) ... ok
+test_runner_failure_is_not_product_failure (test_gate6_accounting.AccountingTests.test_runner_failure_is_not_product_failure) ... ok
+test_full_buffer_and_string_loss_still_fatal (test_gate6_buffer.DecoderTests.test_full_buffer_and_string_loss_still_fatal) ... ok
+test_latest_original_archive_remains_incomplete (test_gate6_buffer.DecoderTests.test_latest_original_archive_remains_incomplete) ... ok
+test_list_interruption_and_missing_summary (test_gate6_buffer.DecoderTests.test_list_interruption_and_missing_summary) ... ok
+test_missing_attachment (test_gate6_buffer.DecoderTests.test_missing_attachment) ... ok
+test_more_than_sixteen_gestures_and_empty_snapshot (test_gate6_buffer.DecoderTests.test_more_than_sixteen_gestures_and_empty_snapshot) ... ok
+test_omission_markers_still_fatal (test_gate6_buffer.DecoderTests.test_omission_markers_still_fatal) ... ok
+test_partial_commit (test_gate6_buffer.DecoderTests.test_partial_commit) ... ok
+test_payload_corruption (test_gate6_buffer.DecoderTests.test_payload_corruption) ... ok
+test_sequence (test_gate6_buffer.DecoderTests.test_sequence) ... ok
+test_short_file (test_gate6_buffer.DecoderTests.test_short_file) ... ok
+test_valid (test_gate6_buffer.DecoderTests.test_valid) ... ok
+test_valid_bytes_cannot_hide_missing_gesture (test_gate6_buffer.DecoderTests.test_valid_bytes_cannot_hide_missing_gesture) ... ok
+test_all_gestures_enumerated_with_fixed_recorder_bound (test_gate6_instrumentation.InstrumentationTests.test_all_gestures_enumerated_with_fixed_recorder_bound) ... ok
+test_audio_stop_operations_unchanged_after_removing_records (test_gate6_instrumentation.InstrumentationTests.test_audio_stop_operations_unchanged_after_removing_records) ... ok
+test_entire_original_ui_declaration_and_regressions_preserved (test_gate6_instrumentation.InstrumentationTests.test_entire_original_ui_declaration_and_regressions_preserved) ... ok
+test_no_callback_file_io_in_generated_fixture (test_gate6_instrumentation.InstrumentationTests.test_no_callback_file_io_in_generated_fixture) ... ok
+test_passive_probe_and_lifecycle_observation (test_gate6_instrumentation.InstrumentationTests.test_passive_probe_and_lifecycle_observation) ... ok
+test_archived_selected_xcode_advertises_all_emitted_options (test_gate6_invocation.InvocationTests.test_archived_selected_xcode_advertises_all_emitted_options) ... ok
+test_missing_option_fails_closed (test_gate6_invocation.InvocationTests.test_missing_option_fails_closed) ... ok
+test_one_original_declaration_no_dry_run_or_repetitions (test_gate6_invocation.InvocationTests.test_one_original_declaration_no_dry_run_or_repetitions) ... ok
+test_activation_timeout_stops_without_cause_or_completeness_claim (test_gate6_runner.RunnerTests.test_activation_timeout_stops_without_cause_or_completeness_claim) ... ok
+test_assertion_stops_after_one_without_product_blame (test_gate6_runner.RunnerTests.test_assertion_stops_after_one_without_product_blame) ... ok
+test_export_failure_keeps_observed_start_and_stops (test_gate6_runner.RunnerTests.test_export_failure_keeps_observed_start_and_stops) ... ok
+test_one_success_remains_inconclusive_and_integrity_is_not_completeness (test_gate6_runner.RunnerTests.test_one_success_remains_inconclusive_and_integrity_is_not_completeness) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.303s
+
+OK
