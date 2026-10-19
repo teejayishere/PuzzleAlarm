@@ -1,5 +1,29 @@
 # Development log
 
+## October 18, 2026 — one authorized editor diagnostic, stopped on tooling failure
+
+Preserved and published the existing corrections/review on codex/stage-12-routing,
+after verifying local and remote c4b7450 and main bd069f2. Selected only the review's
+original audio/editor declaration once, retained original interactions/assertions
+and existing CI-only editor.save stop, narrowed command-policy/runner tests, archived
+allocation counters and ensured raw capture is attempted even on result-export failure.
+No added callback reads/I/O, product source or original native/UI test changes.
+19 focused Windows tests and ephemeral instrumentation application PASS.
+
+Source 6966ab56572e7268799d2fc02a04a179e5ed9bb9 / run 39185410894 attempt 1 FAILED,
+TOOLING_FAILURE. Selected Xcode 26.6 option check, all 19 tooling tests, actual Swift
+recorder compilation and writer/decoder integrity checks passed before boot. One
+macOS job, one Simulator boot, one xcodebuild invocation and one actual execution.
+XCTest activation timed out after Home, before Save/post-save row tap. Zero fully
+correlated failing target interactions. Fourteen earlier paired touches and initial
+sheet state are recorded; 26 gesture-list omission markers invalidate capture despite
+1,374 committed records and zero overflow/string truncation. No product attribution.
+Ordinary iOS run 39185410899 has all jobs skipped. Full original artifact ZIP and
+decoded job log archived in evidence/gate6-single-editor-39185410894 with verified
+digests. No repeat, repair-and-rerun or device execution. Gate 6 FAILED / HELD,
+7–12 INVALIDATED / HELD; Stage 13 NOT STARTED. Evidence-only publication follows;
+no further experiment, remedy, main promotion, downstream replay or redesign. STOP.
+
 ## October 18, 2026 — evidence-first review and local tooling correction
 
 Started clean at c4b74506ef51aaa53de7e34c41a9329bd9d26571; latest exact-HEAD Actions

@@ -1,0 +1,253 @@
+diff --git a/PuzzleAlarm/App/ContentView.swift b/PuzzleAlarm/App/ContentView.swift
+index ccf4d06..9db6276 100644
+--- a/PuzzleAlarm/App/ContentView.swift
++++ b/PuzzleAlarm/App/ContentView.swift
+@@ -63,7 +63,11 @@ struct ContentView: View {
+                 }
+                 ForEach(store.alarms, id: \.id) { alarm in
+                     Section {
+-                        Button { draft = AlarmEditorDraft(alarm) } label: {
++                        Button {
++                            UITestEnvironment.traceToggle("row action id=\(alarm.id) busy=\(store.isBusy) exists=\(store.definition(alarm.id) != nil) route=\(store.routeRevision)")
++                            draft = AlarmEditorDraft(alarm)
++                            UITestEnvironment.traceToggle("row draft assigned=\(draft != nil)")
++                        } label: {
+                             VStack(alignment: .leading, spacing: 5) {
+                                 Text(AlarmFormatting.time(alarm.time)).font(.largeTitle).monospacedDigit()
+                                 Text(AlarmFormatting.repeatSummary(alarm.weekdays))
+@@ -101,8 +105,17 @@ struct ContentView: View {
+             }
+             .disabled(store.isBusy)
+             .refreshable { await store.refresh() }
+-            .sheet(item: $draft) { value in AlarmEditorView(store: store, initial: value) }
++            .background(Gate6WindowBridge().allowsHitTesting(false))
++            .onChange(of: draft?.id) { _, value in
++                UITestEnvironment.traceToggle("sheet binding id=\(String(describing: value)) busy=\(store.isBusy)")
++            }
++            .sheet(item: $draft) { value in
++                AlarmEditorView(store: store, initial: value)
++                    .onAppear { UITestEnvironment.traceToggle("editor appeared id=\(value.id)") }
++                    .onDisappear { UITestEnvironment.traceToggle("editor disappeared id=\(value.id)") }
++            }
+             .onChange(of: store.routeRevision) { _, _ in
++                UITestEnvironment.traceToggle("route revision=\(store.routeRevision) destination=\(String(describing: store.wakeUpSessionID)) draft=\(draft != nil)")
+                 if let id = store.wakeUpSessionID, path != [id] {
+                     draft = nil
+                     path = [id]
+diff --git a/PuzzleAlarm/App/Gate6InputProbe.swift b/PuzzleAlarm/App/Gate6InputProbe.swift
+new file mode 100644
+index 0000000..34b03f2
+--- /dev/null
++++ b/PuzzleAlarm/App/Gate6InputProbe.swift
+@@ -0,0 +1,55 @@
++
++import SwiftUI
++import UIKit
++
++@MainActor
++final class Gate6WindowProbe: UIGestureRecognizer {
++    override func canPrevent(_ other: UIGestureRecognizer) -> Bool { false }
++    override func canBePrevented(by other: UIGestureRecognizer) -> Bool { false }
++    private func record(_ touches: Set<UITouch>, _ phase: String) {
++        guard let window = view as? UIWindow else { return }
++        for touch in touches {
++            var current = touch.view
++            UITestEnvironment.traceToggle("touch \(phase) timestamp=\(touch.timestamp) point=\(touch.location(in: window)) window=\(ObjectIdentifier(window)) app=\(UIApplication.shared.applicationState.rawValue) scene=\(window.windowScene?.activationState.rawValue ?? -99)")
++            var depth = 0
++            while let item = current, depth < 24 {
++                UITestEnvironment.traceToggle("ancestor phase=\(phase) depth=\(depth) object=\(ObjectIdentifier(item)) type=\(type(of: item)) id=\(item.accessibilityIdentifier ?? "none")")
++                let gestures = item.gestureRecognizers ?? []
++                for gesture in gestures.prefix(16) {
++                    UITestEnvironment.traceToggle("gesture depth=\(depth) object=\(ObjectIdentifier(gesture)) type=\(type(of: gesture)) state=\(gesture.state.rawValue) enabled=\(gesture.isEnabled)")
++                }
++                if gestures.count > 16 { UITestEnvironment.traceToggle("capture limited gestures") }
++                current = item.superview
++                depth += 1
++            }
++            if current != nil { UITestEnvironment.traceToggle("capture limited ancestors") }
++        }
++    }
++    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) { record(touches, "began") }
++    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) { record(touches, "ended"); state = .failed }
++    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) { record(touches, "cancelled"); state = .failed }
++}
++
++@MainActor
++struct Gate6WindowBridge: UIViewRepresentable {
++    final class Host: UIView {
++        override func didMoveToWindow() {
++            super.didMoveToWindow()
++            guard let window, !(window.gestureRecognizers ?? []).contains(where: { $0 is Gate6WindowProbe }) else { return }
++            let probe = Gate6WindowProbe(target: nil, action: nil)
++            probe.cancelsTouchesInView = false; probe.delaysTouchesBegan = false; probe.delaysTouchesEnded = false
++            window.addGestureRecognizer(probe)
++            UITestEnvironment.traceToggle("probe attached window=\(ObjectIdentifier(window)) scene=\(window.windowScene?.activationState.rawValue ?? -99)")
++        }
++    }
++    func makeUIView(context: Context) -> Host { Host() }
++    func updateUIView(_ uiView: Host, context: Context) {}
++}
++
++@MainActor
++final class Gate6TraceSwitch: UISwitch {
++    override func didMoveToWindow() {
++        super.didMoveToWindow()
++        UITestEnvironment.traceToggle("switch attached=\(window != nil) id=\(ObjectIdentifier(self)) targets=\(allTargets.count)")
++    }
++}
+diff --git a/PuzzleAlarm/App/Gate6Recorder.swift b/PuzzleAlarm/App/Gate6Recorder.swift
+new file mode 100644
+index 0000000..bf32c7f
+--- /dev/null
++++ b/PuzzleAlarm/App/Gate6Recorder.swift
+@@ -0,0 +1,73 @@
++import Foundation
++import Darwin
++
++// CI-only. Main-actor serialization; no file operations, flushing or locks in record().
++// Formatting, clock reads and mapped stores still have overhead. No zero-overhead claim.
++@MainActor
++final class Gate6Recorder {
++    static let shared = Gate6Recorder()
++    static let capacity = 16384
++    static let stride = 1024
++    static let header = 128
++    let memory: UnsafeMutableRawPointer
++    let bytes: Int
++    let failStop: Bool
++    init(path: String? = nil, capacity: Int = Gate6Recorder.capacity, failStop: Bool = true) {
++        self.failStop = failStop
++        bytes = Self.header + capacity * Self.stride
++        let destination = path ?? FileManager.default.temporaryDirectory
++            .appendingPathComponent("gate6-\(getpid())-\(UUID().uuidString).bin").path
++        let fd = open(destination, O_RDWR | O_CREAT | O_EXCL, S_IRUSR | S_IWUSR)
++        precondition(fd >= 0, "recorder open failed")
++        precondition(ftruncate(fd, off_t(bytes)) == 0, "recorder allocation failed")
++        let mapped = mmap(nil, bytes, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0)
++        precondition(mapped != MAP_FAILED && mapped != nil, "recorder mmap failed")
++        memory = mapped!
++        precondition(close(fd) == 0)
++        // Initialize and prefault every byte before any instrumented interaction.
++        memset(memory, 0, bytes)
++        put(0, 0x3146554236434744); put(8, 1); put(16, UInt64(capacity))
++        put(24, UInt64(Self.stride)); put(32, UInt64(getpid()))
++        put(72, 1); put(80, DispatchTime.now().uptimeNanoseconds)
++        put(88, UInt64(Date().timeIntervalSince1970 * 1e9))
++        record("process start uuid=\(UUID().uuidString) pid=\(getpid())")
++    }
++    func get(_ offset: Int) -> UInt64 { memory.load(fromByteOffset: offset, as: UInt64.self) }
++    func put(_ offset: Int, _ value: UInt64) { memory.storeBytes(of: value.littleEndian, toByteOffset: offset, as: UInt64.self) }
++    func record(_ message: String) {
++        let sequence = get(40) + 1
++        put(40, sequence)
++        let index = get(48)
++        guard index < get(16) else {
++            put(56, get(56) + 1)
++            precondition(!failStop, "recorder overflow; stop experiment")
++            return
++        }
++        let slot = Self.header + Int(index) * Self.stride
++        put(slot + 8, DispatchTime.now().uptimeNanoseconds)
++        put(slot + 16, UInt64(Date().timeIntervalSince1970 * 1e9))
++        var count = 0
++        var hash: UInt32 = 2166136261
++        var truncated = false
++        for byte in message.utf8 {
++            if count == Self.stride - 40 { truncated = true; break }
++            memory.storeBytes(of: byte, toByteOffset: slot + 40 + count, as: UInt8.self)
++            hash = (hash ^ UInt32(byte)) &* 16777619
++            count += 1
++        }
++        memory.storeBytes(of: UInt32(count).littleEndian, toByteOffset: slot + 24, as: UInt32.self)
++        memory.storeBytes(of: UInt32(truncated ? 1 : 0).littleEndian, toByteOffset: slot + 28, as: UInt32.self)
++        for shift in 0..<8 {
++            hash = (hash ^ UInt32((sequence >> (shift * 8)) & 255)) &* 16777619
++        }
++        for index in 8..<32 {
++            hash = (hash ^ UInt32(memory.load(fromByteOffset: slot + index, as: UInt8.self))) &* 16777619
++        }
++        memory.storeBytes(of: hash.littleEndian, toByteOffset: slot + 32, as: UInt32.self)
++        if truncated { put(64, get(64) + 1) }
++        // Commit marker last; decoder rejects incomplete slots and sequence gaps.
++        put(slot, sequence)
++        put(48, index + 1)
++        precondition(!truncated || !failStop, "recorder truncation; stop experiment")
++    }
++}
+diff --git a/PuzzleAlarm/App/NativeAlarmSwitch.swift b/PuzzleAlarm/App/NativeAlarmSwitch.swift
+index baf96a3..2161153 100644
+--- a/PuzzleAlarm/App/NativeAlarmSwitch.swift
++++ b/PuzzleAlarm/App/NativeAlarmSwitch.swift
+@@ -15,7 +15,7 @@ struct NativeAlarmSwitch: UIViewRepresentable {
+ 
+         @objc func changed(_ control: UISwitch) {
+             #if DEBUG
+-            UITestEnvironment.traceToggle("native control=\(control.isOn) enabled=\(control.isEnabled)")
++            UITestEnvironment.traceToggle("native id=\(ObjectIdentifier(control)) target=\(ObjectIdentifier(self)) action=valueChanged control=\(control.isOn) enabled=\(control.isEnabled)")
+             #endif
+             guard control.isEnabled else { return }
+             binding.wrappedValue = control.isOn
+@@ -25,7 +25,7 @@ struct NativeAlarmSwitch: UIViewRepresentable {
+     func makeCoordinator() -> Coordinator { Coordinator(binding: binding) }
+ 
+     static func makeControl(coordinator: Coordinator) -> UISwitch {
+-        let control = UISwitch()
++        let control = Gate6TraceSwitch()
+         control.addTarget(coordinator, action: #selector(Coordinator.changed(_:)), for: .valueChanged)
+         return control
+     }
+@@ -38,6 +38,7 @@ struct NativeAlarmSwitch: UIViewRepresentable {
+         control.isEnabled = enabled
+         control.accessibilityIdentifier = identifier
+         control.accessibilityLabel = "Alarm enabled"
++        UITestEnvironment.traceToggle("control update id=\(ObjectIdentifier(control)) enabled=\(enabled) on=\(control.isOn) window=\(control.window != nil) targets=\(control.allTargets.count)")
+     }
+ 
+     func makeUIView(context: Context) -> UISwitch { Self.makeControl(coordinator: context.coordinator) }
+diff --git a/PuzzleAlarm/App/UITestEnvironment.swift b/PuzzleAlarm/App/UITestEnvironment.swift
+index 1bc7b4e..1481b78 100644
+--- a/PuzzleAlarm/App/UITestEnvironment.swift
++++ b/PuzzleAlarm/App/UITestEnvironment.swift
+@@ -75,16 +75,7 @@ final class TestAlarmScheduler: AlarmScheduling, @unchecked Sendable {
+ @MainActor
+ enum UITestEnvironment {
+     static func traceToggle(_ message: String) {
+-        let environment = ProcessInfo.processInfo.environment
+-        guard environment["PUZZLE_UI_TEST"] == "1", environment["PUZZLE_SCENARIO"] == "enableFailure" else { return }
+-        let url = FileManager.default.temporaryDirectory.appendingPathComponent("toggle-input-diagnostic.log")
+-        let line = "\(Date().timeIntervalSince1970) pid=\(ProcessInfo.processInfo.processIdentifier) \(message)\n"
+-        guard let data = line.data(using: .utf8) else { return }
+-        if !FileManager.default.fileExists(atPath: url.path) { _ = FileManager.default.createFile(atPath: url.path, contents: nil) }
+-        guard let file = try? FileHandle(forWritingTo: url) else { return }
+-        defer { try? file.close() }
+-        _ = try? file.seekToEnd()
+-        try? file.write(contentsOf: data)
++        Gate6Recorder.shared.record(message)
+     }
+     static let now = Date(timeIntervalSince1970: 1_790_812_800)
+     static let alarmID = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
+diff --git a/PuzzleAlarmUITests/AlarmManagementUITests.swift b/PuzzleAlarmUITests/AlarmManagementUITests.swift
+index f2f358d..f6ce3de 100644
+--- a/PuzzleAlarmUITests/AlarmManagementUITests.swift
++++ b/PuzzleAlarmUITests/AlarmManagementUITests.swift
+@@ -83,7 +83,10 @@ final class AlarmManagementUITests: XCTestCase {
+         expectPreview(app, playing: false)
+         tap(app, "editor.save")
+         let row = firstRow(app)
+-        XCTAssertTrue(row.waitForExistence(timeout: 10)); row.tap()
++        XCTAssertTrue(row.waitForExistence(timeout: 10))
++        row.tap()
++        // Stop at the first missing presentation, before unrelated scroll gestures.
++        XCTAssertTrue(app.buttons["editor.save"].waitForExistence(timeout: 10), app.debugDescription)
+         tap(app, "editor.preview")
+         expectPreview(app, playing: true)
+         tap(app, "editor.cancel")
+@@ -110,7 +113,7 @@ final class AlarmManagementUITests: XCTestCase {
+         app.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+         if largeText { app.launchArguments += ["-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"] }
+         app.launchEnvironment = ["PUZZLE_UI_TEST": "1", "PUZZLE_RESET": "1",
+-                                 "PUZZLE_TEST_NAME": name, "PUZZLE_SCENARIO": scenario]
++                                 "PUZZLE_TEST_NAME": name, "PUZZLE_SCENARIO": scenario, "PUZZLE_INPUT_TRACE": "1"]
+         app.launch()
+         XCTAssertTrue(app.buttons["alarms.add"].waitForExistence(timeout: 20))
+         return app

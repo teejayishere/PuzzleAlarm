@@ -1,0 +1,63 @@
+{
+  "start_utc": 1792373237.0,
+  "test_deadline_utc": 1792374722.0,
+  "absolute_deadline_utc": 1792375037.0,
+  "sha": "6966ab56572e7268799d2fc02a04a179e5ed9bb9",
+  "run_id": "39185410894",
+  "run_attempt": "1",
+  "outcomes": [
+    {
+      "name": "editor",
+      "declaration": "testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch",
+      "executions": 1,
+      "completed_tests": 1,
+      "status": "TOOLING_FAILURE",
+      "command": [
+        "xcodebuild",
+        "-project",
+        "PuzzleAlarm.xcodeproj",
+        "-scheme",
+        "PuzzleAlarm",
+        "-configuration",
+        "Debug",
+        "-destination",
+        "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64",
+        "-derivedDataPath",
+        "DerivedData",
+        "-resultBundlePath",
+        "TestResults/editor.xcresult",
+        "-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch",
+        "-parallel-testing-enabled",
+        "NO",
+        "-test-timeouts-enabled",
+        "YES",
+        "-maximum-test-execution-time-allowance",
+        "600",
+        "CODE_SIGNING_ALLOWED=NO",
+        "test"
+      ],
+      "invocation_started": true,
+      "complete_capture": false,
+      "raw_integrity_valid": false,
+      "capture_completeness": "UNVERIFIED_PROCESS_CORRELATION",
+      "exit": 65,
+      "started_log_records": 1,
+      "result_export_exit": 0,
+      "integrity_exit": 1
+    }
+  ],
+  "outcome": "TOOLING_FAILURE",
+  "gates": "6\u201312 HELD",
+  "overhead": "Nonzero; formatting, clock reads, mapped stores and page residency effects remain.",
+  "seen_raw": [
+    "gate6-12938-9FA3DBBF-5129-422F-A4B4-551205C36AB9.bin"
+  ],
+  "negative_conclusion_allowed": false,
+  "complete_capture": false,
+  "actual_test_executions": 1,
+  "xcodebuild_ui_invocations": 1,
+  "finished_utc": 1792373931.142584,
+  "raw_sha256": {
+    "editor/gate6-12938-9FA3DBBF-5129-422F-A4B4-551205C36AB9.bin": "97261c2f23316e5fe980043d47a658e3dadd904741af5709701c52a379ca2fe4"
+  }
+}

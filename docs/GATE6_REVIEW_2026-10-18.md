@@ -1,7 +1,8 @@
 # Gate 6 evidence review — October 18, 2026
 
 Gate 6 remains FAILED / HELD. Gates 7–12 remain INVALIDATED / HELD; last unheld
-gate is 5. Stage 13 NOT STARTED. This investigation authorizes no execution replay.
+gate is 5. Stage 13 NOT STARTED. The original evidence-only review authorized no
+execution; the subsequent user-authorized diagnostic is recorded separately below.
 
 ## Subsequent user authorization — one editor diagnostic
 
@@ -26,6 +27,26 @@ Publication uses one push marked [gate6-diagnostic] to suppress the ordinary iOS
 jobs. No manual dispatch or rerun is authorized. A subsequent evidence-only commit
 must carry [gate6-diagnostic] [record-only]. The result will be appended below; this
 authorization does not clear Gate 6 or authorize any remedy or downstream work.
+
+## Subsequent diagnostic result — STOP
+
+Source `6966ab56572e7268799d2fc02a04a179e5ed9bb9` /
+[39185410894](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39185410894),
+attempt 1: TOOLING_FAILURE, incomplete capture. All selected-Mac preflight checks
+passed before one Simulator boot; one xcodebuild invocation executed the selected
+declaration once. XCTest timed out at original `app.activate()` after Home, before
+Save or the single target row tap. No failing reopening interaction was captured.
+One failed XCTest activation does not establish an application or platform cause.
+
+PID 12938 has 1,374 committed records, zero overflow/string truncation, initial
+route/draft/sheet presentation and 14 earlier touch pairs correlated with XCTest
+synthesized-event attachments. However, 26 bounded gesture omission markers cause
+decoder rejection; complete_capture and raw_integrity_valid remain false. No target
+row action/binding/owner absence inference is valid because that input was not reached.
+Full original 97,068,480-byte ZIP, xcresult/video/raw, complete decoded Actions log,
+hashes and reviewed counts are [archived](evidence/gate6-single-editor-39185410894/README.md).
+Ordinary CI 39185410899 is entirely skipped. No retries, broader regression, repair,
+main promotion or subsequent experiment. Gates 6–12 remain held. STOP.
 
 ## Revision and latest CI
 

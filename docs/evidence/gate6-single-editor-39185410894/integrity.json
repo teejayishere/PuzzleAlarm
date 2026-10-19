@@ -1,0 +1,14 @@
+[
+  {
+    "pid": 12938,
+    "attempted": 1374,
+    "committed": 1374,
+    "overflow": 0,
+    "truncation": 0,
+    "attachment": true,
+    "errors": [
+      "bounded path/gesture capture incomplete"
+    ],
+    "file": "gate6-12938-9FA3DBBF-5129-422F-A4B4-551205C36AB9.bin"
+  }
+]

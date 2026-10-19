@@ -1,5 +1,13 @@
 # Gate 6 bounded input investigation — October 17, 2026
 
+Latest authorized one-editor diagnostic: source 6966ab5 /
+[39185410894](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39185410894)
+attempt 1 TOOLING_FAILURE. Preflight passed; one boot, invocation and actual execution.
+Activation timed out after Home before Save/target row tap. Gesture omissions also
+invalidate complete capture. Zero captured failing target interactions; no cause
+established. [Original artifacts and counts](evidence/gate6-single-editor-39185410894/README.md).
+No repair or rerun. Gate 6 failed/held, 7–12 invalidated/held. STOP.
+
 October 18 update: [evidence review and local tooling correction](GATE6_REVIEW_2026-10-18.md)
 supersedes the historical dry-run requirement and automatic product-failure attribution
 below. No new experiment is authorized or executed. Help inspection is option-name

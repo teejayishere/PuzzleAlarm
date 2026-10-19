@@ -1,0 +1,383 @@
+{
+  "sha": "6966ab56572e7268799d2fc02a04a179e5ed9bb9",
+  "run_id": 39185410894,
+  "run_attempt": 1,
+  "job_id": 117846692790,
+  "outcome": "TOOLING_FAILURE",
+  "jobs_allocated": 1,
+  "simulator_boot_requests": 1,
+  "simulator_boots_completed": 1,
+  "xcodebuild_ui_invocations": 1,
+  "actual_test_executions": 1,
+  "completed_test_cases": 1,
+  "xctest_failures": 1,
+  "xctest_failure": "app.activate(): Failed to launch com.teejayishere.PuzzleAlarm: Timed out attempting to launch app.",
+  "target_post_save_row_taps_reached": 0,
+  "fully_correlated_failed_target_interactions": 0,
+  "complete_capture": false,
+  "negative_conclusion_allowed": false,
+  "raw_pid": 12938,
+  "raw_process_count": 1,
+  "attempted": 1374,
+  "committed": 1374,
+  "overflow": 0,
+  "truncation": 0,
+  "raw_sha256": "97261c2f23316e5fe980043d47a658e3dadd904741af5709701c52a379ca2fe4",
+  "raw_integrity_valid": false,
+  "integrity_errors": [
+    "bounded path/gesture capture incomplete"
+  ],
+  "capture_limited_gestures": 24,
+  "touch_began": 14,
+  "touch_ended": 14,
+  "row_actions": 0,
+  "row_draft_assignments": 0,
+  "owner_records": 0,
+  "binding_records": 0,
+  "synthesized_events": 14,
+  "correlated_earlier_touches": [
+    {
+      "sequence": 5,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:34:04.616973+00:00",
+      "message": "touch began timestamp=598.892034875 point=(364.0, 84.0) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "ED964A07-5F91-4C05-BF72-A2B9A2925E8B",
+      "attachment_timestamp": 1792373644.888,
+      "attachment_minus_touch_seconds": 0.271027,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          364.0,
+          84.0
+        ],
+        [
+          364.0,
+          84.0
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 77,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:34:16.831349+00:00",
+      "message": "touch began timestamp=611.1261133333334 point=(298.0, 740.6666666666666) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "B211BD71-C45D-4269-AE21-F95E2C065832",
+      "attachment_timestamp": 1792373657.107,
+      "attachment_minus_touch_seconds": 0.275651,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          298.0,
+          740.8333333333334
+        ],
+        [
+          298.0,
+          740.8333333333334
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        -0.166667
+      ]
+    },
+    {
+      "sequence": 177,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:34:19.903982+00:00",
+      "message": "touch began timestamp=614.1975414166667 point=(245.0, 685.0) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "1CF92972-217B-4E64-A700-D6AD8B446537",
+      "attachment_timestamp": 1792373660.183,
+      "attachment_minus_touch_seconds": 0.279018,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          245.0,
+          685.0
+        ],
+        [
+          245.0,
+          685.0
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 281,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:34:27.177253+00:00",
+      "message": "touch began timestamp=621.4729594583333 point=(201.0, 792.6666666666666) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "490A6DE7-C333-4E05-AFA4-A545CBF3F5B1",
+      "attachment_timestamp": 1792373667.445,
+      "attachment_minus_touch_seconds": 0.267747,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          201.0,
+          792.6666666666666
+        ],
+        [
+          201.0,
+          792.6666666666666
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 381,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:34:36.170583+00:00",
+      "message": "touch began timestamp=630.4652792916667 point=(201.0, 792.6666666666666) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "614F80B3-796C-4C15-94CC-57E1F7DDBBE3",
+      "attachment_timestamp": 1792373676.446,
+      "attachment_minus_touch_seconds": 0.275417,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          201.0,
+          792.6666666666666
+        ],
+        [
+          201.0,
+          792.6666666666666
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 481,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:34:43.633909+00:00",
+      "message": "touch began timestamp=637.92870725 point=(201.0, 792.6666666666666) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "44948E84-30DD-4600-8A40-1FB2F902AE9B",
+      "attachment_timestamp": 1792373683.914,
+      "attachment_minus_touch_seconds": 0.280091,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          201.0,
+          792.6666666666666
+        ],
+        [
+          201.0,
+          792.6666666666666
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 581,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:34:50.757636+00:00",
+      "message": "touch began timestamp=645.0525069166666 point=(336.3333333333333, 740.6666666666666) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "588D19D2-CD50-4B11-96F1-1DB6B9EB9578",
+      "attachment_timestamp": 1792373691.026,
+      "attachment_minus_touch_seconds": 0.268364,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          336.33333333333326,
+          740.8333333333334
+        ],
+        [
+          336.33333333333326,
+          740.8333333333334
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        -0.166667
+      ]
+    },
+    {
+      "sequence": 681,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:34:53.933078+00:00",
+      "message": "touch began timestamp=648.229376375 point=(245.0, 643.0) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "CDA0C05F-B1B6-40D2-AE11-7DB9AB74C9BC",
+      "attachment_timestamp": 1792373694.207,
+      "attachment_minus_touch_seconds": 0.273922,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          245.0,
+          643.0
+        ],
+        [
+          245.0,
+          643.0
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 785,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:35:01.749159+00:00",
+      "message": "touch began timestamp=656.0433285 point=(201.0, 792.6666666666666) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "C516612B-76E9-47D8-9842-5BD3F992FF72",
+      "attachment_timestamp": 1792373702.019,
+      "attachment_minus_touch_seconds": 0.269841,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          201.0,
+          792.6666666666666
+        ],
+        [
+          201.0,
+          792.6666666666666
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 885,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:35:07.538110+00:00",
+      "message": "touch began timestamp=661.8347692083333 point=(201.0, 521.0) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "57505DE6-22A3-4A00-A839-BB25D6177BC7",
+      "attachment_timestamp": 1792373707.813,
+      "attachment_minus_touch_seconds": 0.27489,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          201.0,
+          521.0
+        ],
+        [
+          201.0,
+          521.0
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 985,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:35:10.940716+00:00",
+      "message": "touch began timestamp=665.2366397916667 point=(38.0, 100.0) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "8B9601BC-A5C6-47BF-A645-F29CFEAAFEE1",
+      "attachment_timestamp": 1792373711.218,
+      "attachment_minus_touch_seconds": 0.277284,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          38.0,
+          100.0
+        ],
+        [
+          38.0,
+          100.0
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 1071,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:35:17.354077+00:00",
+      "message": "touch began timestamp=671.6471835833333 point=(308.0, 740.6666666666666) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "EF8226B7-47BA-472B-98AE-D0E05A655C50",
+      "attachment_timestamp": 1792373717.631,
+      "attachment_minus_touch_seconds": 0.276923,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          308.0,
+          740.8333333333334
+        ],
+        [
+          308.0,
+          740.8333333333334
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        -0.166667
+      ]
+    },
+    {
+      "sequence": 1171,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:35:20.244096+00:00",
+      "message": "touch began timestamp=674.537605375 point=(245.0, 643.0) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "52C5884C-5281-4865-A0FA-CD1262FEA677",
+      "attachment_timestamp": 1792373720.526,
+      "attachment_minus_touch_seconds": 0.281904,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          245.0,
+          643.0
+        ],
+        [
+          245.0,
+          643.0
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "sequence": 1275,
+      "pid": 12938,
+      "touch_wall_utc": "2026-10-19T01:35:29.058221+00:00",
+      "message": "touch began timestamp=683.3543442916666 point=(201.0, 792.6666666666666) window=ObjectIdentifier(0x0000000106e70800) app=0 scene=0",
+      "attachment": "82DADE16-EB6D-474C-8D79-32E68165A113",
+      "attachment_timestamp": 1792373729.333,
+      "attachment_minus_touch_seconds": 0.274779,
+      "synthesized_target_pid": 12938,
+      "synthesized_coordinates": [
+        [
+          201.0,
+          792.6666666666666
+        ],
+        [
+          201.0,
+          792.6666666666666
+        ]
+      ],
+      "coordinate_difference_points": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "limits": [
+    "Target saved-row reopening was never reached; absent target records are not evidence of a dropped tap.",
+    "Gesture enumeration was bounded at 16; 26 omission markers invalidate complete capture.",
+    "Activation timeout does not establish application, XCTest or OS root cause."
+  ],
+  "artifact_bytes": 97068480,
+  "artifact_sha256": "160506b7702a434df8e5fb9cef417c507fc2a9ef2f26bd56e912bda1d3e7ad69"
+}

@@ -1,0 +1,86 @@
+{
+  "total_count": 3,
+  "jobs": [
+    {
+      "id": 117846694339,
+      "run_id": 39185410899,
+      "workflow_name": "PuzzleAlarm Core and iOS",
+      "head_branch": "codex/stage-12-routing",
+      "run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/runs/39185410899",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOU38jWM8AAAAbcDXZww",
+      "head_sha": "6966ab56572e7268799d2fc02a04a179e5ed9bb9",
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/jobs/117846694339",
+      "html_url": "https://github.com/teejayishere/PuzzleAlarm/actions/runs/39185410899/job/117846694339",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-19T01:27:07Z",
+      "started_at": "2026-10-19T01:27:07Z",
+      "completed_at": "2026-10-19T01:27:07Z",
+      "name": "toggle-reproduction",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/check-runs/117846694339",
+      "labels": [
+        "macos-26"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    },
+    {
+      "id": 117846694582,
+      "run_id": 39185410899,
+      "workflow_name": "PuzzleAlarm Core and iOS",
+      "head_branch": "codex/stage-12-routing",
+      "run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/runs/39185410899",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOU38jWM8AAAAbcDXatg",
+      "head_sha": "6966ab56572e7268799d2fc02a04a179e5ed9bb9",
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/jobs/117846694582",
+      "html_url": "https://github.com/teejayishere/PuzzleAlarm/actions/runs/39185410899/job/117846694582",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-19T01:27:07Z",
+      "started_at": "2026-10-19T01:27:07Z",
+      "completed_at": "2026-10-19T01:27:07Z",
+      "name": "validate",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/check-runs/117846694582",
+      "labels": [
+        "macos-26"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    },
+    {
+      "id": 117846724099,
+      "run_id": 39185410899,
+      "workflow_name": "PuzzleAlarm Core and iOS",
+      "head_branch": "codex/stage-12-routing",
+      "run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/runs/39185410899",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOU38jWM8AAAAbcDZOAw",
+      "head_sha": "6966ab56572e7268799d2fc02a04a179e5ed9bb9",
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/jobs/117846724099",
+      "html_url": "https://github.com/teejayishere/PuzzleAlarm/actions/runs/39185410899/job/117846724099",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-19T01:27:15Z",
+      "started_at": "2026-10-19T01:27:15Z",
+      "completed_at": "2026-10-19T01:27:07Z",
+      "name": "editor-native-comparison",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/check-runs/117846724099",
+      "labels": [
+        "macos-26"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    }
+  ]
+}

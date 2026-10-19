@@ -4,6 +4,38 @@ Current stage: 12, recursing to the unresolved Gate 6 native-input boundary.
 Gate 6 is FAILED; dependent Gates 7–12 are INVALIDATED / HELD. Last unheld gate: 5.
 Stage 13 NOT STARTED. A later green run alone cannot clear a known unexplained failure.
 
+## Latest authorized single-editor diagnostic — STOP
+
+October 18 (America/Chicago): source `6966ab56572e7268799d2fc02a04a179e5ed9bb9`,
+[run 39185410894](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39185410894),
+attempt 1: **TOOLING_FAILURE / incomplete capture**. Exactly one original audio/editor
+declaration executed once. XCTest timed out at `app.activate()` after Home, before
+Save or the target saved-row reopening. No captured failed target interaction and
+no product cause established. No retry, repair-and-rerun or additional experiment.
+
+Accounting: 1 macOS job allocated; 1 explicit Simulator boot requested/completed;
+1 xcodebuild UI invocation; 1 actual test execution/completed failed case; 1 XCTest
+activation failure; 0 target saved-row taps and 0 fully correlated failed target
+interactions. Ordinary run 39185410899 has all three jobs skipped, no allocated runners.
+
+Source/Windows: original product/native/UI sources unchanged; existing corrections
+preserved; 19 focused tooling tests and ephemeral instrumentation application PASS.
+Xcode: selected 26.6 option-name check, 19 tooling tests, Swift recorder compilation
+and writer/decoder integrity self-checks PASS before boot; Debug instrumented app/test
+runner compiled. Simulator: iPhone 17 / iOS 26.5, declaration FAILED on activation.
+One raw PID has 1,374 committed records, zero overflow/string truncation, but 26
+bounded gesture omission markers: decoder correctly rejects complete capture.
+Earlier 14 touch pairs correlate with XCTest events; initial sheet presentation
+recorded. No target row/action/binding/owner chain exists because it was not reached.
+Physical device NOT RUN. This is no gate or broad CI pass.
+
+Full original ZIP (including xcresult/video/raw), complete decoded Actions log,
+integrity and reviewed accounting are [durably archived](evidence/gate6-single-editor-39185410894/README.md).
+Both historical failures remain unresolved. STOP: no further diagnostic, production
+remedy, main promotion, downstream replay, redesign or Stage 13 is queued.
+
+## Earlier evidence-only review
+
 October 18 evidence-only review: exact starting HEAD c4b74506ef51aaa53de7e34c41a9329bd9d26571
 has latest CI 39080917448 SKIPPED, not PASS. Original input/editor logs were reexamined;
 neither unresolved failure has a proven current application root cause. Local tooling

@@ -2,6 +2,16 @@
 
 ## Current acceptance — Gates 6–12 held
 
+Latest single-editor diagnostic: `6966ab56572e7268799d2fc02a04a179e5ed9bb9` /
+[39185410894](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39185410894)
+attempt 1 **TOOLING_FAILURE / incomplete capture**. Selected-Mac options, 19 tooling
+tests, Swift recorder compile/roundtrip/integrity self-checks PASS before boot.
+1 allocated job / 1 boot / 1 UI invocation / 1 actual declaration execution, failed
+XCTest activation before Save/reopening; 0 captured failing target interactions.
+1,374 records, zero overflow/string truncation, 26 gesture omission markers; decoder
+rejected completeness. Ordinary CI skipped. Device NOT RUN; no gate acceptance.
+[Full original archive and accounting](evidence/gate6-single-editor-39185410894/README.md).
+
 October 18 local review: exact starting HEAD c4b74506ef51aaa53de7e34c41a9329bd9d26571 /
 39080917448 SKIPPED. No new CI. Local tooling corrections: 19 focused Python tests
 PASS; no Xcode/Simulator/device execution. Original one-tap/native/UI protections
