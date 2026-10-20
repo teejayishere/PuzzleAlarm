@@ -4,6 +4,53 @@ Current stage: 12, recursing to the unresolved Gate 6 native-input boundary.
 Gate 6 is FAILED; dependent Gates 7–12 are INVALIDATED / HELD. Last unheld gate: 5.
 Stage 13 NOT STARTED. A later green run alone cannot clear a known unexplained failure.
 
+## October 19, 2026 — bounded investigation policy, documentation STOP
+
+This revision changes documentation policy only. MASTER_PLAN §§4–6 and 47 now
+distinguish proven product defects, unexplained behavioral assertion failures and
+diagnostic tooling/capture failures. The deterministic stale captured-getter defect
+has a live-owner binding correction and historical regression evidence; later
+switch/editor misses remain unexplained. The activation/capture failures establish
+no product, harness or platform cause.
+
+The lifetime ceiling is two discriminating jobs per unresolved issue, 30 minutes
+each including setup and capture, with tests stopped by minute 25. Tooling failures
+consume allocations even before UI starts; shared jobs debit both issues. No resets
+for repairs, new hypotheses, branches, sessions or successful samples. Existing
+allocations already exceed this new ceiling: both switch and editor investigations
+are **EXHAUSTED; zero jobs remain**. Historical authorizations/results are retained,
+not retrospectively claimed compliant. See [accounting](GATE6_DIAGNOSTICS.md).
+
+One-tap assertions, ten-flow switch coverage, exact UI/state/status/persistence
+checks, critical invariants and recursive gate invalidation remain mandatory.
+Exhaustive ancestry/video is optional diagnostic evidence; archived incomplete
+captures stay incomplete, and integrity/loss checks and failed evidence remain.
+
+A separately approved narrow historical-risk exception is defined, **NOT GRANTED
+/ NOT INVOKED**. Outstanding user product decision: whether to accept the named
+historical switch/editor residual risk for an exact candidate HEAD and specified
+development scope, with explicit risk ownership. Approval must be separate from
+this documentation task and precede any invocation/validation. It requires verified
+binding correction and complete ordered uninstrumented Gate 6–12 validation at that
+HEAD in one declared attempt, no retry-to-green, preserved failures and recurrence
+reopening/invalidation. It cannot waive proven defects or critical invariants.
+Any permitted development advancement is distinct from product/device acceptance.
+
+Starting local and remote codex/stage-12-routing HEAD independently verified:
+72204ff4d4161bae7eb0eec4c5329207f9d8db4c, clean worktree. Its exact
+[CI 39200424193](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39200424193)
+completed SKIPPED, all three jobs skipped, not PASS. Remote main remains
+bd069f29c6d045d5bc27fc56212edcbde2090855; no promotion. Final documentation SHA/run
+will be reported at closeout. Publication uses existing record-only/diagnostic
+markers to avoid allocating runners; skipped CI is not validation evidence.
+
+Source: five Markdown files reviewed; product/Core/native/UI sources, tests,
+diagnostic tooling and workflows unchanged. Automated product tests, Xcode,
+Simulator and physical device: NOT RUN in this task. No diagnostic/replay,
+exception invocation, gate-status change, main promotion or Stage 13. STOP after
+documentation publication. Earlier future-execution proposals below are closed;
+only the current policy and separate future authorization can govern new work.
+
 ## Latest authorized diagnostic — closed, STOP
 
 October 18 (America/Chicago): authorized experiment source
@@ -246,9 +293,12 @@ Stage 13 or redesign is queued. A green batch alone cannot clear historical fail
 
 ## Future scope after this stopped experiment
 
-Correct the earliest demonstrated cause, invalidate affected evidence, then replay
-Gate 6 and dependent Gates 7–12 in order. Publish only with complete exact-final-HEAD
-CI; the final task report must state immutable SHA/run and the actual gate outcome.
+The default route remains correction of the earliest demonstrated cause, recursive
+invalidation and ordered Gate 6–12 replay. The only historical-risk alternative is
+the separately approved exception in MASTER_PLAN §6; none is granted or invoked.
+The exhausted budget authorizes no new execution. Product publication requires
+complete exact-final-HEAD CI and its actual outcome; this documentation-only branch
+publication reports skipped CI separately and does not promote or accept a product.
 A blocked gate is not a pass. Historical records are retained in DEVELOPMENT_LOG
 and TEST_MATRIX, not mixed into this current-state summary.
 

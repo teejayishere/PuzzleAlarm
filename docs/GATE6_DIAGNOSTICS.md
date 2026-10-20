@@ -1,5 +1,82 @@
 # Gate 6 bounded input investigation — October 17, 2026
 
+## Current policy — October 19, 2026: EXHAUSTED / STOP
+
+MASTER_PLAN §§4–6 and 47 govern this investigation. The historical proposals and
+authorizations below are retained as evidence, not current permission. This update
+authorizes no diagnostic/replay, tooling repair cycle or production change.
+Gate 6 remains FAILED / HELD, Gates 7–12 INVALIDATED / HELD, last unheld gate 5;
+Stage 13 NOT STARTED. The historical-risk exception is **NOT GRANTED / NOT INVOKED**.
+
+| Evidence class | Established fact and limit |
+| --- | --- |
+| Proven product defect | Historical captured getter at 5fa500a / 38855208213 deterministically failed four retained-binding assertions. Live owner lookup by stable ID corrects that defect; retained-binding/completion regressions passed historically. Verify the correction again at any exception candidate HEAD. It does not explain later misses. |
+| Unexplained behavioral assertion failure — switch | 39058576894, 39060200894 and 39061680552 miss ordinary one-tap exact state changes. Missing valueChanged/setter/owner entries do not establish app, harness or OS causation. |
+| Unexplained behavioral assertion failure — editor | 39064851750 misses saved-row reopening; editor.preview is absent and the list remains visible. No failed row-action/draft/sheet chain establishes the cause; no audio defect is proven. |
+| Diagnostic tooling/capture failure | 39079559751 fails invocation before UI; 39080779760 fails preflight before boot; 39185410894 times out on activation and has incomplete capture; 39199089437 passes its sole UI declaration but fails capture completeness. Activation causation remains unknown. These are not proven product corrections or target-failure captures. |
+
+### Lifetime budget accounting
+
+The ceiling is two discriminating allocated jobs per unresolved issue, at most
+30 minutes each, setup through preservation included; stop tests by minute 25.
+Tooling/preflight/capture failures consume jobs even with zero actual UI starts.
+Shared allocations debit both issues. Short jobs do not create credit. Never reset
+the budget for repairs, new hypotheses, names, branches, agents, sessions or green
+samples; recurrence also does not reset it.
+
+| Existing allocation (attempt 1) | Issue scope and budget consequence |
+| --- | --- |
+| 39074041807, d9a585b | Shared switch/editor diagnostic; three flows each, successful samples only; counts for both. |
+| 39079559751, 4b0e1c1 | Shared switch/editor buffered experiment; tooling invocation fails, zero UI executions; counts for both even though editor was never reached. Thus both issues already have at least two consumed jobs. |
+| 39080779760, 6ba4de1 | Shared corrected buffered experiment; tooling preflight failure, no boot/UI; also counts for both. |
+| 39185410894, 6966ab5 | Editor allocation; activation timeout/incomplete capture; counts despite no target reopening input. |
+| 39199089437, 7bfeca9 | Editor allocation; 11 minutes, one passed declaration, incomplete ancestry/video capture; counts despite success at the target. |
+
+Earlier attempts, including setup-only 39073944312 and instrumented 39063276440,
+remain recorded below and are not erased by this minimum accounting. The historical
+sequence exceeds the new ceiling; prior authorizations do not imply retrospective
+compliance or a fresh allowance. **Switch: EXHAUSTED. Editor: EXHAUSTED. Zero jobs
+remain.** No further unchanged sampling or repair-and-rerun is queued.
+
+### Required behavior and optional diagnosis
+
+Keep one ordinary tap per intended input, all ten switch flows, concrete native
+roles/0–1 values, enabled/hittable readiness, exact owner/status/error/pending
+outcomes, and save/relaunch persistence checks. Keep editor reopening/preview
+expectations and critical invariants. Product failure/retry controls in the original
+flow are required behavior, not permission to retry a failed input or CI run.
+
+Exhaustive ancestry/recognizer histories and exported native video are optional
+diagnostic evidence. Their absence alone need not block ordinary uninstrumented
+validation, but limits attribution. It does not retroactively change an archived
+INCOMPLETE_CAPTURE into complete capture, make missing records negative evidence,
+or permit decoder loss/integrity checks to be weakened. Preserve original failed
+artifacts, xcresults, logs, hashes and all limitations. No new capture is requested.
+
+### Separate future product-risk decision
+
+The user must separately decide whether to approve the narrow historical-risk
+exception in MASTER_PLAN §6 for named historical switch/editor uncertainties, an
+exact candidate HEAD, advancement scope and an explicit residual-risk owner.
+It is not granted by approving or publishing these docs. Before advancement it
+requires verified deterministic binding correction and complete ordered,
+uninstrumented Gate 6–12 validation at that HEAD in one declared attempt, including
+all original assertions/ten flows and required regressions/build checks. No
+retry-to-green, selective omission, earlier-SHA substitution or proven-defect/
+critical-invariant waiver is allowed. Preserve failed evidence; any failed/blocked
+required check stops advancement. Any recurrence reopens the earliest gate and
+invalidates dependents without renewing the investigation budget.
+
+No validation is authorized or queued now. Development advancement under any
+future approved exception must be labeled separately from product/device
+acceptance; physical observations remain DEVICE REQUIRED / NOT RUN.
+
+## Historical evidence and closed authorizations
+
+All proposals and imperative instructions below describe their recorded historical
+scope. The current exhausted-budget policy above supersedes any apparent request
+for further capture or replay; original outcomes and gate statuses are retained.
+
 October 18 (America/Chicago): authorized experiment source
 `7bfeca92401a577f770a97bc074bf40124f1f66f` /
 [run 39199089437](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39199089437),

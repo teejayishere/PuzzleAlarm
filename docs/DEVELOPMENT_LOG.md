@@ -1,5 +1,44 @@
 # Development log
 
+## October 19, 2026 — bounded Gate 6 investigation policy, documentation only
+
+Read PROJECT_STATE first, then MASTER_PLAN, this log, current native binding/control
+source and regressions, original UI assertions, CI workflows, repository policy and
+archived capture review. Starting clean local/remote codex/stage-12-routing HEAD:
+72204ff4d4161bae7eb0eec4c5329207f9d8db4c. Exact CI 39200424193 completed SKIPPED;
+all three jobs skipped, not PASS. Main remains bd069f29c6d045d5bc27fc56212edcbde2090855.
+
+Updated MASTER_PLAN §§4–6 and 47, GATE6_DIAGNOSTICS, TEST_MATRIX and PROJECT_STATE.
+Separated proven captured-getter defect/correction from unexplained behavioral
+switch/editor misses and diagnostic tooling/capture failures. New lifetime ceiling:
+two discriminating jobs per unresolved issue, 30 minutes each including setup and
+preservation; tests stop by minute 25. Tooling failures and shared allocations count;
+no rollover, repair/hypothesis/session reset or retry-to-green. Existing history
+already exceeds this ceiling; switch/editor investigation recorded EXHAUSTED with
+zero jobs remaining, without rewriting historical authorizations or outcomes.
+
+Preserved one-tap assertions, ten-flow switch coverage, exact native/UI/owner/status/
+persistence checks, critical invariants and recursive invalidation. Exhaustive
+ancestry/video becomes optional diagnostic evidence; historical incomplete capture
+is not relabeled and no raw integrity/loss checks are weakened.
+
+Defined a narrow historical-risk exception requiring separate user approval for
+named issues, exact candidate HEAD, advancement scope and residual-risk owner;
+verified deterministic binding correction and complete ordered uninstrumented
+Gate 6–12 validation at that HEAD in one declared attempt, preserved failed evidence,
+no retry-to-green, stop on failed/blocked checks and recurrence reopening/dependent
+invalidation without renewed budget. It cannot waive proven defects or critical
+invariants. Development advancement remains distinct from product/device acceptance.
+Exception NOT GRANTED / NOT INVOKED. User's future residual-risk decision is outstanding.
+
+Validation: documentation diff/consistency review and documentation-only file-scope
+check; no production/test/script/workflow changes. Automated product tests, Xcode,
+Simulator and physical device NOT RUN. Publish only these five Markdown files on
+the existing branch using record-only/diagnostic markers to skip runner allocation;
+report immutable final SHA/exact CI outcome at closeout. No diagnostic/replay,
+gate-status change, exception invocation, main promotion or Stage 13. STOP after
+this documentation gate. Historical proposals below are not renewed authorization.
+
 ## October 18, 2026 — authorized repaired capture closeout, STOP
 
 October 18 (America/Chicago): authorized experiment source

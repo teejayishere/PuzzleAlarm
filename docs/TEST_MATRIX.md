@@ -1,5 +1,30 @@
 # Test matrix
 
+## October 19, 2026 — documentation policy only
+
+Gate 6 FAILED / HELD; Gates 7–12 INVALIDATED / HELD; last unheld gate 5.
+Stage 13 NOT STARTED. No acceptance status changes. MASTER_PLAN §§4–6, 47 and
+[GATE6_DIAGNOSTICS](GATE6_DIAGNOSTICS.md) define the current policy; historical
+proposals below do not authorize execution.
+
+| Policy/evidence boundary | Current requirement |
+| --- | --- |
+| Classification | Proven stale captured-getter defect and its live-owner binding correction remain distinct from unexplained switch/editor assertion failures and diagnostic tooling/capture failures. No historical cause inferred from later success. |
+| Investigation | Two discriminating jobs per unresolved issue, 30 minutes each including setup/capture; stop tests by minute 25. Tooling failures and shared allocations count. Both issues EXHAUSTED; zero jobs remain, no resets or new diagnostic/replay. Historical allocations already exceed this newly adopted ceiling. |
+| Mandatory behavior | One tap per intended input; all ten ordinary switch flows; native roles, exact 0/1, enabled/hittable, UI/owner/status/error/pending outcomes, editor reopening, save/relaunch persistence. All existing tests and critical completion/order/persistence/lifecycle invariants retained. |
+| Optional diagnosis | Exhaustive ancestry/recognizer capture and native video are optional; preserve original incomplete-capture labels and integrity/loss checks. They do not replace required assertions or excuse failed validation. |
+| Historical-risk exception | NOT GRANTED / NOT INVOKED. Separate user approval must name issues, exact candidate HEAD, scope and residual-risk owner. Verify binding correction; complete ordered uninstrumented Gate 6–12 at that HEAD, one declared attempt, no retry-to-green, no skipped valid tests. Preserve failed evidence; stop on failed/blocked validation; recurrence reopens gates and invalidates dependents without resetting budget. |
+| Advancement versus acceptance | Any future exception permits only its expressly approved development scope after validation. It cannot waive proven defects/invariants or establish product/device acceptance. Device requirements remain NOT RUN. |
+
+Source review: five Markdown files only; production, Core, native/UI tests, scripts
+and workflows unchanged. Automated product tests, Xcode, Simulator and device:
+NOT RUN for this documentation task. Documentation diff/consistency reviewed.
+Starting local/remote branch HEAD: 72204ff4d4161bae7eb0eec4c5329207f9d8db4c;
+exact [CI 39200424193](https://github.com/teejayishere/PuzzleAlarm/actions/runs/39200424193)
+completed SKIPPED, all three jobs skipped, not PASS. The final documentation
+publication SHA and exact CI outcome are reported at closeout, without another
+commit solely to embed its own hash. No diagnostics/replay or gate acceptance.
+
 ## Current acceptance — Gates 6–12 held
 
 October 18 (America/Chicago): authorized experiment source

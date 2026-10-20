@@ -218,6 +218,14 @@ If a test is genuinely wrong because the specification changed, explicitly docum
 
 This section governs the entire development process.
 
+Classify observations before choosing a remedy: a proven product defect has
+causal source/reproduction evidence; an unexplained behavioral assertion failure
+proves an expected outcome was missed without establishing its cause; a diagnostic
+tooling/capture failure establishes a limit of the experiment. These categories
+may coexist in one run. Never infer product, harness or platform blame from a
+missing trace, a tooling label or a later successful sample. Apply the bounded
+Gate 6 investigation and separate approval requirements in §6 and §47.
+
 Every stage must run through the following recursive loop.
 
 ## STEP A — Observe
@@ -367,6 +375,12 @@ Stop at the precise technical boundary and report evidence.
 
 Never convert BLOCKED into PASS through optimistic language.
 
+Investigation exhaustion is a stop condition, not a fourth gate outcome or a pass.
+Keep existing FAILED / HELD and dependent INVALIDATED / HELD statuses. A separately
+approved §6 historical-risk exception may permit bounded development advancement
+only after its validation requirements; it does not erase failures or establish
+product/device acceptance. This policy does not grant or invoke that exception.
+
 ---
 
 # 5. Recursive Gate Invalidation
@@ -403,6 +417,13 @@ rerun Gate 3
 
 Only after all affected gates pass again may development continue.
 
+The sole narrowly scoped alternative for the historical Gate 6 uncertainties is
+the separately approved exception in §6. It requires complete ordered Gate 6–12
+validation at exact candidate HEAD before any development advancement; historical
+risk remains explicit. Proven defects and critical invariants cannot be waived.
+Any recurrence reopens the earliest affected gate and recursively invalidates all
+dependents, including evidence obtained under an exception.
+
 The same rule applies later.
 
 Example:
@@ -421,24 +442,83 @@ Do not bury compensating logic inside Stage 11.
 
 Self-correction must not become infinite looping.
 
-For one failing hypothesis:
+For a proven defect, correct the earliest defensible cause and validate the fix.
+For an unexplained behavioral failure, declare a discriminating hypothesis and the
+observation that would distinguish it from alternatives before allocating a job.
+Do not make speculative product changes or repeat unchanged sampling until green.
 
-1. attempt the most likely root-cause correction
-2. rerun the failing reproduction
-3. if still failing, gather new evidence before making another change
+## Gate 6 investigation ceiling
 
-Do not repeatedly make speculative edits without new information.
+Each unresolved issue has a lifetime ceiling of **two discriminating jobs, at most
+30 minutes each** (60 minutes maximum, no rollover). Count setup, preflight,
+compilation, Simulator allocation, capture and export within each job's wall time.
+Stop test execution by minute 25 to reserve preservation time; stop the job by
+minute 30. Record exact SHA/run/attempt, hypothesis, allocation, starts/completions,
+assertion outcomes, capture limits and disposition, including failures.
 
-After approximately three unsuccessful corrections based on the same underlying theory:
+An allocated job counts even if tooling fails before boot or before any test runs.
+A shared job counts against every issue it was allocated to investigate. A short
+job does not leave a fractional job credit. No budget reset for a new hypothesis,
+renamed issue, branch, commit, agent/session, tooling repair, instrumentation
+change, successful sample or renewed diagnostic proposal. No repair-and-rerun or
+retry-to-green outside the ceiling. Review existing evidence without replay when
+the budget is exhausted; stop and report the unresolved risk.
 
-- stop using that theory
-- re-examine assumptions
-- inspect primary evidence again
-- try a different architectural or diagnostic approach
+The current switch/editor investigation is **EXHAUSTED**, including tooling and
+capture failures; no diagnostic jobs remain. Historical authorizations/results
+are preserved, not retroactively represented as compliant with this new ceiling.
+See GATE6_DIAGNOSTICS.md for accounting. Exhaustion leaves Gate 6 FAILED / HELD,
+Gates 7–12 INVALIDATED / HELD, last unheld gate 5 and Stage 13 NOT STARTED.
 
-If progress remains impossible because of environment/tool/platform limitations, classify the state as BLOCKED.
+Exhaustive ancestor/recognizer enumeration and native video are optional diagnostic
+evidence, not mandatory gate artifacts. Their absence limits claims about those
+boundaries; do not rewrite a historically incomplete capture as complete. Preserve
+raw integrity/loss checks and all available original evidence. Optional capture
+cannot replace exact UI/state/persistence assertions or excuse their failure.
 
-Do not fake progress by cycling endlessly.
+## Separately approved historical-risk exception — NOT GRANTED
+
+Only the user may separately approve this exception, explicitly naming the two
+historical switch/editor uncertainties, exact candidate HEAD, intended advancement
+scope and residual-risk owner. Documentation-policy approval is not risk approval,
+execution authorization or acceptance. Obtain separate approval before invoking
+the exception or starting its validation; this document queues neither.
+
+The exception can address only unexplained historical behavioral failures after
+investigation exhaustion. It cannot waive a proven product defect, a current
+assertion failure, tooling failure that prevents required validation, or critical
+invariants. Required conditions are cumulative:
+
+1. Preserve original failed logs/xcresults, source SHAs, job/attempt accounting and
+   capture limitations, with durable evidence links; record causes still unknown.
+2. Verify the deterministic retained-binding correction at that same candidate:
+   live owner lookup by stable ID, retained bindings after owner changes/removal,
+   command completion and pending reconciliation after denial/failure/success,
+   current native binding/target wiring and teardown. Keep regression tests. This
+   corrects the demonstrated stale getter; it does not explain later input misses.
+3. Complete **ordered, uninstrumented Gate 6–12 validation at exact candidate HEAD**,
+   including focused native contracts, all ten ordinary switch flows, independent
+   editor checks, full UI/native/Core regression, Debug/Release and required
+   resource/SDK/fixture-exclusion checks. No generated diagnostic probes or added
+   diagnostic waits/queries; preserve ordinary fixtures and existing assertions.
+   A changed HEAD requires its own complete ordered validation and approval scope.
+4. Use one declared validation attempt: no failed-test reruns, extra taps, selective
+   omission, retry-to-green, relaxed expectations or substituting an earlier SHA's
+   success. Any failed/blocked required check stops advancement; preserve evidence.
+   The existing product failure/retry flow remains required and is not a CI retry.
+5. Record explicit user ownership of residual intermittent input/editor risk,
+   exact SHA/run and advancement limits. A green run is execution evidence, not
+   proof of historical causation or permanent correction. Mark any advancement as
+   occurring under the approved exception; retain the historical failure record.
+6. Reopen on any recurrence: stop, revoke reliance on the exception, trace the
+   earliest affected gate, recursively invalidate dependents and review the new
+   evidence. Recurrence does not reset the exhausted investigation budget.
+
+Critical completion/order, immutable session snapshots, persistence-before-effects,
+truthful scheduling/cleanup state and lifecycle/ownership invariants remain binding.
+Development advancement is distinct from product acceptance and physical-device
+acceptance; Simulator/CI cannot establish hardware alarm, intent, camera or audio
+behavior. Device requirements remain explicit and unpassed until observed.
 
 ---
 
@@ -1982,6 +2062,10 @@ If they are not accessible:
 
 # 47. CI Failure Recursion
 
+For the unresolved Gate 6 switch/editor issues, §6 governs the exhausted lifetime
+investigation budget and any separately approved historical-risk exception.
+The steps below do not authorize another diagnostic job or automatic gate replay.
+
 When CI fails:
 
 1. read the actual failing log
@@ -2001,11 +2085,26 @@ Classify failures as:
 - flaky test
 - Apple SDK/API mismatch
 
+Also record the evidence classification separately from suspected cause: proven
+product defect, unexplained behavioral assertion failure, or diagnostic
+tooling/capture failure. An Actions failure with a passed UI declaration can be a
+capture failure; a failed UI assertion remains real even when its cause is unknown.
+Do not label an unexplained miss a flaky test or OS defect without causal evidence.
+
 Do not blindly rerun CI hoping it turns green.
 
 A flaky test must be investigated.
 
 Do not simply add retries unless the underlying behavior is inherently asynchronous and bounded retry is justified.
+
+This does not permit extra input taps, automatic test retries or reruns of failed
+validation under §6. Preserve the one-tap assertions, ten-flow switch coverage,
+concrete native roles/values, exact UI/status/state and save/relaunch persistence
+checks. Failed or blocked prerequisites still invalidate downstream evidence.
+Exhaustive ancestry/video is optional diagnostic evidence; complete required
+ordered validation and explicit risk approval are not optional. No gate status,
+exception invocation, main promotion or Stage 13 authorization follows from this
+documentation revision.
 
 ---
 
