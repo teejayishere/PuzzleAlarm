@@ -1,5 +1,25 @@
 # Project state
 
+## October 27, 2026 — Stage 14 authorized / validation PENDING
+
+Fresh `codex/stage-14-resilience` from clean local/remote `2cb81a6`, preserving
+accepted source `f01abf42` and evidence publication history. Run 40521565094,
+attempt 1, SUCCESS and all required job/step conclusions independently verified;
+baseline publication runs 40538097946 / 40538098077 SKIPPED, not new product passes.
+Gates 6–13 replacement acceptance remains controlling for that exact source/scope;
+earlier holds and no-Stage-14 statements below describe historical tasks. This new
+owner request authorizes Stage 14 only. Main remains `bd069f2`, unmodified.
+
+Audited existing failure coverage before adding six missing filesystem/application,
+queued-camera-loss and disappearing-audio-resource boundary declarations. Existing
+tests/assertions and product/Core source retained. CI preserves ordered prerequisites,
+Gates 6–13 and full regression, adding focused Gate 14 plus original-result capture.
+[Audit, recovery contracts and frozen validation limits](STAGE14_RESILIENCE.md).
+Candidate Xcode/Simulator/full regression PENDING; no Gate 14 PASS claimed.
+Historical budgets EXHAUSTED, exception REVOKED, no new historical diagnostics.
+Physical device DEVICE REQUIRED / NOT RUN. Stop after Gate 14 or blocking failure;
+no Stage 15, UX redesign, release, main promotion or device acceptance.
+
 ## October 27, 2026 â€” ordered replacement acceptance through Gate 13 PASS / STOP
 
 Frozen tested candidate **`f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc`** on

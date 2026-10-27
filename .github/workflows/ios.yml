@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   prerequisites:
-    if: github.event.repository.private == false && !contains(github.event.head_commit.message, '[record-only]') && !contains(github.event.head_commit.message, '[gate6-diagnostic]') && ((github.ref != 'refs/heads/codex/gate6-controlled-reset' && github.head_ref != 'codex/gate6-controlled-reset') || (github.event_name == 'push' && github.ref == 'refs/heads/codex/gate6-controlled-reset' && contains(github.event.head_commit.message, '[gate6-acceptance]')))
+    if: github.event.repository.private == false && !contains(github.event.head_commit.message, '[record-only]') && !contains(github.event.head_commit.message, '[gate6-diagnostic]') && ((github.ref != 'refs/heads/codex/stage-14-resilience' && github.head_ref != 'codex/stage-14-resilience') || (github.event_name == 'push' && github.ref == 'refs/heads/codex/stage-14-resilience' && contains(github.event.head_commit.message, '[stage14-validation]'))) && ((github.ref != 'refs/heads/codex/gate6-controlled-reset' && github.head_ref != 'codex/gate6-controlled-reset') || (github.event_name == 'push' && github.ref == 'refs/heads/codex/gate6-controlled-reset' && contains(github.event.head_commit.message, '[gate6-acceptance]')))
     strategy:
       fail-fast: true
       matrix:
@@ -121,7 +121,7 @@ jobs:
   validate:
     needs: [prerequisites]
     # Standard public-repository runner; no larger runners or signing credentials.
-    if: github.event.repository.private == false && !contains(github.event.head_commit.message, '[record-only]') && !contains(github.event.head_commit.message, '[gate6-diagnostic]') && ((github.ref != 'refs/heads/codex/gate6-controlled-reset' && github.head_ref != 'codex/gate6-controlled-reset') || (github.event_name == 'push' && github.ref == 'refs/heads/codex/gate6-controlled-reset' && contains(github.event.head_commit.message, '[gate6-acceptance]')))
+    if: github.event.repository.private == false && !contains(github.event.head_commit.message, '[record-only]') && !contains(github.event.head_commit.message, '[gate6-diagnostic]') && ((github.ref != 'refs/heads/codex/stage-14-resilience' && github.head_ref != 'codex/stage-14-resilience') || (github.event_name == 'push' && github.ref == 'refs/heads/codex/stage-14-resilience' && contains(github.event.head_commit.message, '[stage14-validation]'))) && ((github.ref != 'refs/heads/codex/gate6-controlled-reset' && github.head_ref != 'codex/gate6-controlled-reset') || (github.event_name == 'push' && github.ref == 'refs/heads/codex/gate6-controlled-reset' && contains(github.event.head_commit.message, '[gate6-acceptance]')))
     runs-on: macos-26
     timeout-minutes: 85
     env:
@@ -428,6 +428,21 @@ jobs:
             -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test-without-building \
             2>&1 | tee "$RUNNER_TEMP/orchestration-tests.log"
           ACCEPTANCE_STEP
+      - name: Verify Gate 14 resilience and failure injection
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          python3 Scripts/run_acceptance_step.py verify-gate-14-resilience-and-failure-injection <<'ACCEPTANCE_STEP'
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Resilience.xcresult \
+            -only-testing:PuzzleAlarmTests/ResilienceTests \
+            -only-testing:PuzzleAlarmTests/QRStoreTests \
+            -only-testing:PuzzleAlarmTests/AudioTests \
+            -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test-without-building \
+            2>&1 | tee "$RUNNER_TEMP/resilience-tests.log"
+          ACCEPTANCE_STEP
       - name: Run full Swift package tests
         run: |
           python3 Scripts/run_acceptance_step.py run-full-swift-package-tests <<'ACCEPTANCE_STEP'
@@ -476,7 +491,7 @@ jobs:
       - name: Review Xcode diagnostics
         run: |
           python3 Scripts/run_acceptance_step.py review-xcode-diagnostics <<'ACCEPTANCE_STEP'
-          python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/math-application-tests.log" "$RUNNER_TEMP/memory-application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log" "$RUNNER_TEMP/routing-tests.log" "$RUNNER_TEMP/orchestration-tests.log"
+          python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/math-application-tests.log" "$RUNNER_TEMP/memory-application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log" "$RUNNER_TEMP/routing-tests.log" "$RUNNER_TEMP/orchestration-tests.log" "$RUNNER_TEMP/resilience-tests.log"
           ACCEPTANCE_STEP
       - name: Export Windows-friendly visual demo
         env:
@@ -509,6 +524,7 @@ jobs:
             TestResults/Audio.xcresult
             TestResults/Routing.xcresult
             TestResults/Orchestration.xcresult
+            TestResults/Resilience.xcresult
             TestResults/QRApplication.xcresult
             TestResults/MathApplication.xcresult
             TestResults/MemoryApplication.xcresult

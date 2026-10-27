@@ -1,5 +1,21 @@
 # Development log
 
+## October 27, 2026 — Stage 14 preparation
+
+Read PROJECT_STATE first, verified exact local/remote `2cb81a6`, public acceptance
+run 40521565094 at `f01abf42` (attempt 1 SUCCESS), all job/step conclusions and latest
+baseline skipped runs 40538097946 / 40538098077. Main `bd069f2` unchanged. Created
+fresh `codex/stage-14-resilience` preserving accepted lineage. Read only relevant
+plan/architecture/test matrix sections plus existing tests/source and prior evidence.
+
+Audited all nine requested fault categories, retained their existing meaningful
+coverage, added six missing boundary declarations and focused Gate 14 CI selection.
+No product/Core/OS signature/schema change. Existing assertions and gates preserved.
+[Recovery, coverage and bounded one-attempt validation contract](STAGE14_RESILIENCE.md).
+Source/local static review is separate from PENDING exact-HEAD Xcode/Simulator CI.
+Physical device NOT RUN; historical budgets remain exhausted, exception revoked.
+No Stage 15/UX/main promotion. Stop after Gate 14 or documented blocker.
+
 ## October 27, 2026 â€” single ordered replacement acceptance PASS / STOP
 
 Pre-push frozen f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc / run 40521565094,

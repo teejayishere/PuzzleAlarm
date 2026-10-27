@@ -1,5 +1,16 @@
 # PuzzleAlarm â€” Recursive Self-Correcting Master Development Plan
 
+## October 27, 2026 — controlling Stage 14 task scope
+
+The owner's new task authorizes Stage 14 resilience/failure injection only, from
+the accepted Gates 6–13 lineage, preserving all prerequisite gates and original
+assertions. [Stage 14 audit and validation contract](STAGE14_RESILIENCE.md).
+Earlier STOP/no-Stage-14 text applies to closed tasks; accepted source `f01abf42`
+/run 40521565094 remains immutable evidence within its automated/Simulator scope.
+Gate 14 is PENDING. Recursive invalidation and exhausted diagnostic limits remain
+binding. No revoked-exception reliance. Stop at Gate 14 PASS or documented blocking
+failure. No Stage 15, UX redesign, main promotion or physical-device acceptance.
+
 ## October 27 acceptance result and controlling scope
 
 [GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md) records the owner's separate one-attempt acceptance authorization.

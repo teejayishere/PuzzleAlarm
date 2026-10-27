@@ -1,5 +1,16 @@
 # Test matrix
 
+## Stage 14 — audited resilience additions / validation PENDING
+
+[Full existing-case mapping, six additions, recovery contracts and frozen CI scope](STAGE14_RESILIENCE.md).
+Existing scheduling/cancellation/duplicate/interruption tests are retained; additions
+cover four real disk/application boundaries, queued camera loss and disappearing
+preview resources. Original tests and required gates remain intact. Focused Stage 14
+runs after Gates 6–13, before unchanged full Core/native/UI regression. No arbitrary
+coverage target. Source review only so far; Xcode/Simulator PENDING; device NOT RUN.
+Accepted source `f01abf42` / run 40521565094 supersedes historical held/pending text
+below within its automated scope; it is not candidate-HEAD validation.
+
 ## October 27 ordered acceptance â€” Gates 6â€“13 PASS / STOP
 
 Frozen `f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc`, run 40521565094, attempt 1,

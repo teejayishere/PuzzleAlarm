@@ -82,6 +82,36 @@ final class AudioTests: XCTestCase {
         XCTAssertNotNil(missing.message)
     }
 
+    func testResourceLossAfterPreviewStopsPlaybackAndRecoveryKeepsSelection() throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let selection = SoundSelection.bundled(.siren)
+        let original = try XCTUnwrap(AlarmSoundCatalog().resource(for: selection))
+        let url = directory.appendingPathComponent("siren.caf")
+        try FileManager.default.copyItem(at: original, to: url)
+        let catalog = AlarmSoundCatalog(locate: { _ in url })
+        let player = RecordingPreview(), preview = SoundPreview(playback: player, catalog: catalog)
+        preview.play(selection)
+        XCTAssertTrue(preview.isPlaying)
+        XCTAssertEqual(player.starts, 1)
+        try FileManager.default.removeItem(at: url)
+        preview.play(selection)
+        XCTAssertFalse(preview.isPlaying)
+        XCTAssertNil(player.current)
+        XCTAssertNotNil(preview.message)
+        XCTAssertEqual(player.starts, 1)
+        XCTAssertEqual(AlarmConfigurationFactory.selectedSound(selection, catalog: catalog), .default)
+        try FileManager.default.copyItem(at: original, to: url)
+        preview.play(selection)
+        XCTAssertTrue(preview.isPlaying)
+        XCTAssertNil(preview.message)
+        XCTAssertEqual(player.starts, 2)
+        XCTAssertEqual(AlarmConfigurationFactory.selectedSound(selection, catalog: catalog), .named("siren.caf"))
+        XCTAssertEqual(selection, .bundled(.siren))
+        preview.stop()
+    }
+
     func testActualPreviewPlayerStartsReplacesAndStopsIdempotently() throws {
         let player = AudioPreviewPlayback()
         let url = try XCTUnwrap(AlarmSoundCatalog().resource(for: .bundled(.siren)))

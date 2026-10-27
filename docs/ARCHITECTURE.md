@@ -1,5 +1,17 @@
 # Architecture
 
+## Stage 14 resilience boundary audit
+
+The new Stage 14 task supersedes earlier no-Stage-14 scope text for this task only.
+[Coverage audit and recovery contracts](STAGE14_RESILIENCE.md). Product/Core/platform
+architecture and schema remain unchanged; six added boundary tests exercise real
+disk/application failures, malformed terminal state, queued scanner invalidation
+and resource loss after preview. Original reducers, durable intent/acknowledgment
+journals, lifecycle owner and challenge-completion invariant stay authoritative.
+Exact-candidate Xcode/Simulator validation PENDING; device behavior NOT RUN.
+The accepted Stage 13 evidence below remains controlling for its original SHA;
+references there to evidence/stage13 describe historical failed candidates.
+
 ## Stage 13 orchestration
 
 Current replacement candidate `f01abf42` completed ordered Gates 6–13 automated/

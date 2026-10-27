@@ -119,6 +119,31 @@ import PuzzleAlarmCore
         XCTAssertEqual(controller.status, .idle)
         XCTAssertEqual(effects.values.cancellations.count, 5)
     }
+    func testCameraLossBeforeQueuedSubmissionCannotCompleteAndNewAttemptCanRecover() async throws {
+        let repository = InMemoryRepository(), effects = try TestAlarmScheduler()
+        let identity = try await seed(repository, effects)
+        let store = store(repository, effects); await store.refresh()
+        let fake = FakeQRCodeScanner(), controller = QRScanController(store: store, scanner: fake)
+        controller.start(identity)
+        let old = try XCTUnwrap(fake.receive)
+        fake.emit(.payload(configuration.expectedPayload))
+        XCTAssertTrue(controller.isSubmitting)
+        // No await: camera disappears before the queued submission task can run.
+        fake.emit(.status(.unavailable))
+        try await waitForSubmission(controller)
+        old(.status(.authorized)); old(.payload(configuration.expectedPayload))
+        XCTAssertEqual(controller.status, .unavailable)
+        XCTAssertFalse(controller.isSubmitting)
+        XCTAssertEqual(store.session(identity.sessionID)?.session.currentChallengeIndex, 0)
+        XCTAssertEqual(store.session(identity.sessionID)?.session.phase, .active)
+        XCTAssertTrue(effects.values.cancellations.isEmpty)
+        controller.start(identity)
+        fake.emit(.payload(configuration.expectedPayload))
+        try await waitForSubmission(controller)
+        XCTAssertEqual(store.session(identity.sessionID)?.session.phase, .completed)
+        XCTAssertEqual(effects.values.cancellations.count, 5)
+    }
+
     func testScannerFailedCommitRetryAndStaleOrderedCallback() async throws {
         let repository = InMemoryRepository(), effects = try TestAlarmScheduler()
         let identity = try await seed(repository, effects, followedByMath: true)
