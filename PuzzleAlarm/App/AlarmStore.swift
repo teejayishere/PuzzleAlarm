@@ -94,7 +94,7 @@ final class AlarmStore {
             return nil
         }
         guard saved else { return nil }
-        if outcome == .completed { await refresh() }
+        if outcome == .completed { await reconcileCompletedSequence(identity.sessionID) }
         return outcome
     }
     func reportError(_ error: any Error) { errorMessage = AlarmFormatting.error(error) }
@@ -107,7 +107,7 @@ final class AlarmStore {
             return nil
         }
         guard saved else { return nil }
-        if outcome == .completed { await refresh() }
+        if outcome == .completed { await reconcileCompletedSequence(identity.sessionID) }
         return outcome
     }
 
@@ -152,8 +152,17 @@ final class AlarmStore {
             return nil
         }
         guard saved else { return nil }
-        if outcome == .completed { await refresh() }
+        if outcome == .completed { await reconcileCompletedSequence(identity.sessionID) }
         return outcome
+    }
+
+    private func reconcileCompletedSequence(_ id: UUID) async {
+        // Engine completion can mean only one challenge finished. The durable
+        // whole-sequence transition is the boundary for cleanup and recurrence.
+        // Use the same refresh path as launch/foreground so interrupted effects
+        // are recovered by the existing lifecycle owner, including denied access.
+        guard session(id)?.session.phase == .completing else { return }
+        await refresh()
     }
 
     func refresh() async {

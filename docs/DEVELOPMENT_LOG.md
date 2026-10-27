@@ -1,5 +1,34 @@
 # Development log
 
+## October 26, 2026 — Stage 13 orchestration candidate
+
+Task: Stage 13 only, owner-authorized historical-risk exception for Stage 13
+candidates, owner retains unexplained historical switch/editor risks. No main
+promotion/release/device acceptance. Read PROJECT_STATE first; verified clean local
+and remote baseline b98b5c516b0bd554107f21786b700b6059c55a92, exact-baseline CI
+40444060227 SKIPPED. Created codex/stage-13-orchestration from that commit, not main.
+
+Hypothesis: existing lifecycle scheduling/rollback/cleanup/recurrence/recovery is
+reusable; application engine completion should enter it only after the saved entire
+sequence reaches completing. Implemented one shared handoff for Math/Memory/QR;
+no new owner, schema, Core platform dependency or UI design. Added ten native
+application/disk integration tests for A–J, with real engine solves and boundary
+fault injection. Focused CI step follows Gate 12, then unchanged full regression.
+
+Self/adversarial review: checked completion-before-cleanup, all cancellation calls
+despite one failure, stale callback, changed owner/disk reload, lost acknowledgment,
+stable effect identity, immutable active edit snapshot, exactly one successor and
+disable-before-completion. Original controls, one-tap assertions and all earlier
+tests preserved. [Detailed limits/audit](evidence/stage13/README.md).
+
+Validation: source review/diff checks locally only; Windows has no Swift/Xcode.
+Changed-candidate automated/Xcode/Simulator outcomes PENDING. Freeze and declare
+exact SHA before one push-triggered ordered uninstrumented Gate 6–12 plus Gate 13/
+full relevant regression. Stop on any required failure; no retry-to-green or new
+diagnostic. Original failures/archives remain; recurrence revokes reliance and
+recursively invalidates dependents without resetting EXHAUSTED budgets.
+Device NOT RUN; no Stage 14, redesign or main promotion.
+
 ## October 26, 2026 — documentation-only validation closeout
 
 Published the October 24 evidence below using the existing `[gate6-diagnostic]`

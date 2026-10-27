@@ -1,5 +1,26 @@
 # Architecture
 
+## Stage 13 orchestration
+
+AlarmStore's three engine submission paths share `reconcileCompletedSequence`.
+The engine result describes challenge completion; only the saved session's
+`completing` phase authorizes entering lifecycle reconciliation after the full
+ordered sequence. Intermediate success publishes the saved next challenge without
+invoking lifecycle effects. A failed submission commit never reaches this handoff.
+
+Launch, foreground, final submission and explicit cleanup retry use the existing
+single lifecycle owner. Its durable scheduling/cancellation intents, observed OS
+inventory, immutable occurrence snapshots and operation journal remain authoritative.
+Cancellation failure preserves pending cleanup; recovery continues remaining IDs;
+next recurrence is allocated only after confirmed cleanup. Edit and disable retain
+the active obligation while controlling future chains. No new schema or owner.
+
+Disk/application integration scenarios A–J exercise these compositions with actual
+engine submissions and scheduler-boundary fakes; acknowledgment-loss tests reopen
+fresh disk/store instances. Simulator/CI evidence cannot prove actual AlarmKit Stop,
+delivery, process termination or physical-device behavior. See TEST_MATRIX and
+evidence/stage13 for current candidate status and retained historical risks.
+
 ## Stage 12 routing and foreground reconciliation
 
 AppEnvironment.live is the single process-local owner shared by the App and

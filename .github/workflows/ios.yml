@@ -328,6 +328,17 @@ jobs:
             -only-testing:PuzzleAlarmUITests/WakeUpRoutingUITests \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/routing-tests.log"
+      - name: Verify Gate 13 full orchestration A through J
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Orchestration.xcresult \
+            -only-testing:PuzzleAlarmTests/OrchestrationIntegrationTests \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee "$RUNNER_TEMP/orchestration-tests.log"
       - name: Run platform capability and native shell tests
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -354,7 +365,7 @@ jobs:
           print("Release contains no UI-test switches, fake scheduler or simulated-system storage.")
           PY
       - name: Review Xcode diagnostics
-        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log" "$RUNNER_TEMP/routing-tests.log"
+        run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log" "$RUNNER_TEMP/ios-release.log" "$RUNNER_TEMP/audio-tests.log" "$RUNNER_TEMP/qr-application-tests.log" "$RUNNER_TEMP/application-tests.log" "$RUNNER_TEMP/management-ui-tests.log" "$RUNNER_TEMP/math-ui-tests.log" "$RUNNER_TEMP/memory-ui-tests.log" "$RUNNER_TEMP/qr-ui-tests.log" "$RUNNER_TEMP/routing-tests.log" "$RUNNER_TEMP/orchestration-tests.log"
       - name: Export Windows-friendly visual demo
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
@@ -382,6 +393,7 @@ jobs:
           path: |
             TestResults/Audio.xcresult
             TestResults/Routing.xcresult
+            TestResults/Orchestration.xcresult
             TestResults/QRApplication.xcresult
             TestResults/Application.xcresult
             TestResults/Management.xcresult

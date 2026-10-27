@@ -1,5 +1,40 @@
 # Project state
 
+## October 26, 2026 — Stage 13 candidate preparation
+
+Current stage: 13, development authorized under the owner's new MASTER_PLAN §6
+historical-risk exception scope for Stage 13 candidates. The owner retains the
+unexplained historical switch/editor risks. Source is implemented; Gate 13 and
+changed-candidate Gate 6–12 validation are PENDING, not PASS. Last unheld gate
+outside the exception remains 5. Original failures/holds remain historical evidence;
+recurrence revokes reliance and recursively reopens affected gates. Both diagnostic
+budgets remain EXHAUSTED, zero jobs available.
+
+Clean local/remote baseline verified at `b98b5c516b0bd554107f21786b700b6059c55a92`;
+branch `codex/stage-13-orchestration` created from it, not main. Baseline exact CI
+40444060227 is SKIPPED, not PASS. No unrelated local work was present or discarded.
+Remote main `bd069f29c6d045d5bc27fc56212edcbde2090855` is not promoted.
+
+All three engine completion paths share a saved-whole-sequence boundary before
+entering existing launch/foreground reconciliation. Intermediate challenge success
+preserves backups without requesting lifecycle effects. Existing lifecycle owner,
+rollback, cancellation journal, next-occurrence scheduling and recovery are reused.
+Ten native disk/application integration declarations cover Gate 13 A–J. CI adds a
+focused Gate 13 step after Gate 12 before the unchanged full regression.
+
+Source review only locally; Swift/Xcode/Simulator candidate execution PENDING on
+public free CI. Exact candidate SHA will be recorded before its single push-triggered
+validation; no rerun, retry-to-green, extra taps, weakened checks or skipped valid
+tests. Required failures stop advancement. See [procedure, authorization, review
+and evidence](evidence/stage13/README.md) and TEST_MATRIX for test mappings.
+
+Physical-device requirements remain DEVICE REQUIRED / NOT RUN, including real
+AlarmKit/Stop/Solve delivery, backups, lock/first unlock, hardware input,
+camera/audio and provisioning. No Stage 14, UX redesign, release, main promotion or
+device acceptance. Stop after Gate 13 or a blocking failure.
+
+## Earlier evidence (revision-specific)
+
 ## October 26, 2026 — documentation-only validation closeout
 
 Published the October 24 evidence below using the existing `[gate6-diagnostic]`

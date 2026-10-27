@@ -1,5 +1,39 @@
 # Test matrix
 
+## Stage 13 — candidate mapping, validation PENDING
+
+All methods below are in `OrchestrationIntegrationTests`, composed through real
+AlarmStore, real challenge engines and DiskRepository with scheduler-only effects.
+No previously valid tests/assertions were modified. These are source mappings,
+not automated PASS evidence. Exact SHA/run/outcome follows candidate execution.
+
+| Gate 13 | Test method | Required observation |
+| --- | --- | --- |
+| A | `testAAllFiveScheduleWithOneImmutableOccurrence` | Five exact plans/IDs/session links, disk equality, refresh idempotence |
+| B | `testBPartialFailureRollsBackIncludingUncertainOSSuccess` | Third scheduling call fails after effect; rollback all present IDs, no completion/automatic reschedule, attention status |
+| C | `testCStoppedPrimaryDoesNotCompleteOrCancelBackups` | Primary absent at due launch; active obligation, four backups, missing-ID issue, no replacement/cancellation |
+| D | `testDFirstChallengeLeavesBackupsAndRejectsStaleCallback` | First success only, all backups, no lifecycle refresh, stale callback rejected, disk owner restores second kind |
+| E | `testEAllFinalEngineKindsCleanAndCreateExactlyOneSuccessor` | Math/Memory/QR each finish a full three-engine sequence; all cleanup IDs, completion timestamp, immutable snapshot, exactly one future armed chain |
+| F | `testFCancellationFailureContinuesAndDefersSuccessorUntilCleanup` | Early cancellation fails, later calls continue, no false success/next chain, explicit product retry only unresolved ID |
+| G | `testGCompletionAcknowledgmentLossRecoversFromDiskWithoutRepeatedCancel` | Lost post-cancel acknowledgment leaves durable inFlight; new owner uses OS absence and stable IDs, one successor, repeated refresh idempotent |
+| H | `testHSchedulingAcknowledgmentLossReusesDurableIdentity` | Lost first schedule acknowledgment; fresh disk owner adopts OS success, schedules remaining four once |
+| I | `testIEditingActiveAlarmPreservesObligationAndReplacesOnlyFutureChain` | Active old snapshot protected, edited time/sound future chain, old completion cannot duplicate successor |
+| J | `testJDisablePreservesActiveChallengeButPreventsNextOccurrence` | Disable retains current obligation, solving cleans it, next-day disk launch remains Off without successor |
+
+Existing lower-level suites remain required: lifecycle rollback/recovery/recurrence,
+all challenge orders and engine-specific persistence/concurrency failures, calendar,
+one-time and ownership regressions; native contracts, ten ordinary switch flows,
+independent editor and management-first UI replay remain unchanged. The CI focused
+Gate 13 step follows Gate 12 and precedes full native/UI regression. Candidate
+validation is one declared attempt, under the owner's Stage 13 exception only.
+
+[Authorization, source review, meaningful uncovered behavior and evidence](evidence/stage13/README.md).
+Real Stop/backup/AlarmKit/camera/audio/device behavior remains DEVICE REQUIRED.
+G/H inject acknowledgment loss and reopen disk owners; they do not establish
+physical process-kill or power-loss behavior. No 100% coverage target or inference.
+
+## Earlier evidence (revision-specific)
+
 ## October 26, 2026 — documentation-only validation closeout
 
 Published the October 24 evidence below using the existing `[gate6-diagnostic]`
