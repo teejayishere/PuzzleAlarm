@@ -17,6 +17,12 @@ coverage. Added failed-write input recovery. Core/Stage 13/OS integration unchan
 Historical causes unknown; budgets exhausted; exception revoked. Focused candidate
 validation pending; no Xcode/Simulator/device acceptance from source review.
 
+Prepared/published 07edf88 with record-only markers; remote matched, ordinary CI
+40448873182 SKIPPED. Read-only manual workflow lookup returned 404 because workflow
+is not on default main; no dispatch or macOS allocation occurred. Changed only
+the pre-execution publication route to a guarded candidate push, keeping main and
+product/test source unchanged. Freeze final SHA before that single validation push.
+
 ## October 26, 2026 — Stage 13 stopped on required Gate 6 failure
 
 Declared exact candidate 2b2c81d2277f05eb5d095beb0285d47e58a73cb4 before its

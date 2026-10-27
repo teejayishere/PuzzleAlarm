@@ -1,15 +1,12 @@
 name: Controlled Gate 6 replacement
 on:
-  workflow_dispatch:
-    inputs:
-      candidate:
-        description: Frozen full candidate SHA (must match dispatched ref)
-        required: true
+  push:
+    branches: [codex/gate6-controlled-reset]
 permissions:
   contents: read
 jobs:
   gate6:
-    if: github.event.repository.private == false && github.ref == 'refs/heads/codex/gate6-controlled-reset'
+    if: github.event.repository.private == false && contains(github.event.head_commit.message, '[gate6-reset-validation]') && !contains(github.event.head_commit.message, '[record-only]')
     strategy:
       fail-fast: true
       matrix:
@@ -18,15 +15,15 @@ jobs:
     timeout-minutes: 40
     steps:
       - name: Start absolute budget and verify frozen candidate
-        env:
-          CANDIDATE: ${{ inputs.candidate }}
         run: |
           echo "GATE6_RESET_START=$(date +%s)" >> "$GITHUB_ENV"
-          test "$GITHUB_SHA" = "$CANDIDATE"
+          test "$GITHUB_REF" = refs/heads/codex/gate6-controlled-reset
           test "$GITHUB_RUN_ATTEMPT" = 1
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - name: Verify exact checkout
+        run: test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Record toolchain and install pinned generator
         timeout-minutes: 4
         run: |

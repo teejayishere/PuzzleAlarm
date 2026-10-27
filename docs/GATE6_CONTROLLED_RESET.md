@@ -36,7 +36,7 @@ repair-and-rerun, new diagnostic probes or budget resets. Preparation/publicatio
 uses existing `[gate6-diagnostic] [record-only]` skips to prevent broad CI.
 The dedicated reset workflow must exclude downstream gates and broad CI.
 
-Freeze and record the immutable candidate SHA before dispatch. One job covers
+Freeze and record the immutable candidate SHA before the validation push. One job covers
 owner/input contracts, ten list flows and relevant management behavior; the other
 covers the independent editor. Preserve original logs, results, run/attempt/job
 metadata and artifact digests on success or failure. Review source and execution
@@ -76,7 +76,10 @@ The independent cold editor job runs the original editor declaration once.
 The two exclusions in the management invocation avoid duplicating the declarations
 already assigned to ten-list/editor; no required case is dropped. No Gates 7–13,
 Math/Memory/QR UI suites or broad workflow is dispatched. All push commits carry
-the existing record-only skip markers; ordinary ios.yml also explicitly excludes
+the existing diagnostic skip marker; preparation/publication also carry record-only.
+Only the single frozen validation push carries `[gate6-reset-validation]` without
+record-only. The dedicated workflow is guarded by that marker and exact branch;
+ordinary ios.yml also explicitly excludes
 this branch (push/PR/dispatch), preventing accidental broad allocations. Ten-list
 adds only the installed-Xcode-supported `-run-tests-until-failure` stop condition to
 the original ten iterations: any failed iteration ends the declaration instead of
@@ -102,6 +105,14 @@ process-group termination plus selected Simulator shutdown). Initial Windows san
 attempt failed on temporary-directory access before exercising the wrapper; the
 same unchanged checks passed with normal temporary-directory access. This is local
 pre-freeze tooling evidence, zero macOS allocations or product test executions.
+
+Publication preparation `07edf88abb06d5b50e4bd02a01d1a64812fb090d` was pushed with
+record-only markers; exact push CI 40448873182 SKIPPED. A read-only workflow lookup
+returned 404 because the new manual workflow is absent from default branch main.
+No dispatch was issued, no validation attempt started, zero macOS jobs allocated.
+Before execution, replaced that unavailable dispatch route with a guarded push
+trigger. Product/test source remains identical to preparation. Final immutable
+candidate is declared locally before its one validation push; no main change.
 
 ## Current disposition
 

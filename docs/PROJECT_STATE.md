@@ -15,7 +15,7 @@ explicit edit-button/sheet identity. Original management UI assertions/helpers a
 unchanged; bridge-specific tests replaced with documented behavioral equivalents.
 Four offline budget-wrapper checks and parsed workflow limits/exclusions PASS.
 Swift/Xcode/Simulator execution PENDING for the frozen candidate; device NOT RUN.
-Dedicated manual workflow allows only two focused Gate 6 jobs; broad CI excludes
+Dedicated guarded-push workflow allows only two focused Gate 6 jobs; broad CI excludes
 this branch and preparation uses record-only skips. No Gates 7–13 replay authorized.
 
 ## October 26, 2026 — Stage 13 STOP at Gate 6 input failure
