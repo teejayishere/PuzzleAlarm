@@ -1,0 +1,45 @@
+{
+  "total_count": 2,
+  "artifacts": [
+    {
+      "id": 12762682631,
+      "node_id": "MDg6QXJ0aWZhY3QxMjc2MjY4MjYzMQ==",
+      "name": "acceptance-editor",
+      "size_in_bytes": 3321746,
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12762682631",
+      "archive_download_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12762682631/zip",
+      "expired": false,
+      "digest": "sha256:f399ead8468b323d538c3338db865cefda3d6557a86bf7769b8024316aec3ab1",
+      "created_at": "2026-10-27T19:06:10Z",
+      "updated_at": "2026-10-27T19:06:10Z",
+      "expires_at": "2026-11-26T19:05:58Z",
+      "workflow_run": {
+        "id": 40564260790,
+        "repository_id": 1400841048,
+        "head_repository_id": 1400841048,
+        "head_branch": "codex/stage-14-resilience",
+        "head_sha": "62c8953fdcd915ebdac8cb5838799e0b2f64389e"
+      }
+    },
+    {
+      "id": 12762358001,
+      "node_id": "MDg6QXJ0aWZhY3QxMjc2MjM1ODAwMQ==",
+      "name": "acceptance-list",
+      "size_in_bytes": 52345939,
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12762358001",
+      "archive_download_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12762358001/zip",
+      "expired": false,
+      "digest": "sha256:9ce45a99545494272d35ca02af488150e783b7016d106321c45f521b226e23a2",
+      "created_at": "2026-10-27T19:05:19Z",
+      "updated_at": "2026-10-27T19:05:19Z",
+      "expires_at": "2026-11-26T19:05:11Z",
+      "workflow_run": {
+        "id": 40564260790,
+        "repository_id": 1400841048,
+        "head_repository_id": 1400841048,
+        "head_branch": "codex/stage-14-resilience",
+        "head_sha": "62c8953fdcd915ebdac8cb5838799e0b2f64389e"
+      }
+    }
+  ]
+}

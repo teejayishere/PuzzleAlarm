@@ -1,6 +1,41 @@
 # Development log
 
-## October 27, 2026 � Stage 14 preparation
+## October 27, 2026 — Stage 14 attempt blocked / STOP
+
+Pre-push frozen `62c8953fdcd915ebdac8cb5838799e0b2f64389e` / run 40564260790,
+attempt 1, push, completed FAILURE. Source/tests stayed frozen. Two standard free
+macos-26 jobs consumed: list 11m15s FAILURE, editor 12m21s CANCELLED; dependent
+validate SKIPPED without steps/allocation. All within ceilings; no rerun/extra tap/
+probe, speculative source repair or diagnostic-budget reset.
+
+All 37 existing native contracts PASS. Original ordinary list iteration 1 failed
+87.936s at AlarmManagementUITests.swift:181: Off→On input did not commit, status Off.
+Other nine iterations NOT RUN. Editor cancellation has partial output, no completed
+result; not a claimed assertion failure or pass. Gate 6 FAILED / HELD; dependent
+Gates 7–14 INVALIDATED / HELD, last unheld gate 5. Stage 14 BLOCKED / NOT ACCEPTED.
+Cause unknown; historical budgets remain EXHAUSTED with zero jobs, exception REVOKED.
+Earlier accepted f01abf42 evidence stays immutable and cannot waive the new failure.
+
+Source audit/six added tests and focused CI wiring retained; no product/Core/UI or
+original assertion change. Local YAML/order/original-test/source/whitespace checks
+and four budget-wrapper tests PASS. Xcode 26.6 / Swift 6.3.3 Debug app/test compilation
+PASS, including additions; iPhone 17 / iOS 26.5 behavior limited to results above.
+Stage 14 execution/full regression/Release/SDK/resource/final diagnostics NOT RUN.
+Physical device DEVICE REQUIRED / NOT RUN. Local documentation encoding errors
+affected record handling only: closeout normalizes newly inserted preparation lines
+to UTF-8; historical text/source/tests are preserved. No test or CI replay involved.
+
+[Durable original evidence and limits](evidence/stage14-40564260790/README.md): both
+job logs, metadata, command bodies/records/partial logs, toolchains/ordinary journals
+and both original ZIPs published; SHA-256 matches Actions and CRC checks pass. Initial
+local editor extraction hit Windows path length; extended-path extraction succeeded
+without modifying originals or executing tests. Read-only monitoring switched from
+public to existing authenticated API polling to avoid rate limits; no credential
+was printed or stored. Main bd069f2 unchanged. Evidence publication is a separate
+record-only revision; its skipped CI is not new product evidence. STOP; no Stage 15,
+UX, promotion, device acceptance or further execution/development queued.
+
+## October 27, 2026 — Stage 14 preparation (historical)
 
 Read PROJECT_STATE first, verified exact local/remote `2cb81a6`, public acceptance
 run 40521565094 at `f01abf42` (attempt 1 SUCCESS), all job/step conclusions and latest

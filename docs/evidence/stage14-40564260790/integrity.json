@@ -1,0 +1,18 @@
+[
+  {
+    "id": 12762682631,
+    "name": "acceptance-editor",
+    "bytes": 3321746,
+    "sha256": "f399ead8468b323d538c3338db865cefda3d6557a86bf7769b8024316aec3ab1",
+    "zip_crc": "PASS",
+    "expires_at": "2026-11-26T19:05:58Z"
+  },
+  {
+    "id": 12762358001,
+    "name": "acceptance-list",
+    "bytes": 52345939,
+    "sha256": "9ce45a99545494272d35ca02af488150e783b7016d106321c45f521b226e23a2",
+    "zip_crc": "PASS",
+    "expires_at": "2026-11-26T19:05:11Z"
+  }
+]

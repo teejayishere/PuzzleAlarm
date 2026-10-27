@@ -1,0 +1,322 @@
+﻿2026-10-27T18:54:20.4438590Z Current runner version: '2.338.0'
+2026-10-27T18:54:20.4455470Z ##[group]Runner Image Provisioner
+2026-10-27T18:54:20.4456070Z Hosted Compute Agent
+2026-10-27T18:54:20.4456560Z Version: 20261012.601
+2026-10-27T18:54:20.4457070Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-27T18:54:20.4457550Z Build Date: 2026-10-12T17:48:21Z
+2026-10-27T18:54:20.4457990Z Worker ID: {fa2c9a85-10ac-4432-993d-89b87f82466f}
+2026-10-27T18:54:20.4458460Z Region: westus
+2026-10-27T18:54:20.4458820Z Cloud: MacCloud
+2026-10-27T18:54:20.4459190Z ##[endgroup]
+2026-10-27T18:54:20.4460180Z ##[group]Operating System
+2026-10-27T18:54:20.4460580Z macOS
+2026-10-27T18:54:20.4461000Z 26.6.2
+2026-10-27T18:54:20.4461410Z 25G83
+2026-10-27T18:54:20.4461810Z ##[endgroup]
+2026-10-27T18:54:20.4462170Z ##[group]Runner Image
+2026-10-27T18:54:20.4462540Z Image: macos-26-arm64
+2026-10-27T18:54:20.4462900Z Version: 20261013.0424.1
+2026-10-27T18:54:20.4463900Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20261013.0424/images/macos/macos-26-arm64-Readme.md
+2026-10-27T18:54:20.4465050Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20261013.0424
+2026-10-27T18:54:20.4465720Z ##[endgroup]
+2026-10-27T18:54:20.4466700Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T18:54:20.4468490Z Contents: read
+2026-10-27T18:54:20.4468880Z Metadata: read
+2026-10-27T18:54:20.4469250Z ##[endgroup]
+2026-10-27T18:54:20.4474350Z Secret source: Actions
+2026-10-27T18:54:20.4478880Z Cache mode: write
+2026-10-27T18:54:20.4481580Z Prepare workflow directory
+2026-10-27T18:54:20.5161390Z Prepare all required actions
+2026-10-27T18:54:20.5250880Z Getting action download info
+2026-10-27T18:54:21.0065180Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-27T18:54:21.3836580Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-27T18:54:21.7299160Z Complete job name: prerequisites (editor, 25, 19)
+2026-10-27T18:54:21.7794080Z ##[group]Run echo "ACCEPTANCE_START=$(date +%s)" >> "$GITHUB_ENV"
+2026-10-27T18:54:21.7794880Z [36;1mecho "ACCEPTANCE_START=$(date +%s)" >> "$GITHUB_ENV"[0m
+2026-10-27T18:54:21.7795380Z [36;1mtest -n "$GITHUB_SHA"[0m
+2026-10-27T18:54:21.7795770Z [36;1mtest "$GITHUB_RUN_ATTEMPT" = 1[0m
+2026-10-27T18:54:21.7850770Z shell: /bin/bash -e {0}
+2026-10-27T18:54:21.7851690Z env:
+2026-10-27T18:54:21.7852100Z   ACCEPTANCE_MINUTES: 19
+2026-10-27T18:54:21.7852700Z ##[endgroup]
+2026-10-27T18:54:21.9413250Z ##[group]Run actions/checkout@v4
+2026-10-27T18:54:21.9413770Z with:
+2026-10-27T18:54:21.9414140Z   persist-credentials: false
+2026-10-27T18:54:21.9414560Z   repository: teejayishere/PuzzleAlarm
+2026-10-27T18:54:21.9417260Z   token: ***
+2026-10-27T18:54:21.9417610Z   ssh-strict: true
+2026-10-27T18:54:21.9417960Z   ssh-user: git
+2026-10-27T18:54:21.9418300Z   clean: true
+2026-10-27T18:54:21.9418640Z   sparse-checkout-cone-mode: true
+2026-10-27T18:54:21.9419050Z   fetch-depth: 1
+2026-10-27T18:54:21.9419460Z   fetch-tags: false
+2026-10-27T18:54:21.9419790Z   show-progress: true
+2026-10-27T18:54:21.9420110Z   lfs: false
+2026-10-27T18:54:21.9420420Z   submodules: false
+2026-10-27T18:54:21.9420750Z   set-safe-directory: true
+2026-10-27T18:54:21.9421120Z   allow-unsafe-pr-checkout: false
+2026-10-27T18:54:21.9421500Z env:
+2026-10-27T18:54:21.9421840Z   ACCEPTANCE_MINUTES: 19
+2026-10-27T18:54:21.9422290Z   ACCEPTANCE_START: 1793127261
+2026-10-27T18:54:21.9422640Z ##[endgroup]
+2026-10-27T18:54:22.5199640Z Syncing repository: teejayishere/PuzzleAlarm
+2026-10-27T18:54:22.5203000Z ##[group]Getting Git version info
+2026-10-27T18:54:22.5204000Z Working directory is '/Users/runner/work/PuzzleAlarm/PuzzleAlarm'
+2026-10-27T18:54:22.5206780Z [command]/opt/homebrew/bin/git version
+2026-10-27T18:54:22.5613790Z git version 2.56.0
+2026-10-27T18:54:22.5659890Z ##[endgroup]
+2026-10-27T18:54:22.5679360Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/2aab48db-15ab-4a43-9b93-a5b47c1e836e/.gitconfig'
+2026-10-27T18:54:22.5684550Z Temporarily overriding HOME='/Users/runner/work/_temp/2aab48db-15ab-4a43-9b93-a5b47c1e836e' before making global git config changes
+2026-10-27T18:54:22.5686050Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T18:54:22.5692380Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+2026-10-27T18:54:22.5856720Z Deleting the contents of '/Users/runner/work/PuzzleAlarm/PuzzleAlarm'
+2026-10-27T18:54:22.5867850Z ##[group]Initializing the repository
+2026-10-27T18:54:22.5868840Z [command]/opt/homebrew/bin/git init /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+2026-10-27T18:54:22.6216800Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-27T18:54:22.6218040Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-27T18:54:22.6219000Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-27T18:54:22.6220100Z hint: call:
+2026-10-27T18:54:22.6220570Z hint:
+2026-10-27T18:54:22.6221430Z hint: 	git config --global init.defaultBranch <name>
+2026-10-27T18:54:22.6222670Z hint:
+2026-10-27T18:54:22.6223450Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-27T18:54:22.6224660Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-27T18:54:22.6225510Z hint:
+2026-10-27T18:54:22.6226370Z hint: 	git branch -m <name>
+2026-10-27T18:54:22.6226860Z hint:
+2026-10-27T18:54:22.6227600Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-27T18:54:22.6228600Z Initialized empty Git repository in /Users/runner/work/PuzzleAlarm/PuzzleAlarm/.git/
+2026-10-27T18:54:22.6230560Z [command]/opt/homebrew/bin/git remote add origin https://github.com/teejayishere/PuzzleAlarm
+2026-10-27T18:54:22.6322500Z ##[endgroup]
+2026-10-27T18:54:22.6323820Z ##[group]Disabling automatic garbage collection
+2026-10-27T18:54:22.6324810Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-10-27T18:54:22.6495530Z ##[endgroup]
+2026-10-27T18:54:22.6500240Z ##[group]Setting up auth
+2026-10-27T18:54:22.6505030Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T18:54:22.6730160Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T18:54:22.8092600Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T18:54:22.8168660Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T18:54:22.9718690Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T18:54:22.9869250Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T18:54:23.1077800Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-27T18:54:23.1159680Z ##[endgroup]
+2026-10-27T18:54:23.1161140Z ##[group]Fetching the repository
+2026-10-27T18:54:23.1168810Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +62c8953fdcd915ebdac8cb5838799e0b2f64389e:refs/remotes/origin/codex/stage-14-resilience
+2026-10-27T18:54:37.1419690Z From https://github.com/teejayishere/PuzzleAlarm
+2026-10-27T18:54:37.1431240Z  * [new ref]         62c8953fdcd915ebdac8cb5838799e0b2f64389e -> origin/codex/stage-14-resilience
+2026-10-27T18:54:37.1538110Z ##[endgroup]
+2026-10-27T18:54:37.1539180Z ##[group]Determining the checkout info
+2026-10-27T18:54:37.1540830Z ##[endgroup]
+2026-10-27T18:54:37.1570900Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-10-27T18:54:37.1724030Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-27T18:54:37.1848630Z ##[group]Checking out the ref
+2026-10-27T18:54:37.1890190Z [command]/opt/homebrew/bin/git checkout --progress --force -B codex/stage-14-resilience refs/remotes/origin/codex/stage-14-resilience
+2026-10-27T18:54:38.7647810Z Updating files:  93% (422/452)
+2026-10-27T18:54:38.7687820Z Updating files:  94% (425/452)
+2026-10-27T18:54:38.7743710Z Updating files:  95% (430/452)
+2026-10-27T18:54:38.7767720Z Updating files:  96% (434/452)
+2026-10-27T18:54:38.7770810Z Updating files:  97% (439/452)
+2026-10-27T18:54:38.7793090Z Updating files:  98% (443/452)
+2026-10-27T18:54:38.7981400Z Updating files:  99% (448/452)
+2026-10-27T18:54:38.7985290Z Updating files: 100% (452/452)
+2026-10-27T18:54:38.7986280Z Updating files: 100% (452/452), done.
+2026-10-27T18:54:38.8086410Z Switched to a new branch 'codex/stage-14-resilience'
+2026-10-27T18:54:38.8106540Z branch 'codex/stage-14-resilience' set up to track 'origin/codex/stage-14-resilience'.
+2026-10-27T18:54:38.8150240Z ##[endgroup]
+2026-10-27T18:54:38.8348760Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-10-27T18:54:38.8546820Z 62c8953fdcd915ebdac8cb5838799e0b2f64389e
+2026-10-27T18:54:38.8638460Z ##[group]Removing auth
+2026-10-27T18:54:38.8641080Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T18:54:38.8726720Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T18:54:39.0357210Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T18:54:39.0465740Z http.https://github.com/.extraheader
+2026-10-27T18:54:39.0474830Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-27T18:54:39.0590920Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T18:54:39.2232400Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T18:54:39.2329950Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T18:54:39.3758740Z ##[endgroup]
+2026-10-27T18:54:39.4189150Z ##[group]Run python3 Scripts/run_acceptance_step.py verify-exact-checkout <<'ACCEPTANCE_STEP'
+2026-10-27T18:54:39.4190060Z [36;1mpython3 Scripts/run_acceptance_step.py verify-exact-checkout <<'ACCEPTANCE_STEP'[0m
+2026-10-27T18:54:39.4190580Z [36;1mtest "$(git rev-parse HEAD)" = "$GITHUB_SHA"[0m
+2026-10-27T18:54:39.4191110Z [36;1mACCEPTANCE_STEP[0m
+2026-10-27T18:54:39.4266130Z shell: /bin/bash -e {0}
+2026-10-27T18:54:39.4266340Z env:
+2026-10-27T18:54:39.4266490Z   ACCEPTANCE_MINUTES: 19
+2026-10-27T18:54:39.4266700Z   ACCEPTANCE_START: 1793127261
+2026-10-27T18:54:39.4266910Z ##[endgroup]
+2026-10-27T18:54:39.7861670Z 
+2026-10-27T18:54:39.7863740Z {"label": "verify-exact-checkout", "sha": "62c8953fdcd915ebdac8cb5838799e0b2f64389e", "run_id": "40564260790", "attempt": "1", "started": 1793127279.764883, "deadline": 1793128401, "finished": 1793127279.785198, "exit_code": 0}
+2026-10-27T18:54:39.8018810Z ##[group]Run python3 Scripts/run_acceptance_step.py record-toolchain-and-install-pinned-generator <<'ACCEPTANCE_STEP'
+2026-10-27T18:54:39.8020820Z [36;1mpython3 Scripts/run_acceptance_step.py record-toolchain-and-install-pinned-generator <<'ACCEPTANCE_STEP'[0m
+2026-10-27T18:54:39.8022260Z [36;1mmkdir -p TestResults[0m
+2026-10-27T18:54:39.8023270Z [36;1m{ sw_vers; xcodebuild -version; swift --version; } > TestResults/toolchain.log[0m
+2026-10-27T18:54:39.8025670Z [36;1mbash Scripts/install_xcodegen.sh[0m
+2026-10-27T18:54:39.8026620Z [36;1mACCEPTANCE_STEP[0m
+2026-10-27T18:54:39.8077900Z shell: /bin/bash -e {0}
+2026-10-27T18:54:39.8079550Z env:
+2026-10-27T18:54:39.8080870Z   ACCEPTANCE_MINUTES: 19
+2026-10-27T18:54:39.8081600Z   ACCEPTANCE_START: 1793127261
+2026-10-27T18:54:39.8082360Z ##[endgroup]
+2026-10-27T18:54:44.9288620Z swift-driver version: 1.148.6 /Users/runner/work/_temp/puzzlealarm-xcodegen.LrDj0G/xcodegen.zip: OK
+2026-10-27T18:54:44.9290910Z Version: 2.44.1
+2026-10-27T18:54:44.9292480Z 
+2026-10-27T18:54:44.9294440Z {"label": "record-toolchain-and-install-pinned-generator", "sha": "62c8953fdcd915ebdac8cb5838799e0b2f64389e", "run_id": "40564260790", "attempt": "1", "started": 1793127279.926, "deadline": 1793128401, "finished": 1793127284.908659, "exit_code": 0}
+2026-10-27T18:54:44.9519060Z ##[group]Run python3 Scripts/run_acceptance_step.py generate-and-boot-independent-simulator <<'ACCEPTANCE_STEP'
+2026-10-27T18:54:44.9519930Z [36;1mpython3 Scripts/run_acceptance_step.py generate-and-boot-independent-simulator <<'ACCEPTANCE_STEP'[0m
+2026-10-27T18:54:44.9520720Z [36;1mset -euo pipefail[0m
+2026-10-27T18:54:44.9521000Z [36;1mxcodegen generate --spec project.yml[0m
+2026-10-27T18:54:44.9521500Z [36;1mxcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"[0m
+2026-10-27T18:54:44.9521990Z [36;1mxcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"[0m
+2026-10-27T18:54:44.9522740Z [36;1msimulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"[0m
+2026-10-27T18:54:44.9523340Z [36;1mecho "SIMULATOR_ID=$simulator_id" >> "$GITHUB_ENV"[0m
+2026-10-27T18:54:44.9523710Z [36;1mxcrun simctl bootstatus "$simulator_id" -b[0m
+2026-10-27T18:54:44.9524050Z [36;1mACCEPTANCE_STEP[0m
+2026-10-27T18:54:44.9740140Z shell: /bin/bash -e {0}
+2026-10-27T18:54:44.9740380Z env:
+2026-10-27T18:54:44.9740550Z   ACCEPTANCE_MINUTES: 19
+2026-10-27T18:54:44.9740770Z   ACCEPTANCE_START: 1793127261
+2026-10-27T18:54:44.9740990Z ##[endgroup]
+2026-10-27T18:56:57.5548910Z ⚙️  Generating plists...
+2026-10-27T18:56:57.5559330Z ⚙️  Generating project...
+2026-10-27T18:56:57.5559850Z ⚙️  Writing project...
+2026-10-27T18:56:57.5747370Z Created project at /Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj
+2026-10-27T18:56:57.5857580Z Selected iPhone 17 / iOS 26.5
+2026-10-27T18:56:57.5982180Z Monitoring boot status for iPhone 17 (10B884BF-749F-4E8B-AFCD-26AB8F1DBD01).
+2026-10-27T18:56:57.6103760Z Booting device...
+2026-10-27T18:56:57.6205090Z [2026-10-27 18:54:53 +0000] Status=0, isTerminal=NO, Elapsed=00:00.
+2026-10-27T18:56:57.6307930Z 	Booting
+2026-10-27T18:56:57.6435960Z 
+2026-10-27T18:56:57.6537670Z [2026-10-27 18:54:59 +0000] Status=1, isTerminal=NO, Elapsed=00:06.
+2026-10-27T18:56:57.6647800Z 	Waiting on BackBoard
+2026-10-27T18:56:57.6751410Z 
+2026-10-27T18:56:57.6874920Z [2026-10-27 18:55:05 +0000] Status=2, isTerminal=NO, Elapsed=00:12.
+2026-10-27T18:56:57.6980660Z 	Waiting on Data Migration
+2026-10-27T18:56:57.7089330Z 		Reason:(null)
+2026-10-27T18:56:57.7204950Z 		Migration Elapsed:00:03 seconds
+2026-10-27T18:56:57.7305750Z 
+2026-10-27T18:56:57.7461430Z [2026-10-27 18:55:06 +0000] Status=2, isTerminal=NO, Elapsed=00:13.
+2026-10-27T18:56:57.7581790Z 	Waiting on Data Migration
+2026-10-27T18:56:57.7794180Z 		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+2026-10-27T18:56:57.7898780Z 		Migration Elapsed:00:05 seconds
+2026-10-27T18:56:57.8025170Z 
+2026-10-27T18:56:57.8126270Z [2026-10-27 18:55:08 +0000] Status=2, isTerminal=NO, Elapsed=00:15.
+2026-10-27T18:56:57.8239000Z 	Waiting on Data Migration
+2026-10-27T18:56:57.8344060Z 		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+2026-10-27T18:56:57.8445590Z 		Migration Elapsed:00:06 seconds
+2026-10-27T18:56:57.9308410Z 
+2026-10-27T18:56:58.0155310Z [2026-10-27 18:55:09 +0000] Status=2, isTerminal=NO, Elapsed=00:16.
+2026-10-27T18:56:58.1010310Z 	Waiting on Data Migration
+2026-10-27T18:56:58.2667770Z 		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+2026-10-27T18:56:58.4398650Z 		Migration Elapsed:00:07 seconds
+2026-10-27T18:56:58.4403280Z 
+2026-10-27T18:56:58.5222780Z [2026-10-27 18:55:10 +0000] Status=2, isTerminal=NO, Elapsed=00:17.
+2026-10-27T18:56:58.6053880Z 	Waiting on Data Migration
+2026-10-27T18:56:58.7662930Z 		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+2026-10-27T18:56:59.0974410Z 		Migration Elapsed:00:08 seconds
+2026-10-27T18:56:59.1801210Z 
+2026-10-27T18:56:59.1801560Z [2026-10-27 18:55:11 +0000] Status=2, isTerminal=NO, Elapsed=00:18.
+2026-10-27T18:56:59.1802240Z 	Waiting on Data Migration
+2026-10-27T18:56:59.1803640Z 		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+2026-10-27T18:56:59.1804200Z 		Migration Elapsed:00:09 seconds
+2026-10-27T18:56:59.1804480Z 
+2026-10-27T18:56:59.1804740Z [2026-10-27 18:55:12 +0000] Status=2, isTerminal=NO, Elapsed=00:19.
+2026-10-27T18:56:59.1805150Z 	Waiting on Data Migration
+2026-10-27T18:56:59.1805890Z 		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+2026-10-27T18:56:59.3487780Z 		Migration Elapsed:00:10 seconds
+2026-10-27T18:56:59.4610620Z 
+2026-10-27T18:56:59.9549740Z [2026-10-27 18:55:13 +0000] Status=2, isTerminal=NO, Elapsed=00:20.
+2026-10-27T18:57:00.0421050Z 	Waiting on Data Migration
+2026-10-27T18:57:00.1246500Z 		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+2026-10-27T18:57:00.2070710Z 		Migration Elapsed:00:11 seconds
+2026-10-27T18:57:00.2906510Z 
+2026-10-27T18:57:00.3795300Z [2026-10-27 18:55:13 +0000] Status=2, isTerminal=NO, Elapsed=00:20.
+2026-10-27T18:57:00.4619370Z 	Waiting on Data Migration
+2026-10-27T18:57:00.8327170Z 		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+2026-10-27T18:57:00.9357480Z 		Migration Elapsed:00:12 seconds
+2026-10-27T18:57:00.9464400Z 
+2026-10-27T18:57:01.1153350Z [2026-10-27 18:55:16 +0000] Status=2, isTerminal=NO, Elapsed=00:23.
+2026-10-27T18:57:01.9012110Z 	Waiting on Data Migration
+2026-10-27T18:57:02.2029930Z 		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+2026-10-27T18:57:02.2840920Z 		Migration Elapsed:00:13 seconds
+2026-10-27T18:57:02.3665400Z 
+2026-10-27T18:57:02.6104770Z [2026-10-27 18:55:16 +0000] Status=2, isTerminal=NO, Elapsed=00:23.
+2026-10-27T18:57:02.7755750Z 	Waiting on Data Migration
+2026-10-27T18:57:04.9588300Z ##[group]Run python3 Scripts/run_acceptance_step.py unchanged-independent-editor-declaration <<'ACCEPTANCE_STEP'
+2026-10-27T18:57:04.9589260Z [36;1mpython3 Scripts/run_acceptance_step.py unchanged-independent-editor-declaration <<'ACCEPTANCE_STEP'[0m
+2026-10-27T18:57:04.9589900Z [36;1mxcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \[0m
+2026-10-27T18:57:04.9591180Z [36;1m  -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \[0m
+2026-10-27T18:57:04.9591820Z [36;1m  -derivedDataPath DerivedData -resultBundlePath TestResults/Editor.xcresult \[0m
+2026-10-27T18:57:04.9592660Z [36;1m  -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditorEnabledTogglePersistsAfterRepeatedNativeInput \[0m
+2026-10-27T18:57:04.9593470Z [36;1m  -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test[0m
+2026-10-27T18:57:04.9593850Z [36;1mACCEPTANCE_STEP[0m
+2026-10-27T18:57:10.0058860Z shell: /bin/bash -e {0}
+2026-10-27T18:57:10.0059380Z env:
+2026-10-27T18:57:10.0059600Z   ACCEPTANCE_MINUTES: 19
+2026-10-27T18:57:10.0061880Z   ACCEPTANCE_START: 1793127261
+2026-10-27T18:57:10.0062160Z   SIMULATOR_ID: 10B884BF-749F-4E8B-AFCD-26AB8F1DBD01
+2026-10-27T18:57:10.0062420Z ##[endgroup]
+2026-10-27T19:05:52.9703340Z ##[error]The operation was canceled.
+2026-10-27T19:05:53.4473180Z ##[group]Run mkdir -p TestResults
+2026-10-27T19:05:53.4477550Z [36;1mmkdir -p TestResults[0m
+2026-10-27T19:05:53.4477870Z [36;1mpython3 - <<'PY'[0m
+2026-10-27T19:05:53.4478290Z [36;1mfrom pathlib import Path[0m
+2026-10-27T19:05:53.4478620Z [36;1mfiles = list((Path.home() / "Library/Developer/CoreSimulator/Devices").glob([0m
+2026-10-27T19:05:53.4479170Z [36;1m    "*/data/Containers/Data/Application/*/tmp/toggle-input-diagnostic.log"))[0m
+2026-10-27T19:05:53.4481740Z [36;1mif not files and "editor" == "list" and "skipped" not in ("skipped", "cancelled"):[0m
+2026-10-27T19:05:53.4482360Z [36;1m    raise SystemExit("No fixture input journal found in Simulator containers")[0m
+2026-10-27T19:05:53.4482930Z [36;1mPath("TestResults/existing-fixture-journals.log").write_text([0m
+2026-10-27T19:05:53.4487050Z [36;1m    "\n".join(str(p) + "\n" + p.read_text(errors="replace") for p in files))[0m
+2026-10-27T19:05:53.4487570Z [36;1mPY[0m
+2026-10-27T19:05:54.1470940Z shell: /bin/bash -e {0}
+2026-10-27T19:05:54.1471660Z env:
+2026-10-27T19:05:54.1471890Z   ACCEPTANCE_MINUTES: 19
+2026-10-27T19:05:54.1472370Z   ACCEPTANCE_START: 1793127261
+2026-10-27T19:05:54.1472680Z   SIMULATOR_ID: 10B884BF-749F-4E8B-AFCD-26AB8F1DBD01
+2026-10-27T19:05:54.1473310Z ##[endgroup]
+2026-10-27T19:05:55.6457920Z ##[group]Run actions/upload-artifact@v4
+2026-10-27T19:05:55.6458550Z with:
+2026-10-27T19:05:55.6460260Z   name: acceptance-editor
+2026-10-27T19:05:55.6460490Z   path: TestResults/
+2026-10-27T19:05:55.6460710Z   if-no-files-found: warn
+2026-10-27T19:05:55.6465340Z   retention-days: 30
+2026-10-27T19:05:55.6465740Z   compression-level: 6
+2026-10-27T19:05:55.6680870Z   overwrite: false
+2026-10-27T19:05:55.6683020Z   include-hidden-files: false
+2026-10-27T19:05:55.6684020Z env:
+2026-10-27T19:05:55.6684360Z   ACCEPTANCE_MINUTES: 19
+2026-10-27T19:05:55.6707480Z   ACCEPTANCE_START: 1793127261
+2026-10-27T19:05:55.6708070Z   SIMULATOR_ID: 10B884BF-749F-4E8B-AFCD-26AB8F1DBD01
+2026-10-27T19:05:55.6709030Z ##[endgroup]
+2026-10-27T19:05:58.1714260Z (node:15467) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T19:05:58.1767570Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T19:05:58.5623630Z With the provided path, there will be 18 files uploaded
+2026-10-27T19:05:58.5818060Z Artifact name is valid!
+2026-10-27T19:05:58.5880410Z Root directory input is valid!
+2026-10-27T19:05:59.1176070Z Beginning upload of artifact content to blob storage
+2026-10-27T19:06:08.4849780Z (node:15467) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-27T19:06:09.4682030Z Uploaded bytes 3321746
+2026-10-27T19:06:09.5607070Z Finished uploading artifact content to blob storage!
+2026-10-27T19:06:09.5658780Z SHA256 digest of uploaded artifact zip is f399ead8468b323d538c3338db865cefda3d6557a86bf7769b8024316aec3ab1
+2026-10-27T19:06:09.5813470Z Finalizing artifact upload
+2026-10-27T19:06:10.6596730Z Artifact acceptance-editor.zip successfully finalized. Artifact ID 12762682631
+2026-10-27T19:06:10.6700430Z Artifact acceptance-editor has been successfully uploaded! Final size is 3321746 bytes. Artifact ID is 12762682631
+2026-10-27T19:06:10.6735020Z Artifact download URL: https://github.com/teejayishere/PuzzleAlarm/actions/runs/40564260790/artifacts/12762682631
+2026-10-27T19:06:10.7734070Z Post job cleanup.
+2026-10-27T19:06:11.3296610Z [command]/opt/homebrew/bin/git version
+2026-10-27T19:06:11.4320340Z git version 2.56.0
+2026-10-27T19:06:11.4962790Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/590e70ef-6c9a-43ff-825f-9798bf12459e/.gitconfig'
+2026-10-27T19:06:11.5017250Z Temporarily overriding HOME='/Users/runner/work/_temp/590e70ef-6c9a-43ff-825f-9798bf12459e' before making global git config changes
+2026-10-27T19:06:11.5025440Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T19:06:11.5129220Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+2026-10-27T19:06:11.5271760Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T19:06:11.5466880Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T19:06:12.0147860Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T19:06:12.0481980Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T19:06:12.4735100Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T19:06:12.4755180Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T19:06:12.7511350Z Cleaning up orphan processes
+2026-10-27T19:06:15.2123250Z Terminate orphan process: pid (8974) (DTServiceHub)
+2026-10-27T19:06:19.2274440Z Terminate orphan process: pid (6381) (SWBBuildService)
+2026-10-27T19:06:24.3400570Z Terminate orphan process: pid (2871) (xcodebuild)
+2026-10-27T19:06:25.0616460Z Terminate orphan process: pid (2855) (bash)
+2026-10-27T19:06:38.6995220Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

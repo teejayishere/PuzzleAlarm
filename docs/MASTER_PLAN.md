@@ -1,9 +1,21 @@
 # PuzzleAlarm — Recursive Self-Correcting Master Development Plan
 
-## October 27, 2026 � controlling Stage 14 task scope
+## October 27, 2026 — Stage 14 blocking failure / STOP
+
+Candidate `62c8953f` / run 40564260790, attempt 1 FAILURE: first original Gate 6 list
+execution failed its switch-input assertion. 37 native contracts passed; editor
+cancelled without result; dependent validation skipped. **Gate 6 FAILED / HELD;
+Gates 7–14 INVALIDATED / HELD; last unheld gate 5. Stage 14 BLOCKED / NOT ACCEPTED.**
+[Original failure evidence and allocation](evidence/stage14-40564260790/README.md).
+Cause unknown; historical budgets remain EXHAUSTED, exception REVOKED. No diagnostics,
+repair-and-rerun or retry-to-green. Accepted f01abf42 evidence remains historical;
+it cannot waive this recurrence. STOP after evidence closeout. No Stage 15, UX,
+main promotion or device acceptance. Preparation/authorization below is historical.
+
+## October 27, 2026 — Stage 14 task scope (historical preparation)
 
 The owner's new task authorizes Stage 14 resilience/failure injection only, from
-the accepted Gates 6�13 lineage, preserving all prerequisite gates and original
+the accepted Gates 6–13 lineage, preserving all prerequisite gates and original
 assertions. [Stage 14 audit and validation contract](STAGE14_RESILIENCE.md).
 Earlier STOP/no-Stage-14 text applies to closed tasks; accepted source `f01abf42`
 /run 40521565094 remains immutable evidence within its automated/Simulator scope.

@@ -1,12 +1,26 @@
 # Test matrix
 
-## Stage 14 � audited resilience additions / validation PENDING
+## Stage 14 result — STOP / Gate 6 FAILED
+
+Exact `62c8953fdcd915ebdac8cb5838799e0b2f64389e`, run 40564260790, attempt 1 FAILURE.
+37 existing native contracts PASS. First of ten ordinary list executions FAILED
+at AlarmManagementUITests.swift:181; remaining nine NOT RUN. Independent editor
+CANCELLED / INCOMPLETE; dependent validate SKIPPED / no steps. Gate 6 FAILED / HELD,
+Gates 7–14 INVALIDATED / HELD; Stage 14 BLOCKED / NOT ACCEPTED, last unheld gate 5.
+[Original logs, command records, metadata and both verified original ZIPs](evidence/stage14-40564260790/README.md).
+Six new declarations compiled, NOT EXECUTED. Ordered downstream gates, full Core/
+native/UI regression, Release/SDK/resources/final diagnostics NOT RUN. Local static
+checks/four mocked budget checks PASS; device NOT RUN. No test rerun or new historical
+diagnostic; budgets exhausted, cause unknown, exception revoked. STOP. The mapping
+below is preparation, not a pass. f01abf42 acceptance remains revision-specific history.
+
+## Stage 14 — audited resilience additions (historical preparation)
 
 [Full existing-case mapping, six additions, recovery contracts and frozen CI scope](STAGE14_RESILIENCE.md).
 Existing scheduling/cancellation/duplicate/interruption tests are retained; additions
 cover four real disk/application boundaries, queued camera loss and disappearing
 preview resources. Original tests and required gates remain intact. Focused Stage 14
-runs after Gates 6�13, before unchanged full Core/native/UI regression. No arbitrary
+runs after Gates 6–13, before unchanged full Core/native/UI regression. No arbitrary
 coverage target. Source review only so far; Xcode/Simulator PENDING; device NOT RUN.
 Accepted source `f01abf42` / run 40521565094 supersedes historical held/pending text
 below within its automated scope; it is not candidate-HEAD validation.

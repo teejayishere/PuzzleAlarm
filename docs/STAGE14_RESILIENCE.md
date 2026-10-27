@@ -1,5 +1,18 @@
 # Stage 14 resilience / failure injection
 
+## Result — BLOCKED / NOT ACCEPTED / STOP
+
+Frozen tested `62c8953fdcd915ebdac8cb5838799e0b2f64389e`, run 40564260790,
+attempt 1 FAILURE. Gate 6 original list input assertion failed on iteration 1;
+37 native contracts PASS, editor CANCELLED without result, validate SKIPPED.
+**Gate 6 FAILED / HELD; Gates 7–14 INVALIDATED / HELD; last unheld gate 5.**
+New tests compiled but were NOT EXECUTED. Cause unknown, historical diagnostic
+budgets EXHAUSTED, exception REVOKED. No further investigation, repair or execution.
+[Original evidence, allocation, hashes and preservation limits](evidence/stage14-40564260790/README.md).
+Physical device NOT RUN. No Stage 15/UX/main promotion. STOP after record-only
+closeout. The audit and pre-execution contract below remain the frozen preparation
+record; their pending statements are superseded by this result.
+
 Authorized October 27, 2026 by the owner's Stage 14 task. Stage 14 only;
 stop after Gate 14 PASS or a documented blocking failure. No Stage 15, redesign,
 main promotion or physical-device acceptance. Historical diagnostic budgets remain

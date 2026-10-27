@@ -1,0 +1,13 @@
+{
+  "yaml": "PASS",
+  "required_steps_and_order": "PASS",
+  "original_test_bodies": "PASS",
+  "product_core_ui_sources_unchanged": "PASS",
+  "jobs": 3,
+  "ceilings": [
+    40,
+    25,
+    85
+  ],
+  "new_test_declarations": 6
+}

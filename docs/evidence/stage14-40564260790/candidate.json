@@ -1,0 +1,20 @@
+{
+  "sha": "62c8953fdcd915ebdac8cb5838799e0b2f64389e",
+  "branch": "codex/stage-14-resilience",
+  "baseline": "2cb81a6e89698e7e13887f4038fcc83afa793174",
+  "accepted_source": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+  "accepted_run": 40521565094,
+  "attempt": 1,
+  "max_jobs": 3,
+  "job_ceilings_minutes": [
+    40,
+    25,
+    85
+  ],
+  "command_deadlines_minutes": [
+    34,
+    19,
+    79
+  ],
+  "created_at_utc": "2026-10-27T18:54:03.2576038Z"
+}

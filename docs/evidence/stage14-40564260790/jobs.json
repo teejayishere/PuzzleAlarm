@@ -1,0 +1,312 @@
+{
+  "total_count": 3,
+  "jobs": [
+    {
+      "id": 122401177541,
+      "run_id": 40564260790,
+      "workflow_name": "PuzzleAlarm Core and iOS",
+      "head_branch": "codex/stage-14-resilience",
+      "run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/runs/40564260790",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOU38jWM8AAAAcf62_xQ",
+      "head_sha": "62c8953fdcd915ebdac8cb5838799e0b2f64389e",
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/jobs/122401177541",
+      "html_url": "https://github.com/teejayishere/PuzzleAlarm/actions/runs/40564260790/job/122401177541",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-27T18:54:15Z",
+      "started_at": "2026-10-27T18:54:18Z",
+      "completed_at": "2026-10-27T19:05:33Z",
+      "name": "prerequisites (list, 40, 34)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-27T18:54:19Z",
+          "completed_at": "2026-10-27T18:54:20Z"
+        },
+        {
+          "name": "Start absolute budget and verify frozen candidate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-27T18:54:20Z",
+          "completed_at": "2026-10-27T18:54:20Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-27T18:54:20Z",
+          "completed_at": "2026-10-27T18:54:30Z"
+        },
+        {
+          "name": "Verify exact checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-27T18:54:30Z",
+          "completed_at": "2026-10-27T18:54:31Z"
+        },
+        {
+          "name": "Record toolchain and install pinned generator",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-27T18:54:31Z",
+          "completed_at": "2026-10-27T18:54:36Z"
+        },
+        {
+          "name": "Generate and boot independent Simulator",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-27T18:54:36Z",
+          "completed_at": "2026-10-27T18:57:06Z"
+        },
+        {
+          "name": "Focused owner and input contracts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-27T18:57:09Z",
+          "completed_at": "2026-10-27T19:00:57Z"
+        },
+        {
+          "name": "Ten unchanged ordinary list flows",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8,
+          "started_at": "2026-10-27T19:00:57Z",
+          "completed_at": "2026-10-27T19:05:09Z"
+        },
+        {
+          "name": "Unchanged independent editor declaration",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-10-27T19:05:09Z",
+          "completed_at": "2026-10-27T19:05:09Z"
+        },
+        {
+          "name": "Review Xcode warnings",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-10-27T19:05:09Z",
+          "completed_at": "2026-10-27T19:05:09Z"
+        },
+        {
+          "name": "Preserve available ordinary fixture journals",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-27T19:05:09Z",
+          "completed_at": "2026-10-27T19:05:10Z"
+        },
+        {
+          "name": "Preserve original results and logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-27T19:05:10Z",
+          "completed_at": "2026-10-27T19:05:19Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-27T19:05:19Z",
+          "completed_at": "2026-10-27T19:05:20Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-27T19:05:20Z",
+          "completed_at": "2026-10-27T19:05:31Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/check-runs/122401177541",
+      "labels": [
+        "macos-26"
+      ],
+      "runner_id": 1000000156,
+      "runner_name": "GitHub Actions 1000000156",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 122401178201,
+      "run_id": 40564260790,
+      "workflow_name": "PuzzleAlarm Core and iOS",
+      "head_branch": "codex/stage-14-resilience",
+      "run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/runs/40564260790",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOU38jWM8AAAAcf63CWQ",
+      "head_sha": "62c8953fdcd915ebdac8cb5838799e0b2f64389e",
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/jobs/122401178201",
+      "html_url": "https://github.com/teejayishere/PuzzleAlarm/actions/runs/40564260790/job/122401178201",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "created_at": "2026-10-27T18:54:15Z",
+      "started_at": "2026-10-27T18:54:19Z",
+      "completed_at": "2026-10-27T19:06:40Z",
+      "name": "prerequisites (editor, 25, 19)",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-27T18:54:20Z",
+          "completed_at": "2026-10-27T18:54:21Z"
+        },
+        {
+          "name": "Start absolute budget and verify frozen candidate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-27T18:54:21Z",
+          "completed_at": "2026-10-27T18:54:21Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-27T18:54:21Z",
+          "completed_at": "2026-10-27T18:54:39Z"
+        },
+        {
+          "name": "Verify exact checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-27T18:54:39Z",
+          "completed_at": "2026-10-27T18:54:39Z"
+        },
+        {
+          "name": "Record toolchain and install pinned generator",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-27T18:54:39Z",
+          "completed_at": "2026-10-27T18:54:44Z"
+        },
+        {
+          "name": "Generate and boot independent Simulator",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-27T18:54:44Z",
+          "completed_at": "2026-10-27T18:57:02Z"
+        },
+        {
+          "name": "Focused owner and input contracts",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-10-27T18:57:03Z",
+          "completed_at": "2026-10-27T18:57:04Z"
+        },
+        {
+          "name": "Ten unchanged ordinary list flows",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-10-27T18:57:04Z",
+          "completed_at": "2026-10-27T18:57:04Z"
+        },
+        {
+          "name": "Unchanged independent editor declaration",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "number": 9,
+          "started_at": "2026-10-27T18:57:04Z",
+          "completed_at": "2026-10-27T19:05:53Z"
+        },
+        {
+          "name": "Review Xcode warnings",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-10-27T19:05:53Z",
+          "completed_at": "2026-10-27T19:05:53Z"
+        },
+        {
+          "name": "Preserve available ordinary fixture journals",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-27T19:05:53Z",
+          "completed_at": "2026-10-27T19:05:55Z"
+        },
+        {
+          "name": "Preserve original results and logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-27T19:05:55Z",
+          "completed_at": "2026-10-27T19:06:10Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-27T19:06:10Z",
+          "completed_at": "2026-10-27T19:06:12Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-27T19:06:12Z",
+          "completed_at": "2026-10-27T19:06:38Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/check-runs/122401178201",
+      "labels": [
+        "macos-26"
+      ],
+      "runner_id": 1000000157,
+      "runner_name": "GitHub Actions 1000000157",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 122407697768,
+      "run_id": 40564260790,
+      "workflow_name": "PuzzleAlarm Core and iOS",
+      "head_branch": "codex/stage-14-resilience",
+      "run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/runs/40564260790",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOU38jWM8AAAAcgBE9aA",
+      "head_sha": "62c8953fdcd915ebdac8cb5838799e0b2f64389e",
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/jobs/122407697768",
+      "html_url": "https://github.com/teejayishere/PuzzleAlarm/actions/runs/40564260790/job/122407697768",
+      "status": "completed",
+      "conclusion": "skipped",
+      "created_at": "2026-10-27T19:06:41Z",
+      "started_at": "2026-10-27T19:06:41Z",
+      "completed_at": "2026-10-27T19:06:40Z",
+      "name": "validate",
+      "steps": [],
+      "check_run_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/check-runs/122407697768",
+      "labels": [
+        "macos-26"
+      ],
+      "runner_id": null,
+      "runner_name": null,
+      "runner_group_id": null,
+      "runner_group_name": null
+    }
+  ]
+}

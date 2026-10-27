@@ -1,0 +1,265 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/TenList.xcresult "-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest" -run-tests-until-failure -test-iterations 10 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Running tests multiple times until a failure occurs. Running tests repeatedly up to 10 times.
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/TenList.xcresult
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+2026-10-27 19:02:22.298399+0000 PuzzleAlarmUITests-Runner[12910:45019] [Default] Running tests...
+2026-10-27 19:02:22.641037+0000 PuzzleAlarmUITests-Runner[12910:45840] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-10-27 19:02:22.688669+0000 PuzzleAlarmUITests-Runner[12910:45838] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+objc[12910]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x10ae4c310) and /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10a1dc398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-27 19:02:34.526.
+Test Suite 'PuzzleAlarmUITests.xctest' started at 2026-10-27 19:02:34.527.
+Test Suite 'AlarmManagementUITests' started at 2026-10-27 19:02:34.527.
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 1 of 10).
+    t =     0.00s Start Test at 2026-10-27 19:02:34.528
+    t =     3.20s Set Up
+    t =     3.20s Open com.teejayishere.PuzzleAlarm
+    t =     3.20s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 19:02:38.724 xcodebuild[9975:37245] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 19:02:38.724 xcodebuild[9975:37245] [MT] IDELaunchParametersSnapshot: no debugger version
+Resolve Package Graph
+
+    t =    31.50s         Setting up automation session
+    t =    33.50s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    35.48s Waiting 20.0s for "alarms.add" Button to exist
+    t =    36.51s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =    36.51s         Checking existence of `"alarms.add" Button`
+    t =    37.35s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    38.40s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    38.41s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    38.49s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    38.55s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    39.62s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    39.62s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    39.74s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    39.82s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    47.04s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    47.15s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    47.30s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    48.35s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    48.35s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    48.56s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    48.69s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    48.81s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    48.95s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    49.05s Checking existence of `Switch (First Match)`
+    t =    49.18s Find the Switch (First Match)
+    t =    49.27s Find the "0" Switch
+    t =    49.40s Find the "0" Switch
+    t =    49.52s Tap "0" Switch
+    t =    49.52s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    49.53s     Find the "0" Switch
+    t =    49.66s     Check for interrupting elements affecting "0" Switch
+    t =    56.91s     Synthesize event
+    t =    66.45s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    66.47s Checking existence of `"application.busy" Any`
+    t =    68.07s Checking existence of `"application.busy" Any`
+    t =    69.52s Find the "0" Switch
+    t =    71.29s Checking `Expect predicate `value == "1"` for object "0" Switch`
+    t =    71.29s     Find the "0" Switch
+    t =    71.49s     Capturing element debug description
+    t =    72.16s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    72.25s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    72.31s         Find: Descendants matching type Switch
+    t =    72.32s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    72.38s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    72.46s         Find: Descendants matching type Switch
+    t =    72.46s         Find: Elements matching predicate '"alarm.enabled.00000000-0000-0000-0000-000000000001" IN identifiers'
+    t =    72.46s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    72.54s         Find: Descendants matching type Switch
+    t =    72.54s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    73.33s Checking `Expect predicate `value == "1"` for object "0" Switch`
+    t =    73.37s     Find the "0" Switch
+    t =    73.52s     Capturing element debug description
+    t =    74.09s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    74.18s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    74.25s         Find: Descendants matching type Switch
+    t =    74.25s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    74.31s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    74.36s         Find: Descendants matching type Switch
+    t =    74.37s         Find: Elements matching predicate '"alarm.enabled.00000000-0000-0000-0000-000000000001" IN identifiers'
+    t =    74.37s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    74.41s         Find: Descendants matching type Switch
+    t =    74.41s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    75.27s Checking `Expect predicate `value == "1"` for object "0" Switch`
+    t =    75.27s     Find the "0" Switch
+    t =    75.45s     Capturing element debug description
+    t =    75.98s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    76.04s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    76.14s         Find: Descendants matching type Switch
+    t =    76.14s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    76.21s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    76.27s         Find: Descendants matching type Switch
+    t =    76.27s         Find: Elements matching predicate '"alarm.enabled.00000000-0000-0000-0000-000000000001" IN identifiers'
+    t =    76.27s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    76.35s         Find: Descendants matching type Switch
+    t =    76.35s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    77.29s Checking `Expect predicate `value == "1"` for object "0" Switch`
+    t =    77.29s     Find the "0" Switch
+    t =    77.56s     Capturing element debug description
+    t =    78.20s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    78.24s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    78.33s         Find: Descendants matching type Switch
+    t =    78.33s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    78.40s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    78.47s         Find: Descendants matching type Switch
+    t =    78.47s         Find: Elements matching predicate '"alarm.enabled.00000000-0000-0000-0000-000000000001" IN identifiers'
+    t =    78.48s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    78.54s         Find: Descendants matching type Switch
+    t =    78.54s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    79.27s Checking `Expect predicate `value == "1"` for object "0" Switch`
+    t =    79.27s     Find the "0" Switch
+    t =    79.55s     Capturing element debug description
+    t =    80.38s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    80.49s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    80.56s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    80.57s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    80.57s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    80.57s         Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    83.92s Requesting snapshot of accessibility hierarchy for app with pid 14364
+    t =    84.34s Requesting snapshot of accessibility hierarchy for app with pid 14364
+/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarmUITests/AlarmManagementUITests.swift:181: error: -[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest] : XCTAssertEqual failed: ("XCTWaiterResult(rawValue: 2)") is not equal to ("XCTWaiterResult(rawValue: 1)") - Switch input did not commit: alarm.enabled.00000000-0000-0000-0000-000000000001
+Attributes: Application, 0x109d8c8c0, pid: 14364, label: 'PuzzleAlarm'
+Element subtree:
+ →Application, 0x109d8c8c0, pid: 14364, label: 'PuzzleAlarm'
+    Window (Main), 0x109d8d180, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x109d8db80, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x109d8de00, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x109d8e1c0, {{0.0, 0.0}, {402.0, 874.0}}
+            Other, 0x109d8e6c0, {{0.0, 0.0}, {402.0, 874.0}}
+              Other, 0x109d8e300, {{0.0, 0.0}, {402.0, 874.0}}
+                NavigationBar, 0x109d8dcc0, {{0.0, 62.0}, {402.0, 106.0}}, identifier: 'PuzzleAlarm'
+                  Button, 0x109d8f700, {{346.0, 66.0}, {36.0, 36.0}}, identifier: 'alarms.add', label: 'Add Alarm'
+                  StaticText, 0x109d8e580, {{16.0, 119.7}, {198.0, 40.7}}, label: 'PuzzleAlarm'
+                Other, 0x109d8fac0, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x109d8d680, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x109d8da40, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x109d8f980, {{0.0, 0.0}, {402.0, 874.0}}
+                        CollectionView, 0x109d8cc80, {{0.0, 0.0}, {402.0, 874.0}}
+                          Other, 0x109d8f200, {{-16.0, -1580.0}, {434.0, 1858.0}}
+                          Other, 0x109d8e940, {{0.0, 0.0}, {402.0, 874.0}}
+                          Other, 0x109d8ef80, {{0.0, 0.0}, {402.0, 874.0}}
+                          Cell, 0x109d8f480, {{16.0, 168.0}, {370.0, 40.3}}
+                            Other, 0x109d8c3c0, {{16.0, 168.0}, {370.0, 40.3}}
+                            Other, 0x109d8d7c0, {{16.0, 168.0}, {370.0, 40.3}}
+                              Other, 0x109d8c640, {{16.0, 168.0}, {370.0, 40.3}}
+                                Other, 0x109d8f0c0, {{16.0, 168.0}, {370.0, 40.3}}
+                                  StaticText, 0x109d8ea80, {{16.0, 168.0}, {370.0, 40.3}}, label: 'Alarm access'
+                          Cell, 0x109d8d900, {{16.0, 208.3}, {370.0, 52.0}}
+                            Other, 0x109d8df40, {{16.0, 208.3}, {370.0, 52.0}}
+                              Other, 0x109d8f840, {{16.0, 208.3}, {370.0, 52.0}}
+                            Other, 0x109d8ee40, {{16.0, 208.3}, {370.0, 52.0}}
+                              Other, 0x109d8fd40, {{16.0, 208.3}, {370.0, 52.0}}
+                                Other, 0x109d8f5c0, {{16.0, 208.3}, {370.0, 52.0}}
+                                  StaticText, 0x109d8e800, {{16.0, 208.3}, {370.0, 52.0}}, identifier: 'authorization.status', label: 'Authorized'
+                          Other, 0x109d8cf00, {{-16.0, 278.0}, {434.0, 2036.0}}
+                          Cell, 0x109d8d2c0, {{16.0, 295.3}, {370.0, 146.7}}
+                            Other, 0x109d8ca00, {{16.0, 295.3}, {370.0, 146.7}}
+                              Other, 0x109d8c500, {{16.0, 295.3}, {370.0, 146.7}}
+                            Other, 0x109d8d040, {{16.0, 295.3}, {370.0, 146.7}}
+                              Other, 0x109d8f340, {{16.0, 295.3}, {370.0, 146.7}}
+                                Other, 0x109d8fc00, {{16.0, 295.3}, {370.0, 146.7}}
+                                  Button, 0x109d8ed00, {{16.0, 295.3}, {370.0, 146.7}}, identifier: 'alarm.edit.00000000-0000-0000-0000-000000000001', label: '7:00 AM, Weekdays, Annoying Alarm Only, System Default'
+                                    StaticText, 0x109d8cb40, {{32.0, 310.3}, {125.0, 40.7}}, label: '7:00 AM'
+                                    StaticText, 0x109d8c780, {{32.0, 356.0}, {78.0, 20.3}}, label: 'Weekdays'
+                                    StaticText, 0x109d8ebc0, {{32.0, 381.3}, {159.3, 20.3}}, label: 'Annoying Alarm Only'
+                                    StaticText, 0x109d8c280, {{32.0, 406.7}, {115.7, 20.3}}, label: 'System Default'
+                          Cell, 0x109d8c140, {{16.0, 442.0}, {370.0, 52.0}}
+                            Other, 0x109d8c000, {{16.0, 442.0}, {370.0, 52.0}}
+                              Other, 0x109d8e440, {{16.0, 442.0}, {370.0, 52.0}}
+                            Other, 0x109d8fe80, {{16.0, 442.0}, {370.0, 52.0}}
+                              Other, 0x109d8e080, {{16.0, 442.0}, {370.0, 52.0}}
+                                Other, 0x116e5b200, {{16.0, 442.0}, {370.0, 52.0}}
+                                  Switch, 0x116e59040, {{16.0, 442.0}, {370.0, 52.0}}, identifier: 'alarm.enabled.00000000-0000-0000-0000-000000000001', label: 'Alarm enabled', value: 0
+                                    StaticText, 0x116e5bd40, {{32.0, 457.8}, {109.7, 20.3}}, label: 'Alarm enabled'
+                                    Switch, 0x116e5b5c0, {{309.0, 454.0}, {63.0, 28.0}}, value: 0
+                          Other, 0x116e5be80, {{32.0, 441.0}, {338.0, 1.0}}
+                          Cell, 0x116e5af80, {{16.0, 494.0}, {370.0, 52.0}}
+                            Other, 0x116e5b980, {{16.0, 494.0}, {370.0, 52.0}}
+                              Other, 0x116e58f00, {{16.0, 494.0}, {370.0, 52.0}}
+                            Other, 0x116e59f40, {{16.0, 494.0}, {370.0, 52.0}}
+                              Other, 0x116e588c0, {{16.0, 494.0}, {370.0, 52.0}}
+                                Other, 0x116e58780, {{16.0, 494.0}, {370.0, 52.0}}
+                                  StaticText, 0x116e58a00, {{16.0, 494.0}, {370.0, 52.0}}, identifier: 'alarm.status.00000000-0000-0000-0000-000000000001', label: 'Off'
+                          Other, 0x116e5bac0, {{32.0, 493.0}, {338.0, 1.0}}
+                          Other, 0x116e59e00, {{369.0, 116.0}, {30.0, 696.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                            Other, 0x116e59cc0, {{396.0, 393.0}, {3.0, 416.0}}
+                          Other, 0x116e5ae40, {{369.0, 116.0}, {30.0, 696.0}}, label: 'Vertical scroll bar, 1 page', value: 0%
+                            Other, 0x116e5bc00, {{396.0, 393.0}, {3.0, 416.0}}
+                Other, 0x116e5a580, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x116e59680, {{0.0, 0.0}, {402.0, 874.0}}
+Path to element:
+ →Application, 0x109d8c8c0, pid: 14364, label: 'PuzzleAlarm'
+Query chain:
+ →Find: Target Application 'com.teejayishere.PuzzleAlarm'
+  Output: {
+    Application, 0x116e5b840, pid: 14364, label: 'PuzzleAlarm'
+  }
+
+    t =    86.95s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' failed (87.936 seconds).
+Test Suite 'AlarmManagementUITests' failed at 2026-10-27 19:04:02.465.
+	 Executed 1 test, with 1 failure (0 unexpected) in 87.936 (87.938) seconds
+Test Suite 'PuzzleAlarmUITests.xctest' failed at 2026-10-27 19:04:02.469.
+	 Executed 1 test, with 1 failure (0 unexpected) in 87.936 (87.942) seconds
+Test Suite 'Selected tests' failed at 2026-10-27 19:04:02.470.
+	 Executed 1 test, with 1 failure (0 unexpected) in 87.936 (87.944) seconds
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+2026-10-27 19:04:50.187 xcodebuild[9975:37245] [MT] IDETestOperationsObserverDebug: 187.578 elapsed -- Testing started completed.
+2026-10-27 19:04:50.187 xcodebuild[9975:37245] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 19:04:50.187 xcodebuild[9975:37245] [MT] IDETestOperationsObserverDebug: 187.578 sec, +187.578 sec -- end
+Resolve Package Graph
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/TenList.xcresult
+
+Failing tests:
+	AlarmManagementUITests.testEnableDisableAndFailureRetryAreHonest()
+
+** TEST EXECUTE FAILED **
+
+Testing started

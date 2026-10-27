@@ -1,19 +1,48 @@
 # Project state
 
-## October 27, 2026 � Stage 14 authorized / validation PENDING
+## October 27, 2026 — Stage 14 STOP / Gate 6 FAILED
+
+Frozen candidate `62c8953fdcd915ebdac8cb5838799e0b2f64389e` on fresh
+`codex/stage-14-resilience`: [run 40564260790](https://github.com/teejayishere/PuzzleAlarm/actions/runs/40564260790),
+attempt 1, completed FAILURE. 37 native contracts PASS. First ordinary list
+execution failed at AlarmManagementUITests.swift:181 (87.936s): original Off→On
+input did not commit; failure hierarchy remained Off. Remaining nine list
+executions NOT RUN. Independent editor CANCELLED before result by matrix fail-fast;
+dependent validate SKIPPED with zero steps. No rerun, extra tap or diagnostic.
+
+**Gate 6 FAILED / HELD; Gates 7–14 recursively INVALIDATED / HELD. Last unheld gate 5.
+Stage 14 BLOCKED / NOT ACCEPTED. STOP.** Cause unknown; both historical diagnostic
+budgets remain EXHAUSTED (zero jobs), exception REVOKED. Prior accepted f01abf42 /
+40521565094 evidence remains immutable history and cannot clear this new failure.
+
+Source: audited nine failure categories, added six missing boundary tests and focused
+Gate 14 wiring; original assertions/gates and product/Core/UI source unchanged.
+Local static checks and four budget-wrapper tests PASS. Xcode 26.6 / Swift 6.3.3
+Debug app/test compilation PASS, including additions. iPhone 17 / iOS 26.5 only
+results above; new tests, ordered downstream replay, full regression, Release and
+broad SDK/resource/diagnostic checks NOT RUN. Device DEVICE REQUIRED / NOT RUN.
+
+[Original logs, metadata, both original ZIPs, matching hashes/CRC and limits](evidence/stage14-40564260790/README.md).
+Two free Mac jobs consumed, 11m15s / 12m21s, below 40/25 ceilings; dependent lane not
+allocated. Candidate and evidence publication SHAs are separate; record-only skipped
+publication CI is not a product pass. Main `bd069f2` unchanged. No Stage 15, UX,
+main promotion, release or device acceptance. No further execution/development queued.
+The preparation entries below are historical and superseded by this STOP result.
+
+## Historical Stage 14 preparation — validation was PENDING
 
 Fresh `codex/stage-14-resilience` from clean local/remote `2cb81a6`, preserving
 accepted source `f01abf42` and evidence publication history. Run 40521565094,
 attempt 1, SUCCESS and all required job/step conclusions independently verified;
 baseline publication runs 40538097946 / 40538098077 SKIPPED, not new product passes.
-Gates 6�13 replacement acceptance remains controlling for that exact source/scope;
+Gates 6–13 replacement acceptance remains controlling for that exact source/scope;
 earlier holds and no-Stage-14 statements below describe historical tasks. This new
 owner request authorizes Stage 14 only. Main remains `bd069f2`, unmodified.
 
 Audited existing failure coverage before adding six missing filesystem/application,
 queued-camera-loss and disappearing-audio-resource boundary declarations. Existing
 tests/assertions and product/Core source retained. CI preserves ordered prerequisites,
-Gates 6�13 and full regression, adding focused Gate 14 plus original-result capture.
+Gates 6–13 and full regression, adding focused Gate 14 plus original-result capture.
 [Audit, recovery contracts and frozen validation limits](STAGE14_RESILIENCE.md).
 Candidate Xcode/Simulator/full regression PENDING; no Gate 14 PASS claimed.
 Historical budgets EXHAUSTED, exception REVOKED, no new historical diagnostics.

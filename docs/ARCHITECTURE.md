@@ -1,6 +1,16 @@
 # Architecture
 
-## Stage 14 resilience boundary audit
+## Stage 14 result — blocked by Gate 6 recurrence
+
+Candidate `62c8953f` / run 40564260790 failed the first original list switch-input
+assertion; no product/harness/OS cause is established. Gate 6 FAILED / HELD;
+dependent Gates 7–14 INVALIDATED / HELD. [Original evidence](evidence/stage14-40564260790/README.md).
+Product/Core/platform source and schema remain unchanged. Six boundary additions
+compiled in Debug but were NOT EXECUTED; no Stage 14 behavioral acceptance.
+Historical diagnostic budgets exhausted, exception revoked; STOP, no further work.
+Physical device NOT RUN. Earlier accepted architecture evidence names its own SHA.
+
+## Stage 14 resilience boundary audit (historical preparation)
 
 The new Stage 14 task supersedes earlier no-Stage-14 scope text for this task only.
 [Coverage audit and recovery contracts](STAGE14_RESILIENCE.md). Product/Core/platform

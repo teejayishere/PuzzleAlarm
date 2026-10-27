@@ -1,0 +1,40 @@
+{
+  "tested_sha": "62c8953fdcd915ebdac8cb5838799e0b2f64389e",
+  "run_id": 40564260790,
+  "attempt": 1,
+  "conclusion": "failure",
+  "native_contracts_passed": 37,
+  "list_executions": 1,
+  "list_passed": 0,
+  "list_failed": 1,
+  "editor": "cancelled before result",
+  "dependent_validate": "skipped, no steps",
+  "earliest_failed_gate": 6,
+  "invalidated_gates": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "stage14": "BLOCKED / NOT ACCEPTED",
+  "physical_device": "DEVICE REQUIRED / NOT RUN",
+  "diagnostic_jobs_remaining": 0,
+  "allocated_jobs": [
+    {
+      "id": 122401177541,
+      "name": "prerequisites (list, 40, 34)",
+      "seconds_including_preservation": 675.0,
+      "conclusion": "failure"
+    },
+    {
+      "id": 122401178201,
+      "name": "prerequisites (editor, 25, 19)",
+      "seconds_including_preservation": 741.0,
+      "conclusion": "cancelled"
+    }
+  ]
+}
