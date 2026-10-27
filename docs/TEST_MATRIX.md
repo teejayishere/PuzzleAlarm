@@ -1,5 +1,7 @@
 # Test matrix
 
+The October 27 owner-authorized single ordered acceptance replay is governed by [GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md). This is separate from the closed focused replacement attempt; historical diagnostic budgets stay exhausted and the exception stays revoked. Candidate execution is pending; prior focused PASS does not establish downstream acceptance.
+
 ## Active controlled Gate 6 replacement
 
 **Focused PASS / STOP:** `8a236a03f0c19eb70863ddd7d290a70fb90efa73`,

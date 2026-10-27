@@ -1,5 +1,7 @@
 # PuzzleAlarm — Recursive Self-Correcting Master Development Plan
 
+The October 27 owner-authorized single ordered acceptance replay is governed by [GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md). This is separate from the closed focused replacement attempt; historical diagnostic budgets stay exhausted and the exception stays revoked. Candidate execution is pending; prior focused PASS does not establish downstream acceptance.
+
 ## Active owner-approved Gate 6 replacement scope
 
 [GATE6_CONTROLLED_RESET.md](GATE6_CONTROLLED_RESET.md) controls the October 26

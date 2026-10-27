@@ -1,5 +1,7 @@
 # Project state
 
+The October 27 owner-authorized single ordered acceptance replay is governed by [GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md). This is separate from the closed focused replacement attempt; historical diagnostic budgets stay exhausted and the exception stays revoked. Candidate execution is pending; prior focused PASS does not establish downstream acceptance.
+
 ## Current result — controlled Gate 6 replacement PASS / STOP
 
 **[Controlling decision and frozen validation limits](GATE6_CONTROLLED_RESET.md).**

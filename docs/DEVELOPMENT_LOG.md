@@ -1,5 +1,24 @@
 # Development log
 
+## October 27, 2026 — bounded acceptance preparation
+
+Owner separately authorizes one replacement acceptance attempt through Gate 13,
+not historical diagnostics or exception reliance. Baseline local/remote 55695fd
+matched cleanly; exact runs 40452342842/40452342771 skipped, no pass claim. Main
+bd069f2 unchanged. Scope frozen in GATE6_13_ACCEPTANCE.md before validation push.
+Only CI wiring, deadline tooling and records change; product/Core/native/UI sources
+and all valid assertions are unchanged. Two fail-fast 40/25-minute prerequisite
+lanes, then one dependent 85-minute lane; commands stop at 34/19/79 minutes.
+Replacement contracts replace obsolete bridge selector; ten-list and independent
+cold editor retained. Gate 6 management precedes all ordered Gate 7–13 checks,
+then complete regression/build/resources/coverage/fixtures/diagnostics. Builds reused.
+Four offline deadline/failure/no-retry checks PASS (all three lane budgets); YAML
+parse and workflow source/order/preservation invariants PASS. Initial sandbox temp
+access failed before wrapper execution; unchanged checks passed with normal temp
+access. No Mac job/product test allocated during preparation. Execution pending.
+No rerun/repair/probes/budget reset; failure cancels remaining work and recursively
+invalidates. Evidence-only publication uses record-only markers. STOP at closeout.
+
 ## October 26, 2026 — controlled replacement focused PASS / STOP
 
 Frozen candidate 8a236a03f0c19eb70863ddd7d290a70fb90efa73 declared before its one
