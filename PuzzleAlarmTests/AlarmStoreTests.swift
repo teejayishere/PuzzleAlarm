@@ -79,13 +79,14 @@ final class AlarmStoreTests: XCTestCase {
     }
 
     func testNativeInputSetterClaimsPendingSynchronouslyAndReconcilesEveryOutcome() async throws {
-        let (store, effect) = try make()
+        let repository = InMemoryRepository()
+        let (store, effect) = try make(repository)
         _ = await store.save(try draft(enabled: false))
         let original = try XCTUnwrap(store.alarms.first)
-        var presentation = false, submitting = false
-        let binding = AlarmEnabledBinding.input(for: original, store: store,
-            presentation: Binding(get: { presentation }, set: { presentation = $0 }),
-            submitting: Binding(get: { submitting }, set: { submitting = $0 }))
+        let input = AlarmEnabledInput(alarm: original, store: store)
+        let binding = input.binding
+        var presentation: Bool { input.value }
+        var submitting: Bool { input.isSubmitting }
         func finish() async throws {
             let deadline = ContinuousClock.now.advanced(by: .seconds(10))
             while submitting && ContinuousClock.now < deadline { try await Task.sleep(for: .milliseconds(10)) }
@@ -120,6 +121,20 @@ final class AlarmStoreTests: XCTestCase {
         binding.wrappedValue = true
         XCTAssertFalse(submitting, "An unchanged owner value must not issue another command")
         XCTAssertEqual(effect.values.schedules.count, count)
+        binding.wrappedValue = false
+        try await finish()
+        await repository.failNext(.write)
+        let beforeFailure = effect.values.schedules.count
+        binding.wrappedValue = true
+        XCTAssertTrue(presentation && submitting)
+        try await finish()
+        XCTAssertFalse(presentation)
+        XCTAssertNotNil(store.errorMessage)
+        XCTAssertEqual(effect.values.schedules.count, beforeFailure)
+        binding.wrappedValue = true
+        try await finish()
+        XCTAssertTrue(presentation)
+        XCTAssertEqual(store.status(try XCTUnwrap(store.definition(original.id))), "On")
     }
 
     func testMissingAndCommittedEmptyStartupDoNotScheduleOrPrompt() async throws {

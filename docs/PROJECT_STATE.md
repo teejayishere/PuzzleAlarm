@@ -9,6 +9,15 @@ Gate 6 remains FAILED / HELD; Gates 7–13 INVALIDATED / HELD. Historical budget
 remain EXHAUSTED and the exception REVOKED. Earlier STOP entries remain historical;
 the linked decision governs only this replacement. No downstream work is authorized.
 
+Replacement source prepared: standard SwiftUI switches, one observable pending
+input owner with live idle store reads, editor input separated from the time wheel,
+explicit edit-button/sheet identity. Original management UI assertions/helpers are
+unchanged; bridge-specific tests replaced with documented behavioral equivalents.
+Four offline budget-wrapper checks and parsed workflow limits/exclusions PASS.
+Swift/Xcode/Simulator execution PENDING for the frozen candidate; device NOT RUN.
+Dedicated manual workflow allows only two focused Gate 6 jobs; broad CI excludes
+this branch and preparation uses record-only skips. No Gates 7–13 replay authorized.
+
 ## October 26, 2026 — Stage 13 STOP at Gate 6 input failure
 
 Current stage: 13 implementation candidate, **BLOCKED / NOT ACCEPTED**. Gate 6 is

@@ -38,7 +38,10 @@ struct AlarmEditorView: View {
                     DatePicker("Time", selection: $draft.pickerDate, displayedComponents: .hourAndMinute)
                         .datePickerStyle(.wheel).environment(\.timeZone, AlarmFormatting.wallCalendar.timeZone)
                         .accessibilityIdentifier("editor.time")
-                    Toggle("Alarm enabled", isOn: $draft.enabled).accessibilityIdentifier("editor.enabled")
+                }
+                Section("Alarm") {
+                    Toggle("Alarm enabled", isOn: $draft.enabled)
+                        .toggleStyle(.switch).accessibilityIdentifier("editor.enabled")
                     NavigationLink {
                         WeekdayEditor(days: $draft.weekdays)
                     } label: {

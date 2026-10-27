@@ -1,5 +1,22 @@
 # Development log
 
+## October 26, 2026 — controlled Gate 6 replacement preparation
+
+Owner explicitly authorized a controlled replacement, preserving repository,
+Stage 13 and evidence. Read PROJECT_STATE first; clean local/remote Stage 13
+closeout d65649f matched. Exact-HEAD 40446680828 completed SKIPPED with three skipped
+jobs/no steps; not PASS. Main bd069f2 unchanged. Created the requested reset branch
+and committed the controlling decision before source changes at 7b66bd0.
+
+[Decision/design/test rationale and pre-push bounded contract](GATE6_CONTROLLED_RESET.md).
+Removed custom switch bridge; standard native list/editor controls, one pending
+input owner with live idle reads, separate editor time section, explicit edit
+button/sheet identity. Existing behavioral assertions preserved; bridge-specific
+tests replaced with equivalent retained/disabled/pending behavior and original UI
+coverage. Added failed-write input recovery. Core/Stage 13/OS integration unchanged.
+Historical causes unknown; budgets exhausted; exception revoked. Focused candidate
+validation pending; no Xcode/Simulator/device acceptance from source review.
+
 ## October 26, 2026 — Stage 13 stopped on required Gate 6 failure
 
 Declared exact candidate 2b2c81d2277f05eb5d095beb0285d47e58a73cb4 before its

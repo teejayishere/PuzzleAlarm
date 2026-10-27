@@ -1,28 +1,9 @@
 import SwiftUI
+import Observation
 import PuzzleAlarmCore
 
 @MainActor
 enum AlarmEnabledBinding {
-    // Treat native setter delivery as the event boundary. Render-time onChange
-    // observes presentation; it must not be the only way to submit a command.
-    static func input(for alarm: AlarmDefinition, store: AlarmStore,
-                      presentation: Binding<Bool>, submitting: Binding<Bool>) -> Binding<Bool> {
-        let owner = make(for: alarm, store: store)
-        return Binding(get: { presentation.wrappedValue }, set: { value in
-            #if DEBUG
-            UITestEnvironment.traceToggle("native setter=\(value) submitting=\(submitting.wrappedValue) owner=\(owner.wrappedValue)")
-            #endif
-            guard !submitting.wrappedValue, value != owner.wrappedValue else { return }
-            presentation.wrappedValue = value
-            submitting.wrappedValue = true
-            let command = make(for: alarm, store: store) {
-                presentation.wrappedValue = owner.wrappedValue
-                submitting.wrappedValue = false
-            }
-            command.wrappedValue = value
-        })
-    }
-
     static func make(for alarm: AlarmDefinition, store: AlarmStore,
                      completed: @escaping @MainActor () -> Void = {}) -> Binding<Bool> {
         // A native control may retain this binding across owner updates to the
@@ -36,31 +17,51 @@ enum AlarmEnabledBinding {
     }
 }
 
-// A native switch edits synchronous presentation state, like the alarm editor.
-// The store remains the only authority for durable configuration and OS effects.
-struct AlarmEnabledToggle: View {
-    let alarm: AlarmDefinition
-    let store: AlarmStore
-    @State private var input: Bool
-    @State private var submitting = false
+// Only an in-flight request is local. Idle presentation always reads the current
+// owner by stable identity, including external changes and removal.
+@MainActor
+@Observable
+final class AlarmEnabledInput {
+    private let alarm: AlarmDefinition
+    private let store: AlarmStore
+    private var requested: Bool?
 
     init(alarm: AlarmDefinition, store: AlarmStore) {
-        self.alarm = alarm; self.store = store
-        _input = State(initialValue: store.definition(alarm.id)?.enabled ?? false)
+        self.alarm = alarm
+        self.store = store
     }
 
-    private var owner: Binding<Bool> { AlarmEnabledBinding.make(for: alarm, store: store) }
+    var value: Bool { requested ?? store.definition(alarm.id)?.enabled ?? false }
+    var isSubmitting: Bool { requested != nil }
+    var isEnabled: Bool { !isSubmitting && !store.isBusy && store.definition(alarm.id) != nil }
+
+    var binding: Binding<Bool> {
+        Binding(get: { self.value }, set: { value in
+            guard self.isEnabled, value != self.value else { return }
+            self.requested = value
+            let command = AlarmEnabledBinding.make(for: self.alarm, store: self.store) {
+                // The owner reconciles success, denial and partial failure before
+                // returning. Dropping the request exposes that exact outcome.
+                self.requested = nil
+            }
+            command.wrappedValue = value
+        })
+    }
+}
+
+struct AlarmEnabledToggle: View {
+    @State private var input: AlarmEnabledInput
+    private let identifier: String
+
+    init(alarm: AlarmDefinition, store: AlarmStore) {
+        _input = State(initialValue: AlarmEnabledInput(alarm: alarm, store: store))
+        identifier = "alarm.enabled." + alarm.id.uuidString
+    }
 
     var body: some View {
-        HStack {
-            Text("Alarm enabled").accessibilityHidden(true)
-            Spacer()
-            NativeAlarmSwitch(binding: AlarmEnabledBinding.input(for: alarm, store: store,
-                presentation: $input, submitting: $submitting), enabled: !submitting && !store.isBusy,
-                identifier: "alarm.enabled." + alarm.id.uuidString)
-        }
-            .onChange(of: owner.wrappedValue) { _, value in
-                if !submitting { input = value }
-            }
+        Toggle("Alarm enabled", isOn: input.binding)
+            .toggleStyle(.switch)
+            .disabled(!input.isEnabled)
+            .accessibilityIdentifier(identifier)
     }
 }

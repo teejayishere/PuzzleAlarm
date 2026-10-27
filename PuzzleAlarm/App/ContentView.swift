@@ -70,7 +70,7 @@ struct ContentView: View {
                                 Text(AlarmFormatting.challenges(alarm))
                                 Text(SoundChoice(alarm.selectedSound).title).foregroundStyle(.secondary)
                             }.foregroundStyle(.primary).frame(maxWidth: .infinity, alignment: .leading)
-                        }.accessibilityIdentifier("alarm.edit." + alarm.id.uuidString)
+                        }.buttonStyle(.borderless).accessibilityIdentifier("alarm.edit." + alarm.id.uuidString)
                         AlarmEnabledToggle(alarm: alarm, store: store)
                         Text(store.status(alarm)).accessibilityIdentifier("alarm.status." + alarm.id.uuidString)
                         if let date = store.nextOccurrence(alarm) {
@@ -101,7 +101,7 @@ struct ContentView: View {
             }
             .disabled(store.isBusy)
             .refreshable { await store.refresh() }
-            .sheet(item: $draft) { value in AlarmEditorView(store: store, initial: value) }
+            .sheet(item: $draft) { value in AlarmEditorView(store: store, initial: value).id(value.id) }
             .onChange(of: store.routeRevision) { _, _ in
                 if let id = store.wakeUpSessionID, path != [id] {
                     draft = nil

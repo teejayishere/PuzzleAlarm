@@ -1,0 +1,103 @@
+name: Controlled Gate 6 replacement
+on:
+  workflow_dispatch:
+    inputs:
+      candidate:
+        description: Frozen full candidate SHA (must match dispatched ref)
+        required: true
+permissions:
+  contents: read
+jobs:
+  gate6:
+    if: github.event.repository.private == false && github.ref == 'refs/heads/codex/gate6-controlled-reset'
+    strategy:
+      fail-fast: true
+      matrix:
+        lane: [list, editor]
+    runs-on: macos-26
+    timeout-minutes: 40
+    steps:
+      - name: Start absolute budget and verify frozen candidate
+        env:
+          CANDIDATE: ${{ inputs.candidate }}
+        run: |
+          echo "GATE6_RESET_START=$(date +%s)" >> "$GITHUB_ENV"
+          test "$GITHUB_SHA" = "$CANDIDATE"
+          test "$GITHUB_RUN_ATTEMPT" = 1
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Record toolchain and install pinned generator
+        timeout-minutes: 4
+        run: |
+          mkdir -p TestResults
+          { sw_vers; xcodebuild -version; swift --version; } > TestResults/toolchain.log
+          bash Scripts/install_xcodegen.sh
+      - name: Generate and boot independent Simulator
+        timeout-minutes: 5
+        run: |
+          set -euo pipefail
+          xcodegen generate --spec project.yml
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
+          xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
+          simulator_id="$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)"
+          echo "SIMULATOR_ID=$simulator_id" >> "$GITHUB_ENV"
+          xcrun simctl bootstatus "$simulator_id" -b
+      - name: Focused owner and input contracts
+        if: matrix.lane == 'list'
+        run: |
+          python3 Scripts/run_gate6_reset.py contracts xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Contracts.xcresult \
+            -only-testing:PuzzleAlarmTests/AlarmStoreTests \
+            -only-testing:PuzzleAlarmTests/AlarmEnabledInputTests \
+            -only-testing:PuzzleAlarmTests/AlarmEditorDraftTests \
+            -only-testing:PuzzleAlarmTests/PersistenceIntegrationTests \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test
+      - name: Ten unchanged ordinary list flows
+        if: matrix.lane == 'list'
+        run: |
+          python3 Scripts/run_gate6_reset.py ten-list xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/TenList.xcresult \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest \
+            -run-tests-until-failure -test-iterations 10 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test
+      - name: Remaining Gate 6 management coverage
+        if: matrix.lane == 'list'
+        run: |
+          python3 Scripts/run_gate6_reset.py management xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Management.xcresult \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests \
+            -skip-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest \
+            -skip-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditorEnabledTogglePersistsAfterRepeatedNativeInput \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test
+      - name: Unchanged independent editor declaration
+        if: matrix.lane == 'editor'
+        run: |
+          python3 Scripts/run_gate6_reset.py editor xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/Editor.xcresult \
+            -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditorEnabledTogglePersistsAfterRepeatedNativeInput \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test
+      - name: Review Xcode warnings
+        run: python3 Scripts/check_xcode_diagnostics.py TestResults/*.log
+      - name: Preserve available ordinary fixture journals
+        if: always()
+        run: |
+          mkdir -p TestResults
+          python3 - <<'PY'
+          from pathlib import Path
+          files = list((Path.home() / "Library/Developer/CoreSimulator/Devices").glob(
+              "*/data/Containers/Data/Application/*/tmp/toggle-input-diagnostic.log"))
+          Path("TestResults/existing-fixture-journals.log").write_text(
+              "\n".join(str(p) + "\n" + p.read_text(errors="replace") for p in files))
+          PY
+      - name: Preserve original results and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate6-reset-${{ matrix.lane }}
+          path: TestResults/
+          if-no-files-found: warn
+          retention-days: 30

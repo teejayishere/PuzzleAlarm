@@ -11,6 +11,18 @@ Only focused Gate 6 validation is authorized: one frozen attempt, at most two
 Historical budgets remain exhausted; exception revoked; Gates 7–13 remain held.
 Earlier full-replay instructions apply to separately scoped downstream replay.
 
+| Replacement contract | Focused coverage |
+| --- | --- |
+| Live owner/removal and completion | Original retained binding and owner completion tests; new AlarmEnabledInput retained-binding/removal case |
+| Synchronous pending, duplicate/disabled input, all outcomes | Original pending test adapted to the observable input, every original assertion retained; added write failure/recovery; new busy-owner case |
+| Standard native control, exact values/readiness and one action | Original management UI tests and helpers unchanged; ten ordinary list flows, independent cold editor once |
+| Persistence/configuration/error/retry and saved-row reopening | AlarmStoreTests, AlarmEditorDraftTests, PersistenceIntegrationTests; all eleven management declarations partitioned across the two jobs |
+| Deleted bridge-specific target/rebind/teardown test | Bridge removed, so target lifecycle mechanics no longer exist; native UI plus retained/disabled/pending behavior above replace its behavioral duties. Full rationale in controlling decision |
+
+Windows: four offline budget-wrapper checks PASS and parsed workflow bounds/branch
+exclusions PASS; no local Swift/Xcode/Simulator execution. Candidate execution is
+pending. Source/Core/Stage 13 preservation reviewed separately from test evidence.
+
 ## Stage 13 attempt — STOP / Gate 6 FAILED
 
 Exact tested candidate `2b2c81d2277f05eb5d095beb0285d47e58a73cb4`,
