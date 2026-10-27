@@ -1,5 +1,16 @@
 # Test matrix
 
+## Active controlled Gate 6 replacement
+
+[Owner decision and pre-push limits](GATE6_CONTROLLED_RESET.md) govern this task.
+Keep one-action exact native state, pending/error/status, persistence, retained-owner,
+denial/scheduling recovery, ten list flows and independent editor coverage. Any
+adapter-specific test replacement must document equivalent behavior coverage.
+Only focused Gate 6 validation is authorized: one frozen attempt, at most two
+40-minute macOS jobs including preservation, tests stopped by minute 35, no rerun.
+Historical budgets remain exhausted; exception revoked; Gates 7–13 remain held.
+Earlier full-replay instructions apply to separately scoped downstream replay.
+
 ## Stage 13 attempt — STOP / Gate 6 FAILED
 
 Exact tested candidate `2b2c81d2277f05eb5d095beb0285d47e58a73cb4`,

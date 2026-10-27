@@ -1,5 +1,14 @@
 # Project state
 
+## Active scope — owner-approved controlled Gate 6 reset
+
+**[Controlling decision and frozen validation limits](GATE6_CONTROLLED_RESET.md).**
+Replacement development is authorized on `codex/gate6-controlled-reset` from the
+Stage 13 closeout. Main, Stage 13 source/tests and historical evidence are preserved.
+Gate 6 remains FAILED / HELD; Gates 7–13 INVALIDATED / HELD. Historical budgets
+remain EXHAUSTED and the exception REVOKED. Earlier STOP entries remain historical;
+the linked decision governs only this replacement. No downstream work is authorized.
+
 ## October 26, 2026 — Stage 13 STOP at Gate 6 input failure
 
 Current stage: 13 implementation candidate, **BLOCKED / NOT ACCEPTED**. Gate 6 is

@@ -1,5 +1,17 @@
 # PuzzleAlarm — Recursive Self-Correcting Master Development Plan
 
+## Active owner-approved Gate 6 replacement scope
+
+[GATE6_CONTROLLED_RESET.md](GATE6_CONTROLLED_RESET.md) controls the October 26
+replacement task. It permits minimal list/editor input and UI state simplification
+without establishing historical cause or reopening exhausted diagnostics. It
+supersedes conflicting investigation/root-cause-before-replacement and STOP wording
+only within that scope. The historical-risk exception remains revoked. One frozen
+focused attempt, maximum two 40-minute macOS jobs, tests stopped by minute 35;
+tooling failures count, no reruns/probes. Preserve behavioral requirements and
+Stage 13. Stop after failure or replacement evidence success. Gates 7–13 stay held
+pending a separately scoped ordered replay; no downstream development or main promotion.
+
 You are the lead implementation engineer for **PuzzleAlarm**, a personal native iPhone alarm application.
 
 Your job is not merely to generate code.
