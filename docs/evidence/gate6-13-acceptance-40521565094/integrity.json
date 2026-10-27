@@ -1,0 +1,50 @@
+[
+  {
+    "id": 12749151485,
+    "name": "PuzzleAlarm-iPhone-Visual-Demo-f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+    "bytes": 1248134,
+    "sha256": "0904288acf15d06b758a8935364f40f1c0a6c75e6a4c069b3216fa12a3b996f2",
+    "expected": "sha256:0904288acf15d06b758a8935364f40f1c0a6c75e6a4c069b3216fa12a3b996f2",
+    "expires_at": "2026-11-26T15:58:28Z"
+  },
+  {
+    "id": 12749101800,
+    "name": "native-simulator-evidence",
+    "bytes": 459854793,
+    "sha256": "e3587f7722d0e86ae1d37189dd1bbbee9beac66face04e4426f410fbaa301fc2",
+    "expected": "sha256:e3587f7722d0e86ae1d37189dd1bbbee9beac66face04e4426f410fbaa301fc2",
+    "expires_at": "2026-11-03T15:58:34Z"
+  },
+  {
+    "id": 12748872154,
+    "name": "qr-simulator-evidence",
+    "bytes": 1178965,
+    "sha256": "7168462ff26e277ff73fc6c49132cdef8796393ca5ea742d6d884836a6b1aa32",
+    "expected": "sha256:7168462ff26e277ff73fc6c49132cdef8796393ca5ea742d6d884836a6b1aa32",
+    "expires_at": "2026-11-03T15:58:31Z"
+  },
+  {
+    "id": 12748557256,
+    "name": "acceptance-validation-logs",
+    "bytes": 189700,
+    "sha256": "5ba32a94956ae7429fdba02a41403964540f983a020c1768306893b4e0651918",
+    "expected": "sha256:5ba32a94956ae7429fdba02a41403964540f983a020c1768306893b4e0651918",
+    "expires_at": "2026-11-26T15:59:12Z"
+  },
+  {
+    "id": 12742801440,
+    "name": "acceptance-editor",
+    "bytes": 3233308,
+    "sha256": "dfb9d037ec6addd2ed9fb3052dd8b0ab3dc565bee1528c36ff59ec17e58fe45a",
+    "expected": "sha256:dfb9d037ec6addd2ed9fb3052dd8b0ab3dc565bee1528c36ff59ec17e58fe45a",
+    "expires_at": "2026-11-26T14:39:36Z"
+  },
+  {
+    "id": 12741304861,
+    "name": "acceptance-list",
+    "bytes": 78892628,
+    "sha256": "50cf008e688883192887e3cd92bb96aeed66a9e9981f94a3c13e9f05030ad0ad",
+    "expected": "sha256:50cf008e688883192887e3cd92bb96aeed66a9e9981f94a3c13e9f05030ad0ad",
+    "expires_at": "2026-11-26T14:45:45Z"
+  }
+]

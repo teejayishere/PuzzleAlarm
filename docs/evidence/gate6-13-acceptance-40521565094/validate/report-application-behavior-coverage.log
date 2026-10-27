@@ -1,0 +1,49 @@
+QRCodeView.swift: 39/40 lines
+  uncalled 27: variable initialization expression of QRCodeView._sharing
+AlarmEnabledBinding.swift: 64/65 lines
+  uncalled 8: closure #1 in default argument 2 of static AlarmEnabledBinding.make(for:store:completed:)
+SoundPreview.swift: 47/47 lines
+AlarmStorePresentation.swift: 71/72 lines
+  partial 8: AlarmStore.status(_:) 29/30 lines
+AlarmFormatting.swift: 86/86 lines
+AVFoundationQRCodeScanner.swift: 0/173 lines
+  uncalled 5: variable initialization expression of AVFoundationQRCodeScanner.worker
+  uncalled 7: AVFoundationQRCodeScanner.session.getter
+  uncalled 8: AVFoundationQRCodeScanner.deinit
+  uncalled 9: AVFoundationQRCodeScanner.start(_:)
+  uncalled 12: closure #1 in AVFoundationQRCodeScanner.start(_:)
+  uncalled 22: closure #1 in closure #1 in AVFoundationQRCodeScanner.start(_:)
+  uncalled 32: AVFoundationQRCodeScanner.stop()
+  uncalled 38: variable initialization expression of QRCaptureWorker.session
+  uncalled 39: variable initialization expression of QRCaptureWorker.queue
+  uncalled 41: variable initialization expression of QRCaptureWorker.observers
+  uncalled 43: QRCaptureWorker.start(_:)
+  uncalled 44: closure #1 in QRCaptureWorker.start(_:)
+  uncalled 48: closure #1 in closure #1 in QRCaptureWorker.start(_:)
+  uncalled 51: closure #1 in closure #1 in closure #1 in QRCaptureWorker.start(_:)
+  uncalled 87: QRCaptureWorker.stop()
+  uncalled 88: closure #1 in QRCaptureWorker.stop()
+  uncalled 90: closure #1 in closure #1 in QRCaptureWorker.stop()
+  uncalled 94: QRCaptureWorker.send(_:)
+  uncalled 96: closure #1 in QRCaptureWorker.send(_:)
+  uncalled 99: QRCaptureWorker.metadataOutput(_:didOutput:from:)
+AlarmConfigurationFactory.swift: 52/62 lines
+  partial 8: static AlarmConfigurationFactory.presentation(challenge:) 10/17 lines
+  uncalled 57: static AlarmConfigurationFactory.namedSoundConfiguration(for:filename:)
+AppEnvironment.swift: 43/46 lines
+  partial 19: static AppEnvironment.make() 8/11 lines
+AlarmStore.swift: 331/337 lines
+  uncalled 35: closure #1 in default argument 2 of AlarmStore.init(repository:scheduler:clock:makeID:makeMathProblem:makeMemoryRound:context:)
+  uncalled 45: closure #1 in default argument 6 of AlarmStore.init(repository:scheduler:clock:makeID:makeMathProblem:makeMemoryRound:context:)
+  uncalled 57: implicit closure #1 in AlarmStore.alarms.getter
+  uncalled 100: AlarmStore.reportError(_:)
+OpenOccurrenceIntent.swift: 13/14 lines
+  uncalled 5: static OpenOccurrenceIntent.title.getter
+QRCodeScanning.swift: 82/82 lines
+AlarmEditorDraft.swift: 84/88 lines
+  uncalled 17: implicit closure #1 in SoundChoice.init(_:)
+  uncalled 94: implicit closure #1 in AlarmEditorDraft.pickerDate.getter
+  uncalled 97: implicit closure #1 in AlarmEditorDraft.pickerDate.setter
+  uncalled 97: implicit closure #2 in AlarmEditorDraft.pickerDate.setter
+AlarmSoundCatalog.swift: 10/10 lines
+SwiftUI rendering and physical AlarmKit behavior are not inferred from line coverage.

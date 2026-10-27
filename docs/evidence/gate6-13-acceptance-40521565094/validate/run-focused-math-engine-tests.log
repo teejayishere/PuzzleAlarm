@@ -1,0 +1,32 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write swift-version-7974D3F7F03D5E95.txt
+Build complete! (0.32s)
+Test Suite 'Selected tests' started at 2026-10-27 15:17:17.236.
+Test Suite 'PuzzleAlarmPackageTests.xctest' started at 2026-10-27 15:17:17.238.
+Test Suite 'PuzzleAlarmPackageTests.xctest' passed at 2026-10-27 15:17:17.238.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:17:17.238.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.002) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test MathEngineOwnerPersistenceFailureAndConflictReplay() started.
+◇ Test MathEngineRejectsForeignIdentityBadNextAndRegressingTimeAtomically() started.
+◇ Test MathEngineInvalidWrongAndSignedAnswers() started.
+◇ Test MathEngineThresholdRestoreAndDuplicate(_:) started.
+◇ Test MathEngineGenerationBoundsAndIndependentAnswers(_:) started.
+◇ Test MathEngineConflictReplaysAgainstAlreadyAcceptedProblem() started.
+◇ Test case passing 1 argument count → 1 to MathEngineThresholdRestoreAndDuplicate(_:) started.
+◇ Test case passing 1 argument count → 2 to MathEngineThresholdRestoreAndDuplicate(_:) started.
+◇ Test case passing 1 argument count → 20 to MathEngineThresholdRestoreAndDuplicate(_:) started.
+◇ Test case passing 1 argument difficulty → .easy to MathEngineGenerationBoundsAndIndependentAnswers(_:) started.
+◇ Test case passing 1 argument difficulty → .medium to MathEngineGenerationBoundsAndIndependentAnswers(_:) started.
+◇ Test case passing 1 argument difficulty → .hard to MathEngineGenerationBoundsAndIndependentAnswers(_:) started.
+✔ Test MathEngineRejectsForeignIdentityBadNextAndRegressingTimeAtomically() passed after 0.029 seconds.
+✔ Test MathEngineInvalidWrongAndSignedAnswers() passed after 0.029 seconds.
+✔ Test MathEngineThresholdRestoreAndDuplicate(_:) with 3 test cases passed after 0.029 seconds.
+✔ Test MathEngineOwnerPersistenceFailureAndConflictReplay() passed after 0.029 seconds.
+✔ Test MathEngineConflictReplaysAgainstAlreadyAcceptedProblem() passed after 0.029 seconds.
+✔ Test MathEngineGenerationBoundsAndIndependentAnswers(_:) with 3 test cases passed after 0.033 seconds.
+✔ Test run with 6 tests in 0 suites passed after 0.033 seconds.

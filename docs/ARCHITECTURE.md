@@ -2,9 +2,12 @@
 
 ## Stage 13 orchestration
 
-Implementation candidate only: Gate 13 execution was not reached. Exact candidate
-2b2c81d failed the Gate 6 editor input prerequisite; exception reliance is revoked
-and Gates 7–13 are INVALIDATED / HELD. This section describes source, not acceptance.
+Current replacement candidate `f01abf42` completed ordered Gates 6–13 automated/
+Simulator acceptance in run 40521565094, attempt 1, SUCCESS; [original evidence and limits](evidence/gate6-13-acceptance-40521565094/README.md).
+The earlier `2b2c81d` Gate 6 failure/holds remain historical; their causes are unknown,
+diagnostics exhausted and historical-risk exception revoked. The separate replacement
+replay does not invoke that exception. Physical-device acceptance remains NOT RUN.
+Source below is unchanged; no Stage 14, UX work or main promotion is authorized.
 
 AlarmStore's three engine submission paths share `reconcileCompletedSequence`.
 The engine result describes challenge completion; only the saved session's
@@ -551,7 +554,6 @@ Move Up/Move Down actions. Critical controls have stable accessibility identifie
 No final App Intent/due-session routing, challenge execution, camera, generated sound
 resources or physical-device validation is implemented in Stage 6.
 
-
 Gate 6 implementation evidence: 73971f054d4e74949e6aa0eb32aa026d0d6dc93d,
 https://github.com/teejayishere/PuzzleAlarm/actions/runs/37728785501 (full PASS).
 Native challenge additions use explicit Add Math / Add Memory / Add QR Code buttons;
@@ -680,7 +682,6 @@ interruption/route changes/media reset. No background playback entitlement, new
 lifecycle owner, microphone request, persistence schema or Stage 12 routing.
 See AUDIO_CAPABILITIES for the separate import/default-preview capability boundary.
 Actual alarm playback remains device-only; AVAudioPlayer does not replace AlarmKit.
-
 
 The alarm list retains the native SwiftUI Toggle, bound to synchronous row-local
 input like the editor. While a command is pending, that control is disabled. Its

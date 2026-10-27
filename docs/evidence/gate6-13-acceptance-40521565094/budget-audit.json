@@ -1,0 +1,20 @@
+[
+  {
+    "lane": "acceptance-list",
+    "budget_start_after_job_seconds": 2.0,
+    "last_command_complete_minutes": 16.343996433417,
+    "commands": 6
+  },
+  {
+    "lane": "acceptance-editor",
+    "budget_start_after_job_seconds": 2.0,
+    "last_command_complete_minutes": 10.224419915676117,
+    "commands": 5
+  },
+  {
+    "lane": "acceptance-validation-logs",
+    "budget_start_after_job_seconds": 3.0,
+    "last_command_complete_minutes": 72.16953413089117,
+    "commands": 39
+  }
+]

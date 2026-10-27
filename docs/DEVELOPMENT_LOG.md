@@ -1,5 +1,41 @@
 # Development log
 
+## October 27, 2026 — single ordered replacement acceptance PASS / STOP
+
+Pre-push frozen f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc / run 40521565094,
+attempt 1, push, complete SUCCESS. Exact run SHA and local/remote HEAD match.
+Other exact-SHA reset run 40521565633 SKIPPED; no duplicate allocations. Three
+free standard macos-26 jobs, all required assigned steps passed; matrix counterpart
+skips are intentional lane partitioning. Durations including preservation list
+16m49s, editor 10m39s, validate 73m18s below 40/25/85. Last bounded commands from
+actual job start 16.344/10.224/72.170m, first budget overhead 2/2/3s, no deadline
+overrun. All three allocations consumed, one attempt closed; no rerun, source
+repair, extra tap, probe, retry-to-green or diagnostic-budget reset.
+
+37 Gate 6 replacement native contracts, ten ordinary list flows and independent
+cold editor once PASS; all eleven management declarations pass before downstream.
+Gates 7–13 execute in dependency order, all ten A–J pass. Complete regression:
+148 Core / 79 native / 20 UI PASS; repeated focused cases not inflated as unique.
+Xcode 26.6 / Swift 6.3.3, iPhone 17 iOS 26.5 Debug/Release, reproducibility, installed
+SDK declarations, resources/plists, Release fixture exclusion, coverage/uncovered
+reports, diagnostics and original screenshot export PASS. Core 2266/2279 covered.
+No compiler/destination warnings; known metadata and Actions advisories preserved.
+Source/local tooling evidence remains separate from Xcode/Simulator/device evidence.
+
+[original evidence and limits](evidence/gate6-13-acceptance-40521565094/README.md). All six original ZIP hashes match Actions; CRC checks
+PASS. Complete logs/metadata/commands and small ZIPs published durably; large list
+and native ZIPs/all xcresults retained locally with explicit Actions expiry limits.
+Legacy optional gallery's stale source/stage labels disclosed, not repaired or
+used as acceptance evidence. Product/Core/native/UI sources/assertions unchanged.
+
+Gates 6–13 PASS within the separate owner-authorized replacement automated/
+Simulator acceptance scope. Historical causes unknown, budgets EXHAUSTED, exception
+REVOKED; no exception reliance or historical root-cause claim. Physical device
+DEVICE REQUIRED / NOT RUN. Main remains bd069f29c6d045d5bc27fc56212edcbde2090855,
+unpromoted; no Stage 14/UX/device reliability work. Evidence-only documentation
+publication is a separate SHA with record-only skipped CI, not new product PASS.
+STOP after closeout; no further execution or development queued.
+
 ## October 27, 2026 — bounded acceptance preparation
 
 Owner separately authorizes one replacement acceptance attempt through Gate 13,
@@ -666,7 +702,6 @@ affected dependent gates invalidated before ordered replay. Stop after Gate 12.
 
 Record requested post-Gate-13 UX roadmap in MASTER_PLAN; no redesign in this stage.
 
-
 ## Documentation-only visual demo — October 16, 2026
 
 Read project state first and inspected main, CI jobs/steps, source and fixtures.
@@ -1043,7 +1078,6 @@ Earlier gates invalidated: None. Rerun full CI with core regressions before Gate
   camera, QR scanner, audio, persistence, scheduling effects or challenge UI.
 - Cost: public repository, standard macos-26, signing disabled for Simulator,
   no credentials, larger runner or artifact storage added.
-
 
 ## Stage 2, attempt 2 — 2026-10-02
 
@@ -2065,7 +2099,6 @@ This distinguishes local-draft binding behavior from the owner-backed control
 without editor/list warm-up or initial-On differences. No production UI/state
 change is made based on this hypothesis. All exact outcome assertions remain.
 
-
 ### Stage 11 corrected-source acceptance — 2026-10-16
 
 2b1135214995d20b7eb429e68594f1c2ab65d9ad / run 38868972349 attempt 1 is complete
@@ -2110,7 +2143,6 @@ main pass. The immutable final-main SHA/run belongs in the task report after tha
 verification, avoiding a self-reference commit loop. Reopen earliest affected gate
 and dependents if final replay fails. Stage 12 NOT STARTED; stop after closeout.
 
-
 ### Exact-main failure reopens Gate 6 — synchronous native input experiment
 
 f21f46949c9bbc8d70940213f7219ac322fbd134 / 38877456923 FAILED. Independent editor
@@ -2138,7 +2170,6 @@ production-used. Add UI denied native enable -> Off, pending released, error vis
 Off after relaunch. Keep original ten ordinary list repetitions, independent cold
 editor, all exact transitions and ordered full regression. No repeat tap/longer wait
 or outcome weakening. Updated source/CI and then exact final main are required.
-
 
 ### Synchronous native input — complete corrected-source acceptance
 
@@ -2179,7 +2210,6 @@ verify the complete exact-main workflow. If final replay fails, reopen earliest
 affected gate and dependents. Final immutable SHA/run belongs in task report without
 a follow-up self-reference commit. Actual audio/AlarmKit/camera/provisioning/native
 input device requirements remain NOT RUN. Stop after closeout; no Stage 12.
-
 
 ### Buffered passive-capture experiment — stopped on tooling invocation
 

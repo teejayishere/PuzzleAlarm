@@ -1,0 +1,56 @@
+[0/1] Planning build
+Building for debugging...
+[0/2] Write swift-version-7974D3F7F03D5E95.txt
+Build complete! (0.40s)
+Test Suite 'Selected tests' started at 2026-10-27 15:17:15.266.
+Test Suite 'PuzzleAlarmPackageTests.xctest' started at 2026-10-27 15:17:15.273.
+Test Suite 'PuzzleAlarmPackageTests.xctest' passed at 2026-10-27 15:17:15.273.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:17:15.273.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.008) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test ChallengeCoordinatorNonactiveSessionsCannotStartOrSolve() started.
+◇ Test ChallengeCoordinatorRejectsRegressingAndNonfiniteTimeAtomically() started.
+◇ Test ChallengeCoordinatorRestoresProgressAndCheckpointAndClearsOnAdvance() started.
+◇ Test ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test ChallengeCoordinatorPersistenceFailureRestoresCommittedProgress() started.
+◇ Test case passing 1 argument order → [0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [0, 1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [0, 2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1, 0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1, 2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2, 0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2, 1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [0, 1, 2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [0, 2, 1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1, 0, 2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1, 2, 0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2, 0, 1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2, 1, 0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [0, 1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [0, 2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [1, 0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [1, 2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [2, 0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [2, 1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [0, 1, 2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [0, 2, 1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [1, 0, 2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [1, 2, 0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [2, 0, 1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [2, 1, 0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+✔ Test ChallengeCoordinatorNonactiveSessionsCannotStartOrSolve() passed after 0.054 seconds.
+✔ Test ChallengeCoordinatorRejectsRegressingAndNonfiniteTimeAtomically() passed after 0.054 seconds.
+✔ Test ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) with 15 test cases passed after 0.054 seconds.
+✔ Test ChallengeCoordinatorRestoresProgressAndCheckpointAndClearsOnAdvance() passed after 0.054 seconds.
+✔ Test ChallengeCoordinatorPersistenceFailureRestoresCommittedProgress() passed after 0.051 seconds.
+✔ Test ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) with 15 test cases passed after 0.055 seconds.
+✔ Test run with 6 tests in 0 suites passed after 0.056 seconds.

@@ -1,0 +1,57 @@
+Skipped export for AlarmManagementUITests/testAudioPreviewStopsOnSelectionNavigationBackgroundAndRelaunch(): no matching attachments
+
+Skipped export for AlarmManagementUITests/testAuthorizationAndLargeTextControls(): no matching attachments
+
+Exported 3 attachments for: AlarmManagementUITests/testChallengeConfigurationOrderAndSettingsSurviveSaveReloadAndEdit():
+File: 3CC4B6C6-7D70-497E-9023-939B21424777.png, suggested name: "PuzzleAlarm-demo-05-math-configuration_0_0A577488-2AA1-4307-86F7-AFE0C2419ACD.png"
+File: AB4F632C-4ABE-4B2D-871E-D449CEA07D03.png, suggested name: "PuzzleAlarm-demo-06-memory-configuration_0_DDB3B820-2921-4421-A51B-44ACAE017330.png"
+File: 72C34D18-292D-4E7D-8EF3-7ED74F105227.txt, suggested name: "Complete Issue Description.txt"
+
+Skipped export for AlarmManagementUITests/testDeleteCleanupFailureKeepsAlarmVisible(): no matching attachments
+
+Skipped export for AlarmManagementUITests/testDeleteConfirmationCancelAndSuccessfulCleanup(): no matching attachments
+
+Exported 1 attachment for: AlarmManagementUITests/testDeniedNativeEnableReconcilesOffAndRemainsUsableAfterRelaunch():
+File: 0265A154-F4FB-41DD-BFD0-83F09661A8AB.txt, suggested name: "Complete Issue Description.txt"
+
+Exported 2 attachments for: AlarmManagementUITests/testEditChangesConfigurationWithoutChangingIdentity():
+File: 53F78BFC-C06C-4F29-8975-4E486F249864.png, suggested name: "PuzzleAlarm-demo-03-edit-alarm_0_38ED23B7-006F-420F-A4A3-BC313A94292A.png"
+File: 4B979344-2C2C-40B4-8242-BCF8721EA9C7.txt, suggested name: "Complete Issue Description.txt"
+
+Exported 1 attachment for: AlarmManagementUITests/testEditorEnabledTogglePersistsAfterRepeatedNativeInput():
+File: C56830D8-B60A-4A8F-B346-D01B55392347.txt, suggested name: "Complete Issue Description.txt"
+
+Exported 4 attachments for: AlarmManagementUITests/testEmptyAddPersistsTimeWeekdaysModeAndSoundAcrossRelaunch():
+File: DF00F8B8-72A4-4964-B20E-3A150CE0F42C.png, suggested name: "PuzzleAlarm-demo-01-alarm-list_0_211F35A5-C1C9-4800-AB70-7EBADA69D51C.png"
+File: 6F73E2A2-B5A6-40BE-BB9E-CF3A0AE75389.png, suggested name: "PuzzleAlarm-demo-07-sound-selection_0_676898F6-743A-469D-8DC2-E1BE9C89D6F3.png"
+File: 9F02657F-1AE2-4FA0-B130-521D32E6C75B.png, suggested name: "PuzzleAlarm-demo-04-repeat_0_7B26E0A2-3CB8-4FB4-A54E-5C6AFB884723.png"
+File: 9BF31E35-AF01-4CE5-8B4F-85497D650970.png, suggested name: "PuzzleAlarm-demo-02-create-alarm_0_5F103C60-491E-47A0-997B-38E4DCA6E7AA.png"
+
+Skipped export for AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest(): no matching attachments
+
+Skipped export for AlarmManagementUITests/testOneTimeAndCancelDraftRemainDistinctFromDaily(): no matching attachments
+
+Generated manifest file with attachment details: /Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/DemoAttachments/Management/manifest.json
+Exported 1 attachment for: MathChallengeUITests/testTypedAnswersRestoreProgressAndComplete():
+File: BB96E274-EBD4-4F1E-8DD4-71177DF02B61.png, suggested name: "PuzzleAlarm-demo-08-math-challenge_0_F031BAB9-2523-48E3-B9C8-A881B4BBCD6C.png"
+
+Generated manifest file with attachment details: /Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/DemoAttachments/Math/manifest.json
+Exported 1 attachment for: MemoryChallengeUITests/testInterruptVisibleRoundAndRecreateViewWithoutReveal():
+File: 84799843-3A9B-4E3B-8633-7812ED8D5A77.txt, suggested name: "Complete Issue Description.txt"
+
+Exported 2 attachments for: MemoryChallengeUITests/testRecallWrongFreshRoundRelaunchAndCompletion():
+File: 5D63DB82-023F-4591-9549-0A13ED43886F.png, suggested name: "PuzzleAlarm-demo-09-memory-challenge_0_852D9EA0-50DD-4109-8429-1A9D1DFD3F27.png"
+File: 343B6973-C7A3-41AE-879A-D37C81361E32.txt, suggested name: "Complete Issue Description.txt"
+
+Generated manifest file with attachment details: /Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/DemoAttachments/Memory/manifest.json
+Skipped export for QRChallengeUITests/testDeniedUnavailableAndOrderedNextChallenge(): no matching attachments
+
+Exported 2 attachments for: QRChallengeUITests/testDisplayShareAndPersistedConfiguration():
+File: 5495D1E9-CA6B-4848-B9A8-9260A53F9381.png, suggested name: "QR native share sheet_0_E6B7AD9B-6B36-4770-A30D-F145E2139B5C.png"
+File: 603F7D2A-7C20-425A-B8F1-A97AA0EA6A4B.png, suggested name: "PuzzleAlarm-demo-11-qr-code-display_0_F61C15B5-A995-48D9-AD2A-734F2C384EF9.png"
+
+Exported 1 attachment for: QRChallengeUITests/testWrongInterruptionBackgroundRecreationRelaunchAndCompletion():
+File: 5A8C42CB-642E-4967-B42B-3FDED14311F5.png, suggested name: "PuzzleAlarm-demo-10-qr-challenge_0_38E83372-21CE-49CC-A8D1-D6DCBF662A5D.png"
+
+Generated manifest file with attachment details: /Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/DemoAttachments/QR/manifest.json
+Exported 11 actual Simulator screenshots and offline gallery to TestResults/PuzzleAlarm-Visual-Demo

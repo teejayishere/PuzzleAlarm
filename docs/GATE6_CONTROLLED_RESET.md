@@ -1,5 +1,10 @@
 # Owner-approved controlled Gate 6 reset
 
+The focused task below remains closed. The owner's separate October 27
+[GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md) replay completed SUCCESS at `f01abf42`, run 40521565094,
+attempt 1, ordered Gates 6–13 automated/Simulator PASS; see [original evidence and limits](evidence/gate6-13-acceptance-40521565094/README.md).
+This does not reopen historical diagnostics or the revoked exception. STOP.
+
 ## Result — focused replacement PASS, STOP
 
 Frozen `8a236a03f0c19eb70863ddd7d290a70fb90efa73`,

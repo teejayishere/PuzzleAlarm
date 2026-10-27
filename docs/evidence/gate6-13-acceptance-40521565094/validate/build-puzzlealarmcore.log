@@ -1,0 +1,28 @@
+Building for debugging...
+[0/2] Write sources
+[1/2] Write swift-version-7974D3F7F03D5E95.txt
+[3/19] Compiling PuzzleAlarmCore MathEngine.swift
+[4/19] Compiling PuzzleAlarmCore MathLifecycle.swift
+[5/19] Compiling PuzzleAlarmCore MemoryEngine.swift
+[6/19] Compiling PuzzleAlarmCore MemoryLifecycle.swift
+[7/19] Compiling PuzzleAlarmCore Models.swift
+[8/19] Compiling PuzzleAlarmCore PuzzleAlarmCore.swift
+[9/19] Compiling PuzzleAlarmCore PuzzleAlarmRepository.swift
+[10/19] Compiling PuzzleAlarmCore QREngine.swift
+[11/26] Compiling PuzzleAlarmCore AlarmLifecycleCoordinator.swift
+[12/26] Compiling PuzzleAlarmCore AlarmScheduling.swift
+[13/26] Compiling PuzzleAlarmCore ChallengeCoordinator.swift
+[14/26] Compiling PuzzleAlarmCore Challenges.swift
+[15/26] Compiling PuzzleAlarmCore DiskRepository.swift
+[16/26] Compiling PuzzleAlarmCore LifecycleEffects.swift
+[17/26] Compiling PuzzleAlarmCore LifecycleOperation.swift
+[18/26] Compiling PuzzleAlarmCore LifecycleRecovery.swift
+[19/26] Emitting module PuzzleAlarmCore
+[20/26] Compiling PuzzleAlarmCore QRLifecycle.swift
+[21/26] Compiling PuzzleAlarmCore ReconciliationInventory.swift
+[22/26] Compiling PuzzleAlarmCore RepositoryState.swift
+[23/26] Compiling PuzzleAlarmCore ResumeCheckpoint.swift
+[24/26] Compiling PuzzleAlarmCore Scheduling.swift
+[25/26] Compiling PuzzleAlarmCore WakeUpRouting.swift
+[26/26] Compiling PuzzleAlarmCore WakeUpSession.swift
+Build complete! (14.51s)

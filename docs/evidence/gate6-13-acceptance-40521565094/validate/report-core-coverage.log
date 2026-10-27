@@ -1,0 +1,30 @@
+## Core line coverage
+
+| Source | Covered lines | Total lines | Percent |
+| --- | ---: | ---: | ---: |
+| AlarmLifecycleCoordinator.swift | 295 | 296 | 99.66% |
+| AlarmScheduling.swift | 22 | 23 | 95.65% |
+| ChallengeCoordinator.swift | 58 | 58 | 100.00% |
+| Challenges.swift | 72 | 72 | 100.00% |
+| DiskRepository.swift | 91 | 92 | 98.91% |
+| LifecycleEffects.swift | 327 | 329 | 99.39% |
+| LifecycleOperation.swift | 76 | 77 | 98.70% |
+| LifecycleRecovery.swift | 319 | 321 | 99.38% |
+| MathEngine.swift | 79 | 80 | 98.75% |
+| MathLifecycle.swift | 61 | 61 | 100.00% |
+| MemoryEngine.swift | 89 | 89 | 100.00% |
+| MemoryLifecycle.swift | 80 | 80 | 100.00% |
+| Models.swift | 60 | 60 | 100.00% |
+| PuzzleAlarmRepository.swift | 63 | 63 | 100.00% |
+| QREngine.swift | 15 | 15 | 100.00% |
+| QRLifecycle.swift | 21 | 21 | 100.00% |
+| ReconciliationInventory.swift | 48 | 48 | 100.00% |
+| RepositoryState.swift | 89 | 89 | 100.00% |
+| ResumeCheckpoint.swift | 52 | 52 | 100.00% |
+| Scheduling.swift | 69 | 71 | 97.18% |
+| WakeUpRouting.swift | 23 | 23 | 100.00% |
+| WakeUpSession.swift | 257 | 259 | 99.23% |
+
+Total: 2266/2279 lines (99.43%).
+Line coverage is not evidence of physical alarm behavior or exhaustive branch correctness.
+

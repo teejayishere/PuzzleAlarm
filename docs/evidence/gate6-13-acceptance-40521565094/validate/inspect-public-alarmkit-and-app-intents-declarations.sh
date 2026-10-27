@@ -1,0 +1,1 @@
+python3 Scripts/inspect_alarmkit_sdk.py

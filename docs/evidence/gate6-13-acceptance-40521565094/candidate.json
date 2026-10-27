@@ -1,0 +1,15 @@
+{
+  "main": "bd069f29c6d045d5bc27fc56212edcbde2090855",
+  "branch": "codex/gate6-controlled-reset",
+  "max_jobs": 3,
+  "baseline": "55695fd7acdaec5642e5642137a6ded6e1c911c0",
+  "scope": "docs/GATE6_13_ACCEPTANCE.md",
+  "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+  "ceilings_minutes": [
+    40,
+    25,
+    85
+  ],
+  "frozen_at_utc": "2026-10-27T14:28:58.5354659Z",
+  "attempts": 1
+}

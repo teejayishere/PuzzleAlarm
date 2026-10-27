@@ -1,0 +1,119 @@
+[0/1] Planning build
+Building for debugging...
+[0/6] /Users/runner/work/PuzzleAlarm/PuzzleAlarm/.build/arm64-apple-macosx/debug/PuzzleAlarmPackageTests.derived/runner.swift
+[1/6] Write sources
+[3/6] Write swift-version-7974D3F7F03D5E95.txt
+[5/21] Compiling PuzzleAlarmCoreTests ChallengeCoordinatorTests.swift
+[6/21] Compiling PuzzleAlarmCoreTests DecodingTests.swift
+[7/21] Compiling PuzzleAlarmCoreTests Fixtures.swift
+[8/21] Compiling PuzzleAlarmCoreTests LifecycleAdversarialTests.swift
+[9/21] Compiling PuzzleAlarmCoreTests LifecycleCommandTests.swift
+[10/21] Compiling PuzzleAlarmCoreTests LifecycleFixtures.swift
+[11/21] Compiling PuzzleAlarmCoreTests LifecycleRecoveryTests.swift
+[12/21] Compiling PuzzleAlarmCoreTests LifecycleRecurrenceTests.swift
+[13/21] Compiling PuzzleAlarmCoreTests LifecycleTests.swift
+[14/21] Compiling PuzzleAlarmCoreTests MathEngineTests.swift
+[15/21] Compiling PuzzleAlarmCoreTests MemoryEngineTests.swift
+[16/21] Compiling PuzzleAlarmCoreTests ModelTests.swift
+[17/21] Compiling PuzzleAlarmCoreTests PersistenceTests.swift
+[18/21] Compiling PuzzleAlarmCoreTests QREngineTests.swift
+[19/21] Emitting module PuzzleAlarmCoreTests
+[20/27] Compiling PuzzleAlarmCoreTests QRLifecycleTests.swift
+[21/27] Compiling PuzzleAlarmCoreTests RecoveryInvariantTests.swift
+[22/27] Compiling PuzzleAlarmCoreTests SchedulingTests.swift
+[23/27] Compiling PuzzleAlarmCoreTests SessionTests.swift
+[24/27] Compiling PuzzleAlarmCoreTests ToolchainTests.swift
+[25/27] Compiling PuzzleAlarmCoreTests WakeUpRoutingTests.swift
+[26/29] Emitting module PuzzleAlarmPackageTests
+[27/29] Compiling PuzzleAlarmPackageTests runner.swift
+[27/29] Write Objects.LinkFileList
+[28/29] Linking PuzzleAlarmPackageTests
+Build complete! (26.74s)
+Test Suite 'Selected tests' started at 2026-10-27 14:47:49.090.
+Test Suite 'PuzzleAlarmPackageTests.xctest' started at 2026-10-27 14:47:49.096.
+Test Suite 'PuzzleAlarmPackageTests.xctest' passed at 2026-10-27 14:47:49.096.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 14:47:49.096.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.006) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite "Persistence" started.
+◇ Test MathEngineOwnerPersistenceFailureAndConflictReplay() started.
+◇ Test ChallengeCoordinatorPersistenceFailureRestoresCommittedProgress() started.
+◇ Test emptyAndDetachedLedgerRemainHonest() started.
+◇ Test configurationPermutationsRoundTrip() started.
+◇ Test mathProblemSurvivesWithoutDuplicatingProgressCounter() started.
+◇ Test duplicateOwnershipAcrossSessionsIsRejected() started.
+◇ Test malformedTruncatedAndInvalidConfigurationFailClosed() started.
+◇ Test duplicateDefinitionsSessionsAndCompetingLedgerAuthorityAreRejected() started.
+◇ Test memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test separateDiskActorsDoNotLoseConcurrentWrites() started.
+◇ Test checkpointMismatchAndMalformedSequencesAreRejected() started.
+◇ Test diskFailedWritePreservesPriorDocumentAndReportsInterruptedWrite() started.
+◇ Test realFilesystemWriteAndReadErrorsAreSurfaced() started.
+◇ Test diskCorruptionIsRetainedAndCannotBeOverwritten() started.
+◇ Test schemaAndWholeDocumentRoundTrip() started.
+◇ Test staleWritersCannotOverwriteNewerState() started.
+◇ Test qrPersistsTokenWithoutCameraState() started.
+◇ Test invalidCommitCannotDamageKnownGoodState() started.
+◇ Test diskMissingSaveReplaceAndReload() started.
+◇ Test invalidOwnershipAndTimestampDecodeAreRejected() started.
+◇ Test reconciliationInventoryRecognizesMissingStaleAndOrphanedIDs() started.
+◇ Test interruptedInitialWriteNeverLooksLikeEmptyRepository() started.
+◇ Test cancelledIDsStillPresentAreStaleNotNewSessions() started.
+◇ Test realDiskReadFailureIsNotMissing() started.
+◇ Test missingAndExplicitlyEmptyAreDistinct() started.
+◇ Test completedSessionRemainsCompletedOnRepeatedReload() started.
+◇ Test restoredLedgerKeepsExactlyOnePrimaryAndFourBackups() started.
+◇ Test sessionIndexProgressLedgerAndParentSurviveReload() started.
+◇ Test inMemoryReadWriteFailuresPreserveCommittedBytes() started.
+◇ Test definitionsSaveLoadUpdateDeleteAndMultiple() started.
+◇ Test simultaneousMemoryWritesHaveExactlyOneWinner() started.
+◇ Test allLifecyclePhasesAndUncertainOperationsRoundTrip() started.
+◇ Test unsupportedSchemasNeverBecomeEmpty(_:) started.
+◇ Test parentEditAndDeletionRetainSessionSnapshotAndOwnership() started.
+◇ Test case passing 1 argument phase → .visible to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument phase → .generated to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument phase → .hidden to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument phase → .failed to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument phase → .completed to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument version → 0 to unsupportedSchemasNeverBecomeEmpty(_:) started.
+◇ Test case passing 1 argument version → 3 to unsupportedSchemasNeverBecomeEmpty(_:) started.
+◇ Test case passing 1 argument version → 99 to unsupportedSchemasNeverBecomeEmpty(_:) started.
+✔ Test emptyAndDetachedLedgerRemainHonest() passed after 0.059 seconds.
+✔ Test mathProblemSurvivesWithoutDuplicatingProgressCounter() passed after 0.059 seconds.
+✔ Test ChallengeCoordinatorPersistenceFailureRestoresCommittedProgress() passed after 0.060 seconds.
+✔ Test MathEngineOwnerPersistenceFailureAndConflictReplay() passed after 0.060 seconds.
+✔ Test configurationPermutationsRoundTrip() passed after 0.059 seconds.
+✔ Test duplicateOwnershipAcrossSessionsIsRejected() passed after 0.059 seconds.
+✔ Test malformedTruncatedAndInvalidConfigurationFailClosed() passed after 0.059 seconds.
+✔ Test duplicateDefinitionsSessionsAndCompetingLedgerAuthorityAreRejected() passed after 0.059 seconds.
+✔ Test memoryPhaseNeverBecomesVisibleOnDecode(_:) with 5 test cases passed after 0.059 seconds.
+✔ Test checkpointMismatchAndMalformedSequencesAreRejected() passed after 0.059 seconds.
+✔ Test diskCorruptionIsRetainedAndCannotBeOverwritten() passed after 0.074 seconds.
+✔ Test schemaAndWholeDocumentRoundTrip() passed after 0.074 seconds.
+✔ Test realFilesystemWriteAndReadErrorsAreSurfaced() passed after 0.074 seconds.
+✔ Test invalidCommitCannotDamageKnownGoodState() passed after 0.074 seconds.
+✔ Test staleWritersCannotOverwriteNewerState() passed after 0.074 seconds.
+✔ Test qrPersistsTokenWithoutCameraState() passed after 0.074 seconds.
+✔ Test invalidOwnershipAndTimestampDecodeAreRejected() passed after 0.074 seconds.
+✔ Test diskFailedWritePreservesPriorDocumentAndReportsInterruptedWrite() passed after 0.074 seconds.
+✔ Test reconciliationInventoryRecognizesMissingStaleAndOrphanedIDs() passed after 0.074 seconds.
+✔ Test cancelledIDsStillPresentAreStaleNotNewSessions() passed after 0.073 seconds.
+✔ Test realDiskReadFailureIsNotMissing() passed after 0.073 seconds.
+✔ Test missingAndExplicitlyEmptyAreDistinct() passed after 0.073 seconds.
+✔ Test completedSessionRemainsCompletedOnRepeatedReload() passed after 0.073 seconds.
+✔ Test restoredLedgerKeepsExactlyOnePrimaryAndFourBackups() passed after 0.073 seconds.
+✔ Test interruptedInitialWriteNeverLooksLikeEmptyRepository() passed after 0.074 seconds.
+✔ Test diskMissingSaveReplaceAndReload() passed after 0.074 seconds.
+✔ Test sessionIndexProgressLedgerAndParentSurviveReload() passed after 0.073 seconds.
+✔ Test inMemoryReadWriteFailuresPreserveCommittedBytes() passed after 0.074 seconds.
+✔ Test unsupportedSchemasNeverBecomeEmpty(_:) with 3 test cases passed after 0.074 seconds.
+✔ Test definitionsSaveLoadUpdateDeleteAndMultiple() passed after 0.074 seconds.
+✔ Test parentEditAndDeletionRetainSessionSnapshotAndOwnership() passed after 0.074 seconds.
+✔ Test simultaneousMemoryWritesHaveExactlyOneWinner() passed after 0.075 seconds.
+✔ Test separateDiskActorsDoNotLoseConcurrentWrites() passed after 0.077 seconds.
+✔ Test allLifecyclePhasesAndUncertainOperationsRoundTrip() passed after 0.076 seconds.
+✔ Suite "Persistence" passed after 0.078 seconds.
+✔ Test run with 34 tests in 1 suite passed after 0.079 seconds.

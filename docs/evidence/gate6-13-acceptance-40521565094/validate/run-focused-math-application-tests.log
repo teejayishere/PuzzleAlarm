@@ -1,0 +1,46 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/MathApplication.xcresult "-only-testing:PuzzleAlarmTests/MathStoreTests" -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/MathApplication.xcresult
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Test Suite 'Selected tests' started at 2026-10-27 15:17:37.906.
+Test Suite 'PuzzleAlarmTests.xctest' started at 2026-10-27 15:17:37.907.
+Test Suite 'MathStoreTests' started at 2026-10-27 15:17:37.907.
+Test Case '-[PuzzleAlarmTests.MathStoreTests testPrepareFailedWriteRetryRestorationDuplicatesAndCleanup]' started.
+Test Case '-[PuzzleAlarmTests.MathStoreTests testPrepareFailedWriteRetryRestorationDuplicatesAndCleanup]' passed (0.213 seconds).
+Test Case '-[PuzzleAlarmTests.MathStoreTests testProductionGeneratorAndRevokedAccessDoNotClaimExternalConfirmation]' started.
+Test Case '-[PuzzleAlarmTests.MathStoreTests testProductionGeneratorAndRevokedAccessDoNotClaimExternalConfirmation]' passed (0.049 seconds).
+Test Suite 'MathStoreTests' passed at 2026-10-27 15:17:38.172.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.262 (0.264) seconds
+Test Suite 'PuzzleAlarmTests.xctest' passed at 2026-10-27 15:17:38.173.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.262 (0.265) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:17:38.175.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 0.262 (0.268) seconds
+Resolve Package Graph
+
+2026-10-27 15:17:38.813 xcodebuild[62418:167494] [MT] IDETestOperationsObserverDebug: 10.511 elapsed -- Testing started completed.
+2026-10-27 15:17:38.813 xcodebuild[62418:167494] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 15:17:38.813 xcodebuild[62418:167494] [MT] IDETestOperationsObserverDebug: 10.511 sec, +10.511 sec -- end
+Resolve Package Graph
+
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/MathApplication.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

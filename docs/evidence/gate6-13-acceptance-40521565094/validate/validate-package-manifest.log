@@ -1,0 +1,98 @@
+{
+  "cLanguageStandard" : null,
+  "cxxLanguageStandard" : null,
+  "defaultLocalization" : null,
+  "dependencies" : [
+
+  ],
+  "name" : "PuzzleAlarm",
+  "packageKind" : {
+    "root" : [
+      "/Users/runner/work/PuzzleAlarm/PuzzleAlarm"
+    ]
+  },
+  "pkgConfig" : null,
+  "platforms" : [
+    {
+      "options" : [
+
+      ],
+      "platformName" : "macos",
+      "version" : "13.0"
+    },
+    {
+      "options" : [
+
+      ],
+      "platformName" : "ios",
+      "version" : "26.0"
+    }
+  ],
+  "products" : [
+    {
+      "name" : "PuzzleAlarmCore",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "PuzzleAlarmCore"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    }
+  ],
+  "providers" : null,
+  "swiftLanguageVersions" : null,
+  "targets" : [
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "PuzzleAlarmCore",
+      "packageAccess" : true,
+      "path" : "PuzzleAlarmCore/Sources/PuzzleAlarmCore",
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "PuzzleAlarmCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "PuzzleAlarmCoreTests",
+      "packageAccess" : true,
+      "path" : "PuzzleAlarmCore/Tests/PuzzleAlarmCoreTests",
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    }
+  ],
+  "toolsVersion" : {
+    "_version" : "6.0.0"
+  },
+  "traits" : [
+
+  ]
+}

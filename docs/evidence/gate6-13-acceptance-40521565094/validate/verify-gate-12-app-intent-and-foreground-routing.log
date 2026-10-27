@@ -1,0 +1,194 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/Routing.xcresult "-only-testing:PuzzleAlarmTests/WakeUpRoutingTests" "-only-testing:PuzzleAlarmUITests/WakeUpRoutingUITests" -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/Routing.xcresult
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+2026-10-27 15:28:34.984747+0000 PuzzleAlarmUITests-Runner[87759:233901] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-27 15:28:37.871.
+Test Suite 'PuzzleAlarmUITests.xctest' started at 2026-10-27 15:28:37.871.
+Test Suite 'WakeUpRoutingUITests' started at 2026-10-27 15:28:37.872.
+Test Case '-[PuzzleAlarmUITests.WakeUpRoutingUITests testForegroundReturnsToDueChallengeWithoutStackingDestinations]' started.
+    t =     0.01s Start Test at 2026-10-27 15:28:37.886
+    t =     0.32s Set Up
+    t =     0.35s Open com.teejayishere.PuzzleAlarm
+    t =     0.35s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 15:28:39.416 xcodebuild[86896:231539] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:28:39.416 xcodebuild[86896:231539] [MT] IDELaunchParametersSnapshot: no debugger version
+objc[87759]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x108794310) and /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10883c398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+Resolve Package Graph
+
+    t =     4.42s         Setting up automation session
+    t =     6.66s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     8.68s Waiting 15.0s for "math.prompt" StaticText to exist
+    t =     9.76s     Checking `Expect predicate `existsNoRetry == 1` for object "math.prompt" StaticText`
+    t =     9.76s         Checking existence of `"math.prompt" StaticText`
+    t =     9.97s Find the "math.prompt" StaticText
+    t =    10.02s Tap Button (Element at index 0)
+    t =    10.02s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    10.02s     Find the Button (Element at index 0)
+    t =    10.11s     Check for interrupting elements affecting "BackButton" Button
+    t =    10.23s     Synthesize event
+    t =    10.60s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    11.68s Waiting 10.0s for "math.open" Button to exist
+    t =    12.71s     Checking `Expect predicate `existsNoRetry == 1` for object "math.open" Button`
+    t =    12.71s         Checking existence of `"math.open" Button`
+    t =    12.81s Pressing Home button
+    t =    13.28s Open com.teejayishere.PuzzleAlarm
+    t =    13.28s     Activate com.teejayishere.PuzzleAlarm
+    t =    14.30s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    15.08s Waiting 15.0s for "math.prompt" StaticText to exist
+    t =    16.18s     Checking `Expect predicate `existsNoRetry == 1` for object "math.prompt" StaticText`
+    t =    16.19s         Checking existence of `"math.prompt" StaticText`
+    t =    16.41s Find the "math.progress" StaticText
+    t =    16.49s Checking existence of `"alarms.add" Button`
+    t =    16.53s Tap Button (Element at index 0)
+    t =    16.53s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    16.53s     Find the Button (Element at index 0)
+    t =    16.59s     Check for interrupting elements affecting "BackButton" Button
+    t =    16.67s     Synthesize event
+    t =    17.01s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    17.90s Waiting 10.0s for "math.open" Button to exist
+    t =    18.91s     Checking `Expect predicate `existsNoRetry == 1` for object "math.open" Button`
+    t =    18.91s         Checking existence of `"math.open" Button`
+    t =    18.97s Pressing Home button
+    t =    19.44s Open com.teejayishere.PuzzleAlarm
+    t =    19.44s     Activate com.teejayishere.PuzzleAlarm
+    t =    20.33s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    20.52s Waiting 15.0s for "math.prompt" StaticText to exist
+    t =    21.54s     Checking `Expect predicate `existsNoRetry == 1` for object "math.prompt" StaticText`
+    t =    21.54s         Checking existence of `"math.prompt" StaticText`
+    t =    21.80s Find the "math.progress" StaticText
+    t =    21.95s Checking existence of `"alarms.add" Button`
+    t =    22.02s Tap Button (Element at index 0)
+    t =    22.02s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    22.08s     Find the Button (Element at index 0)
+    t =    22.48s     Check for interrupting elements affecting "BackButton" Button
+    t =    22.72s     Synthesize event
+    t =    23.06s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    23.94s Waiting 10.0s for "PuzzleAlarm" NavigationBar to exist
+    t =    24.97s     Checking `Expect predicate `existsNoRetry == 1` for object "PuzzleAlarm" NavigationBar`
+    t =    24.97s         Checking existence of `"PuzzleAlarm" NavigationBar`
+    t =    25.04s Tear Down
+Test Case '-[PuzzleAlarmUITests.WakeUpRoutingUITests testForegroundReturnsToDueChallengeWithoutStackingDestinations]' passed (25.408 seconds).
+Test Case '-[PuzzleAlarmUITests.WakeUpRoutingUITests testNoSessionOpensNormalUIAcrossForegroundAndRelaunch]' started.
+    t =     0.00s Start Test at 2026-10-27 15:29:03.296
+    t =     0.04s Set Up
+    t =     0.04s Open com.teejayishere.PuzzleAlarm
+    t =     0.04s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.04s         Terminate com.teejayishere.PuzzleAlarm:88297
+2026-10-27 15:29:04.364 xcodebuild[86896:231539] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:29:04.364 xcodebuild[86896:231539] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.71s         Setting up automation session
+Resolve Package Graph
+
+    t =     3.75s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     5.24s Waiting 15.0s for "alarms.add" Button to exist
+    t =     6.29s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =     6.29s         Checking existence of `"alarms.add" Button`
+    t =     6.52s Checking existence of `"PuzzleAlarm" NavigationBar`
+    t =     6.59s Pressing Home button
+    t =     7.07s Open com.teejayishere.PuzzleAlarm
+    t =     7.07s     Activate com.teejayishere.PuzzleAlarm
+    t =     8.02s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     8.53s Waiting 15.0s for "alarms.add" Button to exist
+    t =     9.55s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =     9.55s         Checking existence of `"alarms.add" Button`
+    t =     9.64s Terminate com.teejayishere.PuzzleAlarm:88706
+    t =    14.69s Open com.teejayishere.PuzzleAlarm
+    t =    14.69s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 15:29:17.991 xcodebuild[86896:231539] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:29:17.991 xcodebuild[86896:231539] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    15.72s         Setting up automation session
+    t =    17.63s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    19.07s Waiting 15.0s for "alarms.add" Button to exist
+    t =    20.11s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =    20.11s         Checking existence of `"alarms.add" Button`
+    t =    20.23s Checking existence of `"math.prompt" StaticText`
+    t =    20.27s Tear Down
+Test Case '-[PuzzleAlarmUITests.WakeUpRoutingUITests testNoSessionOpensNormalUIAcrossForegroundAndRelaunch]' passed (20.530 seconds).
+Test Suite 'WakeUpRoutingUITests' passed at 2026-10-27 15:29:23.826.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 45.938 (45.954) seconds
+Test Suite 'PuzzleAlarmUITests.xctest' passed at 2026-10-27 15:29:23.827.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 45.938 (45.956) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:29:23.828.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 45.938 (45.958) seconds
+Resolve Package Graph
+
+Test Suite 'Selected tests' started at 2026-10-27 15:29:26.308.
+Test Suite 'PuzzleAlarmTests.xctest' started at 2026-10-27 15:29:26.308.
+Test Suite 'WakeUpRoutingTests' started at 2026-10-27 15:29:26.308.
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testColdIntentUsesSameOwnerActivatesDueAndDuplicateStaleEventsPreserveProgress]' started.
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testColdIntentUsesSameOwnerActivatesDueAndDuplicateStaleEventsPreserveProgress]' passed (0.166 seconds).
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testConcurrentStartupWaitsForPreparationAndFailureDoesNotExposeNormalUI]' started.
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testConcurrentStartupWaitsForPreparationAndFailureDoesNotExposeNormalUI]' passed (0.016 seconds).
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testFailedRefreshRetainsDueObligationAndRetryUsesSameSession]' started.
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testFailedRefreshRetainsDueObligationAndRetryUsesSameSession]' passed (0.012 seconds).
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testIntentDuringSuspendedOwnerCommandIsCoalescedAndRoutedAfterCommit]' started.
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testIntentDuringSuspendedOwnerCommandIsCoalescedAndRoutedAfterCommit]' passed (0.030 seconds).
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testInterruptedCancellationRecoversAndCompletedIntentCannotReopenOrReschedule]' started.
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testInterruptedCancellationRecoversAndCompletedIntentCannotReopenOrReschedule]' passed (0.041 seconds).
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testNoSessionFutureSessionMalformedIntentAndDeniedAccess]' started.
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testNoSessionFutureSessionMalformedIntentAndDeniedAccess]' passed (0.013 seconds).
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testRealIntentPerformUsesApplicationEnvironment]' started.
+Test Case '-[PuzzleAlarmTests.WakeUpRoutingTests testRealIntentPerformUsesApplicationEnvironment]' passed (0.058 seconds).
+Test Suite 'WakeUpRoutingTests' passed at 2026-10-27 15:29:26.650.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.336 (0.342) seconds
+Test Suite 'PuzzleAlarmTests.xctest' passed at 2026-10-27 15:29:26.650.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.336 (0.342) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:29:26.650.
+	 Executed 7 tests, with 0 failures (0 unexpected) in 0.336 (0.343) seconds
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+2026-10-27 15:30:09.751 xcodebuild[86896:231539] [MT] IDETestOperationsObserverDebug: 103.142 elapsed -- Testing started completed.
+2026-10-27 15:30:09.752 xcodebuild[86896:231539] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 15:30:09.752 xcodebuild[86896:231539] [MT] IDETestOperationsObserverDebug: 103.142 sec, +103.142 sec -- end
+Resolve Package Graph
+
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/Routing.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

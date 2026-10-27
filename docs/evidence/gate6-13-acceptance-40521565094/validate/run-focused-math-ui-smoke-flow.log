@@ -1,0 +1,172 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/Math.xcresult "-only-testing:PuzzleAlarmUITests/MathChallengeUITests" -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/Math.xcresult
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+2026-10-27 15:18:04.939447+0000 PuzzleAlarmUITests-Runner[64288:172294] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-27 15:18:06.419.
+Test Suite 'PuzzleAlarmUITests.xctest' started at 2026-10-27 15:18:06.419.
+Test Suite 'MathChallengeUITests' started at 2026-10-27 15:18:06.420.
+Test Case '-[PuzzleAlarmUITests.MathChallengeUITests testTypedAnswersRestoreProgressAndComplete]' started.
+    t =     0.00s Start Test at 2026-10-27 15:18:06.421
+    t =     0.29s Set Up
+    t =     0.31s Open com.teejayishere.PuzzleAlarm
+    t =     0.31s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 15:18:08.123 xcodebuild[63300:169848] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:18:08.123 xcodebuild[63300:169848] [MT] IDELaunchParametersSnapshot: no debugger version
+objc[64288]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x108770310) and /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x108818398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+Resolve Package Graph
+    t =     4.35s         Setting up automation session
+
+    t =     6.50s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     8.31s Waiting 15.0s for "math.prompt" StaticText to exist
+    t =     9.37s     Checking `Expect predicate `existsNoRetry == 1` for object "math.prompt" StaticText`
+    t =     9.37s         Checking existence of `"math.prompt" StaticText`
+    t =     9.52s Checking existence of `"alarms.add" Button`
+    t =     9.56s Find the "math.prompt" StaticText
+    t =     9.60s Find the "math.progress" StaticText
+    t =     9.63s Find the Target Application 'com.teejayishere.PuzzleAlarm'
+    t =     9.79s Added attachment named 'PuzzleAlarm-demo-08-math-challenge'
+    t =     9.79s Tap "math.submit" Button
+    t =     9.79s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     9.80s     Find the "math.submit" Button
+    t =     9.97s     Check for interrupting elements affecting "math.submit" Button
+    t =    10.03s     Synthesize event
+    t =    10.36s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    11.63s Checking `Expect predicate `label == "Enter a whole number."` for object "math.feedback" StaticText`
+    t =    11.63s     Find the "math.feedback" StaticText
+    t =    11.68s Find the "math.feedback" StaticText
+    t =    11.71s Tap "math.answer" TextField
+    t =    11.71s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    11.71s     Find the "math.answer" TextField
+    t =    11.74s     Check for interrupting elements affecting "math.answer" TextField
+    t =    11.78s     Synthesize event
+    t =    12.08s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    13.54s Type '9' into "math.answer" TextField
+    t =    13.54s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    13.87s     Find the "math.answer" TextField
+    t =    14.11s     Check for interrupting elements affecting "math.answer" TextField
+    t =    14.24s     Synthesize event
+    t =    14.47s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    14.51s Tap "math.submit" Button
+    t =    14.51s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    14.53s     Find the "math.submit" Button
+    t =    14.65s     Check for interrupting elements affecting "math.submit" Button
+    t =    14.70s     Synthesize event
+    t =    15.02s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    16.36s Checking `Expect predicate `label == "Try again."` for object "math.feedback" StaticText`
+    t =    16.36s     Find the "math.feedback" StaticText
+    t =    16.44s Find the "math.feedback" StaticText
+    t =    16.53s Find the "math.progress" StaticText
+    t =    16.61s Tap "math.answer" TextField
+    t =    16.61s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    16.62s     Find the "math.answer" TextField
+    t =    16.71s     Check for interrupting elements affecting "math.answer" TextField
+    t =    16.78s     Synthesize event
+    t =    17.10s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    17.10s Type '5' into "math.answer" TextField
+    t =    17.10s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    17.11s     Find the "math.answer" TextField
+    t =    17.18s     Check for interrupting elements affecting "math.answer" TextField
+    t =    17.25s     Synthesize event
+    t =    17.48s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    17.49s Tap "math.submit" Button
+    t =    17.49s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    17.49s     Find the "math.submit" Button
+    t =    17.59s     Check for interrupting elements affecting "math.submit" Button
+    t =    17.66s     Synthesize event
+    t =    17.97s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    19.24s Checking `Expect predicate `label == "1 of 2 correct"` for object "math.progress" StaticText`
+    t =    19.24s     Find the "math.progress" StaticText
+    t =    19.60s Find the "math.progress" StaticText
+    t =    20.91s Checking `Expect predicate `label == "3 + 4"` for object "math.prompt" StaticText`
+    t =    20.91s     Find the "math.prompt" StaticText
+    t =    21.02s Find the "math.prompt" StaticText
+    t =    21.11s Terminate com.teejayishere.PuzzleAlarm:64550
+    t =    22.16s Open com.teejayishere.PuzzleAlarm
+    t =    22.16s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 15:18:28.598 xcodebuild[63300:169848] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:18:28.598 xcodebuild[63300:169848] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    23.39s         Setting up automation session
+    t =    25.17s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    26.61s Waiting 15.0s for "math.prompt" StaticText to exist
+    t =    27.63s     Checking `Expect predicate `existsNoRetry == 1` for object "math.prompt" StaticText`
+    t =    27.63s         Checking existence of `"math.prompt" StaticText`
+    t =    27.80s Checking existence of `"alarms.add" Button`
+    t =    27.84s Find the "math.progress" StaticText
+    t =    27.92s Find the "math.prompt" StaticText
+    t =    27.97s Tap "math.answer" TextField
+    t =    27.98s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    27.98s     Find the "math.answer" TextField
+    t =    28.09s     Check for interrupting elements affecting "math.answer" TextField
+    t =    28.21s     Synthesize event
+    t =    28.55s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    29.12s Type '7' into "math.answer" TextField
+    t =    29.12s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    29.51s     Find the "math.answer" TextField
+    t =    30.56s     Check for interrupting elements affecting "math.answer" TextField
+    t =    31.03s     Synthesize event
+    t =    31.34s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    31.39s Tap "math.submit" Button
+    t =    31.39s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    31.40s     Find the "math.submit" Button
+    t =    32.30s     Check for interrupting elements affecting "math.submit" Button
+    t =    32.46s     Synthesize event
+    t =    32.89s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    33.03s Waiting 10.0s for "math.completed" StaticText to exist
+    t =    34.06s     Checking `Expect predicate `existsNoRetry == 1` for object "math.completed" StaticText`
+    t =    34.06s         Checking existence of `"math.completed" StaticText`
+    t =    35.16s Checking `Expect predicate `label == "Wake-up complete"` for object "math.completed" StaticText`
+    t =    35.16s     Find the "math.completed" StaticText
+    t =    35.24s Find the "math.completed" StaticText
+    t =    35.31s Checking existence of `"math.submit" Button`
+    t =    35.35s Terminate com.teejayishere.PuzzleAlarm:65134
+    t =    36.40s Open com.teejayishere.PuzzleAlarm
+    t =    36.40s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 15:18:42.831 xcodebuild[63300:169848] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:18:42.831 xcodebuild[63300:169848] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    37.50s         Setting up automation session
+    t =    40.50s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    42.32s Waiting 15.0s for "PuzzleAlarm" NavigationBar to exist
+    t =    43.36s     Checking `Expect predicate `existsNoRetry == 1` for object "PuzzleAlarm" NavigationBar`
+    t =    43.36s         Checking existence of `"PuzzleAlarm" NavigationBar`
+    t =    43.64s Checking existence of `"math.open" Button`
+    t =    43.75s Tear Down
+Test Case '-[PuzzleAlarmUITests.MathChallengeUITests testTypedAnswersRestoreProgressAndComplete]' passed (44.264 seconds).
+Test Suite 'MathChallengeUITests' passed at 2026-10-27 15:18:50.685.
+	 Executed 1 test, with 0 failures (0 unexpected) in 44.264 (44.265) seconds
+Test Suite 'PuzzleAlarmUITests.xctest' passed at 2026-10-27 15:18:50.686.
+	 Executed 1 test, with 0 failures (0 unexpected) in 44.264 (44.266) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:18:50.686.
+	 Executed 1 test, with 0 failures (0 unexpected) in 44.264 (44.268) seconds
+Resolve Package Graph
+2026-10-27 15:18:52.444 xcodebuild[63300:169848] [MT] IDETestOperationsObserverDebug: 51.561 elapsed -- Testing started completed.
+2026-10-27 15:18:52.445 xcodebuild[63300:169848] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 15:18:52.445 xcodebuild[63300:169848] [MT] IDETestOperationsObserverDebug: 51.561 sec, +51.561 sec -- end
+
+Resolve Package Graph
+
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/Math.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

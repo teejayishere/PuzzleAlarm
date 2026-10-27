@@ -1,0 +1,48 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/MemoryApplication.xcresult "-only-testing:PuzzleAlarmTests/MemoryStoreTests" -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/MemoryApplication.xcresult
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Test Suite 'Selected tests' started at 2026-10-27 15:20:00.457.
+Test Suite 'PuzzleAlarmTests.xctest' started at 2026-10-27 15:20:00.459.
+Test Suite 'MemoryStoreTests' started at 2026-10-27 15:20:00.460.
+Test Case '-[PuzzleAlarmTests.MemoryStoreTests testCompetingSafeResumesWaitForBusyOwnerAndCoalescedForegroundRefresh]' started.
+Test Case '-[PuzzleAlarmTests.MemoryStoreTests testCompetingSafeResumesWaitForBusyOwnerAndCoalescedForegroundRefresh]' passed (0.128 seconds).
+Test Case '-[PuzzleAlarmTests.MemoryStoreTests testFailedWritesSafeResumeFreshWrongRoundDuplicatesAndCleanup]' started.
+Test Case '-[PuzzleAlarmTests.MemoryStoreTests testFailedWritesSafeResumeFreshWrongRoundDuplicatesAndCleanup]' passed (0.064 seconds).
+Test Case '-[PuzzleAlarmTests.MemoryStoreTests testProductionFactoryRevokedAccessAndDurableSuccess]' started.
+Test Case '-[PuzzleAlarmTests.MemoryStoreTests testProductionFactoryRevokedAccessAndDurableSuccess]' passed (0.045 seconds).
+Test Suite 'MemoryStoreTests' passed at 2026-10-27 15:20:00.701.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.238 (0.242) seconds
+Test Suite 'PuzzleAlarmTests.xctest' passed at 2026-10-27 15:20:00.725.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.238 (0.266) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:20:00.725.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 0.238 (0.269) seconds
+Resolve Package Graph
+
+2026-10-27 15:20:02.010 xcodebuild[66552:178521] [MT] IDETestOperationsObserverDebug: 15.014 elapsed -- Testing started completed.
+2026-10-27 15:20:02.010 xcodebuild[66552:178521] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 15:20:02.010 xcodebuild[66552:178521] [MT] IDETestOperationsObserverDebug: 15.014 sec, +15.014 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/MemoryApplication.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

@@ -1,8 +1,48 @@
 # Project state
 
-The October 27 owner-authorized single ordered acceptance replay is governed by [GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md). This is separate from the closed focused replacement attempt; historical diagnostic budgets stay exhausted and the exception stays revoked. Candidate execution is pending; prior focused PASS does not establish downstream acceptance.
+## October 27, 2026 — ordered replacement acceptance through Gate 13 PASS / STOP
 
-## Current result — controlled Gate 6 replacement PASS / STOP
+Frozen tested candidate **`f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc`** on
+`codex/gate6-controlled-reset`: [run 40521565094](https://github.com/teejayishere/PuzzleAlarm/actions/runs/40521565094),
+attempt 1, completed SUCCESS. All three free standard macOS jobs/every required
+assigned step PASS. Actual allocation including preservation: list 16m49s,
+independent cold editor 10m39s, ordered validate 73m18s, below 40/25/85 ceilings.
+Last bounded commands finished by job minute 16.344/10.224/72.170, before their
+absolute deadlines. One attempt, three jobs consumed; no rerun, retry-to-green,
+extra taps, probes, source repair or diagnostic-budget reset.
+
+Gate 6 prerequisites PASS: 37 replacement owner/input/draft/persistence contracts,
+ten ordinary list executions and independent original editor once. Full eleven-case
+management replay PASS before Gates 7–13, then framework, Math, Memory, QR, audio,
+routing and all ten Gate 13 A–J declarations PASS in dependency order. Full
+regression PASS: 148 Core, 79 native, 20 UI tests. Counts do not inflate repeated
+focused cases. Core coverage 2266/2279; uncovered/application coverage reports PASS.
+
+Source: completed replacement and Stage 13/product/Core/native/UI assertions
+unchanged. Only CI selectors/order/branch guards, bounded runner tooling and records
+changed before freeze. Local wrapper/YAML/source checks PASS. Xcode 26.6 / Swift
+6.3.3 Debug/Release, project reproducibility, public SDK inspection, resources/plists,
+Release fixture exclusion and diagnostics PASS. iPhone 17 / iOS 26.5 Simulator
+ordered and full regression PASS. Physical device DEVICE REQUIRED / NOT RUN.
+
+**Gates 6–13 PASS in this separately authorized automated/Simulator acceptance
+scope.** Historical causes remain unknown, both diagnostic budgets EXHAUSTED,
+historical-risk exception REVOKED; this replay does not rely on it. Earlier holds
+are superseded only for this replacement candidate/scope; historical evidence stays.
+[GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md); [original evidence and limits](evidence/gate6-13-acceptance-40521565094/README.md). All six ZIP digests/CRC checks match. Original
+large list/native xcresults are local plus expiring Actions, not Git; durable logs,
+metadata, command records and small ZIPs are published. The optional legacy gallery
+has disclosed stale source/stage labels and is not used as acceptance evidence.
+
+Tested SHA above is separate from the record-only documentation publication SHA.
+Its skipped CI is not new product evidence. Candidate reset run 40521565633 skipped,
+so no duplicate allocations. Main remains `bd069f29c6d045d5bc27fc56212edcbde2090855`,
+unpromoted. No Stage 14, UX work, release or device-reliability claim. **STOP after
+evidence closeout; no further execution/development/device action queued.**
+
+Earlier entries below are historical and superseded only within this scope.
+
+## October 26 result — controlled Gate 6 replacement PASS / STOP
 
 **[Controlling decision and frozen validation limits](GATE6_CONTROLLED_RESET.md).**
 Implemented on `codex/gate6-controlled-reset` from the Stage 13 closeout.

@@ -1,0 +1,49 @@
+AlarmLifecycleCoordinator.swift:30: clock: @escaping @Sendable () -> Date = { Date() },
+AlarmScheduling.swift:31: throw DomainError.unknownAlarm
+DiskRepository.swift:23: throw PersistenceError.io("Application Support unavailable")
+LifecycleEffects.swift:228: throw DomainError.unknownAlarm
+LifecycleEffects.swift:235: throw DomainError.unknownAlarm
+LifecycleOperation.swift:89: throw DomainError.unknownAlarm
+LifecycleRecovery.swift:175: throw DomainError.unknownAlarm
+LifecycleRecovery.swift:179: return []
+Scheduling.swift:16: throw DomainError.invalidConfiguration("Timezone unavailable")
+Scheduling.swift:57: throw DomainError.invalidConfiguration("No occurrence found in calendar horizon")
+LCOV merged uncovered source lines: 10 (see SwiftPM closure counts below)
+SwiftPM JSON AlarmLifecycleCoordinator.swift: {'count': 296, 'covered': 295, 'percent': 99.66216216216216}
+  zero-count segment [30, 57, 0, True, True, False]: clock: @escaping @Sendable () -> Date = { Date() },
+  zero-count segment [240, 46, 0, True, True, False]: guard operation.id == token else { throw LifecycleError.superseded }
+SwiftPM JSON AlarmScheduling.swift: {'count': 23, 'covered': 22, 'percent': 95.65217391304348}
+  zero-count segment [30, 87, 0, True, True, False]: guard let alarm = session.plan.alarms.first(where: { $0.id == alarmID }) else {
+SwiftPM JSON DiskRepository.swift: {'count': 92, 'covered': 91, 'percent': 98.91304347826086}
+  zero-count segment [22, 118, 0, True, True, False]: guard let root = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
+  zero-count segment [48, 74, 0, True, True, False]: do { try FileManager.default.removeItem(at: pending) } catch { }
+  zero-count segment [81, 37, 0, True, True, False]: if coordinationError != nil { throw PersistenceError.io("coordinate storage") }
+  zero-count segment [82, 31, 0, True, True, False]: guard let result else { throw PersistenceError.io("missing coordinated result") }
+SwiftPM JSON LifecycleEffects.swift: {'count': 329, 'covered': 327, 'percent': 99.3920972644377}
+  zero-count segment [7, 35, 0, True, True, False]: if value.phase == .active { return }
+  zero-count segment [227, 106, 0, True, True, False]: guard let value = try await state().sessions.first(where: { $0.session.id == id })?.session else {
+  zero-count segment [234, 98, 0, True, True, False]: guard let value = try state.ownershipLedger().first(where: { $0.alarmKitID == id }) else {
+SwiftPM JSON LifecycleOperation.swift: {'count': 77, 'covered': 76, 'percent': 98.7012987012987}
+  zero-count segment [77, 84, 0, True, True, False]: guard let index = sessions.firstIndex(where: { $0.session.id == id }) else { throw DomainError.unknownAlarm }
+  zero-count segment [88, 93, 0, True, True, False]: guard let index = detachedOwnership.firstIndex(where: { $0.alarmKitID == id }) else {
+SwiftPM JSON LifecycleRecovery.swift: {'count': 321, 'covered': 319, 'percent': 99.37694704049844}
+  zero-count segment [147, 82, 0, True, True, False]: guard operation.sessionID == nil && operation.ordinaryID == nil else { return }
+  zero-count segment [149, 106, 0, True, True, False]: after: after, context: operation.context) else { return }
+  zero-count segment [174, 100, 0, True, True, False]: guard let session = state.sessions.first(where: { $0.session.id == id })?.session else {
+  zero-count segment [178, 10, 0, True, True, False]: }
+  zero-count segment [199, 46, 0, True, True, False]: guard operation.id == token else { throw LifecycleError.superseded }
+SwiftPM JSON MathEngine.swift: {'count': 80, 'covered': 79, 'percent': 98.75}
+  zero-count segment [76, 91, 0, True, True, False]: let digits = input.first == "-" || input.first == "+" ? input.dropFirst() : input[...]
+  zero-count segment [80, 81, 0, True, True, False]: guard case let .math(configuration) = coordinator.currentChallenge else { throw DomainError.outOfOrder }
+SwiftPM JSON Scheduling.swift: {'count': 71, 'covered': 69, 'percent': 97.1830985915493}
+  zero-count segment [15, 72, 0, True, True, False]: guard let zone = TimeZone(identifier: timeZoneIdentifier) else {
+  zero-count segment [47, 18, 0, True, True, False]: else { throw DomainError.invalidConfiguration("Calendar calculation failed") }
+  zero-count segment [56, 10, 0, True, True, False]: }
+  zero-count segment [82, 47, 0, True, True, False]: guard let primary = alarms.first else { throw DomainError.invalidConfiguration("Missing primary") }
+SwiftPM JSON WakeUpSession.swift: {'count': 259, 'covered': 257, 'percent': 99.22779922779922}
+  zero-count segment [200, 59, 0, True, True, False]: try require(date >= (challengeCompletedAt.last ?? scheduledWakeUpDate), "Completion timestamp regressed")
+  zero-count segment [282, 70, 0, True, True, False]: try require(completedAt >= (challengeCompletedAt.last ?? scheduledWakeUpDate), "Invalid completion timestamp")
+Uncalled function: $s15PuzzleAlarmCore0B20LifecycleCoordinatorC10repository9scheduler5clock6makeIDAcA0aB10Repository_p_AA0B10Scheduling_p10Foundation4DateVyYbcAJ4UUIDVyYbctcfcfA1_ALyYbcfU_; files=['/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarmCore/Sources/PuzzleAlarmCore/AlarmLifecycleCoordinator.swift']; regions=[[30, 57, 30, 67, 0, 0, 0, 0]]
+Uncalled function: $s15PuzzleAlarmCore10MathEngineV6submit_9problemID3for4next2atAA0D10SubmissionOSS_10Foundation4UUIDVAA17ChallengeIdentityVAA0D7ProblemVSgAK4DateVtKFys15UnboundedRange_OYbcfu0_; files=['/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarmCore/Sources/PuzzleAlarmCore/MathEngine.swift']; regions=[[76, 91, 76, 94, 0, 0, 0, 0]]
+Uncalled function: $s15PuzzleAlarmCore13WakeUpSessionV18finalizeCompletion2aty10Foundation4DateV_tKFAHyKXEfu_; files=['/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarmCore/Sources/PuzzleAlarmCore/WakeUpSession.swift']; regions=[[200, 59, 200, 78, 0, 0, 0, 0]]
+Uncalled function: $s15PuzzleAlarmCore13WakeUpSessionV8validate33_390CE48003D1C7F64D9A1615C064EBA5LLyyKF10Foundation4DateVyKXEfu5_; files=['/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarmCore/Sources/PuzzleAlarmCore/WakeUpSession.swift']; regions=[[282, 70, 282, 89, 0, 0, 0, 0]]

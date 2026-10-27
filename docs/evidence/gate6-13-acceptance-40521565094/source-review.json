@@ -1,0 +1,68 @@
+{
+  "frozen_sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+  "jobs_maximum": 3,
+  "matrix": {
+    "include": [
+      {
+        "lane": "list",
+        "ceiling": 40,
+        "minutes": 34
+      },
+      {
+        "lane": "editor",
+        "ceiling": 25,
+        "minutes": 19
+      }
+    ]
+  },
+  "dependent_steps": [
+    "Start absolute acceptance budget",
+    "checkout",
+    "Record toolchain evidence",
+    "Install pinned XcodeGen",
+    "Generate reproducible Xcode project",
+    "Validate package manifest",
+    "Build PuzzleAlarmCore",
+    "Run focused persistence tests",
+    "Run focused coverage-audit regressions",
+    "Run focused lifecycle tests",
+    "Discover compatible iPhone Simulator",
+    "Wait for regression Simulator boot readiness",
+    "Build iOS application for Simulator",
+    "Run focused application state and draft tests",
+    "Replay Gate 6 management UI before downstream flows",
+    "Run focused challenge coordinator tests",
+    "Run focused Math engine tests",
+    "Run focused Math application tests",
+    "Run focused Math UI smoke flow",
+    "Run focused Memory engine tests",
+    "Run focused Memory application tests",
+    "Run focused Memory UI smoke flow",
+    "Run focused QR engine and owner tests",
+    "Run focused QR application and scanner tests",
+    "Run focused QR UI flows",
+    "Verify reproducible generated audio resources",
+    "Inspect public AlarmKit and App Intents declarations",
+    "Build Release without UI-test fixtures",
+    "Verify built AlarmKit usage description",
+    "Run focused audio tests",
+    "Run focused deterministic wake-up routing tests",
+    "Verify Gate 12 App Intent and foreground routing",
+    "Verify Gate 13 full orchestration A through J",
+    "Run full Swift package tests",
+    "Report core coverage",
+    "Report exact uncovered core lines",
+    "Run platform capability and native shell tests",
+    "Report application behavior coverage",
+    "Verify Release excludes UI-test switches",
+    "Review Xcode diagnostics",
+    "Export Windows-friendly visual demo",
+    "Publish PuzzleAlarm visual demo",
+    "Preserve QR Simulator evidence",
+    "Preserve native regression evidence",
+    "Preserve complete acceptance step logs and budget records"
+  ],
+  "all_product_core_native_ui_sources_unchanged": true,
+  "historical_exception": "REVOKED",
+  "historical_budgets": "EXHAUSTED"
+}

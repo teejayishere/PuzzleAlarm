@@ -1,0 +1,2 @@
+No compiler/destination warnings. SDK metadata advisories observed: 1.
+Xcode reported skipped metadata for a target without an AppIntents dependency; inspect target context in the log.

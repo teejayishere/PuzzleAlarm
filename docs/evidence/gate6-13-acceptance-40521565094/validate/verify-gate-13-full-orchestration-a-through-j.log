@@ -1,0 +1,72 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/Orchestration.xcresult "-only-testing:PuzzleAlarmTests/OrchestrationIntegrationTests" -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/Orchestration.xcresult
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Test Suite 'Selected tests' started at 2026-10-27 15:31:05.293.
+Test Suite 'PuzzleAlarmTests.xctest' started at 2026-10-27 15:31:05.296.
+Test Suite 'OrchestrationIntegrationTests' started at 2026-10-27 15:31:05.297.
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testAAllFiveScheduleWithOneImmutableOccurrence]' started.
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testAAllFiveScheduleWithOneImmutableOccurrence]' passed (1.094 seconds).
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testBPartialFailureRollsBackIncludingUncertainOSSuccess]' started.
+Resolve Package Graph
+
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testBPartialFailureRollsBackIncludingUncertainOSSuccess]' passed (0.638 seconds).
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testCStoppedPrimaryDoesNotCompleteOrCancelBackups]' started.
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testCStoppedPrimaryDoesNotCompleteOrCancelBackups]' passed (0.333 seconds).
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testDFirstChallengeLeavesBackupsAndRejectsStaleCallback]' started.
+Resolve Package Graph
+
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testDFirstChallengeLeavesBackupsAndRejectsStaleCallback]' passed (0.395 seconds).
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testEAllFinalEngineKindsCleanAndCreateExactlyOneSuccessor]' started.
+Resolve Package Graph
+
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testEAllFinalEngineKindsCleanAndCreateExactlyOneSuccessor]' passed (4.721 seconds).
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testFCancellationFailureContinuesAndDefersSuccessorUntilCleanup]' started.
+Resolve Package Graph
+
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testFCancellationFailureContinuesAndDefersSuccessorUntilCleanup]' passed (1.017 seconds).
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testGCompletionAcknowledgmentLossRecoversFromDiskWithoutRepeatedCancel]' started.
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testGCompletionAcknowledgmentLossRecoversFromDiskWithoutRepeatedCancel]' passed (0.914 seconds).
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testHSchedulingAcknowledgmentLossReusesDurableIdentity]' started.
+Resolve Package Graph
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testHSchedulingAcknowledgmentLossReusesDurableIdentity]' passed (0.332 seconds).
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testIEditingActiveAlarmPreservesObligationAndReplacesOnlyFutureChain]' started.
+
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testIEditingActiveAlarmPreservesObligationAndReplacesOnlyFutureChain]' passed (0.769 seconds).
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testJDisablePreservesActiveChallengeButPreventsNextOccurrence]' started.
+Resolve Package Graph
+
+Test Case '-[PuzzleAlarmTests.OrchestrationIntegrationTests testJDisablePreservesActiveChallengeButPreventsNextOccurrence]' passed (0.561 seconds).
+Test Suite 'OrchestrationIntegrationTests' passed at 2026-10-27 15:31:16.077.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 10.774 (10.781) seconds
+Test Suite 'PuzzleAlarmTests.xctest' passed at 2026-10-27 15:31:16.078.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 10.774 (10.782) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:31:16.078.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 10.774 (10.784) seconds
+Resolve Package Graph
+2026-10-27 15:31:16.737 xcodebuild[91257:244396] [MT] IDETestOperationsObserverDebug: 22.343 elapsed -- Testing started completed.
+2026-10-27 15:31:16.737 xcodebuild[91257:244396] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 15:31:16.737 xcodebuild[91257:244396] [MT] IDETestOperationsObserverDebug: 22.343 sec, +22.343 sec -- end
+
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/Orchestration.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

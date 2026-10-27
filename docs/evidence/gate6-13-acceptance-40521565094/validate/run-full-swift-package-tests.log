@@ -1,0 +1,521 @@
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version-7974D3F7F03D5E95.txt
+[2/20] Emitting module PuzzleAlarmCore
+[3/27] Compiling PuzzleAlarmCore QRLifecycle.swift
+[4/27] Compiling PuzzleAlarmCore ReconciliationInventory.swift
+[5/27] Compiling PuzzleAlarmCore RepositoryState.swift
+[6/27] Compiling PuzzleAlarmCore ResumeCheckpoint.swift
+[7/27] Compiling PuzzleAlarmCore Scheduling.swift
+[8/27] Compiling PuzzleAlarmCore WakeUpRouting.swift
+[9/27] Compiling PuzzleAlarmCore WakeUpSession.swift
+[10/27] Compiling PuzzleAlarmCore MathEngine.swift
+[11/27] Compiling PuzzleAlarmCore MathLifecycle.swift
+[12/27] Compiling PuzzleAlarmCore MemoryEngine.swift
+[13/27] Compiling PuzzleAlarmCore MemoryLifecycle.swift
+[14/27] Compiling PuzzleAlarmCore Models.swift
+[15/27] Compiling PuzzleAlarmCore PuzzleAlarmCore.swift
+[16/27] Compiling PuzzleAlarmCore PuzzleAlarmRepository.swift
+[17/27] Compiling PuzzleAlarmCore QREngine.swift
+[18/27] Compiling PuzzleAlarmCore AlarmLifecycleCoordinator.swift
+[19/27] Compiling PuzzleAlarmCore AlarmScheduling.swift
+[20/27] Compiling PuzzleAlarmCore ChallengeCoordinator.swift
+[21/27] Compiling PuzzleAlarmCore Challenges.swift
+[22/27] Compiling PuzzleAlarmCore DiskRepository.swift
+[23/27] Compiling PuzzleAlarmCore LifecycleEffects.swift
+[24/27] Compiling PuzzleAlarmCore LifecycleOperation.swift
+[25/27] Compiling PuzzleAlarmCore LifecycleRecovery.swift
+[26/42] Emitting module PuzzleAlarmCoreTests
+[27/48] Compiling PuzzleAlarmCoreTests QRLifecycleTests.swift
+[28/48] Compiling PuzzleAlarmCoreTests RecoveryInvariantTests.swift
+[29/48] Compiling PuzzleAlarmCoreTests SchedulingTests.swift
+[30/48] Compiling PuzzleAlarmCoreTests SessionTests.swift
+[31/48] Compiling PuzzleAlarmCoreTests ToolchainTests.swift
+[32/48] Compiling PuzzleAlarmCoreTests WakeUpRoutingTests.swift
+[33/48] Compiling PuzzleAlarmCoreTests ChallengeCoordinatorTests.swift
+[34/48] Compiling PuzzleAlarmCoreTests DecodingTests.swift
+[35/48] Compiling PuzzleAlarmCoreTests Fixtures.swift
+[36/48] Compiling PuzzleAlarmCoreTests LifecycleAdversarialTests.swift
+[37/48] Compiling PuzzleAlarmCoreTests LifecycleCommandTests.swift
+[38/48] Compiling PuzzleAlarmCoreTests LifecycleFixtures.swift
+[39/48] Compiling PuzzleAlarmCoreTests LifecycleRecoveryTests.swift
+[40/48] Compiling PuzzleAlarmCoreTests LifecycleRecurrenceTests.swift
+[41/48] Compiling PuzzleAlarmCoreTests LifecycleTests.swift
+[42/48] Compiling PuzzleAlarmCoreTests MathEngineTests.swift
+[43/48] Compiling PuzzleAlarmCoreTests MemoryEngineTests.swift
+[44/48] Compiling PuzzleAlarmCoreTests ModelTests.swift
+[45/48] Compiling PuzzleAlarmCoreTests PersistenceTests.swift
+[46/48] Compiling PuzzleAlarmCoreTests QREngineTests.swift
+[47/50] Emitting module PuzzleAlarmPackageTests
+[48/50] Compiling PuzzleAlarmPackageTests runner.swift
+[48/50] Write Objects.LinkFileList
+[49/50] Linking PuzzleAlarmPackageTests
+Build complete! (51.79s)
+Test Suite 'All tests' started at 2026-10-27 15:32:19.804.
+Test Suite 'All tests' passed at 2026-10-27 15:32:19.871.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.066) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite "Lifecycle recovery" started.
+◇ Suite "Persistence" started.
+◇ Suite "Lifecycle adversarial" started.
+◇ Suite "Lifecycle commands" started.
+◇ Suite "Lifecycle" started.
+◇ Suite "Lifecycle recurrence" started.
+◇ Test MemoryEngineDeadlineHidingRestoreAndNoLeakage() started.
+◇ Test partialScheduleFailureIsNeverArmedAndRetainsRollbackEvidence(_:) started.
+◇ Test sequenceEditingPreservesOrderAndRejectsDuplicates() started.
+◇ Test ChallengeCoordinatorRestoresProgressAndCheckpointAndClearsOnAdvance() started.
+◇ Test QREngineRejectsForeignIdentityAndRegressingClockAtomically() started.
+◇ Test wakeUpRoutingExcludesFutureUnactivatedAndTerminalSessions() started.
+◇ Test completedReloadPreservesTerminalStateUnderLateEvents() started.
+◇ Test MathEngineOwnerPersistenceFailureAndConflictReplay() started.
+◇ Test ChallengeCoordinatorPersistenceFailureRestoresCommittedProgress() started.
+◇ Test qrTargetIsStableUniqueAndRoundTrips() started.
+◇ Test ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test MemoryEngineOwnerClockRollbackStaleTimerAndForeignSession() started.
+◇ Test rollbackRetryRetainsIDsAndRequiresCompleteFutureRetirement() started.
+◇ Test definitionValidationEditsAndSoundRoundTrips() started.
+◇ Test retiringFutureSessionNeverCountsAsChallengeCompletion() started.
+◇ Test disabledAlarmHasNoNextOccurrenceAndCalendarIsExplicit() started.
+◇ Test MathEngineRejectsForeignIdentityBadNextAndRegressingTimeAtomically() started.
+◇ Test decodingRejectsFalseLifecycleStatesAndCorruptedLedgers() started.
+◇ Test backupPlanHasExactlyFiveIndependentDatesAndStableIDs() started.
+◇ Test cancellationFailureContinuesAndRelaunchResumes(_:) started.
+◇ Test snapshotRemainsStableAcrossParentEditsAndDisable() started.
+◇ Test ChallengeCoordinatorNonactiveSessionsCannotStartOrSolve() started.
+◇ Test MathEngineInvalidWrongAndSignedAnswers() started.
+◇ Test ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test decodedCompletionRequiresBothFullSequenceAndCancellation() started.
+◇ Test configurationDefaultsAndBounds() started.
+◇ Test MemoryEngineWrongInvalidAndFreshRoundAtomically() started.
+◇ Test QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test scheduleFailureKeepsConcurrentUnknownOutcomeForReconciliation() started.
+◇ Test wakeUpRoutingMultipleSessionsUsesDateThenStableIDRegardlessOfStorageOrder() started.
+◇ Test weeklyOccurrenceSurvivesSkippedLocalCalendarDate() started.
+◇ Test QRLifecycleCASRevalidatesSnapshotAndNeverPerformsEffects() started.
+◇ Test MemoryEngineOwnerFailureConflictDuplicateAndCleanupBoundary() started.
+◇ Test completionAndProgressTimestampsCannotRegress() started.
+◇ Test QRLifecycleMissingRecordRejectsAndWriteFailureDiscardsSuccess() started.
+◇ Test foundationCodableAvailableInPackageTests() started.
+◇ Test MemoryEngineRejectsForeignIdentityLengthAndTime() started.
+◇ Test MathEngineThresholdRestoreAndDuplicate(_:) started.
+◇ Test schedulingMustBeCompleteBeforeArmingAndMayRestoreInFlight() started.
+◇ Test unknownIDsAndRegressingDatesDoNotMutateSession() started.
+◇ Test challengeSpecificProgressRoundTripsAndCannotSkipOrRegress() started.
+◇ Test decodedPlanCannotChangeOrdinalsOrDatesOrReuseIDs() started.
+◇ Test MemoryEngineDeterministicGeneration(_:) started.
+◇ Test corruptPartialProgressCannotBeAcceptedDuringRestore() started.
+◇ Test extremeDatesAndNonFiniteInstantsAreRejectedBeforeCalendarUse() started.
+◇ Test missingArmedAlarmInvalidatesChainWithoutCompletingChallenges() started.
+◇ Test ChallengeCoordinatorRejectsRegressingAndNonfiniteTimeAtomically() started.
+◇ Test invalidDecodedConfigurationCannotBypassInitializers() started.
+◇ Test MathEngineGenerationBoundsAndIndependentAnswers(_:) started.
+◇ Test weeklyScheduleIsStrictlyFutureAcrossManyDays() started.
+◇ Test sessionCannotSnapshotAnEditFromAfterItsCreation() started.
+◇ Test everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test MathEngineConflictReplaysAgainstAlreadyAcceptedProblem() started.
+◇ Test ordinaryFailureAndMissingRecoveryRetainStableOwnership() started.
+◇ Test MemoryEngineThresholdAndOrderedContinuation(_:) started.
+◇ Test missingVersusEmptyAndForeignVersusOrphanRemainDistinct() started.
+◇ Test duplicateCreateIsIdempotentButDifferentDefinitionCannotOverwriteIdentity() started.
+◇ Test plannedOrAllAcknowledgedBeforeArmRecoversWithoutNewIdentity(_:) started.
+◇ Test ordinaryInFlightRecoveryReconcilesPresenceOrRetriesSameID(_:) started.
+◇ Test persistedFailureBeforeOperationAcknowledgmentCannotRestartItself() started.
+◇ Test cancellationErrorAfterOSRemovalRecoversWithoutRepeatingEffect() started.
+◇ Test degradedFutureSessionRollsBackWithoutRearming() started.
+◇ Test stalePositiveSnapshotDoesNotRepeatAcknowledgedCancellation() started.
+◇ Test restartAfterEachSchedulingSideEffectUsesPersistedIDs(_:) started.
+◇ Test journalWithoutOrdinaryOwnershipIsRejectedBeforeAnyOSEffect() started.
+◇ Test acknowledgedSiblingMissingDuringPartialScheduleTriggersRollback() started.
+◇ Test cancellationCrashWindowUsesSnapshotAbsenceOrRetriesPresence(_:) started.
+◇ Test duplicateSnapshotAndForeignOwnershipConflictFailBeforeEffects() started.
+◇ Test disappearanceAfterLastAcknowledgmentPreventsArming() started.
+◇ Test ordinaryDeadlineCrossingDuringIntentWriteCannotSchedulePastOccurrence() started.
+◇ Test snapshotFailureAndCorruptStorageCannotProduceEmptySuccess() started.
+◇ Test elapsedPlannedSessionFailsWithoutSchedulingOrCreatingAnotherOccurrence() started.
+◇ Test completedRollbackBeforeJournalAcknowledgmentCannotAutomaticallyRetry() started.
+◇ Test scheduleAcknowledgmentWriteFailureRetainsInFlightAndDoesNotRepeatOSSuccess() started.
+◇ Test elapsedOneTimeIntentNeverSchedulesInThePast() started.
+◇ Test dueMissingAlarmsBecomeActiveWithoutChallengeSuccess() started.
+◇ Test futureArmedMissingSiblingNeverRemainsArmedOrCompletes(_:) started.
+◇ Test case passing 1 argument failedIndex → 0 to partialScheduleFailureIsNeverArmedAndRetainsRollbackEvidence(_:) started.
+◇ Test case passing 1 argument failedIndex → 1 to partialScheduleFailureIsNeverArmedAndRetainsRollbackEvidence(_:) started.
+◇ Test case passing 1 argument failedIndex → 2 to partialScheduleFailureIsNeverArmedAndRetainsRollbackEvidence(_:) started.
+◇ Test case passing 1 argument failedIndex → 3 to partialScheduleFailureIsNeverArmedAndRetainsRollbackEvidence(_:) started.
+◇ Test case passing 1 argument failedIndex → 4 to partialScheduleFailureIsNeverArmedAndRetainsRollbackEvidence(_:) started.
+◇ Test realDiskReadFailureIsNotMissing() started.
+◇ Test definitionsSaveLoadUpdateDeleteAndMultiple() started.
+◇ Test unsupportedSchemasNeverBecomeEmpty(_:) started.
+◇ Test restoredLedgerKeepsExactlyOnePrimaryAndFourBackups() started.
+◇ Test completedSessionRemainsCompletedOnRepeatedReload() started.
+◇ Test checkpointMismatchAndMalformedSequencesAreRejected() started.
+◇ Test configurationPermutationsRoundTrip() started.
+◇ Test inMemoryReadWriteFailuresPreserveCommittedBytes() started.
+◇ Test sessionIndexProgressLedgerAndParentSurviveReload() started.
+◇ Test mathProblemSurvivesWithoutDuplicatingProgressCounter() started.
+◇ Test diskMissingSaveReplaceAndReload() started.
+◇ Test emptyAndDetachedLedgerRemainHonest() started.
+◇ Test invalidCommitCannotDamageKnownGoodState() started.
+◇ Test duplicateDefinitionsSessionsAndCompetingLedgerAuthorityAreRejected() started.
+◇ Test parentEditAndDeletionRetainSessionSnapshotAndOwnership() started.
+◇ Test staleWritersCannotOverwriteNewerState() started.
+◇ Test memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test interruptedInitialWriteNeverLooksLikeEmptyRepository() started.
+◇ Test duplicateOwnershipAcrossSessionsIsRejected() started.
+◇ Test diskCorruptionIsRetainedAndCannotBeOverwritten() started.
+◇ Test cancelledIDsStillPresentAreStaleNotNewSessions() started.
+◇ Test schemaAndWholeDocumentRoundTrip() started.
+◇ Test reconciliationInventoryRecognizesMissingStaleAndOrphanedIDs() started.
+◇ Test realFilesystemWriteAndReadErrorsAreSurfaced() started.
+◇ Test allLifecyclePhasesAndUncertainOperationsRoundTrip() started.
+◇ Test diskFailedWritePreservesPriorDocumentAndReportsInterruptedWrite() started.
+◇ Test simultaneousMemoryWritesHaveExactlyOneWinner() started.
+◇ Test qrPersistsTokenWithoutCameraState() started.
+◇ Test missingAndExplicitlyEmptyAreDistinct() started.
+◇ Test malformedTruncatedAndInvalidConfigurationFailClosed() started.
+◇ Test invalidOwnershipAndTimestampDecodeAreRejected() started.
+◇ Test separateDiskActorsDoNotLoseConcurrentWrites() started.
+◇ Test clockCrossingWakeTimeDuringScheduleStopsTheTransaction(_:) started.
+◇ Test observedRingingProtectsSessionEvenBeforeLocalClockReachesWakeDate() started.
+◇ Test weeklyOrdinaryRetryAfterOriginalDateRetainsItsRecurringIdentity() started.
+◇ Test operationCorruptionAndDuplicateOwnershipFailBeforeExternalEffects() started.
+◇ Test conflictsDuringScheduleAndCancellationAcknowledgmentMergeNewerState() started.
+◇ Test conflictRetryIsBoundedAndCannotReachOSBeforeIntent() started.
+◇ Test oldSessionBecomingRingingDuringReplacementIsNotCancelled() started.
+◇ Test newerDefinitionDuringDeleteCannotBeRemovedByOldIntent() started.
+◇ Test cancellationRefreshesSnapshotAfterDurableIntentAwait() started.
+◇ Test parentEditDuringScheduleAwaitIsNotOverwrittenByAcknowledgment() started.
+◇ Test deletedIdentityCannotBeRecreatedOrUnknownCommandsReportedSuccessful() started.
+◇ Test reentrantLifecycleEventIsRejectedDuringExternalAwait() started.
+◇ Test conflictReloadPreservesNewerConfigurationInsteadOfOverwritingIt() started.
+◇ Test staleTerminalOwnershipIsRetainedAndNeverInventsCompletion() started.
+◇ Test restartDuringReplacementAfterEveryNewOSSuccessRetainsOldUntilNewHealthy(_:) started.
+◇ Test degradedDueSessionPreservesAcknowledgmentsAndCannotBypassChallenges() started.
+◇ Test scheduleAndCancellationAcknowledgmentsRequireTheRightPhaseAndIntent() started.
+◇ Test newerOperationGenerationDuringOSAwaitStopsOldScheduling() started.
+◇ Test disableRetainsFailedOwnershipAndNeverTouchesUnrelatedIDs(_:) started.
+◇ Test cancellationAcknowledgmentFailureRecoversMidDisableOrDelete(_:) started.
+◇ Test persistedDisableIntentSurvivesFailureBeforeFirstCancellation() started.
+◇ Test activeSnapshotSurvivesEditDisableAndDeferredDelete() started.
+◇ Test oldCleanupFailureDoesNotCancelHealthyReplacementDuringRecovery() started.
+◇ Test schedulingEditsAndModeChangesReplaceOnlyAfterHealthyTarget(_:) started.
+◇ Test enableDisabledDefinitionSchedulesExactlyOneRepresentation(_:) started.
+◇ Test replacementFailureKeepsOldScheduleAndExplicitRetryRetiresIt() started.
+◇ Test fiveSchedulesPersistIntentBeforeEffectsAndArmOnlyAfterAllAcknowledgments() started.
+◇ Test schemaOneMigratesAndSchemaTwoCannotLoseOperationJournal() started.
+◇ Test rollbackContinuesAfterCancellationFailureAndRetryUsesOriginalIDs() started.
+◇ Test repeatedEnableAndRecoveryDoNotWriteOrScheduleAgain() started.
+◇ Test ordinaryMappingHasNoSessionAndOnlyOneID(_:) started.
+◇ Test eachScheduleFailureRollsBackIncludingUncertainSuccessfulSideEffect(_:) started.
+◇ Test case passing 1 argument order → [1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [0, 1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [0, 2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [1, 0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [1, 2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [2, 0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [2, 1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [0, 1, 2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument failedIndex → 0 to cancellationFailureContinuesAndRelaunchResumes(_:) started.
+◇ Test case passing 1 argument failedIndex → 1 to cancellationFailureContinuesAndRelaunchResumes(_:) started.
+◇ Test case passing 1 argument failedIndex → 2 to cancellationFailureContinuesAndRelaunchResumes(_:) started.
+◇ Test case passing 1 argument order → [0, 2, 1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument failedIndex → 3 to cancellationFailureContinuesAndRelaunchResumes(_:) started.
+◇ Test case passing 1 argument failedIndex → 4 to cancellationFailureContinuesAndRelaunchResumes(_:) started.
+◇ Test case passing 1 argument order → [1, 0, 2] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [1, 2, 0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [2, 0, 1] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument order → [0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [0, 1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [0, 2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1, 0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1, 2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2, 0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2, 1, 0] to ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "UTC", after: "2026-10-02T07:00:00Z", expected: "2026-10-05T06:30:00Z", hour: 6, minute: 30, weekdays: Set([PuzzleAlarmCore.Weekday.thursday, PuzzleAlarmCore.Weekday.monday, PuzzleAlarmCore.Weekday.wednesday, PuzzleAlarmCore.Weekday.friday, PuzzleAlarmCore.Weekday.tuesday])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "UTC", after: "2026-10-02T07:00:00Z", expected: "2026-10-03T06:30:00Z", hour: 6, minute: 30, weekdays: Set([PuzzleAlarmCore.Weekday.saturday, PuzzleAlarmCore.Weekday.sunday])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "UTC", after: "2026-10-05T06:30:00Z", expected: "2026-10-12T06:30:00Z", hour: 6, minute: 30, weekdays: Set([PuzzleAlarmCore.Weekday.monday])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "UTC", after: "2026-10-05T06:29:59Z", expected: "2026-10-05T06:30:00Z", hour: 6, minute: 30, weekdays: Set([PuzzleAlarmCore.Weekday.monday])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "UTC", after: "2026-10-05T00:00:00Z", expected: "2026-10-06T00:00:00Z", hour: 0, minute: 0, weekdays: Set([])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "UTC", after: "2026-10-31T23:59:00Z", expected: "2026-11-01T00:00:00Z", hour: 0, minute: 0, weekdays: Set([PuzzleAlarmCore.Weekday.thursday, PuzzleAlarmCore.Weekday.sunday, PuzzleAlarmCore.Weekday.saturday, PuzzleAlarmCore.Weekday.wednesday, PuzzleAlarmCore.Weekday.friday, PuzzleAlarmCore.Weekday.monday, PuzzleAlarmCore.Weekday.tuesday])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "UTC", after: "2026-12-31T23:59:59Z", expected: "2027-01-01T00:00:00Z", hour: 0, minute: 0, weekdays: Set([])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "UTC", after: "2028-02-28T23:59:00Z", expected: "2028-02-29T23:59:00Z", hour: 23, minute: 59, weekdays: Set([])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument order → [2] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "America/Chicago", after: "2026-03-08T06:00:00Z", expected: "2026-03-08T08:00:00Z", hour: 2, minute: 30, weekdays: Set([PuzzleAlarmCore.Weekday.sunday])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument order → [2, 0] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument order → [0, 2] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "America/Chicago", after: "2026-11-01T05:00:00Z", expected: "2026-11-01T06:30:00Z", hour: 1, minute: 30, weekdays: Set([PuzzleAlarmCore.Weekday.sunday])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument order → [2, 1] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument order → [1, 2] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "America/Chicago", after: "2026-11-01T06:45:00Z", expected: "2026-11-08T07:30:00Z", hour: 1, minute: 30, weekdays: Set([PuzzleAlarmCore.Weekday.sunday])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "America/Chicago", after: "2026-11-01T06:45:00Z", expected: "2026-11-02T07:30:00Z", hour: 1, minute: 30, weekdays: Set([])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument item → ScheduleCase(zone: "Asia/Kathmandu", after: "2026-10-01T00:00:00Z", expected: "2026-10-01T00:45:00Z", hour: 6, minute: 30, weekdays: Set([])) to nextOccurrenceHonorsCalendarBoundaries(_:) started.
+◇ Test case passing 1 argument order → [0, 1, 2] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument order → [0, 2, 1] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument order → [1, 0, 2] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument order → [1, 2, 0] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument order → [2, 0, 1] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument order → [2, 1, 0] to QREngineExactSnapshotAndOrderedRestoration(_:) started.
+◇ Test case passing 1 argument count → 1 to MathEngineThresholdRestoreAndDuplicate(_:) started.
+◇ Test case passing 1 argument count → 2 to MathEngineThresholdRestoreAndDuplicate(_:) started.
+◇ Test case passing 1 argument count → 20 to MathEngineThresholdRestoreAndDuplicate(_:) started.
+◇ Test case passing 1 argument difficulty → .easy to MemoryEngineDeterministicGeneration(_:) started.
+◇ Test case passing 1 argument difficulty → .medium to MemoryEngineDeterministicGeneration(_:) started.
+◇ Test case passing 1 argument difficulty → .hard to MemoryEngineDeterministicGeneration(_:) started.
+◇ Test case passing 1 argument difficulty → .easy to MathEngineGenerationBoundsAndIndependentAnswers(_:) started.
+◇ Test case passing 1 argument difficulty → .medium to MathEngineGenerationBoundsAndIndependentAnswers(_:) started.
+◇ Test case passing 1 argument order → [2, 1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument difficulty → .hard to MathEngineGenerationBoundsAndIndependentAnswers(_:) started.
+◇ Test case passing 1 argument order → [0, 1, 2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [0, 2, 1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1, 0, 2] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [1, 2, 0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2, 0, 1] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [2, 1, 0] to ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) started.
+◇ Test case passing 1 argument order → [0] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument order → [1] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test ordinaryOneTimeAbsenceAfterDueDisablesInsteadOfRearming() started.
+◇ Test disabledOrRetiredOneTimeChallengeCannotRearm() started.
+◇ Test case passing 1 argument order → [2] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test cleanupFailureCannotCompleteOrCreateNextChallengeOccurrence() started.
+◇ Test case passing 1 argument order → [0, 1] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test orchestrationUsesEstablishedCalendarContract(_:) started.
+◇ Test case passing 1 argument order → [1, 0] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test completedChallengeSchedulesOneSuccessorOrConsumesOneTime(_:) started.
+◇ Test nextOccurrenceUsesNewTimezoneWithoutMutatingCompletedSnapshot() started.
+◇ Test case passing 1 argument order → [0, 2] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument order → [2, 0] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument order → [1, 2] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument order → [2, 1] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument order → [0, 1, 2] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument order → [0, 2, 1] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument count → 1 to MemoryEngineThresholdAndOrderedContinuation(_:) started.
+◇ Test case passing 1 argument count → 2 to MemoryEngineThresholdAndOrderedContinuation(_:) started.
+◇ Test case passing 1 argument order → [1, 0, 2] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument count → 20 to MemoryEngineThresholdAndOrderedContinuation(_:) started.
+◇ Test case passing 1 argument order → [1, 2, 0] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument order → [2, 0, 1] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument order → [2, 1, 0] to everyAllowedSequenceRequiresOrderedSuccess(_:) started.
+◇ Test case passing 1 argument allAcknowledged → false to plannedOrAllAcknowledgedBeforeArmRecoversWithoutNewIdentity(_:) started.
+◇ Test case passing 1 argument allAcknowledged → true to plannedOrAllAcknowledgedBeforeArmRecoversWithoutNewIdentity(_:) started.
+◇ Test case passing 1 argument present → false to ordinaryInFlightRecoveryReconcilesPresenceOrRetriesSameID(_:) started.
+◇ Test case passing 1 argument present → true to ordinaryInFlightRecoveryReconcilesPresenceOrRetriesSameID(_:) started.
+◇ Test case passing 1 argument count → 0 to restartAfterEachSchedulingSideEffectUsesPersistedIDs(_:) started.
+◇ Test case passing 1 argument count → 1 to restartAfterEachSchedulingSideEffectUsesPersistedIDs(_:) started.
+◇ Test case passing 1 argument count → 2 to restartAfterEachSchedulingSideEffectUsesPersistedIDs(_:) started.
+◇ Test case passing 1 argument count → 3 to restartAfterEachSchedulingSideEffectUsesPersistedIDs(_:) started.
+◇ Test case passing 1 argument count → 4 to restartAfterEachSchedulingSideEffectUsesPersistedIDs(_:) started.
+◇ Test case passing 1 argument count → 5 to restartAfterEachSchedulingSideEffectUsesPersistedIDs(_:) started.
+◇ Test case passing 1 argument present → false to cancellationCrashWindowUsesSnapshotAbsenceOrRetriesPresence(_:) started.
+◇ Test case passing 1 argument present → true to cancellationCrashWindowUsesSnapshotAbsenceOrRetriesPresence(_:) started.
+◇ Test case passing 1 argument index → 0 to futureArmedMissingSiblingNeverRemainsArmedOrCompletes(_:) started.
+◇ Test case passing 1 argument index → 1 to futureArmedMissingSiblingNeverRemainsArmedOrCompletes(_:) started.
+◇ Test case passing 1 argument index → 4 to futureArmedMissingSiblingNeverRemainsArmedOrCompletes(_:) started.
+✔ Test sequenceEditingPreservesOrderAndRejectsDuplicates() passed after 2.039 seconds.
+✔ Test MemoryEngineDeadlineHidingRestoreAndNoLeakage() passed after 2.039 seconds.
+✔ Test partialScheduleFailureIsNeverArmedAndRetainsRollbackEvidence(_:) with 5 test cases passed after 2.039 seconds.
+✔ Test ChallengeCoordinatorRestoresProgressAndCheckpointAndClearsOnAdvance() passed after 2.039 seconds.
+◇ Test case passing 1 argument version → 0 to unsupportedSchemasNeverBecomeEmpty(_:) started.
+◇ Test case passing 1 argument version → 3 to unsupportedSchemasNeverBecomeEmpty(_:) started.
+◇ Test case passing 1 argument version → 99 to unsupportedSchemasNeverBecomeEmpty(_:) started.
+✔ Test QREngineRejectsForeignIdentityAndRegressingClockAtomically() passed after 2.217 seconds.
+◇ Test case passing 1 argument phase → .generated to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument phase → .visible to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument phase → .hidden to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument phase → .failed to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument phase → .completed to memoryPhaseNeverBecomesVisibleOnDecode(_:) started.
+◇ Test case passing 1 argument position → 1 to clockCrossingWakeTimeDuringScheduleStopsTheTransaction(_:) started.
+◇ Test case passing 1 argument position → 2 to clockCrossingWakeTimeDuringScheduleStopsTheTransaction(_:) started.
+◇ Test case passing 1 argument position → 3 to clockCrossingWakeTimeDuringScheduleStopsTheTransaction(_:) started.
+◇ Test case passing 1 argument position → 4 to clockCrossingWakeTimeDuringScheduleStopsTheTransaction(_:) started.
+◇ Test case passing 1 argument position → 5 to clockCrossingWakeTimeDuringScheduleStopsTheTransaction(_:) started.
+◇ Test case passing 1 argument position → 1 to restartDuringReplacementAfterEveryNewOSSuccessRetainsOldUntilNewHealthy(_:) started.
+◇ Test case passing 1 argument position → 2 to restartDuringReplacementAfterEveryNewOSSuccessRetainsOldUntilNewHealthy(_:) started.
+◇ Test case passing 1 argument position → 3 to restartDuringReplacementAfterEveryNewOSSuccessRetainsOldUntilNewHealthy(_:) started.
+◇ Test case passing 1 argument position → 4 to restartDuringReplacementAfterEveryNewOSSuccessRetainsOldUntilNewHealthy(_:) started.
+◇ Test case passing 1 argument position → 5 to restartDuringReplacementAfterEveryNewOSSuccessRetainsOldUntilNewHealthy(_:) started.
+✔ Test wakeUpRoutingExcludesFutureUnactivatedAndTerminalSessions() passed after 3.544 seconds.
+◇ Test case passing 1 argument delete → true to disableRetainsFailedOwnershipAndNeverTouchesUnrelatedIDs(_:) started.
+◇ Test case passing 1 argument delete → false to disableRetainsFailedOwnershipAndNeverTouchesUnrelatedIDs(_:) started.
+✔ Test ChallengeCoordinatorPersistenceFailureRestoresCommittedProgress() passed after 3.670 seconds.
+◇ Test case passing 1 argument delete → true to cancellationAcknowledgmentFailureRecoversMidDisableOrDelete(_:) started.
+◇ Test case passing 1 argument delete → false to cancellationAcknowledgmentFailureRecoversMidDisableOrDelete(_:) started.
+◇ Test case passing 1 argument change → .time to schedulingEditsAndModeChangesReplaceOnlyAfterHealthyTarget(_:) started.
+◇ Test case passing 1 argument change → .weekdays to schedulingEditsAndModeChangesReplaceOnlyAfterHealthyTarget(_:) started.
+◇ Test case passing 1 argument change → .sound to schedulingEditsAndModeChangesReplaceOnlyAfterHealthyTarget(_:) started.
+◇ Test case passing 1 argument change → .settings to schedulingEditsAndModeChangesReplaceOnlyAfterHealthyTarget(_:) started.
+◇ Test case passing 1 argument change → .order to schedulingEditsAndModeChangesReplaceOnlyAfterHealthyTarget(_:) started.
+◇ Test case passing 1 argument change → .toOrdinary to schedulingEditsAndModeChangesReplaceOnlyAfterHealthyTarget(_:) started.
+◇ Test case passing 1 argument change → .toChallenge to schedulingEditsAndModeChangesReplaceOnlyAfterHealthyTarget(_:) started.
+◇ Test case passing 1 argument challenge → true to enableDisabledDefinitionSchedulesExactlyOneRepresentation(_:) started.
+◇ Test case passing 1 argument challenge → false to enableDisabledDefinitionSchedulesExactlyOneRepresentation(_:) started.
+✔ Test qrTargetIsStableUniqueAndRoundTrips() passed after 4.519 seconds.
+✔ Test completedReloadPreservesTerminalStateUnderLateEvents() passed after 4.530 seconds.
+◇ Test case passing 1 argument weekly → true to ordinaryMappingHasNoSessionAndOnlyOneID(_:) started.
+◇ Test case passing 1 argument weekly → false to ordinaryMappingHasNoSessionAndOnlyOneID(_:) started.
+◇ Test case passing 1 argument position → 1 to eachScheduleFailureRollsBackIncludingUncertainSuccessfulSideEffect(_:) started.
+◇ Test case passing 1 argument position → 2 to eachScheduleFailureRollsBackIncludingUncertainSuccessfulSideEffect(_:) started.
+◇ Test case passing 1 argument position → 3 to eachScheduleFailureRollsBackIncludingUncertainSuccessfulSideEffect(_:) started.
+◇ Test case passing 1 argument position → 4 to eachScheduleFailureRollsBackIncludingUncertainSuccessfulSideEffect(_:) started.
+◇ Test case passing 1 argument position → 5 to eachScheduleFailureRollsBackIncludingUncertainSuccessfulSideEffect(_:) started.
+✔ Test MathEngineOwnerPersistenceFailureAndConflictReplay() passed after 4.954 seconds.
+✔ Test rollbackRetryRetainsIDsAndRequiresCompleteFutureRetirement() passed after 4.954 seconds.
+✔ Test definitionValidationEditsAndSoundRoundTrips() passed after 4.954 seconds.
+✔ Test MemoryEngineOwnerClockRollbackStaleTimerAndForeignSession() passed after 4.954 seconds.
+✔ Test retiringFutureSessionNeverCountsAsChallengeCompletion() passed after 4.954 seconds.
+✔ Test ChallengeCoordinatorAllOrdersRestoreAndComplete(_:) with 15 test cases passed after 4.954 seconds.
+✔ Test disabledAlarmHasNoNextOccurrenceAndCalendarIsExplicit() passed after 4.954 seconds.
+✔ Test MathEngineRejectsForeignIdentityBadNextAndRegressingTimeAtomically() passed after 4.954 seconds.
+✔ Test backupPlanHasExactlyFiveIndependentDatesAndStableIDs() passed after 4.954 seconds.
+✔ Test decodingRejectsFalseLifecycleStatesAndCorruptedLedgers() passed after 4.954 seconds.
+✔ Test cancellationFailureContinuesAndRelaunchResumes(_:) with 5 test cases passed after 4.954 seconds.
+✔ Test snapshotRemainsStableAcrossParentEditsAndDisable() passed after 4.954 seconds.
+✔ Test ChallengeCoordinatorNonactiveSessionsCannotStartOrSolve() passed after 4.955 seconds.
+✔ Test ChallengeCoordinatorRejectsInvalidIdentitiesWithoutMutation(_:) with 15 test cases passed after 4.955 seconds.
+✔ Test MathEngineInvalidWrongAndSignedAnswers() passed after 4.955 seconds.
+✔ Test nextOccurrenceHonorsCalendarBoundaries(_:) with 13 test cases passed after 4.955 seconds.
+✔ Test decodedCompletionRequiresBothFullSequenceAndCancellation() passed after 4.956 seconds.
+✔ Test configurationDefaultsAndBounds() passed after 4.954 seconds.
+✔ Test QREngineExactSnapshotAndOrderedRestoration(_:) with 11 test cases passed after 4.954 seconds.
+✔ Test MemoryEngineWrongInvalidAndFreshRoundAtomically() passed after 4.954 seconds.
+✔ Test scheduleFailureKeepsConcurrentUnknownOutcomeForReconciliation() passed after 4.954 seconds.
+✔ Test wakeUpRoutingMultipleSessionsUsesDateThenStableIDRegardlessOfStorageOrder() passed after 4.954 seconds.
+✔ Test weeklyOccurrenceSurvivesSkippedLocalCalendarDate() passed after 4.954 seconds.
+✔ Test QRLifecycleCASRevalidatesSnapshotAndNeverPerformsEffects() passed after 4.954 seconds.
+✔ Test MemoryEngineOwnerFailureConflictDuplicateAndCleanupBoundary() passed after 4.954 seconds.
+✔ Test QRLifecycleMissingRecordRejectsAndWriteFailureDiscardsSuccess() passed after 4.954 seconds.
+✔ Test foundationCodableAvailableInPackageTests() passed after 4.954 seconds.
+✔ Test completionAndProgressTimestampsCannotRegress() passed after 4.954 seconds.
+✔ Test MemoryEngineRejectsForeignIdentityLengthAndTime() passed after 4.954 seconds.
+✔ Test MathEngineThresholdRestoreAndDuplicate(_:) with 3 test cases passed after 4.954 seconds.
+✔ Test unknownIDsAndRegressingDatesDoNotMutateSession() passed after 4.956 seconds.
+✔ Test schedulingMustBeCompleteBeforeArmingAndMayRestoreInFlight() passed after 4.956 seconds.
+✔ Test decodedPlanCannotChangeOrdinalsOrDatesOrReuseIDs() passed after 4.957 seconds.
+✔ Test challengeSpecificProgressRoundTripsAndCannotSkipOrRegress() passed after 4.960 seconds.
+✔ Test MemoryEngineDeterministicGeneration(_:) with 3 test cases passed after 4.960 seconds.
+✔ Test corruptPartialProgressCannotBeAcceptedDuringRestore() passed after 4.961 seconds.
+✔ Test extremeDatesAndNonFiniteInstantsAreRejectedBeforeCalendarUse() passed after 4.961 seconds.
+✔ Test ChallengeCoordinatorRejectsRegressingAndNonfiniteTimeAtomically() passed after 4.961 seconds.
+✔ Test invalidDecodedConfigurationCannotBypassInitializers() passed after 4.961 seconds.
+✔ Test missingArmedAlarmInvalidatesChainWithoutCompletingChallenges() passed after 4.961 seconds.
+✔ Test MathEngineGenerationBoundsAndIndependentAnswers(_:) with 3 test cases passed after 4.961 seconds.
+✔ Test sessionCannotSnapshotAnEditFromAfterItsCreation() passed after 4.961 seconds.
+✔ Test everyAllowedSequenceRequiresOrderedSuccess(_:) with 15 test cases passed after 4.961 seconds.
+✔ Test MathEngineConflictReplaysAgainstAlreadyAcceptedProblem() passed after 4.961 seconds.
+◇ Test case passing 1 argument item → Boundary(zone: "UTC", after: "2026-10-05T06:29:59Z", expected: "2026-10-05T06:30:00Z", hour: 6, minute: 30, days: Set([PuzzleAlarmCore.Weekday.monday])) to orchestrationUsesEstablishedCalendarContract(_:) started.
+◇ Test case passing 1 argument item → Boundary(zone: "UTC", after: "2026-10-05T06:30:00Z", expected: "2026-10-12T06:30:00Z", hour: 6, minute: 30, days: Set([PuzzleAlarmCore.Weekday.monday])) to orchestrationUsesEstablishedCalendarContract(_:) started.
+◇ Test case passing 1 argument item → Boundary(zone: "UTC", after: "2026-10-02T07:00:00Z", expected: "2026-10-05T06:30:00Z", hour: 6, minute: 30, days: Set([PuzzleAlarmCore.Weekday.monday])) to orchestrationUsesEstablishedCalendarContract(_:) started.
+◇ Test case passing 1 argument item → Boundary(zone: "UTC", after: "2026-12-31T23:59:59Z", expected: "2027-01-01T00:00:00Z", hour: 0, minute: 0, days: Set([PuzzleAlarmCore.Weekday.friday])) to orchestrationUsesEstablishedCalendarContract(_:) started.
+◇ Test case passing 1 argument item → Boundary(zone: "America/Chicago", after: "2026-03-08T06:00:00Z", expected: "2026-03-08T08:00:00Z", hour: 2, minute: 30, days: Set([PuzzleAlarmCore.Weekday.sunday])) to orchestrationUsesEstablishedCalendarContract(_:) started.
+◇ Test case passing 1 argument item → Boundary(zone: "America/Chicago", after: "2026-11-01T06:45:00Z", expected: "2026-11-08T07:30:00Z", hour: 1, minute: 30, days: Set([PuzzleAlarmCore.Weekday.sunday])) to orchestrationUsesEstablishedCalendarContract(_:) started.
+◇ Test case passing 1 argument item → Boundary(zone: "Pacific/Apia", after: "2011-12-23T17:00:00Z", expected: "2012-01-05T16:30:00Z", hour: 6, minute: 30, days: Set([PuzzleAlarmCore.Weekday.friday])) to orchestrationUsesEstablishedCalendarContract(_:) started.
+◇ Test case passing 1 argument oneTime → true to completedChallengeSchedulesOneSuccessorOrConsumesOneTime(_:) started.
+◇ Test case passing 1 argument oneTime → false to completedChallengeSchedulesOneSuccessorOrConsumesOneTime(_:) started.
+✔ Test ordinaryFailureAndMissingRecoveryRetainStableOwnership() passed after 5.364 seconds.
+✔ Test MemoryEngineThresholdAndOrderedContinuation(_:) with 3 test cases passed after 5.364 seconds.
+✔ Test missingVersusEmptyAndForeignVersusOrphanRemainDistinct() passed after 5.364 seconds.
+✔ Test plannedOrAllAcknowledgedBeforeArmRecoversWithoutNewIdentity(_:) with 2 test cases passed after 5.364 seconds.
+✔ Test duplicateCreateIsIdempotentButDifferentDefinitionCannotOverwriteIdentity() passed after 5.364 seconds.
+✔ Test ordinaryInFlightRecoveryReconcilesPresenceOrRetriesSameID(_:) with 2 test cases passed after 5.364 seconds.
+✔ Test persistedFailureBeforeOperationAcknowledgmentCannotRestartItself() passed after 5.364 seconds.
+✔ Test weeklyScheduleIsStrictlyFutureAcrossManyDays() passed after 5.365 seconds.
+✔ Test degradedFutureSessionRollsBackWithoutRearming() passed after 5.364 seconds.
+✔ Test journalWithoutOrdinaryOwnershipIsRejectedBeforeAnyOSEffect() passed after 5.364 seconds.
+✔ Test stalePositiveSnapshotDoesNotRepeatAcknowledgedCancellation() passed after 5.364 seconds.
+✔ Test cancellationErrorAfterOSRemovalRecoversWithoutRepeatingEffect() passed after 5.364 seconds.
+✔ Test restartAfterEachSchedulingSideEffectUsesPersistedIDs(_:) with 6 test cases passed after 5.364 seconds.
+✔ Test acknowledgedSiblingMissingDuringPartialScheduleTriggersRollback() passed after 5.364 seconds.
+✔ Test cancellationCrashWindowUsesSnapshotAbsenceOrRetriesPresence(_:) with 2 test cases passed after 5.364 seconds.
+✔ Test ordinaryDeadlineCrossingDuringIntentWriteCannotSchedulePastOccurrence() passed after 5.364 seconds.
+✔ Test snapshotFailureAndCorruptStorageCannotProduceEmptySuccess() passed after 5.364 seconds.
+✔ Test duplicateSnapshotAndForeignOwnershipConflictFailBeforeEffects() passed after 5.364 seconds.
+✔ Test elapsedPlannedSessionFailsWithoutSchedulingOrCreatingAnotherOccurrence() passed after 5.364 seconds.
+✔ Test completedRollbackBeforeJournalAcknowledgmentCannotAutomaticallyRetry() passed after 5.364 seconds.
+✔ Test disappearanceAfterLastAcknowledgmentPreventsArming() passed after 5.364 seconds.
+✔ Test scheduleAcknowledgmentWriteFailureRetainsInFlightAndDoesNotRepeatOSSuccess() passed after 5.364 seconds.
+✔ Test elapsedOneTimeIntentNeverSchedulesInThePast() passed after 5.364 seconds.
+✔ Test dueMissingAlarmsBecomeActiveWithoutChallengeSuccess() passed after 5.363 seconds.
+✔ Test futureArmedMissingSiblingNeverRemainsArmedOrCompletes(_:) with 3 test cases passed after 5.363 seconds.
+✔ Test definitionsSaveLoadUpdateDeleteAndMultiple() passed after 5.282 seconds.
+✔ Test unsupportedSchemasNeverBecomeEmpty(_:) with 3 test cases passed after 5.282 seconds.
+✔ Test restoredLedgerKeepsExactlyOnePrimaryAndFourBackups() passed after 5.282 seconds.
+✔ Test completedSessionRemainsCompletedOnRepeatedReload() passed after 5.282 seconds.
+✔ Test checkpointMismatchAndMalformedSequencesAreRejected() passed after 5.282 seconds.
+✔ Test configurationPermutationsRoundTrip() passed after 5.282 seconds.
+✔ Test inMemoryReadWriteFailuresPreserveCommittedBytes() passed after 5.282 seconds.
+✔ Test sessionIndexProgressLedgerAndParentSurviveReload() passed after 5.282 seconds.
+✔ Test mathProblemSurvivesWithoutDuplicatingProgressCounter() passed after 5.282 seconds.
+✔ Test diskMissingSaveReplaceAndReload() passed after 5.282 seconds.
+✔ Test emptyAndDetachedLedgerRemainHonest() passed after 5.282 seconds.
+✔ Test invalidCommitCannotDamageKnownGoodState() passed after 5.282 seconds.
+✔ Test duplicateDefinitionsSessionsAndCompetingLedgerAuthorityAreRejected() passed after 5.282 seconds.
+✔ Test realDiskReadFailureIsNotMissing() passed after 5.283 seconds.
+✔ Test staleWritersCannotOverwriteNewerState() passed after 5.282 seconds.
+✔ Test memoryPhaseNeverBecomesVisibleOnDecode(_:) with 5 test cases passed after 5.282 seconds.
+✔ Test duplicateOwnershipAcrossSessionsIsRejected() passed after 5.282 seconds.
+✔ Test parentEditAndDeletionRetainSessionSnapshotAndOwnership() passed after 5.282 seconds.
+✔ Test diskCorruptionIsRetainedAndCannotBeOverwritten() passed after 5.282 seconds.
+✔ Test schemaAndWholeDocumentRoundTrip() passed after 5.282 seconds.
+✔ Test reconciliationInventoryRecognizesMissingStaleAndOrphanedIDs() passed after 5.282 seconds.
+✔ Test interruptedInitialWriteNeverLooksLikeEmptyRepository() passed after 5.282 seconds.
+✔ Test realFilesystemWriteAndReadErrorsAreSurfaced() passed after 5.282 seconds.
+✔ Test cancelledIDsStillPresentAreStaleNotNewSessions() passed after 5.282 seconds.
+✔ Test qrPersistsTokenWithoutCameraState() passed after 5.283 seconds.
+✔ Test malformedTruncatedAndInvalidConfigurationFailClosed() passed after 5.283 seconds.
+✔ Test missingAndExplicitlyEmptyAreDistinct() passed after 5.283 seconds.
+✔ Test allLifecyclePhasesAndUncertainOperationsRoundTrip() passed after 5.284 seconds.
+✔ Test invalidOwnershipAndTimestampDecodeAreRejected() passed after 5.352 seconds.
+✔ Test diskFailedWritePreservesPriorDocumentAndReportsInterruptedWrite() passed after 5.352 seconds.
+✔ Test clockCrossingWakeTimeDuringScheduleStopsTheTransaction(_:) with 5 test cases passed after 5.352 seconds.
+✔ Test operationCorruptionAndDuplicateOwnershipFailBeforeExternalEffects() passed after 5.352 seconds.
+✔ Test weeklyOrdinaryRetryAfterOriginalDateRetainsItsRecurringIdentity() passed after 5.352 seconds.
+✔ Test conflictRetryIsBoundedAndCannotReachOSBeforeIntent() passed after 5.352 seconds.
+✔ Test observedRingingProtectsSessionEvenBeforeLocalClockReachesWakeDate() passed after 5.352 seconds.
+✔ Test conflictsDuringScheduleAndCancellationAcknowledgmentMergeNewerState() passed after 5.352 seconds.
+✔ Test oldSessionBecomingRingingDuringReplacementIsNotCancelled() passed after 5.352 seconds.
+✔ Test newerDefinitionDuringDeleteCannotBeRemovedByOldIntent() passed after 5.352 seconds.
+✔ Test cancellationRefreshesSnapshotAfterDurableIntentAwait() passed after 5.352 seconds.
+✔ Test reentrantLifecycleEventIsRejectedDuringExternalAwait() passed after 5.352 seconds.
+✔ Test conflictReloadPreservesNewerConfigurationInsteadOfOverwritingIt() passed after 5.352 seconds.
+✔ Test staleTerminalOwnershipIsRetainedAndNeverInventsCompletion() passed after 5.352 seconds.
+✔ Test parentEditDuringScheduleAwaitIsNotOverwrittenByAcknowledgment() passed after 5.352 seconds.
+✔ Test degradedDueSessionPreservesAcknowledgmentsAndCannotBypassChallenges() passed after 5.351 seconds.
+✔ Test deletedIdentityCannotBeRecreatedOrUnknownCommandsReportedSuccessful() passed after 5.352 seconds.
+✔ Test restartDuringReplacementAfterEveryNewOSSuccessRetainsOldUntilNewHealthy(_:) with 5 test cases passed after 5.351 seconds.
+✔ Test scheduleAndCancellationAcknowledgmentsRequireTheRightPhaseAndIntent() passed after 5.351 seconds.
+✔ Test newerOperationGenerationDuringOSAwaitStopsOldScheduling() passed after 5.351 seconds.
+✔ Test disableRetainsFailedOwnershipAndNeverTouchesUnrelatedIDs(_:) with 2 test cases passed after 5.347 seconds.
+✔ Test cancellationAcknowledgmentFailureRecoversMidDisableOrDelete(_:) with 2 test cases passed after 5.343 seconds.
+✔ Test oldCleanupFailureDoesNotCancelHealthyReplacementDuringRecovery() passed after 5.343 seconds.
+✔ Test activeSnapshotSurvivesEditDisableAndDeferredDelete() passed after 5.343 seconds.
+✔ Test persistedDisableIntentSurvivesFailureBeforeFirstCancellation() passed after 5.343 seconds.
+✔ Test schedulingEditsAndModeChangesReplaceOnlyAfterHealthyTarget(_:) with 7 test cases passed after 5.343 seconds.
+✔ Test enableDisabledDefinitionSchedulesExactlyOneRepresentation(_:) with 2 test cases passed after 5.343 seconds.
+✔ Test fiveSchedulesPersistIntentBeforeEffectsAndArmOnlyAfterAllAcknowledgments() passed after 5.343 seconds.
+✔ Test rollbackContinuesAfterCancellationFailureAndRetryUsesOriginalIDs() passed after 5.342 seconds.
+✔ Test ordinaryMappingHasNoSessionAndOnlyOneID(_:) with 2 test cases passed after 5.342 seconds.
+✔ Test repeatedEnableAndRecoveryDoNotWriteOrScheduleAgain() passed after 5.342 seconds.
+✔ Test eachScheduleFailureRollsBackIncludingUncertainSuccessfulSideEffect(_:) with 5 test cases passed after 5.342 seconds.
+✔ Test replacementFailureKeepsOldScheduleAndExplicitRetryRetiresIt() passed after 5.343 seconds.
+✔ Test schemaOneMigratesAndSchemaTwoCannotLoseOperationJournal() passed after 5.343 seconds.
+✔ Test ordinaryOneTimeAbsenceAfterDueDisablesInsteadOfRearming() passed after 4.798 seconds.
+✔ Test orchestrationUsesEstablishedCalendarContract(_:) with 7 test cases passed after 4.770 seconds.
+✔ Test disabledOrRetiredOneTimeChallengeCannotRearm() passed after 4.798 seconds.
+✔ Test cleanupFailureCannotCompleteOrCreateNextChallengeOccurrence() passed after 4.771 seconds.
+✔ Suite "Lifecycle recovery" passed after 5.449 seconds.
+✔ Test simultaneousMemoryWritesHaveExactlyOneWinner() passed after 5.359 seconds.
+✔ Test separateDiskActorsDoNotLoseConcurrentWrites() passed after 5.359 seconds.
+✔ Suite "Lifecycle adversarial" passed after 5.449 seconds.
+✔ Suite "Lifecycle commands" passed after 5.449 seconds.
+✔ Suite "Lifecycle" passed after 5.449 seconds.
+✔ Suite "Persistence" passed after 5.450 seconds.
+✔ Test completedChallengeSchedulesOneSuccessorOrConsumesOneTime(_:) with 2 test cases passed after 4.820 seconds.
+✔ Test nextOccurrenceUsesNewTimezoneWithoutMutatingCompletedSnapshot() passed after 4.896 seconds.
+✔ Suite "Lifecycle recurrence" passed after 5.571 seconds.
+✔ Test run with 148 tests in 6 suites passed after 5.573 seconds.

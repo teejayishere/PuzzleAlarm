@@ -1,8 +1,37 @@
 # Test matrix
 
-The October 27 owner-authorized single ordered acceptance replay is governed by [GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md). This is separate from the closed focused replacement attempt; historical diagnostic budgets stay exhausted and the exception stays revoked. Candidate execution is pending; prior focused PASS does not establish downstream acceptance.
+## October 27 ordered acceptance — Gates 6–13 PASS / STOP
 
-## Active controlled Gate 6 replacement
+Frozen `f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc`, run 40521565094, attempt 1,
+complete SUCCESS. [GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md); [original evidence and limits](evidence/gate6-13-acceptance-40521565094/README.md).
+
+| Required scope | Exact execution |
+| --- | --- |
+| Gate 6 prerequisites | 37 replacement native contracts PASS; original list declaration ten executions PASS; independent cold original editor PASS once (233.839s) |
+| Gate 6 management-first | All eleven original management declarations PASS before downstream acceptance |
+| Gate 7 | ChallengeCoordinator Core permutations/restoration/invalid progression PASS |
+| Gate 8 | Math Core, two application declarations and one UI declaration PASS |
+| Gate 9 | Memory Core, three application and two UI declarations PASS |
+| Gate 10 | QR Core/owner, five application/scanner and three UI declarations PASS |
+| Gate 11 | Resources/SDK/Release/plists and six audio declarations PASS; preview management coverage retained |
+| Gate 12 | Core routing and seven native plus two UI declarations PASS; real App Intent compiled |
+| Gate 13 | All ten unchanged A–J methods mapped below PASS, then pass again in full regression |
+| Full regression / final checks | 148 Core, 79 native, 20 UI PASS; coverage/uncovered, Debug/Release, project reproducibility, resources, fixture exclusion and diagnostics PASS |
+
+Source assertions/helpers, replacement and Stage 13 implementation unchanged.
+Implementation-specific bridge replacement rationale remains in the earlier mapping;
+CI no longer selects NativeAlarmSwitchTests and explicitly selects AlarmEnabledInputTests.
+No skipped valid case, corrective tap or retry. Full-suite counts are distinct from
+repeated focused executions. Three jobs consumed, 16m49s / 10m39s / 73m18s including
+preservation, within 40/25/85. Every bounded command completed before deadline.
+Source/local automated, Xcode and Simulator evidence are separated in the archive.
+Physical-device acceptance DEVICE REQUIRED / NOT RUN. Historical causes unknown,
+diagnostics EXHAUSTED, exception REVOKED. This separate replacement replay supersedes
+historical acceptance holds only within this candidate/automated scope. No Stage 14,
+UX/main promotion or reliability claim. Record-only publication SHA/CI are separate.
+STOP. Earlier entries below remain historical evidence.
+
+## Historical focused controlled Gate 6 replacement
 
 **Focused PASS / STOP:** `8a236a03f0c19eb70863ddd7d290a70fb90efa73`,
 [40448988954](https://github.com/teejayishere/PuzzleAlarm/actions/runs/40448988954),

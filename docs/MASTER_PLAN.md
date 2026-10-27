@@ -1,8 +1,17 @@
 # PuzzleAlarm — Recursive Self-Correcting Master Development Plan
 
-The October 27 owner-authorized single ordered acceptance replay is governed by [GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md). This is separate from the closed focused replacement attempt; historical diagnostic budgets stay exhausted and the exception stays revoked. Candidate execution is pending; prior focused PASS does not establish downstream acceptance.
+## October 27 acceptance result and controlling scope
 
-## Active owner-approved Gate 6 replacement scope
+[GATE6_13_ACCEPTANCE.md](GATE6_13_ACCEPTANCE.md) records the owner's separate one-attempt acceptance authorization.
+Frozen `f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc` / run 40521565094,
+attempt 1, SUCCESS: Gates 6–13 ordered automated/Simulator acceptance PASS, including
+all prerequisites, A–J, full regression/build/resources/diagnostics. Three jobs,
+16m49s / 10m39s / 73m18s below 40/25/85 ceilings; no rerun or added execution.
+See [original evidence and limits](evidence/gate6-13-acceptance-40521565094/README.md). This supersedes earlier holds only for this replacement
+candidate/scope. Historical causes unknown, diagnostics EXHAUSTED, exception REVOKED.
+Device requirements remain NOT RUN. No main promotion, Stage 14 or UX work. STOP.
+
+## Closed October 26 Gate 6 replacement scope
 
 [GATE6_CONTROLLED_RESET.md](GATE6_CONTROLLED_RESET.md) controls the October 26
 replacement task. It permits minimal list/editor input and UI state simplification

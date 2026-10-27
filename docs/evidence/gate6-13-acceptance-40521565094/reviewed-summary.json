@@ -1,0 +1,1356 @@
+{
+  "jobs": [
+    {
+      "id": 122249754681,
+      "name": "prerequisites (editor, 25, 19)",
+      "conclusion": "success",
+      "seconds": 639.0,
+      "failed_steps": []
+    },
+    {
+      "id": 122249755370,
+      "name": "prerequisites (list, 40, 34)",
+      "conclusion": "success",
+      "seconds": 1009.0,
+      "failed_steps": []
+    },
+    {
+      "id": 122259592256,
+      "name": "validate",
+      "conclusion": "success",
+      "seconds": 4398.0,
+      "failed_steps": []
+    }
+  ],
+  "invocations": [
+    {
+      "label": "generate-and-boot-independent-simulator",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111380.759,
+      "deadline": 1793112504,
+      "finished": 1793111484.4943511,
+      "exit_code": 0,
+      "lane": "acceptance-editor",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "record-toolchain-and-install-pinned-generator",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111374.973721,
+      "deadline": 1793112504,
+      "finished": 1793111380.5294762,
+      "exit_code": 0,
+      "lane": "acceptance-editor",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "review-xcode-warnings",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111975.421021,
+      "deadline": 1793112504,
+      "finished": 1793111975.465195,
+      "exit_code": 0,
+      "lane": "acceptance-editor",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "unchanged-independent-editor-declaration",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111503.666968,
+      "deadline": 1793112504,
+      "finished": 1793111974.73195,
+      "exit_code": 0,
+      "lane": "acceptance-editor",
+      "completed_cases": 1,
+      "passed_cases": 1,
+      "failed_cases": [],
+      "unique_completed_cases": 1,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "verify-exact-checkout",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111374.826387,
+      "deadline": 1793112504,
+      "finished": 1793111374.8403509,
+      "exit_code": 0,
+      "lane": "acceptance-editor",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "focused-owner-and-input-contracts",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111558.696286,
+      "deadline": 1793113406,
+      "finished": 1793111796.397743,
+      "exit_code": 0,
+      "lane": "acceptance-list",
+      "completed_cases": 37,
+      "passed_cases": 37,
+      "failed_cases": [],
+      "unique_completed_cases": 37,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "6",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "28",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "37",
+          "0"
+        ],
+        [
+          "37",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "generate-and-boot-independent-simulator",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111376.738233,
+      "deadline": 1793113406,
+      "finished": 1793111537.395036,
+      "exit_code": 0,
+      "lane": "acceptance-list",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "record-toolchain-and-install-pinned-generator",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111372.765831,
+      "deadline": 1793113406,
+      "finished": 1793111376.578975,
+      "exit_code": 0,
+      "lane": "acceptance-list",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "review-xcode-warnings",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112344.586359,
+      "deadline": 1793113406,
+      "finished": 1793112344.639786,
+      "exit_code": 0,
+      "lane": "acceptance-list",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "ten-unchanged-ordinary-list-flows",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111798.1575308,
+      "deadline": 1793113406,
+      "finished": 1793112344.115227,
+      "exit_code": 0,
+      "lane": "acceptance-list",
+      "completed_cases": 10,
+      "passed_cases": 10,
+      "failed_cases": [],
+      "unique_completed_cases": 1,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "10",
+          "0"
+        ],
+        [
+          "10",
+          "0"
+        ],
+        [
+          "10",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "verify-exact-checkout",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793111372.673086,
+      "deadline": 1793113406,
+      "finished": 1793111372.683177,
+      "exit_code": 0,
+      "lane": "acceptance-list",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "build-ios-application-for-simulator",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112823.787255,
+      "deadline": 1793117121,
+      "finished": 1793112949.297875,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "build-puzzlealarmcore",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112417.180751,
+      "deadline": 1793117121,
+      "finished": 1793112439.473429,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "build-release-without-ui-test-fixtures",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114754.369397,
+      "deadline": 1793117121,
+      "finished": 1793114846.4879,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "discover-compatible-iphone-simulator",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112475.506428,
+      "deadline": 1793117121,
+      "finished": 1793112495.645181,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "export-windows-friendly-visual-demo",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793116703.436169,
+      "deadline": 1793117121,
+      "finished": 1793116708.1720479,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "generate-reproducible-xcode-project",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112401.9121192,
+      "deadline": 1793117121,
+      "finished": 1793112402.153114,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "inspect-public-alarmkit-and-app-intents-declarations",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114738.186891,
+      "deadline": 1793117121,
+      "finished": 1793114753.4468858,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "install-pinned-xcodegen",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112400.9462242,
+      "deadline": 1793117121,
+      "finished": 1793112401.7098482,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "record-toolchain-evidence",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112394.132241,
+      "deadline": 1793117121,
+      "finished": 1793112400.7453618,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "replay-gate-6-management-ui-before-downstream-flows",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793113151.274498,
+      "deadline": 1793117121,
+      "finished": 1793114225.530884,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 11,
+      "passed_cases": 11,
+      "failed_cases": [],
+      "unique_completed_cases": 11,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "11",
+          "0"
+        ],
+        [
+          "11",
+          "0"
+        ],
+        [
+          "11",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "report-application-behavior-coverage",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793116697.587296,
+      "deadline": 1793117121,
+      "finished": 1793116702.822988,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "report-core-coverage",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793115146.913965,
+      "deadline": 1793117121,
+      "finished": 1793115151.25958,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "report-exact-uncovered-core-lines",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793115151.730078,
+      "deadline": 1793117121,
+      "finished": 1793115164.198003,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "review-xcode-diagnostics",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793116703.201067,
+      "deadline": 1793117121,
+      "finished": 1793116703.315385,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-application-state-and-draft-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112950.422444,
+      "deadline": 1793117121,
+      "finished": 1793113149.759495,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 37,
+      "passed_cases": 37,
+      "failed_cases": [],
+      "unique_completed_cases": 37,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "6",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "28",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "37",
+          "0"
+        ],
+        [
+          "37",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-audio-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114847.610168,
+      "deadline": 1793117121,
+      "finished": 1793114882.025843,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 6,
+      "passed_cases": 6,
+      "failed_cases": [],
+      "unique_completed_cases": 6,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "6",
+          "0"
+        ],
+        [
+          "6",
+          "0"
+        ],
+        [
+          "6",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-challenge-coordinator-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114228.69697,
+      "deadline": 1793117121,
+      "finished": 1793114235.384288,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [
+        [
+          "6",
+          "passed"
+        ]
+      ],
+      "XCTest_summaries": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-coverage-audit-regressions",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112469.567477,
+      "deadline": 1793117121,
+      "finished": 1793112471.59853,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [
+        [
+          "2",
+          "passed"
+        ]
+      ],
+      "XCTest_summaries": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-deterministic-wake-up-routing-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114883.1322298,
+      "deadline": 1793117121,
+      "finished": 1793114889.252023,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [
+        [
+          "2",
+          "passed"
+        ]
+      ],
+      "XCTest_summaries": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-lifecycle-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112471.7185159,
+      "deadline": 1793117121,
+      "finished": 1793112475.257822,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [
+        [
+          "65",
+          "passed"
+        ]
+      ],
+      "XCTest_summaries": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-math-application-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114237.406927,
+      "deadline": 1793117121,
+      "finished": 1793114259.741618,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 2,
+      "passed_cases": 2,
+      "failed_cases": [],
+      "unique_completed_cases": 2,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-math-engine-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114235.5763881,
+      "deadline": 1793117121,
+      "finished": 1793114237.297718,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [
+        [
+          "6",
+          "passed"
+        ]
+      ],
+      "XCTest_summaries": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-math-ui-smoke-flow",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114260.4866738,
+      "deadline": 1793117121,
+      "finished": 1793114334.680764,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 1,
+      "passed_cases": 1,
+      "failed_cases": [],
+      "unique_completed_cases": 1,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-memory-application-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114359.315666,
+      "deadline": 1793117121,
+      "finished": 1793114402.995706,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 3,
+      "passed_cases": 3,
+      "failed_cases": [],
+      "unique_completed_cases": 3,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "3",
+          "0"
+        ],
+        [
+          "3",
+          "0"
+        ],
+        [
+          "3",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-memory-engine-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114335.502437,
+      "deadline": 1793117121,
+      "finished": 1793114358.732939,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [
+        [
+          "7",
+          "passed"
+        ]
+      ],
+      "XCTest_summaries": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-memory-ui-smoke-flow",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114403.9282858,
+      "deadline": 1793117121,
+      "finished": 1793114557.971512,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 2,
+      "passed_cases": 2,
+      "failed_cases": [],
+      "unique_completed_cases": 2,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-persistence-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112439.7924118,
+      "deadline": 1793117121,
+      "finished": 1793112469.2267141,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [
+        [
+          "34",
+          "passed"
+        ]
+      ],
+      "XCTest_summaries": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-qr-application-and-scanner-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114567.757519,
+      "deadline": 1793117121,
+      "finished": 1793114585.5907469,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 5,
+      "passed_cases": 5,
+      "failed_cases": [],
+      "unique_completed_cases": 5,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "5",
+          "0"
+        ],
+        [
+          "5",
+          "0"
+        ],
+        [
+          "5",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-qr-engine-and-owner-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114559.0529249,
+      "deadline": 1793117121,
+      "finished": 1793114567.427198,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [
+        [
+          "4",
+          "passed"
+        ]
+      ],
+      "XCTest_summaries": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-focused-qr-ui-flows",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114586.168365,
+      "deadline": 1793117121,
+      "finished": 1793114735.809112,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 3,
+      "passed_cases": 3,
+      "failed_cases": [],
+      "unique_completed_cases": 3,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "3",
+          "0"
+        ],
+        [
+          "3",
+          "0"
+        ],
+        [
+          "3",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-full-swift-package-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793115078.296334,
+      "deadline": 1793117121,
+      "finished": 1793115145.9792378,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [
+        [
+          "148",
+          "passed"
+        ]
+      ],
+      "XCTest_summaries": [
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "run-platform-capability-and-native-shell-tests",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793115164.5444338,
+      "deadline": 1793117121,
+      "finished": 1793116696.728589,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 99,
+      "passed_cases": 99,
+      "failed_cases": [],
+      "unique_completed_cases": 99,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "11",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "3",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "20",
+          "0"
+        ],
+        [
+          "20",
+          "0"
+        ],
+        [
+          "7",
+          "0"
+        ],
+        [
+          "6",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "28",
+          "0"
+        ],
+        [
+          "6",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "3",
+          "0"
+        ],
+        [
+          "10",
+          "0"
+        ],
+        [
+          "1",
+          "0"
+        ],
+        [
+          "5",
+          "0"
+        ],
+        [
+          "7",
+          "0"
+        ],
+        [
+          "79",
+          "0"
+        ],
+        [
+          "79",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "validate-package-manifest",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112402.3047051,
+      "deadline": 1793117121,
+      "finished": 1793112416.880867,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "verify-built-alarmkit-usage-description",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114847.358272,
+      "deadline": 1793117121,
+      "finished": 1793114847.4826539,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "verify-gate-12-app-intent-and-foreground-routing",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114889.476566,
+      "deadline": 1793117121,
+      "finished": 1793115019.500669,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 9,
+      "passed_cases": 9,
+      "failed_cases": [],
+      "unique_completed_cases": 9,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "2",
+          "0"
+        ],
+        [
+          "7",
+          "0"
+        ],
+        [
+          "7",
+          "0"
+        ],
+        [
+          "7",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "verify-gate-13-full-orchestration-a-through-j",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793115020.6705658,
+      "deadline": 1793117121,
+      "finished": 1793115077.736066,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 10,
+      "passed_cases": 10,
+      "failed_cases": [],
+      "unique_completed_cases": 10,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [
+        [
+          "10",
+          "0"
+        ],
+        [
+          "10",
+          "0"
+        ],
+        [
+          "10",
+          "0"
+        ]
+      ],
+      "before_deadline": true
+    },
+    {
+      "label": "verify-release-excludes-ui-test-switches",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793116703.0100238,
+      "deadline": 1793117121,
+      "finished": 1793116703.07473,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "verify-reproducible-generated-audio-resources",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793114736.929013,
+      "deadline": 1793117121,
+      "finished": 1793114737.841277,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    },
+    {
+      "label": "wait-for-regression-simulator-boot-readiness",
+      "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+      "run_id": "40521565094",
+      "attempt": "1",
+      "started": 1793112495.914436,
+      "deadline": 1793117121,
+      "finished": 1793112809.274358,
+      "exit_code": 0,
+      "lane": "acceptance-validation-logs",
+      "completed_cases": 0,
+      "passed_cases": 0,
+      "failed_cases": [],
+      "unique_completed_cases": 0,
+      "swift_testing_summaries": [],
+      "XCTest_summaries": [],
+      "before_deadline": true
+    }
+  ]
+}

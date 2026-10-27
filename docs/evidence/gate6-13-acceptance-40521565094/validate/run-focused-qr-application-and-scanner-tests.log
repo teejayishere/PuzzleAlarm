@@ -1,0 +1,53 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/QRApplication.xcresult "-only-testing:PuzzleAlarmTests/QRStoreTests" -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/QRApplication.xcresult
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Test Suite 'Selected tests' started at 2026-10-27 15:23:02.973.
+Test Suite 'PuzzleAlarmTests.xctest' started at 2026-10-27 15:23:02.973.
+Test Suite 'QRStoreTests' started at 2026-10-27 15:23:02.974.
+Test Case '-[PuzzleAlarmTests.QRStoreTests testGeneratedExportDecodesExactTokenAndHasWhiteQuietZone]' started.
+2026-10-27 15:23:03.039032+0000 PuzzleAlarm[74405:199800] The filter 'CIPortraitEffectSpillCorrection' is not implemented in the bundle at /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/CoreImage/PortraitFilters.cifilter.
+2026-10-27 15:23:03.217203+0000 PuzzleAlarm[74405:200419] fopen failed for data file: errno = 2 (No such file or directory)
+2026-10-27 15:23:03.838837+0000 PuzzleAlarm[74405:200419] fopen failed for data file: errno = 2 (No such file or directory)
+Test Case '-[PuzzleAlarmTests.QRStoreTests testGeneratedExportDecodesExactTokenAndHasWhiteQuietZone]' passed (1.397 seconds).
+Test Case '-[PuzzleAlarmTests.QRStoreTests testRevokedAlarmAccessAndNextKindCannotBeSolvedByQR]' started.
+Test Case '-[PuzzleAlarmTests.QRStoreTests testRevokedAlarmAccessAndNextKindCannotBeSolvedByQR]' passed (0.168 seconds).
+Test Case '-[PuzzleAlarmTests.QRStoreTests testScannerFailedCommitRetryAndStaleOrderedCallback]' started.
+Test Case '-[PuzzleAlarmTests.QRStoreTests testScannerFailedCommitRetryAndStaleOrderedCallback]' passed (0.022 seconds).
+Test Case '-[PuzzleAlarmTests.QRStoreTests testScannerPermissionsLateCallbacksRetryAndInterruptionNeverSucceed]' started.
+Test Case '-[PuzzleAlarmTests.QRStoreTests testScannerPermissionsLateCallbacksRetryAndInterruptionNeverSucceed]' passed (0.030 seconds).
+Test Case '-[PuzzleAlarmTests.QRStoreTests testWriteFailureRelaunchDuplicateAndPendingCleanup]' started.
+Test Case '-[PuzzleAlarmTests.QRStoreTests testWriteFailureRelaunchDuplicateAndPendingCleanup]' passed (0.034 seconds).
+Test Suite 'QRStoreTests' passed at 2026-10-27 15:23:04.631.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 1.652 (1.658) seconds
+Test Suite 'PuzzleAlarmTests.xctest' passed at 2026-10-27 15:23:04.631.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 1.652 (1.658) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:23:04.632.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 1.652 (1.659) seconds
+2026-10-27 15:23:05.120 xcodebuild[74141:198990] [MT] IDETestOperationsObserverDebug: 8.867 elapsed -- Testing started completed.
+2026-10-27 15:23:05.120 xcodebuild[74141:198990] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 15:23:05.120 xcodebuild[74141:198990] [MT] IDETestOperationsObserverDebug: 8.867 sec, +8.866 sec -- end
+Resolve Package Graph
+
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/QRApplication.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

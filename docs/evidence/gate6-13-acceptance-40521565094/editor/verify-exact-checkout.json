@@ -1,0 +1,10 @@
+{
+  "label": "verify-exact-checkout",
+  "sha": "f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc",
+  "run_id": "40521565094",
+  "attempt": "1",
+  "started": 1793111374.826387,
+  "deadline": 1793112504,
+  "finished": 1793111374.8403509,
+  "exit_code": 0
+}

@@ -1,0 +1,278 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/Memory.xcresult "-only-testing:PuzzleAlarmUITests/MemoryChallengeUITests" -parallel-testing-enabled NO -enableCodeCoverage YES CODE_SIGNING_ALLOWED=NO test-without-building
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/Memory.xcresult
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+2026-10-27 15:20:33.113037+0000 PuzzleAlarmUITests-Runner[69199:185364] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-27 15:20:35.017.
+Test Suite 'PuzzleAlarmUITests.xctest' started at 2026-10-27 15:20:35.018.
+Test Suite 'MemoryChallengeUITests' started at 2026-10-27 15:20:35.018.
+Test Case '-[PuzzleAlarmUITests.MemoryChallengeUITests testInterruptVisibleRoundAndRecreateViewWithoutReveal]' started.
+    t =     0.00s Start Test at 2026-10-27 15:20:35.021
+    t =     0.32s Set Up
+    t =     0.34s Open com.teejayishere.PuzzleAlarm
+    t =     0.34s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 15:20:36.930 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:20:36.930 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: no debugger version
+objc[69199]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x109bbc310) and /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x1099dc398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+Resolve Package Graph
+
+    t =     5.22s         Setting up automation session
+    t =     7.32s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     8.98s Waiting 15.0s for "memory.progress" StaticText to exist
+    t =    10.00s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.progress" StaticText`
+    t =    10.00s         Checking existence of `"memory.progress" StaticText`
+    t =    10.17s Checking existence of `"alarms.add" Button`
+    t =    10.22s Waiting 10.0s for "memory.start" Button to exist
+    t =    11.28s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.start" Button`
+    t =    11.28s         Checking existence of `"memory.start" Button`
+    t =    11.36s Tap "memory.start" Button
+    t =    11.36s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    11.36s     Find the "memory.start" Button
+    t =    11.45s     Check for interrupting elements affecting "memory.start" Button
+    t =    11.59s     Synthesize event
+    t =    11.93s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    13.23s Checking `Expect predicate `label == "0123"` for object "memory.sequence" StaticText`
+    t =    13.23s     Find the "memory.sequence" StaticText
+    t =    13.30s Find the "memory.sequence" StaticText
+    t =    13.38s Pressing Home button
+    t =    13.85s Open com.teejayishere.PuzzleAlarm
+    t =    13.85s     Activate com.teejayishere.PuzzleAlarm
+    t =    14.87s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    15.81s Waiting 10.0s for "memory.answer" TextField to exist
+    t =    16.83s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.answer" TextField`
+    t =    16.83s         Checking existence of `"memory.answer" TextField`
+    t =    16.88s Checking existence of `"memory.sequence" StaticText`
+    t =    16.93s Tap Button (Element at index 0)
+    t =    16.93s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    16.94s     Find the Button (Element at index 0)
+    t =    17.00s     Check for interrupting elements affecting "BackButton" Button
+    t =    17.06s     Synthesize event
+    t =    17.37s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    18.52s Waiting 10.0s for "memory.open" Button to exist
+    t =    19.56s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.open" Button`
+    t =    19.56s         Checking existence of `"memory.open" Button`
+    t =    19.69s Tap "memory.open" Button
+    t =    19.69s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    19.69s     Find the "memory.open" Button
+    t =    19.79s     Check for interrupting elements affecting "memory.open" Button
+    t =    19.88s     Synthesize event
+    t =    20.21s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    21.18s Waiting 10.0s for "memory.answer" TextField to exist
+    t =    22.19s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.answer" TextField`
+    t =    22.19s         Checking existence of `"memory.answer" TextField`
+    t =    22.36s Checking existence of `"memory.sequence" StaticText`
+    t =    22.41s Terminate com.teejayishere.PuzzleAlarm:69218
+    t =    23.46s Open com.teejayishere.PuzzleAlarm
+    t =    23.46s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 15:20:58.494 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:20:58.494 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    25.48s         Setting up automation session
+    t =    27.29s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    28.84s Waiting 15.0s for "memory.progress" StaticText to exist
+    t =    29.90s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.progress" StaticText`
+    t =    29.90s         Checking existence of `"memory.progress" StaticText`
+    t =    30.02s Checking existence of `"alarms.add" Button`
+    t =    30.09s Waiting 10.0s for "memory.answer" TextField to exist
+    t =    31.11s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.answer" TextField`
+    t =    31.11s         Checking existence of `"memory.answer" TextField`
+    t =    31.21s Checking existence of `"memory.sequence" StaticText`
+    t =    31.31s Find the "memory.progress" StaticText
+    t =    31.37s Tear Down
+Test Case '-[PuzzleAlarmUITests.MemoryChallengeUITests testInterruptVisibleRoundAndRecreateViewWithoutReveal]' passed (31.676 seconds).
+Test Case '-[PuzzleAlarmUITests.MemoryChallengeUITests testRecallWrongFreshRoundRelaunchAndCompletion]' started.
+    t =     0.00s Start Test at 2026-10-27 15:21:06.698
+    t =     0.04s Set Up
+    t =     0.04s Open com.teejayishere.PuzzleAlarm
+    t =     0.04s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.04s         Terminate com.teejayishere.PuzzleAlarm:69922
+Resolve Package Graph
+
+2026-10-27 15:21:13.789 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:21:13.789 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     8.02s         Setting up automation session
+    t =     9.71s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    11.22s Waiting 15.0s for "memory.progress" StaticText to exist
+    t =    12.28s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.progress" StaticText`
+    t =    12.28s         Checking existence of `"memory.progress" StaticText`
+    t =    12.56s Checking existence of `"alarms.add" Button`
+    t =    12.77s Waiting 10.0s for "memory.start" Button to exist
+    t =    13.82s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.start" Button`
+    t =    13.82s         Checking existence of `"memory.start" Button`
+    t =    13.87s Tap "memory.start" Button
+    t =    13.87s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    13.87s     Find the "memory.start" Button
+    t =    13.91s     Check for interrupting elements affecting "memory.start" Button
+    t =    13.95s     Synthesize event
+    t =    14.25s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    15.51s Checking `Expect predicate `label == "0123"` for object "memory.sequence" StaticText`
+    t =    15.52s     Find the "memory.sequence" StaticText
+    t =    15.56s Find the "memory.sequence" StaticText
+    t =    15.59s Waiting 10.0s for "memory.answer" TextField to exist
+    t =    16.62s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.answer" TextField`
+    t =    16.62s         Checking existence of `"memory.answer" TextField`
+    t =    16.80s         Capturing element debug description
+    t =    17.61s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.answer" TextField`
+    t =    17.62s         Checking existence of `"memory.answer" TextField`
+    t =    17.67s Checking existence of `"memory.sequence" StaticText`
+    t =    17.72s Find the Target Application 'com.teejayishere.PuzzleAlarm'
+    t =    17.94s Added attachment named 'PuzzleAlarm-demo-09-memory-challenge'
+    t =    17.94s Tap "memory.answer" TextField
+    t =    17.94s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    17.95s     Find the "memory.answer" TextField
+    t =    18.02s     Check for interrupting elements affecting "memory.answer" TextField
+    t =    18.07s     Synthesize event
+    t =    18.42s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    19.73s Type '9999' into "memory.answer" TextField
+    t =    19.74s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    19.92s     Find the "memory.answer" TextField
+    t =    20.08s     Check for interrupting elements affecting "memory.answer" TextField
+    t =    20.15s     Synthesize event
+    t =    20.42s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    20.42s Tap "memory.submit" Button
+    t =    20.42s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    20.42s     Find the "memory.submit" Button
+    t =    20.47s     Check for interrupting elements affecting "memory.submit" Button
+    t =    20.53s     Synthesize event
+    t =    20.89s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    22.18s Checking `Expect predicate `label == "Try a new sequence."` for object "memory.feedback" StaticText`
+    t =    22.18s     Find the "memory.feedback" StaticText
+    t =    22.25s Find the "memory.feedback" StaticText
+    t =    22.30s Find the "memory.progress" StaticText
+    t =    22.36s Waiting 10.0s for "memory.answer" TextField to exist
+    t =    23.38s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.answer" TextField`
+    t =    23.38s         Checking existence of `"memory.answer" TextField`
+    t =    23.41s         Capturing element debug description
+    t =    24.41s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.answer" TextField`
+    t =    24.41s         Checking existence of `"memory.answer" TextField`
+    t =    24.47s Tap "memory.answer" TextField
+    t =    24.47s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    24.47s     Find the "memory.answer" TextField
+    t =    24.51s     Check for interrupting elements affecting "memory.answer" TextField
+    t =    24.58s     Synthesize event
+    t =    24.89s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    25.22s Type '1123' into "memory.answer" TextField
+    t =    25.22s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    25.22s     Find the "memory.answer" TextField
+    t =    25.29s     Check for interrupting elements affecting "memory.answer" TextField
+    t =    25.37s     Synthesize event
+    t =    25.65s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    25.65s Tap "memory.submit" Button
+    t =    25.65s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    25.66s     Find the "memory.submit" Button
+    t =    25.72s     Check for interrupting elements affecting "memory.submit" Button
+    t =    25.78s     Synthesize event
+    t =    26.10s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    27.41s Checking `Expect predicate `label == "1 of 2 rounds"` for object "memory.progress" StaticText`
+    t =    27.42s     Find the "memory.progress" StaticText
+    t =    27.48s Find the "memory.progress" StaticText
+    t =    27.52s Terminate com.teejayishere.PuzzleAlarm:70772
+    t =    28.59s Open com.teejayishere.PuzzleAlarm
+    t =    28.59s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 15:21:35.297 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:21:35.297 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    29.49s         Setting up automation session
+    t =    31.16s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    32.59s Waiting 15.0s for "memory.progress" StaticText to exist
+    t =    33.62s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.progress" StaticText`
+    t =    33.62s         Checking existence of `"memory.progress" StaticText`
+    t =    33.78s Checking existence of `"alarms.add" Button`
+    t =    33.83s Waiting 10.0s for "memory.answer" TextField to exist
+    t =    34.85s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.answer" TextField`
+    t =    34.85s         Checking existence of `"memory.answer" TextField`
+    t =    34.90s Checking existence of `"memory.sequence" StaticText`
+    t =    34.95s Find the "memory.progress" StaticText
+    t =    34.99s Tap "memory.answer" TextField
+    t =    34.99s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    35.00s     Find the "memory.answer" TextField
+    t =    35.08s     Check for interrupting elements affecting "memory.answer" TextField
+    t =    35.17s     Synthesize event
+    t =    35.50s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    35.92s Type '0123' into "memory.answer" TextField
+    t =    35.92s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    36.19s     Find the "memory.answer" TextField
+    t =    36.31s     Check for interrupting elements affecting "memory.answer" TextField
+    t =    36.38s     Synthesize event
+    t =    36.66s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    36.66s Tap "memory.submit" Button
+    t =    36.66s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    36.67s     Find the "memory.submit" Button
+    t =    36.74s     Check for interrupting elements affecting "memory.submit" Button
+    t =    36.83s     Synthesize event
+    t =    37.26s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    38.31s Checking `Expect predicate `label == "Wake-up complete"` for object "memory.completed" StaticText`
+    t =    38.31s     Find the "memory.completed" StaticText
+    t =    38.34s Find the "memory.completed" StaticText
+    t =    38.36s Checking existence of `"memory.submit" Button`
+    t =    38.39s Terminate com.teejayishere.PuzzleAlarm:71462
+    t =    39.42s Open com.teejayishere.PuzzleAlarm
+    t =    39.42s     Launch com.teejayishere.PuzzleAlarm
+2026-10-27 15:21:46.126 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 15:21:46.126 xcodebuild[68234:182900] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    40.25s         Setting up automation session
+    t =    42.37s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    43.85s Waiting 15.0s for "PuzzleAlarm" NavigationBar to exist
+    t =    44.88s     Checking `Expect predicate `existsNoRetry == 1` for object "PuzzleAlarm" NavigationBar`
+    t =    44.88s         Checking existence of `"PuzzleAlarm" NavigationBar`
+    t =    45.05s Checking existence of `"memory.open" Button`
+    t =    45.10s Tear Down
+Test Case '-[PuzzleAlarmUITests.MemoryChallengeUITests testRecallWrongFreshRoundRelaunchAndCompletion]' passed (45.390 seconds).
+Test Suite 'MemoryChallengeUITests' passed at 2026-10-27 15:21:52.088.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 77.067 (77.070) seconds
+Test Suite 'PuzzleAlarmUITests.xctest' passed at 2026-10-27 15:21:52.089.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 77.067 (77.071) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 15:21:52.089.
+	 Executed 2 tests, with 0 failures (0 unexpected) in 77.067 (77.072) seconds
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+2026-10-27 15:22:28.340 xcodebuild[68234:182900] [MT] IDETestOperationsObserverDebug: 119.702 elapsed -- Testing started completed.
+2026-10-27 15:22:28.340 xcodebuild[68234:182900] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 15:22:28.340 xcodebuild[68234:182900] [MT] IDETestOperationsObserverDebug: 119.702 sec, +119.702 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/Memory.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

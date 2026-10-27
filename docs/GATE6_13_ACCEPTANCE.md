@@ -1,5 +1,18 @@
 # Single ordered replacement acceptance attempt
 
+## Result — PASS / STOP
+
+Frozen tested `f01abf42c7b4e7a7ed10bb926bb736ebaa8e77bc`, run 40521565094,
+attempt 1, SUCCESS. Three jobs/all required assigned steps PASS, including complete
+ordered Gates 6–13, A–J and full regression/build/resource checks. Actual job times
+16m49s / 10m39s / 73m18s; all command deadlines met. No rerun/repair/extra taps/probes.
+[original evidence and limits](evidence/gate6-13-acceptance-40521565094/README.md). Original large ZIPs are local plus expiring Actions;
+durable logs/metadata and small ZIPs are in Git. Tested and publication SHAs differ.
+Historical causes unknown, budgets exhausted, exception revoked; device NOT RUN.
+No main promotion, Stage 14 or UX work. Attempt closed; STOP at evidence closeout.
+
+The contract below was committed before the single validation push.
+
 Authorized October 27, 2026 (America/Chicago) by the owner's task instruction.
 This separately authorizes acceptance validation of the completed Gate 6
 replacement and retained Stage 13 implementation. It does not invoke the revoked
