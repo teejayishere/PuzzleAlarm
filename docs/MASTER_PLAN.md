@@ -478,6 +478,13 @@ cannot replace exact UI/state/persistence assertions or excuse their failure.
 
 ## Separately approved historical-risk exception — NOT GRANTED
 
+The heading records this policy's original October 19 disposition. The owner later
+separately approved the exact candidate and limited scope recorded in
+[the prior approval](evidence/gate6-12-exception-40118586010/APPROVAL.md).
+[PROJECT_STATE](PROJECT_STATE.md) records the October 24 successful validation and
+October 26 documentation closeout. The policy below remains binding; publication
+does not grant broader approval or begin Stage 13.
+
 Only the user may separately approve this exception, explicitly naming the two
 historical switch/editor uncertainties, exact candidate HEAD, intended advancement
 scope and residual-risk owner. Documentation-policy approval is not risk approval,

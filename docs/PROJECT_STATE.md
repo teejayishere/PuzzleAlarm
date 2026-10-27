@@ -1,5 +1,81 @@
 # Project state
 
+## October 26, 2026 — documentation-only validation closeout
+
+Published the October 24 evidence below using the existing `[gate6-diagnostic]`
+`[record-only]` mechanism on `codex/stage-12-routing`. The tested source commit
+remains `3b6c44a98c9553021b8d26d7568765b6aa5e1210`; this documentation
+descendant is a separate publication revision, not a newly validated product.
+Its immutable SHA is available in Git history and the publication report.
+
+Read-only GitHub REST verification on October 26 confirmed run **40118586010,
+attempt 1**, `workflow_dispatch`, completed SUCCESS at that exact tested SHA;
+all three jobs and every step succeeded. Existing local archive hashes matched.
+No validation was repeated and no runners were allocated by this closeout.
+Documentation CI skipped by the record-only mechanism is not product PASS evidence.
+Source, tests, assertions and workflows are unchanged; main was not promoted.
+
+The [prior owner approval](evidence/gate6-12-exception-40118586010/APPROVAL.md)
+explicitly assigns residual intermittent switch/editor risk to the project owner.
+Stage 13 development eligibility exists **solely under that approved exception**,
+not ordinary root-cause clearance. Stage 13 is NOT STARTED; this closeout authorizes
+publication only and stops here. Future Stage 13 implementation needs a new task
+within that exception scope. A changed source candidate needs its own approval
+scope and complete ordered validation; a documentation descendant does not extend
+the old run's exact-SHA claim.
+
+Historical causes remain unknown; original failures, capture limitations and
+dependent product-acceptance holds remain preserved. Both diagnostic budgets remain
+EXHAUSTED with zero jobs available. Any recurrence revokes exception reliance,
+reopens the earliest affected gate and recursively invalidates dependents without
+resetting those budgets. Critical invariants remain binding. Physical-device
+acceptance is still DEVICE REQUIRED / NOT RUN, including actual AlarmKit/Solve
+delivery, lock/first unlock, Stop, backup firing/cancellation, hardware input,
+camera/audio and free provisioning. No release or product/device acceptance.
+
+[Durable evidence archive and preservation limits](evidence/gate6-12-exception-40118586010/README.md).
+
+## October 24, 2026 — approved exception, single validation PASS
+
+The project owner separately approved MASTER_PLAN §6 for the unexplained historical
+alarm-switch and saved-editor-opening failures at exact candidate
+`3b6c44a98c9553021b8d26d7568765b6aa5e1210`, accepting residual intermittent
+input/editor risk solely for possible Stage 13 development. The earlier
+NOT GRANTED / NOT INVOKED entries below describe prior tasks and are superseded
+only within this exact approval scope.
+
+[Run 40118586010](https://github.com/teejayishere/PuzzleAlarm/actions/runs/40118586010),
+`workflow_dispatch`, attempt 1: complete SUCCESS, all three jobs/every step.
+One declared ordered uninstrumented Gate 6–12 validation attempt; no rerun,
+retry-to-green, extra taps, weakened assertions, generated probes or source changes.
+Local/remote candidate SHA verified; existing exact-SHA push CI 39473575030 was
+SKIPPED and was not used as pass evidence.
+
+Source: live-owner retained getter, pending reconciliation, native wiring and
+teardown reviewed; original regressions/assertions retained. Automated macOS:
+four focused native contracts, ten switch flows, independent editor persistence,
+148 Core tests and ordered focused suites PASS. Xcode 26.6 / Swift 6.3.3:
+Debug/Release, SDK/resources/plists and Release-fixture exclusion PASS.
+Simulator iPhone 17 / iOS 26.5: management before downstream Math/Memory/QR/routing,
+then full 68 native + 20 UI regression PASS; final diagnostics/coverage/resources
+and evidence uploads PASS. Physical device NOT RUN / DEVICE REQUIRED.
+
+Gate 6–12 execution requirements are satisfied **under the approved exception**
+at this SHA, permitting only exception-scoped Stage 13 development eligibility.
+Historical causes remain unknown, historical failures and dependent product
+acceptance holds remain recorded, and no ordinary root-cause clearance is claimed.
+Last unheld gate outside the exception remains 5. Recurrence revokes reliance,
+reopens the earliest gate and recursively invalidates dependents; no diagnostic
+budget reset. A changed candidate needs its own approval/complete validation.
+No main promotion, release, product/device acceptance or Stage 13 implementation.
+Stage 13 NOT STARTED. STOP after this validation gate.
+
+[Complete result, original log archive, artifact links/digests and preservation limits](evidence/gate6-12-exception-40118586010/README.md).
+The validation task originally left documentation uncommitted to preserve candidate
+HEAD; the October 26 documentation-only closeout above publishes that record.
+
+## Previous state before separate owner approval (historical)
+
 Current stage: 12, recursing to the unresolved Gate 6 native-input boundary.
 Gate 6 is FAILED; dependent Gates 7–12 are INVALIDATED / HELD. Last unheld gate: 5.
 Stage 13 NOT STARTED. A later green run alone cannot clear a known unexplained failure.

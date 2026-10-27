@@ -1,5 +1,15 @@
 # Gate 6 bounded input investigation — October 17, 2026
 
+October 26 status clarification: the October 19 NOT GRANTED / NOT INVOKED
+disposition below is historical. The owner subsequently approved the exact-source
+exception and its single ordered validation passed; see
+[approval and evidence](evidence/gate6-12-exception-40118586010/README.md).
+Both historical causes remain unknown and both diagnostic budgets below remain
+EXHAUSTED, zero jobs available. No diagnostic authorization is renewed.
+Stage 13 is NOT STARTED; only exception-scoped future development eligibility
+exists. Recurrence revokes reliance and recursively invalidates affected gates
+without resetting budgets. Product/device acceptance remains held.
+
 ## Current policy — October 19, 2026: EXHAUSTED / STOP
 
 MASTER_PLAN §§4–6 and 47 govern this investigation. The historical proposals and

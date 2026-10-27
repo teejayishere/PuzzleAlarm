@@ -1,0 +1,20 @@
+{
+  "id": 40118586010,
+  "name": "PuzzleAlarm Core and iOS",
+  "event": "workflow_dispatch",
+  "head_sha": "3b6c44a98c9553021b8d26d7568765b6aa5e1210",
+  "status": "completed",
+  "conclusion": "success",
+  "run_attempt": 1,
+  "html_url": "https://github.com/teejayishere/PuzzleAlarm/actions/runs/40118586010",
+  "verified_via": "Exact-head GitHub Actions REST listing, connector job/step results, and GitHub run summary",
+  "dispatch_count_in_task": 1,
+  "rerun_count_in_task": 0,
+  "allocated_macos_jobs": 3,
+  "generated_diagnostic_probes": false,
+  "candidate_source_changed": false,
+  "candidate_head_changed": false,
+  "main_promoted": false,
+  "stage13_started": false,
+  "physical_device_run": false
+}

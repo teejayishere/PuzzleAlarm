@@ -1,0 +1,99 @@
+{
+  "artifacts": [
+    {
+      "id": 12572870191,
+      "name": "qr-simulator-evidence",
+      "size_in_bytes": 1164061,
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12572870191",
+      "archive_download_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12572870191/zip",
+      "expired": false,
+      "created_at": "2026-10-24T19:16:57Z",
+      "expires_at": "2026-10-31T19:16:56Z",
+      "updated_at": "2026-10-24T19:16:57Z",
+      "digest": "sha256:d35808f5b820ec651fec7a9d45d2f2fdd233184facffcd8e2a6518b7da85821c",
+      "workflow_run": {
+        "id": 40118586010,
+        "repository_id": 1400841048,
+        "head_repository_id": 1400841048,
+        "head_branch": "codex/stage-12-routing",
+        "head_sha": "3b6c44a98c9553021b8d26d7568765b6aa5e1210"
+      }
+    },
+    {
+      "id": 12572600507,
+      "name": "PuzzleAlarm-iPhone-Visual-Demo-3b6c44a98c9553021b8d26d7568765b6aa5e1210",
+      "size_in_bytes": 1238925,
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12572600507",
+      "archive_download_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12572600507/zip",
+      "expired": false,
+      "created_at": "2026-10-24T19:16:56Z",
+      "expires_at": "2026-11-23T19:16:55Z",
+      "updated_at": "2026-10-24T19:16:56Z",
+      "digest": "sha256:83084d8ff1633bd4010ae73dd324bc82ed5fb03ea262506b2430b90237db2d0f",
+      "workflow_run": {
+        "id": 40118586010,
+        "repository_id": 1400841048,
+        "head_repository_id": 1400841048,
+        "head_branch": "codex/stage-12-routing",
+        "head_sha": "3b6c44a98c9553021b8d26d7568765b6aa5e1210"
+      }
+    },
+    {
+      "id": 12572128998,
+      "name": "native-simulator-evidence",
+      "size_in_bytes": 313262738,
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12572128998",
+      "archive_download_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12572128998/zip",
+      "expired": false,
+      "created_at": "2026-10-24T19:17:20Z",
+      "expires_at": "2026-10-31T19:16:58Z",
+      "updated_at": "2026-10-24T19:17:20Z",
+      "digest": "sha256:377f730fee105fc8607a7a5d8cd74e6b3744b631eb8e46c6eb0ec569164bdfbc",
+      "workflow_run": {
+        "id": 40118586010,
+        "repository_id": 1400841048,
+        "head_repository_id": 1400841048,
+        "head_branch": "codex/stage-12-routing",
+        "head_sha": "3b6c44a98c9553021b8d26d7568765b6aa5e1210"
+      }
+    },
+    {
+      "id": 12570587800,
+      "name": "editor-toggle-simulator-evidence",
+      "size_in_bytes": 3146479,
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12570587800",
+      "archive_download_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12570587800/zip",
+      "expired": false,
+      "created_at": "2026-10-24T18:08:46Z",
+      "expires_at": "2026-10-31T18:08:45Z",
+      "updated_at": "2026-10-24T18:08:46Z",
+      "digest": "sha256:8daf52b80af6485e6123b62fc704ce458af24f69951b4ee45f205cb8f6d8bde1",
+      "workflow_run": {
+        "id": 40118586010,
+        "repository_id": 1400841048,
+        "head_repository_id": 1400841048,
+        "head_branch": "codex/stage-12-routing",
+        "head_sha": "3b6c44a98c9553021b8d26d7568765b6aa5e1210"
+      }
+    },
+    {
+      "id": 12569918645,
+      "name": "toggle-simulator-evidence",
+      "size_in_bytes": 5117038,
+      "url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12569918645",
+      "archive_download_url": "https://api.github.com/repos/teejayishere/PuzzleAlarm/actions/artifacts/12569918645/zip",
+      "expired": false,
+      "created_at": "2026-10-24T18:09:20Z",
+      "expires_at": "2026-10-31T18:09:18Z",
+      "updated_at": "2026-10-24T18:09:20Z",
+      "digest": "sha256:6dc828515858493c06db503f7713ce302546969d0c5ea01c9bf14855964d6813",
+      "workflow_run": {
+        "id": 40118586010,
+        "repository_id": 1400841048,
+        "head_repository_id": 1400841048,
+        "head_branch": "codex/stage-12-routing",
+        "head_sha": "3b6c44a98c9553021b8d26d7568765b6aa5e1210"
+      }
+    }
+  ]
+}
