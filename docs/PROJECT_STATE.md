@@ -1,5 +1,50 @@
 # Project state
 
+## October 26, 2026 — Stage 13 STOP at Gate 6 input failure
+
+Current stage: 13 implementation candidate, **BLOCKED / NOT ACCEPTED**. Gate 6 is
+FAILED / HELD. Gates 7–13 are recursively INVALIDATED / HELD; last unheld gate 5.
+Exception reliance is REVOKED for this candidate after a current native-input
+assertion failure. Both historical diagnostic budgets remain EXHAUSTED, zero jobs.
+
+Tested/pushed candidate: `2b2c81d2277f05eb5d095beb0285d47e58a73cb4`, on
+`codex/stage-13-orchestration` from published `b98b5c516b0bd554107f21786b700b6059c55a92`.
+[Run 40445144617](https://github.com/teejayishere/PuzzleAlarm/actions/runs/40445144617),
+attempt 1, push: editor prerequisite step **FAILED**; the workflow was explicitly
+cancelled to stop further work. Actual final Actions conclusion is **CANCELLED**
+(all three jobs cancelled), not SUCCESS. The editor step's recorded failure remains
+failure; cancellation does not erase it. No rerun or new diagnostic occurred.
+
+The original independent editor declaration failed at AlarmManagementUITests.swift:181,
+188.222 seconds: after On save/relaunch and successful row reopening, its ordinary
+On→Off tap left `editor.enabled` at `1` instead of `0`. This is a Gate 6 input
+failure, not evidence of a saved-row-opening failure or a proven OS/product cause.
+No corrective extra tap, test weakening or speculative source remedy was made.
+Four focused binding/native contracts PASS. Four of ten declared switch flows
+completed PASS; the fifth started and was interrupted by cancellation. The ten-flow
+requirement is incomplete. The dependent validate job had no executed steps.
+
+Source: shared final-sequence handoff plus ten A–J disk/application integration
+declarations remain committed and unaccepted. Xcode 26.6 / iPhone 17, iOS 26.5:
+Debug app and test targets compiled, including the new integration suite; this
+does not establish Stage 13 behavior. Core full regression, ordered broad Gate 6–12,
+Gate 13 A–J, Release/SDK/resource/fixture checks and full native/UI regression were
+NOT RUN in the dependent job. No Gate 13 success or complete CI pass is claimed.
+
+Complete original logs, run/job/step/artifact metadata and the switch ZIP are in
+[the evidence archive](evidence/stage13/README.md). The original failed editor ZIP
+is preserved locally under `TestResults/Stage13-40445144617/`, with SHA-256 matching
+Actions; its 87 MB ZIP is not published in Git. Artifact retention limits are explicit.
+The final documentation-only publication SHA is reported separately from the tested
+candidate; record-only skipped CI is not new product evidence.
+
+Main remains `bd069f29c6d045d5bc27fc56212edcbde2090855`, unpromoted. Stage 14 and
+UX redesign NOT STARTED. Physical-device acceptance remains DEVICE REQUIRED / NOT
+RUN for all previously recorded requirements. STOP at this blocking failure; no
+further development, validation, diagnostics or device action is queued.
+
+## Earlier candidate preparation (superseded by STOP above)
+
 ## October 26, 2026 — Stage 13 candidate preparation
 
 Current stage: 13, development authorized under the owner's new MASTER_PLAN §6

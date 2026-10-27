@@ -1,5 +1,43 @@
 # Development log
 
+## October 26, 2026 — Stage 13 stopped on required Gate 6 failure
+
+Declared exact candidate 2b2c81d2277f05eb5d095beb0285d47e58a73cb4 before its
+single push-triggered run 40445144617, attempt 1. Initial publication was blocked
+by an obsolete temporary gh credential helper; the connector also lacked write
+scope. Restored official free gh 2.102.0 in a temporary directory, reused existing
+keyring authentication through a per-command helper override, and pushed the same
+candidate. No credential/signing material or global credential changes. Failed
+publication attempts started no CI and produced no changed candidate.
+
+Observed required independent editor step failure; immediately stopped advancement
+and requested workflow cancellation. Actual final run/all job conclusions CANCELLED;
+the editor's test step remains FAILURE. Original declaration executed once and
+failed at line 181, 188.222 seconds: On saved, relaunched and row reopened, then
+one declared On→Off editor.enabled tap remained 1. This is native-input failure,
+not saved-row-opening recurrence evidence. Cause unknown; no product/OS/harness
+attribution or speculative fix. Exception reliance revoked, earliest affected Gate 6
+FAILED / HELD, dependent Gates 7–13 INVALIDATED / HELD, last unheld gate 5.
+Exhausted diagnostic allocations unchanged; no new diagnostic or test rerun.
+
+Four focused native contracts passed. The ten-flow switch invocation completed
+four passed executions, then fifth interrupted during cancellation; requirement
+incomplete. Dependent validate job had zero executed steps. Debug compilation of
+new tests is source/build evidence only: Gate 13 A–J NOT EXECUTED, full Core,
+ordered broad Gate 6–12, Release/SDK/resource checks and full native/UI NOT RUN.
+Device NOT RUN. No Gate 13 success or complete CI pass.
+
+Preserved original logs/metadata and switch ZIP in docs/evidence/stage13. Failed
+editor ZIP (87,264,090 bytes) saved locally in TestResults/Stage13-40445144617;
+both ZIP SHA-256 digests match Actions. Explicit retention/local-only limits in
+README. CLI initially refused terminal escapes when saving logs; saved original
+logs with its documented allow-escape-sequences option. This preservation repair
+did not allocate runners or execute tests. All original failure records retained.
+
+Publish only documentation/evidence closeout with existing record-only markers;
+report publication SHA/skipped CI separately. Source candidate remains frozen.
+Main unchanged; no Stage 14/UX redesign/release/device acceptance. STOP.
+
 ## October 26, 2026 — Stage 13 orchestration candidate
 
 Task: Stage 13 only, owner-authorized historical-risk exception for Stage 13

@@ -1,0 +1,5 @@
+.gitattributes text eol=lf
+SHA256SUMS.txt text eol=lf
+*.log -text
+*.json -text
+*.zip -text

@@ -2,6 +2,10 @@
 
 ## Stage 13 orchestration
 
+Implementation candidate only: Gate 13 execution was not reached. Exact candidate
+2b2c81d failed the Gate 6 editor input prerequisite; exception reliance is revoked
+and Gates 7–13 are INVALIDATED / HELD. This section describes source, not acceptance.
+
 AlarmStore's three engine submission paths share `reconcileCompletedSequence`.
 The engine result describes challenge completion; only the saved session's
 `completing` phase authorizes entering lifecycle reconciliation after the full

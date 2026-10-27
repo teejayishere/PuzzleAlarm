@@ -1,5 +1,23 @@
 # Gate 6 bounded input investigation — October 17, 2026
 
+## October 26 — Stage 13 ordinary validation stopped; no new diagnostics
+
+At candidate `2b2c81d2277f05eb5d095beb0285d47e58a73cb4`, ordinary uninstrumented
+run 40445144617 attempt 1 failed its independent editor input assertion at line 181
+(188.222s): after successful On save/relaunch and row reopening, the single declared
+On→Off editor.enabled tap remained 1. This is a new native-input failure; the row
+opened, and no product/harness/OS cause or saved-row-opening recurrence is inferred.
+The workflow was cancelled to stop advancement. Actual overall/job conclusion is
+CANCELLED with the required editor test step recorded FAILURE.
+
+Exception reliance revoked for this candidate. Gate 6 FAILED / HELD; Gates 7–13
+INVALIDATED / HELD; last unheld gate 5. Four native contracts pass; four of ten
+switch flows complete, fifth interrupted, broad validation/Gate 13 not executed.
+Both historical diagnostic budgets remain EXHAUSTED, zero allocations. These are
+ordinary approval-scoped validation jobs, not new discriminating diagnostic jobs.
+No extra tap, rerun, new probe or speculative remedy. Original evidence and limits
+are preserved in [Stage 13 evidence](evidence/stage13/README.md). STOP.
+
 October 26 status clarification: the October 19 NOT GRANTED / NOT INVOKED
 disposition below is historical. The owner subsequently approved the exact-source
 exception and its single ordered validation passed; see

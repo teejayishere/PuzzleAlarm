@@ -1,5 +1,32 @@
 # Test matrix
 
+## Stage 13 attempt — STOP / Gate 6 FAILED
+
+Exact tested candidate `2b2c81d2277f05eb5d095beb0285d47e58a73cb4`,
+[run 40445144617](https://github.com/teejayishere/PuzzleAlarm/actions/runs/40445144617),
+push, attempt 1. Required editor step FAILED, then explicit stop/cancellation;
+actual workflow and all three job conclusions CANCELLED. No retry or diagnostic.
+
+| Evidence class | Exact observed result |
+| --- | --- |
+| Source / Windows | Self/adversarial review and static source/workflow-order checks; original Core/native/UI assertions and switches preserved |
+| Xcode | Xcode 26.6 / iOS 26.5 SDK; Debug app/test targets compiled, including OrchestrationIntegrationTests; broad Release/SDK/resource checks NOT RUN |
+| Focused native contracts | Four existing retained-binding, command completion, synchronous pending/reconciliation and native wiring/teardown tests PASS |
+| Independent editor / Simulator | Original declaration FAILED once (188.222s), line 181: ordinary post-relaunch On→Off input left editor.enabled at 1; row reopening had succeeded |
+| Ten-flow list requirement | Four executions completed PASS, fifth started/interrupted; all ten NOT completed; no full requirement PASS |
+| Ordered broad Gate 6–12 / Core / Gate 13 / full regression | Dependent validate job cancelled with zero executed steps; new A–J declarations compiled, NOT EXECUTED |
+| Physical device | DEVICE REQUIRED / NOT RUN; no device acceptance |
+
+Gate 6 FAILED / HELD; dependent Gates 7–13 INVALIDATED / HELD; last unheld gate 5.
+Exception reliance REVOKED for this candidate. The current input failure cannot be
+waived by historical-risk approval. Causes remain unknown; no assertion proves
+product, harness or OS causation. Both historical diagnostic budgets remain
+EXHAUSTED with zero jobs available. Source mappings below are not PASS evidence.
+
+[Original logs, artifact hashes, preservation limits and accounting](evidence/stage13/README.md).
+No required tests were omitted to pass; downstream execution stopped on a failed
+prerequisite. Documentation publication is separate and its skipped CI is not PASS.
+
 ## Stage 13 — candidate mapping, validation PENDING
 
 All methods below are in `OrchestrationIntegrationTests`, composed through real

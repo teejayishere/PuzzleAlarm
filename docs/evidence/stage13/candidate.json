@@ -1,0 +1,14 @@
+{
+  "candidate_sha": "2b2c81d2277f05eb5d095beb0285d47e58a73cb4",
+  "base_sha": "b98b5c516b0bd554107f21786b700b6059c55a92",
+  "branch": "codex/stage-13-orchestration",
+  "declared_before_push_validation": true,
+  "authorization": "Owner's October 26 Stage 13 development and candidate validation under MASTER_PLAN section 6; owner retains historical switch/editor risk",
+  "scope": "Stage 13 only; no main promotion, release or device acceptance",
+  "trigger": "one ordinary push workflow",
+  "declared_attempts": 1,
+  "reruns_authorized": false,
+  "diagnostic_jobs_authorized": 0,
+  "validation": "Complete ordered uninstrumented Gate 6-12, Gate 13 A-J, full relevant regression",
+  "recurrence": "Revoke exception reliance, reopen earliest gate and recursively invalidate dependents; exhausted diagnostic budgets unchanged"
+}
