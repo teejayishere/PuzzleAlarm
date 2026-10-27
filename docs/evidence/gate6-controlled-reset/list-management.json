@@ -1,0 +1,32 @@
+{
+  "label": "management",
+  "sha": "8a236a03f0c19eb70863ddd7d290a70fb90efa73",
+  "run_id": "40448988954",
+  "attempt": "1",
+  "started": 1793075672.384099,
+  "deadline": 1793076740,
+  "command": [
+    "xcodebuild",
+    "-project",
+    "PuzzleAlarm.xcodeproj",
+    "-scheme",
+    "PuzzleAlarm",
+    "-configuration",
+    "Debug",
+    "-destination",
+    "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64",
+    "-derivedDataPath",
+    "DerivedData",
+    "-resultBundlePath",
+    "TestResults/Management.xcresult",
+    "-only-testing:PuzzleAlarmUITests/AlarmManagementUITests",
+    "-skip-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest",
+    "-skip-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditorEnabledTogglePersistsAfterRepeatedNativeInput",
+    "-parallel-testing-enabled",
+    "NO",
+    "CODE_SIGNING_ALLOWED=NO",
+    "test"
+  ],
+  "finished": 1793076487.873743,
+  "exit_code": 0
+}

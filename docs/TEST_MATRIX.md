@@ -2,6 +2,13 @@
 
 ## Active controlled Gate 6 replacement
 
+**Focused PASS / STOP:** `8a236a03f0c19eb70863ddd7d290a70fb90efa73`,
+[40448988954](https://github.com/teejayishere/PuzzleAlarm/actions/runs/40448988954),
+attempt 1, SUCCESS. All 37 focused native tests, ten list flows, independent editor
+and nine other management declarations passed; 48 distinct declarations / 57 case
+executions. Both jobs include preservation, 30m26s / 10m9s; every invocation exited
+zero before minute 30. Exactly two jobs, no rerun. [Full original evidence](evidence/gate6-controlled-reset/README.md).
+
 [Owner decision and pre-push limits](GATE6_CONTROLLED_RESET.md) govern this task.
 Keep one-action exact native state, pending/error/status, persistence, retained-owner,
 denial/scheduling recovery, ten list flows and independent editor coverage. Any
@@ -20,8 +27,13 @@ Earlier full-replay instructions apply to separately scoped downstream replay.
 | Deleted bridge-specific target/rebind/teardown test | Bridge removed, so target lifecycle mechanics no longer exist; native UI plus retained/disabled/pending behavior above replace its behavioral duties. Full rationale in controlling decision |
 
 Windows: four offline budget-wrapper checks PASS and parsed workflow bounds/branch
-exclusions PASS; no local Swift/Xcode/Simulator execution. Candidate execution is
-pending. Source/Core/Stage 13 preservation reviewed separately from test evidence.
+exclusions PASS; no local Swift/Xcode/Simulator execution. Exact candidate Xcode
+26.6 Debug compilation and focused iOS 26.5 Simulator execution PASS. Source/Core/
+Stage 13 preservation reviewed separately. Full Core/native/UI, Release/SDK/resource
+checks and Gates 7–13 NOT RUN; physical device NOT RUN. Gate 6 focused replacement
+execution PASS only; dependent acceptance stays held, causes unknown, exception
+revoked and historical budgets exhausted. Evidence-only descendants are not tested
+candidate SHAs. STOP; separately scoped ordered downstream replay required.
 
 ## Stage 13 attempt — STOP / Gate 6 FAILED
 

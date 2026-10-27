@@ -1,5 +1,39 @@
 # Development log
 
+## October 26, 2026 — controlled replacement focused PASS / STOP
+
+Frozen candidate 8a236a03f0c19eb70863ddd7d290a70fb90efa73 declared before its one
+validation push. Run 40448988954, attempt 1, SUCCESS; two standard free macos-26
+jobs, all required steps. 37 focused native tests PASS; ten ordinary list flow
+executions PASS; independent editor PASS once (199.407s); remaining nine management
+declarations PASS. 48 distinct declarations, 57 executions; no inflated unique
+count for list repetitions. Original UI tests/helpers unchanged, no corrective tap,
+weakened assertion, probe or diagnostic wait. Source/tests unchanged after freeze.
+
+Exact allocation including setup/preservation: list 30m26s, editor 10m9s. Absolute
+test invocation completion from first budget step: contracts 6m56.462s, ten-list
+16m11.272s, management 29m47.874s; editor 9m39.016s. All before minute 30 / required
+35-minute ceiling, both jobs below 40. Two allocations consumed, attempt closed;
+no rerun, repair-and-rerun or further execution. Xcode 26.6 / Swift 6.3.3 Debug compile
+and focused iOS 26.5 Simulator PASS, no compiler/destination warnings, one known
+SDK metadata advisory per lane. Full Core/native/UI, Release/SDK/resource/fixture
+checks and Gates 7–13 NOT RUN; physical device NOT RUN.
+
+[Durable original logs, metadata and artifact integrity](evidence/gate6-controlled-reset/README.md).
+Both original ZIP hashes match Actions. Editor original ZIP is in Git; the original
+131,260,756-byte list ZIP is preserved as four lossless parts with manifest and
+verified restoration utility, keeping each GitHub file below its single-file limit.
+Full originals/extracted xcresults also remain locally. No dependence on Actions'
+November 26 UTC expiry for this replacement evidence. Historical evidence unchanged.
+
+Gate 6 replacement execution PASS in this focused owner scope; dependent Gates
+7–13 INVALIDATED / HELD pending separately scoped ordered replay. Stage 13 retained
+and unaccepted. Historical causes unknown; diagnostic budgets EXHAUSTED, exception
+REVOKED. No main promotion, downstream development or product/device reliability
+claim. Ordinary exact-candidate CI 40448989070 all skipped/no steps. Publish only
+evidence/documentation using record-only skips, separately from tested candidate.
+STOP after publication; no further action queued.
+
 ## October 26, 2026 — controlled Gate 6 replacement preparation
 
 Owner explicitly authorized a controlled replacement, preserving repository,

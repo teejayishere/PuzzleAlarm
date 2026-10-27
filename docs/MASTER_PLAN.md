@@ -12,6 +12,11 @@ tooling failures count, no reruns/probes. Preserve behavioral requirements and
 Stage 13. Stop after failure or replacement evidence success. Gates 7–13 stay held
 pending a separately scoped ordered replay; no downstream development or main promotion.
 
+The exact replacement candidate `8a236a03f0c19eb70863ddd7d290a70fb90efa73`
+completed this focused scope in run 40448988954, attempt 1, SUCCESS. This task is
+closed at replacement evidence PASS / STOP. Gates 7–13 remain held; this result
+does not establish historical cause, broad validation or device acceptance.
+
 You are the lead implementation engineer for **PuzzleAlarm**, a personal native iPhone alarm application.
 
 Your job is not merely to generate code.

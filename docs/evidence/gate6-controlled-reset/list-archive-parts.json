@@ -1,0 +1,26 @@
+{
+  "original_bytes": 131260756,
+  "original_sha256": "6edbc9f6bbd8ca8ffef9fbb86d46124b701a9ed40122bbd2979c7620cb86c045",
+  "parts": [
+    {
+      "file": "gate6-reset-list.zip.part01",
+      "bytes": 33554432,
+      "sha256": "9a1d7328e2454fc656d1bb572a0ca5ee6ac375c4ad64fec7133cab9f9f8ad726"
+    },
+    {
+      "file": "gate6-reset-list.zip.part02",
+      "bytes": 33554432,
+      "sha256": "d2ad860384f642cd802bca80d03aacacf335af01c1555937e0a9097a64a089eb"
+    },
+    {
+      "file": "gate6-reset-list.zip.part03",
+      "bytes": 33554432,
+      "sha256": "3f98c8ad545a008f2c2f92f756d1d5fdd47918b8a41d81d3df80becd9535b741"
+    },
+    {
+      "file": "gate6-reset-list.zip.part04",
+      "bytes": 30597460,
+      "sha256": "7dc89a8e5dc9175b6bbf144389e0e76a02f6e13386365143a4faeedc29e058cc"
+    }
+  ]
+}

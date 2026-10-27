@@ -1,0 +1,48 @@
+{
+  "candidate": "8a236a03f0c19eb70863ddd7d290a70fb90efa73",
+  "run_id": 40448988954,
+  "attempt": 1,
+  "jobs": [
+    {
+      "id": 122006967041,
+      "name": "gate6 (list)",
+      "elapsed_seconds_including_preservation": 1826.0
+    },
+    {
+      "id": 122006967297,
+      "name": "gate6 (editor)",
+      "elapsed_seconds_including_preservation": 609.0
+    }
+  ],
+  "invocations": [
+    {
+      "label": "contracts",
+      "passed_case_executions": 37,
+      "finish_seconds_from_first_budget_step": 416.462,
+      "exit_code": 0
+    },
+    {
+      "label": "ten-list",
+      "passed_case_executions": 10,
+      "finish_seconds_from_first_budget_step": 971.272,
+      "exit_code": 0
+    },
+    {
+      "label": "management",
+      "passed_case_executions": 9,
+      "finish_seconds_from_first_budget_step": 1787.874,
+      "exit_code": 0
+    },
+    {
+      "label": "editor",
+      "passed_case_executions": 1,
+      "finish_seconds_from_first_budget_step": 579.016,
+      "exit_code": 0
+    }
+  ],
+  "native_declarations": 37,
+  "unique_ui_declarations": 11,
+  "total_case_executions": 57,
+  "downstream": "NOT RUN / HELD",
+  "physical_device": "NOT RUN"
+}

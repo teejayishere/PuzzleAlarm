@@ -1,0 +1,12 @@
+{
+  "sha": "8a236a03f0c19eb70863ddd7d290a70fb90efa73",
+  "preparation_sha": "07edf88abb06d5b50e4bd02a01d1a64812fb090d",
+  "baseline": "d65649f612bbc320fe33f369c524d9b35faaf7cd",
+  "branch": "codex/gate6-controlled-reset",
+  "declared_at_utc": "2026-10-27T04:18:12.0848884Z",
+  "attempts": 1,
+  "maximum_macos_jobs": 2,
+  "job_minutes": 40,
+  "test_stop_minute": 34,
+  "no_reruns": true
+}

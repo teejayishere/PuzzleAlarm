@@ -1,5 +1,20 @@
 # Owner-approved controlled Gate 6 reset
 
+## Result — focused replacement PASS, STOP
+
+Frozen `8a236a03f0c19eb70863ddd7d290a70fb90efa73`,
+[run 40448988954](https://github.com/teejayishere/PuzzleAlarm/actions/runs/40448988954),
+attempt 1: SUCCESS, both jobs/all required steps. 37 native tests, ten ordinary
+list flows, one independent editor declaration and nine remaining management
+declarations PASS. Jobs including preservation: 30m26s / 10m9s; all test invocations
+complete before minute 30. Exactly two allocated jobs; no reruns or further work.
+[Original logs, exact timestamps, artifact digests and restorable xcresults](evidence/gate6-controlled-reset/README.md).
+
+Gate 6 replacement execution PASS within this focused owner scope. Gates 7–13
+remain INVALIDATED / HELD pending separately scoped ordered replay. Historical
+causes unknown; diagnostic budgets EXHAUSTED; prior exception REVOKED; physical
+device NOT RUN. No broad CI/product/device acceptance or main promotion. STOP.
+
 Approved October 26, 2026 (America/Chicago), by the owner's task instruction.
 This decision authorizes deliberate replacement development of alarm list/editor
 input and UI state ownership. It is not another historical investigation or a
@@ -44,7 +59,6 @@ evidence separately. On any failure preserve evidence and STOP. On success repor
 replacement evidence and STOP: Gates 7–13 require separately scoped ordered replay.
 No historical-cause, broad acceptance or physical-device reliability claim.
 
-## Current disposition
 ## Replacement design and review
 
 Remove the custom UIViewRepresentable/UISwitch target-coordinator bridge. Both
@@ -116,6 +130,7 @@ candidate is declared locally before its one validation push; no main change.
 
 ## Current disposition
 
-Decision persisted before implementation. Gate 6 remains FAILED / HELD pending
-replacement validation; Gates 7–13 INVALIDATED / HELD; last unheld gate 5.
-Source/automated/Xcode/Simulator/device evidence will be recorded separately.
+Decision persisted at 7b66bd0 before implementation. The result above closes this
+single replacement attempt; its two allocations are consumed and nothing further
+is queued. Source, automated, Xcode, Simulator and device evidence remain separate
+in the linked archive. Publication descendants do not inherit exact-HEAD CI PASS.

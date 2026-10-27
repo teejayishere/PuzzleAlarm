@@ -1,22 +1,35 @@
 # Project state
 
-## Active scope — owner-approved controlled Gate 6 reset
+## Current result — controlled Gate 6 replacement PASS / STOP
 
 **[Controlling decision and frozen validation limits](GATE6_CONTROLLED_RESET.md).**
-Replacement development is authorized on `codex/gate6-controlled-reset` from the
-Stage 13 closeout. Main, Stage 13 source/tests and historical evidence are preserved.
-Gate 6 remains FAILED / HELD; Gates 7–13 INVALIDATED / HELD. Historical budgets
-remain EXHAUSTED and the exception REVOKED. Earlier STOP entries remain historical;
-the linked decision governs only this replacement. No downstream work is authorized.
+Implemented on `codex/gate6-controlled-reset` from the Stage 13 closeout.
+Frozen tested candidate `8a236a03f0c19eb70863ddd7d290a70fb90efa73`:
+[focused run 40448988954](https://github.com/teejayishere/PuzzleAlarm/actions/runs/40448988954),
+attempt 1, SUCCESS. Both jobs/all required steps passed: 37 native tests, all ten
+ordinary list flows, the independent editor and nine other management declarations.
+Jobs including preservation: 30m26s and 10m9s; tests finished before minute 30.
+Two jobs allocated, no rerun. [Original evidence and integrity](evidence/gate6-controlled-reset/README.md).
 
-Replacement source prepared: standard SwiftUI switches, one observable pending
+Replacement source: standard SwiftUI switches, one observable pending
 input owner with live idle store reads, editor input separated from the time wheel,
 explicit edit-button/sheet identity. Original management UI assertions/helpers are
 unchanged; bridge-specific tests replaced with documented behavioral equivalents.
 Four offline budget-wrapper checks and parsed workflow limits/exclusions PASS.
-Swift/Xcode/Simulator execution PENDING for the frozen candidate; device NOT RUN.
-Dedicated guarded-push workflow allows only two focused Gate 6 jobs; broad CI excludes
-this branch and preparation uses record-only skips. No Gates 7–13 replay authorized.
+Xcode 26.6 / Swift 6.3.3 Debug compile and focused iOS 26.5 Simulator checks PASS;
+no compiler/destination warnings. Full Core/native/UI, Release/SDK/resource checks
+and downstream replay NOT RUN. Physical device DEVICE REQUIRED / NOT RUN.
+
+Gate 6 replacement execution PASS within this focused owner-defined scope;
+Gates 7–13 remain INVALIDATED / HELD. No downstream development until their ordered
+acceptance; replay requires a separate scope. Stage 13 orchestration remains
+implemented/unaccepted; source/tests and all historical evidence are preserved.
+Historical causes unknown, diagnostic budgets EXHAUSTED, exception REVOKED.
+Main remains `bd069f29c6d045d5bc27fc56212edcbde2090855`; no promotion or device reliability
+claim. Candidate ordinary CI 40448989070 SKIPPED, not broad PASS. Evidence-only
+publication is a separate revision with record-only skipped CI. STOP; no further
+development, tests, investigation or device action queued. Earlier entries below
+are historical and are superseded only within this replacement scope.
 
 ## October 26, 2026 — Stage 13 STOP at Gate 6 input failure
 

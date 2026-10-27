@@ -1,0 +1,1510 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm -configuration Debug -destination "platform=iOS Simulator,id=10B884BF-749F-4E8B-AFCD-26AB8F1DBD01,arch=arm64" -derivedDataPath DerivedData -resultBundlePath TestResults/TenList.xcresult "-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEnableDisableAndFailureRetryAreHonest" -run-tests-until-failure -test-iterations 10 -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Running tests multiple times until a failure occurs. Running tests repeatedly up to 10 times.
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  PuzzleAlarm: /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+
+Writing result bundle at path:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/TenList.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (5 targets)
+    Target 'PuzzleAlarmUITests' in project 'PuzzleAlarm'
+        ➜ Explicit dependency on target 'PuzzleAlarm' in project 'PuzzleAlarm'
+    Target 'PuzzleAlarmTests' in project 'PuzzleAlarm'
+        ➜ Explicit dependency on target 'PuzzleAlarm' in project 'PuzzleAlarm'
+        ➜ Explicit dependency on target 'PuzzleAlarmCore' in project 'PuzzleAlarm'
+    Target 'PuzzleAlarm' in project 'PuzzleAlarm'
+        ➜ Explicit dependency on target 'PuzzleAlarmCore' in project 'PuzzleAlarm'
+    Target 'PuzzleAlarmCore' in project 'PuzzleAlarm'
+        ➜ Explicit dependency on target 'PuzzleAlarmCore' in project 'PuzzleAlarm'
+    Target 'PuzzleAlarmCore' in project 'PuzzleAlarm' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+ExecuteExternalTool /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode_26.6.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -x c -c /dev/null
+
+Build description signature: 77ab29f51b0c0a6544386870d7dcec7c
+Build description path: /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/XCBuildData/77ab29f51b0c0a6544386870d7dcec7c.xcbuilddata
+ClangStatCache /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_26.6.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/SDKStatCaches.noindex/iphonesimulator26.5-23F81a-688ef53f1462e2c8f657fdc38a81448ff45c64a1807a658693f2a61704f17a36.sdkstatcache
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj
+    /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode_26.6.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -o /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/SDKStatCaches.noindex/iphonesimulator26.5-23F81a-688ef53f1462e2c8f657fdc38a81448ff45c64a1807a658693f2a61704f17a36.sdkstatcache
+
+ProcessInfoPlistFile /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PackageFrameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework/Info.plist /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarmCore\ product.build/empty-PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.plist (in target 'PuzzleAlarmCore' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/Package.swift')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-infoPlistUtility /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarmCore\ product.build/empty-PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.plist -producttype com.apple.product-type.framework -expandbuildsettings -format binary -platform iphonesimulator -o /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PackageFrameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework/Info.plist
+
+Copy /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Frameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PackageFrameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework (in target 'PuzzleAlarm' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -remove-static-executable /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PackageFrameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Frameworks
+
+ProcessInfoPlistFile /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Info.plist /Users/runner/work/PuzzleAlarm/PuzzleAlarm/.generated/PuzzleAlarm-Info.plist (in target 'PuzzleAlarm' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-infoPlistUtility /Users/runner/work/PuzzleAlarm/PuzzleAlarm/.generated/PuzzleAlarm-Info.plist -producttype com.apple.product-type.application -genpkginfo /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -scanforprivacyfile /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Frameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework -o /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Info.plist
+
+CopySwiftLibs /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app (in target 'PuzzleAlarm' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PuzzleAlarm.debug.dylib --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Frameworks --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/SystemExtensions --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Extensions --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PackageFrameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.109.0.LQZ9Kk/Metal.xctoolchain --toolchain /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarm.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+ProcessInfoPlistFile /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/Info.plist /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarmTests.build/empty-PuzzleAlarmTests.plist (in target 'PuzzleAlarmTests' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-infoPlistUtility /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarmTests.build/empty-PuzzleAlarmTests.plist -producttype com.apple.product-type.bundle.unit-test -expandbuildsettings -format binary -platform iphonesimulator -o /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/Info.plist
+
+Copy /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/Frameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PackageFrameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework (in target 'PuzzleAlarmTests' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -remove-static-executable /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PackageFrameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/Frameworks
+
+CopySwiftLibs /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest (in target 'PuzzleAlarmTests' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/PuzzleAlarmTests --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/Frameworks --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/PlugIns --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/SystemExtensions --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/Extensions --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PackageFrameworks/PuzzleAlarmCore_-2AECB35B4AD543F1_PackageProduct.framework --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.109.0.LQZ9Kk/Metal.xctoolchain --toolchain /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/PlugIns/PuzzleAlarmTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode_26.6.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarmTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+Validate /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app (in target 'PuzzleAlarm' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-validationUtility /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app -shallow-bundle -infoplist-subpath Info.plist
+
+ProcessInfoPlistFile /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarmUITests-Runner.app/PlugIns/PuzzleAlarmUITests.xctest/Info.plist /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarmUITests.build/empty-PuzzleAlarmUITests.plist (in target 'PuzzleAlarmUITests' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-infoPlistUtility /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarmUITests.build/empty-PuzzleAlarmUITests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarmUITests.build/ProductTypeInfoPlistAdditions.plist -o /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarmUITests-Runner.app/PlugIns/PuzzleAlarmUITests.xctest/Info.plist
+
+CopySwiftLibs /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarmUITests-Runner.app/PlugIns/PuzzleAlarmUITests.xctest (in target 'PuzzleAlarmUITests' from project 'PuzzleAlarm' at path '/Users/runner/work/PuzzleAlarm/PuzzleAlarm/PuzzleAlarm.xcodeproj')
+    cd /Users/runner/work/PuzzleAlarm/PuzzleAlarm
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarmUITests-Runner.app/PlugIns/PuzzleAlarmUITests.xctest/PuzzleAlarmUITests --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarmUITests-Runner.app/PlugIns/PuzzleAlarmUITests.xctest/Frameworks --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarmUITests-Runner.app/PlugIns/PuzzleAlarmUITests.xctest/PlugIns --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarmUITests-Runner.app/PlugIns/PuzzleAlarmUITests.xctest/SystemExtensions --scan-folder /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarmUITests-Runner.app/PlugIns/PuzzleAlarmUITests.xctest/Extensions --platform iphonesimulator --toolchain /var/run/com.apple.security.cryptexd/mnt/com.apple.MobileAsset.MetalToolchain-v17.6.109.0.LQZ9Kk/Metal.xctoolchain --toolchain /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarmUITests-Runner.app/PlugIns/PuzzleAlarmUITests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode_26.6.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode_26.6.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/runner/work/PuzzleAlarm/PuzzleAlarm/DerivedData/Build/Intermediates.noindex/PuzzleAlarm.build/Debug-iphonesimulator/PuzzleAlarmUITests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+Resolve Package Graph
+
+Resolve Package Graph
+
+2026-10-27 04:26:41.865731+0000 PuzzleAlarmUITests-Runner[10044:34960] [Default] Running tests...
+2026-10-27 04:26:42.153983+0000 PuzzleAlarmUITests-Runner[10044:37486] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-10-27 04:26:42.199674+0000 PuzzleAlarmUITests-Runner[10044:37485] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+objc[10044]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x106278310) and /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10633c398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-27 04:26:51.833.
+Test Suite 'PuzzleAlarmUITests.xctest' started at 2026-10-27 04:26:51.836.
+Test Suite 'AlarmManagementUITests' started at 2026-10-27 04:26:51.836.
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 1 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:26:51.837
+2026-10-27 04:27:03.917 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:27:03.918 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.17s Set Up
+    t =     1.21s Open com.teejayishere.PuzzleAlarm
+    t =     1.22s     Launch com.teejayishere.PuzzleAlarm
+Resolve Package Graph
+    t =    18.38s         Setting up automation session
+
+    t =    20.30s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    22.21s Waiting 20.0s for "alarms.add" Button to exist
+    t =    23.27s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =    23.27s         Checking existence of `"alarms.add" Button`
+    t =    23.40s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    24.45s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    24.45s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    24.54s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    24.60s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    25.62s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    25.62s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    25.79s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    25.92s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    26.06s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    26.14s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    26.25s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    27.27s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    27.27s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    27.36s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    27.47s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    27.57s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    27.72s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    27.83s Checking existence of `Switch (First Match)`
+    t =    27.96s Find the Switch (First Match)
+    t =    28.04s Find the "0" Switch
+    t =    28.20s Find the "0" Switch
+    t =    28.33s Tap "0" Switch
+    t =    28.33s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    28.33s     Find the "0" Switch
+    t =    28.49s     Check for interrupting elements affecting "0" Switch
+    t =    28.90s     Synthesize event
+    t =    30.47s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    31.94s Checking existence of `"application.busy" Any`
+    t =    33.18s Checking `Expect predicate `exists == 0` for object "application.busy" Any`
+    t =    33.18s     Checking existence of `"application.busy" Any`
+    t =    34.16s Checking existence of `"application.busy" Any`
+    t =    34.45s Find the "0" Switch
+    t =    34.57s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    35.60s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    35.60s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    35.65s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    35.71s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    35.90s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    36.08s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    37.08s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    37.08s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    37.35s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    37.55s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    37.77s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    37.95s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    38.13s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    38.35s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    38.56s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    39.58s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    39.58s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    39.77s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    39.93s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    40.09s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    40.30s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    40.49s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    40.49s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    40.50s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    40.85s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    42.25s     Synthesize event
+    t =    42.62s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    42.93s Checking existence of `"application.busy" Any`
+    t =    43.59s Checking existence of `"application.busy" Any`
+    t =    44.14s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    45.19s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    45.19s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    45.26s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    45.34s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    46.40s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    46.40s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    46.56s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    46.76s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    47.01s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    47.27s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    47.55s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    48.60s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    48.60s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    48.85s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    49.04s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    49.20s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    49.47s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    50.22s Checking existence of `Switch (First Match)`
+    t =    50.57s Find the Switch (First Match)
+    t =    51.67s Find the "1" Switch
+    t =    52.12s Find the "1" Switch
+    t =    52.55s Tap "1" Switch
+    t =    52.55s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    52.56s     Find the "1" Switch
+    t =    52.75s     Check for interrupting elements affecting "1" Switch
+    t =    52.87s     Synthesize event
+    t =    53.43s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    54.50s Checking existence of `"application.busy" Any`
+    t =    54.76s Checking existence of `"application.busy" Any`
+    t =    55.01s Find the "1" Switch
+    t =    55.13s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    55.20s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    56.22s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    56.22s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    56.45s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    56.65s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    56.81s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    56.92s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    57.13s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    58.14s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    58.14s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    58.27s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    58.40s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    58.53s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    58.72s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    58.87s Checking existence of `Switch (First Match)`
+    t =    59.00s Find the Switch (First Match)
+    t =    59.17s Find the "0" Switch
+    t =    59.35s Find the "0" Switch
+    t =    59.49s Tap "0" Switch
+    t =    59.49s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    59.51s     Find the "0" Switch
+    t =    59.62s     Check for interrupting elements affecting "0" Switch
+    t =    59.69s     Synthesize event
+    t =    60.16s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    61.43s Checking existence of `"application.busy" Any`
+    t =    62.30s Checking existence of `"application.busy" Any`
+    t =    63.19s Find the "0" Switch
+    t =    63.60s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    63.66s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (63.982 seconds).
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 2 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:27:55.820
+    t =     0.06s Set Up
+    t =     0.06s Open com.teejayishere.PuzzleAlarm
+    t =     0.06s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.06s         Terminate com.teejayishere.PuzzleAlarm:11361
+2026-10-27 04:27:56.897 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:27:56.897 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+Resolve Package Graph
+
+    t =     6.36s         Setting up automation session
+    t =     8.73s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    10.27s Waiting 20.0s for "alarms.add" Button to exist
+    t =    11.28s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =    11.29s         Checking existence of `"alarms.add" Button`
+    t =    11.45s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    12.47s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    12.47s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    12.54s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    12.58s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    13.60s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    13.60s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    13.79s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    13.95s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    14.11s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    14.33s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    14.65s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    15.67s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    15.67s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    15.85s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    16.01s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    16.13s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    16.26s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    16.40s Checking existence of `Switch (First Match)`
+    t =    16.53s Find the Switch (First Match)
+    t =    16.70s Find the "0" Switch
+    t =    16.88s Find the "0" Switch
+    t =    17.03s Tap "0" Switch
+    t =    17.03s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    17.03s     Find the "0" Switch
+    t =    17.27s     Check for interrupting elements affecting "0" Switch
+    t =    17.33s     Synthesize event
+    t =    17.68s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    18.99s Checking existence of `"application.busy" Any`
+    t =    19.66s Checking existence of `"application.busy" Any`
+    t =    20.26s Find the "0" Switch
+    t =    20.46s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    21.47s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.47s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.89s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    21.99s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    22.22s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    22.43s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    23.43s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    23.43s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    23.63s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    23.84s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.04s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    24.20s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.44s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    24.66s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    24.80s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    25.82s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    25.83s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    25.96s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    26.09s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    26.23s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    26.53s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    26.96s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    26.96s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    26.96s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    27.20s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    27.31s     Synthesize event
+    t =    27.67s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    28.08s Checking existence of `"application.busy" Any`
+    t =    29.35s Checking existence of `"application.busy" Any`
+    t =    30.11s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    31.15s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    31.15s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    31.25s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    31.31s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    32.33s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    32.33s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    32.77s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    33.21s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.76s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.26s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    35.33s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    36.36s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    36.36s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    36.75s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.19s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.66s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    38.07s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    38.33s Checking existence of `Switch (First Match)`
+    t =    38.55s Find the Switch (First Match)
+    t =    38.77s Find the "1" Switch
+    t =    39.03s Find the "1" Switch
+    t =    39.27s Tap "1" Switch
+    t =    39.27s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    39.27s     Find the "1" Switch
+    t =    39.51s     Check for interrupting elements affecting "1" Switch
+    t =    39.60s     Synthesize event
+    t =    40.06s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    41.31s Checking existence of `"application.busy" Any`
+    t =    42.01s Checking existence of `"application.busy" Any`
+    t =    42.55s Find the "1" Switch
+    t =    42.77s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    42.85s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    43.88s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    43.89s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    44.08s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    44.30s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    44.52s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    44.72s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    44.94s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    45.95s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    45.95s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    46.20s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    46.39s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    46.53s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    46.79s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    47.00s Checking existence of `Switch (First Match)`
+    t =    47.24s Find the Switch (First Match)
+    t =    47.45s Find the "0" Switch
+    t =    47.73s Find the "0" Switch
+    t =    47.98s Tap "0" Switch
+    t =    47.98s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    47.99s     Find the "0" Switch
+    t =    48.17s     Check for interrupting elements affecting "0" Switch
+    t =    48.25s     Synthesize event
+    t =    48.71s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    49.88s Checking existence of `"application.busy" Any`
+    t =    50.58s Checking existence of `"application.busy" Any`
+    t =    51.24s Find the "0" Switch
+    t =    51.43s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    51.52s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (51.787 seconds).
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 3 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:28:47.607
+    t =     0.04s Set Up
+    t =     0.05s Open com.teejayishere.PuzzleAlarm
+    t =     0.05s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.05s         Terminate com.teejayishere.PuzzleAlarm:13182
+2026-10-27 04:28:48.675 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:28:48.676 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+Resolve Package Graph
+    t =     2.42s         Setting up automation session
+
+    t =     5.38s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     7.09s Waiting 20.0s for "alarms.add" Button to exist
+    t =     8.15s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =     8.15s         Checking existence of `"alarms.add" Button`
+    t =     8.29s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =     9.30s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     9.30s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     9.35s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =     9.40s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    10.41s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.41s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.54s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.67s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    10.82s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.92s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.08s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    12.10s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    12.10s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    12.21s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    12.29s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    12.46s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    12.63s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    12.73s Checking existence of `Switch (First Match)`
+    t =    12.81s Find the Switch (First Match)
+    t =    12.97s Find the "0" Switch
+    t =    13.16s Find the "0" Switch
+    t =    13.37s Tap "0" Switch
+    t =    13.37s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    13.38s     Find the "0" Switch
+    t =    13.57s     Check for interrupting elements affecting "0" Switch
+    t =    13.65s     Synthesize event
+    t =    14.03s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    15.28s Checking existence of `"application.busy" Any`
+    t =    15.91s Checking existence of `"application.busy" Any`
+    t =    16.41s Find the "0" Switch
+    t =    16.61s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    17.63s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    17.64s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    17.73s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    17.83s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    18.29s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    18.40s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    19.46s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    19.47s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    19.57s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    19.74s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    19.90s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    20.08s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    20.22s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    20.35s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    20.49s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    21.50s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.50s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.65s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    21.80s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    21.93s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    22.09s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    22.22s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    22.22s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    22.22s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    22.35s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    22.43s     Synthesize event
+    t =    22.75s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    23.13s Checking existence of `"application.busy" Any`
+    t =    23.75s Checking existence of `"application.busy" Any`
+    t =    24.04s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    25.08s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    25.08s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    25.13s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    25.20s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    26.21s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    26.21s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    26.42s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    26.66s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    26.91s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    27.10s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    27.36s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    28.41s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    28.42s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    28.77s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    28.93s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    29.29s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    29.59s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    29.76s Checking existence of `Switch (First Match)`
+    t =    29.96s Find the Switch (First Match)
+    t =    30.20s Find the "1" Switch
+    t =    30.51s Find the "1" Switch
+    t =    30.75s Tap "1" Switch
+    t =    30.75s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    30.75s     Find the "1" Switch
+    t =    30.93s     Check for interrupting elements affecting "1" Switch
+    t =    31.01s     Synthesize event
+    t =    31.36s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    32.64s Checking existence of `"application.busy" Any`
+    t =    33.02s Checking existence of `"application.busy" Any`
+    t =    33.41s Find the "1" Switch
+    t =    33.62s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    33.67s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    34.68s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.68s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.84s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.97s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    35.09s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    35.21s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    35.39s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    36.43s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    36.43s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    36.57s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    36.66s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    36.78s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    36.94s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.03s Checking existence of `Switch (First Match)`
+    t =    37.15s Find the Switch (First Match)
+    t =    37.30s Find the "0" Switch
+    t =    37.48s Find the "0" Switch
+    t =    37.63s Tap "0" Switch
+    t =    37.63s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    37.63s     Find the "0" Switch
+    t =    37.79s     Check for interrupting elements affecting "0" Switch
+    t =    37.85s     Synthesize event
+    t =    38.23s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    39.48s Checking existence of `"application.busy" Any`
+    t =    39.76s Checking existence of `"application.busy" Any`
+    t =    40.03s Find the "0" Switch
+    t =    40.16s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    40.25s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (40.498 seconds).
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 4 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:29:28.106
+    t =     0.04s Set Up
+    t =     0.05s Open com.teejayishere.PuzzleAlarm
+    t =     0.05s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.05s         Terminate com.teejayishere.PuzzleAlarm:14673
+Resolve Package Graph
+2026-10-27 04:29:29.245 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:29:29.245 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+
+    t =     2.24s         Setting up automation session
+    t =     3.86s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     5.41s Waiting 20.0s for "alarms.add" Button to exist
+    t =     6.48s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =     6.48s         Checking existence of `"alarms.add" Button`
+    t =     6.63s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =     7.65s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.66s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.76s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =     7.92s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =     8.98s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     8.98s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.25s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.78s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    10.00s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.16s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    10.36s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    11.40s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    11.40s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    11.59s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.80s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.97s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    12.16s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    12.35s Checking existence of `Switch (First Match)`
+    t =    12.68s Find the Switch (First Match)
+    t =    12.98s Find the "0" Switch
+    t =    13.27s Find the "0" Switch
+    t =    13.51s Tap "0" Switch
+    t =    13.51s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    13.52s     Find the "0" Switch
+    t =    13.75s     Check for interrupting elements affecting "0" Switch
+    t =    13.83s     Synthesize event
+    t =    14.20s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    15.50s Checking existence of `"application.busy" Any`
+    t =    17.03s Checking existence of `"application.busy" Any`
+    t =    17.55s Find the "0" Switch
+    t =    17.80s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    18.81s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    18.84s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    19.01s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    19.08s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    19.49s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    19.87s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    20.88s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    20.88s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.04s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.20s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    21.41s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.56s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    21.73s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    21.82s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.95s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    22.99s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    22.99s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    23.15s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    23.32s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    23.49s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    23.64s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    23.79s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    23.79s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    23.80s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    23.94s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.01s     Synthesize event
+    t =    24.34s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    24.79s Checking existence of `"application.busy" Any`
+    t =    25.04s Checking existence of `"application.busy" Any`
+    t =    25.29s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    26.33s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    26.33s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    26.46s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    26.51s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    27.53s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    27.53s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    27.64s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    27.74s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    27.99s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    28.15s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    28.40s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    29.45s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    29.45s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    29.60s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    29.73s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    29.90s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    30.13s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    30.30s Checking existence of `Switch (First Match)`
+    t =    30.43s Find the Switch (First Match)
+    t =    30.55s Find the "1" Switch
+    t =    30.80s Find the "1" Switch
+    t =    30.96s Tap "1" Switch
+    t =    30.96s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    30.97s     Find the "1" Switch
+    t =    31.13s     Check for interrupting elements affecting "1" Switch
+    t =    31.23s     Synthesize event
+    t =    31.57s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    32.86s Checking existence of `"application.busy" Any`
+    t =    33.09s Checking existence of `"application.busy" Any`
+    t =    33.32s Find the "1" Switch
+    t =    33.44s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    33.48s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    34.53s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.53s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.74s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.89s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    35.09s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    35.21s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    35.39s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    36.45s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    36.45s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    36.58s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    36.78s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    36.94s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.16s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.31s Checking existence of `Switch (First Match)`
+    t =    37.47s Find the Switch (First Match)
+    t =    37.62s Find the "0" Switch
+    t =    37.76s Find the "0" Switch
+    t =    37.89s Tap "0" Switch
+    t =    37.89s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    37.89s     Find the "0" Switch
+    t =    38.02s     Check for interrupting elements affecting "0" Switch
+    t =    38.11s     Synthesize event
+    t =    38.50s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    39.74s Checking existence of `"application.busy" Any`
+    t =    40.04s Checking existence of `"application.busy" Any`
+    t =    40.62s Find the "0" Switch
+    t =    40.78s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    40.83s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (41.098 seconds).
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 5 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:30:09.205
+    t =     0.05s Set Up
+    t =     0.05s Open com.teejayishere.PuzzleAlarm
+    t =     0.05s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.05s         Terminate com.teejayishere.PuzzleAlarm:16396
+2026-10-27 04:30:10.315 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:30:10.316 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+Resolve Package Graph
+    t =     1.91s         Setting up automation session
+
+    t =     4.28s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    12.60s Waiting 20.0s for "alarms.add" Button to exist
+    t =    13.62s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =    13.62s         Checking existence of `"alarms.add" Button`
+    t =    14.84s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    15.88s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    15.88s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    15.95s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    16.00s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    17.02s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    17.02s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    17.15s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    17.26s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    17.40s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    17.57s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    17.76s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    18.78s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    18.78s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    18.97s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    19.18s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    19.35s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    19.55s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    19.86s Checking existence of `Switch (First Match)`
+    t =    20.03s Find the Switch (First Match)
+    t =    20.20s Find the "0" Switch
+    t =    20.64s Find the "0" Switch
+    t =    20.77s Tap "0" Switch
+    t =    20.77s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    20.77s     Find the "0" Switch
+    t =    20.94s     Check for interrupting elements affecting "0" Switch
+    t =    21.03s     Synthesize event
+    t =    21.42s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    22.72s Checking existence of `"application.busy" Any`
+    t =    23.09s Checking existence of `"application.busy" Any`
+    t =    23.52s Find the "0" Switch
+    t =    23.71s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    24.77s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    24.77s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    24.86s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    24.92s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    25.10s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    25.27s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    26.31s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    26.31s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    26.43s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    26.53s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    26.68s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    26.83s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    27.03s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    27.16s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    27.29s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    28.31s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    28.32s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    28.46s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    28.56s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    28.69s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    28.82s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    28.99s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    28.99s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    28.99s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    29.19s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    29.26s     Synthesize event
+    t =    29.65s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    29.91s Checking existence of `"application.busy" Any`
+    t =    30.96s Checking existence of `"application.busy" Any`
+    t =    31.87s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    32.88s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    32.88s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    32.96s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    33.06s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    34.10s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.10s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.45s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    34.87s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    35.31s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    35.95s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    36.15s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    37.17s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.17s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.33s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.42s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.53s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.66s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.76s Checking existence of `Switch (First Match)`
+    t =    37.92s Find the Switch (First Match)
+    t =    38.10s Find the "1" Switch
+    t =    38.28s Find the "1" Switch
+    t =    38.44s Tap "1" Switch
+    t =    38.44s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    38.45s     Find the "1" Switch
+    t =    38.75s     Check for interrupting elements affecting "1" Switch
+    t =    38.81s     Synthesize event
+    t =    39.34s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    40.58s Checking existence of `"application.busy" Any`
+    t =    41.23s Checking existence of `"application.busy" Any`
+    t =    41.52s Find the "1" Switch
+    t =    41.69s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    41.75s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    42.77s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    42.77s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    42.86s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    42.98s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    43.10s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    43.21s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    43.35s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    44.38s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    44.38s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    44.49s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    44.61s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    44.73s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    44.86s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    44.96s Checking existence of `Switch (First Match)`
+    t =    45.06s Find the Switch (First Match)
+    t =    45.21s Find the "0" Switch
+    t =    45.35s Find the "0" Switch
+    t =    45.48s Tap "0" Switch
+    t =    45.48s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    45.49s     Find the "0" Switch
+    t =    45.59s     Check for interrupting elements affecting "0" Switch
+    t =    45.65s     Synthesize event
+    t =    46.05s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    47.28s Checking existence of `"application.busy" Any`
+    t =    47.52s Checking existence of `"application.busy" Any`
+    t =    47.78s Find the "0" Switch
+    t =    47.89s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    47.93s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (48.161 seconds).
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 6 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:30:57.367
+    t =     0.04s Set Up
+    t =     0.04s Open com.teejayishere.PuzzleAlarm
+    t =     0.04s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.04s         Terminate com.teejayishere.PuzzleAlarm:17759
+Resolve Package Graph
+2026-10-27 04:30:58.436 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:30:58.437 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+
+    t =     2.50s         Setting up automation session
+    t =     7.22s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     8.96s Waiting 20.0s for "alarms.add" Button to exist
+    t =     9.99s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =     9.99s         Checking existence of `"alarms.add" Button`
+    t =    10.11s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    11.12s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    11.13s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    11.17s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    11.21s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    12.21s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    12.21s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    12.55s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    13.15s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    13.50s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    13.70s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    13.91s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    14.94s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    14.94s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    15.06s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    15.32s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    15.53s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    15.78s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    16.06s Checking existence of `Switch (First Match)`
+    t =    16.31s Find the Switch (First Match)
+    t =    16.50s Find the "0" Switch
+    t =    16.74s Find the "0" Switch
+    t =    16.84s Tap "0" Switch
+    t =    16.84s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    16.84s     Find the "0" Switch
+    t =    16.95s     Check for interrupting elements affecting "0" Switch
+    t =    17.02s     Synthesize event
+    t =    17.39s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    18.74s Checking existence of `"application.busy" Any`
+    t =    19.13s Checking existence of `"application.busy" Any`
+    t =    19.50s Find the "0" Switch
+    t =    19.69s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    20.72s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    20.72s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    20.79s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    20.88s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    21.08s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.26s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    22.27s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    22.27s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    22.44s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    22.53s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    22.67s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    22.76s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    22.90s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    23.02s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    23.12s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    24.14s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    24.14s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    24.39s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.58s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.75s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.93s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    25.15s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    25.15s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    25.16s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    25.35s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    25.43s     Synthesize event
+    t =    25.80s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    26.12s Checking existence of `"application.busy" Any`
+    t =    26.54s Checking existence of `"application.busy" Any`
+    t =    27.03s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    28.06s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    28.06s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    28.12s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    28.16s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    29.21s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    29.21s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    29.42s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    29.69s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    29.91s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    30.15s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    30.43s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    31.47s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.47s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.66s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    31.82s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    31.93s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    32.09s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    32.25s Checking existence of `Switch (First Match)`
+    t =    32.55s Find the Switch (First Match)
+    t =    32.89s Find the "1" Switch
+    t =    33.14s Find the "1" Switch
+    t =    33.51s Tap "1" Switch
+    t =    33.51s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    33.52s     Find the "1" Switch
+    t =    33.80s     Check for interrupting elements affecting "1" Switch
+    t =    33.89s     Synthesize event
+    t =    34.22s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    35.51s Checking existence of `"application.busy" Any`
+    t =    35.91s Checking existence of `"application.busy" Any`
+    t =    36.44s Find the "1" Switch
+    t =    36.68s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    36.72s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    37.77s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.77s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.90s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    38.04s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    38.19s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    38.27s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    38.40s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    39.43s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    39.43s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    39.59s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.66s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.76s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.88s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.96s Checking existence of `Switch (First Match)`
+    t =    40.07s Find the Switch (First Match)
+    t =    40.17s Find the "0" Switch
+    t =    40.29s Find the "0" Switch
+    t =    40.58s Tap "0" Switch
+    t =    40.59s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    40.59s     Find the "0" Switch
+    t =    40.82s     Check for interrupting elements affecting "0" Switch
+    t =    40.91s     Synthesize event
+    t =    41.34s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    42.57s Checking existence of `"application.busy" Any`
+    t =    42.94s Checking existence of `"application.busy" Any`
+    t =    43.30s Find the "0" Switch
+    t =    43.46s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    43.51s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (43.763 seconds).
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 7 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:31:41.132
+    t =     0.04s Set Up
+    t =     0.04s Open com.teejayishere.PuzzleAlarm
+    t =     0.05s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.05s         Terminate com.teejayishere.PuzzleAlarm:19635
+2026-10-27 04:31:42.245 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:31:42.245 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+Resolve Package Graph
+    t =     2.13s         Setting up automation session
+
+    t =     4.16s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     5.55s Waiting 20.0s for "alarms.add" Button to exist
+    t =     6.56s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =     6.56s         Checking existence of `"alarms.add" Button`
+    t =     6.74s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =     7.76s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.76s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.82s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =     7.91s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =     8.96s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     8.96s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.26s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.19s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.44s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    12.00s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    12.33s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    13.36s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    13.36s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    13.87s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    14.29s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    14.70s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    15.09s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    15.45s Checking existence of `Switch (First Match)`
+    t =    15.84s Find the Switch (First Match)
+    t =    16.29s Find the "0" Switch
+    t =    16.65s Find the "0" Switch
+    t =    17.04s Tap "0" Switch
+    t =    17.04s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    17.05s     Find the "0" Switch
+    t =    17.48s     Check for interrupting elements affecting "0" Switch
+    t =    17.62s     Synthesize event
+    t =    17.96s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    19.26s Checking existence of `"application.busy" Any`
+    t =    20.54s Checking existence of `"application.busy" Any`
+    t =    21.55s Find the "0" Switch
+    t =    22.34s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    23.37s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    23.37s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    23.45s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    23.53s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    24.03s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    24.24s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    25.25s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    25.25s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    25.40s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    25.53s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    25.71s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    25.81s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    25.96s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    26.11s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    26.22s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    27.24s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    27.24s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    27.39s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    27.53s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    27.65s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    27.78s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    27.95s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    27.96s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    27.96s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    28.10s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    28.16s     Synthesize event
+    t =    28.47s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    28.73s Checking existence of `"application.busy" Any`
+    t =    29.00s Checking existence of `"application.busy" Any`
+    t =    29.23s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    30.29s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    30.29s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    30.35s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    30.41s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    31.45s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.45s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.52s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.62s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    31.73s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.81s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    31.93s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    32.96s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    32.96s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    33.09s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.21s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.32s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.47s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.60s Checking existence of `Switch (First Match)`
+    t =    33.72s Find the Switch (First Match)
+    t =    33.83s Find the "1" Switch
+    t =    34.03s Find the "1" Switch
+    t =    34.18s Tap "1" Switch
+    t =    34.18s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    34.19s     Find the "1" Switch
+    t =    34.33s     Check for interrupting elements affecting "1" Switch
+    t =    34.41s     Synthesize event
+    t =    34.80s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    36.04s Checking existence of `"application.busy" Any`
+    t =    36.27s Checking existence of `"application.busy" Any`
+    t =    36.52s Find the "1" Switch
+    t =    36.67s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    36.72s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    37.73s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.73s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.84s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.92s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    38.03s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    38.12s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    38.24s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    39.26s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    39.26s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    39.35s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.46s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.54s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.65s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.74s Checking existence of `Switch (First Match)`
+    t =    39.82s Find the Switch (First Match)
+    t =    39.94s Find the "0" Switch
+    t =    40.13s Find the "0" Switch
+    t =    40.28s Tap "0" Switch
+    t =    40.28s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    40.29s     Find the "0" Switch
+    t =    40.43s     Check for interrupting elements affecting "0" Switch
+    t =    40.49s     Synthesize event
+    t =    40.92s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    42.13s Checking existence of `"application.busy" Any`
+    t =    42.38s Checking existence of `"application.busy" Any`
+    t =    42.69s Find the "0" Switch
+    t =    42.85s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    42.90s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (43.148 seconds).
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 8 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:32:24.281
+    t =     0.05s Set Up
+    t =     0.05s Open com.teejayishere.PuzzleAlarm
+    t =     0.05s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.05s         Terminate com.teejayishere.PuzzleAlarm:21106
+2026-10-27 04:32:25.342 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:32:25.342 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+Resolve Package Graph
+    t =     1.77s         Setting up automation session
+
+    t =     4.17s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     5.74s Waiting 20.0s for "alarms.add" Button to exist
+    t =     6.76s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =     6.76s         Checking existence of `"alarms.add" Button`
+    t =     6.89s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =     7.89s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.89s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.95s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =     7.99s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =     9.01s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.01s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.09s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.17s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =     9.27s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.34s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =     9.47s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    10.49s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.49s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.60s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    10.72s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    10.84s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    10.99s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.16s Checking existence of `Switch (First Match)`
+    t =    11.27s Find the Switch (First Match)
+    t =    11.41s Find the "0" Switch
+    t =    11.65s Find the "0" Switch
+    t =    11.86s Tap "0" Switch
+    t =    11.86s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    11.86s     Find the "0" Switch
+    t =    11.97s     Check for interrupting elements affecting "0" Switch
+    t =    12.02s     Synthesize event
+    t =    12.38s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    13.64s Checking existence of `"application.busy" Any`
+    t =    13.91s Checking existence of `"application.busy" Any`
+    t =    14.20s Find the "0" Switch
+    t =    14.35s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    15.38s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    15.38s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    15.43s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    15.49s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    15.60s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    15.74s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    16.77s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    16.77s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    16.94s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    17.12s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    17.31s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    17.48s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    17.72s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    17.90s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    18.09s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    19.10s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    19.10s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    19.23s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    19.35s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    19.49s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    19.63s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    19.74s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    19.74s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    19.75s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    19.84s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    19.88s     Synthesize event
+    t =    20.18s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    20.44s Checking existence of `"application.busy" Any`
+    t =    20.72s Checking existence of `"application.busy" Any`
+    t =    20.88s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    21.90s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    21.90s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    21.96s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    22.02s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    23.07s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    23.07s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    23.17s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    23.27s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    23.42s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    23.56s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    23.73s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    24.76s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    24.76s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    24.91s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    25.01s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    25.14s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    25.26s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    25.39s Checking existence of `Switch (First Match)`
+    t =    25.54s Find the Switch (First Match)
+    t =    25.67s Find the "1" Switch
+    t =    25.87s Find the "1" Switch
+    t =    26.07s Tap "1" Switch
+    t =    26.07s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    26.08s     Find the "1" Switch
+    t =    26.25s     Check for interrupting elements affecting "1" Switch
+    t =    26.33s     Synthesize event
+    t =    26.71s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    28.77s Checking existence of `"application.busy" Any`
+    t =    29.49s Checking existence of `"application.busy" Any`
+    t =    29.77s Find the "1" Switch
+    t =    29.91s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    29.95s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    30.99s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    30.99s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.18s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.26s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    31.39s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.49s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    31.61s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    32.63s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    32.63s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    32.81s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    32.88s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.00s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.18s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.37s Checking existence of `Switch (First Match)`
+    t =    33.49s Find the Switch (First Match)
+    t =    33.58s Find the "0" Switch
+    t =    33.71s Find the "0" Switch
+    t =    33.82s Tap "0" Switch
+    t =    33.82s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    33.82s     Find the "0" Switch
+    t =    33.90s     Check for interrupting elements affecting "0" Switch
+    t =    33.96s     Synthesize event
+    t =    34.27s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    35.56s Checking existence of `"application.busy" Any`
+    t =    35.91s Checking existence of `"application.busy" Any`
+    t =    36.19s Find the "0" Switch
+    t =    36.33s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    36.41s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (36.650 seconds).
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 9 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:33:00.932
+    t =     0.05s Set Up
+    t =     0.05s Open com.teejayishere.PuzzleAlarm
+    t =     0.05s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.06s         Terminate com.teejayishere.PuzzleAlarm:22958
+2026-10-27 04:33:02.034 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:33:02.035 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.70s         Setting up automation session
+Resolve Package Graph
+
+    t =     4.13s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     5.65s Waiting 20.0s for "alarms.add" Button to exist
+    t =     6.69s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =     6.69s         Checking existence of `"alarms.add" Button`
+    t =     6.86s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =     7.90s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.90s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.94s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =     7.99s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =     9.04s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.04s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.14s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.25s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =     9.39s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.46s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =     9.59s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    10.64s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.64s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.80s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    10.97s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.08s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.25s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.35s Checking existence of `Switch (First Match)`
+    t =    11.43s Find the Switch (First Match)
+    t =    11.51s Find the "0" Switch
+    t =    11.62s Find the "0" Switch
+    t =    11.71s Tap "0" Switch
+    t =    11.71s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    11.71s     Find the "0" Switch
+    t =    11.85s     Check for interrupting elements affecting "0" Switch
+    t =    11.91s     Synthesize event
+    t =    12.34s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    13.56s Checking existence of `"application.busy" Any`
+    t =    13.86s Checking existence of `"application.busy" Any`
+    t =    14.16s Find the "0" Switch
+    t =    14.38s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    15.40s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    15.40s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    15.51s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    15.56s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    15.99s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    16.21s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    17.24s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    17.24s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    17.50s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    17.74s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    18.01s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    18.24s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    18.56s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    18.78s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    19.01s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    20.03s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    20.03s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    20.30s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    20.54s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    20.71s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    20.84s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    20.95s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    20.95s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    20.95s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    21.04s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    21.09s     Synthesize event
+    t =    21.40s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    21.73s Checking existence of `"application.busy" Any`
+    t =    22.09s Checking existence of `"application.busy" Any`
+    t =    22.28s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    23.32s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    23.32s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    23.38s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    23.43s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    24.45s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    24.48s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    24.91s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    25.08s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    25.24s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    25.41s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    25.63s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    26.65s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    26.65s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    26.79s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    26.89s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    26.97s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    27.18s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    27.36s Checking existence of `Switch (First Match)`
+    t =    27.49s Find the Switch (First Match)
+    t =    27.63s Find the "1" Switch
+    t =    27.75s Find the "1" Switch
+    t =    27.83s Tap "1" Switch
+    t =    27.83s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    27.84s     Find the "1" Switch
+    t =    27.98s     Check for interrupting elements affecting "1" Switch
+    t =    28.04s     Synthesize event
+    t =    28.46s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    29.69s Checking existence of `"application.busy" Any`
+    t =    29.99s Checking existence of `"application.busy" Any`
+    t =    30.39s Find the "1" Switch
+    t =    30.52s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    30.56s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    31.62s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.62s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.84s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    32.02s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    32.12s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    32.20s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    32.34s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    33.38s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    33.38s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    33.58s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.70s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    33.88s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    34.00s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    34.15s Checking existence of `Switch (First Match)`
+    t =    34.25s Find the Switch (First Match)
+    t =    34.38s Find the "0" Switch
+    t =    34.56s Find the "0" Switch
+    t =    34.79s Tap "0" Switch
+    t =    34.79s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    34.80s     Find the "0" Switch
+    t =    35.06s     Check for interrupting elements affecting "0" Switch
+    t =    35.14s     Synthesize event
+    t =    35.51s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    36.79s Checking existence of `"application.busy" Any`
+    t =    37.41s Checking existence of `"application.busy" Any`
+    t =    38.09s Find the "0" Switch
+    t =    38.32s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    38.40s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (38.640 seconds).
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' started (Iteration 10 of 10).
+    t =     0.00s Start Test at 2026-10-27 04:33:39.572
+    t =     0.04s Set Up
+    t =     0.04s Open com.teejayishere.PuzzleAlarm
+    t =     0.04s     Launch com.teejayishere.PuzzleAlarm
+    t =     0.04s         Terminate com.teejayishere.PuzzleAlarm:24338
+2026-10-27 04:33:40.668 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-27 04:33:40.694 xcodebuild[7578:29228] [MT] IDELaunchParametersSnapshot: no debugger version
+Resolve Package Graph
+    t =     1.87s         Setting up automation session
+
+    t =     4.02s         Wait for com.teejayishere.PuzzleAlarm to idle
+    t =     5.52s Waiting 20.0s for "alarms.add" Button to exist
+    t =     6.53s     Checking `Expect predicate `existsNoRetry == 1` for object "alarms.add" Button`
+    t =     6.53s         Checking existence of `"alarms.add" Button`
+    t =     6.74s Waiting 10.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =     7.78s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.78s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =     7.84s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =     7.90s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =     8.93s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     8.93s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.12s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =     9.39s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =     9.82s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    10.16s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    10.46s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    11.49s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    11.49s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    11.64s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.76s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    11.91s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    12.08s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    12.20s Checking existence of `Switch (First Match)`
+    t =    12.48s Find the Switch (First Match)
+    t =    12.88s Find the "0" Switch
+    t =    13.21s Find the "0" Switch
+    t =    13.49s Tap "0" Switch
+    t =    13.49s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    13.50s     Find the "0" Switch
+    t =    13.72s     Check for interrupting elements affecting "0" Switch
+    t =    13.80s     Synthesize event
+    t =    14.13s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    15.45s Checking existence of `"application.busy" Any`
+    t =    16.26s Checking existence of `"application.busy" Any`
+    t =    17.19s Find the "0" Switch
+    t =    17.49s Waiting 10.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    18.55s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    18.55s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    18.63s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    18.72s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    19.10s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    19.42s Waiting 3.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    20.47s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    20.47s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    20.80s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.02s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    21.29s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    21.56s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    21.84s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" PopUpButton`
+    t =    22.13s Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    22.41s Waiting 5.0s for "alarm.retry.00000000-0000-0000-0000-000000000001" Button to exist
+    t =    23.42s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    23.42s         Checking existence of `"alarm.retry.00000000-0000-0000-0000-000000000001" Button`
+    t =    23.64s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    23.90s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.15s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.42s Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.67s Tap "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.67s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    24.68s     Find the "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    24.95s     Check for interrupting elements affecting "alarm.retry.00000000-0000-0000-0000-000000000001" Button
+    t =    25.07s     Synthesize event
+    t =    25.38s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    25.69s Checking existence of `"application.busy" Any`
+    t =    26.20s Checking existence of `"application.busy" Any`
+    t =    26.70s Waiting 5.0s for "alarm.status.00000000-0000-0000-0000-000000000001" StaticText to exist
+    t =    27.72s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    27.72s         Checking existence of `"alarm.status.00000000-0000-0000-0000-000000000001" StaticText`
+    t =    27.76s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    27.80s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    28.80s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    28.80s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    29.00s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    29.33s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    29.53s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    29.69s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    29.94s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    30.98s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    30.98s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    31.19s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    31.39s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    31.58s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    31.86s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    32.06s Checking existence of `Switch (First Match)`
+    t =    32.27s Find the Switch (First Match)
+    t =    32.52s Find the "1" Switch
+    t =    32.80s Find the "1" Switch
+    t =    33.04s Tap "1" Switch
+    t =    33.04s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    33.05s     Find the "1" Switch
+    t =    33.31s     Check for interrupting elements affecting "1" Switch
+    t =    33.36s     Synthesize event
+    t =    33.74s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    34.99s Checking existence of `"application.busy" Any`
+    t =    35.74s Checking existence of `"application.busy" Any`
+    t =    36.13s Find the "1" Switch
+    t =    36.30s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    36.38s Waiting 3.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    37.38s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.38s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.56s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    37.69s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    37.93s Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    38.07s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    38.27s Waiting 5.0s for "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch to exist
+    t =    39.31s     Checking `Expect predicate `existsNoRetry == 1` for object "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    39.32s         Checking existence of `"alarm.enabled.00000000-0000-0000-0000-000000000001" Switch`
+    t =    39.55s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.81s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    39.95s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    40.14s Find the "alarm.enabled.00000000-0000-0000-0000-000000000001" Switch
+    t =    40.30s Checking existence of `Switch (First Match)`
+    t =    40.45s Find the Switch (First Match)
+    t =    40.65s Find the "0" Switch
+    t =    40.84s Find the "0" Switch
+    t =    41.05s Tap "0" Switch
+    t =    41.05s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    41.06s     Find the "0" Switch
+    t =    41.23s     Check for interrupting elements affecting "0" Switch
+    t =    41.30s     Synthesize event
+    t =    41.68s     Wait for com.teejayishere.PuzzleAlarm to idle
+    t =    42.95s Checking existence of `"application.busy" Any`
+    t =    43.17s Checking existence of `"application.busy" Any`
+    t =    43.56s Find the "0" Switch
+    t =    43.74s Find the "alarm.status.00000000-0000-0000-0000-000000000001" StaticText
+    t =    43.81s Tear Down
+Test Case '-[PuzzleAlarmUITests.AlarmManagementUITests testEnableDisableAndFailureRetryAreHonest]' passed (44.065 seconds).
+Test Suite 'AlarmManagementUITests' passed at 2026-10-27 04:34:23.637.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 451.791 (451.801) seconds
+Test Suite 'PuzzleAlarmUITests.xctest' passed at 2026-10-27 04:34:23.640.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 451.791 (451.804) seconds
+Test Suite 'Selected tests' passed at 2026-10-27 04:34:23.640.
+	 Executed 10 tests, with 0 failures (0 unexpected) in 451.791 (451.807) seconds
+Resolve Package Graph
+2026-10-27 04:34:27.049 xcodebuild[7578:29228] [MT] IDETestOperationsObserverDebug: 499.477 elapsed -- Testing started completed.
+2026-10-27 04:34:27.049 xcodebuild[7578:29228] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-27 04:34:27.049 xcodebuild[7578:29228] [MT] IDETestOperationsObserverDebug: 499.477 sec, +499.477 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/PuzzleAlarm/PuzzleAlarm/TestResults/TenList.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started

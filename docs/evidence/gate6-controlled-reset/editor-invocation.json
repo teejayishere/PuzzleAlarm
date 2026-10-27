@@ -1,0 +1,30 @@
+{
+  "label": "editor",
+  "sha": "8a236a03f0c19eb70863ddd7d290a70fb90efa73",
+  "run_id": "40448988954",
+  "attempt": "1",
+  "started": 1793074904.8433542,
+  "deadline": 1793076739,
+  "command": [
+    "xcodebuild",
+    "-project",
+    "PuzzleAlarm.xcodeproj",
+    "-scheme",
+    "PuzzleAlarm",
+    "-configuration",
+    "Debug",
+    "-destination",
+    "platform=iOS Simulator,id=F94FB7BA-C33C-4B3B-B505-F0FB478DB847,arch=arm64",
+    "-derivedDataPath",
+    "DerivedData",
+    "-resultBundlePath",
+    "TestResults/Editor.xcresult",
+    "-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testEditorEnabledTogglePersistsAfterRepeatedNativeInput",
+    "-parallel-testing-enabled",
+    "NO",
+    "CODE_SIGNING_ALLOWED=NO",
+    "test"
+  ],
+  "finished": 1793075278.0163252,
+  "exit_code": 0
+}

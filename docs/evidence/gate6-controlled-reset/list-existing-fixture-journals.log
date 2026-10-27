@@ -1,0 +1,101 @@
+/Users/runner/Library/Developer/CoreSimulator/Devices/10B884BF-749F-4E8B-AFCD-26AB8F1DBD01/data/Containers/Data/Application/922A0FB8-A792-4177-A51B-C95BFC9856B5/tmp/toggle-input-diagnostic.log
+1793075230.7736402 pid=11361 fixture launch
+1793075242.289582 pid=11361 binding requested=true captured=false busy=false
+1793075242.301717 pid=11361 owner received=true current=false busy=false
+1793075244.3540459 pid=11361 owner finished accepted=true current=true busy=false error=none
+1793075264.843429 pid=11361 binding requested=false captured=false busy=false
+1793075264.8580298 pid=11361 owner received=false current=true busy=false
+1793075265.53282 pid=11361 owner finished accepted=true current=false busy=false error=none
+1793075271.669509 pid=11361 binding requested=true captured=false busy=false
+1793075271.707775 pid=11361 owner received=true current=false busy=false
+1793075272.0840921 pid=11361 owner finished accepted=true current=true busy=false error=none
+1793075283.0772839 pid=13182 fixture launch
+1793075293.3175159 pid=13182 binding requested=true captured=false busy=false
+1793075293.332578 pid=13182 owner received=true current=false busy=false
+1793075293.748836 pid=13182 owner finished accepted=true current=true busy=false error=none
+1793075315.570744 pid=13182 binding requested=false captured=false busy=false
+1793075315.586677 pid=13182 owner received=false current=true busy=false
+1793075315.95958 pid=13182 owner finished accepted=true current=false busy=false error=none
+1793075324.189393 pid=13182 binding requested=true captured=false busy=false
+1793075324.197099 pid=13182 owner received=true current=false busy=false
+1793075324.716711 pid=13182 owner finished accepted=true current=true busy=false error=none
+1793075331.477079 pid=14673 fixture launch
+1793075341.4101272 pid=14673 binding requested=true captured=false busy=false
+1793075341.423312 pid=14673 owner received=true current=false busy=false
+1793075341.909395 pid=14673 owner finished accepted=true current=true busy=false error=none
+1793075358.749827 pid=14673 binding requested=false captured=false busy=false
+1793075358.758878 pid=14673 owner received=false current=true busy=false
+1793075359.0641298 pid=14673 owner finished accepted=true current=false busy=false error=none
+1793075365.587027 pid=14673 binding requested=true captured=false busy=false
+1793075365.59326 pid=14673 owner received=true current=false busy=false
+1793075366.0568519 pid=14673 owner finished accepted=true current=true busy=false error=none
+1793075370.814853 pid=16396 fixture launch
+1793075382.104569 pid=16396 binding requested=true captured=false busy=false
+1793075382.118136 pid=16396 owner received=true current=false busy=false
+1793075382.485217 pid=16396 owner finished accepted=true current=true busy=false error=none
+1793075399.481396 pid=16396 binding requested=false captured=false busy=false
+1793075399.489758 pid=16396 owner received=false current=true busy=false
+1793075400.0016708 pid=16396 owner finished accepted=true current=false busy=false error=none
+1793075406.339361 pid=16396 binding requested=true captured=false busy=false
+1793075406.35366 pid=16396 owner received=true current=false busy=false
+1793075406.732347 pid=16396 owner finished accepted=true current=true busy=false error=none
+1793075411.87378 pid=17759 fixture launch
+1793075430.391051 pid=17759 binding requested=true captured=false busy=false
+1793075430.418334 pid=17759 owner received=true current=false busy=false
+1793075430.8622851 pid=17759 owner finished accepted=true current=true busy=false error=none
+1793075448.1655931 pid=17759 binding requested=false captured=false busy=false
+1793075448.181226 pid=17759 owner received=false current=true busy=false
+1793075448.8346472 pid=17759 owner finished accepted=true current=false busy=false error=none
+1793075454.9792461 pid=17759 binding requested=true captured=false busy=false
+1793075454.986582 pid=17759 owner received=true current=false busy=false
+1793075455.412211 pid=17759 owner finished accepted=true current=true busy=false error=none
+1793075460.6209512 pid=19635 fixture launch
+1793075474.507885 pid=19635 binding requested=true captured=false busy=false
+1793075474.518365 pid=19635 owner received=true current=false busy=false
+1793075475.0921578 pid=19635 owner finished accepted=true current=true busy=false error=none
+1793075491.3897161 pid=19635 binding requested=false captured=false busy=false
+1793075491.399743 pid=19635 owner received=false current=true busy=false
+1793075491.6761808 pid=19635 owner finished accepted=true current=false busy=false error=none
+1793075498.400969 pid=19635 binding requested=true captured=false busy=false
+1793075498.410768 pid=19635 owner received=true current=false busy=false
+1793075498.935954 pid=19635 owner finished accepted=true current=true busy=false error=none
+1793075504.121186 pid=21106 fixture launch
+1793075518.907654 pid=21106 binding requested=true captured=false busy=false
+1793075518.9278898 pid=21106 owner received=true current=false busy=false
+1793075519.274313 pid=21106 owner finished accepted=true current=true busy=false error=none
+1793075535.669131 pid=21106 binding requested=false captured=false busy=false
+1793075535.674992 pid=21106 owner received=false current=true busy=false
+1793075536.0188498 pid=21106 owner finished accepted=true current=false busy=false error=none
+1793075541.766386 pid=21106 binding requested=true captured=false busy=false
+1793075541.774415 pid=21106 owner received=true current=false busy=false
+1793075542.1874452 pid=21106 owner finished accepted=true current=true busy=false error=none
+1793075547.227027 pid=22958 fixture launch
+1793075556.4275 pid=22958 binding requested=true captured=false busy=false
+1793075556.437175 pid=22958 owner received=true current=false busy=false
+1793075556.89705 pid=22958 owner finished accepted=true current=true busy=false error=none
+1793075570.749156 pid=22958 binding requested=false captured=false busy=false
+1793075570.759429 pid=22958 owner received=false current=true busy=false
+1793075571.040753 pid=22958 owner finished accepted=true current=false busy=false error=none
+1793075578.350107 pid=22958 binding requested=true captured=false busy=false
+1793075578.358597 pid=22958 owner received=true current=false busy=false
+1793075578.7848601 pid=22958 owner finished accepted=true current=true busy=false error=none
+1793075583.706167 pid=24338 fixture launch
+1793075593.012138 pid=24338 binding requested=true captured=false busy=false
+1793075593.037417 pid=24338 owner received=true current=false busy=false
+1793075593.4576712 pid=24338 owner finished accepted=true current=true busy=false error=none
+1793075609.120779 pid=24338 binding requested=false captured=false busy=false
+1793075609.130095 pid=24338 owner received=false current=true busy=false
+1793075609.5224261 pid=24338 owner finished accepted=true current=false busy=false error=none
+1793075616.182426 pid=24338 binding requested=true captured=false busy=false
+1793075616.198797 pid=24338 owner received=true current=false busy=false
+1793075616.646862 pid=24338 owner finished accepted=true current=true busy=false error=none
+1793075622.352929 pid=25964 fixture launch
+1793075633.521644 pid=25964 binding requested=true captured=false busy=false
+1793075633.532669 pid=25964 owner received=true current=false busy=false
+1793075633.957518 pid=25964 owner finished accepted=true current=true busy=false error=none
+1793075653.0684981 pid=25964 binding requested=false captured=false busy=false
+1793075653.0841742 pid=25964 owner received=false current=true busy=false
+1793075653.440465 pid=25964 owner finished accepted=true current=false busy=false error=none
+1793075660.992367 pid=25964 binding requested=true captured=false busy=false
+1793075661.0198278 pid=25964 owner received=true current=false busy=false
+1793075661.387741 pid=25964 owner finished accepted=true current=true busy=false error=none
