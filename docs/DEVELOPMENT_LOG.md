@@ -1,3 +1,19 @@
+## October 28, 2026 — local Gate 5 recovery preparation complete / STOP
+
+Recovery branch codex/gate5-stage6-rebuild starts from exact
+159b777379ad587a615df56ef24fa273aa29ffe4 in a separate local worktree.
+Current original planning records are preserved at
+2b6463fa5212dc724c37ed532686308f9f5cc269 on codex/stage-14-resilience.
+[Exact paths, evidence, review files and required decisions](GATE5_PREPARATION.md).
+Both workflows are sealed against allocation; source/tests remain identical to
+Gate 5. Design and declaration ledger are prepared, not implemented or executed.
+Gate 6 FAILED / HELD; Gates 7–14 INVALIDATED / HELD; budgets EXHAUSTED;
+exception REVOKED. No tests, diagnostics, Xcode, Simulator, CI, push/PR/dispatch,
+main modification or device action. STOP for design/scope review.
+
+### Historical base record follows; not current authority
+> CURRENT RECOVERY AUTHORITY: [GATE5_RECOVERY_POLICY.md](GATE5_RECOVERY_POLICY.md) and [GATE5_PREPARATION.md](GATE5_PREPARATION.md). The content below is historical Gate 5 evidence, not current status, budget authority or execution authorization.
+
 # Development log
 
 ## Stage 0, attempt 1 — 2026-09-30

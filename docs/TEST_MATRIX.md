@@ -1,3 +1,5 @@
+> CURRENT RECOVERY AUTHORITY: [GATE5_RECOVERY_POLICY.md](GATE5_RECOVERY_POLICY.md) and [GATE5_PREPARATION.md](GATE5_PREPARATION.md). The content below is historical Gate 5 evidence, not current status, budget authority or execution authorization.
+
 # Evidence ledger
 
 Observed 2026-10-01 America/Chicago (CI timestamps 2026-10-02 UTC).

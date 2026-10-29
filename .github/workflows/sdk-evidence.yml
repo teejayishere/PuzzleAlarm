@@ -1,11 +1,33 @@
 name: Installed AlarmKit SDK evidence
 on:
   workflow_dispatch:
+    inputs:
+      validation_scope:
+        description: 'Scope marker only; preparation latch remains closed'
+        type: choice
+        options: [record-only, gate5-stage6-sdk]
+        default: record-only
+      record_only:
+        description: 'Record-only requests must allocate no runner'
+        type: boolean
+        default: true
 permissions:
   contents: read
 jobs:
   inspect:
-    if: github.event.repository.private == false
+    # SEALED preparation. Future authorization must replace this false latch in a reviewed diff.
+    if: >-
+      ${{ false &&
+          github.repository == 'teejayishere/PuzzleAlarm' &&
+          github.event.repository.private == false &&
+          github.event_name == 'workflow_dispatch' &&
+          github.ref == 'refs/heads/codex/gate5-stage6-rebuild' &&
+          github.run_attempt == 1 &&
+          inputs.validation_scope == 'gate5-stage6-sdk' &&
+          inputs.record_only == false &&
+          !contains(github.event.head_commit.message, '[record-only]') &&
+          !contains(github.event.head_commit.message, '[gate5-preparation]') &&
+          !contains(github.event.head_commit.message, '[gate6-diagnostic]') }}
     runs-on: macos-26
     timeout-minutes: 5
     steps:

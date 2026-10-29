@@ -1,3 +1,7 @@
+# Recovery preparation scope
+
+Read docs/GATE5_RECOVERY_POLICY.md and docs/GATE5_PREPARATION.md before work. Preparation is sealed; no product implementation or runtime work is authorized. Current policy overrides historical instructions below.
+
 # PuzzleAlarm engineering instructions
 
 Read docs/MASTER_PLAN.md, docs/PROJECT_STATE.md, docs/DEVELOPMENT_LOG.md,

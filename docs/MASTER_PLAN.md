@@ -1,3 +1,5 @@
+> CURRENT RECOVERY AUTHORITY: [GATE5_RECOVERY_POLICY.md](GATE5_RECOVERY_POLICY.md) and [GATE5_PREPARATION.md](GATE5_PREPARATION.md). The content below is historical Gate 5 evidence, not current status, budget authority or execution authorization.
+
 # PuzzleAlarm — Recursive Self-Correcting Master Development Plan
 
 You are the lead implementation engineer for **PuzzleAlarm**, a personal native iPhone alarm application.
