@@ -1,5 +1,11 @@
 # Gate 5 recovery branch preparation — STOP for review
 
+October 29 review update: [adversarial review and red-team reassessment](GATE5_STAGE6_ADVERSARIAL_REVIEW.md)
+records the qualified verdict and remaining contracts. Documentation publication
+is now separately authorized; the preparation task's historical no-push statements
+below describe its original scope. Implementation/execution remain held. The
+recommended audio acceptance amendment is not owner-adopted.
+
 Prepared October 28, 2026 (America/Chicago). Preparation complete; implementation
 and runtime acceptance remain unauthorized. No causal fix or gate PASS claimed.
 

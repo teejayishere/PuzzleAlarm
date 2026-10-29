@@ -1,3 +1,15 @@
+## October 29, 2026 — adversarial review recorded; execution still held
+
+[Review and red-team reassessment](GATE5_STAGE6_ADVERSARIAL_REVIEW.md) is the current
+review handoff. Foundation/planning direction APPROVED; execution and describing
+the plan as acceptance-ready BLOCKED pending the recorded scope/contracts.
+Reviewed clean HEAD 5193c0aef6cd9076312f042e0d73cca593f076e4 has direct parent
+159b777379ad587a615df56ef24fa273aa29ffe4, the Gate 5 base. Documentation publication
+is separately authorized; no implementation or validation allowance follows.
+The audio acceptance amendment is recommended, not owner-adopted. Gate 6 FAILED /
+HELD; Gates 7-14 INVALIDATED / HELD; budgets EXHAUSTED; exception REVOKED.
+No new product, automated, Xcode, Simulator or device evidence.
+
 ## October 28, 2026 — local Gate 5 recovery preparation complete / STOP
 
 Recovery branch codex/gate5-stage6-rebuild starts from exact

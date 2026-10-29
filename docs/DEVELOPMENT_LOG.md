@@ -1,3 +1,15 @@
+## October 29, 2026 — review and documentation publication scope
+
+Recorded [adversarial review and reassessment](GATE5_STAGE6_ADVERSARIAL_REVIEW.md).
+The qualified verdict supersedes the initial overly broad implementation BLOCK:
+Gate 5 foundation/planning direction approved; execution and acceptance-ready
+status blocked. Retained unknown input causation, exhausted budgets and revoked
+exception. Required contracts and assertion-level migration are recorded; the
+Stage 6/11 acceptance amendment remains a recommendation requiring adoption.
+Owner follow-up authorizes clear GitHub documentation, not implementation,
+tests, diagnostics, CI allocation, PR, main promotion or device actions.
+Product/test/workflow source unchanged. No runtime validation performed.
+
 ## October 28, 2026 — local Gate 5 recovery preparation complete / STOP
 
 Recovery branch codex/gate5-stage6-rebuild starts from exact

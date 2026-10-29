@@ -1,5 +1,10 @@
 # Stage 6 design proposal — implementation not authorized
 
+Review status: see [October 29 review/reassessment](GATE5_STAGE6_ADVERSARIAL_REVIEW.md).
+The ownership direction is defensible; terminal outcomes, trailing-refresh arrival
+and startup readiness need precise contracts. Receipt/result API shape and private
+coordinator access are implementation options, not independent gate requirements.
+
 October 28, 2026. Source inspection only. Review this proposal before writing
 product code. It is a deliberate management implementation, not a causal repair
 claim. The unknown historical missed native input remains an unresolved acceptance

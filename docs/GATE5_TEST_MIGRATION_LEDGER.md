@@ -1,5 +1,11 @@
 # Stage 6 and later test migration ledger
 
+Review status: [October 29 review/reassessment](GATE5_STAGE6_ADVERSARIAL_REVIEW.md)
+requires assertion-level behavioral mapping before adaptation. The blanket API-only
+wording below is a preparation proposal, not a mandate to retain implementation
+structure. No valid obligation may be weakened. The ten-case Stage 6 / Stage 11
+audio acceptance split is recommended but not owner-adopted.
+
 Source reference: cfb37a86e63049f2f1326b8187f7d7fdf2d93ba2, retained unchanged
 as ancestor of planning record 2b6463fa5212dc724c37ed532686308f9f5cc269.
 All execution in this preparation is NOT RUN.

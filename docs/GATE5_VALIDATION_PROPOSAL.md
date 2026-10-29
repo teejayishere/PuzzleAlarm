@@ -1,5 +1,10 @@
 # Proposed implementation-validation scope — NOT APPROVED
 
+Review status: [October 29 review/reassessment](GATE5_STAGE6_ADVERSARIAL_REVIEW.md)
+requires prerequisite execution order, explicit scope and assertion-level migration
+before acceptance. Any parallel evidence collection must be explicitly justified
+under the ordered-gate rules. Numerical allocations below remain unapproved.
+
 Preparation has a hard limit of ZERO tests, diagnostics, CI jobs, pushes, PRs,
 dispatches and device actions. No implementation is authorized.
 
