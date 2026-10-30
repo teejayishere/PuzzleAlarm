@@ -16,8 +16,12 @@ tests, workflows or status summaries from main, recovery or Stage 6–14 branche
 
 Before every future stage session:
 
+- Fetch origin and verify `codex/restart-gate5-20261029-f8a41c` before interpreting
+  any status. Read its remote docs/PROJECT_STATE.md first, then its AGENTS.md.
+  GitHub's default branch is this restart branch; stale clones may still select main.
 - Verify repository identity, clean working tree, branch, HEAD and ancestry.
-  Confirm the restart instructions commit is an ancestor and inspect every
+  Require fixed anchor `862c2d872958c2e08971acbf605bbcf07ee4b3d5`, whose sole
+  parent is the baseline above; reject all merge commits after it. Inspect every
   post-baseline commit; baseline ancestry alone does not exclude old descendants.
   Stop on conflicting lineage, unexpected changes or unverifiable provenance.
 - Read this file and active docs/PROJECT_STATE.md, then the baseline specifications,
@@ -35,12 +39,21 @@ Before every future stage session:
 Historical CI budgets and exceptions neither authorize nor block new execution.
 Before any new validation, record an explicit, bounded, $0 budget identifying
 checks, maximum runs/retries and runner time; stop at its limit and report results.
-This restart session permits documentation/repository inspection only: zero product
-tests/builds, zero Xcode/Simulator/device validation and zero CI executions.
-Publish its instructions commit with [skip ci]; this is a one-session owner scope,
-not a gate pass or a reusable CI exception. STOP after publication/verification.
-Do not implement Stage 6 in this session. Preserve baseline specifications and
-source/test/evidence files. Original engineering rules follow unchanged.
+The anchor's instructions-only session is complete; its zero-CI scope and [skip ci]
+instruction are historical, not a reusable exception. Hardening only is authorized
+for this session: at most two complete CI executions, automatic triggers included,
+no reruns, 25 minutes each and 50 aggregate runner-minutes, $0 standard public runners.
+Stop on failure or budget exhaustion. Include documentation before validation and
+verify SUCCESS for the exact final published HEAD. No local product validation.
+Run `python3 Scripts/check_restart_lineage.py` with full history; CI runs it before
+existing validation. It checks anchor parentage, ancestry and absence of later merges.
+It cannot detect copied/cherry-picked old code, altered checks or stale entry points;
+manual review of every post-baseline commit remains required. PR CI checks the
+submitted head, not GitHub's synthetic merge. No branch-protection guarantee is claimed.
+Preserve baseline specifications and source/tests. STOP after hardening; Stage 6
+is NOT STARTED. The next implementation scope is independently rebuilding Stage 6
+and stopping after Gate 6: no Stage 7 or old recovery/promotion work.
+Original engineering rules follow unchanged.
 
 # PuzzleAlarm engineering instructions
 

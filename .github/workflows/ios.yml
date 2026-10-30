@@ -21,6 +21,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+          fetch-depth: 0
+          # Inspect the submitted history, not GitHub's synthetic PR merge.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify fixed restart lineage
+        run: python3 Scripts/check_restart_lineage.py
       - name: Record toolchain evidence
         run: |
           sw_vers

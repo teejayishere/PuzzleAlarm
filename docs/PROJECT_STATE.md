@@ -1,56 +1,68 @@
 # Active restart project state
 
 Owner decision: 2026-10-29 (America/Chicago).
-Active branch: `codex/restart-gate5-20261029-f8a41c`.
-Lineage root: `159b777379ad587a615df56ef24fa273aa29ffe4`.
-The restart instructions commit must have that SHA as its sole parent.
+Active/default branch: `codex/restart-gate5-20261029-f8a41c`.
+Fixed restart anchor: `862c2d872958c2e08971acbf605bbcf07ee4b3d5`.
+Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`.
 
-Current stage: 6 — Alarm Management UI, NOT IMPLEMENTED.
-Current gate: Gate 6 — NOT STARTED.
-Last accepted gate: Gate 5; Gates 0–5 are the inherited accepted baseline.
-Invalidated gates in the new lineage: None.
-Current blockers: None inherited from abandoned Stage 6–14 history.
-Status: Instructions-only restart; no product changes or new gate acceptance.
-All later stages must be independently rebuilt and gated from this lineage.
+Gates 0–5: inherited accepted baseline. Stage 6 — Alarm Management UI: NOT STARTED.
+Gate 6: NOT STARTED. No gates invalidated in this lineage; no blockers inherited
+from abandoned Stage 6–14 history. Hardening changes no product acceptance.
 
-## Authority and provenance
+## Authority and entry points
 
-AGENTS.md and this active section govern the restart. Preserve the baseline
-MASTER_PLAN, DEVELOPMENT_LOG, TEST_MATRIX, architecture, source, tests and workflows.
-All previous Stage/Gate 6–14 implementation, recovery and promotion paths are
-abandoned. Their failures are historical lessons, not blockers, accepted gates
-or queues here. No later code, tests, workflows or status summaries may be merged,
-cherry-picked or copied into this lineage. No old-history review is a prerequisite.
+Before interpreting status, fetch origin, verify the active branch and read its
+remote PROJECT_STATE.md FIRST, then AGENTS.md. Verify identity, clean checkout,
+local/remote refs, fixed anchor/sole parent and every post-baseline commit. Stop
+on unexpected divergence or unverifiable provenance. Existing clones, old worktrees,
+bookmarks and explicit main/old-branch links can still enter abandoned history.
+GitHub default branch was changed through authenticated repository settings during
+hardening; main and all old branches/worktrees are preserved.
 
-## Evidence and limits
+All prior Stage/Gate 6–14 implementation, tests, workflows, recovery, promotion and
+status paths are abandoned. Do not merge, cherry-pick or copy them. Preserve baseline
+product source, tests, specifications and evidence. Old failures are historical
+lessons only, not blockers or work queues; no old-history review is prerequisite.
 
-- Baseline commit and tree verified against GitHub; original checkout was clean.
-  Baseline tree: `a2f058dfd860945a10ea5236a7ad5f4c27e23885`.
-- Baseline exact-HEAD CI verified completed/SUCCESS for
-  `159b777379ad587a615df56ef24fa273aa29ffe4`, run 37236891939:
+`Scripts/check_restart_lineage.py` requires full history, the fixed anchor with its
+sole baseline parent, anchor ancestry and no merge commits after the anchor. Both
+branch workflows run it before existing checks. PR CI checks the submitted head,
+not GitHub's synthetic merge. Ancestry cannot detect copied/cherry-picked old code;
+review all later diffs. Checks can be edited or bypassed, and no server-side branch
+protection guarantee is claimed. The fixed anchor must not move with branch HEAD.
+
+## Evidence and hardening validation budget
+
+- Baseline tree: `a2f058dfd860945a10ea5236a7ad5f4c27e23885`.
+- Baseline exact-HEAD CI SUCCESS: `159b777379ad587a615df56ef24fa273aa29ffe4`,
   https://github.com/teejayishere/PuzzleAlarm/actions/runs/37236891939
-- Restart source evidence: documentation-only diff and direct-parent ancestry.
-  The commit containing these instructions is the restart anchor; resolve its
-  exact SHA from git, rather than substituting the baseline SHA as its HEAD.
-- Restart automated/product validation: NOT RUN by owner instruction. CI skipped
-  with [skip ci]; no exact-HEAD CI pass is claimed for the restart commit.
-- Restart Xcode, Simulator and physical-device validation: NOT RUN.
-- Open engineering risks, unverified assumptions and device-required validation:
-  inherited baseline limitations below remain; no new product evidence is claimed.
+- Restart anchor: sole parent verified; only AGENTS.md and PROJECT_STATE.md differ
+  from baseline. No anchor CI run exists ([skip ci]); no anchor PASS is claimed.
+- Hardening budget recorded before validation: $0, at most TWO complete CI executions
+  including automatic triggers, NO reruns, at most 25 minutes each and 50 aggregate
+  runner-minutes. Existing validation and public standard macos-26 remain intact.
+  Stop on failure or budget exhaustion. No local product tests/builds or device runs.
+- Candidate includes these docs before CI. Final hardening SHA, run URL/result and
+  actual runner time are verified after publication and reported in the task closeout;
+  this candidate text alone does not claim a successful final-HEAD run.
+- Local checks are limited to preflight acceptance/rejection and diff integrity;
+  CI supplies automated, Xcode and Simulator evidence separately from device evidence.
+- Local hardening checks: anchor accepted; pre-anchor baseline and unreferenced
+  synthetic merge descendant rejected; diff whitespace check clean; preserved Gate 5
+  snapshot unchanged (UTF-8 comparison). No product source/tests/specifications changed.
+- Physical-device validation: NOT RUN. Inherited baseline limitations below remain.
 
-## Next-stage instruction
+## Next implementation scope
 
-STOP this session after committing, publishing and verifying the restart branch.
-A future Stage 6 session must first verify repository/branch provenance, restart
-anchor ancestry, clean tree, active state and actual exact-HEAD CI as required by
-AGENTS.md. Missing/skipped CI is not PASS. Establish an explicit, bounded, free
-validation budget and obtain successful prerequisite CI before implementation.
-Then independently implement Stage 6 — Alarm Management UI — and satisfy Gate 6
-in MASTER_PLAN. Do not resume an old recovery or promotion path.
-Recursive invalidation applies only within this lineage, including any inherited
-gate disproved by new evidence; rerun affected gates in order. Historical budgets
-and exceptions have no authority. This session's validation budget is zero product
-validation runs and zero CI executions; read-only repository/evidence checks only.
+STOP after restart hardening. A future session must obtain SUCCESS for its exact
+current HEAD under a new explicit bounded $0 budget before implementation; missing,
+skipped, pending, failed or blocked CI is not PASS. Independently rebuild Stage 6
+and satisfy Gate 6 in unchanged MASTER_PLAN.md, then STOP. No Stage 7, old Gate 6
+repair, recovery/promotion path or Stage 14 work is authorized by this scope.
+Recursive invalidation applies within this lineage, including inherited Gates 0–5
+if disproved; rerun affected gates in order. Historical budgets/exceptions have no
+authority. The anchor session's zero-validation scope is complete and superseded
+only for this hardening session by the budget above.
 
 ## Preserved Gate 5 snapshot
 
