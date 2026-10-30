@@ -1,3 +1,67 @@
+# Active restart project state
+
+Owner decision: 2026-10-29 (America/Chicago).
+Active branch: `codex/restart-gate5-20261029-f8a41c`.
+Lineage root: `159b777379ad587a615df56ef24fa273aa29ffe4`.
+The restart instructions commit must have that SHA as its sole parent.
+
+Current stage: 6 — Alarm Management UI, NOT IMPLEMENTED.
+Current gate: Gate 6 — NOT STARTED.
+Last accepted gate: Gate 5; Gates 0–5 are the inherited accepted baseline.
+Invalidated gates in the new lineage: None.
+Current blockers: None inherited from abandoned Stage 6–14 history.
+Status: Instructions-only restart; no product changes or new gate acceptance.
+All later stages must be independently rebuilt and gated from this lineage.
+
+## Authority and provenance
+
+AGENTS.md and this active section govern the restart. Preserve the baseline
+MASTER_PLAN, DEVELOPMENT_LOG, TEST_MATRIX, architecture, source, tests and workflows.
+All previous Stage/Gate 6–14 implementation, recovery and promotion paths are
+abandoned. Their failures are historical lessons, not blockers, accepted gates
+or queues here. No later code, tests, workflows or status summaries may be merged,
+cherry-picked or copied into this lineage. No old-history review is a prerequisite.
+
+## Evidence and limits
+
+- Baseline commit and tree verified against GitHub; original checkout was clean.
+  Baseline tree: `a2f058dfd860945a10ea5236a7ad5f4c27e23885`.
+- Baseline exact-HEAD CI verified completed/SUCCESS for
+  `159b777379ad587a615df56ef24fa273aa29ffe4`, run 37236891939:
+  https://github.com/teejayishere/PuzzleAlarm/actions/runs/37236891939
+- Restart source evidence: documentation-only diff and direct-parent ancestry.
+  The commit containing these instructions is the restart anchor; resolve its
+  exact SHA from git, rather than substituting the baseline SHA as its HEAD.
+- Restart automated/product validation: NOT RUN by owner instruction. CI skipped
+  with [skip ci]; no exact-HEAD CI pass is claimed for the restart commit.
+- Restart Xcode, Simulator and physical-device validation: NOT RUN.
+- Open engineering risks, unverified assumptions and device-required validation:
+  inherited baseline limitations below remain; no new product evidence is claimed.
+
+## Next-stage instruction
+
+STOP this session after committing, publishing and verifying the restart branch.
+A future Stage 6 session must first verify repository/branch provenance, restart
+anchor ancestry, clean tree, active state and actual exact-HEAD CI as required by
+AGENTS.md. Missing/skipped CI is not PASS. Establish an explicit, bounded, free
+validation budget and obtain successful prerequisite CI before implementation.
+Then independently implement Stage 6 — Alarm Management UI — and satisfy Gate 6
+in MASTER_PLAN. Do not resume an old recovery or promotion path.
+Recursive invalidation applies only within this lineage, including any inherited
+gate disproved by new evidence; rerun affected gates in order. Historical budgets
+and exceptions have no authority. This session's validation budget is zero product
+validation runs and zero CI executions; read-only repository/evidence checks only.
+
+## Preserved Gate 5 snapshot
+
+The following PROJECT_STATE content is preserved verbatim from the lineage root
+as baseline specifications/evidence context. Its old final-CI/STOP/next-action
+wording is historical and superseded by the active restart instructions above.
+The verified final Gate 5 run is 37236891939; 37236486724 below is its earlier
+implementation evidence, not evidence for a new HEAD.
+
+---
+
 # Project state
 
 Current stage: 5 — implementation PASS; stopped before Stage 6
