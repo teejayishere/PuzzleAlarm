@@ -11,13 +11,22 @@ from abandoned Stage 6–14 history. Hardening changes no product acceptance.
 
 ## Authority and entry points
 
+This active section is the single current-status authority. README files,
+CONTRIBUTING, historical logs and evidence summaries defer here; MASTER_PLAN remains
+the unchanged specification. Historical status/STOP/next-action statements below
+are records for their named revision, not live instructions.
+
 Before interpreting status, fetch origin, verify the active branch and read its
 remote PROJECT_STATE.md FIRST, then AGENTS.md. Verify identity, clean checkout,
 local/remote refs, fixed anchor/sole parent and every post-baseline commit. Stop
 on unexpected divergence or unverifiable provenance. Existing clones, old worktrees,
 bookmarks and explicit main/old-branch links can still enter abandoned history.
 GitHub default branch was changed through authenticated repository settings during
-hardening; main and all old branches/worktrees are preserved.
+hardening. All inactive remote branch tips now carry HISTORICAL / ABANDONED notices
+in README.md, AGENTS.md and docs/PROJECT_STATE.md; their existing content and commits
+are preserved. Local obsolete worktrees are not repaired by remote annotations.
+See [branch/worktree inventory](DOCUMENTATION_RECONCILIATION.md) for original/new SHAs
+and explicit do-not-use guidance.
 
 All prior Stage/Gate 6–14 implementation, tests, workflows, recovery, promotion and
 status paths are abandoned. Do not merge, cherry-pick or copy them. Preserve baseline
@@ -31,7 +40,12 @@ not GitHub's synthetic merge. Ancestry cannot detect copied/cherry-picked old co
 review all later diffs. Checks can be edited or bypassed, and no server-side branch
 protection guarantee is claimed. The fixed anchor must not move with branch HEAD.
 
-## Evidence and hardening validation budget
+## Completed hardening evidence (historical session)
+
+Hardening finished at `7c04baf2bd474df3403a0152835e70c08a27f007`.
+Its exact-HEAD [CI run 41001050547](https://github.com/teejayishere/PuzzleAlarm/actions/runs/41001050547)
+was rechecked completed/SUCCESS before this reconciliation. The budget and candidate
+wording below are preserved completed-session records, not a new work authorization.
 
 - Baseline tree: `a2f058dfd860945a10ea5236a7ad5f4c27e23885`.
 - Baseline exact-HEAD CI SUCCESS: `159b777379ad587a615df56ef24fa273aa29ffe4`,
@@ -52,17 +66,36 @@ protection guarantee is claimed. The fixed anchor must not move with branch HEAD
   snapshot unchanged (UTF-8 comparison). No product source/tests/specifications changed.
 - Physical-device validation: NOT RUN. Inherited baseline limitations below remain.
 
-## Next implementation scope
+## Documentation reconciliation session
 
-STOP after restart hardening. A future session must obtain SUCCESS for its exact
-current HEAD under a new explicit bounded $0 budget before implementation; missing,
-skipped, pending, failed or blocked CI is not PASS. Independently rebuild Stage 6
-and satisfy Gate 6 in unchanged MASTER_PLAN.md, then STOP. No Stage 7, old Gate 6
-repair, recovery/promotion path or Stage 14 work is authorized by this scope.
-Recursive invalidation applies within this lineage, including inherited Gates 0–5
-if disproved; rerun affected gates in order. Historical budgets/exceptions have no
-authority. The anchor session's zero-validation scope is complete and superseded
-only for this hardening session by the budget above.
+Documentation only; Stage/Gate 6 remain NOT STARTED and no gate is newly accepted.
+Owner authorization includes retirement notices on all inactive branch tips, solely
+superseding the former leave-old-branches-untouched restriction for those notices.
+All original content remains underneath; no old implementation enters this lineage.
+
+Budget recorded before changes: $0; at most TWO complete active-branch CI executions,
+automatic triggers included; no unchanged-code reruns; 25 minutes each / 50 aggregate
+runner-minutes. Stop on failure or exhaustion. No local product validation. Existing
+full CI checks remain unchanged. All active docs must precede validation; acceptance
+requires SUCCESS for the exact final published HEAD, reported with its run in the
+session closeout. This pre-validation text does not claim that result.
+See [documentation reconciliation record](DOCUMENTATION_RECONCILIATION.md).
+
+## Standing prerequisites and next implementation scope
+
+The anchor and hardening sessions are complete; their scope restrictions are historical.
+Reuse successful CI whose SHA matches an unchanged current HEAD after checking its
+actual result. No unchanged-code rerun is required. A parent/baseline run is never
+evidence for a changed HEAD. Missing, skipped, pending, failed or blocked CI is not
+PASS. Before new validation, record a fresh explicit bounded $0 budget; do not inherit
+old session budgets or exceptions.
+
+STOP after this documentation-only session. In a separately authorized implementation
+session, verify provenance and exact-current-HEAD SUCCESS, independently rebuild
+Stage 6 and satisfy Gate 6 in unchanged MASTER_PLAN.md, then STOP. No Stage 7 or old
+Gate 6 repair/recovery/promotion work. Recursive invalidation applies within this
+lineage, including inherited Gates 0–5 if disproved; rerun affected gates in order.
+Old-lineage failures and budgets are nonbinding and not prerequisite work queues.
 
 ## Preserved Gate 5 snapshot
 

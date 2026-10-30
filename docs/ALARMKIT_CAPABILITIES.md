@@ -1,3 +1,14 @@
+# Historical Stage 3 SDK evidence
+
+Current status is maintained only in the [active restart PROJECT_STATE](https://github.com/teejayishere/PuzzleAlarm/blob/codex/restart-gate5-20261029-f8a41c/docs/PROJECT_STATE.md).
+The following record is preserved: its status, failures, budgets, STOP and next-action
+statements apply to the recorded revisions/sessions, not the current work queue.
+Gates 0–5 are inherited accepted; Stage/Gate 6 are NOT STARTED. Old Stage 6–14
+failures and budgets are nonbinding; independently rebuilding Stage 6 is next.
+Specifications and original evidence below are unchanged.
+
+---
+
 # Stage 3 — installed SDK capability evidence
 
 Scope: compile/integration spike only. No alarm scheduling is triggered by app

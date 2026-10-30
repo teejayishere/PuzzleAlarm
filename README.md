@@ -4,7 +4,14 @@ Personal native iPhone alarm application under development for iOS 26+.
 The planned app offers ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
-**Stage 4 adds versioned atomic local persistence and recovery representations. The shell remains a title screen; no real alarm behavior is verified.**
+**Current status is maintained only in the [active restart PROJECT_STATE](https://github.com/teejayishere/PuzzleAlarm/blob/codex/restart-gate5-20261029-f8a41c/docs/PROJECT_STATE.md).**
+
+Use the default branch `codex/restart-gate5-20261029-f8a41c`. Gates 0–5 are the
+inherited accepted baseline; Stage 6 and Gate 6 are NOT STARTED. The next implementation
+scope is an independent Stage 6 rebuild, stopping after Gate 6. Main and all other
+branches are HISTORICAL / ABANDONED: no development, recovery or promotion there.
+Old Stage 6–14 failures and budgets are nonbinding. See the
+[branch and local entry-point inventory](docs/DOCUMENTATION_RECONCILIATION.md).
 
 ## Evidence and scope
 
@@ -12,7 +19,9 @@ See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 [TEST_MATRIX](docs/TEST_MATRIX.md) distinguishes automated evidence from unimplemented
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
-See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for the installed SDK API matrix and device-only limits. Stage 5+ is not started.
+See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for historical installed-SDK
+evidence and device-only limits. The app still opens a title screen; no real alarm
+behavior is verified on a physical device.
 
 Implemented in dependency-free PuzzleAlarmCore:
 
@@ -22,10 +31,14 @@ Implemented in dependency-free PuzzleAlarmCore:
 - Deterministic local-time scheduling with explicit Gregorian calendar/timezone and DST rules.
 - Exactly five backup-plan entries at T, T+60s, T+120s, T+180s and T+240s.
 - Codable validation, recovery-state round trips and behavioral/invariant tests.
+- Versioned atomic persistence and a durable lifecycle operation journal.
+- Transactional scheduling, rollback, recurrence, edit/disable/delete and recovery
+  through an injected scheduler, with Stage 5 automated evidence.
 
-Challenge engines, OS scheduling orchestration, product UI, camera and sound files
-belong to later gates. No real alarm, device installation or camera/audio behavior
-has been verified.
+The iOS boundary contains the AlarmKit adapter and compile-spike App Intent.
+Lifecycle orchestration is not connected to product UI/startup. Challenge engines,
+product UI, final intent routing, camera and sound files belong to later gates.
+No real alarm, device installation or camera/audio behavior has been verified.
 
 ## Free CI-first development
 
@@ -35,7 +48,8 @@ has been verified.
 CI uses a standard macos-26 runner, prints macOS/Xcode/SDK/Swift versions, parses
 the package, builds with warnings as errors, runs Swift tests and reports core
 line coverage. It also generates the Xcode project, builds the iOS app and runs
-seven platform capability tests, an iOS disk round-trip and one Simulator launch test. No paid runners, runtime dependencies or signing
+platform capability, disk persistence, lifecycle integration and shell-launch tests.
+Exact revision-specific counts belong in the evidence ledger. No paid runners, runtime dependencies or signing
 credentials. Private-repository execution is guarded out to preserve the $0 rule.
 
 A local Mac or large Windows Swift toolchain is unnecessary for ordinary work.
@@ -65,7 +79,10 @@ metadata-extraction advisory for the UI-test bundle without AppIntents. The app 
 
 ## Engineering rules
 
-Read [AGENTS.md](AGENTS.md) and [CONTRIBUTING](CONTRIBUTING.md). Invalidated assumptions
+Fetch origin and read the remote restart PROJECT_STATE first, then [AGENTS.md](AGENTS.md)
+and [CONTRIBUTING](CONTRIBUTING.md). Existing successful CI may be reused when its SHA
+matches an unchanged HEAD; a parent run never validates a new commit. Record a new
+bounded $0 budget before any new validation. Invalidated assumptions
 send work back to the earliest affected gate. Full device validation remains
 [DEVICE REQUIRED](docs/DEVICE_TEST_PLAN.md), including free personal provisioning.
 

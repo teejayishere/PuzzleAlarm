@@ -36,23 +36,51 @@ Before every future stage session:
   invalidate dependent gates and rerun them in order; never advance past a
   failed or blocked prerequisite. Old-lineage failures do not invalidate this one.
 
-Historical CI budgets and exceptions neither authorize nor block new execution.
-Before any new validation, record an explicit, bounded, $0 budget identifying
-checks, maximum runs/retries and runner time; stop at its limit and report results.
-The anchor's instructions-only session is complete; its zero-CI scope and [skip ci]
-instruction are historical, not a reusable exception. Hardening only is authorized
-for this session: at most two complete CI executions, automatic triggers included,
-no reruns, 25 minutes each and 50 aggregate runner-minutes, $0 standard public runners.
-Stop on failure or budget exhaustion. Include documentation before validation and
-verify SUCCESS for the exact final published HEAD. No local product validation.
+## Standing validation rules
+
+Historical CI budgets and completed session restrictions neither authorize nor block
+new work. Reuse an existing successful CI run when its SHA matches the unchanged
+current HEAD; no unchanged-code rerun is required. A parent/baseline run cannot
+validate a new HEAD. Before any new validation, record an explicit bounded $0 budget
+identifying checks, maximum executions/retries and runner time. Stop on failure or
+budget exhaustion. Include all documentation before final validation and verify
+SUCCESS for the exact final published HEAD. Keep evidence categories separate.
+
 Run `python3 Scripts/check_restart_lineage.py` with full history; CI runs it before
 existing validation. It checks anchor parentage, ancestry and absence of later merges.
 It cannot detect copied/cherry-picked old code, altered checks or stale entry points;
 manual review of every post-baseline commit remains required. PR CI checks the
 submitted head, not GitHub's synthetic merge. No branch-protection guarantee is claimed.
-Preserve baseline specifications and source/tests. STOP after hardening; Stage 6
-is NOT STARTED. The next implementation scope is independently rebuilding Stage 6
-and stopping after Gate 6: no Stage 7 or old recovery/promotion work.
+Preserve baseline specifications and source/tests. The single current-status authority
+is the active restart docs/PROJECT_STATE.md; other summaries defer to it.
+The next implementation scope is independently rebuilding Stage 6 and stopping after
+Gate 6: no Stage 7 or old recovery/promotion work.
+
+## Completed sessions and documentation-only scope
+
+The anchor's instructions-only session and the hardening session are complete.
+Their zero-CI/[skip ci], hardening-only and STOP restrictions were session-specific,
+not standing prohibitions on separately authorized future work. Hardening exact-HEAD
+CI SUCCESS: 7c04baf2bd474df3403a0152835e70c08a27f007, run 41001050547.
+Original records remain in Git history and the preserved project-state snapshot.
+
+Owner-authorized documentation reconciliation (2026-10-29 America/Chicago): active
+branch documentation only, plus prepended retirement notices on every inactive
+branch, including main. This solely supersedes the prior leave-old-branches-untouched
+restriction for those notices. Preserve all old content and use separate single-parent
+commits with [skip ci]; accept no new gate. No merges, branch deletion, force pushes,
+product/test/workflow/check changes or implementation. Publish with expected-SHA checks.
+Do not delete, reset, rename or switch dirty worktrees; report obsolete entry points
+as do-not-use and do not claim inaccessible clones repaired.
+
+Session budget recorded before changes: $0; at most TWO full active-branch CI executions,
+automatic triggers included; no unchanged-code reruns; 25 minutes each and 50 aggregate
+runner-minutes on standard public runners. Stop on failure/exhaustion. No local product
+validation. Include all active docs before validation; require exact-final-HEAD SUCCESS.
+STOP after documentation reconciliation. Stage/Gate 6 remain NOT STARTED. See
+[reconciliation inventory](docs/DOCUMENTATION_RECONCILIATION.md) for session evidence;
+these session limits do not become a future implementation budget.
+
 Original engineering rules follow unchanged.
 
 # PuzzleAlarm engineering instructions
