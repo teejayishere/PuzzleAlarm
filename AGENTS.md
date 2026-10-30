@@ -1,3 +1,13 @@
+# HISTORICAL / ABANDONED — DO NOT DEVELOP HERE
+
+> This branch is retired. Do not develop, recover, repair gates, or promote work here.
+> The single current-status authority is the [active restart PROJECT_STATE](https://github.com/teejayishere/PuzzleAlarm/blob/codex/restart-gate5-20261029-f8a41c/docs/PROJECT_STATE.md).
+> Use `codex/restart-gate5-20261029-f8a41c` after verifying its remote state and lineage.
+> Do not merge, cherry-pick, or copy this abandoned implementation into the restart.
+> This documentation-only retirement notice accepts no gate. Original content below is historical, including its status, instructions, failures and budgets.
+
+---
+
 # Recovery preparation scope
 
 Read docs/GATE5_RECOVERY_POLICY.md and docs/GATE5_PREPARATION.md before work. Preparation is sealed; no product implementation or runtime work is authorized. Current policy overrides historical instructions below.
