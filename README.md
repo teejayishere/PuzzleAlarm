@@ -7,8 +7,9 @@ Memory and QR challenges backed by one primary and four independent backup alarm
 **Current status is maintained only in the [active restart PROJECT_STATE](https://github.com/teejayishere/PuzzleAlarm/blob/codex/restart-gate5-20261029-f8a41c/docs/PROJECT_STATE.md).**
 
 Use the default branch `codex/restart-gate5-20261029-f8a41c`. Gates 0–5 are the
-inherited accepted baseline; Stage 6 and Gate 6 are NOT STARTED. The next implementation
-scope is an independent Stage 6 rebuild, stopping after Gate 6. Main and all other
+inherited accepted baseline. Stage 6 alarm-management UI is implemented as a candidate;
+Gate 6 requires exact-final-HEAD CI as recorded in PROJECT_STATE and the session
+closeout. Stop after Gate 6. Main and all other
 branches are HISTORICAL / ABANDONED: no development, recovery or promotion there.
 Old Stage 6–14 failures and budgets are nonbinding. See the
 [branch and local entry-point inventory](docs/DOCUMENTATION_RECONCILIATION.md).
@@ -20,7 +21,7 @@ See [PROJECT_STATE](docs/PROJECT_STATE.md) for exact revisions and CI runs.
 platform features. [MASTER_PLAN](docs/MASTER_PLAN.md) is the authoritative specification.
 
 See [ALARMKIT_CAPABILITIES](docs/ALARMKIT_CAPABILITIES.md) for historical installed-SDK
-evidence and device-only limits. The app still opens a title screen; no real alarm
+evidence and device-only limits. The app opens alarm management; no real alarm
 behavior is verified on a physical device.
 
 Implemented in dependency-free PuzzleAlarmCore:
@@ -36,8 +37,10 @@ Implemented in dependency-free PuzzleAlarmCore:
   through an injected scheduler, with Stage 5 automated evidence.
 
 The iOS boundary contains the AlarmKit adapter and compile-spike App Intent.
-Lifecycle orchestration is not connected to product UI/startup. Challenge engines,
-product UI, final intent routing, camera and sound files belong to later gates.
+Alarm management connects disk persistence and lifecycle orchestration through an
+injected service. It supports CRUD, weekdays/mode, ordered challenge configuration,
+enable/disable and a sound picker shell. Challenge engines,
+final intent routing, camera and sound files belong to later gates.
 No real alarm, device installation or camera/audio behavior has been verified.
 
 ## Free CI-first development
@@ -48,7 +51,7 @@ No real alarm, device installation or camera/audio behavior has been verified.
 CI uses a standard macos-26 runner, prints macOS/Xcode/SDK/Swift versions, parses
 the package, builds with warnings as errors, runs Swift tests and reports core
 line coverage. It also generates the Xcode project, builds the iOS app and runs
-platform capability, disk persistence, lifecycle integration and shell-launch tests.
+platform capability, disk persistence, lifecycle integration and alarm-management UI tests.
 Exact revision-specific counts belong in the evidence ledger. No paid runners, runtime dependencies or signing
 credentials. Private-repository execution is guarded out to preserve the $0 rule.
 
@@ -72,8 +75,8 @@ XcodeGen 2.44.1 and prints its executable path. Run that executable with
 and test commands. CI discovers a compatible available iPhone Simulator and
 selects the runner's native architecture; no fixed model is required.
 
-The shell displays only PuzzleAlarm. CI confirms the package dependency compiles
-for iOS and the shell launches, not physical-device functionality. The diagnostic
+Simulator UI tests use isolated disk and injected scheduling; their success establishes
+interaction and persistence rather than physical-device functionality. The diagnostic
 check rejects compiler/destination warnings and explicitly reports Xcode's expected
 metadata-extraction advisory for the UI-test bundle without AppIntents. The app itself extracts App Intents metadata.
 

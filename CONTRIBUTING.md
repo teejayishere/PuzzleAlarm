@@ -7,8 +7,8 @@ unchanged recursive controller/specifications in docs/MASTER_PLAN.md.
 Verify repository identity, clean tree, HEAD, fixed-anchor lineage and every
 post-baseline diff; stop on unexpected changes. Run the lineage check with full history.
 
-Gates 0–5 are inherited accepted; Stage/Gate 6 are NOT STARTED. The next implementation
-scope is independently rebuilding Stage 6 and stopping after Gate 6. Do not develop,
+Gates 0–5 are inherited accepted; consult PROJECT_STATE for the independent Stage 6
+candidate and its exact-HEAD acceptance requirement. Stop after Gate 6. Do not develop,
 recover or promote on main or any inactive branch, or copy their later code/tests/workflows.
 Historical stage records preserve evidence, not current work queues. Old failures,
 budgets and completed session restrictions neither authorize nor block new work.

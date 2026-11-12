@@ -11,6 +11,24 @@ Specifications and original evidence below are unchanged.
 
 # Development log
 
+## Independent Stage 6 — 2026-11-12, attempt 1
+
+Status: implemented candidate; Gate 6 requires exact-final-HEAD full CI SUCCESS.
+Started from verified clean remote 570b3d9, prerequisite CI 41005112334 SUCCESS.
+Safeguarded original dirty checkout and local-only readiness commits independently;
+no readiness/workflow or abandoned implementation imported. Fixed-anchor lineage
+and read-only external preflight PASS. Broken Bash/tee wrapper untouched.
+
+Implemented alarm list/CRUD/toggles, weekdays/mode, ordered challenge configuration,
+sound shell, disk persistence and injected lifecycle scheduling. Drafts isolate
+cancelled edits; errors reload durable state and show scheduling issues separately.
+Added eight iOS unit/integration and three UI tests; preserved baseline product,
+core tests and workflows. See STAGE6_SESSION.md for behavioral audit and evidence.
+Fresh budget: $0, at most two complete CI executions including automatic triggers,
+25 minutes each / 50 aggregate runner-minutes; stop on failure/exhaustion, no blind
+reruns. All documentation included before final validation. Exact SHA/run/result
+will be reported in closeout, not inferred here. No physical device run or Stage 7.
+
 ## Stage 0, attempt 1 — 2026-09-30
 
 Status: BLOCKED

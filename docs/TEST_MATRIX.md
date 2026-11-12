@@ -11,6 +11,20 @@ Specifications and original evidence below are unchanged.
 
 # Evidence ledger
 
+## Independent Stage 6 candidate — 2026-11-12
+
+Source: alarm-management UI, draft/configuration editor and injected lifecycle
+composition implemented. Eight new iOS unit/integration tests and three UI flows
+are described individually in STAGE6_SESSION.md. Existing core acceptance tests,
+coverage audit and platform tests remain unchanged; shell launch assertion remains.
+
+Automated/Xcode/Simulator: require full ios.yml SUCCESS on the exact final published
+candidate SHA. Final session closeout supplies actual SHA/run/result/counts; this
+candidate documentation does not claim execution. Local preflight/lineage and
+preservation evidence are separate from product tests. No local Swift/Xcode run.
+Physical-device/VoiceOver/manual large-text review: NOT RUN. Device authorization,
+delivery, audio and file protection remain unproven. No Stage 7 acceptance.
+
 Observed 2026-10-01 America/Chicago (CI timestamps 2026-10-02 UTC).
 
 ## Gate 0 — PASS

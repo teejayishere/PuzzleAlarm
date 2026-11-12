@@ -1,0 +1,124 @@
+import SwiftUI
+import PuzzleAlarmCore
+
+struct AlarmEditorView: View {
+    @State var draft: AlarmDraft
+    @ObservedObject var model: AlarmListModel
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                if let error = model.errorMessage { Text(error).foregroundStyle(.red) }
+                Section("Time") {
+                    Picker("Hour", selection: $draft.hour) {
+                        ForEach(0..<24, id: \.self) { Text(String(format: "%02d", $0)).tag($0) }
+                    }.pickerStyle(.menu).accessibilityIdentifier("editor.hour")
+                    Picker("Minute", selection: $draft.minute) {
+                        ForEach(0..<60, id: \.self) { Text(String(format: "%02d", $0)).tag($0) }
+                    }.pickerStyle(.menu).accessibilityIdentifier("editor.minute")
+                    Toggle("Enabled", isOn: $draft.enabled).accessibilityIdentifier("editor.enabled")
+                }
+                Section {
+                    ForEach(Weekday.allCases, id: \.self) { day in
+                        Toggle(day.title, isOn: Binding(get: { draft.weekdays.contains(day) }, set: { selected in
+                            if selected { draft.weekdays.insert(day) } else { draft.weekdays.remove(day) }
+                        })).accessibilityIdentifier("editor.day.\(day.rawValue)")
+                    }
+                } header: { Text("Repeat") } footer: { Text("No selected weekdays means one time at the next local occurrence.") }
+                Section("Dismissal") {
+                    Picker("Mode", selection: $draft.mode) {
+                        Text("Alarm only").tag(DismissalMode.annoyingOnly)
+                        Text("Challenges required").tag(DismissalMode.challengesRequired)
+                    }.pickerStyle(.menu).accessibilityIdentifier("editor.mode")
+                }
+                if draft.mode == .challengesRequired { challengeSections }
+                Section {
+                    Picker("Sound", selection: $draft.soundIndex) {
+                        ForEach(AlarmDraft.soundNames.indices, id: \.self) { index in
+                            Text(AlarmDraft.soundNames[index]).tag(index)
+                        }
+                    }.pickerStyle(.menu).accessibilityIdentifier("editor.sound")
+                } header: { Text("Sound") } footer: {
+                    Text("Selection only. Bundled sound resources and preview playback arrive in a later stage. Use System default for the available system sound.")
+                }
+            }
+            .navigationTitle(draft.original == nil ? "New alarm" : "Edit alarm")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { dismiss() }.accessibilityIdentifier("editor.cancel")
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") { Task { if await model.save(draft) { dismiss() } } }
+                        .disabled(!draft.canSave || !model.loaded || model.busy)
+                        .accessibilityIdentifier("editor.save")
+                }
+            }
+            .disabled(model.busy)
+            .interactiveDismissDisabled(model.busy)
+        }
+    }
+
+    private var challengeSections: some View {
+        Group {
+            Section {
+                ForEach(ChallengeKind.allCases, id: \.self) { kind in
+                    Button("Add \(kind.title)") { draft.add(kind) }
+                        .disabled(draft.challenges.contains { $0.kind == kind })
+                        .accessibilityIdentifier("challenge.add.\(kind.rawValue)")
+                }
+                if draft.challenges.isEmpty { Text("Add at least one challenge to save.") }
+            } header: { Text("Challenge sequence") } footer: {
+                Text("Each type can appear once. Complete them in the order shown. Challenge solving is not available yet.")
+            }
+            ForEach($draft.challenges) { $challenge in
+                let kind = challenge.kind
+                let index = draft.challenges.firstIndex(where: { $0.kind == kind }) ?? 0
+                Section("\(index + 1). \(kind.title)") {
+                    ChallengeConfigurationView(draft: $challenge)
+                    HStack {
+                        Button("Move up") { draft.move(index, by: -1) }
+                            .disabled(index == 0)
+                            .accessibilityLabel("Move \(kind.title) up")
+                            .accessibilityIdentifier("challenge.up.\(kind.rawValue)")
+                        Button("Move down") { draft.move(index, by: 1) }
+                            .disabled(index == draft.challenges.count - 1)
+                            .accessibilityLabel("Move \(kind.title) down")
+                            .accessibilityIdentifier("challenge.down.\(kind.rawValue)")
+                    }.buttonStyle(.borderless)
+                    Button("Remove \(kind.title)", role: .destructive) {
+                        draft.challenges.removeAll { $0.kind == kind }
+                    }.accessibilityIdentifier("challenge.remove.\(kind.rawValue)")
+                }
+            }
+        }
+    }
+}
+
+private struct ChallengeConfigurationView: View {
+    @Binding var draft: ChallengeDraft
+
+    var body: some View {
+        if draft.kind != .qr {
+            Picker("Difficulty", selection: $draft.difficulty) {
+                ForEach(Difficulty.allCases, id: \.self) { Text($0.rawValue.capitalized).tag($0) }
+            }.pickerStyle(.menu).accessibilityIdentifier("challenge.difficulty.\(draft.kind.rawValue)")
+        }
+        switch draft.kind {
+        case .math:
+            Stepper("Correct answers: \(draft.correctCount)", value: $draft.correctCount, in: 1...20)
+                .accessibilityIdentifier("challenge.math.count")
+        case .memory:
+            Stepper("Sequence length: \(draft.length)", value: $draft.length, in: 2...12)
+                .accessibilityIdentifier("challenge.memory.length")
+            Stepper("Display seconds: \(draft.seconds.formatted())", value: $draft.seconds, in: 1...30, step: 1)
+                .accessibilityIdentifier("challenge.memory.seconds")
+            Stepper("Rounds: \(draft.rounds)", value: $draft.rounds, in: 1...20)
+                .accessibilityIdentifier("challenge.memory.rounds")
+        case .qr:
+            Text("Target: \(QRConfiguration(token: draft.token).expectedPayload)")
+                .textSelection(.enabled).accessibilityIdentifier("challenge.qr.target")
+            Text("This target is saved with the alarm. QR image, sharing and scanning are not available yet.")
+        }
+    }
+}

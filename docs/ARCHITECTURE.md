@@ -11,6 +11,23 @@ Specifications and original evidence below are unchanged.
 
 # Architecture
 
+## Stage 6 candidate — application boundary
+
+AlarmListModel owns observable UI state and one busy guard, with an injected
+AlarmManagementService. LifecycleAlarmManagementService delegates commands to one
+AlarmLifecycleCoordinator and requests permission only for explicit enabled actions.
+DiskRepository remains authoritative; refresh is recovery, not an empty-state reset.
+Thrown operations reload storage to reflect possible durable writes. Lifecycle
+issues are separate from configuration success. No views import AlarmKit.
+
+AlarmDraft/ChallengeDraft isolate unsaved changes. Mode validation, stable identity,
+unique challenge types, ordering, configuration and sound identifiers round-trip
+through existing domain constructors. No schema/domain or lifecycle changes.
+Views use native Form/List controls, named toggles and explicit reorder actions.
+Composition uses disk + existing Apple adapter. DEBUG Simulator tests isolate disk
+and fake OS-ID storage; they retain production lifecycle logic across relaunch.
+See STAGE6_SESSION.md for acceptance/evidence limits. Stage 7 is unimplemented.
+
 Current architecture is described in the Stage 5 section below. Earlier sections
 are the historical stage record; their deferred-work statements are superseded
 by Stage 5. Exact passing implementation evidence is in PROJECT_STATE.md.

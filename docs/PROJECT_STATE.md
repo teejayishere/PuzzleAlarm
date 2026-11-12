@@ -5,9 +5,17 @@ Active/default branch: `codex/restart-gate5-20261029-f8a41c`.
 Fixed restart anchor: `862c2d872958c2e08971acbf605bbcf07ee4b3d5`.
 Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`.
 
-Gates 0–5: inherited accepted baseline. Stage 6 — Alarm Management UI: NOT STARTED.
-Gate 6: NOT STARTED. No gates invalidated in this lineage; no blockers inherited
-from abandoned Stage 6–14 history. Hardening changes no product acceptance.
+Gates 0–5: inherited accepted baseline. Stage 6 — Alarm Management UI: implemented
+candidate in the separately authorized 2026-11-12 session. Gate 6 acceptance requires
+SUCCESS for this candidate's exact final published HEAD; source alone is not PASS.
+The final session closeout records observed SHA/run/result. No gates invalidated
+at source review. STOP at Gate 6; Stage 7 remains NOT STARTED.
+
+See [Stage 6 session](STAGE6_SESSION.md) for fresh $0 budget, provenance/quarantine,
+implementation, acceptance tests, meaningful-behavior audit and evidence limits.
+Automated/Xcode/Simulator evidence is pending final CI until that exact run succeeds.
+Physical-device evidence: NOT RUN. No real alarm delivery, audio or challenge
+execution claim. Earlier session wording below is historical.
 
 ## Authority and entry points
 
