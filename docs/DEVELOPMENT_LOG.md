@@ -29,6 +29,12 @@ Fresh budget: $0, at most two complete CI executions including automatic trigger
 reruns. All documentation included before final validation. Exact SHA/run/result
 will be reported in closeout, not inferred here. No physical device run or Stage 7.
 
+Observed result: source committed locally at 6e32163, but publication BLOCKED by
+missing Git credential helper and connected GitHub app HTTP 403 on create-tree.
+No remote update or new CI run. Gate 6 NOT ACCEPTED; budget 0/2 runs, 0/50 minutes.
+No product failure or recursive invalidation observed. Authentication must be
+restored before re-fetch/provenance checks, safe publication and exact-HEAD CI.
+
 ## Stage 0, attempt 1 — 2026-09-30
 
 Status: BLOCKED

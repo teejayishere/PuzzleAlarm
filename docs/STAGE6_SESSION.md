@@ -116,3 +116,23 @@ handle all business behavior. Device/release uses the existing Apple adapter.
 Sound selection is a shell: bundled assets/preview await Stage 11. QR image/scanning
 await Stage 10. Challenge execution, routing and later integration remain unbuilt.
 No physical-device validation or real alarm delivery is claimed. Stop at Gate 6.
+
+## Observed closeout blocker before validation
+
+Local source commit: 6e32163c6078aca1312a3a5d7956f2cb7b2b7a4c; sole parent
+570b3d950509bf676947185660cb17ff2e887a9a; tree
+90f71a90e5ee57584d76c9106371f6c7ea21b59f. Final staged diff integrity PASS.
+Git push could not authenticate: the configured helper references a missing
+C:/Users/Teej/AppData/Local/Temp/puzzlealarm-gh-v2.102.0/bin/gh.exe. No credential
+configuration was modified. The connected GitHub create-tree request returned
+HTTP 403 Resource not accessible by integration. No tree/ref was created by that
+request, no commit published and no CI triggered. Network sandbox restrictions on
+fetch/clone were handled by scoped escalation; they were not product-test failures.
+
+CI executions consumed: ZERO of two. Runner-minutes: ZERO of 50. No product test
+or compilation result exists for the candidate. Prerequisite 570b3d9 SUCCESS does
+not validate this changed tree. Gate 6 remains NOT ACCEPTED. This authentication
+blocker does not disprove Gates 0–5. Restore repository write authentication before
+rechecking origin and publishing; preserve the candidate and original quarantine.
+The documentation-only closeout commit follows the source commit locally and must
+also be included before any final exact-HEAD CI. No Stage 7 work was started.

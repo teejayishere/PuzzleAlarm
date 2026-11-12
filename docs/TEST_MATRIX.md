@@ -25,6 +25,12 @@ preservation evidence are separate from product tests. No local Swift/Xcode run.
 Physical-device/VoiceOver/manual large-text review: NOT RUN. Device authorization,
 delivery, audio and file protection remain unproven. No Stage 7 acceptance.
 
+Observed session outcome: publication authentication BLOCKED (missing local
+credential helper; connected GitHub create-tree HTTP 403). Candidate 6e32163 has
+source and local diff-integrity evidence only. No new automated/Xcode/Simulator
+execution or CI URL exists; Gate 6 is NOT ACCEPTED. CI budget consumed 0/2 runs,
+0/50 runner-minutes. Prerequisite 570b3d9/run 41005112334 remains separate evidence.
+
 Observed 2026-10-01 America/Chicago (CI timestamps 2026-10-02 UTC).
 
 ## Gate 0 — PASS

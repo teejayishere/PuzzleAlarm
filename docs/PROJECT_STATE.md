@@ -17,6 +17,19 @@ Automated/Xcode/Simulator evidence is pending final CI until that exact run succ
 Physical-device evidence: NOT RUN. No real alarm delivery, audio or challenge
 execution claim. Earlier session wording below is historical.
 
+Session blocker: Stage 6 source candidate committed locally as
+6e32163c6078aca1312a3a5d7956f2cb7b2b7a4c, tree
+90f71a90e5ee57584d76c9106371f6c7ea21b59f. Publication is BLOCKED by
+authentication: configured Git credential helper executable is missing; connected
+GitHub app's create-tree request returned HTTP 403, Resource not accessible by
+integration. No remote ref update, new CI execution, Xcode/Simulator or device
+validation occurred. Gate 6 is NOT ACCEPTED. CI budget consumed: 0 of 2 executions,
+0 of 50 runner-minutes. Gates 0–5 remain inherited accepted; no product failure
+was observed and no recursive invalidation is indicated by this authentication
+blocker. Resume only after repository write authentication is restored, re-fetch
+and recheck current remote/provenance, include these records before validation,
+publish safely and require exact-final-HEAD SUCCESS. Do not begin Stage 7.
+
 ## Authority and entry points
 
 This active section is the single current-status authority. README files,
