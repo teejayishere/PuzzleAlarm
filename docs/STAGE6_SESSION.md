@@ -136,3 +136,50 @@ blocker does not disprove Gates 0–5. Restore repository write authentication b
 rechecking origin and publishing; preserve the candidate and original quarantine.
 The documentation-only closeout commit follows the source commit locally and must
 also be included before any final exact-HEAD CI. No Stage 7 work was started.
+
+## Authentication recovery and Gate 6 validation — 2026-11-14
+
+Scope: resume existing commits 6e32163c6078aca1312a3a5d7956f2cb7b2b7a4c and
+4c80afeb80cee1f5f7c64a578b0b44216eaad9e8. No product changes or Stage 7.
+Both commits and all backups are preserved. Clean candidate on active branch,
+full history, fixed anchor/sole baseline parent and all five post-baseline commits
+reviewed. No later merges; source/tests/specification/workflows outside the named
+Stage 6 additions remain preserved. Remote still 570b3d9; its exact-HEAD run
+41005112334 rechecked completed/SUCCESS and reused. Candidate has no prior CI.
+
+Authentication: installed Git Credential Manager 2.7.3 is executable. GitHub CLI
+at C:/Program Files/GitHub CLI/gh.exe is already authenticated as teejayishere via
+Windows keyring. gh auth setup-git --hostname github.com replaced the stale helper
+with this supported executable; no secrets read, printed or added to Git. GitHub
+reports public repository, active default branch and push permission. Candidate
+push --dry-run succeeded without changing any remote ref.
+
+Fresh $0 validation budget, recorded before new validation: at most TWO full
+ios.yml executions including automatic triggers, 25 minutes each and 50 aggregate
+runner-minutes. Stop on first failure or exhaustion. No blind/unchanged-code reruns.
+Use the second execution only if required evidence documentation changes HEAD after
+a successful first execution. No sdk-evidence dispatch, paid services or signing.
+Local allowance: one clean fetched preflight, one candidate lineage invocation,
+one final preservation/diff-integrity review; no local product tests/builds,
+Xcode, Simulator or physical device. Budget also recorded outside the repository
+before checks in the 2026-11-14 visualization session.
+
+Preflight: active remote has no check_restart_preflight.py. The same external
+63-line read-only runner was audited and run by absolute path in a fresh clean
+network clone of 570b3d9; PASS. Its equality requirement deliberately cannot apply
+to an unpublished candidate. Candidate independently has a clean checkout, exact
+expected two-commit fast-forward over that remote and lineage PASS. No readiness
+implementation or checks were copied into this lineage.
+
+Gate 6 requires UI and persistence tests, accessibility labels, injected scheduling
+and no direct AlarmKit logic in views. Source review supports those boundaries;
+full automated/Xcode/Simulator evidence remains pending exact-published-HEAD CI.
+Physical-device testing is not a Gate 6 prerequisite in MASTER_PLAN. Device-only
+authorization/delivery/audio/file-protection behavior remains DEVICE REQUIRED;
+manual VoiceOver and largest-text usability remain unverified. No device PASS.
+No evidence currently disproves Gates 0–5. Any CI failure must be traced to its
+earliest cause and dependent gates invalidated before further validation.
+
+Publish using a fresh expected-remote-SHA comparison and non-force fast-forward.
+All documentation precedes validation. Final observed SHA/run/result and runner
+time will be recorded after CI; this entry claims no new PASS. Stop at Gate 6.

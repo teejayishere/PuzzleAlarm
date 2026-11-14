@@ -364,3 +364,11 @@ Core: 1840/1852 (99.35%). Ten merged uncovered source lines plus the two
 WakeUpSession completion autoclosures account for all 12 missing counts.
 All prior gates pass in this same run. Final documentation HEAD must also pass.
 No numeric/meaningful coverage threshold was lowered.
+
+## Gate 6 validation recovery — 2026-11-14, before CI
+
+Authentication recovered; clean candidate and fixed lineage verified. No source,
+acceptance tests, specifications or workflows changed in this recovery session.
+Full ios.yml evidence remains pending. Fresh $0 cap: two executions including
+automatic runs, 25 minutes each / 50 aggregate runner-minutes; stop on failure.
+See STAGE6_SESSION.md. Simulator behavior will not establish real device behavior.

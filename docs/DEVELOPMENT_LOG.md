@@ -476,3 +476,14 @@ no Apple presentation/platform framework imports in PuzzleAlarmCore.
 Swift/Xcode validation used free standard macos-26. Device items remain untested.
 Final documentation-only revision requires its matching full CI before exact-HEAD
 acceptance; final task report records that SHA/run. STOP at Gate 5, no Stage 6.
+
+## Stage 6 authentication recovery — 2026-11-14
+
+Resumed clean candidate 4c80afe containing source 6e32163; preserved all backups.
+Repaired Git authentication with already authenticated installed GitHub CLI;
+non-destructive push access check succeeded. Active remote 570b3d9 and prerequisite
+CI 41005112334 SUCCESS reverified. Audited external preflight on clean remote
+clone PASS; candidate lineage PASS. No product implementation change. Fresh $0
+budget and pending evidence recorded in STAGE6_SESSION and PROJECT_STATE before
+CI: at most two full runs, 25 minutes each / 50 aggregate runner-minutes including
+automatic triggers, stop on failure/exhaustion. Stop after Gate 6; no Stage 7.
