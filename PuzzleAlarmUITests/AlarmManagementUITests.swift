@@ -25,7 +25,7 @@ final class AlarmManagementUITests: XCTestCase, @unchecked Sendable {
         let picker = app.buttons[id]
         reveal(picker, in: app)
         picker.tap()
-        let option = app.buttons[title].lastMatch
+        let option = app.buttons.matching(identifier: title).element
         XCTAssertTrue(option.waitForExistence(timeout: 3))
         option.tap()
     }

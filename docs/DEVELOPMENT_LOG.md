@@ -487,3 +487,50 @@ clone PASS; candidate lineage PASS. No product implementation change. Fresh $0
 budget and pending evidence recorded in STAGE6_SESSION and PROJECT_STATE before
 CI: at most two full runs, 25 minutes each / 50 aggregate runner-minutes including
 automatic triggers, stop on failure/exhaustion. Stop after Gate 6; no Stage 7.
+
+## Gate 6 validation failure — 2026-11-14 (local closeout, unpublished)
+
+Final published HEAD: 1c8e63fdc7a46e57fbf9cf2b58eb8306a6f08707.
+Exact-HEAD CI run 43650136918, attempt 1: completed/FAILURE.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/43650136918
+One validate job ran 22:50:05–22:52:42 UTC: 157 seconds (2m37s), conservatively
+3 billed runner-minutes if rounded. $0 public standard macos-26. Budget consumed
+1/2 executions, 157/3000 aggregate runner-seconds; remaining run NOT USED because
+the explicit stop-on-failure condition takes precedence. No retries or dispatches.
+
+Passed: fixed lineage, toolchain evidence, reproducible generation, package
+validation/build, focused persistence/coverage-regression/lifecycle checks, full
+core tests, coverage 1840/1852 (99.35%), Simulator destination discovery, iOS app
+build, AlarmKit usage-description check. These partial successes are not Gate 6.
+Failed: Stage 6 UI test compilation at AlarmManagementUITests.swift:28:41:
+value of type XCUIElement has no member lastMatch, from app.buttons[title].lastMatch.
+The selector helper mistakes an element for a query. Classification: Stage 6 test
+source/API defect introduced in 6e32163, not authentication or runner failure.
+Xcode test action exit 65; testing cancelled before Simulator execution. No new
+iOS unit/integration/UI execution PASS and diagnostic-review step was skipped.
+Physical device and manual VoiceOver/large-text review NOT RUN.
+
+Earliest responsible gate: Gate 6 acceptance-test implementation. Gate 6 is FAILED /
+NOT ACCEPTED and blocks dependent later gates, which remain NOT STARTED; no current
+evidence invalidates Gates 0–5. Fixing the selector and then verifying the complete
+Gate 6 suite requires a separately authorized follow-up and fresh bounded budget.
+No source/test/workflow fix, further validation, Stage 7 work or gate promotion was
+performed after failure. Existing implementation and all backups remain preserved.
+
+These closeout documentation edits remain local/uncommitted so the final published
+HEAD stays exactly the revision assessed by the failed run. No follow-up push,
+skipped-CI documentation commit or implied final-HEAD PASS. CI logs are preserved
+outside the repository in the 2026-11-14 visualization directory as
+STAGE6_CI_43650136918.log. The earlier pre-CI pending wording is superseded by this
+observed failure locally; remote documentation remains the pre-validation record.
+
+## Gate 6 selector repair — 2026-11-14, new session
+
+Minimal test-only repair: choose helper resolves a matching button query with
+.element instead of nonexistent XCUIElement.lastMatch. All assertions and timeouts
+preserved; nearby UI APIs audited. No production/workflow/specification changes.
+Fresh clean remote checkout/preflight/lineage verified at failed CI 43650136918's
+exact SHA 1c8e63f. Original dirty closeout and all backups untouched; historical
+failure evidence included above. New $0 cap: two automatic-inclusive full runs,
+25 minutes each / 50 aggregate runner-minutes; stop on first failure/exhaustion.
+Full final-HEAD CI pending. See STAGE6_SESSION for contract. Stop after Gate 6.

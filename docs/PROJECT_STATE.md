@@ -5,31 +5,29 @@ Active/default branch: `codex/restart-gate5-20261029-f8a41c`.
 Fixed restart anchor: `862c2d872958c2e08971acbf605bbcf07ee4b3d5`.
 Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`.
 
-Gates 0–5: inherited accepted baseline. Stage 6 — Alarm Management UI: implemented
-candidate in the separately authorized 2026-11-12 session. Gate 6 acceptance requires
-SUCCESS for this candidate's exact final published HEAD; source alone is not PASS.
-The final session closeout records observed SHA/run/result. No gates invalidated
-at source review. STOP at Gate 6; Stage 7 remains NOT STARTED.
+Current session: Gate 6 selector repair — 2026-11-14. Stage 6 implemented;
+Gate 6 NOT ACCEPTED, awaiting repaired candidate's exact-final-HEAD full CI.
+Prior exact-HEAD run 43650136918 FAILED for 1c8e63fdc7a46e57fbf9cf2b58eb8306a6f08707:
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/43650136918
+Earliest cause: Stage 6 UI test helper used nonexistent XCUIElement.lastMatch.
+Minimal repair uses a matching button query's single .element; assertions unchanged.
+Nearby UI APIs audited. Production behavior, core tests, MASTER_PLAN and workflows
+unchanged. Gates 0–5 remain inherited accepted; no evidence currently disproves
+them. Gate 6 blocks later gates. Stage 7 remains NOT STARTED; STOP after Gate 6.
 
-See [Stage 6 session](STAGE6_SESSION.md) for fresh $0 budget, provenance/quarantine,
-implementation, acceptance tests, meaningful-behavior audit and evidence limits.
-Automated/Xcode/Simulator evidence is pending final CI until that exact run succeeds.
-Physical-device evidence: NOT RUN. No real alarm delivery, audio or challenge
-execution claim. Earlier session wording below is historical.
-
-Current session (2026-11-14): authentication RECOVERED via installed authenticated
-GitHub CLI and supported Git helper setup; candidate dry-run push succeeded.
-Existing source commit 6e32163 and documentation commit 4c80afe are preserved.
-Remote prerequisite 570b3d9 / CI 41005112334 remains SUCCESS; it does not validate
-the candidate. Gate 6 is PENDING exact-final-published-HEAD full CI SUCCESS.
-Fresh $0 budget: at most TWO full ios.yml executions including automatic runs,
-25 minutes each / 50 aggregate runner-minutes; stop on failure/exhaustion.
-No unchanged-code reruns. Source and local preflight/lineage evidence are separate
-from pending automated/Xcode/Simulator evidence. Physical-device validation and
-manual VoiceOver/large-text usability remain NOT RUN. Gate 6 does not require
-physical-device acceptance; real device behavior remains unverified. No gates
-invalidated by authentication recovery. Full provenance, budget and former
-2026-11-12 blocker are preserved in STAGE6_SESSION.md. No Stage 7 work.
+Fresh $0 budget: at most TWO full ios.yml executions including automatic triggers,
+25 minutes each / 50 aggregate runner-minutes. Stop on first failure/exhaustion;
+no blind or unchanged-code reruns. Prior session's 1/2 usage is historical only.
+Clean fetched checkout/preflight/lineage PASS. Full automated/Xcode/Simulator
+evidence for the repaired candidate remains PENDING. Prior run passed 123 core
+tests (99.35% line coverage) and app build but executed no Simulator tests; it
+cannot establish the repaired candidate's PASS. Final observed SHA/run/result
+will be recorded in closeout after validation, with all source/docs included first.
+Physical-device and manual VoiceOver/large-text review NOT RUN. Real authorization,
+delivery, audio and file protection remain DEVICE REQUIRED, outside Gate 6's
+hardware-independent acceptance. See STAGE6_SESSION.md for preserved failure,
+provenance, fresh budget, repair, evidence categories and limitations. Existing
+candidate, original dirty closeout, backups and quarantine remain untouched.
 
 ## Authority and entry points
 
