@@ -573,3 +573,15 @@ Evidence-only documentation closeout uses [skip ci], accepts no gate and has no
 successful exact-HEAD CI. Original dirty checkout/fingerprints and all evidence
 preserved. Resume Gate 6 diagnostics with a fresh explicit bounded allocation;
 Stage 7 remains NOT STARTED and requires Gate 6 PASS then owner authorization.
+
+## Gate 6 switch diagnostics — 2026-11-19, before validation
+
+Reviewed live remote 8badc64 (no CI), source predecessor bebab3b failed run
+44593570818. Clean independent clone/preflight/lineage verified; original dirty
+checkout and all prior evidence preserved. Added opt-in DEBUG Simulator draft,
+model/service readouts, a minimal direct-state comparison, individual XCTest
+predicate/property diagnostics and recoverable before/after screenshots/hierarchy.
+Original gestures, functional expectations and disk assertions remain. No product
+binding/scheduling fix or workflow change. Fresh $0 allocation: one full automatic-
+inclusive run, no retries, 25 runner-minutes maximum; stop at result with no repair
+under this allocation. Gate 6 failed; Stage 7 not started. See STAGE6_SESSION.

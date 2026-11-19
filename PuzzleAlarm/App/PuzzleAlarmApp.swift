@@ -33,7 +33,15 @@ struct PuzzleAlarmApp: App {
 
     var body: some Scene {
         WindowGroup {
+            #if DEBUG && targetEnvironment(simulator)
+            if ProcessInfo.processInfo.arguments.contains("--ui-switch-probe") {
+                DirectStateSwitchProbe()
+            } else {
+                ContentView(model: model)
+            }
+            #else
             ContentView(model: model)
+            #endif
         }
     }
 }

@@ -5,6 +5,53 @@ Active/default branch: `codex/restart-gate5-20261029-f8a41c`.
 Fixed restart anchor: `862c2d872958c2e08971acbf605bbcf07ee4b3d5`.
 Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`.
 
+Current session: Gate 6 switch-boundary diagnostics — 2026-11-19.
+Gate 6 remains FAILED / NOT ACCEPTED; Stage 7 remains NOT STARTED.
+Starting fetched remote HEAD: 8badc6475a4fc84615a96b027c204f38271f09bd.
+GitHub reports zero exact-HEAD workflow runs for this [skip ci] evidence commit.
+Its source predecessor bebab3bae22662a11d514a1f32b1f6cf97a55e1f has completed/FAILURE
+in run 44593570818, attempt 1, rechecked against actual Actions metadata.
+The owner-authorized failed-gate repair exception applies; no unchanged failing
+rerun or stage promotion is claimed. Gates 0–5 remain inherited accepted because
+no new evidence disproves them.
+
+Fresh $0 diagnostic budget recorded before checks: ONE full ios.yml execution,
+automatic triggers included, zero retries/unchanged-code reruns, at most 25 runner-
+minutes (1500 seconds), stop on failure or exhaustion. No subsequent product fix
+or new validation under this allocation. Local allowance: one external preflight,
+one lineage invocation, source/API review and two diff checks. No local Swift,
+Xcode or Simulator execution on Windows. No new SDK-evidence dispatch.
+
+Candidate adds observation only: individual switch value/runtime type, enabled,
+hittable, frame, children, original predicate terms, hierarchy and before/after
+screenshots for one native tap. Opt-in DEBUG Simulator readouts expose actual
+draft values, model state, service entry and returned stored state. A simple
+direct-state Form switch is compared with the actual editor and list; independent
+collection reaches list/save/relaunch even when an editor gesture is ineffective.
+The original functional flows retain their predicates, ten-second limits and
+persistence assertions. Screenshot PNG chunks and hierarchy are emitted in the
+downloadable job log as well as retained XCTest attachments; workflows unchanged.
+No speculative binding/widget/scheduler fix. Probe observations cannot accept Gate 6.
+
+Clean independent full-history clone:
+.generated/gate6-switch-diagnostic-20261119 at the starting remote SHA.
+Repository/default branch, clean local/remote equality, fixed anchor/sole parent
+and every nine-commit post-baseline change reviewed; no later merges. External
+read-only preflight and repository lineage PASS. Active branch still lacks a
+preflight script, so the audited original is invoked by absolute path, not copied.
+Original dirty 8deb0dd checkout, local-only commits and all old candidates/evidence
+remain preserved. No abandoned source/tests/workflows imported. Baseline core,
+specifications, package/project and existing validation unchanged.
+
+Next action: publish diagnostic plus documentation with expected remote SHA and
+non-force fast-forward; inspect its exact-HEAD CI and preserved runtime evidence.
+After the diagnostic result, STOP and record the demonstrated boundary/remaining
+uncertainty for a separately bounded repair. Full exact-final-HEAD SUCCESS remains
+required for eventual Gate 6 acceptance. No Stage 7 work. Physical device and
+manual VoiceOver/largest-text review NOT RUN; real alarm behavior DEVICE REQUIRED.
+
+## Previous session records — superseded by the active section above
+
 Current session: Gate 6 behavioral repair — 2026-11-19. Stage 6 implemented;
 Gate 6 FAILED / NOT ACCEPTED until repaired final published HEAD passes full CI.
 Most recent assessed source HEAD: bebab3bae22662a11d514a1f32b1f6cf97a55e1f.

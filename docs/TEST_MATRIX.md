@@ -462,3 +462,21 @@ Budget used 1/2 runs and 688/3000 runner-seconds ($0). Stop-on-failure; no furth
 validation. Evidence-only closeout [skip ci] has UNVALIDATED HEAD and no acceptance.
 Next: focused runtime switch diagnostics under a fresh bounded budget, then repair
 the demonstrated cause and require full exact-final-published-HEAD SUCCESS.
+
+## Gate 6 switch-boundary diagnostic candidate — 2026-11-19
+
+| Evidence category | State before CI |
+| --- | --- |
+| Live GitHub status | 8badc64 zero runs; bebab3b run 44593570818 completed/FAILURE |
+| Source/provenance | Clean independent full-history clone; nine post-baseline commits reviewed; baseline core/spec unchanged |
+| Local context checks | Audited external preflight + repository lineage PASS; source review only |
+| Diagnostic implementation | Individual switch terms/runtime type, frame/children, hierarchy/screenshots, direct-state/editor/list comparison, draft/model/service readout |
+| Swift/Xcode/Simulator | PENDING new diagnostic execution; no inferred pass |
+| Gate decision | Gate 6 FAILED / NOT ACCEPTED; later gates blocked |
+| Physical device/manual VoiceOver/largest text | NOT RUN; real alarm behavior DEVICE REQUIRED |
+
+Fresh $0 budget: ONE automatic-inclusive full ios.yml run, zero retries, 25 runner-
+minutes/1500 seconds maximum; stop on failure/exhaustion and no repair thereafter.
+Functional predicates/timeouts and persistence assertions retained. Workflows
+unchanged. Logs preserve PNG chunks and hierarchy plus XCTest keepAlways attachments.
+All docs precede CI; final observed SHA/run/result belong in closeout.

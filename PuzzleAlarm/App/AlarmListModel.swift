@@ -35,12 +35,14 @@ final class AlarmListModel: ObservableObject {
         errorMessage = nil
         do {
             let report = try await service.perform(command)
+            SwitchDiagnostics.record("service.return enabled=\(report.state.definitions.map(\.enabled))")
             apply(report.state)
             loaded = true
             message = report.issues.isEmpty ? nil :
                 "Some alarms need attention. Saved settings do not guarantee scheduling. Review each alarm below."
             return true
         } catch {
+            SwitchDiagnostics.record("service.error \(error)")
             // A thrown acknowledgment may follow a durable write. Reload actual
             // storage rather than optimistically restoring stale UI state.
             do {

@@ -449,3 +449,66 @@ after expected-remote-SHA check with [skip ci]. This prevents a forbidden additi
 automatic execution, accepts no gate and leaves the closeout HEAD UNVALIDATED.
 The failed tested source SHA/run above remain explicit; skipped/missing final-HEAD
 CI is never relabeled PASS. Stage 7 remains NOT STARTED.
+
+## Switch-boundary diagnostic allocation — 2026-11-19, before validation
+
+User request: review GitHub current status and execute next steps. Scope is the
+active failed Gate 6 diagnostic next action, not Stage 7. The starting remote
+8badc6475a4fc84615a96b027c204f38271f09bd has zero Actions runs; source predecessor
+bebab3bae22662a11d514a1f32b1f6cf97a55e1f failed run 44593570818. Both were checked
+live through the owner's GitHub connector. Repository is public; default branch
+is the restart branch. Failed-gate exception permits diagnostic changes without
+rerunning unchanged failing code. Gates 0–5 have no newly disproving evidence.
+
+Budget before checks: $0, ONE full automatic-inclusive ios.yml execution, zero
+retries/unchanged-code reruns, 25 minutes/1500 aggregate runner-seconds maximum;
+stop on failure/exhaustion. No product repair after the diagnostic result within
+this allocation. One clean external preflight and one lineage run, two diff
+checks and source/API audit allowed locally. No Windows Swift/Xcode/Simulator
+installation, paid service, signing, SDK dispatch or workflow changes.
+
+Clean independent network clone in .generated/gate6-switch-diagnostic-20261119.
+Full history and all nine post-baseline commits manually reviewed: anchor policy;
+lineage hardening; documentation reconciliation; independent Stage 6; two
+authentication/budget records; picker selector repair; switch candidate; failure
+closeout. Production changes are confined to the Stage 6 app boundary, with only
+reviewed lineage additions to workflows since baseline. Core/source/tests,
+MASTER_PLAN, package/project unchanged. Fixed anchor sole parent, no later merges,
+origin identity and clean local/remote equality verified. External audited
+Scripts/check_restart_preflight.py (absent remotely) invoked read-only by absolute
+path; it and this checkout's lineage script PASS. Nothing copied from abandoned
+branches or the two original local-only commits.
+
+Observation hypothesis: direct editor state already fails, so async list binding
+is insufficient. Preserve controls and gestures; identify native hit delivery,
+XCTest value representation/predicate terms, draft mutation and service entry
+separately before a fix. Readouts are opt-in DEBUG Simulator only and do not
+intercept touches. Service entry and return append to a locked bounded buffer;
+actual draft and model values are exposed via a small accessibility readout.
+The minimal bare Form Toggle uses direct @State. The focused diagnostic collects
+all three boundaries and disk relaunch before enforcing outcomes; original
+functional tests still stop on their first failed prerequisite. Ten-second
+predicate and requested state plus readiness are retained; XCTWaiter returns a
+result so evidence is captured before the assertion ends the flow. No retap,
+longer timeout, ignored failure or weakened persistence requirement.
+
+Each observation prints value and Swift runtime type, readiness, hittability,
+frame, child elements, value/readiness predicate results and full app hierarchy.
+Before/after screenshots and text attachments use keepAlways. PNG bytes also
+stream in bounded base64 chunks into Actions logs, allowing recovery without
+changing the existing full workflow or depending on ephemeral runner-local
+xcresult files. Compare screenshot/hierarchy against draft/service readouts;
+observer output alone is not physical-device or manual accessibility evidence.
+Apple API references: https://developer.apple.com/documentation/xctest/xctnspredicateexpectation
+and https://developer.apple.com/documentation/xctest/xctattachment
+and https://developer.apple.com/documentation/xcuiautomation/xcuiscreenshot.
+SDK compilation and runtime behavior remain PENDING until this candidate runs.
+
+Original dirty checkout remains at 8deb0dd with only its two known modified docs.
+Pre-session SHA256: PROJECT_STATE 37F48886CC6D355D5FCE94B1926D7797CA51DB1C8F75078A6FFD27B147CD344F;
+READINESS_HARDENING 41C33FD37B519B813CF21E39AF5DA277C406CD8526939C79786E8CD4691DC6C0.
+All old worktrees and evidence remain untouched. Publish only a single-parent
+fast-forward with expected remote SHA checks. All candidate documentation precedes
+CI. At result STOP; record exact SHA/run/result and causal limits. Even SUCCESS
+of this diagnostic allocation alone does not promote Gate 6. A failed run permits
+only evidence closeout [skip ci], explicitly UNVALIDATED final closeout HEAD.

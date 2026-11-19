@@ -29,6 +29,7 @@ actor LifecycleAlarmManagementService: AlarmManagementService {
     }
 
     func perform(_ command: AlarmManagementCommand) async throws -> LifecycleReport {
+        SwitchDiagnostics.record("service.enter \(command)")
         // Only explicit user commands can prompt. Refresh never requests permission.
         let needsAuthorization: Bool
         switch command {
