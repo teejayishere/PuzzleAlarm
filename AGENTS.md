@@ -6,8 +6,8 @@ Active lineage: `codex/restart-gate5-20261029-f8a41c`, created directly from
 Baseline exact-HEAD CI: SUCCESS, run 37236891939:
 https://github.com/teejayishere/PuzzleAlarm/actions/runs/37236891939
 
-Gates 0–5 are the inherited accepted baseline. Stage 6 (Alarm Management UI)
-is the next unimplemented stage. Stages 6–14 must be independently rebuilt
+Gates 0–5 are the inherited accepted baseline. Current gate status and next scope
+belong only to docs/PROJECT_STATE.md. Stages 6–14 must be independently rebuilt
 and gated in the order specified by the unchanged docs/MASTER_PLAN.md.
 All prior Stage/Gate 6–14 implementation, recovery and promotion paths are
 abandoned. Their failures are historical lessons only: not current blockers,
@@ -55,6 +55,20 @@ Preserve baseline specifications and source/tests. The single current-status aut
 is the active restart docs/PROJECT_STATE.md; other summaries defer to it.
 The next implementation scope is independently rebuilding Stage 6 and stopping after
 Gate 6: no Stage 7 or old recovery/promotion work.
+
+Owner-authorized Codex operating loop (2026-11-19): manage planning, implementation,
+debugging, documentation and next-stage instructions directly in Codex using GitHub
+as durable memory. After each stage, update PROJECT_STATE and relevant evidence
+records with assessed SHA, actual CI result, gate decision, remaining risks and next
+action. Include documentation before final full validation; the published HEAD's
+Actions result is authoritative for that final revision. Stop at the authorized gate;
+obtain authorization before the next stage, without requiring a new generated prompt.
+Ask only for product decisions, authentication, external blockers or device actions.
+Preserve the original dirty 8deb0dd checkout, local-only commits and all quarantine
+evidence. Use a separately verified clean checkout; non-force fast-forwards only.
+An explicitly authorized repair of a failed current gate may change that gate's
+candidate without rerunning unchanged failing code first. It does not waive earlier
+prerequisites, recursive invalidation or exact-final-HEAD full CI SUCCESS.
 
 ## Completed sessions and documentation-only scope
 

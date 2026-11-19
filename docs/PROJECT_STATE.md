@@ -5,29 +5,40 @@ Active/default branch: `codex/restart-gate5-20261029-f8a41c`.
 Fixed restart anchor: `862c2d872958c2e08971acbf605bbcf07ee4b3d5`.
 Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`.
 
-Current session: Gate 6 selector repair — 2026-11-14. Stage 6 implemented;
-Gate 6 NOT ACCEPTED, awaiting repaired candidate's exact-final-HEAD full CI.
-Prior exact-HEAD run 43650136918 FAILED for 1c8e63fdc7a46e57fbf9cf2b58eb8306a6f08707:
-https://github.com/teejayishere/PuzzleAlarm/actions/runs/43650136918
-Earliest cause: Stage 6 UI test helper used nonexistent XCUIElement.lastMatch.
-Minimal repair uses a matching button query's single .element; assertions unchanged.
-Nearby UI APIs audited. Production behavior, core tests, MASTER_PLAN and workflows
-unchanged. Gates 0–5 remain inherited accepted; no evidence currently disproves
-them. Gate 6 blocks later gates. Stage 7 remains NOT STARTED; STOP after Gate 6.
+Current session: Gate 6 behavioral repair — 2026-11-19. Stage 6 implemented;
+Gate 6 FAILED / NOT ACCEPTED until repaired final published HEAD passes full CI.
+Starting remote HEAD: c6820739f7fcd233a6c289482f7fe2ada2042fca.
+Exact-HEAD [run 43653592216](https://github.com/teejayishere/PuzzleAlarm/actions/runs/43653592216):
+completed/FAILURE. Its predecessor 1c8e63f failed UI-test compilation in
+[run 43650136918](https://github.com/teejayishere/PuzzleAlarm/actions/runs/43650136918).
+The selector fix exposed a Memory stepper identifier mismatch and an enabled-state
+interaction failure that survived edit/relaunch. These are Gate 6 findings, not
+proof of an earlier lifecycle failure. Gates 0–5 remain inherited accepted; no
+current evidence disproves them. All dependent gates blocked; Stage 7 NOT STARTED.
 
-Fresh $0 budget: at most TWO full ios.yml executions including automatic triggers,
-25 minutes each / 50 aggregate runner-minutes. Stop on first failure/exhaustion;
-no blind or unchanged-code reruns. Prior session's 1/2 usage is historical only.
-Clean fetched checkout/preflight/lineage PASS. Full automated/Xcode/Simulator
-evidence for the repaired candidate remains PENDING. Prior run passed 123 core
-tests (99.35% line coverage) and app build but executed no Simulator tests; it
-cannot establish the repaired candidate's PASS. Final observed SHA/run/result
-will be recorded in closeout after validation, with all source/docs included first.
-Physical-device and manual VoiceOver/large-text review NOT RUN. Real authorization,
-delivery, audio and file protection remain DEVICE REQUIRED, outside Gate 6's
-hardware-independent acceptance. See STAGE6_SESSION.md for preserved failure,
-provenance, fresh budget, repair, evidence categories and limitations. Existing
-candidate, original dirty closeout, backups and quarantine remain untouched.
+Repair: synchronous temporary switch state during async commands, reconciliation
+to stored definitions on completion/failure, precise accessible switch hit targets,
+and the actual Simulator stepper identifier. Strengthened assertions cover weekday
+and Memory-round persistence, disable/edit/relaunch and re-enable/relaunch; fail at
+the first broken prerequisite within each flow. See STAGE6_SESSION for diagnosis,
+behavioral audit and evidence limits. Core, baseline tests/specifications and the
+full workflows remain unchanged. No abandoned implementation imported.
+
+Fresh $0 budget recorded before checks: at most TWO full ios.yml executions,
+automatic triggers included; 25 minutes each / 50 aggregate runner-minutes. First
+run validates repair plus documentation; second only closes out evidence after
+first SUCCESS. Zero retries/unchanged-code reruns; stop on failure or exhaustion.
+Clean fetched independent clone, audited external preflight and repository lineage
+PASS. Local source/diff audit is separate from Swift/Xcode/Simulator validation,
+which remains PENDING for the new candidate. Original dirty checkout at 8deb0dd,
+local-only commits, old worktrees and all evidence/quarantine remain preserved.
+
+Next action: validate Gate 6 within this budget, record the observed SHA/run/result,
+and STOP at its decision. Stage 7 (Challenge Framework) requires owner authorization;
+continue here in Codex from GitHub context without a new generated prompt.
+Physical-device, manual VoiceOver and largest-text usability NOT RUN. Real
+authorization, delivery, audio and file protection remain DEVICE REQUIRED and
+outside Gate 6's hardware-independent acceptance. No device success is claimed.
 
 ## Authority and entry points
 

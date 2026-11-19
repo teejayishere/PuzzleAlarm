@@ -24,6 +24,12 @@ AlarmDraft/ChallengeDraft isolate unsaved changes. Mode validation, stable ident
 unique challenge types, ordering, configuration and sound identifiers round-trip
 through existing domain constructors. No schema/domain or lifecycle changes.
 Views use native Form/List controls, named toggles and explicit reorder actions.
+Enabled switches hold a temporary requested value synchronously while their service
+command runs; they disable interaction until it finishes and then display the
+authoritative definition, including after failure. This UI state never asserts
+successful OS scheduling. Separate visible labels keep switch accessibility hit
+targets on the controls; accessible names remain explicit. Editor switches bind
+directly to the isolated draft.
 Composition uses disk + existing Apple adapter. DEBUG Simulator tests isolate disk
 and fake OS-ID storage; they retain production lifecycle logic across relaunch.
 See STAGE6_SESSION.md for acceptance/evidence limits. Stage 7 is unimplemented.

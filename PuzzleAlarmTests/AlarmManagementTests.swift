@@ -79,6 +79,43 @@ final class AlarmManagementTests: XCTestCase, @unchecked Sendable {
     }
 
     @MainActor
+    func testOrdinaryDisableEditAndBothToggleStatesSurviveDiskReload() async throws {
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let scheduler = ManagementScheduler()
+        @MainActor func reopened() -> AlarmListModel {
+            let repository = DiskRepository(directory: directory)
+            return AlarmListModel(service: LifecycleAlarmManagementService(
+                repository: repository, scheduler: scheduler), repository: repository)
+        }
+        var model = reopened()
+        await model.refresh()
+        var draft = AlarmDraft(); draft.weekdays = [.monday, .friday]
+        draft.hour = 8; draft.minute = 5
+        let created = await model.save(draft)
+        XCTAssertTrue(created)
+        XCTAssertEqual(scheduler.snapshot.count, 1)
+        let disabled = await model.execute(.disable(draft.id))
+        XCTAssertTrue(disabled)
+        XCTAssertEqual(model.definitions.first?.enabled, false)
+        XCTAssertTrue(scheduler.snapshot.isEmpty)
+        var edited = AlarmDraft(try XCTUnwrap(model.definitions.first))
+        edited.minute = 6
+        let saved = await model.save(edited)
+        XCTAssertTrue(saved)
+        model = reopened(); await model.refresh()
+        XCTAssertEqual(model.definitions.first?.enabled, false)
+        XCTAssertEqual(model.definitions.first?.time.minute, 6)
+        XCTAssertEqual(model.definitions.first?.weekdays, [.monday, .friday])
+        XCTAssertTrue(scheduler.snapshot.isEmpty)
+        let enabled = await model.execute(.enable(draft.id))
+        XCTAssertTrue(enabled)
+        model = reopened(); await model.refresh()
+        XCTAssertEqual(model.definitions.first?.enabled, true)
+        XCTAssertEqual(scheduler.snapshot.count, 1)
+    }
+
+    @MainActor
     func testPermissionIsExplicitAndDisabledConfigurationCanPersist() async throws {
         let repository = InMemoryRepository()
         let scheduler = ManagementScheduler()
@@ -96,6 +133,10 @@ final class AlarmManagementTests: XCTestCase, @unchecked Sendable {
         draft.enabled = false
         let saved = await model.save(draft)
         XCTAssertTrue(saved)
+        XCTAssertEqual(model.definitions.first?.enabled, false)
+        XCTAssertTrue(scheduler.snapshot.isEmpty)
+        let deniedEnable = await model.execute(.enable(draft.id))
+        XCTAssertFalse(deniedEnable)
         XCTAssertEqual(model.definitions.first?.enabled, false)
         XCTAssertTrue(scheduler.snapshot.isEmpty)
     }

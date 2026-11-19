@@ -419,3 +419,23 @@ or similar element/query misuse. Local static inspection is not execution eviden
 New $0 budget: two full runs including automatic triggers, 25 minutes each / 50
 aggregate runner-minutes, stop on first failure/exhaustion. Full exact-HEAD CI pending.
 Physical-device and manual VoiceOver/large-text evidence remain NOT RUN.
+
+## Gate 6 behavioral repair — 2026-11-19, pending validation
+
+| Evidence category | Observed status |
+| --- | --- |
+| Prior API failure | 1c8e63f, run 43650136918 FAILURE; UI tests did not compile |
+| Current remote failure | c6820739f7fcd233a6c289482f7fe2ada2042fca, run 43653592216 FAILURE; Memory selector and disable/relaunch UI failures |
+| Prior partial automated results | 123 core + 18 iOS unit/integration pass; two failed UI flows, failure-visibility and shell UI pass; no Gate 6 acceptance |
+| New source/contract review | Synchronous pending switch binding, authoritative reconciliation, native hit targets; no core/schema/scheduler/workflow changes |
+| New regression scope | Ordinary disk disable/edit/reload/re-enable/reload; denied enable keeps false; UI weekday, rounds and both toggle values persist; original assertions retained |
+| Local provenance | Clean fetched independent clone, external audited preflight and own lineage PASS; full-history seven post-baseline commits reviewed |
+| New automated/Xcode/Simulator | PENDING full exact-published-HEAD ios.yml; static audit is not execution |
+| Physical device/manual accessibility | NOT RUN; authorization/delivery/audio/file protection DEVICE REQUIRED; VoiceOver/largest text unverified |
+
+Earliest responsible gate is 6; dependent stages blocked, Gates 0–5 not currently
+disproved. Audit meaningful UI behaviors, not numeric app coverage. Full unchanged
+workflow preserves earlier regression evidence checks. Fresh $0 maximum: two full
+automatic-inclusive runs, 25 minutes each / 50 aggregate runner-minutes; zero retries,
+stop on failure; second only evidence documentation after first SUCCESS. See
+STAGE6_SESSION for diagnosis, preserved logs, limits and final acceptance contract.

@@ -264,3 +264,123 @@ protection remain DEVICE REQUIRED; manual VoiceOver/large-text review NOT RUN.
 Physical-device validation is not a Gate 6 prerequisite. No device PASS implied.
 All documentation accompanies repair before the CI-triggering non-force push,
 after fresh expected-remote-SHA check. Stop after Gate 6; no Stage 7.
+
+## Behavioral repair and systemic diagnosis — 2026-11-19, before validation
+
+Owner authorizes Gate 6 diagnosis/repair only, including repair of its failed HEAD;
+no unchanged failing rerun is prerequisite to this repair. No stage promotion is
+authorized before full exact-final-published-HEAD SUCCESS. Current status belongs
+only to PROJECT_STATE; earlier session stops/budgets remain historical records.
+
+### Primary failure evidence
+
+Both original job logs were fetched and preserved in the 2026-11-19 visualization
+session as CI_43650136918.log and CI_43653592216.log. GitHub metadata was checked:
+
+| Run | Submitted SHA | Observed result | Earliest failure |
+| --- | --- | --- | --- |
+| [43650136918](https://github.com/teejayishere/PuzzleAlarm/actions/runs/43650136918) | 1c8e63fdc7a46e57fbf9cf2b58eb8306a6f08707 | completed/FAILURE, attempt 1 | UI test API compilation: XCUIElement has no lastMatch |
+| [43653592216](https://github.com/teejayishere/PuzzleAlarm/actions/runs/43653592216) | c6820739f7fcd233a6c289482f7fe2ada2042fca | completed/FAILURE, push, attempt 1 | Memory stepper child identifier mismatch; ordinary disable interaction stays on |
+
+First failure: definite test implementation defect, not runner/authentication or
+AlarmKit. No Simulator tests executed in that run. Second: app and UI tests compiled;
+123 core and 18 iOS unit/integration tests passed, including management disk CRUD,
+permission, failure/retry, corruption and overlap tests. The scheduling-failure UI
+and shell launch passed; two management UI flows failed, with three assertions.
+Full workflow/diagnostic review did not pass. None is Gate 6 acceptance.
+
+Memory: definite test selector defect. The log lists actual child identifiers
+challenge.memory.rounds-Decrement / challenge.memory.rounds-Increment and labels
+"Rounds: 1, Decrement" / "Rounds: 1, Increment". Bare "Increment" matches neither.
+The test previously attempted a gesture without checking that the setting changed
+or persisted. Repair selects the evidenced child and asserts rounds 2 before save
+and after relaunch/reopening. No production stepper workaround or lost assertion.
+
+Enable/disable: failed UI-to-command contract, not evidence to remove the assertion.
+The switch remains 1 after a five-second wait AND after edit/save/relaunch. This
+is not explained solely by a short wait or stale XCTest query. Management/lifecycle
+tests successfully execute disable through injected services; the UI layer is the
+earliest unsupported boundary. Source exposes two adjacent risks: a full labeled
+switch hit region in a multi-control list row, and a Binding whose setter launches
+a Task while its getter keeps reading an immutable captured definition until the
+async command finishes. The log alone cannot distinguish a missed native switch
+gesture from a binding rollback or tell whether the service was entered. Do not
+claim one instrumented causal proof. Repair makes the native switch the precise
+hit target (visible label separate, explicit accessible name retained) and gives
+the control synchronous temporary state during the async command. It locks during
+the command and then displays authoritative state on success OR failure. No change
+to scheduling, permissions, repository semantics or truthful scheduling status.
+Apple references: [Toggle](https://developer.apple.com/documentation/swiftui/toggle),
+[labelsHidden](https://developer.apple.com/documentation/swiftui/view/labelshidden%28%29)
+and [LabeledContent](https://developer.apple.com/documentation/swiftui/labeledcontent).
+SDK compilation/behavior must still be established by the new CI run.
+
+Synchronization/test diagnosis: waiting only for a requested value can accept an
+optimistic UI before persistence. Tests now wait for the desired value AND the
+control to become enabled again; disk/relaunch assertions remain decisive. Stop
+each test at its first failure so a failed disable cannot make a later re-enable
+assertion pass merely because the alarm was already enabled. No arbitrary sleeps,
+automatic retaps, ignored errors or assertion relaxations. Scroll helpers now
+search both directions for revisited controls rather than assuming every control
+is always below the viewport.
+
+Process diagnosis: a minimal compile fix was mistaken for a sufficient nearby
+behavioral audit. Test APIs, native accessibility structure, hit targets, async
+state and persistence were not reviewed together; the remote current-state record
+still said pending after a failed run. This resembles the historical risk of
+patching symptoms and treating partial evidence/status as acceptance. It does not
+establish recurrence of abandoned implementation or failure of baseline Gates 0–5.
+The quarantined readiness wrapper's missing Bash/tee dependency is a separate
+environment problem; its workflow/source is not imported. Historical failures are
+lessons only. Gate 6 remains failed; dependent gates cannot advance. Recurse to an
+earlier gate if new evidence disproves it, rather than compensating inside the UI.
+
+### Provenance, adjacent behavior audit and budget
+
+Independent full-history network clone:
+C:/Users/Teej/Desktop/Puzzle Alarm/.worktrees/gate6-codex-20261119.
+Fetched origin, verified public teejayishere/PuzzleAlarm, default/active branch,
+push permission, clean tree and local/remote equality at c682073. Fixed anchor has
+sole baseline parent; every seven-commit post-baseline change was reviewed (anchor,
+hardening, reconciliation, independent Stage 6, authentication records, selector
+repair). No later merges. Baseline core source/tests, package/project specification
+and MASTER_PLAN are unchanged. Workflow changes since baseline are only the reviewed
+restart lineage additions; both full workflows are unchanged by Stage 6/this repair.
+No abandoned source, tests, workflows or status paths were copied/cherry-picked.
+Original dirty 8deb0dd checkout, f72d306/8deb0dd local-only commits, obsolete worktree,
+previous clean candidates, quarantines and ignored evidence remain untouched.
+
+Active remote lacks Scripts/check_restart_preflight.py. As in prior sessions, the
+original external 63-line read-only preflight was inspected completely and invoked
+by absolute path with this clean fetched clone as cwd. It and this clone's own
+check_restart_lineage.py PASS, using bundled Python 3.12. No readiness script or
+workflow is copied into the active lineage. No local Swift/Xcode/Simulator exists.
+
+Audit covers editor enabled/weekdays hit targets, ordinary and challenge mode
+drafts, ordering/uniqueness/removal, rounds persistence, cancel, list CRUD, visible
+failure, busy/overlap and denied enable. Added an ordinary-alarm disk regression
+for disable, edit while disabled, reload, re-enable and reload with exact scheduled
+ID counts; extended permission-denial test to reject enabling an existing disabled
+alarm without changing its stored value. Existing challenge CRUD, stale edit,
+corruption and uncertain acknowledgment tests remain. UI assertions now verify
+weekdays and disabled state in the editor plus both toggle states after relaunch.
+No arbitrary app coverage target; unchanged core coverage audit remains required.
+Manual VoiceOver/large-text review and device behavior remain unverified.
+
+Fresh bounded $0 budget recorded before checks in external GATE6_REPAIR_BUDGET.txt:
+at most TWO full ios.yml executions including automatic triggers, 25 minutes each /
+50 aggregate runner-minutes. First repair+documentation run, second only evidence
+closeout after first SUCCESS. Zero retries, unchanged-code reruns, sdk-evidence
+dispatches, paid runners or installations. Stop on any failure/exhaustion. No open
+PR was found, so publish by push without creating a duplicate PR trigger. Check
+expected remote SHA before every non-force fast-forward. Local allowance: one clean
+fetched preflight/lineage, focused source-contract review and at most three final
+diff/preservation reviews as candidate changes. These are not product test runs.
+
+All implementation, tests and pre-validation records precede full CI. Gate 6 is
+NOT ACCEPTED here. If the first full run succeeds, record its exact SHA/run/result
+and remaining risks in PROJECT_STATE and the evidence ledger before the second
+full run validates that final documentation HEAD. GitHub Actions supplies the
+final SHA/result; no post-validation code/doc mutation can inherit its PASS.
+Stop at the Gate 6 decision. Recommended next stage, only after owner authorization:
+Stage 7 Challenge Framework in this same Codex chat, using repository context.

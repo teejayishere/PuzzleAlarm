@@ -67,11 +67,9 @@ struct ContentView: View {
             .buttonStyle(.plain)
             .accessibilityLabel("Edit alarm at \(alarm.time.hour):\(String(format: "%02d", alarm.time.minute))")
             .accessibilityIdentifier("alarm.edit.\(alarm.id)")
-            Toggle("Enabled", isOn: Binding(get: { alarm.enabled }, set: { enabled in
-                Task { await model.execute(enabled ? .enable(alarm.id) : .disable(alarm.id)) }
-            }))
-            .accessibilityLabel("Enable alarm at \(alarm.time.hour):\(String(format: "%02d", alarm.time.minute))")
-            .accessibilityIdentifier("alarm.enabled.\(alarm.id)")
+            LabeledContent("Enabled") {
+                AlarmEnabledSwitch(alarm: alarm, model: model)
+            }
             if let status = model.status(for: alarm.id) {
                 Text(status).accessibilityIdentifier("alarm.status.\(alarm.id)")
             }
@@ -84,5 +82,32 @@ struct ContentView: View {
         }
         .buttonStyle(.borderless)
         .padding(.vertical, 6)
+    }
+}
+
+private struct AlarmEnabledSwitch: View {
+    let alarm: AlarmDefinition
+    @ObservedObject var model: AlarmListModel
+    @State private var requestedValue: Bool? = nil
+
+    var body: some View {
+        Toggle("Enabled", isOn: Binding(
+            get: { requestedValue ?? alarm.enabled },
+            set: { enabled in
+                guard requestedValue == nil, !model.busy else { return }
+                // A native control needs its binding to reflect the gesture
+                // synchronously, before the service suspends for persistence.
+                requestedValue = enabled
+                Task {
+                    await model.execute(enabled ? .enable(alarm.id) : .disable(alarm.id))
+                    // Success and failure both reconcile to authoritative state.
+                    requestedValue = nil
+                }
+            }
+        ))
+        .labelsHidden()
+        .disabled(!model.loaded || model.busy || requestedValue != nil)
+        .accessibilityLabel("Enable alarm at \(alarm.time.hour):\(String(format: "%02d", alarm.time.minute))")
+        .accessibilityIdentifier("alarm.enabled.\(alarm.id)")
     }
 }

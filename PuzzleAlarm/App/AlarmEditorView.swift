@@ -17,13 +17,21 @@ struct AlarmEditorView: View {
                     Picker("Minute", selection: $draft.minute) {
                         ForEach(0..<60, id: \.self) { Text(String(format: "%02d", $0)).tag($0) }
                     }.pickerStyle(.menu).accessibilityIdentifier("editor.minute")
-                    Toggle("Enabled", isOn: $draft.enabled).accessibilityIdentifier("editor.enabled")
+                    LabeledContent("Enabled") {
+                        Toggle("Enabled", isOn: $draft.enabled).labelsHidden()
+                            .accessibilityLabel("Enabled")
+                            .accessibilityIdentifier("editor.enabled")
+                    }
                 }
                 Section {
                     ForEach(Weekday.allCases, id: \.self) { day in
-                        Toggle(day.title, isOn: Binding(get: { draft.weekdays.contains(day) }, set: { selected in
-                            if selected { draft.weekdays.insert(day) } else { draft.weekdays.remove(day) }
-                        })).accessibilityIdentifier("editor.day.\(day.rawValue)")
+                        LabeledContent(day.title) {
+                            Toggle(day.title, isOn: Binding(get: { draft.weekdays.contains(day) }, set: { selected in
+                                if selected { draft.weekdays.insert(day) } else { draft.weekdays.remove(day) }
+                            })).labelsHidden()
+                                .accessibilityLabel(day.title)
+                                .accessibilityIdentifier("editor.day.\(day.rawValue)")
+                        }
                     }
                 } header: { Text("Repeat") } footer: { Text("No selected weekdays means one time at the next local occurrence.") }
                 Section("Dismissal") {

@@ -534,3 +534,25 @@ exact SHA 1c8e63f. Original dirty closeout and all backups untouched; historical
 failure evidence included above. New $0 cap: two automatic-inclusive full runs,
 25 minutes each / 50 aggregate runner-minutes; stop on first failure/exhaustion.
 Full final-HEAD CI pending. See STAGE6_SESSION for contract. Stop after Gate 6.
+
+## Gate 6 behavioral repair — 2026-11-19, before validation
+
+Remote c682073 exact-HEAD run 43653592216 FAILED: native Memory stepper child
+identifier mismatch and disable state remaining enabled through edit/relaunch.
+Prior 43650136918 failed XCTest API compilation; its repair did not audit the
+complete UI/native-control/async-persistence contract. Detailed classification,
+root-cause uncertainty and adjacent audit are in STAGE6_SESSION. Gates 0–5 are not
+disproved; Gate 6 remains failed and blocks later gates. No abandoned code imported.
+
+Repair provides synchronous temporary switch state, authoritative reconciliation,
+explicit accessible switch targets, evidenced stepper selection, and stronger
+weekday/round/both-state relaunch assertions. Nine management integration tests now
+include ordinary disable/edit/reload/re-enable/reload and denied enable retention.
+Existing meaningful assertions/core/workflow/specification remain. Clean network
+clone, fixed lineage and audited external preflight PASS. Source audit only locally;
+Swift/Xcode/Simulator require CI. Fresh $0 budget before checks: two full automatic-
+inclusive runs maximum, 25 minutes each / 50 aggregate runner-minutes; no retries,
+stop on any failure. Second only for evidence closeout after first SUCCESS. Original
+dirty checkout and all evidence preserved. No device/manual accessibility PASS.
+Codex manages future stages directly from GitHub; STOP at Gate 6, Stage 7 requires
+owner authorization and no newly generated ChatGPT prompt.
