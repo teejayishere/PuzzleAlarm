@@ -480,3 +480,28 @@ minutes/1500 seconds maximum; stop on failure/exhaustion and no repair thereafte
 Functional predicates/timeouts and persistence assertions retained. Workflows
 unchanged. Logs preserve PNG chunks and hierarchy plus XCTest keepAlways attachments.
 All docs precede CI; final observed SHA/run/result belong in closeout.
+
+## Gate 6 diagnostic observed result — 2026-11-19
+
+Assessed SHA: 21c0ebf65760d6b035d36f3c676045b8635b8292.
+[Run 44608072736](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44608072736):
+completed/FAILURE, push, attempt 1; 772 seconds, ONE/ONE runs, $0. Stop invoked.
+
+| Category | Observed evidence |
+| --- | --- |
+| Core automated | 123 PASS; coverage 1840/1852 (99.35%); focused checks PASS |
+| Xcode compilation | App and tests PASS, usage description PASS |
+| iOS integration | 19 PASS, including nine management tests |
+| UI | Five executed: failure-visibility/shell PASS; three observer ambiguity failures |
+| Minimal switch | Wrapper tap leaves raw string 1, readiness true and direct @State true; nested native switch shown in hierarchy |
+| Screenshots | Two complete PNGs recovered from logs and visually inspected, both on |
+| Actual editor/list comparison | INCOMPLETE: duplicated diagnostic.state .value lookup fails before editor capture |
+| Native-child targeting | NOT TESTED; evidence-supported next hypothesis only |
+| Full diagnostic review | SKIPPED after failed Xcode test action |
+| Gate decision | Gate 6 FAILED / NOT ACCEPTED; no new evidence disproves Gates 0–5 |
+| Device/manual accessibility | NOT RUN |
+
+Full raw/text logs and screenshot index/PNGs preserved in the session visualization
+directory. No fix/retry/new validation after failure. Next allocation must repair
+observer scoping and compare native-child gestures before a product fix. Evidence-
+only [skip ci] closeout HEAD UNVALIDATED; it does not inherit a CI pass.

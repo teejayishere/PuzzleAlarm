@@ -512,3 +512,79 @@ fast-forward with expected remote SHA checks. All candidate documentation preced
 CI. At result STOP; record exact SHA/run/result and causal limits. Even SUCCESS
 of this diagnostic allocation alone does not promote Gate 6. A failed run permits
 only evidence closeout [skip ci], explicitly UNVALIDATED final closeout HEAD.
+
+## Observed switch diagnostic result — 2026-11-19: FAILED, STOP
+
+Assessed source HEAD 21c0ebf65760d6b035d36f3c676045b8635b8292, sole parent
+8badc6475a4fc84615a96b027c204f38271f09bd. Full push run 44608072736, attempt 1:
+completed/FAILURE, checked via actual run and job metadata.
+https://github.com/teejayishere/PuzzleAlarm/actions/runs/44608072736
+Job 135856985527: 20:22:54–20:35:46 UTC, 772 seconds (12m52s); conservative rounded
+runner time 13 minutes. $0, ONE/ONE executions and 772/1500 runner-seconds used.
+No retry or post-failure product edit/validation. Existing workflows unchanged.
+
+### Useful minimal reproduction
+
+The bare Form Toggle with direct @State, no list-model command and no service
+interaction, remains on after one XCTest tap on its identified element. Before
+and after: value Optional(1), runtime type NSTaggedPointerString, enabled=true,
+hittable=true, valueTerm=false for requested off, enabledTerm=true.
+The application readout independently remains direct.enabled=true. Both recovered
+screenshots visibly show a green/on switch. Thus this observation is not solely
+a combined-predicate representation failure and does not require async service
+state. It does not establish how a physical touch behaves.
+
+Hierarchy: diagnostic.direct identifies an outer Switch covering the entire Form
+row at x16 y97 width370 height52. It contains StaticText and an inner unnamed
+native Switch at x309 y109 width63 height28. The automation tap is on the identified
+outer element; tapping its native child has NOT been tried. Targeting that child
+is an evidence-supported next hypothesis, not a completed fix or causal proof
+for the original editor/list. Child/direct-state comparison must precede a further
+app binding change. Do not replace the UI or weaken assertions from this result.
+
+### New observer defect and limits
+
+observeSwitch assumes app.staticTexts[diagnostic.state] has one match. The editor
+sheet leaves BOTH underlying list and editor readouts in the accessibility tree.
+.value at AlarmManagementUITests.swift:68 fails single-element resolution. The
+challenge and ordinary flows stop before their first instrumented editor tap.
+The probe records the minimal before/after pair, then stops before capturing the
+actual editor's first gesture. It never reaches list/service/relaunch collection.
+This defect is in the new Gate 6 diagnostic observer, introduced this session;
+it obscures the requested actual-control comparison. Its count/existence alone
+was insufficient to validate uniqueness. Acknowledge it as incomplete diagnostics,
+not a renewed product failure, successful diagnosis of all controls or environment
+blocker. Next enumerate/scoped-name readouts with context; do not silently choose
+firstMatch. No source fix after failure under this exhausted allocation.
+
+Partial passes: 123 core tests, 1840/1852 core lines (99.35%), focused persistence/
+regression/lifecycle checks, reproducible generation, app AND test compilation,
+built usage description, 19 iOS unit/integration tests (all nine management),
+scheduling-failure UI and shell UI. Five UI tests total: two pass, three fail at
+observer ambiguity. Full workflow fails; Xcode diagnostic review skipped.
+Xcode 26.6 (17F113), Swift 6.3.3, iOS 26.5 Simulator. No earlier gate is disproved
+by the new minimal test-automation/observer evidence. Gate 6 FAILED / NOT ACCEPTED.
+No physical-device/manual VoiceOver/largest-text evidence and no Stage 7 work.
+
+### Evidence preservation and next action
+
+External visualization directory:
+C:/Users/Teej/.codex/visualizations/2026/11/19/01a1f573-e930-7190-8bb6-d7ab3c11267b
+contains CI_44608072736.log (full raw job log), CI_44608072736_text.log (PNG chunks
+removed), switch-screenshots.json, switch-01.png and switch-02.png. Both screenshots
+were decoded from complete logged PNG chunks and visually inspected. The prior
+CI_44593570818.log is also preserved here; no new workflow artifact depended on.
+Original checkout and both pre-session dirty-document fingerprints were unchanged
+when checked after publication. Nothing switched/reset/deleted, no old source copied.
+
+Next bounded allocation: first fix the observer's multi-match handling; compare
+wrapper vs exactly identified native child from separate fresh launches, then
+capture actual editor/list and persistence using the same diagnostic properties.
+Keep original functional expectations and relaunch assertions. A child's successful
+gesture must be observed before calling it a repair. No speculative production
+binding fix, longer wait or blind retap. Gate 6 eventual acceptance requires full
+exact-final-published-HEAD SUCCESS; Stage 7 still needs acceptance and authorization.
+
+Closeout changes documentation only, with [skip ci] and expected-SHA non-force
+fast-forward, preventing an extra automatic run. Final closeout HEAD UNVALIDATED;
+failed tested source/run above are the evidence, not a pass for the new docs HEAD.

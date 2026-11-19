@@ -5,6 +5,56 @@ Active/default branch: `codex/restart-gate5-20261029-f8a41c`.
 Fixed restart anchor: `862c2d872958c2e08971acbf605bbcf07ee4b3d5`.
 Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`.
 
+Current session: Gate 6 switch diagnostics — observed FAILURE, 2026-11-19.
+Gate 6 FAILED / NOT ACCEPTED. Stage 7 NOT STARTED; all later gates blocked.
+Assessed source HEAD: 21c0ebf65760d6b035d36f3c676045b8635b8292.
+Exact-HEAD [run 44608072736](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44608072736):
+completed/FAILURE, push, attempt 1. Job 135856985527 ran 20:22:54–20:35:46 UTC:
+772 seconds (12m52s). Fresh $0 allocation consumed ONE/ONE runs, 772/1500 runner-
+seconds. Stop-on-failure invoked; no retry, product fix or further validation.
+
+New observation: the minimal direct-@State Form switch reproduces an ineffective
+tap. The identified outer Switch spans (16,97,370,52), containing a native Switch
+at (309,109,63,28). Before AND after one tap on the identified element, raw value
+is string 1 (NSTaggedPointerString), isEnabled/isHittable true, valueTerm false
+for requested off and enabledTerm true; app readout remains direct.enabled=true.
+Both recovered screenshots show the switch on. This rules out an async management
+service as a necessary cause of this minimal reproduction. Native-child targeting
+is the next hypothesis, NOT a verified repair or proof about physical touch.
+
+Diagnostic implementation defect: observer assumes diagnostic.state is unique.
+Both underlying list and presented editor remain in the accessibility tree;
+reading .value throws Multiple matching elements before editor before-tap capture.
+Three UI tests stop at that observer query, including the independent probe after
+its useful minimal-control evidence. Actual editor/list one-gesture comparison,
+draft mutation, service entry and disk relaunch were NOT completed. Do not claim
+those boundaries fixed or verified. No production binding/widget fix was attempted.
+
+Partial evidence: 123 core tests, coverage 1840/1852 (99.35%), 19 iOS unit/integration
+tests (nine management tests), app/test compilation, failure-visibility UI and shell
+UI PASS. Three of five UI tests FAILED; diagnostic-review step skipped. Same Xcode
+26.6 (17F113), Swift 6.3.3, iOS 26.5 Simulator. Gates 0–5 have no newly disproving
+evidence. Device/manual VoiceOver/largest-text review NOT RUN.
+
+Next action in a new bounded Gate 6 allocation: repair the diagnostic query with
+scoped unique readout identifiers or enumerate all matches with context (do not
+hide ambiguity with firstMatch). Compare outer wrapper tap versus its evidenced
+single native child on separate fresh launches, one deliberate gesture each.
+Capture raw values/readiness/frame, full hierarchy/screenshots and direct-state
+readout, then actual editor/list draft/service/durable state; retain all functional
+and relaunch assertions. Confirm child targeting changes state before changing app
+bindings. No longer waits, blind retaps or gate advancement. Eventual acceptance
+still requires full exact-final-published-HEAD SUCCESS.
+
+Full raw log, text-only log, screenshot index and two recovered/visually inspected
+PNGs are preserved in the 2026-11-19 Codex visualization session. Workflows remain
+unchanged. Original dirty 8deb0dd checkout, two modified docs, local-only commits,
+old candidates and evidence were preserved. This evidence-only closeout uses
+[skip ci] to prevent an extra execution; its final HEAD is UNVALIDATED and is not
+a CI PASS or Gate 6 acceptance. The exact tested source/run above remain explicit.
+
+## Diagnostic pre-validation record — superseded by observed result above
+
 Current session: Gate 6 switch-boundary diagnostics — 2026-11-19.
 Gate 6 remains FAILED / NOT ACCEPTED; Stage 7 remains NOT STARTED.
 Starting fetched remote HEAD: 8badc6475a4fc84615a96b027c204f38271f09bd.

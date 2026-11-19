@@ -585,3 +585,19 @@ Original gestures, functional expectations and disk assertions remain. No produc
 binding/scheduling fix or workflow change. Fresh $0 allocation: one full automatic-
 inclusive run, no retries, 25 runner-minutes maximum; stop at result with no repair
 under this allocation. Gate 6 failed; Stage 7 not started. See STAGE6_SESSION.
+
+## Gate 6 diagnostic observed failure — 2026-11-19
+
+Exact source 21c0ebf65760d6b035d36f3c676045b8635b8292, run 44608072736 attempt 1:
+completed/FAILURE, 772 runner-seconds, $0, ONE/ONE budgeted runs. Stop invoked.
+Minimal direct-state switch remains on after one wrapper tap: enabled/hittable
+true, value string 1, direct.enabled true. Hierarchy exposes a row-wide identified
+Switch containing a smaller native switch; child targeting remains untried.
+Two screenshots/logs recovered. New observer .value query matches both list and
+editor readouts and fails before actual editor/list comparison; this is our
+diagnostic implementation defect, not a demonstrated app state root cause.
+123 core and 19 iOS unit/integration pass; five UI tests, two pass/three observer
+failures; diagnostics review skipped. No gate acceptance or earlier invalidation.
+Next bounded diagnostic: safely scope/enumerate readouts, compare native child
+with wrapper on fresh launches, then editor/list/service/durable state. No fix,
+retry or validation after failure. Evidence-only [skip ci] closeout UNVALIDATED.
