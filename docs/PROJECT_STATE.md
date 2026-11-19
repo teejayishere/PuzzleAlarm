@@ -7,6 +7,39 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 Current session: Gate 6 behavioral repair — 2026-11-19. Stage 6 implemented;
 Gate 6 FAILED / NOT ACCEPTED until repaired final published HEAD passes full CI.
+Most recent assessed source HEAD: bebab3bae22662a11d514a1f32b1f6cf97a55e1f.
+Exact-HEAD [run 44593570818](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44593570818):
+completed/FAILURE, attempt 1. Both UI flows now fail earlier switch value/readiness
+assertions (editor enabled and Monday). The combined predicates do not identify
+which term failed; actual values/types and gesture targets were not logged.
+The async list-binding hypothesis is insufficient: editor bindings use direct
+draft state. The Memory selector repair and new list binding were NOT reached by
+these flows and remain unverified. Do not describe them as fixed.
+
+Observed partial successes: 123 core tests, coverage 1840/1852 (99.35%), 19 iOS
+unit/integration tests (all nine management tests), app/test compilation, failure-
+visibility UI and shell UI. Two of four UI tests FAILED; diagnostics review skipped.
+No evidence disproves Gates 0–5; Gate 6 still blocks every later gate.
+Budget consumed: ONE of two executions, 688 seconds (11m28s) / 3000 allowed runner-
+seconds, $0. Stop-on-failure invoked; second run is NOT AVAILABLE for another repair.
+No retries, further product edits or new validation after failure. This evidence-only
+closeout uses [skip ci] to avoid another automatic execution; its HEAD is UNVALIDATED,
+not a CI pass or Gate 6 acceptance. Workflows remain unchanged.
+
+Next action: resume Gate 6 with a newly bounded diagnostic allocation. Capture
+switch value AND runtime type, enabled/hittable state, frame/children, screenshot
+and hierarchy before/after one gesture; distinguish native hit/automation behavior,
+predicate representation, draft mutation and service entry before another app fix.
+Compare a simple direct-state switch with the actual editor/list in a focused
+Simulator reproduction; retain final persistence assertions. Do not increase waits,
+retap blindly, weaken assertions or treat passing service tests as UI success.
+Then repair the demonstrated boundary and require full exact-final-HEAD SUCCESS.
+Stage 7 Challenge Framework is recommended only AFTER Gate 6 passes and owner
+authorization. It remains NOT STARTED. Continue in this Codex chat from GitHub.
+
+The pre-validation plan below is preserved for this failed candidate; its pending
+and conditional next-action text is superseded by this observed closeout.
+
 Starting remote HEAD: c6820739f7fcd233a6c289482f7fe2ada2042fca.
 Exact-HEAD [run 43653592216](https://github.com/teejayishere/PuzzleAlarm/actions/runs/43653592216):
 completed/FAILURE. Its predecessor 1c8e63f failed UI-test compilation in

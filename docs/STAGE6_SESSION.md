@@ -384,3 +384,68 @@ full run validates that final documentation HEAD. GitHub Actions supplies the
 final SHA/result; no post-validation code/doc mutation can inherit its PASS.
 Stop at the Gate 6 decision. Recommended next stage, only after owner authorization:
 Stage 7 Challenge Framework in this same Codex chat, using repository context.
+
+## Observed behavioral repair result — 2026-11-19: FAILED, STOP
+
+Assessed source/published HEAD: bebab3bae22662a11d514a1f32b1f6cf97a55e1f;
+sole parent c6820739f7fcd233a6c289482f7fe2ada2042fca.
+[Full run 44593570818](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44593570818),
+push, attempt 1: completed/FAILURE. Job 135805794207 ran 19:09:28–19:20:56 UTC,
+688 seconds (11m28s), conservatively 12 rounded runner-minutes. Budget used 1/2
+executions and 688/3000 runner-seconds, $0. Stop-on-failure takes precedence over
+unused allocation; no second execution, unchanged-code rerun or repair retry.
+
+Passed: fixed lineage, reproducible generation, package build/tests, focused
+persistence/regression/lifecycle checks, 123 core tests, coverage 1840/1852 (99.35%),
+app/test compilation and built usage description, 19 iOS unit/integration tests
+(all nine management tests including new ordinary state/reload and denied-enable
+checks), scheduling-failure UI and shell UI. These are partial evidence only.
+
+Failed: two management UI tests. Challenge flow stopped at editor.enabled waiting
+for `value == "0" AND enabled == true`; ordinary flow stopped at editor.day.2
+waiting for `value == "1" AND enabled == true`, each after ten seconds. Native tap
+events were synthesized without XCTest gesture errors. No intermediate actual
+value/type, enabled state, frame, screenshot or hierarchy was printed into the
+downloadable log; combined-predicate failures do not prove which conjunct failed.
+Do NOT claim conclusively that the app's stored editor value was wrong. XCTest
+observation/representation, hit targeting and app state are still alternatives.
+Memory increment and the new list switch binding were not reached; neither repair
+has behavioral verification. Diagnostic-review step was skipped after exit 65.
+Four UI tests executed: two pass/two fail. No full workflow success, Gate 6 PASS,
+manual accessibility or physical-device evidence.
+
+This new evidence rejects the sufficiency of the prior repair hypothesis. A direct
+draft-state editor switch has no async scheduling command at this point; isolate
+the native control/test contract before another production-binding change. The
+ordinary disk regression passing supports the existing service/persistence path,
+not the view. Xcode 26.6 (17F113), Swift 6.3.3 and iOS 26.5 Simulator were used;
+both named November 14 failures used the same Xcode/Swift versions, so no observed
+toolchain upgrade explains the change. The prior unknown-cause historical switch
+failure is explicitly retained as a scenario in quarantined READINESS_HARDENING;
+it supplies no accepted implementation or causal proof. The recurring process
+failure is insufficient runtime observation followed by a production hypothesis
+that full CI has now failed to validate. Preserve this negative evidence.
+
+Next diagnostic must log individual value/type and readiness properties, element
+frame/children/hittability and before/after hierarchy/screenshot for one gesture;
+compare a minimal direct-state control and actual editor/list on the recorded SDK,
+then trace draft mutation/service entry/durable state. Distinguish test observation
+from gesture delivery and app command handling. No speculative replacement widget,
+longer wait or automatic retap is justified by this run. A focused reproduction
+under a new explicit $0 budget should precede another full validation candidate;
+the existing full workflow remains required and unchanged. Do not re-run unchanged
+failing code for its own sake. No new stage may begin.
+
+Log preserved as CI_44593570818.log in the 2026-11-19 visualization session.
+GitHub reports no workflow artifacts. The log names a runner-local Shell.xcresult,
+but no downloadable result bundle/hierarchy/screenshot artifact is available.
+Original checkout remains at 8deb0dd with the same two modified files. Both dirty
+document SHA256 fingerprints match the pre-publication capture; f72d306/8deb0dd
+local-only commits, obsolete worktree and all previous candidates/quarantines remain.
+No product/test/workflow edit or product validation followed the failed run.
+Owner-required evidence closeout changes only PROJECT_STATE, this session log,
+DEVELOPMENT_LOG and TEST_MATRIX, published as a single-parent non-force fast-forward
+after expected-remote-SHA check with [skip ci]. This prevents a forbidden additional
+automatic execution, accepts no gate and leaves the closeout HEAD UNVALIDATED.
+The failed tested source SHA/run above remain explicit; skipped/missing final-HEAD
+CI is never relabeled PASS. Stage 7 remains NOT STARTED.

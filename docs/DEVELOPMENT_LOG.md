@@ -556,3 +556,20 @@ stop on any failure. Second only for evidence closeout after first SUCCESS. Orig
 dirty checkout and all evidence preserved. No device/manual accessibility PASS.
 Codex manages future stages directly from GitHub; STOP at Gate 6, Stage 7 requires
 owner authorization and no newly generated ChatGPT prompt.
+
+## Gate 6 observed repair failure — 2026-11-19
+
+bebab3bae22662a11d514a1f32b1f6cf97a55e1f, full run 44593570818, attempt 1:
+completed/FAILURE. 123 core and 19 iOS unit/integration pass; app/tests compile.
+Two UI flows fail earlier editor switch value/readiness predicates; failure-visibility
+and shell UI pass. Memory increment and the new list binding were not reached.
+Logs do not reveal which predicate term failed; app state vs XCTest observation/
+gesture targeting remains unresolved. Async list binding alone cannot explain
+direct-state editor failures. Preserve assertions; collect runtime properties,
+hierarchy/screenshots and draft/service effects in a focused reproduction next.
+No Gate 6 acceptance or evidence disproving Gates 0–5. Stop-on-failure invoked:
+1/2 executions, 688/3000 runner-seconds, $0; no second run or further product edits.
+Evidence-only documentation closeout uses [skip ci], accepts no gate and has no
+successful exact-HEAD CI. Original dirty checkout/fingerprints and all evidence
+preserved. Resume Gate 6 diagnostics with a fresh explicit bounded allocation;
+Stage 7 remains NOT STARTED and requires Gate 6 PASS then owner authorization.

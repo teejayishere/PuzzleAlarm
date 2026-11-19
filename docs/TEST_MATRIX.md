@@ -439,3 +439,26 @@ workflow preserves earlier regression evidence checks. Fresh $0 maximum: two ful
 automatic-inclusive runs, 25 minutes each / 50 aggregate runner-minutes; zero retries,
 stop on failure; second only evidence documentation after first SUCCESS. See
 STAGE6_SESSION for diagnosis, preserved logs, limits and final acceptance contract.
+
+## Gate 6 observed behavioral repair failure — 2026-11-19
+
+Assessed source SHA bebab3bae22662a11d514a1f32b1f6cf97a55e1f;
+[run 44593570818](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44593570818),
+attempt 1: completed/FAILURE. Supersedes the preceding pending candidate entry.
+
+| Evidence category | Actual result |
+| --- | --- |
+| Source/lineage | Clean independent candidate; fixed lineage PASS; no baseline/core/workflow/specification changes |
+| Automated core | 123 tests PASS, 1840/1852 coverage counts (99.35%); focused checks PASS |
+| Xcode | App and all tests compiled; usage description PASS; diagnostic-review step SKIPPED |
+| iOS integration | 19 PASS, including nine management tests and new ordinary disk/reload regression |
+| Simulator UI | Four executed; two PASS (failure visibility, shell), two FAIL (editor enabled and Monday value/readiness predicates) |
+| Unreached behaviors | Memory selector/value persistence and new list binding unverified; tests stopped at earlier prerequisite |
+| Causal limit | Combined predicates omit actual value/type and readiness; app mutation vs accessibility/gesture/test defect unresolved |
+| Device/manual accessibility | NOT RUN; no physical alarm, VoiceOver or largest-text PASS |
+| Gate decision | Gate 6 FAILED / NOT ACCEPTED; Gates 0–5 not disproved, dependent gates blocked |
+
+Budget used 1/2 runs and 688/3000 runner-seconds ($0). Stop-on-failure; no further
+validation. Evidence-only closeout [skip ci] has UNVALIDATED HEAD and no acceptance.
+Next: focused runtime switch diagnostics under a fresh bounded budget, then repair
+the demonstrated cause and require full exact-final-published-HEAD SUCCESS.
