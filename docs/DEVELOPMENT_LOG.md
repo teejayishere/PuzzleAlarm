@@ -631,3 +631,48 @@ mutation, service entry, saved state and relaunch remain PENDING this candidate 
 Gate 6 FAILED / NOT ACCEPTED pending full exact-final-published-HEAD SUCCESS.
 Gates 0–5 not newly disproved. Stage 7 NOT STARTED. Device/manual accessibility
 NOT RUN. On first failure stop and preserve evidence; do not consume run two.
+
+## Gate 6 observed closeout - 2026-11-19
+
+Assessed dd8972e0bc75d11ab1bf7cc0d529166dfb514c19; full push attempt 1
+[run 44660076395](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44660076395)
+completed/FAILURE. Job 136035858627: 02:20:32-02:39:43 UTC November 20,
+1151 seconds (19m11s). $0; ONE/TWO executions, 1151/3000 runner-seconds.
+Stop-on-failure; second run unavailable. No retry/further validation/product edits.
+
+Separate fresh launches: wrapper frame (16,97,370,52) tap leaves string 1,
+NSTaggedPointerString and direct.enabled=true. Single native child (309,109,63,28)
+tap changes 1 to 0 and direct.enabled=false. Enabled/hittable true throughout;
+valueTerm becomes true, enabledTerm stays true. Screenshots 001/004 visually
+confirm on/off. All four management UI flows passed their direct-state probes.
+Enumerated readouts capture editor AND underlying list without ambiguity.
+Editor enabled child changes draft true to false; Monday changes weekdays to [2].
+List child triggers service.enter create/enable and service.return enabled false/
+true. Stored true and Monday survive disk relaunch/reopened draft. Ordinary CRUD
+UI PASS covers weekdays, disable/edit/disabled relaunch, re-enable/enabled relaunch
+and delete. No production binding/widget/service/workflow changes needed for this
+observed targeting boundary. Physical touch/VoiceOver remain unproven.
+
+Remaining challenge FAILURE: line 238 rowButton("alarm.edit.") first-match query
+times out after relaunch. Ordered Memory/QR/Math sequence exists before AND after
+relaunch; Siren verified before relaunch; increment assertion passed. Restored
+Memory rounds and subsequent removal/cancel/mode assertions NOT REACHED. Query
+root cause unresolved; no demonstrated product binding defect. Next separately
+bounded Gate 6 diagnosis: capture post-relaunch hierarchy/readiness and enumerate
+or scope Edit candidates, preserving assertions/timeouts. No Stage 7 work.
+
+123 core PASS; coverage 1840/1852 (99.35%); focused checks PASS. App/tests compile,
+usage description PASS; 19 iOS integration PASS (nine management). Five UI: ordinary
+CRUD, failure visibility, diagnostics, shell PASS; challenge query FAIL. Xcode
+diagnostics review SKIPPED. Device/manual VoiceOver/largest text NOT RUN.
+Gates 0-5 not disproved; Gate 6 FAILED / NOT ACCEPTED; all later gates blocked.
+
+Raw 17,646,661-byte log, text log, hierarchy, 81 PNGs and index/hashes preserved at
+C:/Users/Teej/.codex/visualizations/2026/11/20/01a1f6be-b416-7570-affb-7d1bdb8eddd6/gate6-44660076395.
+Raw SHA256 d1bd6f1e60d4aaf38a7468a741db8fedae204e7781ae9f7f2cef6825cb0f2c85.
+GitHub job log retains captures as durable evidence. Original dirty checkout and
+prior evidence preserved. Evidence-only [skip ci] closeout HEAD is UNVALIDATED,
+not exact-final-HEAD SUCCESS or acceptance. Intermediate 6972fea accidentally
+truncated STAGE6_SESSION during a Windows encoding error. This follow-up restores
+all four prior documents byte-for-byte from dd8972e before appending/inserting
+this record. Historical content is preserved in the final closeout.
