@@ -782,3 +782,35 @@ fast-forward. The commit containing this record is UNVALIDATED; it has no succes
 exact-HEAD CI. The failed assessed SHA/run above remain explicit. No checkpoint or
 gate acceptance is claimed. Next authorized scope remains 6A harness validation,
 not 6B navigation; stop here at the 6A NOT ACCEPTED decision.
+
+## Gate 6A invocation repair - fresh candidate, 2026-11-20 UTC
+
+Owner authorized the proposed invocation repair in the continuing Codex session.
+Fetched origin and read remote PROJECT_STATE before AGENTS. Clean full-history
+active-branch gate6-repair clone equals b53db3786a76b50411f2a8350feae4b990f63a52;
+GitHub has zero runs at that SHA. Previous assessed 0031dc0 / 44678702635 rechecked
+completed/FAILURE attempt 1. All 17 post-baseline commits reviewed in this ongoing
+session; fixed anchor/sole parent/no later merges verified. Clean external audited
+preflight and local lineage PASS at b53db37. Original dirty 8deb0dd checkout,
+local-only commits, obsolete worktree and all earlier evidence remain untouched.
+Repair exception applies; unchanged failing code is not rerun first.
+
+Fresh budget recorded before checks in chat and external
+`gate6a-invocation-repair-budget.txt`: $0; at most TWO focused ios.yml profile=6a
+executions, including automatic triggers; 25 minutes each / 50 aggregate
+runner-minutes. ZERO retries/unchanged-code reruns; stop on first failure or
+exhaustion. Second execution only for documentation-only final HEAD after SUCCESS.
+Publish [skip ci], manual dispatch; no PR/full/SDK execution. Local maxima: one
+clean preflight, two lineage checks, two source/YAML reviews, four diff/document
+integrity checks and two artifact-access checks/downloads. No local product
+build/test, Swift/Xcode/Simulator/device runs. Prior allocation remains closed.
+
+Workflow capability re-inspected. Only implementation change: remove invalid
+`-test-iterations 1`, using xcodebuild's normal single execution with no retry
+option. Existing full/default behavior, focused selectors, result bundle and
+always-uploaded artifacts retained. No source, tests, functional assertions,
+timeouts, product bindings/identities or service boundaries changed this repair.
+6A runtime checks remain PENDING for this candidate; existing TEST_MATRIX mapping
+names all six tests. Actual assessed SHA/run/result and artifacts follow execution.
+Focused success cannot accept Gate 6. 6B-6F NOT ACCEPTED; Stage 7 NOT STARTED;
+manual accessibility/device NOT RUN. Stop at the 6A decision.

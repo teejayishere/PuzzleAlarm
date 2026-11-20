@@ -120,7 +120,7 @@ jobs:
           xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData -resultBundlePath TestResults/Shell.xcresult \
-            "${selectors[@]}" -test-iterations 1 \
+            "${selectors[@]}" \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/ios-tests.log"
       - name: Review Xcode diagnostics
