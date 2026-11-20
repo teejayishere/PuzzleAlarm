@@ -5,6 +5,39 @@ Active/default branch: `codex/restart-gate5-20261029-f8a41c`.
 Fixed restart anchor: `862c2d872958c2e08971acbf605bbcf07ee4b3d5`.
 Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`.
 
+
+## Gate 6 native-child comparison and repair allocation — 2026-11-19
+
+Starting remote 7e645cc8c895cfe13197c9fd6815249a2f5a8c08 verified; zero exact-HEAD
+Actions runs. Assessed source 21c0ebf run 44608072736 rechecked FAILURE, attempt 1.
+Owner authorizes current failed-gate repair without unchanged failing rerun.
+Fresh $0 budget BEFORE validation: at most TWO full CI executions, automatic
+triggers included; 25 minutes each / 50 aggregate runner-minutes; zero retries or
+unchanged-code reruns. First validates candidate and all documentation. Second
+ONLY for evidence closeout after first SUCCESS. Stop on any failure/exhaustion.
+Local allowance: one clean external preflight, one lineage invocation, source
+review and two diff checks. No Windows Swift/Xcode/Simulator runs.
+
+Clean full-history network clone gate6-repair preserves original dirty checkout
+and prior evidence. External audited read-only preflight and repository lineage
+PASS; fixed anchor/sole parent/no later merges verified. All eleven post-baseline
+commits reviewed; baseline core/specifications unchanged; no abandoned code used.
+
+Observer enumerates every diagnostic.state match with index/label/frame/value,
+including underlying list and presented editor. Comparison uses separate fresh
+reset launches and one gesture per target: row wrapper then its single native
+Switch child. Raw value/type/readiness/frame, both targets, hierarchy, screenshots
+and actual state are retained. Every functional flow first requires successful
+native direct-state mutation before child targeting editor/list switches. Existing
+functional assertions, ten-second limits and relaunch persistence checks remain.
+No product binding/widget/service/workflow changes. Runtime comparison, draft
+mutation, service entry, saved state and relaunch remain PENDING this candidate CI.
+Gate 6 FAILED / NOT ACCEPTED pending full exact-final-published-HEAD SUCCESS.
+Gates 0–5 not newly disproved. Stage 7 NOT STARTED. Device/manual accessibility
+NOT RUN. On first failure stop and preserve evidence; do not consume run two.
+
+## Previous diagnostic closeout — historical
+
 Current session: Gate 6 switch diagnostics â€” observed FAILURE, 2026-11-19.
 Gate 6 FAILED / NOT ACCEPTED. Stage 7 NOT STARTED; all later gates blocked.
 Assessed source HEAD: 21c0ebf65760d6b035d36f3c676045b8635b8292.

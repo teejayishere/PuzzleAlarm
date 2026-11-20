@@ -7,6 +7,7 @@ final class AlarmManagementUITests: XCTestCase, @unchecked Sendable {
 
     @MainActor
     private func launch(failing: Bool = false) -> XCUIApplication {
+        verifyNativeTargetOnFreshLaunches()
         let app = XCUIApplication()
         app.launchArguments = ["--ui-testing", "--ui-reset", "--ui-switch-diagnostics"] + (failing ? ["--ui-schedule-failure"] : [])
         app.launch()
@@ -64,8 +65,11 @@ final class AlarmManagementUITests: XCTestCase, @unchecked Sendable {
         let runtimeType = value.map { String(reflecting: type(of: $0)) } ?? "nil"
         let valueTerm = NSPredicate(format: "value == %@", expected ? "1" : "0").evaluate(with: element)
         let enabledTerm = NSPredicate(format: "enabled == true").evaluate(with: element)
-        let state = app.staticTexts["diagnostic.state"]
-        let details = "SWITCH \(name): value=\(String(describing: value)) type=\(runtimeType) enabled=\(element.isEnabled) hittable=\(element.isHittable) frame=\(element.frame) valueTerm=\(valueTerm) enabledTerm=\(enabledTerm) children=\(element.children(matching: .any).allElementsBoundByIndex) appState=\(state.exists ? String(describing: state.value) : "unavailable")\n\(app.debugDescription)"
+        let states = app.staticTexts.matching(identifier: "diagnostic.state").allElementsBoundByIndex
+        let stateDetails = states.enumerated().map { index, state in
+            "readout[\(index)] label=\(state.label) frame=\(state.frame) value=\(String(describing: state.value))"
+        }.joined(separator: " | ")
+        let details = "SWITCH \(name): value=\(String(describing: value)) type=\(runtimeType) enabled=\(element.isEnabled) hittable=\(element.isHittable) frame=\(element.frame) valueTerm=\(valueTerm) enabledTerm=\(enabledTerm) children=\(element.children(matching: .any).allElementsBoundByIndex) appState=\(stateDetails)\n\(app.debugDescription)"
         print(details)
         let hierarchy = XCTAttachment(string: details)
         hierarchy.name = name + "-hierarchy"; hierarchy.lifetime = .keepAlways; add(hierarchy)
@@ -85,21 +89,41 @@ final class AlarmManagementUITests: XCTestCase, @unchecked Sendable {
     @MainActor
     private func tapSwitch(_ element: XCUIElement, to expected: Bool, in app: XCUIApplication) {
         observeSwitch(element, expected: expected, phase: "before-one-tap", in: app)
-        element.tap()
+        let children = element.children(matching: .switch)
+        XCTAssertEqual(children.count, 1, "Expected the evidenced single native switch child")
+        let child = children.element(boundBy: 0)
+        observeSwitch(child, expected: expected, phase: "native-before-one-tap", in: app)
+        child.tap()
+        observeSwitch(child, expected: expected, phase: "native-after-one-tap", in: app)
         observeSwitch(element, expected: expected, phase: "after-one-tap", in: app)
     }
 
     @MainActor
-    func testSwitchBoundaryDiagnostics() {
+    private func verifyNativeTargetOnFreshLaunches() {
         let app = XCUIApplication()
-        app.launchArguments = ["--ui-testing", "--ui-reset", "--ui-switch-diagnostics", "--ui-switch-probe"]
-        app.launch()
-        let direct = app.switches["diagnostic.direct"]
-        XCTAssertTrue(direct.waitForExistence(timeout: 10))
-        tapSwitch(direct, to: false, in: app)
-        let directValue = direct.value as? String
-        app.terminate()
+        for native in [false, true] {
+            app.launchArguments = ["--ui-testing", "--ui-reset", "--ui-switch-diagnostics", "--ui-switch-probe"]
+            app.launch()
+            let direct = app.switches["diagnostic.direct"]
+            XCTAssertTrue(direct.waitForExistence(timeout: 10))
+            if native {
+                tapSwitch(direct, to: false, in: app)
+                assertSwitch(direct, isOn: false)
+                let state = app.staticTexts.matching(identifier: "diagnostic.state").element
+                XCTAssertTrue(String(describing: state.value).contains("direct.enabled=false"))
+            } else {
+                observeSwitch(direct, expected: false, phase: "wrapper-before-one-tap", in: app)
+                direct.tap()
+                observeSwitch(direct, expected: false, phase: "wrapper-after-one-tap", in: app)
+            }
+            app.terminate()
+        }
+    }
 
+    @MainActor
+    func testSwitchBoundaryDiagnostics() {
+        verifyNativeTargetOnFreshLaunches()
+        let app = XCUIApplication()
         app.launchArguments = ["--ui-testing", "--ui-reset", "--ui-switch-diagnostics"]
         app.launch()
         XCTAssertTrue(app.buttons["alarms.add"].waitForExistence(timeout: 10))
@@ -127,7 +151,6 @@ final class AlarmManagementUITests: XCTestCase, @unchecked Sendable {
         observeSwitch(app.switches["editor.enabled"], expected: initial != "1", phase: "reopened-draft", in: app)
         observeSwitch(app.switches["editor.day.2"], expected: true, phase: "reopened-draft", in: app)
         // Diagnostic collection is complete before enforcing these outcomes.
-        XCTAssertEqual(directValue, "0")
         assertSwitch(app.switches["editor.enabled"], isOn: initial != "1")
         assertSwitch(app.switches["editor.day.2"], isOn: true)
     }
@@ -167,7 +190,7 @@ final class AlarmManagementUITests: XCTestCase, @unchecked Sendable {
         XCTAssertTrue(app.staticTexts["08:06"].waitForExistence(timeout: 10))
         let restoredToggle = app.switches.matching(NSPredicate(format: "identifier BEGINSWITH %@", "alarm.enabled.")).firstMatch
         assertSwitch(restoredToggle, isOn: false)
-        restoredToggle.tap()
+        tapSwitch(restoredToggle, to: true, in: app)
         assertSwitch(restoredToggle, isOn: true)
         // Re-enable must persist too; an already-on control cannot satisfy it.
         app.terminate(); app.launchArguments = ["--ui-testing"]; app.launch()
@@ -234,7 +257,7 @@ final class AlarmManagementUITests: XCTestCase, @unchecked Sendable {
     func testScheduleFailureIsNotPresentedAsHealthyAlarm() {
         let app = launch(failing: true)
         app.buttons["alarms.add"].tap()
-        app.switches["editor.day.2"].tap()
+        tapSwitch(app.switches["editor.day.2"], to: true, in: app)
         app.buttons["editor.save"].tap()
         XCTAssertTrue(app.staticTexts["alarms.warning"].waitForExistence(timeout: 10))
         XCTAssertTrue(rowButton("alarm.retry.", in: app).exists)
