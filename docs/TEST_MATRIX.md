@@ -1,3 +1,65 @@
+## Gate 6A focused decision - ACCEPTED, 2026-11-20 UTC
+
+6A Harness and identity has focused acceptance evidence. Assessed
+**a83f10a93fbe07784147169b6be0d33642552956**, [run 44701206582](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44701206582),
+workflow_dispatch profile=6a, attempt 1, completed/SUCCESS. Job 136169762359:
+08:16:22-08:30:33 UTC, 851 seconds (14m11s). Six distinct tests PASS, zero failures:
+three diagnostic UI, one identity UI (ordinary and challenge) and two fixture unit.
+
+This accepts only 6A. Gate 6 remains FAILED / NOT ACCEPTED; 6B-6F NOT ACCEPTED,
+Stage 7 NOT STARTED. No new evidence disproves Gates 0-5. Known challenge relaunch
+Edit query and other later-checkpoint behavior remain unassessed; full Gate 6
+exact-final-HEAD SUCCESS remains required. No 6B or Stage 7 work was started.
+
+Two sequential repairs: XCTIssue description extracted before MainActor closure
+(compiler fix); identifier predicate moved into XCTest query before enumeration
+(capture-cost fix). No product binding, source identity, service/core boundary,
+functional assertion or existing 3/10-second timeout change. No workflow change
+in this loop. The invalid iteration flag had already been removed in c9c8ed5.
+
+Evidence: lineage/project reproducibility, app/test compilation, usage description
+and Xcode diagnostics review PASS. Xcode 26.6 (17F113), Swift 6.3.3; no compiler/
+destination warnings, one explicitly reported no-AppIntents SDK metadata advisory.
+Package tests/coverage intentionally SKIPPED by profile; no new full-gate evidence.
+Simulator proves exact fixture IDs/reset/relaunch isolation, scoped uniqueness and
+readiness, one native-child gesture agreeing with direct/draft/stored values,
+reopened enabled/Monday values, and contextual missing-target collection without
+observer ambiguity. Device/manual VoiceOver/largest-text NOT RUN.
+
+Downloaded [artifact 14613452843](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44701206582/artifacts/14613452843),
+4843527 bytes; SHA256 3576c8c60da630b3049176a06bc388958b4cc9f79cb59a1335772e2bfa829c6a.
+Verified logs/xcresult access, recovered 12 PNG objects with hash index, visually
+checked list/direct-state samples. Local evidence in gate6a-44701206582 under the
+current visualization session; timeout attempt and all older evidence preserved.
+
+Allocation so far: TWO/EIGHT executions, 2448/12000 actual runner-seconds (40m48s),
+$0, no unchanged failing rerun. Attempt 1 cancelled at configured 25-minute limit,
+1597s including cleanup; attempt 2 SUCCESS, 851s. Prior allocations remain closed.
+The documentation-inclusive final commit must receive its own successful focused
+run before handoff; reserve one execution for that, within the same allocation.
+That commit's matching Actions run is authoritative for its exact final SHA;
+a83f10a's run is not a substitute. This source-evidence record precedes that run.
+Stop after final 6A verification. Original dirty checkout/quarantine remain intact.
+
+### Accepted 6A scenario mapping at a83f10a / run 44701206582
+
+| Scenario | Test | Result / evidence |
+| --- | --- | --- |
+| 6A.1 Isolation and durable identity | SimulatorUITestFixtureTests/testNamespacesResetAndRelaunchUseExactDiskState | PASS; exact disabled definitions, actual disk mutation survives relaunch byte-for-byte, empty reset leaves another namespace unchanged; seeded fake scheduler has zero IDs. |
+| 6A.1 Fail-closed setup | SimulatorUITestFixtureTests/testInvalidOrUnseededNamespaceFailsClosed | PASS; missing/invalid namespace and unseeded relaunch rejected. |
+| 6A.1 UI identity/readiness | HarnessIdentityUITests/testResetAndRelaunchPreserveKnownFixtureIdentity | PASS; known ordinary 6A...001 and challenge 6A...002 unique/disabled before and after relaunch, explicit reset empties namespace. |
+| 6A.2 Native target | HarnessDiagnosticsUITests/testNativeTargetOnSeparateFreshLaunches | PASS; separate wrapper/native launches, one gesture each, native off agrees with direct state. |
+| 6A.2 Actual draft/list/storage | HarnessDiagnosticsUITests/testSwitchBoundaryDiagnostics | PASS; new UUID 84216BB5-4AD1-474F-8C39-51E393842205 resolved once; enabled false/Monday draft, save then list enable, same ID/true/Monday after disk relaunch and reopen. Service create/enable observed separately. |
+| 6A.3 Context/artifacts | HarnessDiagnosticsUITests/testFailureCaptureWithoutUniqueTarget | PASS; ordinary fixed ID opens, missing target is observed without dereferencing it, contextual editor then list captured, cancel without save/enable/delete; artifact download and PNG recovery verified. |
+
+This missing-target scenario tests the observer under failed-target conditions; it
+does not inject a product failure. Main-thread XCTest failure hook compiled; its
+behavior for arbitrary background-thread failures is not part of this UI evidence.
+Existing full functional journeys compile but are not selected in profile=6a.
+No 6B-6F/full Gate 6 acceptance follows from this mapping.
+
+---
+
 ## Gate 6A loop attempt 1 observed; attempt 2 candidate - 2026-11-20 UTC
 
 Assessed bdb83365ddf75981281ddbe0caf5e30eba2731f4,
