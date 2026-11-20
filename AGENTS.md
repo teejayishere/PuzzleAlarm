@@ -72,6 +72,15 @@ prerequisites, recursive invalidation or exact-final-HEAD full CI SUCCESS.
 
 ## Stage 6 checkpoint operating policy - owner-approved 2026-11-19
 
+Owner-authorized 6A sequential repair loop (2026-11-20): after a failed focused
+execution, preserve evidence, diagnose the earliest cause, repair that cause and
+validate the changed candidate until focused 6A succeeds within a fresh bounded
+$0 allocation. This supersedes stop-after-first-failure for that allocation only;
+no unchanged failing reruns, assertion/timeout weakening or later-checkpoint work.
+Stop on exhaustion, external blocker or success. Record each assessed SHA/run/result
+and include documentation before validating the final published HEAD. Focused
+success still does not accept Gate 6 or authorize 6B/Stage 7.
+
 Stage 6 uses ordered checkpoints 6A-6F in docs/MASTER_PLAN.md, with scenario
 contracts in docs/TEST_MATRIX.md. This additive owner-approved refinement preserves
 the original master-plan requirements and gate order; prior references to an

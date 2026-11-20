@@ -1,3 +1,38 @@
+## Gate 6A sequential repair loop - 2026-11-20 UTC
+
+Owner now authorizes sequential bug repair until focused 6A succeeds. This replaces
+stop-after-first-failure within the new allocation; old allocations remain closed.
+No 6B/Stage 7 work, unchanged failing reruns, weaker assertions/timeouts or product
+binding changes without runtime evidence. Stop at the 6A decision.
+
+Fresh $0 budget recorded before checks in chat and external gate6a-sequential-budget.txt:
+at most EIGHT focused ios.yml profile=6a executions including automatic triggers;
+25 minutes each / 200 total runner-minutes; ZERO unchanged-code retries. Stop a
+failed execution, preserve/analyze evidence, repair its earliest cause and validate
+new SHA. Reserve one execution for documentation-only final HEAD. Stop on total
+exhaustion, external blocker or focused success. [skip ci] publication then manual
+6a dispatch; no PR/full/SDK runs. Local maxima: one preflight, ten lineage checks,
+ten source/YAML reviews, twelve diff/history checks and eight artifact downloads.
+No local product builds/tests/Xcode/Simulator/device runs. Standard public runner.
+
+Fetched remote state before AGENTS; active/default public repository verified.
+Clean full-history gate6-repair checkout ec2d26144efc54c2469a75590fea076dda3373c3,
+zero exact-HEAD Actions runs. Nineteen post-baseline commits reviewed in this ongoing
+session; fixed anchor/sole baseline parent/no later merges verified. External audited
+preflight and repository lineage PASS at ec2d261. Original dirty 8deb0dd checkout,
+local-only commits, obsolete worktree and all earlier evidence preserved.
+
+Attempt 1 candidate: copy XCTIssue.compactDescription into a String before entering
+MainActor.assumeIsolated, capture only that String, then forward original XCTIssue
+to super.record. Fixes compiler-reported isolation at c9c8ed5/run 44695005474;
+no warning suppression, workflow change, source/service/binding change or assertion
+removal. Existing focused profile retains six named TEST_MATRIX checks and always
+uploads xcresult/logs. Compiler/Simulator results PENDING new assessed SHA/run.
+6A NOT ACCEPTED pending focused success; Gate 6 FAILED / NOT ACCEPTED; 6B-6F NOT
+ACCEPTED; Stage 7 NOT STARTED. No new disproof of Gates 0-5. Device/manual NOT RUN.
+
+---
+
 ## Gate 6A invocation repair - observed decision, 2026-11-20 UTC
 
 6A NOT ACCEPTED. Assessed c9c8ed54125fd3190e0e95d6f9db57abf65a779a;

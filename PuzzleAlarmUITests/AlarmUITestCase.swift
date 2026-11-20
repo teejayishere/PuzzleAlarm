@@ -10,8 +10,9 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
     // XCTest reports issues on the test's main thread. Capture before an assertion
     // aborts the flow; the observer enumerates snapshots and makes no assertions.
     override func record(_ issue: XCTIssue) {
+        let description = issue.compactDescription
         if Thread.isMainThread {
-            MainActor.assumeIsolated { capture("failure-\(issue.compactDescription)", in: XCUIApplication()) }
+            MainActor.assumeIsolated { capture("failure-\(description)", in: XCUIApplication()) }
         }
         super.record(issue)
     }
