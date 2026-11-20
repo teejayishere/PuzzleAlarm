@@ -1,3 +1,34 @@
+## Gate 6B observed evidence - c9576e4 / run 44795470808
+
+PROJECT_STATE owns the current decision and recursive invalidation. Focused
+profile=6b attempt 1 completed/FAILURE; 11 distinct tests, 10 PASS / 1 FAIL.
+
+| Scenario/test | Observed result |
+| --- | --- |
+| 6B.1 Loading - testLoadingKeepsEditingUnavailable | PASS (12.484s); loading distinct, editing/refresh unavailable while held. |
+| 6B.1 Corrupt - testCorruptLoadStaysReadOnlyAcrossRefresh | PASS (32.285s); error/disabled Add, unchanged corrupt hash across Refresh, no mutation/scheduler file. |
+| 6B.2 Ordinary - testOrdinaryEditorOpensBeforeAndAfterRelaunch | PASS (78.989s); exact identity, values, ready Edit, open/cancel and disk/service assertions on both launches. |
+| 6B.2 Challenge - testChallengeEditorOpensBeforeAndAfterRelaunch | PASS (92.838s); dedicated existing challenge relaunch Edit opens; exact identity/values and disk/service assertions on both launches. |
+| 6B.1/6B.2 New - testEmptyAndNewEditorsCancelWithoutWrites | FAIL (78.318s); New ordinary title/original/default enabled reached, then editor.mode count=0 before helper reveal. Challenge selection/cancel/post-cancel disk/relaunch NOT REACHED. |
+| Three selected AlarmManagementTests | PASS; authoritative loading/empty/ready, gated overlap and corrupt-disk fail-closed assertions. |
+| Two SimulatorUITestFixtureTests | PASS; exact namespaces/reset/relaunch and fail-closed fixture setup. |
+| HarnessIdentityUITests | PASS (251.307s); existing ordinary/challenge exact identities, disabled state and reset/relaunch. |
+
+Earliest cause: choose() introduced in 0031dc0 requires a unique offscreen picker
+before calling reveal(). Screenshot/hierarchy show Mode below initial viewport;
+the test log shows no preceding scroll. 6A's affected query/readiness contract
+needs restoration, with dependent 6B acceptance withheld. Previously passing 6A
+named scenarios retain their narrow evidence; no Gates 0-5 disproof follows.
+Do not weaken uniqueness/timeouts or change bindings from this harness failure.
+
+Automated lineage/reproducibility/discovery PASS; app/test build and usage
+description PASS. Xcode diagnostics-review SKIPPED; package/coverage intentionally
+SKIPPED. No full Gate 6 result or manual/device evidence. Artifact 14661165013
+download/CRC/hash/access verified; 1535 extracted entries and one inspected PNG.
+SHA256 5608e35fbc6f94ec5480d0eb0e58aaaf3cde03d858a6776594ae75c8a440949c.
+See PROJECT_STATE for exact SHA/run/budget/local path. Allocation closed on failure,
+no repair/retry. Documentation closeout itself has no successful exact-HEAD CI.
+
 ## Gate 6B candidate scenario mapping - 2026-11-20 UTC
 
 Status belongs to PROJECT_STATE. Results PENDING on new SHA/profile=6b.

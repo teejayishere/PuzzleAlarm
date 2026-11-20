@@ -7,6 +7,71 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active Gate 6B observed decision - 2026-11-20 UTC
+
+6B FAILED / NOT ACCEPTED. New evidence invalidates 6A's offscreen-picker
+query/readiness path: 6A NEEDS RESTORATION / NOT ACCEPTED until that harness
+contract is repaired and reassessed. Gate 6 remains FAILED / NOT ACCEPTED;
+6C-6F NOT ACCEPTED, Stage 7 NOT STARTED. Gates 0-5 have no new disproving evidence.
+Earlier six-test 6A runs remain valid evidence for their named visible-control/
+identity/native-target scenarios; they do not establish offscreen-picker readiness.
+This observed decision supersedes the pending candidate and prior 6A acceptance.
+
+Assessed **c9576e4cf7ee1416894b6c6f35c47388017c9979**,
+[run 44795470808](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44795470808),
+workflow_dispatch profile=6b, attempt 1, completed/FAILURE. Job 136493763867 ran
+18:49:00-19:05:44 UTC: 1004 actual runner-seconds (16m44s). ONE/TWO executions,
+1004/3000 runner-seconds, $0. Stop-on-first-failure closes this allocation; the
+reserved second execution is NOT AVAILABLE. No repair or rerun followed failure.
+
+Eleven distinct tests executed: TEN PASS, ONE FAIL. Existing identity UI and both
+fixture tests PASS; all three selected model tests PASS. Loading, corrupt-load
+refresh, ordinary navigation and challenge navigation UI tests PASS. Both existing
+alarm modes opened/cancelled with exact identity before/after relaunch, unchanged
+disk hashes, no fake-scheduler file and no mutation command. The known existing
+challenge relaunch Edit boundary now has focused PASS evidence; this does not
+accept all of 6B or replace the later full integration journey.
+
+Earliest demonstrated failure is the shared picker helper, not product binding:
+ListNavigationUITests/testEmptyAndNewEditorsCancelWithoutWrites opens New alarm,
+checks original=new/default enabled, then choose("editor.mode", ...) waits for a
+unique query BEFORE reveal. The query remains count=0 and fails at
+AlarmUITestCase.swift:55. No scroll occurred before that query. Hierarchy and
+visually inspected screenshot show the initial form through Saturday, with Mode
+below the viewport. The unique-before-reveal helper was introduced by 0031dc0 in
+the 6A harness. This is a newly disproved harness readiness path; no speculative
+product binding/layout repair is supported. New challenge selection, cancel,
+post-cancel disk assertion and this scenario's relaunch portion were NOT REACHED.
+
+Evidence categories:
+- Source: list states/readiness guards and isolated 6B scenarios published; no core,
+  schema, product binding or scheduling-contract change.
+- Automated: lineage/project reproducibility/Simulator discovery PASS. Package
+  tests/coverage intentionally SKIPPED; no full Gate 6 result.
+- Xcode: app/test compilation and usage description PASS, Xcode 26.6 / Swift 6.3.3.
+  Test action exit 65. Diagnostics-review step SKIPPED after test failure; no
+  diagnostics-review PASS claimed. Logs retain the AppIntents metadata advisory
+  and IDELaunchParametersSnapshot/no-debugger-version tool messages.
+- Simulator: 10/11 tests PASS as scoped above; 6A/6B checkpoint acceptance withheld.
+- Device/manual VoiceOver/largest text: NOT RUN.
+
+Failure artifact upload/download verified: [14661165013](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44795470808/artifacts/14661165013),
+86251545 bytes, SHA256 5608e35fbc6f94ec5480d0eb0e58aaaf3cde03d858a6776594ae75c8a440949c.
+ZIP CRC verified, 1535 entries extracted, logs/xcresult preserved. Initial Windows
+long-path extraction failed; re-extraction from the SAME downloaded ZIP with an
+extended path succeeded, without another download. One distinct PNG object was
+recovered, hash-indexed and visually inspected. Local evidence:
+C:/Users/Teej/.codex/visualizations/2026/11/20/01a1fa32-d0c3-7532-8700-426814db15dc/gate6b-44795470808.
+Original dirty checkout/local-only commits/quarantine remain intact.
+
+Next separately bounded work: restore the 6A offscreen-picker readiness contract,
+retain exact uniqueness/functional assertions and existing 3/10-second waits,
+prove that path and rerun affected prerequisites before 6B. Then reassess the
+complete 6B set; no 6C/Stage 7 advancement. Do not rerun unchanged failing code.
+This documentation-only [skip ci] closeout is UNVALIDATED and claims no successful
+exact-final-HEAD CI. Publish with expected-SHA checks/non-force fast-forward.
+STOP at this failed decision; the closed allocation authorizes no more validation.
+
 ## Active Gate 6B candidate - 2026-11-20 UTC
 
 Owner requested the next step. Scope is 6B list/navigation, then STOP for its

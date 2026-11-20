@@ -1003,3 +1003,27 @@ full/default, 6A, functional assertions/timeouts and failure artifacts. No core,
 binding, schema or scheduling change. Candidate runtime/compilation PENDING.
 Stop on first failure or budget exhaustion; no 6C/Stage 7. Final focused exact-HEAD
 validation is required before checkpoint handoff. PROJECT_STATE alone owns status.
+
+## Gate 6B observed decision - 2026-11-20 UTC
+
+Assessed c9576e4cf7ee1416894b6c6f35c47388017c9979 /
+[run 44795470808](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44795470808),
+profile=6b attempt 1 completed/FAILURE. Job 136493763867, 18:49:00-19:05:44 UTC,
+1004s (16m44s), ONE/TWO executions and 1004/3000 runner-seconds, $0. First failure
+closes allocation; no repair/retry or later-checkpoint work. Ten of eleven tests
+PASS; new-editor test fails at shared choose(editor.mode) count=0 before reveal.
+Screenshot confirms Mode below viewport. Helper entered in 0031dc0 (6A): trace
+earliest cause to harness offscreen-query/readiness, restore 6A before 6B; retain
+prior named passing evidence and withhold dependent acceptance. PROJECT_STATE
+owns current checkpoint/gate decisions. Existing ordinary/challenge navigation
+fresh/relaunch, loading/corrupt states, identity and five selected unit tests PASS.
+New challenge selection/cancel/relaunch NOT REACHED in failing scenario.
+Build/usage/lineage/reproducibility/discovery PASS; diagnostics review SKIPPED,
+package/coverage intentionally SKIPPED; device/manual NOT RUN. Failure artifact
+14661165013, 86251545 bytes, SHA256
+5608e35fbc6f94ec5480d0eb0e58aaaf3cde03d858a6776594ae75c8a440949c:
+download/CRC verified, long-path extraction recovered 1535 entries, one PNG
+hash-indexed/visually inspected; logs/xcresult/job log preserved in session's
+gate6b-44795470808 directory. Original dirty checkout/quarantine untouched.
+Documentation-only [skip ci] closeout is UNVALIDATED, no exact-final-HEAD SUCCESS.
+Next fresh allocation must restore affected 6A harness then reassess 6B in order.
