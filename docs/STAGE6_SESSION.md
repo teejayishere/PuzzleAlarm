@@ -663,3 +663,26 @@ not exact-final-HEAD SUCCESS or acceptance. Intermediate 6972fea accidentally
 truncated STAGE6_SESSION during a Windows encoding error. This follow-up restores
 all four prior documents byte-for-byte from dd8972e before appending/inserting
 this record. Historical content is preserved in the final closeout.
+
+## Gate 6 checkpoint planning decision - 2026-11-19
+
+Owner approved decomposition into 6A harness/identity, 6B list/navigation,
+6C drafts, 6D challenge configuration, 6E service/recovery and 6F persistence/
+integration. MASTER_PLAN retains all original Gate 6 requirements and adds ordered
+exit contracts; TEST_MATRIX maps independent scenario IDs; ARCHITECTURE records
+state ownership/readiness scaffolding; AGENTS records the standing checkpoint policy.
+PROJECT_STATE alone owns current status: all checkpoints NOT ACCEPTED; Gate 6
+FAILED; Stage 7 NOT STARTED. Start future work at 6A then isolate the known 6B
+challenge Edit query after relaunch with a known-ID fixture. No new implementation.
+
+Fetched clean HEAD 748e8da; actual GitHub zero current-HEAD runs, assessed dd8972e
+run 44660076395 completed/FAILURE, attempt 1. Existing partial evidence preserved;
+no prior failure is relabeled a pass. All fourteen post-baseline commits reviewed.
+Audited external clean preflight and repository lineage PASS; original dirty
+checkout/local-only commits/evidence untouched. Planning-only $0 allocation:
+ZERO CI executions/runner-minutes, one preflight, one lineage and one documentation
+integrity review. No source/tests/workflows/product builds changed. Publication
+uses expected-SHA non-force fast-forward with [skip ci]; resulting planning HEAD
+UNVALIDATED. Future focused validation requires a fresh named bounded allocation
+and any required CI capability review; final Gate 6 still needs full SUCCESS for
+the exact final published HEAD. No requirement is weakened or Stage 7 authorized.

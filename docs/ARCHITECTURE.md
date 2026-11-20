@@ -11,6 +11,30 @@ Specifications and original evidence below are unchanged.
 
 # Architecture
 
+## Stage 6 checkpoint design scaffolding - 2026-11-19
+
+This is the contract for subsequent review/refactoring, not a claim that new
+state machinery has been implemented. Checkpoint requirements live in MASTER_PLAN;
+acceptance/evidence lives in TEST_MATRIX; current status lives in PROJECT_STATE.
+
+- Repository definitions are authoritative. The editor owns an isolated draft;
+  cancel has no write/service effect. Save returns a committed configuration or
+  reports failure/reload; saved configuration is distinct from OS scheduling health.
+- Specify loading, ready, executing, load failure and command failure transitions
+  before changing model code. For each transition define visible status, available
+  controls, storage ownership and recovery action. Review existing busy/loaded/error
+  fields and startup/foreground refresh against this contract; no defect is assumed.
+- Record selected alarm identity and editor presentation separately from query
+  resolution and command readiness. Test fixtures supply known IDs through isolated
+  test composition; production continues to use its existing identity generation.
+- Scoped accessibility queries identify the intended alarm/control. A visible row
+  summary alone does not establish Edit readiness or successful presentation.
+- Diagnostic probes are isolated from routine scenarios; failure capture must work
+  with multiple visible/underlying screens and avoid becoming another test failure.
+- Existing service/coordinator boundaries remain. Review speculative switch/layout
+  changes against runtime evidence before retaining or simplifying them. No binding
+  rewrite is justified solely by a failed automation query.
+
 ## Stage 6 candidate — application boundary
 
 AlarmListModel owns observable UI state and one busy guard, with an injected

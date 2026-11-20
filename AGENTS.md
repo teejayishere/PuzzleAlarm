@@ -70,6 +70,23 @@ An explicitly authorized repair of a failed current gate may change that gate's
 candidate without rerunning unchanged failing code first. It does not waive earlier
 prerequisites, recursive invalidation or exact-final-HEAD full CI SUCCESS.
 
+## Stage 6 checkpoint operating policy - owner-approved 2026-11-19
+
+Stage 6 uses ordered checkpoints 6A-6F in docs/MASTER_PLAN.md, with scenario
+contracts in docs/TEST_MATRIX.md. This additive owner-approved refinement preserves
+the original master-plan requirements and gate order; prior references to an
+unchanged MASTER_PLAN do not forbid this refinement. PROJECT_STATE remains the
+single status authority. Start with the earliest unresolved checkpoint; do not
+promote a later checkpoint past a failed prerequisite. Map existing evidence by
+revision rather than declaring checkpoints passed from historical summaries.
+
+Independent focused scenarios and diagnostic checks may be planned under a fresh
+explicit bounded $0 allocation, including automatic triggers. No execution is
+allocated by this policy or the planning-only session. Focused success never
+substitutes for full exact-final-published-HEAD Gate 6 SUCCESS. Preserve functional
+assertions/timeouts, storage/service contracts and evidence categories. No Stage 7
+work, source reset, old-lineage import or wholesale rewrite is authorized here.
+
 ## Completed sessions and documentation-only scope
 
 The anchor's instructions-only session and the hardening session are complete.

@@ -2314,6 +2314,46 @@ Implement:
 - ordering
 - sound picker shell
 
+### Stage 6 checkpoints - owner-approved refinement, 2026-11-19
+
+These checkpoints decompose Stage 6 for diagnosis and implementation. All original
+Stage 6 requirements and final Gate 6 criteria below remain required. They do not
+change the Stage 7 boundary or authorize a repository restart.
+
+| Checkpoint | Contract and exit requirement |
+| --- | --- |
+| 6A - Harness and identity | Isolated fixtures with known alarm IDs; exact scoped queries; native-control targeting demonstrated; readiness and failure capture work without observer ambiguity. |
+| 6B - List and navigation | Loading, empty, error and ready states are distinguishable; new and existing ordinary/challenge editors open, including after relaunch, for the intended alarm ID. |
+| 6C - Draft editing | Time, weekdays, enabled state and sound round-trip through the draft; validation blocks invalid save; cancel leaves authoritative storage unchanged. |
+| 6D - Challenge configuration | Math/Memory/QR settings and identity, uniqueness, ordering, removal and mode changes have independent scenarios with exact expected draft values. |
+| 6E - Service effects and recovery | Save, enable, disable, delete and explicit retry use injected services; denial, scheduling failure and uncertain acknowledgment preserve authoritative state and expose recovery. |
+| 6F - Persistence and integration | Exact configuration and both enabled states survive relaunch in both modes; representative complete ordinary/challenge journeys pass; final full Gate 6 validation succeeds. |
+
+Work and triage order: 6A, 6B, 6C, 6D, 6E, 6F. Do not advance implementation
+past a failed prerequisite. Independent fixtures may isolate a later behavior for
+diagnosis, but cannot establish its acceptance while prerequisites remain failed.
+Existing evidence may inform a checkpoint; it does not automatically accept one.
+New evidence invalidates affected dependent checkpoints and gates in order.
+
+Each scenario defines fixture/initial state, one action or coherent behavior,
+expected UI state, expected stored state and expected service effect (including
+no write/no effect). TEST_MATRIX owns scenario IDs and evidence mapping;
+ARCHITECTURE owns state/interaction contracts; PROJECT_STATE alone owns status.
+
+Split long journeys into independent scenarios without removing functional,
+readiness, error or relaunch assertions or increasing existing timeouts to hide
+failure. Keep a small set of complete integration journeys in 6F. Diagnostic
+probes are separate from routine functional scenarios, with failure artifacts.
+
+Focused diagnostic checks may be proposed under a fresh explicit $0 budget that
+names commands/tests, maximum executions/retries and runner time, counting automatic
+triggers. This plan allocates no executions and changes no workflow. Missing focused
+CI capability must be implemented and reviewed before use; no ad hoc bypass of
+standing validation rules. Focused success is checkpoint evidence, never Gate 6
+acceptance. Final acceptance still requires full SUCCESS for the exact final
+published HEAD with all documentation included. Keep source, automated, Xcode,
+Simulator and physical-device/manual accessibility evidence separate.
+
 ### Gate 6
 
 UI tests.

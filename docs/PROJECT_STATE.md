@@ -7,6 +7,47 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active planning decision - Gate 6 checkpoints, 2026-11-19
+
+Gate 6 FAILED / NOT ACCEPTED. Gates 0-5 remain inherited accepted; no new
+disproving evidence. Stage 7 NOT STARTED; later gates blocked. Owner approved
+6A-6F decomposition inside Stage 6, preserving original requirements, code and
+evidence. No wholesale rewrite or new lineage is authorized by this planning update.
+
+| Checkpoint | Current disposition |
+| --- | --- |
+| 6A Harness and identity | NOT ACCEPTED; first work item. Native-child targeting evidence exists; deterministic identities, scoped navigation queries and diagnostic isolation need completion. |
+| 6B List and navigation | NOT ACCEPTED; known challenge Edit query failure after relaunch. Diagnose after 6A. |
+| 6C Draft editing | NOT ACCEPTED; existing partial evidence must be mapped to independent scenarios. |
+| 6D Challenge configuration | NOT ACCEPTED; restored rounds and later challenge edits were not reached. |
+| 6E Service effects and recovery | NOT ACCEPTED; integration evidence exists, pending complete scenario mapping and prerequisite checks. |
+| 6F Persistence and integration | NOT ACCEPTED; final full exact-HEAD SUCCESS absent. |
+
+Next implementation session starts with 6A, then a focused 6B reproduction using
+an existing challenge fixture with a known ID. Capture loaded/busy state, candidate
+count, readiness, hierarchy and screenshot before its Edit action; distinguish query
+resolution, hit targeting, presentation and model state before changing product code.
+Preserve assertions/timeouts. No further patching of the long challenge journey
+without this contract. MASTER_PLAN defines checkpoints; TEST_MATRIX defines scenario
+contracts; ARCHITECTURE defines state ownership. STAGE6_SESSION links this decision.
+
+Starting fetched HEAD 748e8da2981ce71a6438c60141a79a4f5063da54 has zero Actions
+runs. Actual assessed source remains dd8972e0bc75d11ab1bf7cc0d529166dfb514c19,
+run 44660076395 completed/FAILURE, attempt 1, rechecked on GitHub. Existing partial
+passes remain revision-specific; this decomposition accepts no checkpoint or gate.
+
+Planning-only budget recorded before checks: $0; ZERO CI executions/runner-minutes;
+one clean external preflight, one lineage invocation, one document integrity review;
+no product builds/tests. Preflight and lineage PASS in clean fetched full-history
+gate6-repair checkout. All fourteen post-baseline commits reviewed, including the
+document truncation/restoration; fixed anchor/parent and no later merges verified.
+Original dirty checkout, local-only commits and all prior evidence preserved.
+No source/test/workflow changes. Publish with expected-SHA non-force fast-forward
+and [skip ci]; final planning HEAD is UNVALIDATED, not a CI pass. Future validation
+requires a fresh bounded allocation; the prior failed allocation remains closed.
+
+## Historical observed closeout - superseded as next-action authority
+
 ## Gate 6 observed closeout - 2026-11-19
 
 Assessed dd8972e0bc75d11ab1bf7cc0d529166dfb514c19; full push attempt 1

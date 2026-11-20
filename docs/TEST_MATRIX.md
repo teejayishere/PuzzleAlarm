@@ -1,3 +1,47 @@
+# Stage 6 checkpoint acceptance contracts
+
+Owner-approved 2026-11-19. Requirements/order: [MASTER_PLAN](MASTER_PLAN.md).
+Current status: [PROJECT_STATE](PROJECT_STATE.md). The rows below are planned
+verification contracts, not new passing evidence. Historical results retain their
+assessed SHA/run and do not automatically accept a checkpoint.
+
+Every scenario records fixture and alarm ID, action, UI result, stored result,
+service effect, named test, assessed SHA, run/command, result and evidence location.
+Record no-write/no-service expectations explicitly. Separate source/automated/
+Xcode/Simulator/device/manual evidence. A harness failure is not a product diagnosis.
+
+| Scenario | Independent setup/action | Required result |
+| --- | --- | --- |
+| 6A.1 Fixture identity | Empty, ordinary and challenge fixtures; explicit ID and isolated storage | Known initial disk/model state; no cross-test contamination; relaunch preserves the same ID without reset. |
+| 6A.2 Targeting | Exact scoped control queries and one deliberate native gesture | Unique intended match; actual draft mutation agrees with accessible value; no blind retaps or firstMatch ambiguity. |
+| 6A.3 Diagnostics | Capture list and presented editor, including failed readiness | Contextual readouts and before/after values/types/frames/hierarchy/screenshots; observer does not terminate collection; artifact access verified. |
+| 6B.1 List states | Empty, loading, ready and injected load failure | Distinct visible states; controls have appropriate readiness; no mistaken writable empty state on failure. |
+| 6B.2 Navigation | Existing ordinary/challenge fixtures, new alarm, fresh/relaunch variants | Intended ID opens; expected editor values/title; opening/cancel causes no write or scheduling command. Challenge relaunch Edit is a dedicated case. |
+| 6C.1 Ordinary fields | Change time, weekdays, enabled and sound independently | Exact draft values; save forwards exact definition; selection alone has no scheduling effect. |
+| 6C.2 Validation/cancel | Invalid draft and unsaved edits | Invalid save blocked; cancel retains exact pre-edit stored state and makes no management write. |
+| 6D.1 Configuration | Independent Math, Memory and QR fixtures | Exact difficulty/count/length/duration/rounds/token retained through draft conversion and reopen. |
+| 6D.2 Sequence | Independent add-duplicate, move-up/down/boundary and remove cases | Ordered unique kinds; intended item moves/removes; other values/tokens preserved. |
+| 6D.3 Modes | Toggle modes in draft, save/reopen each mode, empty challenge sequence | Required validation and existing mode conversion semantics preserved; cancel never writes. |
+| 6E.1 Commands | Create/edit/enable/disable/delete/retry against injected service | Intended command/ID and authoritative stored result; lifecycle coordinator owns scheduling, views do not. |
+| 6E.2 Recovery | Denial, scheduling failure, uncertain write acknowledgment, stale edit, overlap | Correct error/status; authoritative reload; no false scheduling success or lost newer edits; explicit retry follows existing lifecycle policy. |
+| 6F.1 Relaunch matrix | Ordinary/challenge, enabled/disabled, exact known definitions | Time/weekdays/mode/order/configurations/token/sound and enabled state survive disk/process relaunch; scheduler effects match intended commands. |
+| 6F.2 Journeys | Representative ordinary CRUD and challenge configuration/edit/cancel journeys | Complete user paths and meaningful assertions retained; isolated cases cannot replace integration evidence. |
+| 6F.3 Final gate | All checkpoint evidence mapped, documentation included | Full existing workflow SUCCESS for exact final published HEAD; no skipped/failed prerequisite treated as PASS. |
+
+Initial evidence mapping: dd8972e / run 44660076395 demonstrates native targeting
+and ordinary CRUD/relaunch; diagnostic readouts show draft/service/durable state.
+Challenge navigation after relaunch FAILS at the Edit query (6B.2), preventing
+restored rounds and subsequent edits from supplying 6D/6F acceptance evidence.
+Nineteen iOS integration tests and 123 core tests PASS on that assessed source;
+these are supporting evidence, not a full Gate 6 pass. No checkpoints newly accepted.
+
+Start with 6A then 6B. Future fixture/test names and commands must be recorded when
+implemented; the scenario IDs above do not assert those tests already exist.
+Manual VoiceOver/largest text and physical alarm behavior remain NOT RUN/device
+required in their separate evidence categories. No new CI execution authorized here.
+
+---
+
 # Historical revision-specific evidence
 
 Current status is maintained only in the [active restart PROJECT_STATE](https://github.com/teejayishere/PuzzleAlarm/blob/codex/restart-gate5-20261029-f8a41c/docs/PROJECT_STATE.md).
