@@ -3,6 +3,12 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      profile:
+        description: Validation scope (6a is checkpoint evidence only)
+        type: choice
+        options: [full, 6a]
+        default: full
 
 permissions:
   contents: read
@@ -47,20 +53,28 @@ jobs:
           cmp .generated/PuzzleAlarm-Info.plist "$RUNNER_TEMP/first-info.plist"
           test -z "$(git ls-files '*.xcodeproj/*' '.generated/*')"
       - name: Validate package manifest
+        if: inputs.profile != '6a'
         run: swift package dump-package
       - name: Build PuzzleAlarmCore
+        if: inputs.profile != '6a'
         run: swift build -Xswiftc -warnings-as-errors
       - name: Run focused persistence tests
+        if: inputs.profile != '6a'
         run: swift test -Xswiftc -warnings-as-errors --filter Persistence
       - name: Run focused coverage-audit regressions
+        if: inputs.profile != '6a'
         run: swift test -Xswiftc -warnings-as-errors --filter 'weeklyOccurrenceSurvivesSkippedLocalCalendarDate|completedReloadPreservesTerminalStateUnderLateEvents'
       - name: Run focused lifecycle tests
+        if: inputs.profile != '6a'
         run: swift test -Xswiftc -warnings-as-errors --filter Lifecycle
       - name: Run Swift package tests
+        if: inputs.profile != '6a'
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage
+        if: inputs.profile != '6a'
         run: python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
       - name: Report exact uncovered core lines
+        if: inputs.profile != '6a'
         run: python3 Scripts/report_uncovered_lines.py
       - name: Discover compatible iPhone Simulator
         id: simulator
@@ -95,10 +109,30 @@ jobs:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: |
           set -o pipefail
+          selectors=(-skip-testing:PuzzleAlarmUITests/HarnessDiagnosticsUITests)
+          if [[ "${{ inputs.profile }}" == "6a" ]]; then
+            selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
+              -only-testing:PuzzleAlarmUITests/HarnessIdentityUITests
+              -only-testing:PuzzleAlarmUITests/HarnessDiagnosticsUITests)
+          fi
+          printf 'Assessed SHA: %s; profile: %s\n' "$GITHUB_SHA" "${{ inputs.profile || 'full' }}"
+          printf 'Test selector: %s\n' "${selectors[@]}"
           xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=$(uname -m)" \
             -derivedDataPath DerivedData -resultBundlePath TestResults/Shell.xcresult \
+            "${selectors[@]}" -test-iterations 1 \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/ios-tests.log"
       - name: Review Xcode diagnostics
         run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log"
+      - name: Preserve Xcode results and logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xcode-${{ github.sha }}-${{ inputs.profile || 'full' }}
+          path: |
+            TestResults/*.xcresult
+            ${{ runner.temp }}/ios-build.log
+            ${{ runner.temp }}/ios-tests.log
+          if-no-files-found: error
+          retention-days: 90

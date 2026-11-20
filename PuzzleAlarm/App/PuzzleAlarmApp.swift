@@ -11,12 +11,9 @@ struct PuzzleAlarmApp: App {
             var scheduler: any AlarmScheduling = AlarmManagerService()
             #if DEBUG && targetEnvironment(simulator)
             if ProcessInfo.processInfo.arguments.contains("--ui-testing") {
-                directory = directory.appendingPathComponent("Stage6UITests", isDirectory: true)
-                if ProcessInfo.processInfo.arguments.contains("--ui-reset"),
-                   FileManager.default.fileExists(atPath: directory.path) {
-                    try FileManager.default.removeItem(at: directory)
-                }
-                try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+                directory = try SimulatorUITestFixture.prepare(root: directory,
+                    arguments: ProcessInfo.processInfo.arguments,
+                    environment: ProcessInfo.processInfo.environment)
                 scheduler = try SimulatorAlarmScheduler(directory: directory,
                     failScheduling: ProcessInfo.processInfo.arguments.contains("--ui-schedule-failure"))
             }

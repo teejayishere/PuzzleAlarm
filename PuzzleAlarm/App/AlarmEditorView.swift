@@ -64,7 +64,7 @@ struct AlarmEditorView: View {
             }
             .disabled(model.busy)
             .interactiveDismissDisabled(model.busy)
-            .switchDiagnosticState("draft.enabled=\(draft.enabled); weekdays=\(draft.weekdays.map(\.rawValue).sorted()); busy=\(model.busy)")
+            .switchDiagnosticState("draft.id=\(draft.id); original.id=\(String(describing: draft.original?.id)); draft.enabled=\(draft.enabled); weekdays=\(draft.weekdays.map(\.rawValue).sorted()); busy=\(model.busy); loaded=\(model.loaded)", context: "editor")
         }
     }
 

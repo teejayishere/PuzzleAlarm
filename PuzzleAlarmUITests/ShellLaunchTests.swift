@@ -1,11 +1,9 @@
 import XCTest
 
-final class ShellLaunchTests: XCTestCase {
+final class ShellLaunchTests: AlarmUITestCase, @unchecked Sendable {
     @MainActor
     func testLaunchDisplaysNativeShell() {
-        let app = XCUIApplication()
-        app.launchArguments = ["--ui-testing", "--ui-reset"]
-        app.launch()
+        let app = launch()
 
         let title = app.staticTexts["shell.title"]
         XCTAssertTrue(title.waitForExistence(timeout: 10))

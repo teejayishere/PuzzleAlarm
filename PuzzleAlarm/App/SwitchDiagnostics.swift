@@ -31,11 +31,11 @@ private final class SwitchDiagnosticBuffer: @unchecked Sendable {
 }
 
 extension View {
-    func switchDiagnosticState(_ state: String) -> some View {
+    func switchDiagnosticState(_ state: String, context: String) -> some View {
         overlay(alignment: .bottomLeading) {
             if SwitchDiagnostics.enabled {
                 Text("Switch diagnostic state").font(.caption2)
-                    .accessibilityIdentifier("diagnostic.state")
+                    .accessibilityIdentifier("diagnostic.state.\(context)")
                     .accessibilityValue(state + " | " + SwitchDiagnostics.events)
                     .allowsHitTesting(false)
             }
@@ -51,7 +51,7 @@ struct DirectStateSwitchProbe: View {
             Toggle("Direct state", isOn: $enabled)
                 .accessibilityIdentifier("diagnostic.direct")
         }
-        .switchDiagnosticState("direct.enabled=\(enabled)")
+        .switchDiagnosticState("direct.enabled=\(enabled)", context: "direct")
     }
 }
 #endif

@@ -699,3 +699,30 @@ uses expected-SHA non-force fast-forward with [skip ci]; resulting planning HEAD
 UNVALIDATED. Future focused validation requires a fresh named bounded allocation
 and any required CI capability review; final Gate 6 still needs full SUCCESS for
 the exact final published HEAD. No requirement is weakened or Stage 7 authorized.
+
+
+## Gate 6A candidate - 2026-11-20 UTC
+
+6A pending focused validation; Gate 6 FAILED / NOT ACCEPTED, 6B-6F NOT ACCEPTED,
+Stage 7 NOT STARTED. Planning b2edf0f has zero runs; dd8972e / 44660076395
+rechecked FAILURE attempt 1. Repair exception used; no unchanged failing rerun.
+Clean fetched full-history preflight/lineage PASS; 15 post-baseline commits reviewed;
+original dirty checkout and all evidence preserved. See STAGE6_SESSION for details.
+
+Fresh $0 budget before checks: at most TWO focused profile=6a executions including
+automatic triggers, 25 minutes each / 50 total runner-minutes, ZERO retries;
+stop on failure. Second only for documentation-only final HEAD after SUCCESS.
+Publish [skip ci] + manual 6a dispatch; no full/PR/SDK runs. One clean preflight,
+two lineage checks, two syntax/diff reviews, one artifact-access verification;
+no local product/Xcode/Simulator/device execution. Old allocation remains closed.
+
+Implemented isolated reset-only fixed-ID fixtures and byte-preserving relaunch,
+exact unique row/control queries, native-child gesture, contextual diagnostics,
+pre-abort failure attachments and separate diagnostic class. No product bindings,
+identity generation, service/core boundaries, functional assertions or existing
+3/10-second waits changed. Proposed missing focused CI capability before editing:
+manual full|6a (default full), full push/PR checks retained, diagnostics explicitly
+selected in 6a; xcresult/logs always uploaded. Focused success is 6A evidence only.
+Current candidate has no assessed CI result yet. See TEST_MATRIX scenario mapping.
+Known challenge relaunch query remains a 6B investigation; no 6B work authorized
+in this session. Physical-device/manual accessibility NOT RUN. Stop at 6A decision.

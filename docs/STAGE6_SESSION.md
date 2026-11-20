@@ -686,3 +686,66 @@ uses expected-SHA non-force fast-forward with [skip ci]; resulting planning HEAD
 UNVALIDATED. Future focused validation requires a fresh named bounded allocation
 and any required CI capability review; final Gate 6 still needs full SUCCESS for
 the exact final published HEAD. No requirement is weakened or Stage 7 authorized.
+
+
+## Gate 6A harness candidate - 2026-11-20 UTC
+
+6A only; stop at its decision. Gate 6 FAILED / NOT ACCEPTED; 6B-6F NOT ACCEPTED;
+Stage 7 NOT STARTED. No new evidence disproves Gates 0-5. Starting planning HEAD
+b2edf0fca75aee9c91d8e65da3ebafa75eb9bb77 has zero Actions runs (GitHub checked).
+Previous assessed source dd8972e / run 44660076395 rechecked completed/FAILURE,
+attempt 1. Active policy permits repair without rerunning unchanged failing code.
+
+Fetched active/default public teejayishere/PuzzleAlarm branch, read remote state
+before AGENTS. Clean full-history gate6-repair clone matched b2edf0f. All 15
+post-baseline commits reviewed, including 6972fea truncation/748e8da restoration;
+fixed anchor/sole baseline parent and no later merges verified. External audited
+read-only preflight (absent remotely) and lineage PASS using bundled Python;
+system Python alias unavailable. Original dirty 8deb0dd checkout, local-only
+commits, obsolete worktree and prior evidence preserved. No abandoned code imported.
+
+Fresh budget recorded before validation in chat and external gate6a-budget.txt:
+$0; at most TWO focused ios.yml profile=6a executions, automatic triggers included;
+25 minutes each / 50 aggregate runner-minutes; ZERO retries/unchanged-code reruns.
+Stop on first failure/exhaustion. Second run only for documentation-only final
+HEAD after candidate SUCCESS. Publish [skip ci], then manual 6a dispatch; no PR,
+full or SDK execution. Local: one clean external preflight, two lineage checks,
+two source/YAML/diff reviews, one artifact retrieval/access verification. No local
+product builds/tests, Xcode/Simulator/device execution. Prior allocation closed.
+
+CI capability reviewed before changes: ios.yml only had full validation;
+sdk-evidence only inspects interfaces. Proposed/implemented manual profile full|6a,
+default full. Push/PR/default manual retain all package, coverage, build and
+functional checks. Focused 6a selects SimulatorUITestFixtureTests,
+HarnessIdentityUITests, HarnessDiagnosticsUITests; retains lineage, toolchain,
+project reproducibility, iOS build, usage description and diagnostics review.
+Routine full excludes only the separate diagnostic class. Always upload xcresult
+and build/test logs, 90 days; one test iteration, no retries. Focused success
+never accepts Gate 6; full exact-final-published-HEAD SUCCESS still required there.
+
+DEBUG Simulator fixture composition uses a UUID namespace per test. Empty,
+ordinary and challenge schema-2 fixtures have fixed IDs ending 001/002 and QR
+token ending 003 (prefix 6A000000-0000-4000-8000-). Saved fixtures start disabled,
+Monday/Friday 07:00; challenge has Memory/QR/Math. Reset seeds only its namespace;
+relaunch requires existing state.json and never seeds. Unit checks cover exact
+definitions, byte-preserving relaunch after disk mutation, independent namespaces,
+empty reset and invalid/unseeded rejection. Core schema/codec/API, lifecycle,
+service boundaries and production identity generation unchanged. Test-only fixture
+serialization is decoded/validated by the real DiskRepository.
+
+Queries require exact intended identity, uniqueness and enabled/hittable readiness.
+New alarms retain production UUIDs: resolve a single created UUID once, then use
+exact IDs. No firstMatch/lastMatch; one tap on the evidenced unique native switch
+child. Existing functional journeys/assertions and 3/10-second waits preserved.
+No product binding/layout/service changes. Diagnostic launches are removed from
+routine tests. Contextual list/editor/direct readouts and snapshot enumeration
+capture values/types/frames/readiness/children, hierarchy and screenshots. Failure
+recording captures on the test main thread before assertion abort. Missing-target
+collection is exercised without intentionally failing the suite. Artifact retrieval
+still PENDING. Existing historical document bytes are preserved, including their
+legacy encoding; current entries use ASCII/UTF-8 without rewriting old records.
+
+Candidate evidence: source review only; Swift/Xcode/Simulator PENDING. Actual
+assessed SHA/run/result, time and artifact access follow execution. No full Gate 6
+or 6B-6F acceptance. Manual VoiceOver/largest-text/device NOT RUN. Known challenge
+relaunch Edit remains unassessed here; no 6B or Stage 7 implementation.

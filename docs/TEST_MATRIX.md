@@ -1,3 +1,31 @@
+## Gate 6A candidate evidence mapping - 2026-11-20 UTC
+
+All new results PENDING; budget and provenance: STAGE6_SESSION. Assessed planning
+b2edf0f has zero runs; previous dd8972e / 44660076395 FAILURE, not a current pass.
+$0: at most two 6a runs including automatic triggers, 25m each/50m total, no retries;
+stop on failure. Second only for documentation-only final HEAD after SUCCESS.
+
+| Contract | Named test (6a profile selector) | Expected evidence |
+| --- | --- | --- |
+| 6A.1 Disk identity/isolation | SimulatorUITestFixtureTests/testNamespacesResetAndRelaunchUseExactDiskState | Known ordinary/challenge definitions; changed bytes unchanged on relaunch; empty reset leaves other namespace untouched; disabled seeding has no fake scheduler IDs. |
+| 6A.1 Fail closed | SimulatorUITestFixtureTests/testInvalidOrUnseededNamespaceFailsClosed | Invalid/missing namespace and unseeded relaunch cannot silently create replacement state. |
+| 6A.1 UI identity | HarnessIdentityUITests/testResetAndRelaunchPreserveKnownFixtureIdentity | Exact ordinary/challenge ID unique and disabled before/after process relaunch; reset removes fixture. No edit/save/enable action. |
+| 6A.2 Native target | HarnessDiagnosticsUITests/testNativeTargetOnSeparateFreshLaunches | Separate wrapper/native fresh launches, one gesture each; native value agrees with direct state. |
+| 6A.2 Actual state | HarnessDiagnosticsUITests/testSwitchBoundaryDiagnostics | Editor enabled/Monday draft agreement; save/list gesture; stored/disk/reopened enabled and weekday assertions retained. Created UUID resolved once then exact queries. |
+| 6A.3 Failure observation | HarnessDiagnosticsUITests/testFailureCaptureWithoutUniqueTarget | Known ordinary ID, presented editor, missing target capture without observer ambiguity; contextual list/editor values, hierarchy and screenshots; cancel without management save/enable/delete. |
+
+Known fixture IDs: 6A000000-0000-4000-8000-000000000001 ordinary;
+6A000000-0000-4000-8000-000000000002 challenge; QR token ends 003.
+Fixtures: disabled, Monday/Friday 07:00, system default; challenge Memory/QR/Math.
+Per-test UUID storage namespace, reset-only seeding; no reset on relaunch.
+Full ordinary/challenge/failure journeys and their assertions remain in
+AlarmManagementUITests; compile but are not selected by 6a. Full profile excludes
+only HarnessDiagnosticsUITests. Source review is separate from pending compiler,
+Simulator and artifact-access evidence. No 6B-6F or full Gate 6 acceptance; manual
+VoiceOver/largest-text/device NOT RUN. No product binding/service/UUID change.
+
+---
+
 # Stage 6 checkpoint acceptance contracts
 
 Owner-approved 2026-11-19. Requirements/order: [MASTER_PLAN](MASTER_PLAN.md).

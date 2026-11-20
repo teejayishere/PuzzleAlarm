@@ -32,7 +32,7 @@ struct ContentView: View {
             }
             .disabled(model.busy)
             .overlay { if model.busy { ProgressView("Updating alarms") } }
-            .switchDiagnosticState("stored.enabled=\(model.definitions.map(\.enabled)); busy=\(model.busy); loaded=\(model.loaded)")
+            .switchDiagnosticState("stored=\(model.definitions); busy=\(model.busy); loaded=\(model.loaded); error=\(String(describing: model.errorMessage)); selected=\(String(describing: draft?.id))", context: "list")
             .sheet(item: $draft) { value in AlarmEditorView(draft: value, model: model) }
             .alert("Delete alarm?", isPresented: Binding(
                 get: { deleting != nil }, set: { if !$0 { deleting = nil } }
