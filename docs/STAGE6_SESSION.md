@@ -749,3 +749,59 @@ Candidate evidence: source review only; Swift/Xcode/Simulator PENDING. Actual
 assessed SHA/run/result, time and artifact access follow execution. No full Gate 6
 or 6B-6F acceptance. Manual VoiceOver/largest-text/device NOT RUN. Known challenge
 relaunch Edit remains unassessed here; no 6B or Stage 7 implementation.
+
+## Gate 6A observed decision - 2026-11-20 UTC
+
+6A NOT ACCEPTED: focused validation FAILED before test compilation/execution.
+Gate 6 remains FAILED / NOT ACCEPTED; 6B-6F NOT ACCEPTED; Stage 7 NOT STARTED.
+No evidence disproves inherited Gates 0-5. No 6B or Stage 7 work was begun.
+
+Assessed SHA: 0031dc03e851d98f5df2deaf625e7be43f4e0e53.
+[Focused run 44678702635](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44678702635),
+workflow_dispatch profile=6a, attempt 1, completed/FAILURE. Job 136096638834 ran
+05:05:43-05:07:13 UTC (90 seconds). $0; ONE/TWO executions, 90/3000 runner-seconds.
+Stop-on-failure closes this allocation; second run is NOT AVAILABLE. No retry,
+workflow/product repair or additional execution followed the failure.
+
+Earliest failure is the newly introduced test invocation option, not product UI:
+`xcodebuild: error: Must specify -test-iterations with more than 1 iteration.`
+Exit 64. Adding `-test-iterations 1` was an implementation mistake. Xcode rejects
+it before compiling test targets or starting tests. Future 6A-only repair should
+remove that option and rely on the normal single execution, without retry flags;
+that change and a new focused run require a fresh bounded allocation. Do not
+raise the iteration count or rerun this unchanged failing candidate.
+
+Evidence categories:
+- Source: fixture/query/native-target/diagnostic separation candidate is published;
+  production UUID generation, bindings, service boundaries and core remain unchanged.
+  Routine functional assertions and existing 3/10-second waits are preserved.
+- Automated CI: fixed lineage, project reproducibility, Simulator discovery PASS.
+  Package tests/coverage were intentionally SKIPPED by focused profile; no new pass.
+- Xcode: app build and built usage description PASS (Xcode 26.6, 17F113,
+  Swift 6.3.3). Test targets NOT COMPILED by the failed test action; no test PASS.
+  Diagnostics-review step SKIPPED. App compilation alone does not validate tests.
+- Simulator: ZERO test execution, so all new 6A.1/6A.2/6A.3 runtime assertions,
+  uniqueness/readiness, draft agreement and attachment behavior remain UNVERIFIED.
+- Failure artifact: upload SUCCESS; download/access verified. Artifact
+  [14603651772](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44678702635/artifacts/14603651772),
+  13084-byte ZIP, SHA256 5cfaab0bfdeac76273da2c06d39328fcf9da8c8cd532f16c429742cf991ee095.
+  Retrieved build/test logs and early xcresult metadata. No UI screenshots exist
+  because tests never ran. Screenshot/failure-hook reliability is NOT established.
+- Device/manual VoiceOver/largest-text: NOT RUN.
+
+Evidence preserved locally at
+C:/Users/Teej/.codex/visualizations/2026/11/20/01a1f74f-14fd-78b0-b619-cf29c888043b/gate6a-44678702635.
+The 77-byte ios-tests.log was read after download; SHA256
+ce4e83dd5528a01a356303dff0386e1c1e54ed87cc496e24041a5a6cd6c3444f.
+GitHub retains job logs and the downloadable artifact (expires 2027-02-18).
+Original dirty 8deb0dd checkout and prior quarantine/evidence remain untouched.
+Local YAML parsing and final staged whitespace/history-preservation review passed;
+local Bash syntax execution was unavailable, and no Bash PASS was claimed.
+The final local lineage invocation still assessed b2edf0f after a commit-identity
+failure; CI independently passed lineage for the actual candidate 0031dc0.
+
+This documentation-only closeout uses [skip ci], expected-SHA checks and a non-force
+fast-forward. The commit containing this record is UNVALIDATED; it has no successful
+exact-HEAD CI. The failed assessed SHA/run above remain explicit. No checkpoint or
+gate acceptance is claimed. Next authorized scope remains 6A harness validation,
+not 6B navigation; stop here at the 6A NOT ACCEPTED decision.
