@@ -5,6 +5,24 @@ import XCTest
 
 final class AlarmManagementTests: XCTestCase, @unchecked Sendable {
     @MainActor
+    func testListEmptyAndReadyStatesUseAuthoritativeDefinitions() async throws {
+        let repository = InMemoryRepository()
+        let scheduler = ManagementScheduler()
+        let model = AlarmListModel(service: LifecycleAlarmManagementService(
+            repository: repository, scheduler: scheduler), repository: repository)
+        XCTAssertEqual(model.listState, .loading)
+        await model.refresh()
+        XCTAssertEqual(model.listState, .empty)
+        var draft = AlarmDraft(); draft.enabled = false
+        let saved = await model.save(draft)
+        XCTAssertTrue(saved)
+        XCTAssertEqual(model.listState, .ready)
+        XCTAssertEqual(model.definitions.map(\.id), [draft.id])
+        XCTAssertTrue(scheduler.snapshot.isEmpty)
+        XCTAssertEqual(scheduler.requests, 0)
+    }
+
+    @MainActor
     func testDraftPreservesIdentityFractionalDurationTokenAndOrder() throws {
         var draft = AlarmDraft()
         draft.mode = .challengesRequired
@@ -178,6 +196,7 @@ final class AlarmManagementTests: XCTestCase, @unchecked Sendable {
             repository: repository, scheduler: scheduler), repository: repository)
         await model.refresh()
         XCTAssertFalse(model.loaded)
+        XCTAssertEqual(model.listState, .failed)
         XCTAssertNotNil(model.errorMessage)
         XCTAssertEqual(try Data(contentsOf: file), corrupt)
         XCTAssertTrue(scheduler.snapshot.isEmpty)
@@ -226,12 +245,14 @@ final class AlarmManagementTests: XCTestCase, @unchecked Sendable {
         let first = Task { await model.execute(.refresh) }
         await gate.waitUntilStarted()
         XCTAssertTrue(model.busy)
+        XCTAssertEqual(model.listState, .loading)
         let second = await model.execute(.refresh)
         XCTAssertFalse(second)
         await gate.release()
         let completed = await first.value
         XCTAssertTrue(completed)
         XCTAssertFalse(model.busy)
+        XCTAssertEqual(model.listState, .empty)
     }
 }
 

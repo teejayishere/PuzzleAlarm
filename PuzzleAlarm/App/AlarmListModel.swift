@@ -4,6 +4,8 @@ import PuzzleAlarmCore
 
 @MainActor
 final class AlarmListModel: ObservableObject {
+    enum ListState: Equatable { case loading, empty, ready, failed }
+
     @Published private(set) var definitions: [AlarmDefinition] = []
     @Published private(set) var operations: [LifecycleOperation] = []
     @Published private(set) var busy = false
@@ -12,6 +14,11 @@ final class AlarmListModel: ObservableObject {
     @Published private(set) var errorMessage: String?
     private let service: any AlarmManagementService
     private let repository: any PuzzleAlarmRepository
+
+    var listState: ListState {
+        if !loaded { return errorMessage == nil ? .loading : .failed }
+        return definitions.isEmpty ? .empty : .ready
+    }
 
     init(service: any AlarmManagementService, repository: any PuzzleAlarmRepository) {
         self.service = service; self.repository = repository

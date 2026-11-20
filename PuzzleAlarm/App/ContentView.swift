@@ -15,7 +15,13 @@ struct ContentView: View {
                     Text(error).foregroundStyle(.red).accessibilityIdentifier("alarms.error")
                 }
                 if let message = model.message { Text(message).accessibilityIdentifier("alarms.warning") }
-                if model.loaded && model.definitions.isEmpty {
+                if model.listState == .loading {
+                    Text("Loading alarms…").accessibilityIdentifier("alarms.loading")
+                }
+                if model.listState == .ready {
+                    Text("Your alarms").accessibilityIdentifier("alarms.ready")
+                }
+                if model.listState == .empty {
                     Text("No alarms yet. Add an alarm to get started.").accessibilityIdentifier("alarms.empty")
                 }
                 ForEach(model.definitions, id: \.id) { alarm in alarmRow(alarm) }
@@ -33,6 +39,7 @@ struct ContentView: View {
             .disabled(model.busy)
             .overlay { if model.busy { ProgressView("Updating alarms") } }
             .switchDiagnosticState("stored=\(model.definitions); busy=\(model.busy); loaded=\(model.loaded); error=\(String(describing: model.errorMessage)); selected=\(String(describing: draft?.id))", context: "list")
+            .navigationTestState("list", context: "list")
             .sheet(item: $draft) { value in AlarmEditorView(draft: value, model: model) }
             .alert("Delete alarm?", isPresented: Binding(
                 get: { deleting != nil }, set: { if !$0 { deleting = nil } }
@@ -83,6 +90,7 @@ struct ContentView: View {
         }
         .buttonStyle(.borderless)
         .padding(.vertical, 6)
+        .disabled(!model.loaded || model.busy)
     }
 }
 

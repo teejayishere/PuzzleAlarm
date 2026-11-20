@@ -19,7 +19,7 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
 
     @MainActor
     func launch(failing: Bool = false, fixture: String = "empty", diagnostics: Bool = false,
-                probe: Bool = false, reset: Bool = true) -> XCUIApplication {
+                probe: Bool = false, reset: Bool = true, navigationAudit: Bool = false) -> XCUIApplication {
         self.fixture = fixture
         let app = XCUIApplication()
         app.launchEnvironment["PUZZLEALARM_TEST_NAMESPACE"] = namespace
@@ -27,6 +27,7 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
         app.launchArguments = ["--ui-testing"] + (reset ? ["--ui-reset"] : [])
             + (diagnostics ? ["--ui-switch-diagnostics"] : [])
             + (probe ? ["--ui-switch-probe"] : [])
+            + (navigationAudit ? ["--ui-navigation-audit"] : [])
             + (failing ? ["--ui-schedule-failure"] : [])
         app.launch()
         if !probe {

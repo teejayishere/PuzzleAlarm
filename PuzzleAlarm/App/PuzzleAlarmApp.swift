@@ -19,7 +19,16 @@ struct PuzzleAlarmApp: App {
             }
             #endif
             let repository = DiskRepository(directory: directory)
-            let service = LifecycleAlarmManagementService(repository: repository, scheduler: scheduler)
+            let base = LifecycleAlarmManagementService(repository: repository, scheduler: scheduler)
+            let service: any AlarmManagementService
+            #if DEBUG && targetEnvironment(simulator)
+            if ProcessInfo.processInfo.arguments.contains("--ui-testing") &&
+                ProcessInfo.processInfo.arguments.contains("--ui-hold-load") {
+                service = SimulatorHeldLoadService()
+            } else { service = base }
+            #else
+            service = base
+            #endif
             _model = StateObject(wrappedValue: AlarmListModel(service: service, repository: repository))
         } catch {
             // Never replace unreadable disk state with a writable empty repository.

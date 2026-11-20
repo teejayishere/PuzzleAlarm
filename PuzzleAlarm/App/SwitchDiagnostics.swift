@@ -13,7 +13,11 @@ enum SwitchDiagnostics {
 
     private static let buffer = SwitchDiagnosticBuffer()
     static func record(_ event: String) {
+        #if DEBUG && targetEnvironment(simulator)
+        if enabled || ProcessInfo.processInfo.arguments.contains("--ui-navigation-audit") { buffer.append(event) }
+        #else
         if enabled { buffer.append(event) }
+        #endif
     }
     static var events: String { buffer.snapshot }
 }

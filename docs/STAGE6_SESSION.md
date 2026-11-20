@@ -987,3 +987,19 @@ run before handoff; reserve one execution for that, within the same allocation.
 That commit's matching Actions run is authoritative for its exact final SHA;
 a83f10a's run is not a substitute. This source-evidence record precedes that run.
 Stop after final 6A verification. Original dirty checkout/quarantine remain intact.
+
+## Gate 6B candidate - 2026-11-20 UTC
+
+Owner requested next step after final focused 6A HEAD 4552de0 / run 44703503015
+was verified SUCCESS (six tests, no full-gate acceptance). Clean gate6-repair
+preflight/lineage PASS using bundled Python and audited external preflight script;
+preserved dirty checkout and local-only commits untouched. Active PROJECT_STATE
+records provenance, the fresh $0 two-run/50-minute allocation and candidate limits.
+Added derived list states, loading/ready labels and stale-row readiness guard;
+five independent navigation UI tests plus model-state assertions, opt-in read-only
+DEBUG Simulator disk/service audit, held loading and corrupt fixture composition.
+Proposed then implemented profile=6b (11 named tests in TEST_MATRIX), preserving
+full/default, 6A, functional assertions/timeouts and failure artifacts. No core,
+binding, schema or scheduling change. Candidate runtime/compilation PENDING.
+Stop on first failure or budget exhaustion; no 6C/Stage 7. Final focused exact-HEAD
+validation is required before checkpoint handoff. PROJECT_STATE alone owns status.

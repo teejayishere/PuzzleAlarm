@@ -11,7 +11,7 @@ enum SimulatorUITestFixture {
     static func prepare(root: URL, arguments: [String], environment: [String: String]) throws -> URL {
         guard let raw = environment["PUZZLEALARM_TEST_NAMESPACE"], let namespace = UUID(uuidString: raw),
               let kind = environment["PUZZLEALARM_TEST_FIXTURE"],
-              ["empty", "ordinary", "challenge"].contains(kind) else {
+              ["empty", "ordinary", "challenge", "corrupt"].contains(kind) else {
             throw PersistenceError.io("Explicit UI test namespace/fixture required")
         }
         let directory = root.appendingPathComponent("Stage6UITests", isDirectory: true)
@@ -22,10 +22,14 @@ enum SimulatorUITestFixture {
                 try FileManager.default.removeItem(at: directory)
             }
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-            let snapshot = FixtureSnapshot(state: try state(kind))
-            let encoder = JSONEncoder()
-            encoder.outputFormatting = [.sortedKeys]
-            try encoder.encode(snapshot).write(to: file, options: .atomic)
+            if kind == "corrupt" {
+                try Data("invalid navigation-test repository".utf8).write(to: file, options: .atomic)
+            } else {
+                let snapshot = FixtureSnapshot(state: try state(kind))
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = [.sortedKeys]
+                try encoder.encode(snapshot).write(to: file, options: .atomic)
+            }
         } else if !FileManager.default.fileExists(atPath: file.path) {
             // A relaunch must not silently create a replacement fixture.
             throw PersistenceError.io("UI test relaunch has no seeded repository")

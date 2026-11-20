@@ -7,6 +7,62 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active Gate 6B candidate - 2026-11-20 UTC
+
+Owner requested the next step. Scope is 6B list/navigation, then STOP for its
+evidence decision. 6B PENDING / NOT ACCEPTED. Gate 6 remains FAILED / NOT ACCEPTED;
+6C-6F NOT ACCEPTED, Stage 7 NOT STARTED. No new disproof of Gates 0-5. This new
+session supersedes the historical 6A-only stop for work on the next checkpoint.
+
+Prerequisite reused unchanged: published 4552de00a962fe840c40f1fbcefdaf6f1f8b4861,
+[run 44703503015](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44703503015),
+workflow_dispatch profile=6a, attempt 1, completed/SUCCESS. Job 136177305327
+SUCCESS: lineage, project reproducibility, app/test build, usage description,
+six distinct Simulator tests, diagnostics and artifact upload. Xcode 26.6 /
+Swift 6.3.3. Package tests/coverage intentionally skipped. This accepts 6A only.
+
+Fetched origin; read remote PROJECT_STATE before AGENTS; GitHub public repository
+and active/default branch verified. Clean full-history gate6-repair checkout
+matched 4552de0. Preflight/lineage PASS; fixed anchor, sole baseline parent and no
+later merges verified. Post-baseline commit inventory and source/workflow/policy
+changes reviewed; no old-lineage import used. Original dirty 8deb0dd checkout,
+local-only commits and all quarantine/evidence preserved. Required preflight is
+absent in active source: the external script was read and invoked from the clean
+checkout with bundled Python, without copying it into this lineage. Windows
+python3 alias could not launch; actual bundled-Python preflight/lineage PASS.
+
+Fresh bounded $0 budget recorded in chat/external gate6b-budget.txt before checks:
+at most TWO ios.yml profile=6b executions including automatic triggers, configured
+25-minute job limit each / 50 aggregate actual runner-minutes including cleanup;
+ZERO retries/unchanged failing runs; stop on first failure/exhaustion. Second only
+for documentation-inclusive final HEAD after initial SUCCESS. Publish [skip ci],
+manual dispatch; no full/PR/SDK runs. Local maxima: one preflight, two lineage
+checks, four diff reviews, two source/YAML reviews and two artifact downloads.
+No local product/Swift/Xcode/Simulator/device runs. Earlier allocations are closed.
+
+Candidate adds explicit loading/ready presentation, derives list state from
+existing authoritative fields and disables stale row actions on unavailable
+storage. No product binding, schema, core, scheduler or service contract change.
+Five independent UI tests cover held loading, corrupt load/refresh, empty/new
+editors, ordinary editor and challenge editor; navigation is fresh and relaunched.
+The known challenge Edit boundary is tested directly; no speculative binding
+repair. Opt-in DEBUG Simulator observers compare actual disk SHA256 and fake
+scheduler file, report intended editor identity and observe service-entry logs.
+Open/cancel must leave disk unchanged and issue no create/edit/enable/disable/
+delete/retry command. A held service supplies deterministic loading without sleeps;
+corrupt fixtures exercise normal DiskRepository decoding. Observers do not write.
+
+Missing focused capability was proposed before editing: profile=6b selects five
+navigation UI tests, three list-state/model tests, two existing fixture tests and
+one existing identity UI test (11 distinct tests expected). Full/default and 6A
+selection, functional assertions, 3/10-second waits and failure artifacts remain.
+Compilation/runtime and candidate SHA/run are PENDING publication. Focused success
+cannot accept Gate 6. Manual accessibility/device NOT RUN. All documentation
+precedes validation; matching final Actions run is authoritative for final HEAD.
+
+All earlier sections below are revision-specific history, superseded where this
+active decision differs.
+
 ## Gate 6A focused decision - ACCEPTED, 2026-11-20 UTC
 
 6A Harness and identity has focused acceptance evidence. Assessed

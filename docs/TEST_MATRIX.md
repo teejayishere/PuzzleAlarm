@@ -1,3 +1,27 @@
+## Gate 6B candidate scenario mapping - 2026-11-20 UTC
+
+Status belongs to PROJECT_STATE. Results PENDING on new SHA/profile=6b.
+Prerequisite final 6A SHA 4552de0 / run 44703503015 rechecked SUCCESS; focused only.
+
+| Scenario | Test / setup/action | UI, disk and service expectation |
+| --- | --- | --- |
+| 6B.1 Loading | ListNavigationUITests/testLoadingKeepsEditingUnavailable; empty namespace, held service | Loading distinct from empty/ready/error; Add/Refresh disabled; no completed command/write/scheduler effect. |
+| 6B.1 Failed load | ListNavigationUITests/testCorruptLoadStaysReadOnlyAcrossRefresh; corrupt namespace, Refresh | Error, Add disabled, no false empty/ready/loading; corrupt disk SHA unchanged, no fake-OS file or mutation command. |
+| 6B.1 Empty / 6B.2 New | ListNavigationUITests/testEmptyAndNewEditorsCancelWithoutWrites; fresh/relaunch, new ordinary then select challenge/cancel | New title/original=new/default enabled; empty challenge Save disabled; remains empty, disk SHA unchanged, no mutation/scheduler file. |
+| 6B.2 Ordinary | ListNavigationUITests/testOrdinaryEditorOpensBeforeAndAfterRelaunch; ordinary 6A...001, open/cancel | Exact unique ready Edit; original/draft ID, mode, 07:00, disabled/Monday match; disk unchanged/no mutation/scheduler file on both launches. |
+| 6B.2 Challenge | ListNavigationUITests/testChallengeEditorOpensBeforeAndAfterRelaunch; challenge 6A...002, open/cancel | Dedicated known-failure boundary: exact Edit opens after relaunch; correct ID/time/enabled/Monday/mode; no write/mutation/scheduler file. No later-settings acceptance. |
+| 6B.1 Model | AlarmManagementTests/testListEmptyAndReadyStatesUseAuthoritativeDefinitions | Loading -> empty -> ready through service and exact disabled definition; zero scheduling/permission requests. |
+| 6B.1 Concurrency | AlarmManagementTests/testBusyModelRejectsOverlappingCommands | Gated loading, rejected overlap, empty after release; no clock sleeps. |
+| 6B.1 Corruption | AlarmManagementTests/testCorruptDiskFailsClosedWithoutReplacingData | Failed state, loaded=false, original corrupt bytes and zero scheduled IDs. |
+| 6A regression support | SimulatorUITestFixtureTests (2), HarnessIdentityUITests (1) | Existing namespace/reset/relaunch identity contracts retained. |
+
+11 distinct tests expected. Profile=6b intentionally skips package tests/coverage
+and excludes diagnostic probes/later journeys. Full/default and 6A remain intact.
+Always-uploaded logs/xcresult required. Record automated/Xcode/Simulator/device
+evidence separately after execution. UI tests make no save/enable/disable/delete/
+retry action. The model empty/ready setup saves one disabled definition to establish
+authoritative state. Existing historical mapping follows.
+
 ## Gate 6A focused decision - ACCEPTED, 2026-11-20 UTC
 
 6A Harness and identity has focused acceptance evidence. Assessed

@@ -13,6 +13,18 @@ Specifications and original evidence below are unchanged.
 
 ## Stage 6 checkpoint design scaffolding - 2026-11-19
 
+6B candidate: list state derives from existing loaded/error/definition fields.
+Before the first usable load it is loading, or failed after an unavailable load;
+loaded data renders empty or ready. Command errors remain separate and may coexist
+with authoritative data. Loading disables interactions; unavailable storage disables
+all retained row actions and Add, with Refresh usable after the command ends.
+Opening a sheet copies the selected definition into the existing isolated draft;
+navigation issues no management mutation. Opt-in DEBUG Simulator observers hash
+actual isolated disk/fake-scheduler files and report editor identity/service entries
+without writes. A held service continuation exposes deterministic loading; corrupt
+fixtures use normal repository decoding. These compositions are absent on device/
+release. PROJECT_STATE owns status; TEST_MATRIX owns scenario/evidence mapping.
+
 This is the contract for subsequent review/refactoring, not a claim that new
 state machinery has been implemented. Checkpoint requirements live in MASTER_PLAN;
 acceptance/evidence lives in TEST_MATRIX; current status lives in PROJECT_STATE.
