@@ -140,10 +140,11 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
 
     @MainActor
     func capture(_ phase: String, in app: XCUIApplication) {
-        let controls = app.descendants(matching: .any).allElementsBoundByIndex.filter {
-            $0.identifier.hasPrefix("alarm.") || $0.identifier.hasPrefix("editor.")
-                || $0.identifier.hasPrefix("diagnostic.") || $0.identifier == "alarms.add"
-        }
+        // Filter in the accessibility query. Reading every descendant's identifier
+        // in Swift repeatedly resolves the entire tree and can consume the run.
+        let controls = app.descendants(matching: .any).matching(NSPredicate(
+            format: "identifier BEGINSWITH %@ OR identifier BEGINSWITH %@ OR identifier BEGINSWITH %@ OR identifier == %@",
+            "alarm.", "editor.", "diagnostic.", "alarms.add")).allElementsBoundByIndex
         let details = controls.enumerated().map { index, element in
             let value = element.value
             let type = value.map { String(reflecting: Swift.type(of: $0)) } ?? "nil"

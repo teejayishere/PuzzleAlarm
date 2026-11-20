@@ -908,3 +908,39 @@ removal. Existing focused profile retains six named TEST_MATRIX checks and alway
 uploads xcresult/logs. Compiler/Simulator results PENDING new assessed SHA/run.
 6A NOT ACCEPTED pending focused success; Gate 6 FAILED / NOT ACCEPTED; 6B-6F NOT
 ACCEPTED; Stage 7 NOT STARTED. No new disproof of Gates 0-5. Device/manual NOT RUN.
+
+## Gate 6A loop attempt 1 observed; attempt 2 candidate - 2026-11-20 UTC
+
+Assessed bdb83365ddf75981281ddbe0caf5e30eba2731f4,
+[run 44697616061](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44697616061),
+attempt 1/profile=6a: job 136158047563 completed/CANCELLED at the 25-minute limit.
+07:48:01-08:14:38 UTC, 1597 actual runner-seconds including cleanup (26m37s).
+Allocation used ONE/EIGHT executions and 1597/12000 aggregate runner-seconds.
+Cleanup exceeded the nominal per-attempt estimate; before attempt 2 the bound is
+clarified to 30 actual minutes including cleanup, still configured 25-minute job
+limit and unchanged 200-minute aggregate cap. Max eight runs; no unchanged retries.
+Owner-authorized sequential repair continues on a changed candidate.
+
+The XCTIssue isolation repair compiled. App/test compilation and usage description
+PASS; Simulator diagnostic missing-target/context test PASS (285.114s), native
+separate-launch test PASS (67.873s). Actual editor/list diagnostic reached stored
+enabled=true after create-disabled/enable and Monday mutation; timeout interrupted
+relaunch before final assertions. Identity/unit tests NOT REACHED. Diagnostics
+review SKIPPED; no full or 6A pass. No Gates 0-5 disproof; later checkpoints blocked.
+
+Earliest demonstrated cause: capture enumerates every accessibility descendant and
+reads each identifier in Swift, causing repeated whole-tree resolution. Consecutive
+editor capture phases end at 196.54/371.90/532.64/689.25/842.14 test seconds; each
+capture consumes about 150-175 seconds. No assertion failed in the available log.
+Attempt 2 moves the same identifier predicate into XCUIElementQuery.matching before
+enumeration, retaining contextual control values/types/frames/readiness/children,
+full hierarchy and screenshot attachments. No assertion, timeout, product binding,
+identity or service change. All six focused tests remain selected. Pending new run.
+
+Downloaded [artifact 14611709542](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44697616061/artifacts/14611709542),
+30712226 bytes, SHA256 7454471b9236f2dc1cabcb3d3bf8bd7008b1c065e4a63be8f4f165d718800ade.
+Build/test logs and xcresult preserved locally in gate6a-44697616061 under this
+session's visualization directory. Logs show kept hierarchy/screenshot attachments;
+runtime artifacts are retrievable, not a completed test-suite pass. Device/manual
+accessibility NOT RUN. 6A NOT ACCEPTED pending complete success; Gate 6 NOT ACCEPTED;
+no 6B/Stage 7 work. Prior evidence and original dirty checkout remain preserved.
