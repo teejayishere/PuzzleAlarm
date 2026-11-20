@@ -1,3 +1,43 @@
+## Gate 6A invocation repair - observed decision, 2026-11-20 UTC
+
+6A NOT ACCEPTED. Assessed c9c8ed54125fd3190e0e95d6f9db57abf65a779a;
+[run 44695005474](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44695005474)
+workflow_dispatch profile=6a, attempt 1, completed/FAILURE. Job 136149547973:
+07:26:46-07:27:42 UTC, 56 seconds. Fresh $0 allocation consumed ONE/TWO executions,
+56/3000 runner-seconds. Stop-on-failure closes allocation; second run unavailable.
+No retry or further implementation/validation followed failure.
+
+The invalid iteration option is removed and test compilation is now reached.
+Earliest blocker: AlarmUITestCase.swift:14:65, Swift 6 compiler error:
+`sending 'issue' risks causing data races`.
+XCTIssue is captured by MainActor.assumeIsolated and later used nonisolated by
+super.record. Future focused 6A repair: extract issue.compactDescription as a
+String before the actor closure, capture that String instead, and retain the
+original issue for super.record. No compiler warning suppression or product
+binding/service change is justified. That repair requires a new bounded budget;
+do not rerun unchanged failing code. No broader test-compilation PASS is claimed.
+
+Evidence: lineage, project reproducibility, Simulator discovery, app build and
+usage description PASS. Xcode 26.6 (17F113), Swift 6.3.3. Test action FAILED at
+compilation (exit 65); ZERO tests executed. All six 6A runtime scenarios remain
+UNVERIFIED, including reset/relaunch, uniqueness/readiness, native gestures and
+screenshot/failure-hook behavior. Diagnostics review SKIPPED; package/coverage
+intentionally SKIPPED by focused profile. Device/manual accessibility NOT RUN.
+No evidence disproves Gates 0-5. Gate 6 FAILED / NOT ACCEPTED, 6B-6F NOT ACCEPTED,
+Stage 7 NOT STARTED. Stop at 6A; no 6B/Stage 7 work.
+
+Failure upload/download verified: [artifact 14609508910](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44695005474/artifacts/14609508910),
+42685-byte ZIP, SHA256 86fe7ff853257aef4d68d73b2a2ef25a9ef23c2c5a697d35a302be2144d34dfa.
+Preserved xcresult/build/test logs and full job log locally in
+C:/Users/Teej/.codex/visualizations/2026/11/20/01a1f74f-14fd-78b0-b619-cf29c888043b/gate6a-44695005474.
+Downloaded ios-tests.log inspected; compiler error and cancelled testing confirmed.
+No runtime screenshots exist. Original dirty checkout and earlier evidence intact.
+This documentation-only [skip ci] closeout is UNVALIDATED, not exact-HEAD SUCCESS.
+Publish with expected-SHA checks and a non-force fast-forward. This result supersedes
+the pending repair candidate below; no checkpoint or gate acceptance is claimed.
+
+---
+
 ## Gate 6A invocation repair - fresh candidate, 2026-11-20 UTC
 
 Owner authorized the proposed invocation repair in the continuing Codex session.
