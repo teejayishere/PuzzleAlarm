@@ -7,6 +7,74 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active final-validation decision - NOT ACCEPTED - 2026-11-21 UTC
+
+The offscreen Mode-picker repair is verified, including the formerly failing
+new-editor path. Final validation exposed a separate 6A identity-query wait
+failure. 6A NEEDS REASSESSMENT / NOT ACCEPTED for query/readiness reliability;
+dependent 6B acceptance is WITHHELD / NOT ACCEPTED. Gate 6 NOT ACCEPTED,
+6C-6F NOT ACCEPTED, Stage 7 NOT STARTED. No Gates 0-5 disproof. The earlier
+seven-test 6A and twelve-test 6B successes remain valid revision-specific evidence;
+they do not replace a failed exact-final-HEAD result. This supersedes acceptance
+and next-6C wording in the earlier pre-final record below.
+
+Assessed **8efdd07bd91a9516b0815d0cefbec0a8a45b4eaf** /
+[run 44856748909](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44856748909),
+workflow_dispatch profile=6b, attempt 1, completed/FAILURE. Job 136700632043 ran
+02:35:45-02:47:56 UTC: 731 actual runner-seconds (12m11s). Eleven of twelve
+distinct tests PASS; only HarnessIdentityUITests/testResetAndRelaunchPreserveKnownFixtureIdentity
+FAILS (139.247s). This revision changed only documentation from b6d5020, whose
+twelve-test run 44854992530 passed. No source repair/rerun followed this failure.
+
+Exact observed boundary: after initial challenge fixture 6A...002 Edit readiness,
+rowSwitch asks for alarm.enabled.6A000000-0000-4000-8000-000000000002. The count==1
+XCTNSPredicateExpectation in unique() times out at AlarmUITestCase.swift:55.
+Log times: first enabled-switch count request t=99.79; XCTest internal query
+retries at t=108.96; failure capture begins t=132.51. Capture at t=134.33 reports
+count=1, the exact switch enabled/hittable/value=0, and a single native child.
+The inspected screenshot shows the expected disabled challenge alarm on the list.
+
+Root cause of the bounded query wait is UNRESOLVED. Query latency/retries are
+observed; the later correct snapshot does not prove what was available within
+the deadline. This is not evidence of the fixed Mode absence, a duplicate ID,
+wrong stored configuration, or a product-binding defect. Do not lengthen timeouts,
+weaken uniqueness, alter bindings or rerun unchanged failing code from this result.
+Earliest affected contract is 6A identity/scoped-query readiness; diagnose it
+before restoring that prerequisite and reassessing dependent 6B.
+
+The repaired picker regression PASS (56.407s): count=0/hittable=false -> bounded
+reveal -> actual Challenges required draft/disabled Save -> Cancel. All five 6B
+navigation cases PASS, including new-editor selection/cancel/relaunch/no-write/
+service assertions (82.079s). Three model and two fixture unit tests PASS.
+Ordinary/challenge navigation and corruption/loading evidence remain narrowly
+valid; overall checkpoint acceptance is withheld by the failed prerequisite.
+
+Evidence: lineage/project reproducibility/discovery, app/test compilation and
+usage description PASS. Xcode diagnostics-review SKIPPED after test failure,
+so no final diagnostics-review PASS. Package/coverage intentionally SKIPPED;
+physical device/manual accessibility NOT RUN. Build logs retain the recognized
+metadata advisory; full Gate 6 remains unvalidated.
+
+Artifact [14688013710](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44856748909/artifacts/14688013710):
+108183364 bytes, SHA256 5e8dcf2e4bf11237ff222bc0d75750cfcf5a421fd18c93ca59d631b6314467f3.
+Download/hash/ZIP CRC verified, 1599 entries extracted, three PNG objects recovered,
+hash-indexed and all inspected (identity list, picker before/after). Job/build/test
+logs and xcresult preserved in this visualization session's picker-repair-44856748909.
+Earlier failed and successful artifacts remain preserved; original dirty checkout,
+local-only commits and all quarantine evidence untouched.
+
+Allocation CLOSED / EXHAUSTED: FOUR/FOUR executions, 2597/6000 actual runner-seconds
+(43m17s), $0. Both 6A attempts, 6B reassessment and reserved final verification
+consumed. The execution limit is exhausted despite unused aggregate time. ZERO
+unchanged failing reruns; no fifth execution, source fix or later checkpoint work.
+This documentation-only [skip ci] failure closeout is UNVALIDATED and has no
+successful exact-HEAD CI. Publish with expected-SHA/non-force fast-forward only.
+
+Next separately bounded scope: diagnose 6A challenge Enabled-switch query timing/
+readiness with exact fixture identity and preserved failure artifacts. Retain
+existing assertions, 3/10-second waits and service/storage contracts. Restore 6A
+then reassess 6B in order; no 6C/Stage 7 advancement. STOP at this observed failure.
+
 ## Active focused decision - 6A restored, 6B accepted - 2026-11-21 UTC
 
 The offscreen-picker harness defect is fixed. 6A RESTORED / ACCEPTED and 6B

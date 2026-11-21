@@ -1,3 +1,27 @@
+## Final 8efdd07 evidence - run 44856748909 FAILURE - 2026-11-21 UTC
+
+PROJECT_STATE supersedes the earlier pre-final acceptance decision. Twelve distinct
+tests: eleven PASS / one FAIL. The picker regression PASS (56.407s), all five
+ListNavigationUITests PASS including new-editor/cancel/relaunch (82.079s), all
+three model and both fixture tests PASS. Identity UI FAILS (139.247s).
+
+Failure is the challenge 6A...002 Enabled-switch unique count wait, after Edit
+readiness on initial challenge launch. Query starts at test t=99.79, internal
+retries at 108.96, capture starts 132.51; capture at 134.33 reports exactly one
+enabled/hittable switch with value=0 and one native child. Screenshot shows the
+expected disabled challenge row. Bounded query-wait cause unresolved; later
+correct capture does not validate the failed deadline. No evidence supports
+product-binding changes or longer waits. 6A scoped-query readiness requires
+reassessment; dependent 6B acceptance withheld. Mode-picker repair remains proven.
+
+App/test build/usage/lineage/reproducibility/discovery PASS; diagnostics review
+SKIPPED after failure; package/coverage intentionally SKIPPED; device NOT RUN.
+Artifact 14688013710 download/CRC/hash verified: 108183364 bytes, 1599 entries,
+three inspected/indexed PNG. SHA256
+5e8dcf2e4bf11237ff222bc0d75750cfcf5a421fd18c93ca59d631b6314467f3.
+Allocation closed at four executions/2597s ($0); no repair/rerun or next checkpoint.
+Documentation-only failure closeout itself has no successful exact-HEAD CI.
+
 ## Accepted focused 6B evidence - b6d5020 / run 44854992530
 
 PROJECT_STATE owns checkpoint/gate decisions. Profile=6b attempt 1 SUCCESS,

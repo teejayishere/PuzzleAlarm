@@ -1115,3 +1115,25 @@ documentation-inclusive revision, then reserved profile=6b exact-HEAD validation
 before handoff; no further source changes. PROJECT_STATE owns focused acceptance
 and next scope. Full Gate 6 remains outstanding; 6C-6F/Stage 7 not started here.
 Original dirty checkout, local-only commits and all quarantine/evidence preserved.
+
+## Final verification failed; allocation closed - 2026-11-21 UTC
+
+Assessed 8efdd07bd91a9516b0815d0cefbec0a8a45b4eaf /
+[run 44856748909](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44856748909),
+profile=6b attempt 1 FAILURE. Job 136700632043 02:35:45-02:47:56 UTC, 731s.
+Eleven of twelve tests PASS: repaired picker, all five navigation cases, three
+model and two fixture tests. Identity UI times out in unique() for challenge
+Enabled switch; later capture reports count=1/enabled/hittable/value=0 and correct
+row screenshot. Query starts t=99.79, retries 108.96, capture 132.51/134.33.
+Cause unresolved; do not infer a binding/storage defect or raise timeouts.
+Earliest affected 6A readiness contract needs reassessment before dependent 6B.
+Prior seven-test/twelve-test successes retained as narrow evidence; PROJECT_STATE
+supersedes pre-final acceptance/next-6C wording. No source changes after failure.
+Artifact 14688013710 verified/preserved, 108183364 bytes, SHA256
+5e8dcf2e4bf11237ff222bc0d75750cfcf5a421fd18c93ca59d631b6314467f3;
+1599 entries/three indexed inspected PNG, logs/xcresult/job log retained.
+App/test build/usage/lineage/reproducibility/discovery PASS; diagnostics SKIPPED,
+package/coverage intentionally SKIPPED; device NOT RUN. FOUR/FOUR runs,
+2597/6000s (43m17s), $0; allocation exhausted, no fifth run/repair/6C/Stage 7.
+Documentation-only [skip ci] closeout is unvalidated. Original dirty checkout,
+local-only commits and all quarantine/evidence preserved.
