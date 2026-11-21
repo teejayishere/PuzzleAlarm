@@ -1042,3 +1042,40 @@ Query reveal handles absent lazy controls before exact ready assertions, fails o
 ambiguity and preserves bounds/timeouts. Added independent picker regression to
 6A (seven tests) and 6B (twelve). No product/binding/service/schema changes.
 Compilation/runtime PENDING. PROJECT_STATE owns status and TEST_MATRIX scenarios.
+
+## Picker repair attempt 1 observed; attempt 2 candidate - 2026-11-21 UTC
+
+Owner request was 2026-11-20 America/Chicago; this allocation's executions occur
+2026-11-21 UTC. Earlier candidate headings used the local request date.
+
+Assessed d1200364109731f910e6d30620630a38c8bdbfc5,
+[run 44852907582](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44852907582),
+profile=6a, attempt 1, completed/FAILURE. Job 136688217270 ran
+01:54:47-01:56:12 UTC: 85 actual runner-seconds. ONE/FOUR total executions,
+85/6000 runner-seconds, $0. First of at most TWO changed 6A attempts consumed.
+Existing sequential 6A repair authority permits the changed second candidate;
+no unchanged failing rerun. No 6B execution or later-checkpoint work occurred.
+
+The new overload introduced an implementation mistake: XCTest's Objective-C
+exposure maps both reveal(_:in:) methods to reveal:in:, causing a compiler error
+at AlarmUITestCase.swift:109. App build/usage, lineage, project reproducibility
+and Simulator discovery PASS; test compilation FAILED, ZERO tests executed.
+Diagnostics-review SKIPPED; package/coverage intentionally SKIPPED. No runtime or
+6A restoration evidence. 6A still NEEDS RESTORATION / NOT ACCEPTED; 6B and Gate 6
+FAILED / NOT ACCEPTED, later checkpoints blocked. No Gates 0-5 disproof.
+
+Second candidate renames only the new query helper to revealQuery and updates
+choose()'s call. No selector suppression, assertion/timeout change, product
+binding/storage/service change or workflow-selection change in this iteration.
+The seven-test 6A set (including the offscreen regression) remains required.
+New compilation/runtime evidence is PENDING publication. If this second 6A
+candidate fails, its attempt sub-budget is exhausted; do not use reserved 6B
+executions as more repair attempts.
+
+Failure artifact [14685863705](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44852907582/artifacts/14685863705):
+39690 bytes, SHA256 a06dd6571f9b663cd3fdaf6b397474a693a30b107358098a03887f957f585cb6.
+Download/ZIP CRC/hash verified, 19 entries extracted, logs and partial xcresult
+preserved in this visualization session's picker-repair-44852907582 directory.
+An extraction-helper indentation mistake was corrected and the SAME ZIP
+re-extracted without another download. Zero PNG objects, as runtime never began.
+Device/manual NOT RUN. Original dirty checkout and all prior evidence preserved.

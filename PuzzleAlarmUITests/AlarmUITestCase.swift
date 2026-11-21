@@ -106,7 +106,7 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
     }
 
     @MainActor
-    func reveal(_ query: XCUIElementQuery, in app: XCUIApplication) {
+    func revealQuery(_ query: XCUIElementQuery, in app: XCUIApplication) {
         // Lazy Form/List content may have no accessibility element until scrolled
         // into view. Never dereference an absent or ambiguous query while finding it.
         for upward in [true, false] {
@@ -128,7 +128,7 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
     @MainActor
     func choose(_ id: String, _ title: String, in app: XCUIApplication) {
         let query = app.buttons.matching(identifier: id)
-        reveal(query, in: app)
+        revealQuery(query, in: app)
         let picker = ready(query, in: app)
         picker.tap()
         ready(app.buttons.matching(identifier: title), in: app, timeout: 3).tap()

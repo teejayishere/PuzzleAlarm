@@ -1,3 +1,15 @@
+## Picker restoration attempt 1 - 2026-11-21 UTC
+
+Assessed d120036 / run 44852907582 profile=6a attempt 1 FAILURE before tests.
+No scenario ran: new reveal overloads collide on Objective-C selector reveal:in:.
+App build/usage/lineage/project reproducibility/discovery PASS; test compilation
+FAILED; diagnostics-review/package/coverage SKIPPED. New helper is now renamed
+revealQuery with matching call; seven-test 6A set unchanged and PENDING. No runtime
+or checkpoint acceptance. Artifact 14685863705 download/CRC/hash/access verified,
+39690 bytes / 19 extracted entries / zero PNG; SHA256
+a06dd6571f9b663cd3fdaf6b397474a693a30b107358098a03887f957f585cb6.
+PROJECT_STATE records exact SHA/run/time/budget and recursive status.
+
 ## Picker-readiness restoration scenario - 2026-11-20 UTC
 
 PROJECT_STATE owns status. New repair evidence PENDING.
