@@ -1056,3 +1056,19 @@ preserved in this visualization session's picker-repair-44852907582 directory.
 An extraction-helper indentation mistake was corrected and the SAME ZIP
 re-extracted without another download. Zero PNG objects, as runtime never began.
 Device/manual NOT RUN. Original dirty checkout and all prior evidence preserved.
+
+## 6A restoration observed; 6B reassessment - 2026-11-21 UTC
+
+cd05a8d / [run 44853316540](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44853316540),
+profile=6a attempt 1 SUCCESS, job 136689552718 01:59:22-02:13:42 UTC, 860s.
+Seven tests PASS including new offscreen picker: initial count=0/hittable=false,
+bounded reveal, exact ready interaction, draft Challenges required/disabled Save,
+Cancel -> empty. Existing six 6A cases also PASS. App/test build, usage, lineage,
+reproducibility, discovery and diagnostics PASS; focused package/coverage SKIPPED.
+No compiler/destination warnings, one recognized metadata advisory; device NOT RUN.
+Artifact 14686927659 download/CRC/hash verified: 5921170 bytes, SHA256
+4e9bd052382cbc546f320edae72457288ac052fcb3c6da9b4ef04211294063cf; 125 entries,
+15 PNG indexed, selected Mode/diagnostic samples inspected, logs/xcresult kept.
+Allocation TWO/FOUR runs, 945/6000s ($0). Record restored prerequisite, then run
+twelve-test 6B set without further source changes. PROJECT_STATE owns status.
+No 6C/Stage 7; original dirty checkout/quarantine preserved.

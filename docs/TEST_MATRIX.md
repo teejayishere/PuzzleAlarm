@@ -1,3 +1,22 @@
+## Restored 6A evidence - cd05a8d / run 44853316540
+
+Profile=6a, attempt 1 SUCCESS: seven distinct tests, zero failures. All earlier six
+cases plus HarnessPickerUITests/testOffscreenPickerIsRevealedBeforeUniqueInteraction
+PASS (52.812s). Log precondition count=0/hittable=false; query-aware reveal then
+one enabled/hittable Mode picker, actual draft mode=challenges_required, invalid
+Save disabled and Cancel -> empty. Selected screenshot visually checked.
+Artifact 14686927659, 5921170 bytes, SHA256
+4e9bd052382cbc546f320edae72457288ac052fcb3c6da9b4ef04211294063cf;
+download/CRC/hash/access verified, 125 entries/15 distinct PNG recovered/indexed.
+Lineage/reproducibility/discovery/app-test compilation/usage/diagnostics PASS;
+package/core coverage intentionally SKIPPED; device/manual NOT RUN.
+No compiler/destination warnings; one recognized metadata advisory.
+
+6B's twelve-test profile is now eligible for reassessment on the documentation-
+inclusive revision. Its five navigation cases, three model cases, two fixture
+cases, identity case and picker regression are all required. Prior 10/11 outcome
+does not accept the blocked new-editor path. PROJECT_STATE owns the decisions.
+
 ## Picker restoration attempt 1 - 2026-11-21 UTC
 
 Assessed d120036 / run 44852907582 profile=6a attempt 1 FAILURE before tests.

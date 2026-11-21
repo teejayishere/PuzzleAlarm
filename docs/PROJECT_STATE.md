@@ -7,6 +7,49 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active 6A restored; 6B reassessment candidate - 2026-11-21 UTC
+
+6A RESTORED / ACCEPTED with focused evidence including the previously disproved
+offscreen-picker path. Assessed **cd05a8d3ca51478b305060916bc06b2c94d5dff4**,
+[run 44853316540](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44853316540),
+workflow_dispatch profile=6a, attempt 1, completed/SUCCESS. Job 136689552718 ran
+01:59:22-02:13:42 UTC: 860 actual runner-seconds (14m20s). Seven distinct tests
+PASS, zero failures: three diagnostic UI, identity UI, new picker UI and two
+fixture unit tests. This restores the affected prerequisite before reassessing 6B.
+
+Picker regression (52.812s) proves initial count=0/hittable=false, then bounded
+scroll before exact ready interaction, actual draft mode=challenges_required,
+disabled Save for empty challenges and Cancel back to empty. Initial hierarchy/
+screen and selected screenshot retained. The selected screenshot was visually
+checked: Mode is visible with Challenges required and Save disabled. Existing
+native-target/diagnostic/fixture/identity cases also PASS. No weaker assertions,
+timeout increase, product binding/storage/service/schema change or source import.
+
+Lineage/project reproducibility/discovery, app/test compilation, usage description
+and Xcode diagnostics review PASS. Xcode 26.6 / Swift 6.3.3; no compiler/destination
+warnings, one recognized no-AppIntents metadata advisory. Package tests/core
+coverage intentionally SKIPPED by focused profile. Device/manual NOT RUN.
+Artifact [14686927659](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44853316540/artifacts/14686927659):
+5921170 bytes, SHA256 4e9bd052382cbc546f320edae72457288ac052fcb3c6da9b4ef04211294063cf.
+Download/hash/ZIP CRC verified, 125 entries extracted, 15 distinct PNG objects
+recovered with hash index; selected Mode and diagnostic samples visually checked.
+Job log, build/test logs and xcresult preserved locally in picker-repair-44853316540
+under this visualization session. First compiler-failure evidence remains intact.
+
+Allocation: TWO/FOUR executions, 945/6000 actual runner-seconds (15m45s), $0.
+Both 6A attempt slots consumed (85s compiler failure + 860s SUCCESS). Two reserved
+executions remain: one 6B reassessment, then one final documentation-inclusive 6B
+run only after success. Stop on any 6B failure/exhaustion; no unchanged failing retry.
+No additional source changes: this revision records restored 6A before profile=6b
+validates all twelve selected tests, including the picker regression and previously
+blocked new-editor challenge selection/cancel/relaunch/disk/service assertions.
+
+6B PENDING / NOT ACCEPTED; Gate 6 remains FAILED / NOT ACCEPTED. 6C-6F NOT ACCEPTED,
+Stage 7 NOT STARTED; no Gates 0-5 disproof. Full exact-final-HEAD Gate 6 validation
+remains required later. Original dirty checkout/local commits/quarantine untouched.
+This documentation-inclusive candidate needs its own matching focused Actions run.
+Earlier candidate/failure statements below are revision-specific history.
+
 ## Picker repair attempt 1 observed; attempt 2 candidate - 2026-11-21 UTC
 
 Owner request was 2026-11-20 America/Chicago; this allocation's executions occur
