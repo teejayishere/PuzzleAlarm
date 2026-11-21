@@ -1,3 +1,22 @@
+## Narrow identity diagnostic evidence - 863c248 / 44859110471
+
+Profile=6a_identity attempt 1 SUCCESS, four distinct tests/zero failures:
+original HarnessIdentityUITests sequence (125.179s), native absent-target probe
+(29.332s), two fixture unit tests. Nineteen successful lookups all exists=true/
+count=1: native maximum1.347929s, post-count maximum0.086671s. Absent native wait
+returns false after measured3.109532s with the existing3s API limit/count=0.
+No original identity assertions/fixture phases removed or split.
+Timing supports this candidate run, not a guaranteed latency/root-cause claim.
+Full6A eight-test set PENDING; narrow result cannot accept6A/6B.
+
+Lineage/reproducibility/discovery/app-test build/usage/diagnostics PASS; package/
+coverage intentionally SKIPPED, device NOT RUN. No compiler/destination warnings,
+one recognized metadata advisory. Artifact14689427005 verified/preserved:
+283283 bytes,51 entries,zero PNG; SHA256
+ccceff3bb8fb3576abb42c2afec03f2d9cbbaa7780bcb06d85523390e82ac5f4.
+Job/build/test logs,xcresult and timing index available locally. PROJECT_STATE
+owns actual SHA/run/time/budget and prerequisite status.
+
 ## Identity-query observer diagnosis - 2026-11-21 UTC
 
 PROJECT_STATE owns status. New candidate outcomes PENDING.

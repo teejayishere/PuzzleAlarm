@@ -7,6 +7,50 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active narrow identity result; full 6A candidate - 2026-11-21 UTC
+
+Narrow identity diagnostic SUCCESS, not complete 6A restoration. Assessed
+**863c248b76a529f361f7fac7c42c2cc8ca12874d** /
+[run 44859110471](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44859110471),
+workflow_dispatch profile=6a_identity, attempt 1, completed/SUCCESS. Job
+136708127084 ran 03:03:20-03:09:40 UTC: 380 actual runner-seconds (6m20s).
+Four distinct tests PASS/zero failures: original combined identity scenario,
+absent-target native-wait probe and both fixture unit tests.
+
+The original ordinary/challenge initial/relaunch/reset sequence passed unchanged
+(identity test 125.179s). Nineteen successful exact lookups: maximum native wait/
+resolution 1.347929s, maximum post-count call 0.086671s, all exists=true/count=1.
+Challenge phase logs include initial and relaunched Enabled queries. The absent
+probe PASS (29.332s overall): native wait returned false after 3.109532s with
+count=0 before/after. The three-second API limit was unchanged; measured elapsed
+includes call/return overhead. These timings support the candidate observer
+change in this execution; they do not prove the complete cause of the earlier
+intermittent timeout or replace broader prerequisite validation.
+
+Source is unchanged for the next profile=6a execution: native existence waiting,
+explicit cardinality, original readiness/value assertions, same 3/10-second waits,
+same fixture sequence. Full 6A must run all EIGHT cases (prior seven plus absent
+probe) before 6B is eligible. 6A remains NOT ACCEPTED pending complete restoration;
+6B WITHHELD / NOT ACCEPTED; Gate 6 NOT ACCEPTED; no 6C/Stage 7. Gates 0-5 unchanged.
+
+Automated lineage/reproducibility/discovery PASS; app/test compilation, usage
+description and Xcode diagnostics review PASS. No compiler/destination warnings,
+one recognized metadata advisory. Package/core coverage intentionally SKIPPED
+by focused profile; physical device/manual NOT RUN.
+Artifact [14689427005](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44859110471/artifacts/14689427005):
+283283 bytes, SHA256 ccceff3bb8fb3576abb42c2afec03f2d9cbbaa7780bcb06d85523390e82ac5f4.
+Download/hash/ZIP CRC verified, 51 entries extracted, zero PNG objects (these
+successful focused cases requested no screenshots). Job/build/test logs,
+xcresult and extracted timing index preserved in identity-query-44859110471
+under this visualization session. All previous artifacts and original dirty
+checkout/local-only commits/quarantine remain intact.
+
+Allocation ONE/SIX executions, 380/9000 actual runner-seconds, $0; one of four
+prerequisite slots used. Full 6A next, then 6B/final documented validation only
+after prerequisite success. No unchanged failing retry or timeout weakening.
+This documentation-inclusive revision requires its own complete focused 6A run.
+Earlier decisions below are history.
+
 ## Active identity-query diagnosis candidate - 2026-11-21 UTC
 
 Owner requested another repair attempt. Scope: diagnose the identity-query wait,

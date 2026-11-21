@@ -1154,3 +1154,17 @@ runner-minutes, four6A diagnostic/restoration slots plus6B and final documented6
 no unchanged failing retry or6C/Stage7. PROJECT_STATE owns complete bounds/status.
 No product/core/binding/schema/service change; original dirty checkout and all
 evidence preserved. Compilation/runtime PENDING.
+
+## Narrow identity diagnosis observed - 2026-11-21 UTC
+
+863c248 / [run44859110471](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44859110471),
+profile6a_identity attempt1 SUCCESS, job136708127084 03:03:20-03:09:40 UTC,380s.
+Four tests PASS: intact combined identity125.179s, absent probe29.332s, two fixture
+tests. Nineteen exact lookups exists=true/count=1, max native1.347929s/count0.086671s;
+absent returns false at unchanged3s limit (3.109532s observed). No root-cause or
+full6A acceptance claim. Source unchanged; next full6A eight-test validation.
+Lineage/reproducibility/discovery/build/usage/diagnostics PASS; package/coverage
+SKIPPED,device NOT RUN. Artifact14689427005 verified:283283 bytes,51 entries,0PNG,
+SHA256 ccceff3bb8fb3576abb42c2afec03f2d9cbbaa7780bcb06d85523390e82ac5f4.
+Logs/xcresult/timings kept. Allocation1/6,380/9000s,$0; old evidence/dirty checkout
+preserved. PROJECT_STATE owns status; no6B before full6A,no6C/Stage7.
