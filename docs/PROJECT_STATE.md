@@ -7,6 +7,47 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active full 6A restoration; 6B candidate - 2026-11-21 UTC
+
+6A RESTORED / ACCEPTED on complete focused evidence, including the identity wait
+and negative absent-target probe. Assessed **ab6cd123e6783df7c446b9af587f3fa06e1d83f2** /
+[run 44859984661](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44859984661),
+workflow_dispatch profile=6a, attempt 1, completed/SUCCESS. Job 136710917493:
+03:13:26-03:25:31 UTC, 725 actual runner-seconds (12m05s). EIGHT distinct tests
+PASS/zero failures: four diagnostic UI, original identity UI, picker UI and both
+fixture unit tests. Narrow four-test success at 863c248/44859110471 remains
+supporting evidence; complete restoration is based on this eight-test result.
+
+Identity case PASS (83.560s), retaining original ordinary/challenge initial/
+relaunch/reset sequence and assertions. All 48 successful exact lookups reported
+exists=true/count=1; maxima native resolution/wait1.459318s and post-count0.152226s.
+Absent probe PASS (26.361s overall): false/count=0 at unchanged3s API limit,
+measured3.128854s including overhead. Picker/native-target/failure capture/draft/
+stored-state cases also PASS. These observations support the repaired observer;
+the underlying cause of the old intermittent server/predicate latency is not
+claimed proven. No deadlines, uniqueness, readiness or value assertions weakened.
+
+Lineage/project reproducibility/Simulator discovery, app/test compilation,
+usage description and Xcode diagnostics review PASS. No compiler/destination
+warnings, one recognized metadata advisory. Focused package/core coverage
+intentionally SKIPPED; physical device/manual accessibility NOT RUN.
+Artifact [14688559842](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44859984661/artifacts/14688559842):
+5746591 bytes, SHA256 70fd30dad6bea808986b77323985d96b18ea9192bd52dfda21cfa2df594f2692.
+Download/hash/ZIP CRC verified,125 entries extracted,14 distinct PNG indexed;
+selected picker and diagnostic editor samples inspected. Logs/xcresult/timing
+index retained locally in identity-query-44859984661. All older evidence and
+original dirty checkout/local-only commits/quarantine remain untouched.
+
+Allocation TWO/SIX executions,1105/9000 actual runner-seconds (18m25s),$0.
+Two of four prerequisite slots used. Source is unchanged for the next twelve-test
+profile=6b reassessment; this revision records restored 6A before that run.
+No unchanged failing retry, product/binding/schema/service change, or later-
+checkpoint implementation. Stop on a 6B failure or allocation limit.
+6B PENDING / NOT ACCEPTED; Gate 6 NOT ACCEPTED;6C-6F NOT ACCEPTED,Stage7 NOT STARTED.
+Gates0-5 have no new disproving evidence. Final documentation-inclusive HEAD must
+receive matching focused SUCCESS before repair handoff. Full Gate6 validation
+remains required later; no focused result substitutes for it.
+
 ## Active narrow identity result; full 6A candidate - 2026-11-21 UTC
 
 Narrow identity diagnostic SUCCESS, not complete 6A restoration. Assessed

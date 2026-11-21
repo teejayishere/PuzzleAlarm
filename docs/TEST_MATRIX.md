@@ -1,3 +1,21 @@
+## Complete 6A restoration - ab6cd12 / 44859984661
+
+Profile=6a attempt1 SUCCESS: eight distinct tests/zero failures. Four diagnostic
+cases (including absent native target), original identity, picker and two fixture
+unit tests all PASS. Identity83.560s, absent probe26.361s, picker43.405s.
+Forty-eight successful exact lookups all exists=true/count=1, maxima native
+1.459318s/post-count0.152226s. Absent native result false/count=0 at same3s limit
+(measured3.128854s with overhead). Original assertions and fixture sequence retained.
+Source observer repair has complete focused evidence; underlying old latency
+cause not claimed proven. Twelve-test6B reassessment now eligible, outcome PENDING.
+
+Lineage/reproducibility/discovery/app-test build/usage/diagnostics PASS; package/
+coverage intentionally SKIPPED,device NOT RUN. One recognized metadata advisory,
+no compiler/destination warnings. Artifact14688559842 verified:5746591 bytes,
+125 entries/14 indexed PNG, selected picker/editor samples inspected; SHA256
+70fd30dad6bea808986b77323985d96b18ea9192bd52dfda21cfa2df594f2692.
+Logs/xcresult/timings preserved. PROJECT_STATE owns acceptance/budget/next action.
+
 ## Narrow identity diagnostic evidence - 863c248 / 44859110471
 
 Profile=6a_identity attempt 1 SUCCESS, four distinct tests/zero failures:

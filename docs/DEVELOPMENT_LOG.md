@@ -1145,3 +1145,18 @@ SKIPPED,device NOT RUN. Artifact14689427005 verified:283283 bytes,51 entries,0PN
 SHA256 ccceff3bb8fb3576abb42c2afec03f2d9cbbaa7780bcb06d85523390e82ac5f4.
 Logs/xcresult/timings kept. Allocation1/6,380/9000s,$0; old evidence/dirty checkout
 preserved. PROJECT_STATE owns status; no6B before full6A,no6C/Stage7.
+
+## Full 6A restoration observed - 2026-11-21 UTC
+
+ab6cd12 / [run44859984661](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44859984661),
+profile6a attempt1 SUCCESS; job136710917493 03:13:26-03:25:31 UTC,725s.
+Eight tests PASS: four diagnostics, original identity, picker,two fixtures.
+Identity83.560s;48 lookups max native1.459318s/count0.152226s,alltrue/one; absent
+false/zero at unchanged3s API limit (3.128854s measured). Complete6A restored;
+precise historical latency cause remains unproven. App/test build,usage,lineage,
+reproducibility,discovery,diagnostics PASS; package/coverage SKIPPED,device NOT RUN.
+Artifact14688559842 verified/preserved:5746591 bytes,125 entries,14 indexed PNG,
+SHA25670fd30dad6bea808986b77323985d96b18ea9192bd52dfda21cfa2df594f2692.
+Selected picker/editor images inspected; logs/xcresult/timings retained.
+Allocation2/6,1105/9000s,$0. No source changes; next twelve-test6B reassessment.
+PROJECT_STATE owns status; no6C/Stage7,original dirty checkout/evidence preserved.
