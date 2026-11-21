@@ -83,6 +83,7 @@ final class ListNavigationUITests: AlarmUITestCase, @unchecked Sendable {
 
     @MainActor
     func testCorruptLoadStaysReadOnlyAcrossRefresh() {
+        fixture = "corrupt"
         let app = XCUIApplication()
         app.launchEnvironment["PUZZLEALARM_TEST_NAMESPACE"] = namespace
         app.launchEnvironment["PUZZLEALARM_TEST_FIXTURE"] = "corrupt"

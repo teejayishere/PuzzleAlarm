@@ -106,10 +106,30 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
     }
 
     @MainActor
+    func reveal(_ query: XCUIElementQuery, in app: XCUIApplication) {
+        // Lazy Form/List content may have no accessibility element until scrolled
+        // into view. Never dereference an absent or ambiguous query while finding it.
+        for upward in [true, false] {
+            for _ in 0..<12 {
+                let count = query.count
+                guard count <= 1 else {
+                    capture("Ambiguous control while revealing query: \(query)", in: app)
+                    XCTFail("Exactly one intended match required while revealing")
+                    return
+                }
+                if count == 1 && query.element.isHittable { return }
+                if upward { app.swipeUp() } else { app.swipeDown() }
+            }
+        }
+        capture("Query not reachable: \(query)", in: app)
+        XCTFail("Control not reachable within the existing scroll bound")
+    }
+
+    @MainActor
     func choose(_ id: String, _ title: String, in app: XCUIApplication) {
-        let picker = unique(app.buttons.matching(identifier: id), in: app)
-        reveal(picker, in: app)
-        XCTAssertTrue(picker.isEnabled)
+        let query = app.buttons.matching(identifier: id)
+        reveal(query, in: app)
+        let picker = ready(query, in: app)
         picker.tap()
         ready(app.buttons.matching(identifier: title), in: app, timeout: 3).tap()
     }

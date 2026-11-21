@@ -1,3 +1,22 @@
+## Picker-readiness restoration scenario - 2026-11-20 UTC
+
+PROJECT_STATE owns status. New repair evidence PENDING.
+
+| Scenario | Test | Required proof |
+| --- | --- | --- |
+| 6A.4 Offscreen picker readiness | HarnessPickerUITests/testOffscreenPickerIsRevealedBeforeUniqueInteraction | Fresh empty namespace; open New alarm, Mode initially absent or not hittable; bounded scroll before unique interaction, then exactly one enabled/hittable picker; Challenges required reaches actual draft, invalid empty challenge Save disabled; cancel returns to empty. Initial hierarchy/screenshot and selected screenshot retained. |
+
+Profile=6a retains all prior six tests plus 6A.4: seven distinct tests expected.
+6B reassessment is blocked until restored 6A succeeds; profile=6b retains all prior
+eleven tests plus 6A.4: twelve expected. Functional tests/3- and 10-second waits
+remain intact. No product-binding/source-identity/service/schema change.
+The new query reveal fails on ambiguity and never dereferences count=0. It uses
+the existing 12 upward/12 downward swipe bound, followed by exact ready assertions.
+The new regression issues no create/edit/enable/disable/delete/retry command;
+6B's existing disk/service assertions remain for no-write navigation acceptance.
+Automated/Xcode/Simulator/device categories must remain separate. No full Gate 6
+or device/manual acceptance follows from focused repair success.
+
 ## Gate 6B observed evidence - c9576e4 / run 44795470808
 
 PROJECT_STATE owns the current decision and recursive invalidation. Focused

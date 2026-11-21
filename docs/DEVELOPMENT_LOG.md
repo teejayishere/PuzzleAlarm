@@ -1004,3 +1004,18 @@ hash-indexed/visually inspected; logs/xcresult/job log preserved in session's
 gate6b-44795470808 directory. Original dirty checkout/quarantine untouched.
 Documentation-only [skip ci] closeout is UNVALIDATED, no exact-final-HEAD SUCCESS.
 Next fresh allocation must restore affected 6A harness then reassess 6B in order.
+
+## Picker-readiness repair candidate - 2026-11-20 UTC
+
+Owner authorized fixing the demonstrated 6A helper failure, then reassessing 6B.
+Clean fetched 35573f9 preflight/lineage PASS; zero exact-HEAD Actions runs. Original
+dirty checkout/local commits/evidence preserved. Repair exception applies.
+Query-aware reveal scrolls lazy content before unique ready interaction, rejects
+ambiguity and preserves existing bounds/assertions/timeouts. Added independent
+HarnessPickerUITests offscreen regression to both profiles; 6A seven and 6B twelve
+distinct tests expected. Corrected corrupt-fixture diagnostic context. No product,
+core, binding, schema or service change. Fresh bounded $0 allocation and stop rules
+are in PROJECT_STATE/picker-repair-budget.txt: max four executions/100 runner-minutes,
+up to two changed 6A attempts, one 6B reassessment and one final documented 6B run.
+No unchanged failing retries, later checkpoints or local product validation.
+Compilation/runtime PENDING; restore 6A before 6B. Historical evidence retained.

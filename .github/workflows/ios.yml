@@ -113,6 +113,7 @@ jobs:
           if [[ "${{ inputs.profile }}" == "6a" ]]; then
             selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
               -only-testing:PuzzleAlarmUITests/HarnessIdentityUITests
+              -only-testing:PuzzleAlarmUITests/HarnessPickerUITests
               -only-testing:PuzzleAlarmUITests/HarnessDiagnosticsUITests)
           elif [[ "${{ inputs.profile }}" == "6b" ]]; then
             selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
@@ -120,6 +121,7 @@ jobs:
               -only-testing:PuzzleAlarmTests/AlarmManagementTests/testBusyModelRejectsOverlappingCommands
               -only-testing:PuzzleAlarmTests/AlarmManagementTests/testCorruptDiskFailsClosedWithoutReplacingData
               -only-testing:PuzzleAlarmUITests/HarnessIdentityUITests
+              -only-testing:PuzzleAlarmUITests/HarnessPickerUITests
               -only-testing:PuzzleAlarmUITests/ListNavigationUITests)
           fi
           printf 'Assessed SHA: %s; profile: %s\n' "$GITHUB_SHA" "${{ inputs.profile || 'full' }}"

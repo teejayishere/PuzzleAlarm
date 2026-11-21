@@ -1027,3 +1027,18 @@ hash-indexed/visually inspected; logs/xcresult/job log preserved in session's
 gate6b-44795470808 directory. Original dirty checkout/quarantine untouched.
 Documentation-only [skip ci] closeout is UNVALIDATED, no exact-final-HEAD SUCCESS.
 Next fresh allocation must restore affected 6A harness then reassess 6B in order.
+
+## Picker-readiness repair candidate - 2026-11-20 UTC
+
+Owner authorized fixing the offscreen picker helper, restoring 6A before 6B.
+Fetched clean full-history 35573f9, external preflight/repository lineage PASS;
+zero exact-HEAD CI runs. Source/provenance review continues from the prior session;
+original dirty checkout/quarantine untouched. Fresh $0 allocation: max four focused
+executions, 25-minute configured jobs/100 actual aggregate runner-minutes; up to two
+changed 6A attempts under existing sequential authority, then one 6B reassessment
+and one documentation-inclusive final 6B run. Stop on 6B failure/exhaustion/blocker
+or final success; no unchanged failing retries/full/PR/SDK/6C/Stage 7.
+Query reveal handles absent lazy controls before exact ready assertions, fails on
+ambiguity and preserves bounds/timeouts. Added independent picker regression to
+6A (seven tests) and 6B (twelve). No product/binding/service/schema changes.
+Compilation/runtime PENDING. PROJECT_STATE owns status and TEST_MATRIX scenarios.

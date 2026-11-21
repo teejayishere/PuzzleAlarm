@@ -7,6 +7,53 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active picker-readiness repair - 2026-11-20 UTC
+
+Owner now authorized fixing the demonstrated failure. Restore affected 6A first,
+then reassess 6B and STOP; no 6C/Stage 7. 6A NEEDS RESTORATION / NOT ACCEPTED,
+6B FAILED / NOT ACCEPTED, full Gate 6 FAILED / NOT ACCEPTED until new evidence.
+No Gates 0-5 disproof. Prior failed allocation remains closed; the new request
+authorizes this separately bounded repair rather than rerunning unchanged code.
+
+Fetched origin; remote PROJECT_STATE read before AGENTS. Clean full-history active
+gate6-repair checkout matches published 35573f927859cef1a87c63800d5dedf521591b38;
+GitHub public repository/default branch verified, zero exact-HEAD Actions runs.
+Audited external preflight and repository lineage PASS using bundled Python.
+Fixed anchor/sole baseline parent/no later merges verified; post-baseline history
+review from the continuing session includes c9576e4 source and 35573f9 docs.
+Original dirty checkout/local-only commits and all prior quarantine/evidence intact.
+
+Fresh $0 allocation recorded in chat and external picker-repair-budget.txt before
+new validation: at most FOUR executions including automatic triggers. Up to TWO
+changed 6A attempts under the existing sequential repair authority; then ONE 6B
+reassessment and ONE documentation-inclusive final 6B execution. Configured
+25-minute job limit each / 100 aggregate actual runner-minutes including cleanup.
+ZERO unchanged failing retries; stop on 6B failure, exhaustion, external blocker
+or successful final verification. Publish [skip ci], manual focused dispatch only.
+No full/PR/SDK/paid runner/service. Local maxima: one preflight, four lineage,
+eight diff/document and four source/workflow reviews, four artifact downloads.
+No local product/Swift/Xcode/Simulator/device validation.
+
+Repair: a query-aware reveal helper permits count=0 while scrolling lazy content,
+fails immediately on ambiguity, and uses the unchanged 12-swipes-per-direction
+bound. choose() reveals the query before ready() enforces exact uniqueness,
+enabled and hittable state. No firstMatch, blind gesture, weaker assertion,
+timeout increase, binding/layout or product/storage/service change. Existing
+element-based reveal and other functional scenarios remain. Corrupt-load test
+failure context is corrected to name its actual fixture.
+
+HarnessPickerUITests/testOffscreenPickerIsRevealedBeforeUniqueInteraction asserts
+the initial unusable picker precondition, captures the initial hierarchy/screen,
+selects Challenges required through the repaired helper, asserts exact ready
+picker/draft mode and disabled invalid Save, retains the selected screenshot,
+then cancels back to empty. No management write action is made.
+Existing six focused 6A tests remain selected plus this regression (SEVEN expected).
+6B retains all eleven tests plus the same regression (TWELVE expected).
+Full/default and always-preserved failure artifacts remain; package/coverage
+are intentionally skipped only by focused profiles. New compilation/runtime
+evidence is PENDING. All records precede validation; matching final published
+HEAD Actions result remains authoritative. Earlier decisions below are history.
+
 ## Active Gate 6B observed decision - 2026-11-20 UTC
 
 6B FAILED / NOT ACCEPTED. New evidence invalidates 6A's offscreen-picker
