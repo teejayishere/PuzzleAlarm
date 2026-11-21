@@ -1114,3 +1114,20 @@ package/coverage intentionally SKIPPED; device NOT RUN. FOUR/FOUR runs,
 2597/6000s (43m17s), $0; allocation exhausted, no fifth run/repair/6C/Stage 7.
 Documentation-only [skip ci] closeout is unvalidated. Original dirty checkout,
 local-only commits and all quarantine/evidence preserved.
+
+## Identity-query diagnosis candidate - 2026-11-21 UTC
+
+Owner requested another attempt after final identity wait failure. Fetched clean
+7b81685; external preflight/lineage PASS, public default branch verified, zero
+exact-HEAD CI. Prior allocations closed; failed-prerequisite repair exception used.
+Candidate replaces query-count predicate polling in unique() with native element
+existence wait and explicit post-count uniqueness, unchanged3/10-second limits.
+False wait remains failure; existing enabled/hittable/value assertions and original
+fixture sequence retained. Added per-call durations/identity phases and absent-
+target negative probe. Apple query.element/waitForExistence semantics reviewed;
+latency benefit unproven until runtime. Proposed then added profile6a_identity
+(four tests); full6A eight,6B twelve. Budget: max6 focused executions/150 actual
+runner-minutes, four6A diagnostic/restoration slots plus6B and final documented6B,
+no unchanged failing retry or6C/Stage7. PROJECT_STATE owns complete bounds/status.
+No product/core/binding/schema/service change; original dirty checkout and all
+evidence preserved. Compilation/runtime PENDING.

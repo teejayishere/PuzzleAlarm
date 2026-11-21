@@ -3,6 +3,20 @@ import XCTest
 // Explicitly selected in the 6A profile; excluded from routine full functional CI.
 final class HarnessDiagnosticsUITests: AlarmUITestCase, @unchecked Sendable {
     @MainActor
+    func testNativeWaitReportsAbsentControl() {
+        let app = launch()
+        let query = app.buttons.matching(identifier: "intentionally.absent")
+        XCTAssertEqual(query.count, 0)
+        let started = Date.timeIntervalSinceReferenceDate
+        let exists = query.element.waitForExistence(timeout: 3)
+        let elapsed = Date.timeIntervalSinceReferenceDate - started
+        print("Absent native lookup exists=\(exists) elapsedSeconds=\(elapsed) count=\(query.count)")
+        XCTAssertFalse(exists, "A missing target must not be accepted by native waiting")
+        XCTAssertEqual(query.count, 0)
+        XCTAssertTrue(app.staticTexts["alarms.empty"].exists)
+    }
+
+    @MainActor
     func testNativeTargetOnSeparateFreshLaunches() {
         for native in [false, true] {
             let app = launch(diagnostics: true, probe: true)

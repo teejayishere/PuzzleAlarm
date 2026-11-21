@@ -49,12 +49,21 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
 
     @MainActor
     func unique(_ query: XCUIElementQuery, in app: XCUIApplication, timeout: TimeInterval = 10) -> XCUIElement {
-        let wait = XCTNSPredicateExpectation(predicate: NSPredicate(format: "count == 1"), object: query)
-        let result = XCTWaiter.wait(for: [wait], timeout: timeout)
-        if result != .completed { capture("unique count=\(query.count) query=\(query)", in: app) }
-        XCTAssertEqual(result, .completed, "Exactly one intended match required: \(query)")
-        XCTAssertEqual(query.count, 1)
-        return query.element
+        // Use XCTest's element wait instead of repeatedly evaluating a remote
+        // query count inside a predicate expectation. .element retains XCTest's
+        // ambiguity check; cardinality is also asserted explicitly before use.
+        let started = Date.timeIntervalSinceReferenceDate
+        let element = query.element
+        let exists = element.waitForExistence(timeout: timeout)
+        let waited = Date.timeIntervalSinceReferenceDate - started
+        let countStarted = Date.timeIntervalSinceReferenceDate
+        let count = query.count
+        let counted = Date.timeIntervalSinceReferenceDate - countStarted
+        print("Exact lookup fixture=\(fixture) intendedID=\(alarmID ?? "new") timeout=\(timeout) exists=\(exists) nativeSeconds=\(waited) count=\(count) countSeconds=\(counted) query=\(query)")
+        if !exists || count != 1 { capture("unique exists=\(exists) count=\(count) query=\(query)", in: app) }
+        XCTAssertTrue(exists, "Intended element must exist within the unchanged wait: \(query)")
+        XCTAssertEqual(count, 1, "Exactly one intended match required: \(query)")
+        return element
     }
 
     @MainActor

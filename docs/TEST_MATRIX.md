@@ -1,3 +1,23 @@
+## Identity-query observer diagnosis - 2026-11-21 UTC
+
+PROJECT_STATE owns status. New candidate outcomes PENDING.
+
+| Scenario | Test / proof |
+| --- | --- |
+| 6A.1 Original identity path | HarnessIdentityUITests/testResetAndRelaunchPreserveKnownFixtureIdentity remains intact: ordinary and challenge initial/relaunch/reset, exact row/switch identity, disabled value and unique edit count. Added phase logs only. |
+| 6A.5 Missing native target | HarnessDiagnosticsUITests/testNativeWaitReportsAbsentControl: known absent button count=0, native wait with three-second limit returns false, still count=0 and empty state. No gesture/write. |
+| Exact observer boundary | unique(): native element wait with unchanged caller timeout, explicit count==1 assertion before returning; false wait fails even if a later count becomes one. Log native resolution/wait and post-count durations. Enabled/hittable/value assertions remain. |
+
+Focused profile=6a_identity selects these two UI tests plus both fixture unit tests
+(FOUR distinct expected). Complete profile=6a retains prior seven plus absent
+probe (EIGHT). 6B remains TWELVE, eligible only after full6A success. No diagnostic
+subset success counts as checkpoint restoration. No new full/core coverage/device
+evidence. Primary API semantics reviewed: native element wait and query.element's
+ambiguity checking; no firstMatch or longer wait introduced.
+Original failed run 44856748909 and later count=1 capture remain preserved.
+New timings must distinguish native lookup from cardinality evaluation; source
+change alone does not establish the unresolved latency cause.
+
 ## Final 8efdd07 evidence - run 44856748909 FAILURE - 2026-11-21 UTC
 
 PROJECT_STATE supersedes the earlier pre-final acceptance decision. Twelve distinct

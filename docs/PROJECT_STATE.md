@@ -7,6 +7,66 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active identity-query diagnosis candidate - 2026-11-21 UTC
+
+Owner requested another repair attempt. Scope: diagnose the identity-query wait,
+restore full 6A, reassess 6B, then validate documented final HEAD; no 6C/Stage 7.
+6A NEEDS REASSESSMENT / NOT ACCEPTED, 6B WITHHELD / NOT ACCEPTED, Gate 6 NOT
+ACCEPTED. No Gates 0-5 disproof. Prior allocations remain closed; no unchanged
+failing rerun is authorized or performed.
+
+Fetched origin and read remote PROJECT_STATE before AGENTS. Public repository
+and active/default branch verified. Clean full-history gate6-repair checkout
+matched 7b81685b10ecf2616800034b8362036b89cac8fd with zero exact-HEAD Actions runs.
+Audited external preflight and repository lineage PASS using bundled Python.
+Fixed anchor/sole baseline parent/no later merges verified; post-baseline history
+review continues from prior sessions through the 7b81685 failure closeout.
+Original dirty checkout/local-only commits/quarantine and all artifacts preserved.
+
+Fresh $0 budget recorded in chat/external identity-query-budget.txt: at most SIX
+executions including automatic triggers, configured 25-minute jobs/150 aggregate
+actual runner-minutes including cleanup. Up to FOUR changed 6A diagnostic/repair/
+restoration candidates; ONE 6B reassessment and ONE final documentation-inclusive
+6B run reserved. Existing sequential repair authority applies only to the 6A pool.
+ZERO unchanged failing retries; stop on 6B failure, exhaustion, external blocker
+or final success. Publish [skip ci], manual dispatch on public macos-26; no full/
+PR/SDK/paid execution. Local maxima: one preflight, eight lineage, sixteen diff/
+document and eight source/workflow reviews, six artifact downloads. No local
+product/Swift/Xcode/Simulator/device execution.
+
+Preserved failure still shows a predicate wait timing out during remote query
+count evaluation, with a later single correct control. Actual root cause remains
+unproven. Candidate changes only the observer boundary: unique() uses XCTest's
+native waitForExistence with the SAME 3/10-second caller limits, then explicitly
+asserts count==1 before use. query.element retains SDK ambiguity checking, with
+no firstMatch. A false native wait remains a failure even if a later count is one.
+Enabled/hittable/value predicates and functional assertions remain unchanged.
+Native-lookup and cardinality-call durations are logged separately; fixture/
+identity phases are added without changing the original combined fixture sequence.
+
+Primary API references reviewed:
+[query.element](https://developer.apple.com/documentation/xcuiautomation/xcuielementquery/element)
+and [waitForExistence](https://developer.apple.com/documentation/xcuiautomation/xcuielement/waitforexistence(timeout:)).
+These support uniqueness/existence semantics, not a guaranteed latency improvement.
+Runtime evidence must decide whether this removes the demonstrated observer failure.
+No product binding/layout, core, storage/schema or service changes are justified.
+
+Missing focused capability was proposed before edit: profile=6a_identity selects
+the original identity UI test, two existing fixture unit tests and new
+HarnessDiagnosticsUITests/testNativeWaitReportsAbsentControl (FOUR expected).
+The new probe asserts a known absent target returns false and remains count=0
+using the existing three-second limit. Full profile=6a retains all earlier seven
+cases plus this probe (EIGHT); profile=6b retains TWELVE. Existing full/default
+selection and always-preserved failure artifacts remain; the diagnostic class is
+still excluded from routine full functional UI selection. Package/coverage are
+intentionally skipped for all focused profiles.
+
+Compilation/timing/runtime evidence is PENDING publication. Narrow identity
+success alone cannot restore complete 6A. Full 6A must succeed before 6B. Earlier
+Mode-picker repair remains in place; no timeout increase or later-checkpoint
+promotion. Device/manual NOT RUN. All documentation precedes validation; final
+matching Actions result is authoritative. Earlier decisions below are history.
+
 ## Active final-validation decision - NOT ACCEPTED - 2026-11-21 UTC
 
 The offscreen Mode-picker repair is verified, including the formerly failing
