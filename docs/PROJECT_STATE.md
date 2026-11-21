@@ -7,6 +7,72 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active focused repair decision - 6A restored, 6B accepted - 2026-11-21 UTC
+
+The native exact-element wait repair has focused acceptance evidence. 6A is
+RESTORED / ACCEPTED and 6B is ACCEPTED on the assessed revisions below. Gate 6
+remains NOT ACCEPTED; 6C-6F NOT ACCEPTED, Stage 7 NOT STARTED. No new evidence
+disproves Gates 0-5. This repair stops after matching final-HEAD verification.
+
+Complete 6A: ab6cd123e6783df7c446b9af587f3fa06e1d83f2 /
+[run 44859984661](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44859984661),
+profile=6a attempt 1 SUCCESS, eight distinct tests and zero failures. This includes
+all prior identity/native-target/picker/fixture cases plus the absent-target probe.
+Job 136710917493: 03:13:26-03:25:31 UTC, 725 seconds. The earlier narrow four-test
+run 44859110471 at 863c248 is supporting evidence, not the restoration decision.
+
+6B: **e63875714e8fb02e8dd2ac750ba33e62c8819dcd** /
+[run 44861324867](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44861324867),
+workflow_dispatch profile=6b, attempt 1, completed/SUCCESS. Job 136715155359:
+03:28:48-03:43:45 UTC, 897 actual runner-seconds (14m57s). TWELVE distinct tests
+PASS, zero failures: identity UI, picker UI, five navigation UI, three model and
+two fixture tests. Original combined identity scenario PASS (133.187s); ordinary
+and challenge initial/relaunch/reset assertions remain intact. All navigation
+cases, including new mode selection/cancel/relaunch and no-write/service checks,
+PASS. The original offscreen Mode-picker regression also PASS (55.155s).
+
+All 112 successful exact lookups reported exists=true/count=1; maximum native
+resolution/wait 2.242493s and post-count call 0.280944s. Complete 6A maxima were
+1.459318s/0.152226s. The negative probe returned false for an absent control with
+the same three-second API limit. No 3/10-second timeout, uniqueness, readiness,
+stored-value or functional assertion was weakened. The observer now uses native
+element waiting and explicit cardinality instead of repeated count-predicate
+polling. Measurements support these runs; the precise cause of the historical
+intermittent remote-query latency is not claimed proven. No product binding,
+layout, core, schema or service contract changed.
+
+Evidence categories: source repair and test-only instrumentation published;
+lineage/project reproducibility/discovery PASS; app/test compilation, usage
+description and Xcode diagnostics review PASS. No compiler/destination warnings,
+one recognized metadata advisory. Simulator evidence is the named focused sets.
+Package/core coverage intentionally SKIPPED by focused profiles; no full Gate 6
+result. Physical device/manual VoiceOver/largest text NOT RUN.
+
+6B artifact [14690366811](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44861324867/artifacts/14690366811):
+1977116 bytes, SHA256 c1ab26f31f65185c677c24c42d1f698df0ada1ccb10fcfa249ff4f0e93d963e9.
+Download/hash/ZIP CRC verified, 73 entries extracted, two PNG recovered/indexed
+and both inspected. Logs/xcresult/timing index preserved in identity-query-44861324867
+under the current visualization session. Narrow and complete 6A artifacts and
+all older failed/successful evidence remain preserved.
+
+On resumption, origin was fetched and remote state read before AGENTS. Clean
+checkout and remote still exactly matched the successful e638757 SHA. Its
+existing result was reused; no unchanged-code rerun was started. Original dirty
+checkout, local-only commits and all quarantine evidence remain untouched.
+
+Allocation before final publication: THREE/SIX executions, 2002/9000 actual
+runner-seconds (33m22s), $0. One reserved final documentation-inclusive profile=6b
+run remains necessary. Source is unchanged from the assessed successful revision;
+all records precede that validation. Stop on final failure or verified success;
+no extra prerequisite runs, unchanged failing retries, full/PR/SDK or 6C work.
+The matching Actions run for this final published commit is authoritative for
+its exact SHA/result/time. This pre-validation record is not a substitute for
+matching final-HEAD SUCCESS.
+
+After successful handoff, next scope is checkpoint 6C draft editing under a
+separate bounded session. Preserve 6A/6B assertions and full final Gate 6
+validation requirements. Earlier status and next-action statements are history.
+
 ## Active full 6A restoration; 6B candidate - 2026-11-21 UTC
 
 6A RESTORED / ACCEPTED on complete focused evidence, including the identity wait

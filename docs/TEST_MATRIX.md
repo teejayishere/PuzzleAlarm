@@ -1,3 +1,31 @@
+## Accepted 6B evidence after native wait repair - e638757 / 44861324867
+
+PROJECT_STATE owns current decisions. Profile=6b attempt 1 SUCCESS: twelve
+distinct tests, zero failures, after complete eight-test 6A restoration.
+
+| Test group / scenario | Observed result |
+| --- | --- |
+| Original combined identity | PASS 133.187s; ordinary/challenge initial, relaunch and reset assertions unchanged. |
+| Offscreen Mode picker | PASS 55.155s; absent/not-hittable initial query, bounded reveal, exact ready match, actual challenge draft/disabled Save, cancel. |
+| Challenge editor before/after relaunch | PASS 94.183s; exact identity/value/disk/service checks. |
+| Ordinary editor before/after relaunch | PASS 70.324s; exact identity/value/disk/service checks. |
+| Empty/new editor cancel/relaunch | PASS 81.530s, including no-write/no-mutation assertions. |
+| Corrupt load / refresh | PASS 19.497s; read-only error and original bytes retained. |
+| Loading | PASS 10.624s; editing and refresh unavailable while held. |
+| Three model + two fixture unit tests | All PASS. |
+
+112 successful exact lookups all exists=true/count=1. Maxima: native 2.242493s,
+post-count 0.280944s. Native wait/cardinality assertions and existing 3/10-second
+limits remain. Complete 6A separately passed eight cases, including negative
+absent target; narrow diagnostic alone was not used for acceptance.
+Lineage/reproducibility/discovery/build/usage/diagnostics PASS; no compiler/
+destination warnings, one recognized metadata advisory. Package/core coverage
+intentionally SKIPPED; device/manual NOT RUN; no full Gate 6 acceptance.
+Artifact 14690366811 verified: 1977116 bytes, 73 entries, two indexed inspected PNG,
+SHA256 c1ab26f31f65185c677c24c42d1f698df0ada1ccb10fcfa249ff4f0e93d963e9.
+Logs/xcresult/timings preserved. Final documented HEAD still requires its matching
+focused SUCCESS before handoff.
+
 ## Complete 6A restoration - ab6cd12 / 44859984661
 
 Profile=6a attempt1 SUCCESS: eight distinct tests/zero failures. Four diagnostic

@@ -1183,3 +1183,21 @@ SHA25670fd30dad6bea808986b77323985d96b18ea9192bd52dfda21cfa2df594f2692.
 Selected picker/editor images inspected; logs/xcresult/timings retained.
 Allocation2/6,1105/9000s,$0. No source changes; next twelve-test6B reassessment.
 PROJECT_STATE owns status; no6C/Stage7,original dirty checkout/evidence preserved.
+
+## Native wait repair: 6B acceptance evidence - 2026-11-21 UTC
+
+e63875714e8fb02e8dd2ac750ba33e62c8819dcd /
+[run 44861324867](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44861324867),
+profile=6b attempt 1 SUCCESS, twelve tests/zero failures. Job 136715155359:
+03:28:48-03:43:45 UTC, 897s. Original identity PASS 133.187s; all navigation/model/
+fixture cases PASS. 112 exact lookups all true/one, maximum native 2.242493s and
+count 0.280944s. Complete 6A had eight PASS; observer timings do not establish the
+precise old latency cause. No timeout/assertion/product contract changes.
+Build/usage/lineage/reproducibility/discovery/diagnostics PASS; package/coverage
+SKIPPED, device/manual NOT RUN. Artifact 14690366811 verified/preserved:
+1977116 bytes, 73 entries/two indexed inspected PNG, SHA256
+c1ab26f31f65185c677c24c42d1f698df0ada1ccb10fcfa249ff4f0e93d963e9.
+Resumption fetched/verified unchanged e638757 and reused this successful run.
+Allocation THREE/SIX executions, 2002/9000s ($0). Publish documentation-inclusive
+final record, then reserved exact-HEAD profile=6b verification. PROJECT_STATE owns
+status/next scope; no 6C/Stage 7. Original dirty checkout/evidence preserved.
