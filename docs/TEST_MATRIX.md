@@ -1,3 +1,29 @@
+## Accepted focused 6B evidence - b6d5020 / run 44854992530
+
+PROJECT_STATE owns checkpoint/gate decisions. Profile=6b attempt 1 SUCCESS,
+twelve distinct tests/zero failures after 6A restoration at cd05a8d / 44853316540.
+
+| Scenario/test | Observed result |
+| --- | --- |
+| 6B.1 Loading - testLoadingKeepsEditingUnavailable | PASS 11.540s; distinct loading, editing/refresh disabled. |
+| 6B.1 Failed load - testCorruptLoadStaysReadOnlyAcrossRefresh | PASS 19.925s; error remains read-only across Refresh, unchanged corrupt hash, no mutation/scheduler file. |
+| 6B.2 New - testEmptyAndNewEditorsCancelWithoutWrites | PASS 99.788s; previously blocked Mode path, invalid Save, Cancel/empty and no-write/no-mutation assertions both fresh and relaunched. |
+| 6B.2 Ordinary - testOrdinaryEditorOpensBeforeAndAfterRelaunch | PASS 78.957s; exact intended ID/value/readiness and disk/service checks on both launches. |
+| 6B.2 Challenge - testChallengeEditorOpensBeforeAndAfterRelaunch | PASS 95.578s; dedicated existing challenge relaunch Edit and exact ID/value/disk/service checks. |
+| 6A.4 Picker regression | PASS 138.042s; count=0/hittable=false -> bounded reveal -> exact ready picker -> actual draft Challenges required/disabled Save -> Cancel. |
+| HarnessIdentityUITests | PASS 173.428s. |
+| Three model + two fixture tests | All PASS; exact authoritative states, overlap guard, corruption preservation, namespaces/reset/relaunch/fail-closed setup. |
+
+The 6A restoration separately passed seven tests including all earlier diagnostic
+cases. 6B includes that picker regression to retain the restored path on its exact
+revision. App/test build/usage/lineage/reproducibility/discovery/diagnostics PASS;
+package/coverage intentionally SKIPPED. One recognized metadata advisory, no
+compiler/destination warnings. Device/manual NOT RUN; no full Gate 6 acceptance.
+Artifact 14688305531: 1957636 bytes, SHA256
+db638a05a20a2c4506b331b93943bc25fe56d5a9c5770e2bad823c817d4e8c22; download/CRC/hash
+verified, 73 entries/two indexed PNG, both inspected. Logs/xcresult preserved.
+Final documentation-inclusive HEAD requires its own matching profile=6b SUCCESS.
+
 ## Restored 6A evidence - cd05a8d / run 44853316540
 
 Profile=6a, attempt 1 SUCCESS: seven distinct tests, zero failures. All earlier six

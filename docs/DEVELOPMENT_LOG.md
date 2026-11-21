@@ -1072,3 +1072,23 @@ Artifact 14686927659 download/CRC/hash verified: 5921170 bytes, SHA256
 Allocation TWO/FOUR runs, 945/6000s ($0). Record restored prerequisite, then run
 twelve-test 6B set without further source changes. PROJECT_STATE owns status.
 No 6C/Stage 7; original dirty checkout/quarantine preserved.
+
+## Picker repair and focused 6B acceptance - 2026-11-21 UTC
+
+6A restored at cd05a8d / 44853316540 (seven tests SUCCESS), then 6B assessed at
+b6d502062ca8b9697dc3b0e5ad0ede9a94167509 /
+[run 44854992530](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44854992530),
+profile=6b attempt 1 SUCCESS, twelve tests/zero failures. Job 136694991244:
+02:16:50-02:32:11 UTC, 921s. Previously failing new-editor case PASS (99.788s),
+including mode selection/invalid Save/cancel/no-write/service/relaunch assertions.
+All other list/navigation, identity, picker, model and fixture cases PASS.
+Build/usage/lineage/reproducibility/discovery/diagnostics PASS; package/coverage
+intentionally SKIPPED, device/manual NOT RUN. No compiler/destination warnings,
+one recognized metadata advisory. Artifact 14688305531 verified/preserved:
+1957636 bytes, SHA256 db638a05a20a2c4506b331b93943bc25fe56d5a9c5770e2bad823c817d4e8c22,
+73 entries/two PNG indexed and inspected, logs/xcresult/job log retained.
+Allocation THREE/FOUR, 1866/6000 actual runner-seconds (31m06s), $0. Publish final
+documentation-inclusive revision, then reserved profile=6b exact-HEAD validation
+before handoff; no further source changes. PROJECT_STATE owns focused acceptance
+and next scope. Full Gate 6 remains outstanding; 6C-6F/Stage 7 not started here.
+Original dirty checkout, local-only commits and all quarantine/evidence preserved.

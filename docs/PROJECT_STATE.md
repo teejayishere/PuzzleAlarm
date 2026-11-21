@@ -7,6 +7,73 @@ Sole anchor parent / Gate 5 baseline: `159b777379ad587a615df56ef24fa273aa29ffe4`
 
 
 
+## Active focused decision - 6A restored, 6B accepted - 2026-11-21 UTC
+
+The offscreen-picker harness defect is fixed. 6A RESTORED / ACCEPTED and 6B
+ACCEPTED on the focused evidence below. Gate 6 remains NOT ACCEPTED: 6C-6F are
+NOT ACCEPTED and final full Gate 6 validation remains outstanding. Stage 7 NOT
+STARTED. No new evidence disproves inherited Gates 0-5. This repair session stops
+after validating this documentation-inclusive final revision; no 6C work began.
+
+6A restoration: cd05a8d3ca51478b305060916bc06b2c94d5dff4 /
+[run 44853316540](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44853316540),
+profile=6a attempt 1 SUCCESS, seven distinct tests/zero failures. All prior six
+cases plus the new absent/offscreen picker regression pass. Job 136689552718:
+01:59:22-02:13:42 UTC, 860 seconds. The initial count=0 condition is reproduced
+and bounded reveal now precedes exact uniqueness/enabled/hittable assertions.
+
+6B reassessment: **b6d502062ca8b9697dc3b0e5ad0ede9a94167509** /
+[run 44854992530](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44854992530),
+workflow_dispatch profile=6b, attempt 1, completed/SUCCESS. Job 136694991244:
+02:16:50-02:32:11 UTC, 921 actual runner-seconds (15m21s). TWELVE distinct tests
+PASS, zero failures: five list/navigation UI, identity UI, picker UI, three model
+and two fixture tests. The previously failing empty/new-editor scenario now
+passes (99.788s), including new ordinary editor/default enabled, challenge mode
+selection/disabled invalid Save, Cancel to empty and exact disk/no-mutation/no-
+scheduler-file assertions before and after relaunch. Existing ordinary/challenge
+Edit before/after relaunch, loading/fail-closed refresh and all support cases PASS.
+No product binding/layout, core, schema or service contract change was needed.
+
+Evidence categories:
+- Source: revealQuery scrolls lazy content before choose() requires exact ready
+  interaction; ambiguity fails, existing scroll bounds and 3/10-second waits stay.
+  New independent regression retained in full/default and both focused profiles.
+  The first candidate's XCTest Objective-C selector collision was corrected by
+  a distinct helper name; its 85-second compiler failure remains recorded.
+- Automated: fixed lineage, project reproducibility and Simulator discovery PASS.
+  Package tests/core coverage intentionally SKIPPED by focused profiles, not new
+  full-gate evidence.
+- Xcode: app/test compilation, usage description and diagnostics review PASS,
+  Xcode 26.6 / Swift 6.3.3. No compiler/destination warnings; one recognized
+  no-AppIntents metadata advisory.
+- Simulator: 6A seven-test restoration and 6B twelve-test acceptance as scoped
+  above. Picker before/after screenshots confirm initial viewport and actual
+  Challenges required selection/disabled Save.
+- Physical device/manual VoiceOver/largest text: NOT RUN.
+
+6B artifact [14688305531](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44854992530/artifacts/14688305531):
+1957636 bytes, SHA256 db638a05a20a2c4506b331b93943bc25fe56d5a9c5770e2bad823c817d4e8c22.
+Download/hash/ZIP CRC verified, 73 entries extracted, two PNG recovered/indexed
+and both visually inspected. Job/build/test logs and xcresult retained in this
+visualization session's picker-repair-44854992530. 6A artifact 14686927659 and
+compiler failure artifact 14685863705 are also verified/preserved; all earlier
+evidence and the original dirty checkout/local-only commits/quarantine intact.
+
+Allocation before final publication: THREE/FOUR executions, 1866/6000 actual
+runner-seconds (31m06s), $0. One reserved final profile=6b execution remains; source
+is unchanged from the assessed revision, documentation precedes validation.
+No retries/unchanged failing reruns, extra 6A attempts, full/PR/SDK runs or later
+checkpoint work. Stop on final failure or successful verification/budget limit.
+This record supplies the assessed source SHA/run/result; this documentation-
+inclusive commit must itself receive matching focused SUCCESS before handoff.
+Its matching Actions run is authoritative for exact final SHA/result/time; this
+pre-run text does not substitute for that result.
+
+Next checkpoint after this completed repair is 6C draft editing under a separately
+bounded session. Preserve 6A/6B contracts and scenario evidence, use the active
+clean restart checkout, and retain full exact-final-HEAD Gate 6 validation for 6F.
+Earlier status/stop/next-action statements below are revision-specific history.
+
 ## Active 6A restored; 6B reassessment candidate - 2026-11-21 UTC
 
 6A RESTORED / ACCEPTED with focused evidence including the previously disproved
