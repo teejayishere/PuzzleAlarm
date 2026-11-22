@@ -1,5 +1,43 @@
 # Active restart project state
 
+## Active repair result - 6C focused ACCEPTED; exact-final-HEAD Actions result authoritative - 2026-11-22 America/Chicago
+
+6A RESTORED / ACCEPTED;6B ACCEPTED;6C ACCEPTED on the assessed source below.
+Gate6 NOT ACCEPTED;6D-6F NOT ACCEPTED;Stage7 NOT STARTED. No Gates0-5 disproof.
+The reserved documentation-inclusive profile=6c verification must succeed for this published HEAD before handoff. After matching SUCCESS,next scope is6D under a separate allocation;stop this repair at6C. On failure,trace the earliest cause within the bounded repair loop. No6D/Stage7 work here.
+Earlier conflicting acceptance/next-action statements below are history.
+
+Assessed **525fb7297464a119741f3fb5db0f49de5b806556** /
+[run 45045795177](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45045795177),
+workflow_dispatch profile=6c,attempt1,completed/SUCCESS. **14 distinct
+tests PASS,zero failures**. Job137280001782: 2026-11-22T16:47:40Z through
+2026-11-22T17:06:28Z;1128 actual runner-seconds.
+
+Lineage/project reproducibility/Simulator discovery PASS;app/test compilation,
+usage-description verification and Xcode diagnostics review PASS. No compiler/
+destination warnings;recognized SDK metadata advisory separately reported.
+Package/core intentionally SKIPPED for focused profile;no full Gate6 acceptance.
+Physical device/manual VoiceOver/largest text NOT RUN.
+
+Frozen evidence snapshot and upload PASS. Artifact14764420803:
+3302126bytes,SHA256 c8d15e748bab23a344df9fd66859a7523d4456e077fa45b39021c6edaef06354.
+Download/hash/outer and nested ZIP CRC verified;manifest errors=[].
+Excluded liveStaging entries:0;not claimed preserved.
+Recovered/indexed 5 PNG objects;visual review:all five recovered PNG inspected;enabled,invalid mode/disabled Save,Siren,Wed+Fri and08:05 draft states agree.
+Logs,xcresult snapshot,metadata/test index/screens/hashes preserved externally in
+menu-repair-45045795177. All older evidence/original dirty checkout remain intact.
+
+Allocation used:4/10 executions,3612/15600 actual runner-seconds,$0.
+No unchanged failing rerun;explicit sequential changed-candidate authority remains
+within bounds. No source change since the assessed successful revision;records
+precede subsequent validation. This documentation revision is not itself a CI PASS;
+its matching Actions result remains authoritative for exact final-HEAD verification.
+
+
+---
+
+# Active restart project state
+
 ## Active repair result - 6A restored; 6B ACCEPTED; 6C pending - 2026-11-22 America/Chicago
 
 6A RESTORED / ACCEPTED;6B ACCEPTED;6C PENDING / NOT ACCEPTED.

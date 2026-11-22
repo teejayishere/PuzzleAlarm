@@ -1,3 +1,55 @@
+# Repair evidence - 6c / 45045795177
+
+Assessed **525fb7297464a119741f3fb5db0f49de5b806556** /
+[run 45045795177](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45045795177),
+workflow_dispatch profile=6c,attempt1,completed/SUCCESS. **14 distinct
+tests PASS,zero failures**. Job137280001782: 2026-11-22T16:47:40Z through
+2026-11-22T17:06:28Z;1128 actual runner-seconds.
+
+Lineage/project reproducibility/Simulator discovery PASS;app/test compilation,
+usage-description verification and Xcode diagnostics review PASS. No compiler/
+destination warnings;recognized SDK metadata advisory separately reported.
+Package/core intentionally SKIPPED for focused profile;no full Gate6 acceptance.
+Physical device/manual VoiceOver/largest text NOT RUN.
+
+Frozen evidence snapshot and upload PASS. Artifact14764420803:
+3302126bytes,SHA256 c8d15e748bab23a344df9fd66859a7523d4456e077fa45b39021c6edaef06354.
+Download/hash/outer and nested ZIP CRC verified;manifest errors=[].
+Excluded liveStaging entries:0;not claimed preserved.
+Recovered/indexed 5 PNG objects;visual review:all five recovered PNG inspected;enabled,invalid mode/disabled Save,Siren,Wed+Fri and08:05 draft states agree.
+Logs,xcresult snapshot,metadata/test index/screens/hashes preserved externally in
+menu-repair-45045795177. All older evidence/original dirty checkout remain intact.
+
+Allocation used:4/10 executions,3612/15600 actual runner-seconds,$0.
+No unchanged failing rerun;explicit sequential changed-candidate authority remains
+within bounds. No source change since the assessed successful revision;records
+precede subsequent validation. This documentation revision is not itself a CI PASS;
+its matching Actions result remains authoritative for exact final-HEAD verification.
+
+
+| Executed test | Result |
+| --- | --- |
+| -[PuzzleAlarmUITests.DraftEditingUITests testEnabledEditStaysInDraftAndCancel] | PASS 107.806 seconds |
+| -[PuzzleAlarmUITests.DraftEditingUITests testInvalidChallengeDraftDisablesSaveWithoutWrites] | PASS 147.759 seconds |
+| -[PuzzleAlarmUITests.DraftEditingUITests testSavedTimeAndSoundReopenFromDisk] | PASS 130.508 seconds |
+| -[PuzzleAlarmUITests.DraftEditingUITests testSoundSelectionStaysInDraftAndCancel] | PASS 94.763 seconds |
+| -[PuzzleAlarmUITests.DraftEditingUITests testTimeEditsStayInDraftAndCancel] | PASS 102.371 seconds |
+| -[PuzzleAlarmUITests.DraftEditingUITests testWeekdayEditsStayInDraftAndCancel] | PASS 105.720 seconds |
+| -[PuzzleAlarmTests.DraftEditingTests testBothEnabledStatesRoundTripWithoutOtherChanges] | PASS 0.005 seconds |
+| -[PuzzleAlarmTests.DraftEditingTests testEverySoundIdentifierRoundTripsWithoutOtherChanges] | PASS 0.001 seconds |
+| -[PuzzleAlarmTests.DraftEditingTests testInvalidDraftSaveStopsBeforeServiceAndStorage] | PASS 0.015 seconds |
+| -[PuzzleAlarmTests.DraftEditingTests testSaveForwardsExactEditedDefinitionAndPersistsIt] | PASS 0.158 seconds |
+| -[PuzzleAlarmTests.DraftEditingTests testTimeRoundTripsIndependentlyIncludingBoundaries] | PASS 0.001 seconds |
+| -[PuzzleAlarmTests.DraftEditingTests testWeekdaysRoundTripIncludingOneTimeAndAllDays] | PASS 0.001 seconds |
+| -[PuzzleAlarmTests.SimulatorUITestFixtureTests testInvalidOrUnseededNamespaceFailsClosed] | PASS 0.002 seconds |
+| -[PuzzleAlarmTests.SimulatorUITestFixtureTests testNamespacesResetAndRelaunchUseExactDiskState] | PASS 0.045 seconds |
+
+PROJECT_STATE alone owns recursive acceptance and next action. Existing readiness,
+uniqueness,3/10-second waits and functional assertions retained. Native wait/negative
+probe semantics,artifact omission/error categories remain as documented below.
+
+---
+
 # Repair evidence - 6b / 45044323256
 
 Assessed **809fd750c43244ef04094fef0ba0a534b805df4a** /
