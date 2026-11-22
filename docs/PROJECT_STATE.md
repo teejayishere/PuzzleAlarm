@@ -1,5 +1,73 @@
 # Active restart project state
 
+## Active sequential menu-readiness repair - 2026-11-22 America/Chicago
+
+Owner requested: fix it until there is a fix. This explicitly authorizes a
+sequential changed-candidate repair loop for affected 6A/6B/6C, superseding the
+prior session's stop-on-first-failure allocation. That allocation stays CLOSED.
+No unchanged failing rerun, weakened assertion/wait, later checkpoint or Stage7.
+6A NEEDS REASSESSMENT;6B WITHHELD;6C NOT ACCEPTED;Gate6 NOT ACCEPTED.
+Gates0-5 have no new disproving evidence. Status below is historical.
+
+Fetched origin/read remote state before AGENTS. Clean full-history gate6-repair
+checkout matched ddfb4ca40edae703ee2565cfbb725b4fe0525b79. Exact-HEAD Actions API:
+ZERO runs; no current-HEAD PASS. Explicit failed-gate repair exception applies;
+no unchanged rerun is required before repair. Audited external preflight and
+active lineage script PASS. Fixed anchor/sole baseline parent/no later merges
+and every post-baseline commit were reviewed, continuing the prior full audit
+through31a65b5 and documentation-onlyddfb4ca. Original dirty checkout, local-only
+readiness commits and all evidence remain untouched; no old-lineage import.
+
+Fresh $0 budget recorded BEFORE validation in chat/menu-repair-budget.txt:
+TEN CI executions maximum including automatic triggers;25-minute job limits,
+260 aggregate actual runner-minutes including cleanup. Reserve ONE final
+documentation-inclusive verification. Continue only changed candidates after
+preserving/diagnosing failures;zero unchanged failing retries. Stop at verified
+final success, exhaustion or external blocker. Restore6A before6B before6C.
+Local maxima:ONE external preflight,TWELVE lineage checks,THIRTY diff-integrity
+checks,THIRTY source/history reviews,TEN artifact downloads;TWO additional
+preservation-script unit executions at120s each/240 aggregate seconds. No local
+Swift/Xcode/Simulator/device execution or paid tools. Local preservation tests
+2/2 PASS in0.052s (one execution);local preflight/lineage PASS.
+
+Candidate addresses the observed observer boundary, not product bindings:
+ready() retains unique existence/cardinality, replaces its remote NSPredicate
+with Apple native property waits, and shares the SAME single3/10-second readiness
+deadline across enabled/hittable waits. Both flags must remain true at return;
+failed waits remain failures. Timings are logged. Primary API reference reviewed:
+https://developer.apple.com/documentation/xcuiautomation/xcuielement/wait(for:toequal:timeout:)
+Runtime must establish whether this removes the observed predicate-readiness
+failure; the exact historical cause is not claimed proven.
+
+New HarnessMenuUITests repeats08:05/09:06/08:05 actual-draft selections without
+writes;negative tests require covered and disabled controls to stay unready.
+Proposed/reviewed focused capability6a_menu selects both new menu tests,the
+original failed save/reopen case and two fixture unit cases(FIVE expected).
+This is diagnostic evidence only. Complete6A retains all eight original cases
+plus both menu cases(TEN);6B retains all twelve cases.6C now selects its twelve
+new draft cases and two fixtures(FOURTEEN),after complete6A/6B prerequisites;
+no assertions removed from those tests or full/default selection. This avoids
+repeating6B inside the already oversized6C job while retaining6B's own profile.
+
+Evidence preservation now freezes finalized xcresult objects and copies logs
+into immutable upload input. Live xcresult/Staging is explicitly excluded and
+listed in a manifest;all read failures/missing evidence fail the step. Snapshot
+unit tests establish immutable content after source mutation and fail-closed
+missing evidence. Raw finalized data/attachments remain in xcresult.zip;no claim
+that transient Simulator diagnostics were preserved. Test-step18-minute limit
+leaves headroom within unchanged25-minute jobs for snapshot/upload. No caller
+wait increase or weakened test outcome. Existing always-on failure upload stays.
+
+Compilation/native API/runtime/artifact repair PENDING. Source/API review is not
+Simulator evidence. First run is6a_menu;success must be followed by complete6A,
+then6B,then6C,and matching final documented-HEAD SUCCESS. No full Gate6 acceptance,
+6D or Stage7. Physical device/manual VoiceOver/largest text NOT RUN. All candidate
+documentation precedes validation;actual SHA/run/result/time controls acceptance.
+
+---
+
+# Active restart project state
+
 ## Active 6C attempt decision - NOT ACCEPTED - 2026-11-22 America/Chicago
 
 The new 6C candidate has a concrete menu-option readiness failure, followed by

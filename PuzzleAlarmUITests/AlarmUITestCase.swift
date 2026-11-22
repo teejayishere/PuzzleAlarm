@@ -69,12 +69,25 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
     @MainActor
     func ready(_ query: XCUIElementQuery, in app: XCUIApplication, timeout: TimeInterval = 10) -> XCUIElement {
         let element = unique(query, in: app, timeout: timeout)
-        let wait = XCTNSPredicateExpectation(
-            predicate: NSPredicate(format: "enabled == true AND hittable == true"), object: element)
-        let result = XCTWaiter.wait(for: [wait], timeout: timeout)
-        if result != .completed { capture("not ready query=\(query)", in: app) }
-        XCTAssertEqual(result, .completed, "Intended control must be enabled and hittable")
+        let result = waitUntilReady(element, timeout: timeout)
+        if !result { capture("not ready query=\(query)", in: app) }
+        XCTAssertTrue(result, "Intended control must be enabled and hittable")
         return element
+    }
+
+    @MainActor
+    func waitUntilReady(_ element: XCUIElement, timeout: TimeInterval) -> Bool {
+        // Native waits avoid evaluating two remote properties in an NSPredicate
+        // callback. Both waits share the original single readiness deadline.
+        let started = ProcessInfo.processInfo.systemUptime
+        let deadline = started + timeout
+        let enabled = element.wait(for: \.isEnabled, toEqual: true, timeout: timeout)
+        let remaining = max(0, deadline - ProcessInfo.processInfo.systemUptime)
+        let hittable = enabled && element.wait(for: \.isHittable, toEqual: true, timeout: remaining)
+        let stillEnabled = enabled && hittable && element.isEnabled
+        let stillHittable = stillEnabled && element.isHittable
+        print("Native readiness id=\(element.identifier) timeout=\(timeout) enabled=\(enabled) hittable=\(hittable) finalEnabled=\(stillEnabled) finalHittable=\(stillHittable) seconds=\(ProcessInfo.processInfo.systemUptime - started)")
+        return enabled && hittable && stillEnabled && stillHittable
     }
 
     @MainActor

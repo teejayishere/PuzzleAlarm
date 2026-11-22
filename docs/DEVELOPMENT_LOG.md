@@ -1,3 +1,18 @@
+# Sequential menu-readiness repair candidate - 2026-11-22 America/Chicago
+
+Owner explicitly requests repair until fixed. Fresh$0 ten-execution/260 actual
+runner-minute allocation;changed candidates only after failure diagnosis;reserve
+one final documented run. Preflight/lineage PASS from cleanddfb4ca;zero exact-HEAD
+runs,explicit failed-gate repair exception. Preserved all original dirty work and
+prior evidence. Native property waits replace shared predicate callback within
+one unchanged deadline;new positive/negative menu regressions. Profile6a_menu is
+narrow diagnosis;full6A ten cases then6B twelve then6C fourteen in order. Frozen
+evidence snapshot explicitly excludes liveStaging and reports errors;2/2 local
+preservation tests PASS. Compilation/runtime/upload PENDING. PROJECT_STATE owns
+scope,allocation,recursive status and subsequent assessed SHA/run decisions.
+
+---
+
 # Checkpoint 6C failure closeout - 2026-11-22 America/Chicago
 
 Published31a65b5 and dispatched45037783645, profile6c attempt1. All24 tests emitted

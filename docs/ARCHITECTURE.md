@@ -1,3 +1,15 @@
+# Readiness and evidence boundary repair - 2026-11-22 America/Chicago
+
+UI automation readiness owns one deadline for native enabled/hittable waits,
+retains unique identity/existence checks and rechecks both properties on return.
+Disabled/covered targets remain failures. This changes no product binding or
+scheduling/storage contract;runtime evidence must assess the observer candidate.
+Artifact input is a frozen snapshot of finalized xcresult objects plus copied logs
+and an explicit omission/error manifest. LiveStaging diagnostics are not asserted
+preserved;missing/read failures stay visible. Acceptance belongs to PROJECT_STATE.
+
+---
+
 # Checkpoint 6C draft observation - 2026-11-22 America/Chicago
 
 The existing opt-in DEBUG Simulator navigation overlay reads actual isolated draft

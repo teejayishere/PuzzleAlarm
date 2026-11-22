@@ -7,7 +7,7 @@ on:
       profile:
         description: Validation scope (focused profiles are checkpoint evidence only)
         type: choice
-        options: [full, 6a_identity, 6a, 6b, 6c]
+        options: [full, 6a_identity, 6a_menu, 6a, 6b, 6c]
         default: full
 
 permissions:
@@ -53,28 +53,28 @@ jobs:
           cmp .generated/PuzzleAlarm-Info.plist "$RUNNER_TEMP/first-info.plist"
           test -z "$(git ls-files '*.xcodeproj/*' '.generated/*')"
       - name: Validate package manifest
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu'
         run: swift package dump-package
       - name: Build PuzzleAlarmCore
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu'
         run: swift build -Xswiftc -warnings-as-errors
       - name: Run focused persistence tests
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu'
         run: swift test -Xswiftc -warnings-as-errors --filter Persistence
       - name: Run focused coverage-audit regressions
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu'
         run: swift test -Xswiftc -warnings-as-errors --filter 'weeklyOccurrenceSurvivesSkippedLocalCalendarDate|completedReloadPreservesTerminalStateUnderLateEvents'
       - name: Run focused lifecycle tests
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu'
         run: swift test -Xswiftc -warnings-as-errors --filter Lifecycle
       - name: Run Swift package tests
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu'
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu'
         run: python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
       - name: Report exact uncovered core lines
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu'
         run: python3 Scripts/report_uncovered_lines.py
       - name: Discover compatible iPhone Simulator
         id: simulator
@@ -105,6 +105,8 @@ jobs:
           print(f"Built app usage description: {value}")
           PY
       - name: Run platform capability and native shell tests
+        # Leave time to freeze/upload evidence even when the test command stalls.
+        timeout-minutes: 18
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: |
@@ -114,12 +116,17 @@ jobs:
             selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
               -only-testing:PuzzleAlarmUITests/HarnessIdentityUITests
               -only-testing:PuzzleAlarmUITests/HarnessPickerUITests
+              -only-testing:PuzzleAlarmUITests/HarnessMenuUITests
               -only-testing:PuzzleAlarmUITests/HarnessDiagnosticsUITests)
           elif [[ "${{ inputs.profile }}" == "6a_identity" ]]; then
             selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
               -only-testing:PuzzleAlarmUITests/HarnessIdentityUITests
               -only-testing:PuzzleAlarmUITests/HarnessDiagnosticsUITests/testNativeWaitReportsAbsentControl)
-          elif [[ "${{ inputs.profile }}" == "6b" || "${{ inputs.profile }}" == "6c" ]]; then
+          elif [[ "${{ inputs.profile }}" == "6a_menu" ]]; then
+            selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
+              -only-testing:PuzzleAlarmUITests/HarnessMenuUITests
+              -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testSavedTimeAndSoundReopenFromDisk)
+          elif [[ "${{ inputs.profile }}" == "6b" ]]; then
             selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
               -only-testing:PuzzleAlarmTests/AlarmManagementTests/testListEmptyAndReadyStatesUseAuthoritativeDefinitions
               -only-testing:PuzzleAlarmTests/AlarmManagementTests/testBusyModelRejectsOverlappingCommands
@@ -127,10 +134,11 @@ jobs:
               -only-testing:PuzzleAlarmUITests/HarnessIdentityUITests
               -only-testing:PuzzleAlarmUITests/HarnessPickerUITests
               -only-testing:PuzzleAlarmUITests/ListNavigationUITests)
-            if [[ "${{ inputs.profile }}" == "6c" ]]; then
-              selectors+=(-only-testing:PuzzleAlarmTests/DraftEditingTests
-                -only-testing:PuzzleAlarmUITests/DraftEditingUITests)
-            fi
+          elif [[ "${{ inputs.profile }}" == "6c" ]]; then
+            # 6A then the complete unchanged 6B set must already have succeeded.
+            selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
+              -only-testing:PuzzleAlarmTests/DraftEditingTests
+              -only-testing:PuzzleAlarmUITests/DraftEditingUITests)
           fi
           printf 'Assessed SHA: %s; profile: %s\n' "$GITHUB_SHA" "${{ inputs.profile || 'full' }}"
           printf 'Test selector: %s\n' "${selectors[@]}"
@@ -142,14 +150,18 @@ jobs:
             2>&1 | tee "$RUNNER_TEMP/ios-tests.log"
       - name: Review Xcode diagnostics
         run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log"
+      - name: Freeze Xcode evidence outside the live diagnostic workspace
+        if: always()
+        timeout-minutes: 2
+        run: |
+          python3 -m unittest discover -s Scripts/tests -p test_preserve_xcode_results.py
+          python3 Scripts/preserve_xcode_results.py TestResults/Shell.xcresult TestResults/Preserved \
+            "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log"
       - name: Preserve Xcode results and logs even on failure
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: xcode-${{ github.sha }}-${{ inputs.profile || 'full' }}
-          path: |
-            TestResults/*.xcresult
-            ${{ runner.temp }}/ios-build.log
-            ${{ runner.temp }}/ios-tests.log
+          path: TestResults/Preserved/
           if-no-files-found: error
           retention-days: 90

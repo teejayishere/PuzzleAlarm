@@ -1,3 +1,30 @@
+# Menu-readiness repair candidate contracts - 2026-11-22 America/Chicago
+
+All new runtime evidence PENDING. PROJECT_STATE owns status,allocation and order.
+
+| Contract | Test/profile | Required result |
+| --- | --- | --- |
+|6A exact minute readiness|HarnessMenuUITests/testMinuteOptionSelectionReportsExactDraftWithoutWriting|08:05,09:06,08:05 through actual menus/draft;all other fields preserved;disk hash unchanged/no service edit;Cancel retains07:00.|
+|6A negative readiness|HarnessMenuUITests/testReadinessRejectsCoveredAndDisabledControls|Covered minute picker and disabled Save return false within existing3s API limit;normal05 selection succeeds;no write/cancel retains07:00.|
+|Original failure regression|DraftEditingUITests/testSavedTimeAndSoundReopenFromDisk|Original untouched08:05/Siren saved-definition/process-reopen/hash/service assertions PASS;no readiness bypass.|
+|Narrow diagnosis|profile6a_menu|Two menu UI+original failed UI+two fixture unit tests=FIVE;not full6A restoration.|
+|Complete6A|profile6a|Original eight cases+two menu UI=TEN;all prior identity/native-target/picker/failure-capture/absent/fixture assertions retained.|
+|Complete6B|profile6b|Original unchangedTWELVE cases;only eligible after complete6A success.|
+|Complete6C|profile6c|All six draft unit+six draft UI+two fixture tests=FOURTEEN;6B has its own full prior assessment;no assertion/test removed from full/default.|
+|Evidence snapshot|Scripts/tests/test_preserve_xcode_results.py|2/2 local PASS0.052s;later source mutations do not alter archived objects/logs;live Staging omission explicit;missing evidence fails. CI/runtime upload still PENDING.|
+
+Native enabled/hittable waits share one original3/10s readiness deadline, followed
+by explicit final state checks. Unique/existence checks and functional outcomes
+remain. Apple primary wait(for:toEqual:timeout:) contract reviewed;its actual
+compilation/timing and effectiveness are pending CI,not assumed from documentation.
+New18-minute test-step cap leaves artifact headroom inside unchanged25-minute job.
+Manifest distinguishes finalized objects/logs from excluded live Staging. Raw
+xcresult.zip and logs frozen before upload;any missing/read errors remain failures.
+Package/core intentionally skipped by focused profiles;device/manual NOT RUN.
+No whole Gate6 acceptance from focused evidence. Earlier failed run preserved.
+
+---
+
 # Checkpoint 6C observed results - 31a65b5 / 45037783645
 
 Profile=6c, attempt 1, workflow CANCELLED on the annotated 25-minute limit.
