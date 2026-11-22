@@ -1,5 +1,43 @@
 # Active restart project state
 
+## Active repair result - Narrow menu regression SUCCESS; complete 6A pending - 2026-11-22 America/Chicago
+
+6A NEEDS COMPLETE REASSESSMENT / NOT ACCEPTED;6B WITHHELD;6C NOT ACCEPTED.
+Gate6 NOT ACCEPTED;6D-6F NOT ACCEPTED;Stage7 NOT STARTED. No Gates0-5 disproof.
+Complete profile=6a (TEN cases) is next. Narrow success alone does not restore6A.
+Earlier conflicting acceptance/next-action statements below are history.
+
+Assessed **e1f656d8ed682604e19c5dc8494c140b3c34e92a** /
+[run 45041577045](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45041577045),
+workflow_dispatch profile=6a_menu,attempt1,completed/SUCCESS. **5 distinct
+tests PASS,zero failures**. Job137266983827: 2026-11-22T16:02:27Z through
+2026-11-22T16:10:33Z;486 actual runner-seconds.
+
+Lineage/project reproducibility/Simulator discovery PASS;app/test compilation,
+usage-description verification and Xcode diagnostics review PASS. No compiler/
+destination warnings;recognized SDK metadata advisory separately reported.
+Package/core intentionally SKIPPED for focused profile;no full Gate6 acceptance.
+Physical device/manual VoiceOver/largest text NOT RUN.
+
+Frozen evidence snapshot and upload PASS. Artifact14761659859:
+1489172bytes,SHA256 b413e9dfa08b936d9f2c631f5a5a3842a8ee2837712b229e31123b20d4129f1a.
+Download/hash/outer and nested ZIP CRC verified;manifest errors=[].
+Excluded liveStaging entries:0;not claimed preserved.
+Recovered/indexed 1 PNG objects;visual review:one of one recovered screenshots inspected;08:05 disabled ordinary draft,Monday/Friday retained.
+Logs,xcresult snapshot,metadata/test index/screens/hashes preserved externally in
+menu-repair-45041577045. All older evidence/original dirty checkout remain intact.
+
+Allocation used:1/10 executions,486/15600 actual runner-seconds,$0.
+No unchanged failing rerun;explicit sequential changed-candidate authority remains
+within bounds. No source change since the assessed successful revision;records
+precede subsequent validation. This documentation revision is not itself a CI PASS;
+its matching Actions result remains authoritative for exact final-HEAD verification.
+
+
+---
+
+# Active restart project state
+
 ## Active sequential menu-readiness repair - 2026-11-22 America/Chicago
 
 Owner requested: fix it until there is a fix. This explicitly authorizes a

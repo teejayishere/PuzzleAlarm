@@ -1,3 +1,14 @@
+# Repair result - 6a_menu / 45041577045 - 2026-11-22 America/Chicago
+
+Assessede1f656d8ed682604e19c5dc8494c140b3c34e92a;SUCCESS,5 distinct cases PASS/zero failures,
+486actual runner-seconds. Frozen snapshot/upload and
+diagnostics review PASS;artifact14761659859 verified/preserved. 6A NEEDS COMPLETE REASSESSMENT / NOT ACCEPTED;6B WITHHELD;6C NOT ACCEPTED.
+Complete profile=6a (TEN cases) is next. Narrow success alone does not restore6A. Allocation1/10,486/15600seconds,$0. No source change here;
+documentation precedes next validation. Exact status/evidence:PROJECT_STATE,
+TEST_MATRIX. Focused evidence does not accept full Gate6;device/manual NOT RUN.
+
+---
+
 # Sequential menu-readiness repair candidate - 2026-11-22 America/Chicago
 
 Owner explicitly requests repair until fixed. Fresh$0 ten-execution/260 actual
