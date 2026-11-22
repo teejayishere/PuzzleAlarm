@@ -1,3 +1,14 @@
+# Repair result - 6b / 45044323256 - 2026-11-22 America/Chicago
+
+Assessed809fd750c43244ef04094fef0ba0a534b805df4a;SUCCESS,12 distinct cases PASS/zero failures,
+885actual runner-seconds. Frozen snapshot/upload and
+diagnostics review PASS;artifact14763720734 verified/preserved. 6A RESTORED / ACCEPTED;6B ACCEPTED;6C PENDING / NOT ACCEPTED.
+Profile=6c (FOURTEEN cases) is next,retaining all six unit/six UI draft cases plus fixtures. Allocation3/10,2484/15600seconds,$0. No source change here;
+documentation precedes next validation. Exact status/evidence:PROJECT_STATE,
+TEST_MATRIX. Focused evidence does not accept full Gate6;device/manual NOT RUN.
+
+---
+
 # Repair result - 6a / 45042449890 - 2026-11-22 America/Chicago
 
 Assessed18c455aaa1bd6fae63d4c99587d2a8eb553d9021;SUCCESS,10 distinct cases PASS/zero failures,

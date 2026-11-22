@@ -1,5 +1,43 @@
 # Active restart project state
 
+## Active repair result - 6A restored; 6B ACCEPTED; 6C pending - 2026-11-22 America/Chicago
+
+6A RESTORED / ACCEPTED;6B ACCEPTED;6C PENDING / NOT ACCEPTED.
+Gate6 NOT ACCEPTED;6D-6F NOT ACCEPTED;Stage7 NOT STARTED. No Gates0-5 disproof.
+Profile=6c (FOURTEEN cases) is next,retaining all six unit/six UI draft cases plus fixtures.
+Earlier conflicting acceptance/next-action statements below are history.
+
+Assessed **809fd750c43244ef04094fef0ba0a534b805df4a** /
+[run 45044323256](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45044323256),
+workflow_dispatch profile=6b,attempt1,completed/SUCCESS. **12 distinct
+tests PASS,zero failures**. Job137275474657: 2026-11-22T16:31:40Z through
+2026-11-22T16:46:25Z;885 actual runner-seconds.
+
+Lineage/project reproducibility/Simulator discovery PASS;app/test compilation,
+usage-description verification and Xcode diagnostics review PASS. No compiler/
+destination warnings;recognized SDK metadata advisory separately reported.
+Package/core intentionally SKIPPED for focused profile;no full Gate6 acceptance.
+Physical device/manual VoiceOver/largest text NOT RUN.
+
+Frozen evidence snapshot and upload PASS. Artifact14763720734:
+2261312bytes,SHA256 49e5c32499d3c487d9311c171ab5611064555e89b95f30233a7fc6b2100dcba3.
+Download/hash/outer and nested ZIP CRC verified;manifest errors=[].
+Excluded liveStaging entries:0;not claimed preserved.
+Recovered/indexed 2 PNG objects;visual review:both recovered PNG inspected;offscreen-picker before state and selected challenge mode with disabled Save agree.
+Logs,xcresult snapshot,metadata/test index/screens/hashes preserved externally in
+menu-repair-45044323256. All older evidence/original dirty checkout remain intact.
+
+Allocation used:3/10 executions,2484/15600 actual runner-seconds,$0.
+No unchanged failing rerun;explicit sequential changed-candidate authority remains
+within bounds. No source change since the assessed successful revision;records
+precede subsequent validation. This documentation revision is not itself a CI PASS;
+its matching Actions result remains authoritative for exact final-HEAD verification.
+
+
+---
+
+# Active restart project state
+
 ## Active repair result - Complete 6A RESTORED / ACCEPTED; 6B pending - 2026-11-22 America/Chicago
 
 6A RESTORED / ACCEPTED;6B PENDING / NOT ACCEPTED;6C NOT ACCEPTED.

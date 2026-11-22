@@ -1,3 +1,53 @@
+# Repair evidence - 6b / 45044323256
+
+Assessed **809fd750c43244ef04094fef0ba0a534b805df4a** /
+[run 45044323256](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45044323256),
+workflow_dispatch profile=6b,attempt1,completed/SUCCESS. **12 distinct
+tests PASS,zero failures**. Job137275474657: 2026-11-22T16:31:40Z through
+2026-11-22T16:46:25Z;885 actual runner-seconds.
+
+Lineage/project reproducibility/Simulator discovery PASS;app/test compilation,
+usage-description verification and Xcode diagnostics review PASS. No compiler/
+destination warnings;recognized SDK metadata advisory separately reported.
+Package/core intentionally SKIPPED for focused profile;no full Gate6 acceptance.
+Physical device/manual VoiceOver/largest text NOT RUN.
+
+Frozen evidence snapshot and upload PASS. Artifact14763720734:
+2261312bytes,SHA256 49e5c32499d3c487d9311c171ab5611064555e89b95f30233a7fc6b2100dcba3.
+Download/hash/outer and nested ZIP CRC verified;manifest errors=[].
+Excluded liveStaging entries:0;not claimed preserved.
+Recovered/indexed 2 PNG objects;visual review:both recovered PNG inspected;offscreen-picker before state and selected challenge mode with disabled Save agree.
+Logs,xcresult snapshot,metadata/test index/screens/hashes preserved externally in
+menu-repair-45044323256. All older evidence/original dirty checkout remain intact.
+
+Allocation used:3/10 executions,2484/15600 actual runner-seconds,$0.
+No unchanged failing rerun;explicit sequential changed-candidate authority remains
+within bounds. No source change since the assessed successful revision;records
+precede subsequent validation. This documentation revision is not itself a CI PASS;
+its matching Actions result remains authoritative for exact final-HEAD verification.
+
+
+| Executed test | Result |
+| --- | --- |
+| -[PuzzleAlarmUITests.HarnessIdentityUITests testResetAndRelaunchPreserveKnownFixtureIdentity] | PASS 154.599 seconds |
+| -[PuzzleAlarmUITests.HarnessPickerUITests testOffscreenPickerIsRevealedBeforeUniqueInteraction] | PASS 70.811 seconds |
+| -[PuzzleAlarmUITests.ListNavigationUITests testChallengeEditorOpensBeforeAndAfterRelaunch] | PASS 87.598 seconds |
+| -[PuzzleAlarmUITests.ListNavigationUITests testCorruptLoadStaysReadOnlyAcrossRefresh] | PASS 20.673 seconds |
+| -[PuzzleAlarmUITests.ListNavigationUITests testEmptyAndNewEditorsCancelWithoutWrites] | PASS 118.248 seconds |
+| -[PuzzleAlarmUITests.ListNavigationUITests testLoadingKeepsEditingUnavailable] | PASS 17.699 seconds |
+| -[PuzzleAlarmUITests.ListNavigationUITests testOrdinaryEditorOpensBeforeAndAfterRelaunch] | PASS 84.007 seconds |
+| -[PuzzleAlarmTests.AlarmManagementTests testBusyModelRejectsOverlappingCommands] | PASS 0.007 seconds |
+| -[PuzzleAlarmTests.AlarmManagementTests testCorruptDiskFailsClosedWithoutReplacingData] | PASS 0.029 seconds |
+| -[PuzzleAlarmTests.AlarmManagementTests testListEmptyAndReadyStatesUseAuthoritativeDefinitions] | PASS 0.025 seconds |
+| -[PuzzleAlarmTests.SimulatorUITestFixtureTests testInvalidOrUnseededNamespaceFailsClosed] | PASS 0.001 seconds |
+| -[PuzzleAlarmTests.SimulatorUITestFixtureTests testNamespacesResetAndRelaunchUseExactDiskState] | PASS 0.044 seconds |
+
+PROJECT_STATE alone owns recursive acceptance and next action. Existing readiness,
+uniqueness,3/10-second waits and functional assertions retained. Native wait/negative
+probe semantics,artifact omission/error categories remain as documented below.
+
+---
+
 # Repair evidence - 6a / 45042449890
 
 Assessed **18c455aaa1bd6fae63d4c99587d2a8eb553d9021** /
