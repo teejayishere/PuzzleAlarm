@@ -1,3 +1,51 @@
+# Repair evidence - 6a / 45042449890
+
+Assessed **18c455aaa1bd6fae63d4c99587d2a8eb553d9021** /
+[run 45042449890](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45042449890),
+workflow_dispatch profile=6a,attempt1,completed/SUCCESS. **10 distinct
+tests PASS,zero failures**. Job137269684971: 2026-11-22T16:11:48Z through
+2026-11-22T16:30:21Z;1113 actual runner-seconds.
+
+Lineage/project reproducibility/Simulator discovery PASS;app/test compilation,
+usage-description verification and Xcode diagnostics review PASS. No compiler/
+destination warnings;recognized SDK metadata advisory separately reported.
+Package/core intentionally SKIPPED for focused profile;no full Gate6 acceptance.
+Physical device/manual VoiceOver/largest text NOT RUN.
+
+Frozen evidence snapshot and upload PASS. Artifact14762847889:
+6860931bytes,SHA256 e5c24720db1fdb35e0416dc39b224870ee84e45d0f448f595f5ac343080cb798.
+Download/hash/outer and nested ZIP CRC verified;manifest errors=[].
+Excluded liveStaging entries:0;not claimed preserved.
+Recovered/indexed 14 PNG objects;visual review:four representative PNG inspected:screen1,5,10,14;invalid-mode disabled Save and native draft/switch states agree.
+Logs,xcresult snapshot,metadata/test index/screens/hashes preserved externally in
+menu-repair-45042449890. All older evidence/original dirty checkout remain intact.
+
+Allocation used:2/10 executions,1599/15600 actual runner-seconds,$0.
+No unchanged failing rerun;explicit sequential changed-candidate authority remains
+within bounds. No source change since the assessed successful revision;records
+precede subsequent validation. This documentation revision is not itself a CI PASS;
+its matching Actions result remains authoritative for exact final-HEAD verification.
+
+
+| Executed test | Result |
+| --- | --- |
+| -[PuzzleAlarmUITests.HarnessDiagnosticsUITests testFailureCaptureWithoutUniqueTarget] | PASS 204.983 seconds |
+| -[PuzzleAlarmUITests.HarnessDiagnosticsUITests testNativeTargetOnSeparateFreshLaunches] | PASS 44.637 seconds |
+| -[PuzzleAlarmUITests.HarnessDiagnosticsUITests testNativeWaitReportsAbsentControl] | PASS 13.516 seconds |
+| -[PuzzleAlarmUITests.HarnessDiagnosticsUITests testSwitchBoundaryDiagnostics] | PASS 184.758 seconds |
+| -[PuzzleAlarmUITests.HarnessIdentityUITests testResetAndRelaunchPreserveKnownFixtureIdentity] | PASS 112.985 seconds |
+| -[PuzzleAlarmUITests.HarnessMenuUITests testMinuteOptionSelectionReportsExactDraftWithoutWriting] | PASS 108.517 seconds |
+| -[PuzzleAlarmUITests.HarnessMenuUITests testReadinessRejectsCoveredAndDisabledControls] | PASS 75.129 seconds |
+| -[PuzzleAlarmUITests.HarnessPickerUITests testOffscreenPickerIsRevealedBeforeUniqueInteraction] | PASS 59.994 seconds |
+| -[PuzzleAlarmTests.SimulatorUITestFixtureTests testInvalidOrUnseededNamespaceFailsClosed] | PASS 0.010 seconds |
+| -[PuzzleAlarmTests.SimulatorUITestFixtureTests testNamespacesResetAndRelaunchUseExactDiskState] | PASS 0.055 seconds |
+
+PROJECT_STATE alone owns recursive acceptance and next action. Existing readiness,
+uniqueness,3/10-second waits and functional assertions retained. Native wait/negative
+probe semantics,artifact omission/error categories remain as documented below.
+
+---
+
 # Repair evidence - 6a_menu / 45041577045
 
 Assessed **e1f656d8ed682604e19c5dc8494c140b3c34e92a** /
