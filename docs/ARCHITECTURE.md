@@ -1,3 +1,17 @@
+# Checkpoint 6C draft observation - 2026-11-22 America/Chicago
+
+The existing opt-in DEBUG Simulator navigation overlay reads actual isolated draft
+hour/minute, sorted weekdays, enabled flag, sound index and canSave beside identity
+and mode. This changes no binding, validation, storage or service behavior.
+Independent gestures assert complete draft values; disk/fake-scheduler hashes and
+service events distinguish selection from Save. Unit tests intercept commands
+before delegating to the existing lifecycle service and compare disk with the
+exact forwarded replacement. Sound remains identifier selection only; preview and
+resources belong to the later stage. PROJECT_STATE owns acceptance; TEST_MATRIX
+owns scenarios. Existing design sections below remain preserved.
+
+---
+
 # Baseline architecture and historical stage record
 
 Current status is maintained only in the [active restart PROJECT_STATE](https://github.com/teejayishere/PuzzleAlarm/blob/codex/restart-gate5-20261029-f8a41c/docs/PROJECT_STATE.md).

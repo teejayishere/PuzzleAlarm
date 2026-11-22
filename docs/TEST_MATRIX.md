@@ -1,3 +1,31 @@
+# Checkpoint 6C candidate contracts - 2026-11-22 America/Chicago
+
+Prerequisite b7e823d / run 44964059584, profile=6b: all twelve tests PASS;
+PROJECT_STATE records exact SHA/time/status. New evidence below is PENDING.
+
+| Scenario | Executable tests | Required observation |
+| --- | --- | --- |
+| 6C.1 Time | DraftEditingTests/testTimeRoundTripsIndependentlyIncludingBoundaries; DraftEditingUITests/testTimeEditsStayInDraftAndCancel | Unit 00:00/23:59/08:00/07:35; UI 07:00 -> 08:05. Other fields/identity preserved. Cancel/relaunch restores 07:00; unchanged disk, no service mutation/scheduler file. |
+| 6C.1 Weekdays | DraftEditingTests/testWeekdaysRoundTripIncludingOneTimeAndAllDays; DraftEditingUITests/testWeekdayEditsStayInDraftAndCancel | Unit empty/Wed+Fri/all days; UI Mon+Fri -> Wed+Fri via one native gesture per switch. Actual draft [4,6], other fields unchanged. Cancel/relaunch restores [2,6], no write/effect. |
+| 6C.1 Enabled | DraftEditingTests/testBothEnabledStatesRoundTripWithoutOtherChanges; DraftEditingUITests/testEnabledEditStaysInDraftAndCancel | Both values convert exactly; UI disabled -> enabled draft/accessibility agree. Cancel/relaunch stays disabled; no service mutation/scheduling. |
+| 6C.1 Sound | DraftEditingTests/testEverySoundIdentifierRoundTripsWithoutOtherChanges; DraftEditingUITests/testSoundSelectionStaysInDraftAndCancel | All five identifiers convert/reopen exactly; UI System default -> Siren changes only draft soundIndex=3. Cancel/relaunch restores default, no write/effect. No playback claim. |
+| 6C.2 Invalid save | DraftEditingTests/testInvalidDraftSaveStopsBeforeServiceAndStorage; DraftEditingUITests/testInvalidChallengeDraftDisablesSaveWithoutWrites | Empty required-challenge draft cannot convert/save: model rejects before service/storage; UI Save disabled and actual canSave=false. Cancel/relaunch retains original ordinary definition. Challenge parameter/sequence acceptance deferred to 6D. |
+| 6C.1 Save boundary | DraftEditingTests/testSaveForwardsExactEditedDefinitionAndPersistsIt; DraftEditingUITests/testSavedTimeAndSoundReopenFromDisk | One .edit carries original and exact replacement; disk equals forwarded definition; stable ID/createdAt, no pre-Save write. Disabled ordinary UI 08:05/Siren survives disk/process reopen; weekdays/mode/enabled unchanged; scheduler missing/empty. |
+
+Each UI scenario resets a distinct namespace with disabled ordinary ID
+6A000000-0000-4000-8000-000000000001. Exact full actual-draft strings are asserted;
+existing file hashes/service entries independently check no writes before Cancel
+and after process relaunch. Five edited-draft screenshots plus automatic failure
+captures are retained. Unit cases cover boundary time, one-time/all-day recurrence,
+both enabled states and every sound.
+
+Reviewed profile=6c: unchanged twelve-test 6B set plus two new six-test classes,
+TWENTY-FOUR distinct tests expected. No timeout/assertion weakening, retry, default
+full selection change, package/core acceptance claim or device/manual evidence.
+New runtime results remain PENDING; PROJECT_STATE alone owns current acceptance.
+
+---
+
 ## Accepted 6B evidence after native wait repair - e638757 / 44861324867
 
 PROJECT_STATE owns current decisions. Profile=6b attempt 1 SUCCESS: twelve

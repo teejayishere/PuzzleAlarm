@@ -1,5 +1,58 @@
 # Active restart project state
 
+## Active checkpoint 6C candidate - 2026-11-22 America/Chicago
+
+Next-step request authorizes checkpoint 6C draft editing only. 6A RESTORED /
+ACCEPTED and 6B ACCEPTED: exact prerequisite **b7e823d9f349745f1af4934cb35c9ac0c6b4f46f**,
+[run 44964059584](https://github.com/teejayishere/PuzzleAlarm/actions/runs/44964059584),
+workflow_dispatch profile=6b, attempt 1, completed/SUCCESS. All TWELVE distinct
+tests passed, zero failures. Job 137028989698: 2026-11-21 23:54:45 through
+2026-11-22 00:10:25 UTC, 940 actual runner-seconds. Lineage, project reproducibility,
+Simulator discovery, app/test compilation, usage description and diagnostics review
+PASS. Package/core checks intentionally SKIPPED by this focused profile; no full
+Gate 6 pass. Existing exact-HEAD result reused without an unchanged rerun.
+
+Fetched origin and read remote state before AGENTS. Separately verified clean,
+full-history gate6-repair checkout matched remote b7e823d. Audited external
+Scripts/check_restart_preflight.py and active lineage script both PASS using the
+bundled Python runtime outside the sandbox. Reviewed post-baseline single-parent
+commit history, source/test/workflow changes and fixed-anchor parentage; no later
+merge, core/domain change or abandoned-lineage import found. Original dirty
+8deb0dd checkout, unpublished readiness changes and all existing evidence preserved.
+The uncommitted readiness preflight was executed externally, never copied into
+the active source or CI; its implementation and imported lineage constants were
+read first. No readiness wrapper repair is included.
+
+Fresh $0 allocation BEFORE validation: at most TWO ios.yml profile=6c executions,
+automatic triggers included; 25 minutes per job / 50 aggregate actual runner-minutes,
+ZERO retries. One candidate and at most one documentation-inclusive final run.
+Stop on failure, exhaustion, external blocker or final success. Local maxima:
+ONE external preflight, TWO lineage checks, FOUR diff checks, SIXTEEN bounded
+source/history review batches, THREE artifact downloads; no local Swift/Xcode/
+Simulator/device execution. Budget also recorded externally in gate6c-budget.txt.
+Historical budgets are not reused.
+
+Existing draft bindings and validation are preserved. Candidate adds six unit and
+six independent UI scenarios for exact time/weekdays/enabled/sound conversion,
+invalid-save rejection, no write/service effect before Save, Cancel through disk
+relaunch, and one disabled ordinary save/reopen path. The existing opt-in DEBUG
+Simulator navigation audit now also reports actual draft field values; disk hashes
+and service events remain independently observed. New profile=6c retains ALL twelve
+6B tests and adds twelve 6C tests (TWENTY-FOUR expected). Full/default, 6A/6B selectors,
+existing wait/assertion limits and always-preserved failure artifacts are retained.
+Package/core checks are intentionally skipped for focused 6C, as in 6B.
+
+6C PENDING / NOT ACCEPTED until exact-revision focused evidence and final published
+HEAD verification. 6D-6F NOT ACCEPTED; Gate 6 NOT ACCEPTED; Stage 7 NOT STARTED.
+No evidence disproves Gates 0-5. All documentation precedes validation; this record
+does not claim the candidate compiled or passed. Device/manual VoiceOver/largest
+text NOT RUN. Stop after 6C verification; next separately bounded scope is 6D
+challenge configuration only if 6C succeeds. Earlier next-action wording is history.
+
+---
+
+# Active restart project state
+
 Owner decision: 2026-10-29 (America/Chicago).
 Active/default branch: `codex/restart-gate5-20261029-f8a41c`.
 Fixed restart anchor: `862c2d872958c2e08971acbf605bbcf07ee4b3d5`.

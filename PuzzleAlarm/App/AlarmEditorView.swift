@@ -64,7 +64,7 @@ struct AlarmEditorView: View {
             }
             .disabled(model.busy)
             .interactiveDismissDisabled(model.busy)
-            .navigationTestState("id=\(draft.id); original=\(draft.original?.id.uuidString ?? "new"); mode=\(draft.mode.rawValue)", context: "editor")
+            .navigationTestState("id=\(draft.id); original=\(draft.original?.id.uuidString ?? "new"); mode=\(draft.mode.rawValue); hour=\(draft.hour); minute=\(draft.minute); weekdays=\(draft.weekdays.map(\.rawValue).sorted()); enabled=\(draft.enabled); soundIndex=\(draft.soundIndex); canSave=\(draft.canSave)", context: "editor")
             .switchDiagnosticState("draft.id=\(draft.id); original.id=\(String(describing: draft.original?.id)); draft.enabled=\(draft.enabled); weekdays=\(draft.weekdays.map(\.rawValue).sorted()); busy=\(model.busy); loaded=\(model.loaded)", context: "editor")
         }
     }

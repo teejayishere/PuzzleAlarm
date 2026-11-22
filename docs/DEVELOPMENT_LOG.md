@@ -1,3 +1,17 @@
+# Checkpoint 6C candidate - 2026-11-22 America/Chicago
+
+Resumed next checkpoint from clean fetched b7e823d; exact-HEAD focused 6B run
+44964059584 SUCCESS (twelve tests, 940 actual runner-seconds). Audited external
+preflight and active lineage check PASS; original dirty checkout/evidence preserved.
+Added independent field/conversion/cancel/invalid-save/save-boundary tests and
+opt-in actual-draft values; existing bindings unchanged. Focused profile=6c keeps
+all twelve 6B cases plus six unit/six UI scenarios. Fresh bounded $0: at most TWO
+25-minute executions/50 aggregate runner-minutes, zero retries, stop on failure.
+Documentation precedes validation; compilation/runtime PENDING. Full Gate 6 and
+physical/manual evidence unclaimed. PROJECT_STATE owns scope, result and next action.
+
+---
+
 # Historical development record
 
 Current status is maintained only in the [active restart PROJECT_STATE](https://github.com/teejayishere/PuzzleAlarm/blob/codex/restart-gate5-20261029-f8a41c/docs/PROJECT_STATE.md).
