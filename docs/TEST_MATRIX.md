@@ -1,3 +1,32 @@
+# Checkpoint 6C observed results - 31a65b5 / 45037783645
+
+Profile=6c, attempt 1, workflow CANCELLED on the annotated 25-minute limit.
+TWENTY-FOUR distinct terminal results:23 PASS/ONE FAIL. PROJECT_STATE owns
+recursive acceptance and allocation decisions; these are revision-specific results.
+
+| Scenario set | Observed result |
+| --- | --- |
+| Six DraftEditingTests | All PASS: time boundaries, weekday sets, both enabled values, all sounds, invalid save/no service or storage, exact forwarded edit and persisted definition. |
+| Draft enabled / invalid draft / sound / time / weekdays UI | PASS:226.419s /81.106s /81.564s /89.502s /92.941s. Complete draft/cancel/hash/service/relaunch assertions retained. |
+| Saved-time/sound UI | FAIL118.498s before Save: option05 exists/count1 but unchanged enabled/hittable wait fails at AlarmUITestCase.swift:76. Actual draft08:00, unchanged disk/no scheduler mutation; save/reopen assertions NOT REACHED. |
+| Twelve retained6B cases | All PASS: identity92.764s, Mode picker59.875s, five navigation cases, three model cases and two fixture cases. No whole-checkpoint restoration from this cancelled result. |
+
+App/test compilation and usage-description verification PASS; diagnostics review
+SKIPPED after timeout. Package/core intentionally SKIPPED; full Gate6 NOT PASS.
+Physical/manual NOT RUN. Job15:20:48-15:46:24UTC,1536 actual runner-seconds including
+cleanup. Earlier observed menu readiness failure is distinct from overall timeout.
+Native option lookup2.952054s/count4.917414s and later text menu snapshots do not
+prove root cause or justify increasing the existing3s predicate/10s control waits.
+
+Artifact upload FAILED (ENOENT for changing xcresult .tracev3); ZERO downloadable
+artifacts. Screenshots were requested in logs but binary images/xcresult unavailable;
+no visual inspection claimed. Full logs, failed-case text, metadata/annotations,
+test index and SHA256 manifest preserved externally under gate6c-45037783645.
+Current6A readiness reassessment and dependent6B/6C withholding:PROJECT_STATE.
+Stop-on-failure allocation closed; no second execution or unchanged failing retry.
+
+---
+
 # Checkpoint 6C candidate contracts - 2026-11-22 America/Chicago
 
 Prerequisite b7e823d / run 44964059584, profile=6b: all twelve tests PASS;

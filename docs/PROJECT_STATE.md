@@ -1,5 +1,70 @@
 # Active restart project state
 
+## Active 6C attempt decision - NOT ACCEPTED - 2026-11-22 America/Chicago
+
+The new 6C candidate has a concrete menu-option readiness failure, followed by
+job timeout and failed evidence upload. **6A NEEDS REASSESSMENT / NOT ACCEPTED**
+for shared menu-option readiness; dependent **6B WITHHELD / NOT ACCEPTED** and
+**6C NOT ACCEPTED**. Gate 6 NOT ACCEPTED; 6D-6F NOT ACCEPTED; Stage 7 NOT STARTED.
+Earlier 6A/6B successes remain valid revision-specific evidence. No new evidence
+disproves Gates 0-5. This supersedes acceptance/next-6D wording below.
+
+Assessed **31a65b5df7b26b836effe07b33569872baecf622** /
+[run 45037783645](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45037783645),
+workflow_dispatch profile=6c, attempt 1, completed/CANCELLED. Job 137255255417:
+15:20:48-15:46:24 UTC, **1536 actual runner-seconds (25m36s including cleanup)**.
+GitHub annotation explicitly reports the maximum execution time of 25m0s exceeded.
+All TWENTY-FOUR tests emitted terminal results: **23 PASS, ONE FAIL** before timeout.
+All six new unit cases PASS; five of six new UI cases PASS; all twelve retained
+6B cases PASS. These results do not turn the cancelled workflow into SUCCESS.
+
+Earliest observed failure: DraftEditingUITests/testSavedTimeAndSoundReopenFromDisk,
+118.498s, fails AlarmUITestCase.swift:76 in the unchanged ready() predicate for
+minute menu option 05. After choosing hour 08, the 05 lookup reports exists=true,
+count=1; native lookup 2.952054s, following count call 4.917414s. The existing
+three-second enabled/hittable predicate wait fails before any 05 tap or Save.
+Text captures retain the open minute menu and actual draft hour=8/minute=0,
+disabled/ordinary/Mon+Fri/default sound, unchanged disk hash and scheduler=missing;
+only refresh service events appear. The separate time-only scenario later PASS
+(89.502s). The exact cause of the readiness failure is UNRESOLVED; no offscreen,
+binding, storage or scheduling defect is claimed proven. Do not increase waits,
+weaken readiness/uniqueness, or rerun the unchanged failing candidate.
+
+Recursive invalidation begins at the shared 6A control-readiness boundary, before
+6C save/persistence. Original identity and offscreen Mode regression PASS, as do
+all navigation cases, but their narrower successes cannot establish the newly
+failed menu-option contract. Restore affected 6A readiness then reassess 6B and
+6C in order under a separately bounded repair session. No later-checkpoint work.
+
+Evidence categories: lineage/project reproducibility/Simulator discovery PASS;
+app/test compilation and built usage-description verification PASS. Simulator
+terminal test results are as above. Xcode diagnostics review SKIPPED after timeout;
+no final diagnostics-review PASS. Package/core checks intentionally SKIPPED by
+focused profile. Physical device/manual VoiceOver/largest text NOT RUN.
+
+Artifact upload FAILED while zipping a changing xcresult diagnostic .tracev3 file
+(ENOENT); API reports ZERO artifacts. Logs mention captured screenshots, but no
+binary screenshots/xcresult were recovered or visually inspected. Full job log,
+run/jobs/artifact metadata, timeout/failure annotations, failed-case text and
+SHA256 manifest are preserved in this session's gate6c-45037783645 directory.
+Source/tests and all older evidence/original dirty checkout remain preserved.
+
+Allocation CLOSED on failure: ONE/TWO executions, 1536/3000 actual runner-seconds,
+$0; unused second slot is not carried forward. No second run, retry, source repair
+or final product validation followed. This documentation-only [skip ci] closeout
+is **UNVALIDATED** and has no successful exact-HEAD CI. Publish only after expected
+remote-SHA check by non-force fast-forward. No Gate 6 or checkpoint promotion.
+
+Next separately bounded scope: diagnose minute-option 05 readiness using preserved
+text and an isolated exact-target capture; review profile capacity and stable
+artifact preservation within the existing job limit before another dispatch.
+Preserve existing functional assertions, 3/10-second waits and all service/storage
+contracts. Re-establish affected prerequisites before 6C acceptance. STOP here.
+
+---
+
+# Active restart project state
+
 ## Active checkpoint 6C candidate - 2026-11-22 America/Chicago
 
 Next-step request authorizes checkpoint 6C draft editing only. 6A RESTORED /

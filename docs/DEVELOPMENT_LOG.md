@@ -1,3 +1,21 @@
+# Checkpoint 6C failure closeout - 2026-11-22 America/Chicago
+
+Published31a65b5 and dispatched45037783645, profile6c attempt1. All24 tests emitted
+results:23PASS/oneFAIL (saved-time/sound UI, before05 selection/Save). Shared ready()
+enabled/hittable predicate failed while05 existed uniquely; cause unresolved.
+All six new unit/five other new UI/twelve retained6B cases PASS. Workflow then
+CANCELLED at annotated25-minute limit; job actual1536seconds including cleanup.
+Diagnostics review SKIPPED; artifact zip failed ENOENT for moving xcresult trace;
+zero artifacts/binary screenshots recovered. Logs/text/metadata/annotations/hash
+manifest preserved. No product binding/core/schema change or repair after failure.
+6A readiness needs reassessment; dependent6B withheld,6C not accepted, Gate6 not
+accepted; no Gates0-5 disproof. Allocation CLOSED on failure at1/2runs,$0; no retry
+or second run. Documentation-only closeout unvalidated; exact source/run and next
+separately bounded diagnosis scope belong to PROJECT_STATE. Original dirty checkout,
+local-only readiness commits and all previous evidence preserved. STOP.
+
+---
+
 # Checkpoint 6C candidate - 2026-11-22 America/Chicago
 
 Resumed next checkpoint from clean fetched b7e823d; exact-HEAD focused 6B run
