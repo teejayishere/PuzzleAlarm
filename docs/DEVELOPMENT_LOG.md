@@ -1,3 +1,15 @@
+# Capture containment negative evidence verified - 2026-11-23
+
+c62d0a8/run45250273849 profile6a_failure SUCCESS: six iOS cases,three verifier
+unit tests,all four postcondition markers/five intentional issue records; no runner
+restart. Artifact14856352897 hash/CRC/manifest verified; all three PNG inspected.
+612 actual runner-seconds;allocation2/6,1085/9000seconds,$0. Prior nominal green
+run remains rejected as proof of postconditions. Source unchanged; records precede
+complete prior6a(TEN cases). Current acceptance remains pending in PROJECT_STATE;
+no6B/6C/6D work or product repair. Original launch/QR causes remain unresolved.
+
+---
+
 # First capture repair evidence rejected; stronger negative fixture - 2026-11-23
 
 Run45248280818 on e79ce2ab SUCCESS,473 runner-seconds; six terminal PASS, artifacts

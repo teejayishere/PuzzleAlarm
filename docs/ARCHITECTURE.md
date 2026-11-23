@@ -1,3 +1,15 @@
+# Controlled negative fixture continuation - 2026-11-23
+
+Direct record() can stop a fail-fast fixture even if the issue matches an expected
+failure. Only the new deliberate negative fixture blocks temporarily continue;
+strict type/source/description matchers and normal fail-fast are restored before
+postcondition assertions. Completion markers follow all assertions, and CI requires
+all four markers and five forwarded synthetic issues. Unexpected failures remain
+failures. Existing functional tests never receive these fixture-only expectations.
+This complements the collector-only continuation scope described below.
+
+---
+
 # Shared failure-capture implementation candidate - 2026-11-23
 
 AlarmUITestCase.record now stores only local description/source metadata and

@@ -1,3 +1,22 @@
+# Verified negative capture postconditions - c62d0a8 / 45250273849
+
+Profile6a_failure attempt1 SUCCESS,SIX iOS cases PASS/zero unexpected failures.
+Each6A.3a-6A.3d method emitted its completion marker AFTER all postconditions;
+FIVE strict synthetic issue records include the secondary previously not reached.
+One nested collection attempt denied; primary/source retention, guard reset,
+unavailable/transition zero-query omissions, real relaunch/unchanged disk and
+fail-fast restoration asserted. Three verifier unit tests and completion check
+PASS. No runner restart. Complete prior TEN-case6a remains pending.
+
+Artifact14856352897 verified:872126bytes,
+SHA2565b2ee049a9b3f1495f70d1d3cd6276ad7647000b46e8ba5d906ecf390f3e0d04;
+outer/nested CRC and digest PASS,manifest errors=[],excluded=[]. Three indexed PNG
+all inspected; logs/context/omission/issue and completion evidence retained.
+App/test compilation/usage/diagnostics PASS;package/core intentionally SKIPPED;
+device/manual NOT RUN. Current acceptance remains solely in PROJECT_STATE.
+
+---
+
 # Capture postcondition evidence correction - 2026-11-23
 
 Run45248280818/e79ce2ab profile6a_failure was SUCCESS with six terminal PASS, but

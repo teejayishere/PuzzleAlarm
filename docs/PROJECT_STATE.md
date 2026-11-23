@@ -1,5 +1,50 @@
 # Active restart project state
 
+## Negative capture regressions verified; complete prior 6A next - 2026-11-23
+
+6A PENDING COMPLETE REASSESSMENT / NOT ACCEPTED. 6B/6C WITHHELD;6D-6F/Gate6
+NOT ACCEPTED;Stage7 NOT STARTED. No Gates0-5 disproof. Narrow proof below restores
+only the new failure-containment evidence; unchanged complete6a remains required.
+This entry supersedes earlier candidate/status wording below.
+
+Assessed c62d0a8d2a3294691eda053588dd77d0d3045ce2 /
+[run45250273849](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45250273849),
+profile6a_failure,attempt1,completed/SUCCESS. SIX iOS test cases PASS,zero unexpected
+failures; all FOUR negative regression completion markers exactly once; all FIVE
+strict intentional issue records present (primary2,secondary1,transition1,
+unavailable1). One nested capture rejected; guard reset and independent capture,
+source preservation, zero-query omissions and successful real relaunch assertions
+actually executed. NO runner restart. THREE separate Python verifier tests PASS.
+Job137957759502 consumed612 actual runner-seconds including cleanup.
+
+Lineage/reproducibility/discovery/app+test compile/usage/diagnostics review PASS.
+No compiler/destination warnings;one recognized SDK metadata advisory. Frozen
+snapshot/upload PASS;artifact14856352897,872126bytes,
+SHA2565b2ee049a9b3f1495f70d1d3cd6276ad7647000b46e8ba5d906ecf390f3e0d04.
+Download/hash/outer+nested ZIP CRC verified;manifest errors=[],excluded=[].
+Three unique PNG recovered/indexed and ALL THREE inspected: unchanged disabled
+ordinary07:00,Monday/Friday,default-sound list,with/without navigation audit.
+Full logs/metadata/xcresult/manifest/screens/hashes preserved externally in
+capture-repair-45250273849; rejected earlier green-run evidence remains intact.
+Package/core intentionally SKIPPED;physical-device/manual accessibility NOT RUN.
+
+Source/test/workflow unchanged since this assessed revision. This documentation
+commit precedes the next allocated profile6a execution selecting all TEN original
+identity/native-target/picker/menu/diagnostic/fixture cases. Success of both sets
+then exact documented-final-HEAD6a_failure SUCCESS is required for6A restoration.
+This record is not a substitute for the new HEAD's own matching result.
+
+Allocation TWO/SIX executions,1085/9000 actual runner-seconds,$0;TWO/FOUR narrow
+slots used. Complete6a and final verification slots reserved. Stop on complete6a
+failure,exhaustion,external blocker or final6A success. No6B/6C/6D validation here.
+PA-L001 and PA-L008 now have scoped negative evidence,not full-gate closure.
+Original launch failure trigger and QR Save delivery cause remain unresolved.
+All candidate source/old evidence/original dirty checkout remain preserved.
+
+---
+
+# Active restart project state
+
 ## Capture regression completion gap; changed candidate - 2026-11-23
 
 6A NOT ACCEPTED;6B/6C WITHHELD;6D-6F/Gate6 NOT ACCEPTED;Stage7 NOT STARTED.

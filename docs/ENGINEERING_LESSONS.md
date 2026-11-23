@@ -1,3 +1,19 @@
+# PA-L001 / PA-L008 scoped verification - 2026-11-23
+
+[Run45250273849](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45250273849)
+on c62d0a8 proves the four negative regression postconditions actually completed:
+four unique completion markers,all five intentional issue records including the
+secondary,one rejected nested capture and later independent collection. No runner
+restart; six iOS cases and three verifier tests PASS. Artifact/screens inspected.
+The first nominal green run remains rejected as postcondition evidence.
+
+The new prevention is executable: CI rejects missing/duplicate completion or
+missing issue evidence. Complete prior6A coverage and exact final-HEAD verification
+remain required before gate restoration; PROJECT_STATE owns that decision. Neither
+the original launch trigger nor QR Save cause is declared resolved by these tests.
+
+---
+
 # PA-L008 - A passing negative test can stop before its postconditions
 
 Observed2026-11-23: [run45248280818](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45248280818),
