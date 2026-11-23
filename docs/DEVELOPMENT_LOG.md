@@ -1,3 +1,16 @@
+# First capture repair evidence rejected; stronger negative fixture - 2026-11-23
+
+Run45248280818 on e79ce2ab SUCCESS,473 runner-seconds; six terminal PASS, artifacts
+verified and one PNG inspected. Review found postconditions never ran after strict
+expected primary records; secondary injection absent. No6A acceptance. PA-L008
+records why the earlier progress claim was premature. Changed candidate permits
+continuation only inside controlled-negative blocks, restores functional fail-fast
+and adds mandatory completion/issue-count evidence checks plus verifier unit cases.
+Source/test invocation map corrected. Scope remains6A, allocation1/6,473/9000s,$0.
+All records precede next validation; original launch/QR causes remain unresolved.
+
+---
+
 # Shared capture repair candidate - 2026-11-23
 
 Owner authorized repair. Applied PA-L001-PA-L007: record original issues before

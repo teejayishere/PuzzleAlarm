@@ -163,6 +163,11 @@ jobs:
             "${selectors[@]}" \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee "$RUNNER_TEMP/ios-tests.log"
+      - name: Verify negative regression postconditions actually executed
+        if: inputs.profile == '6a_failure' || inputs.profile == 'full' || inputs.profile == ''
+        run: |
+          python3 -m unittest discover -s Scripts/tests -p test_capture_regressions.py
+          python3 Scripts/check_capture_regressions.py "$RUNNER_TEMP/ios-tests.log"
       - name: Review Xcode diagnostics
         run: python3 Scripts/check_xcode_diagnostics.py "$RUNNER_TEMP/ios-build.log" "$RUNNER_TEMP/ios-tests.log"
       - name: Freeze Xcode evidence outside the live diagnostic workspace

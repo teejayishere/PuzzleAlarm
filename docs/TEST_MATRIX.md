@@ -1,3 +1,22 @@
+# Capture postcondition evidence correction - 2026-11-23
+
+Run45248280818/e79ce2ab profile6a_failure was SUCCESS with six terminal PASS, but
+is NOT accepted as execution of6A.3a-6A.3d postconditions. Strict expected primary
+issues still aborted these fail-fast methods; no post-injection capture phases or
+secondary issue appeared. Expected matches alone did not prove test continuation.
+
+Changed candidate FailureCaptureUITests temporarily continues only within each
+strict controlled-negative block, restores fail-fast, then asserts postconditions
+and emits one final completion marker per method. check_capture_regressions.py
+requires FOUR unique markers exactly once plus FIVE original issue records,
+including the previously absent secondary. Its three unit cases exercise false-
+green/missing/duplicate evidence rejection and complete evidence acceptance. CI
+runs these checks on6a_failure and full/default profiles. Current evidence remains
+IMPLEMENTED / NOT RUN; exact SHA/run/artifacts are required before acceptance.
+PA-L008 records this additional lesson. No product assertions or timeouts weakened.
+
+---
+
 # Shared capture repair candidate mapping - 2026-11-23
 
 Implementation present; new runtime evidence NOT RUN. Current acceptance belongs
@@ -7,7 +26,7 @@ Complete unchanged6a is TEN cases; both sets are required for6A restoration.
 | Scenario | Executable | Required observation |
 | --- | --- | --- |
 | 6A.3a | FailureCaptureUITests/testPrimaryIssueIsForwardedBeforeNormalCapture | One strict primary issue retained with source; record initiates zero captures/queries; explicit normal capture completes once with context/hierarchy/screenshot, guard released and original fail-fast setting restored. |
-| 6A.3b | FailureCaptureUITests/testCollectionIssueDoesNotReenterAndGuardResets | Primary and secondary issues forwarded; injected nested attempt denied; exactly one outer capture, zero queries after secondary issue; omission retained; later independent capture completes with same two issue records. |
+| 6A.3b | FailureCaptureUITests/testSecondaryCollectorIssueCannotReenterAndGuardResets | Primary and secondary issues forwarded; injected nested attempt denied; exactly one outer capture, zero queries after secondary issue; omission retained; later independent capture completes with same two issue records. |
 | 6A.3c | FailureCaptureUITests/testUnavailableApplicationRetainsIssueWithoutQueries | Terminated application; primary issue retained; explicit omission; zero queries, no launch/capture recursion; guard and fail-fast setting restored. |
 | 6A.3d | FailureCaptureUITests/testTransitionIssueWithEditorPresentSkipsQueriesAndRelaunches | Controlled transition issue with editor present produces zero queries and an omission; later real terminate/relaunch returns intended ID, unchanged disk/no edit-service event. Original60-second launch failure is not claimed reproduced or solved. |
 

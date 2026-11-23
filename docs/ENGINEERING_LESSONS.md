@@ -1,3 +1,31 @@
+# PA-L008 - A passing negative test can stop before its postconditions
+
+Observed2026-11-23: [run45248280818](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45248280818),
+sourcee79ce2ab, six cases PASS and no runner restart. Artifact/log inspection found
+that direct record() with fail-fast still aborted after each strictly expected
+primary issue. Post-injection capture phases were absent; the secondary issue
+never executed. The real SUCCESS was not evidence of the intended cleanup tests.
+The omission was caught before6A restoration; no green-summary-only acceptance.
+
+Why missed in implementation review: exact XCTExpectFailure matching was assumed
+to imply subsequent assertions ran. That assumption was not demonstrated. The
+initial progress report calling the postconditions exercised was premature and
+was corrected immediately after inspecting the actual messages and phases.
+
+Prevention: controlled negative fixture blocks must explicitly permit continuation
+long enough to reach postconditions, then restore normal fail-fast behavior. Keep
+strict issue type/source/description matching; unexpected failures still fail.
+Require explicit completion after all postconditions and verify primary/secondary
+issue counts. Reject a green suite with missing postconditions. Do not infer test
+coverage from test names, expected-failure matches or terminal totals alone.
+
+Implementation candidate: FOUR postcondition markers, FIVE intended issue records
+and a CI verifier with false-green/missing/duplicate-evidence rejection tests.
+Runtime status belongs to TEST_MATRIX/PROJECT_STATE, not this lesson. The existing
+observer fix remains source evidence until these regressions actually complete.
+
+---
+
 # PA-L001 implementation progress - 2026-11-23
 
 The current capture repair candidate implements immediate issue forwarding,

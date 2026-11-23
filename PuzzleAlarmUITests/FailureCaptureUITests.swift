@@ -22,6 +22,7 @@ final class FailureCaptureUITests: AlarmUITestCase, @unchecked Sendable {
         XCTAssertTrue(state.omissions.isEmpty)
         XCTAssertGreaterThan(state.queries, 0)
         XCTAssertFalse(continueAfterFailure)
+        print("Capture regression completed: testPrimaryIssueIsForwardedBeforeNormalCapture")
     }
 
     @MainActor
@@ -52,6 +53,7 @@ final class FailureCaptureUITests: AlarmUITestCase, @unchecked Sendable {
         XCTAssertGreaterThan(recovered.queries, 0)
         XCTAssertFalse(recovered.collecting)
         XCTAssertFalse(continueAfterFailure)
+        print("Capture regression completed: testSecondaryCollectorIssueCannotReenterAndGuardResets")
     }
 
     @MainActor
@@ -69,6 +71,7 @@ final class FailureCaptureUITests: AlarmUITestCase, @unchecked Sendable {
         XCTAssertEqual(state.omissions, ["application unavailable or transitioning: terminated"])
         XCTAssertFalse(state.collecting)
         XCTAssertFalse(continueAfterFailure)
+        print("Capture regression completed: testUnavailableApplicationRetainsIssueWithoutQueries")
     }
 
     @MainActor
@@ -94,10 +97,17 @@ final class FailureCaptureUITests: AlarmUITestCase, @unchecked Sendable {
         XCTAssertEqual(auditValue("list", in: app).components(separatedBy: " | ")[1], before)
         XCTAssertFalse(auditValue("list", in: app).contains("service.enter edit"))
         XCTAssertFalse(continueAfterFailure)
+        print("Capture regression completed: testTransitionIssueWithEditorPresentSkipsQueriesAndRelaunches")
     }
 
     @MainActor
     private func expectIssue(_ description: String, _ operation: () -> Void) {
+        // Direct record() still aborts a fail-fast test even when the issue later
+        // matches XCTExpectFailure. Only this deliberately failing fixture block
+        // may continue so the regression's postconditions can actually execute.
+        let priorContinue = continueAfterFailure
+        continueAfterFailure = true
+        defer { continueAfterFailure = priorContinue }
         let options = XCTExpectedFailure.Options()
         options.isStrict = true
         options.issueMatcher = {

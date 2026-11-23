@@ -1,5 +1,53 @@
 # Active restart project state
 
+## Capture regression completion gap; changed candidate - 2026-11-23
+
+6A NOT ACCEPTED;6B/6C WITHHELD;6D-6F/Gate6 NOT ACCEPTED;Stage7 NOT STARTED.
+No Gates0-5 disproof. Repair scope remains6A only. This entry supersedes candidate
+and acceptance wording below. No QR/product repair is claimed.
+
+Candidate e79ce2abfb23a0cb2bea5b0296a8bcbf77d09f1c /
+[run45248280818](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45248280818),
+profile6a_failure attempt1, completed/SUCCESS,473 actual runner-seconds.
+SIX test cases emitted PASS; app/test compilation, diagnostics review, freeze and
+upload PASS. Artifact14854827151,432664bytes,
+SHA256474b3386a00bdf5265c4c62f8abe46bfdec29467de5b7a62823e7ee8b2ae02a7;
+outer/nested ZIP CRC/hash verified,manifest errors=[],excluded=[]. One distinct
+PNG recovered/inspected: disabled ordinary fixture07:00,Monday/Friday/default.
+No runner restart. Package/core intentionally SKIPPED;device/manual NOT RUN.
+
+Evidence review REJECTS this run as proof of the four negative postconditions:
+direct record() with continueAfterFailure=false aborted each fixture test after
+its matched primary issue. No explicit post-injection capture phase appeared;
+secondary issue was never injected. XCTest's green terminal result is real but
+insufficient for the intended regression contract. No6A restoration was made.
+This recurs at PA-L006's evidence boundary and is recorded as PA-L008.
+
+Changed candidate keeps the harness repair but temporarily enables continuation
+only inside deliberately failing, strict source/type/description-matched negative
+fixture blocks; defer restores fail-fast before postcondition assertions. FOUR
+completion markers now follow all required assertions. New completion verifier
+requires each marker exactly once AND all FIVE intended issue records (primary2,
+secondary1,transition1,unavailable1). CI tests its rejection of a green summary
+without markers, missing secondary evidence and duplicate completion. It runs for
+6a_failure and full/default selection; existing functional assertions unchanged.
+
+Before publication, ONE local evidence-check execution against the preserved old
+log is allocated with expected REJECTION,zero retries and no runner time, within
+bounded evidence review. No local Swift/Xcode/product test. Changed candidate
+compilation/negative behavior is NOT RUN. Corrected scenario map to actual declared
+secondary-test name; existing source/history remains preserved.
+
+Allocation used ONE/SIX executions,473/9000 actual runner-seconds,$0. One of FOUR
+changed narrow slots used. Complete unchanged6a and documentation-inclusive final
+verification remain reserved. No unchanged failing rerun, no later-checkpoint work.
+Original launch failure and QR Save cause remain unresolved. All documentation
+precedes the next6a_failure validation; stop/restore conditions remain as below.
+
+---
+
+# Active restart project state
+
 ## Shared failure-capture repair candidate - 2026-11-23 America/Chicago
 
 Owner authorized repair next. Scope is shared 6A failure observation only, applying
