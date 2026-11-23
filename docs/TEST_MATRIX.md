@@ -1,3 +1,29 @@
+# Checkpoint 6D failed settings evidence - c7fd5d04 / 45086593612
+
+PROJECT_STATE owns current recursive invalidation and next scope. Attempt1 FAILURE,
+821 actual runner-seconds; no unchanged retry or later profile dispatch.
+
+| Cases / check | Actual result |
+| --- | --- |
+| Nine ChallengeConfigurationTests | All PASS, including math/memory boundaries/fractional duration, QR identity, duplicate/move/remove/mode conversions. |
+| Both SimulatorUITestFixtureTests | PASS. |
+| Math UI settings | PASS131.214s; hard6 exact draft/save/process reopen. |
+| Memory UI settings | Interrupted/crashed during launch/termination before editing; shared record/capture recursion and stack overflow proven in xcresult. No settings PASS. |
+| QR UI settings | FAIL140.006s at covered list-row reveal after native Save tap; editor stays open, disk unchanged, no edit service event. Exact initial QR payload asserted; save/reopen NOT established. |
+| Lineage/project reproducibility/discovery/app+test compile/usage description | PASS. |
+| Xcode diagnostics review | SKIPPED after failure; no final review PASS. |
+| Freeze/upload | PASS; manifest errors=[],excluded=[]; artifact14779812886 hash/outer+nested CRC verified. |
+| Screens | Three PNG indexed and all inspected: Math hard6, QR target, still-present failure editor. |
+| Sequence/mode/final profiles | NOT RUN. |
+| Package/core/device/manual accessibility | Focused package/core intentionally SKIPPED; device/manual NOT RUN. |
+
+Recursive boundary6A requires reassessment;6B/6C withheld,6D not accepted. Earlier
+revision successes remain supporting evidence. FullGate6 not accepted. Candidate
+scenario table below records implemented tests, not successful runtime coverage.
+No source/test assertions, readiness deadlines or contracts changed in closeout.
+
+---
+
 # Checkpoint 6D candidate scenario mapping - 2026-11-22
 
 PROJECT_STATE owns current acceptance. Runtime evidence below is PENDING.

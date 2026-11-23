@@ -1,3 +1,15 @@
+# Checkpoint 6D failed attempt - 2026-11-22 America/Chicago
+
+c7fd5d04/run45086593612 profile6d_settings FAILURE;821 runner-seconds. Twelve
+terminal PASS, Memory UI runner crash and QR UI assertion failure. Shared6A
+failure-capture recursion proven by xcresult crash frames; dependent6B/6C withheld,
+6D not accepted. Exact evidence/decision/next scope are in PROJECT_STATE. Artifact
+14779812886 retained, verified and all three recovered PNG inspected. Closed $0
+allocation at1/4 on first failure; no repair/retry/later profile. Documentation-only
+closeout is unvalidated and does not promote any checkpoint.
+
+---
+
 # Checkpoint 6D candidate - 2026-11-22
 
 Independent challenge configuration evidence added; exact scope, prerequisites,

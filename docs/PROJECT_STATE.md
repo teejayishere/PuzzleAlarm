@@ -1,5 +1,79 @@
 # Active restart project state
 
+## 6D attempt failed; shared 6A capture contract invalidated - 2026-11-22 America/Chicago
+
+6A NEEDS REASSESSMENT / NOT ACCEPTED for launch-transition failure capture.
+Dependent 6B and 6C WITHHELD / NOT ACCEPTED; 6D NOT ACCEPTED; 6E-6F NOT ACCEPTED;
+Gate 6 NOT ACCEPTED; Stage 7 NOT STARTED. Earlier successful 6A-6C results remain
+revision-specific evidence. No new evidence disproves Gates 0-5. This supersedes
+all acceptance and next-6E wording below.
+
+Assessed c7fd5d048628d969b9eabbd5b5897735c86bcba7 /
+[run 45086593612](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45086593612),
+workflow_dispatch profile=6d_settings, attempt 1, completed/FAILURE (Xcode exit65).
+Job137406532838: 2026-11-23T00:04:13Z through00:17:54Z,821 actual runner-seconds
+(13m41s including cleanup; America/Chicago date remains November22).
+TWELVE tests emit PASS: all nine challenge unit cases, both fixture unit cases,
+and Math UI exact hard6 save/process reopen (131.214s). Memory UI is interrupted
+by test-runner crash; QR UI fails (140.006s). No fourteen-test PASS claimed.
+6d_sequence,6d_modes and final verification NOT RUN; no6D acceptance.
+
+Earliest observed failure is during Memory case launch, while terminating the
+previous app. After the 60.26s launch/termination activity, the shared issue observer
+repeatedly calls capture's allElementsBoundByIndex query. Frozen xcresult crash
+report explicitly identifies EXC_BAD_ACCESS/SIGSEGV, thread stack exceeded due to
+excessive recursion. Repeating frames are AlarmUITestCase.capture(_:in:) line192
+and record(_:) line15 through XCTest issue handling. This proves failure capture
+can recursively issue new failures and crash before super.record preserves the
+original issue. The original launch/termination failure cause remains UNRESOLVED;
+no Memory setting gesture/save was reached. Xcode restarts the test runner and
+continues to the next case; this is not an authorized retry of the Memory case.
+
+QR case initially opens the intended disabled QR-only fixture and asserts the
+exact token/payload. Native Save readiness succeeds; log records one Save tap.
+Subsequent expected list-row reveal fails at AlarmUITestCase.swift:129 because
+editor remains presented and the row is covered. Capture shows exact original QR
+draft, unchanged disk hash54b2a96896f6f782fb56aac7490a0831d2ec8fa601285981bcb44c837314096e,
+scheduler=missing and refresh events only, with NO service.enter edit. Screenshot
+confirms editor remains open. Why Save did not reach the service is UNRESOLVED;
+no scheduling, persistence or configuration defect is claimed proven.
+
+Recursive invalidation starts at6A's shared failure-observation/launch boundary;
+6B/6C reassessment must follow restored6A before6D can advance. Preserve all
+functional assertions, exact expected values, uniqueness/readiness and3/10-second
+waits. No blind retap, unchanged failing rerun or later-checkpoint validation.
+
+Evidence categories: lineage/project reproducibility/Simulator discovery PASS;
+app/test compilation and built usage description PASS. Simulator outcomes are
+above. Xcode diagnostics review SKIPPED after failure; no diagnostics-review PASS.
+Package/core checks intentionally SKIPPED by focused profile. Physical-device,
+manual VoiceOver and largest-text evidence NOT RUN.
+Frozen snapshot/upload PASS; artifact14779812886,105116141bytes,
+SHA25684705adb2755c9e9c9fa121e57b22337311db25f472632cada5d30aafeff3793.
+Downloaded ZIP hash and outer/nested CRC verified; manifest errors=[],excluded=[].
+Three distinct PNG objects recovered/indexed and ALL THREE inspected: Math hard6,
+exact QR target and still-present editor at failure agree with logs. Original
+compressed data, decoded crash records, full job log, run/jobs/artifact metadata,
+manifest and screen index retained externally in gate6d-45086593612. All older
+evidence, original dirty checkout and candidate source/tests remain preserved.
+
+Allocation CLOSED on first failure:ONE/FOUR executions,821/6000 actual runner-
+seconds,$0. Remaining slots are not carried forward. No retry, source repair,
+sequence/mode validation or final product validation followed. This documentation-
+only [skip ci] failure closeout is UNVALIDATED and has no successful exact-HEAD
+CI; publication requires expected remote-SHA check and non-force fast-forward.
+No checkpoint/gate promotion. The failed candidate result is not final-HEAD PASS.
+
+Next separately bounded scope: repair/diagnose shared6A failure-capture reentrancy
+and preserve the original launch issue without recursive accessibility collection;
+then isolate QR Save delivery and re-establish affected6A,6B,6C prerequisites in
+order before6D reassessment. Do not rerun the unchanged failing candidate.
+STOP this allocation here.
+
+---
+
+# Active restart project state
+
 ## Checkpoint 6D candidate - 2026-11-22 America/Chicago
 
 Owner next-step request authorizes 6D challenge configuration only. Prerequisite
