@@ -1,3 +1,22 @@
+# Durable learning documentation - 2026-11-23
+
+Owner requested clearer learning and recurrence prevention. Added
+ENGINEERING_LESSONS with stable IDs, exact incident links, proven causes versus
+unknown triggers, gaps in prior coverage and required prevention/evidence. AGENTS
+requires relevant entries before repairs and records recurrence against the
+existing lesson. TEST_MATRIX distinguishes pending negative regression contracts
+from actual tests; ARCHITECTURE defines diagnostic failure containment. Current
+acceptance/next scope remain solely in PROJECT_STATE.
+
+No source/test/workflow changes, observer repair, gate acceptance or new CI/product
+execution. Initial local preflight and lineage passed but preceded the written
+budget: this sequencing error is recorded in PA-L007, not reclassified as compliant.
+Remaining documentation budget: $0, no CI/retries/runner-minutes and one bounded
+diff/link review. Publication is documentation-only [skip ci] and UNVALIDATED;
+no exact-final-HEAD CI SUCCESS claimed. Original dirty checkout/evidence preserved.
+
+---
+
 # Checkpoint 6D failed attempt - 2026-11-22 America/Chicago
 
 c7fd5d04/run45086593612 profile6d_settings FAILURE;821 runner-seconds. Twelve

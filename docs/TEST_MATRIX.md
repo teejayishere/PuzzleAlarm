@@ -1,3 +1,36 @@
+# Required failure-path regression contracts - 2026-11-23
+
+[Engineering lessons](ENGINEERING_LESSONS.md), PA-L001, records the proven
+record/capture recursion. The IDs below refine the existing 6A.3 failure-capture
+contract. All are REQUIRED / NOT IMPLEMENTED / NOT RUN by this documentation
+change. Map real executable tests and exact revision/run evidence when implemented;
+no test names or passes are invented here. Existing successful diagnostics remain
+revision-specific evidence for their narrower cases.
+
+| Scenario | Independent setup | Required observation |
+| --- | --- | --- |
+| 6A.3a Primary issue retention | Controlled primary issue with app available; normal capture | Original issue identity/message/source retained exactly once, context collected, no replacement by collection issue; runner survives. |
+| 6A.3b Secondary issue during collection | Inject a diagnostic collector failure while handling a primary issue | Original and secondary issues visible; at most one outer capture; no recursive accessibility queries, hang or crash. Subsequent independent capture succeeds, proving guard cleanup. |
+| 6A.3c Unavailable app | Primary issue with app absent/terminated or no valid automation session | Original issue retained; unavailable app/omitted artifacts explicitly reported; no forced launch, repeated query or nested capture; runner survives. |
+| 6A.3d Launch/termination transition | Independent fresh/relaunch failure, including prior editor present | Primary launch issue preserved before optional collection; transition context/last completed action visible; no reentrant capture/stack overflow. Successful fresh/relaunch scenarios retained. |
+
+PA-L002/PA-L003: retain exact fixture/context identity, one native gesture, and
+absent/ambiguous/offscreen/covered/disabled cases. PA-L004: retain immutable-
+snapshot/missing-input tests, artifact digest/CRC/manifest checks and relevant
+screenshot inspection. No existing timeout/assertion may be weakened.
+
+PA-L005: isolate QR no-op Save and changed Save after reliable 6A observation is
+restored. Record intended ID, exact draft, one gesture, handler/service entry,
+editor dismissal, disk and process reopen. A tap alone is not command-delivery
+evidence. Current QR symptom/cause and acceptance remain in PROJECT_STATE; these
+diagnostic requirements do not establish a product defect.
+
+Before closing a lesson, record safeguard implementation, actual regression
+name/result and exact SHA/run. Keep planned, implemented, executed and verified
+states distinct. See AGENTS for session-entry and recurrence requirements.
+
+---
+
 # Checkpoint 6D failed settings evidence - c7fd5d04 / 45086593612
 
 PROJECT_STATE owns current recursive invalidation and next scope. Attempt1 FAILURE,

@@ -27,6 +27,9 @@ Before every future stage session:
 - Read this file and active docs/PROJECT_STATE.md, then the baseline specifications,
   evidence and relevant source/tests. These restart sections supersede inherited
   stop/next-action instructions and any abandoned-lineage status.
+- Read the relevant entries in docs/ENGINEERING_LESSONS.md before planning a
+  repair or changing test harnesses, workflows or evidence collection. Apply its
+  prevention rules and identify the lesson IDs/regression scenarios in the plan.
 - Inspect actual CI for the exact current HEAD and record SHA, run and result.
   A baseline/parent run is not a current-HEAD pass. Missing, skipped, pending,
   failed or blocked CI is not PASS; obtain successful exact-HEAD prerequisite
@@ -37,6 +40,10 @@ Before every future stage session:
   failed or blocked prerequisite. Old-lineage failures do not invalidate this one.
 
 ## Standing validation rules
+
+Record the validation budget before the first check, including local preflight
+and lineage checks. A budget written after execution does not retroactively
+authorize it; record the sequencing error honestly and limit subsequent work.
 
 Historical CI budgets and completed session restrictions neither authorize nor block
 new work. Reuse an existing successful CI run when its SHA matches the unchanged
@@ -69,6 +76,23 @@ evidence. Use a separately verified clean checkout; non-force fast-forwards only
 An explicitly authorized repair of a failed current gate may change that gate's
 candidate without rerunning unchanged failing code first. It does not waive earlier
 prerequisites, recursive invalidation or exact-final-HEAD full CI SUCCESS.
+
+## Learning from failures - owner-requested 2026-11-23
+
+For a new failure or recurrence, update docs/ENGINEERING_LESSONS.md with the
+assessed SHA/run, observed failure, proven cause versus unresolved trigger, why
+existing checks missed it, prevention rule and required regression evidence.
+Use the existing lesson ID for a recurrence and explain the missing protection;
+do not repeat an unsuccessful hypothesis without new evidence. Keep failure
+history intact and current gate decisions only in PROJECT_STATE.
+
+A written lesson or proposed safeguard is not a verified repair. TEST_MATRIX
+must distinguish required/not implemented, implemented/not run and verified on
+an exact SHA/run. Before restoring an affected gate, exercise the relevant
+failure path as well as the successful path. Capture/cleanup code can itself
+raise failures: preserve the original issue and prevent recursive collection.
+Do not weaken uniqueness, readiness, timeouts or product assertions to close a
+lesson. Gate/order/budget and final exact-HEAD validation rules still apply.
 
 ## Stage 6 checkpoint operating policy - owner-approved 2026-11-19
 

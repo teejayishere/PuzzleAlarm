@@ -1,5 +1,16 @@
 # Active restart project state
 
+Documentation update (2026-11-23): [engineering lessons](ENGINEERING_LESSONS.md)
+now consolidates observed mistakes, proven causes, unknowns and prevention rules.
+AGENTS requires relevant lessons at session entry. TEST_MATRIX adds required
+failure-path regression contracts. This is documentation only: the gate decision
+below is unchanged, observer/QR repairs are not implemented, and no new CI/product
+tests ran. Entry revision b3f47a8 had zero Actions runs when checked; this
+subsequent documentation revision is UNVALIDATED, with no exact-HEAD CI PASS.
+Budget: $0; zero CI/retries/runner-minutes. Local preflight and lineage already ran
+before this budget was recorded (sequencing error, preserved in PA-L007), then at
+most one bounded diff/link review. No implementation or gate promotion.
+
 ## 6D attempt failed; shared 6A capture contract invalidated - 2026-11-22 America/Chicago
 
 6A NEEDS REASSESSMENT / NOT ACCEPTED for launch-transition failure capture.

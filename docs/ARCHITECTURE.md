@@ -1,3 +1,25 @@
+# Required diagnostic failure containment - 2026-11-23
+
+The shared XCTest observer is part of the 6A acceptance boundary. Accessibility
+queries can emit XCTest issues even without explicit assertions. The existing
+capture-before-super path has a proven recursion defect; this is the required
+repair contract, not an implemented safeguard.
+
+Preserve the primary issue before optional diagnostic work can obscure it.
+Use one guard across automatic and explicit capture paths; nested issues remain
+recorded but cannot initiate another collection. Restore guard state on every
+exit. Respect app/automation availability and thread/actor isolation; unavailable
+optional artifacts are reported explicitly. Diagnostic work must not change
+bindings, storage, scheduling, product assertions or readiness limits.
+
+Exercise collection-induced failures and app lifecycle transitions, not only a
+missing target in a healthy app. Required scenarios 6A.3a-6A.3d and their test/
+evidence mapping belong to TEST_MATRIX; acceptance and next scope belong to
+PROJECT_STATE. See [engineering lessons](ENGINEERING_LESSONS.md), PA-L001,
+PA-L004 and PA-L005.
+
+---
+
 # Checkpoint 6D observation and configuration contracts - 2026-11-22
 
 ChallengeDraft identity remains ChallengeKind; add rejects duplicates; adjacent moves
