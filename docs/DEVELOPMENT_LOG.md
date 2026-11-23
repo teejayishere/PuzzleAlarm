@@ -1,3 +1,11 @@
+# Checkpoint 6D candidate - 2026-11-22
+
+Independent challenge configuration evidence added; exact scope, prerequisites,
+budget and pending acceptance are in PROJECT_STATE; tests in TEST_MATRIX. No
+product binding/lifecycle change. Documentation precedes all new validation.
+
+---
+
 # Repair result - 6c / 45045795177 - 2026-11-22 America/Chicago
 
 Assessed525fb7297464a119741f3fb5db0f49de5b806556;SUCCESS,14 distinct cases PASS/zero failures,

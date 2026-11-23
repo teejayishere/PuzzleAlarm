@@ -11,7 +11,7 @@ enum SimulatorUITestFixture {
     static func prepare(root: URL, arguments: [String], environment: [String: String]) throws -> URL {
         guard let raw = environment["PUZZLEALARM_TEST_NAMESPACE"], let namespace = UUID(uuidString: raw),
               let kind = environment["PUZZLEALARM_TEST_FIXTURE"],
-              ["empty", "ordinary", "challenge", "corrupt"].contains(kind) else {
+              ["empty", "ordinary", "challenge", "math", "memory", "qr", "corrupt"].contains(kind) else {
             throw PersistenceError.io("Explicit UI test namespace/fixture required")
         }
         let directory = root.appendingPathComponent("Stage6UITests", isDirectory: true)
@@ -47,13 +47,16 @@ enum SimulatorUITestFixture {
 
     static func state(_ kind: String) throws -> RepositoryState {
         if kind == "empty" { return try RepositoryState() }
-        let challenge = kind == "challenge"
-        let sequence = try ChallengeSequence(challenge ? [
+        let challenge = ["challenge", "math", "memory", "qr"].contains(kind)
+        let configurations: [ChallengeConfiguration] = [
             .memory(try MemoryConfiguration(difficulty: .hard, sequenceLength: 8,
                 displayDuration: 2.5, requiredRounds: 2)),
             .qr(QRConfiguration(token: qrToken)),
             .math(try MathConfiguration(difficulty: .medium, requiredCorrect: 5))
-        ] : [])
+        ]
+        let sequence = try ChallengeSequence(challenge ? configurations.filter {
+            kind == "challenge" || $0.kind.rawValue == kind
+        } : [])
         let date = Date(timeIntervalSince1970: 1_800_000_000)
         let alarm = try AlarmDefinition(id: challenge ? challengeID : ordinaryID,
             time: AlarmTime(hour: 7, minute: 0), weekdays: [.monday, .friday], enabled: false,

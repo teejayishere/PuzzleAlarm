@@ -1,3 +1,36 @@
+# Checkpoint 6D candidate scenario mapping - 2026-11-22
+
+PROJECT_STATE owns current acceptance. Runtime evidence below is PENDING.
+Prerequisite exact published 774adf81 / run45047737388 profile=6c SUCCESS;
+14 distinct cases PASS/zero failures. No unchanged prerequisite rerun.
+
+| Contract | Executable cases | Exact expectation |
+| --- | --- | --- |
+| 6D.1 Math | ChallengeConfigurationTests/testMathSettingsRoundTripIndependently; ChallengeSettingsUITests/testMathSettingsSaveAndReopen | Every difficulty, counts1/7/20 convert/reopen; UI medium5 -> hard6, exact identity/ordinary fields, disk process reopen. |
+| 6D.1 Memory | ChallengeConfigurationTests/testMemorySettingsRoundTripIncludingFractionalDuration; ChallengeSettingsUITests/testMemorySettingsSaveAndReopen | All difficulties, boundary lengths/durations/rounds and fractional3.5 round-trip; UI hard8/2.5/2 -> easy9/3.5/3 exactly. |
+| 6D.1 QR | ChallengeConfigurationTests/testQRIdentityAndPayloadRoundTrip; ChallengeSettingsUITests/testQRTargetRetainsExactTokenThroughSaveAndReopen | Fixed UUID/payload unchanged after Save/relaunch; idempotent Save need not change disk hash. |
+| 6D.2 Add/duplicate | ChallengeConfigurationTests/testDuplicateAddsPreserveAllExistingValuesAndIdentity; ChallengeSequenceUITests/testAddDisablesDuplicateAndCancelDoesNotWrite | Unique three kinds and token retained; UI add Math to empty required draft enables Save/disables duplicate Add. Cancel/relaunch unchanged ordinary. |
+| 6D.2 Move up | ChallengeConfigurationTests/testMoveUpPreservesExactConfigurations; ChallengeSequenceUITests/testMoveUpChangesOnlyIntendedOrder | UI [Memory,QR,Math] -> [QR,Memory,Math], complete values/token unchanged; cancel/relaunch restores original. |
+| 6D.2 Move down | ChallengeConfigurationTests/testMoveDownPreservesExactConfigurations; ChallengeSequenceUITests/testMoveDownChangesOnlyIntendedOrder | Same exact expected order through independent Memory-down action. |
+| 6D.2 Boundary | ChallengeConfigurationTests/testMoveBoundariesAndInvalidIndicesDoNothing; ChallengeSequenceUITests/testFirstUpAndLastDownAreDisabled | First-up/last-down disabled, exact original sequence; invalid unit indices no-op. |
+| 6D.2 Remove | ChallengeConfigurationTests/testRemovalPreservesSurvivorsAndRejectsEmptyRequiredSequence; ChallengeSequenceUITests/testRemovePreservesOtherConfigurationsAndAllowsReaddition | Independent each-index unit removals; UI QR removal preserves exact Memory/Math and re-enables Add QR; empty-required conversion rejected. |
+| 6D.3 Unsaved modes | ChallengeConfigurationTests/testModeConversionRetainsUnsavedSequenceAndClearsSavedOrdinarySequence; ChallengeModeUITests/testUnsavedModeChangesRetainExactSequenceAndCancel | UI required -> ordinary -> required preserves complete sequence/token; cancel/relaunch unchanged disk. |
+| 6D.3 Saved ordinary | Same unit mode case; ChallengeModeUITests/testSaveOrdinaryModeClearsSequenceAfterRelaunch | Ordinary Save/relaunch clears sequence; switching required blocks empty Save. |
+| 6D.3 Saved challenge | Same unit mode case; ChallengeModeUITests/testSaveChallengeModeRequiresNonemptySequenceAndReopens | Disabled ordinary -> empty-required invalid -> Math added -> Save/relaunch exact Math/default values. |
+
+All UI cases assert exact complete actual draft, stable alarm identity, no pre-Save
+write/service mutation and scheduler=missing. Cancel cases verify original disk hash
+through process relaunch. Save cases verify exact reopened configuration and no new
+service mutation after relaunch. One screenshot per scenario plus automatic failure
+hierarchy/screens. Existing 3/10-second waits and readiness/cardinality remain.
+
+Profiles 6d_settings/6d_sequence/6d_modes include respective UI class plus all nine
+ChallengeConfigurationTests and both SimulatorUITestFixtureTests: 14/16/14 distinct
+cases expected. Earlier checkpoint evidence is revision-specific; full/default test
+selection remains. No focused result accepts Gate6 or supplies physical evidence.
+
+---
+
 # Repair evidence - 6c / 45045795177
 
 Assessed **525fb7297464a119741f3fb5db0f49de5b806556** /

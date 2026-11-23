@@ -1,5 +1,59 @@
 # Active restart project state
 
+## Checkpoint 6D candidate - 2026-11-22 America/Chicago
+
+Owner next-step request authorizes 6D challenge configuration only. Prerequisite
+6A RESTORED / ACCEPTED; 6B ACCEPTED; 6C ACCEPTED. Exact prerequisite published HEAD
+774adf81d4d3c18e7c2c4af25424f2f39901e1d0 / run 45047737388, workflow_dispatch
+profile=6c, attempt 1, completed/SUCCESS: all FOURTEEN distinct tests PASS, zero
+failures. App/test compilation, lineage/reproducibility/discovery, usage description,
+diagnostics review, frozen evidence/upload SUCCESS. Package/core intentionally
+SKIPPED; physical device/manual accessibility NOT RUN. Existing exact-HEAD result
+reused without rerun. No new evidence disproves Gates 0-5.
+
+Fetched origin and read remote PROJECT_STATE before AGENTS. Clean full-history
+separate gate6-repair checkout equals fetched active/default restart branch.
+External audited preflight and active lineage script PASS; fixed anchor parent and
+absence of later merges verified. Reviewed post-baseline commit history and changes
+for provenance; preserved core, package/project configuration and baseline tests.
+Original dirty 8deb0dd checkout, local-only commits and all older evidence preserved.
+No merge/cherry-pick/abandoned-lineage import.
+
+Fresh $0 budget BEFORE new validation: at most FOUR ios.yml dispatches including
+any automatic triggers, ZERO retries, 25 minutes per job / 100 aggregate actual
+runner-minutes including cleanup. Execute 6d_settings then 6d_sequence then
+6d_modes, stopping on any failure. Reserve ONE documentation-inclusive final
+6d_modes verification, with earlier successful profile evidence mapped by SHA.
+Local maxima: ONE preflight, TWO lineage checks, FOUR diff checks, SIXTEEN bounded
+source/history reviews, FOUR artifact downloads. No local Swift/Xcode/Simulator/
+physical-device execution. Stop on failure, exhaustion, external blocker or final
+success. No unchanged failing rerun or timeout/assertion weakening.
+
+Candidate adds nine unit cases and eleven independent UI cases across settings
+(three), sequence (five), modes (three). Settings use separate Math/Memory/QR
+fixtures with exact known ID and QR token. Existing full challenge fixture remains
+Memory(hard,8,2.5,2), QR(known token), Math(medium,5). Optional DEBUG Simulator
+challenge audit appends actual exact ordered configuration to existing draft/disk/
+service observations only for explicitly opted-in tests. Existing 6A-6C audit values
+and assertions remain unchanged; product bindings/conversion/lifecycle unchanged.
+
+Reviewed profiles: settings FOURTEEN tests, sequence SIXTEEN tests, modes FOURTEEN
+tests (each includes nine challenge unit and two fixture unit cases). Existing
+full/default selection, all prerequisite profiles, 3/10-second waits, native
+readiness/uniqueness and frozen failure artifacts preserved. Focused profiles skip
+package/core work explicitly; they do not accept full Gate 6. All documentation
+precedes validation. Candidate is UNVALIDATED; no compilation/Simulator pass claimed.
+
+6D PENDING / NOT ACCEPTED; 6E-6F NOT ACCEPTED; Gate 6 NOT ACCEPTED; Stage 7 NOT
+STARTED. After all three profile successes, record evidence and validate exact
+final documented published HEAD before 6D handoff. Then STOP; next separately
+bounded scope is 6E service effects/recovery. Earlier conflicting next actions below
+are history. Physical device/manual VoiceOver/largest text NOT RUN.
+
+---
+
+# Active restart project state
+
 ## Active repair result - 6C focused ACCEPTED; exact-final-HEAD Actions result authoritative - 2026-11-22 America/Chicago
 
 6A RESTORED / ACCEPTED;6B ACCEPTED;6C ACCEPTED on the assessed source below.

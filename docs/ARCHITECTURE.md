@@ -1,3 +1,20 @@
+# Checkpoint 6D observation and configuration contracts - 2026-11-22
+
+ChallengeDraft identity remains ChallengeKind; add rejects duplicates; adjacent moves
+preserve complete values; removal preserves survivors. Mode changes retain unsaved
+challenge drafts, while saving ordinary mode deliberately serializes an empty
+sequence. Reopening that saved ordinary definition starts with no challenges;
+required mode then needs at least one. Existing conversion/service contracts remain.
+
+Opt-in --ui-challenge-audit appends exact ordered math difficulty/count, memory
+difficulty/length/Double duration/rounds and QR UUID to the actual draft audit.
+Only DEBUG Simulator tests request it; existing audit consumers receive unchanged
+strings. Isolated single-kind fixtures reuse the known disabled challenge identity
+and fixed QR token. Tests use production draft bindings, conversion and disk/service
+paths. QR payload is immutable configuration only; scanning/sharing is Stage 10.
+
+---
+
 # Readiness and evidence boundary repair - 2026-11-22 America/Chicago
 
 UI automation readiness owns one deadline for native enabled/hittable waits,
