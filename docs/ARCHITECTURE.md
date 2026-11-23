@@ -1,3 +1,33 @@
+# Shared failure-capture implementation candidate - 2026-11-23
+
+AlarmUITestCase.record now stores only local description/source metadata and
+forwards the same XCTIssue to super.record before optional accessibility work.
+A lock-protected FailureCaptureJournal records lifecycle phase and last completed
+transition, issues, capture counters and explicit omissions. It performs no XCTest
+or application operations while holding its lock. No capture occurs from record.
+
+Teardown drains pending metadata once and collects on the main thread when safe;
+off-main teardown emits metadata only. All explicit and automatic captures share
+a non-reentrant guard. Context is attached before queries; transition/unavailable
+states skip queries; secondary issues stop later collection stages. Native calls
+already in flight are not asserted cancellable or a hard wall-clock bound.
+
+Only the synchronous optional diagnostic region temporarily sets
+continueAfterFailure=true, still forwarding every issue. Defer restores it and
+releases the guard. Functional test execution remains fail-fast. This avoids an
+Objective-C failure interruption unwinding optional Swift diagnostic cleanup; it
+is not permission to continue product assertions after an unexpected failure.
+
+Official API basis reviewed: [record(_:)](https://developer.apple.com/documentation/xctest/xctestcase/record(_:)),
+[teardown](https://developer.apple.com/documentation/xctest/set-up-and-tear-down-state-in-your-tests),
+[expected failures](https://developer.apple.com/documentation/xctest/expected-failures)
+and [continue-after-failure behavior](https://developer.apple.com/documentation/testing/migratingfromxctest).
+Installed SDK compilation/runtime evidence remain required. No AlarmKit signature,
+product binding, persistence or scheduling contract changed. The original launch
+failure and QR Save symptom remain unresolved. Runtime status:PROJECT_STATE.
+
+---
+
 # Required diagnostic failure containment - 2026-11-23
 
 The shared XCTest observer is part of the 6A acceptance boundary. Accessibility

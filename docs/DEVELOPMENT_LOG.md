@@ -1,3 +1,16 @@
+# Shared capture repair candidate - 2026-11-23
+
+Owner authorized repair. Applied PA-L001-PA-L007: record original issues before
+optional collection, prevent capture re-entry, track transition omissions, add
+four strict negative regressions and keep provenance/coverage/evidence separate.
+Fresh bounded $0 allocation was recorded before local preflight/lineage, both
+PASS. Full budget and pending acceptance are in PROJECT_STATE; executable scenario
+mapping in TEST_MATRIX. No compilation/Simulator result claimed before dispatch.
+No product,core,storage,scheduling,QR or later-checkpoint change. All older records,
+original dirty checkout and failed-run artifacts preserved.
+
+---
+
 # Durable learning documentation - 2026-11-23
 
 Owner requested clearer learning and recurrence prevention. Added

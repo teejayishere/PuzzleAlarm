@@ -1,3 +1,17 @@
+# PA-L001 implementation progress - 2026-11-23
+
+The current capture repair candidate implements immediate issue forwarding,
+deferred optional diagnostics, a shared re-entry guard, lifecycle omission records
+and four negative regression scenarios6A.3a-6A.3d. IMPLEMENTED / NOT RUN: this is
+not a verified repair or restored gate. TEST_MATRIX owns executable/evidence mapping;
+PROJECT_STATE owns the bounded repair scope and decision. Original launch failure
+and QR Save cause remain unresolved; no unrelated product repair is inferred.
+The earlier REQUIRED / NOT IMPLEMENTED wording below records the documentation-
+only revision's state. A passing normal path will not close this lesson: negative
+regressions, complete prior6A coverage and documented final-HEAD evidence are needed.
+
+---
+
 # Engineering lessons and recurrence prevention
 
 Owner requested durable learning on 2026-11-23 (America/Chicago).

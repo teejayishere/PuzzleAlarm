@@ -4,17 +4,42 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
     var namespace = UUID().uuidString
     var fixture = "empty"
     var alarmID: String?
+    let captureJournal = FailureCaptureJournal()
 
     override func setUpWithError() throws { continueAfterFailure = false }
 
-    // XCTest reports issues on the test's main thread. Capture before an assertion
-    // aborts the flow; the observer enumerates snapshots and makes no assertions.
+    // Forward the original issue before optional diagnostics. Accessibility queries
+    // can themselves report issues, so this callback must never collect snapshots.
     override func record(_ issue: XCTIssue) {
-        let description = issue.compactDescription
-        if Thread.isMainThread {
-            MainActor.assumeIsolated { capture("failure-\(description)", in: XCUIApplication()) }
-        }
+        let location = issue.sourceCodeContext.location
+        let description = "\(issue.compactDescription) source=\(location?.fileURL.path ?? "unknown"):\(location?.lineNumber ?? 0)"
+        captureJournal.noteIssue(description)
+        print("Forwarding original XCTest issue: \(description); phase=\(captureJournal.snapshot.phase)")
         super.record(issue)
+    }
+
+    override func tearDownWithError() throws {
+        let pending = captureJournal.takePending()
+        if !pending.isEmpty {
+            if Thread.isMainThread {
+                MainActor.assumeIsolated { capture("recorded-issues: " + pending.joined(separator: " | "), in: XCUIApplication()) }
+            } else {
+                let text = "Diagnostic collection omitted: teardown is not on main thread. Recorded issues: \(pending)"
+                print(text)
+                let attachment = XCTAttachment(string: text)
+                attachment.name = name + "-diagnostic-omission"
+                attachment.lifetime = .keepAlways; add(attachment)
+            }
+        }
+        try super.tearDownWithError()
+    }
+
+    @MainActor
+    func applicationTransition(_ phase: String, endingAt finalPhase: String = "ready", _ operation: () -> Void) {
+        captureJournal.setPhase("transition: " + phase)
+        operation()
+        // If XCTest aborts the operation, do not claim that transition completed.
+        captureJournal.completePhase(finalPhase)
     }
 
     @MainActor
@@ -31,7 +56,7 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
             + (navigationAudit ? ["--ui-navigation-audit"] : [])
             + (challengeAudit ? ["--ui-challenge-audit"] : [])
             + (failing ? ["--ui-schedule-failure"] : [])
-        app.launch()
+        applicationTransition("launch fixture=\(fixture)") { app.launch() }
         if !probe {
             _ = ready(app.buttons.matching(identifier: "alarms.add"), in: app)
             if reset && fixture == "empty" {
@@ -43,9 +68,11 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
 
     @MainActor
     func relaunch(_ app: XCUIApplication) {
-        app.terminate()
-        app.launchArguments.removeAll { $0 == "--ui-reset" }
-        app.launch()
+        applicationTransition("terminate/relaunch fixture=\(fixture)") {
+            app.terminate()
+            app.launchArguments.removeAll { $0 == "--ui-reset" }
+            app.launch()
+        }
         _ = ready(app.buttons.matching(identifier: "alarms.add"), in: app)
     }
 
@@ -184,23 +211,60 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
     }
 
     @MainActor
-    func capture(_ phase: String, in app: XCUIApplication) {
+    func capture(_ phase: String, in app: XCUIApplication, diagnosticProbe: (() -> Void)? = nil) {
+        guard captureJournal.begin() else {
+            print("Nested diagnostic collection omitted: \(phase)")
+            return
+        }
+        let priorContinue = continueAfterFailure
+        // This applies only inside optional diagnostics. All issues still go to
+        // super.record; functional test execution keeps its original fail-fast rule.
+        continueAfterFailure = true
+        defer { continueAfterFailure = priorContinue; captureJournal.finish() }
+        let initial = captureJournal.snapshot
+        let context = "fixture=\(fixture) namespace=\(namespace) intendedID=\(alarmID ?? "unresolved") phase=\(phase) applicationPhase=\(initial.phase) lastCompletedTransition=\(initial.lastCompletedTransition) recordedIssues=\(initial.issues)"
+        func attach(_ text: String, suffix: String) {
+            print(text)
+            let attachment = XCTAttachment(string: text)
+            attachment.name = "\(name)-\(phase.prefix(100))-\(suffix)"
+            attachment.lifetime = .keepAlways; add(attachment)
+        }
+        func omit(_ reason: String) {
+            captureJournal.omit(reason)
+            attach(context + "\nDiagnostic collection omitted: " + reason, suffix: "omission")
+        }
+        func hasSecondaryIssue() -> Bool { captureJournal.snapshot.issues.count != initial.issues.count }
+        // Local metadata survives even if a later optional operation reports an issue.
+        attach(context, suffix: "context")
+        diagnosticProbe?()
+        if hasSecondaryIssue() { omit("collector reported a secondary issue"); return }
+        guard initial.phase == "ready" else { omit("application unavailable or transitioning: " + initial.phase); return }
+        captureJournal.noteQuery()
+        let state = app.state
+        if hasSecondaryIssue() { omit("application-state lookup reported a secondary issue"); return }
+        guard state == .runningForeground else { omit("application is not running in foreground: \(state.rawValue)"); return }
         // Filter in the accessibility query. Reading every descendant's identifier
         // in Swift repeatedly resolves the entire tree and can consume the run.
+        captureJournal.noteQuery()
         let controls = app.descendants(matching: .any).matching(NSPredicate(
             format: "identifier BEGINSWITH %@ OR identifier BEGINSWITH %@ OR identifier BEGINSWITH %@ OR identifier == %@",
             "alarm.", "editor.", "diagnostic.", "alarms.add")).allElementsBoundByIndex
-        let details = controls.enumerated().map { index, element in
+        if hasSecondaryIssue() { omit("control enumeration reported a secondary issue"); return }
+        var details: [String] = []
+        for (index, element) in controls.enumerated() {
+            captureJournal.noteQuery()
             let value = element.value
             let type = value.map { String(reflecting: Swift.type(of: $0)) } ?? "nil"
-            return "[\(index)] id=\(element.identifier) label=\(element.label) value=\(String(describing: value)) type=\(type) enabled=\(element.isEnabled) hittable=\(element.isHittable) frame=\(element.frame) children=\(element.children(matching: .switch).count)"
-        }.joined(separator: "\n")
-        let text = "fixture=\(fixture) namespace=\(namespace) intendedID=\(alarmID ?? "unresolved") phase=\(phase)\n\(details)\n\(app.debugDescription)"
-        print(text)
-        let hierarchy = XCTAttachment(string: text)
-        hierarchy.name = "\(name)-\(phase.prefix(100))-hierarchy"
-        hierarchy.lifetime = .keepAlways; add(hierarchy)
+            details.append("[\(index)] id=\(element.identifier) label=\(element.label) value=\(String(describing: value)) type=\(type) enabled=\(element.isEnabled) hittable=\(element.isHittable) frame=\(element.frame) children=\(element.children(matching: .switch).count)")
+            if hasSecondaryIssue() { omit("control details reported a secondary issue"); return }
+        }
+        captureJournal.noteQuery()
+        let hierarchy = app.debugDescription
+        attach(context + "\n" + details.joined(separator: "\n") + "\n" + hierarchy, suffix: "hierarchy")
+        if hasSecondaryIssue() { omit("hierarchy lookup reported a secondary issue"); return }
+        captureJournal.noteQuery()
         let screenshot = XCTAttachment(screenshot: app.screenshot())
+        if hasSecondaryIssue() { omit("screenshot reported a secondary issue"); return }
         screenshot.name = "\(name)-\(phase.prefix(100))-screen"
         screenshot.lifetime = .keepAlways; add(screenshot)
     }

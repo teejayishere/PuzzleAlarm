@@ -7,7 +7,7 @@ on:
       profile:
         description: Validation scope (focused profiles are checkpoint evidence only)
         type: choice
-        options: [full, 6a_identity, 6a_menu, 6a, 6b, 6c, 6d_settings, 6d_sequence, 6d_modes]
+        options: [full, 6a_failure, 6a_identity, 6a_menu, 6a, 6b, 6c, 6d_settings, 6d_sequence, 6d_modes]
         default: full
 
 permissions:
@@ -53,28 +53,28 @@ jobs:
           cmp .generated/PuzzleAlarm-Info.plist "$RUNNER_TEMP/first-info.plist"
           test -z "$(git ls-files '*.xcodeproj/*' '.generated/*')"
       - name: Validate package manifest
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6a_failure' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
         run: swift package dump-package
       - name: Build PuzzleAlarmCore
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6a_failure' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
         run: swift build -Xswiftc -warnings-as-errors
       - name: Run focused persistence tests
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6a_failure' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
         run: swift test -Xswiftc -warnings-as-errors --filter Persistence
       - name: Run focused coverage-audit regressions
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6a_failure' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
         run: swift test -Xswiftc -warnings-as-errors --filter 'weeklyOccurrenceSurvivesSkippedLocalCalendarDate|completedReloadPreservesTerminalStateUnderLateEvents'
       - name: Run focused lifecycle tests
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6a_failure' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
         run: swift test -Xswiftc -warnings-as-errors --filter Lifecycle
       - name: Run Swift package tests
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6a_failure' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
         run: swift test -Xswiftc -warnings-as-errors --enable-code-coverage
       - name: Report core coverage
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6a_failure' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
         run: python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
       - name: Report exact uncovered core lines
-        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
+        if: inputs.profile != '6a' && inputs.profile != '6b' && inputs.profile != '6a_identity' && inputs.profile != '6c' && inputs.profile != '6a_menu' && inputs.profile != '6a_failure' && inputs.profile != '6d_settings' && inputs.profile != '6d_sequence' && inputs.profile != '6d_modes'
         run: python3 Scripts/report_uncovered_lines.py
       - name: Discover compatible iPhone Simulator
         id: simulator
@@ -118,6 +118,9 @@ jobs:
               -only-testing:PuzzleAlarmUITests/HarnessPickerUITests
               -only-testing:PuzzleAlarmUITests/HarnessMenuUITests
               -only-testing:PuzzleAlarmUITests/HarnessDiagnosticsUITests)
+          elif [[ "${{ inputs.profile }}" == "6a_failure" ]]; then
+            selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
+              -only-testing:PuzzleAlarmUITests/FailureCaptureUITests)
           elif [[ "${{ inputs.profile }}" == "6a_identity" ]]; then
             selectors=(-only-testing:PuzzleAlarmTests/SimulatorUITestFixtureTests
               -only-testing:PuzzleAlarmUITests/HarnessIdentityUITests

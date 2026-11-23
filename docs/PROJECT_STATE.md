@@ -1,5 +1,62 @@
 # Active restart project state
 
+## Shared failure-capture repair candidate - 2026-11-23 America/Chicago
+
+Owner authorized repair next. Scope is shared 6A failure observation only, applying
+PA-L001 through PA-L007. 6A NEEDS REASSESSMENT / NOT ACCEPTED; dependent 6B/6C
+WITHHELD; 6D-6F and Gate 6 NOT ACCEPTED; Stage 7 NOT STARTED. No Gates 0-5 disproof.
+No QR/product/storage/scheduler repair or later-checkpoint validation in this scope.
+Earlier contradictory acceptance/next-action wording below is historical.
+
+Fetched origin; remote PROJECT_STATE read before AGENTS and ENGINEERING_LESSONS.
+Clean full-history separate checkout equals entry02979697a462ed24364566a11a03477932bc4eac.
+Audited external preflight and active lineage PASS; fixed anchor/sole baseline
+parent/no later merges verified. Continued post-baseline provenance review through
+the documentation-only lesson commit; existing source/evidence audit preserved.
+Entry exact-HEAD Actions count ZERO, not PASS. Owner-authorized failed-gate repair
+permits a changed candidate rather than rerunning unchanged failing source; no
+earlier gate is newly accepted or waived. Original dirty8deb0dd checkout retained.
+
+Fresh $0 budget recorded BEFORE local validation: SIX executions maximum including
+automatic triggers; up to FOUR changed profile6a_failure candidates, ONE existing
+complete6a, ONE documentation-inclusive final6a_failure verification. ZERO unchanged
+failing reruns. Configured25 minutes/job;150 aggregate actual runner-minutes including
+cleanup. Sequential changed-candidate repair authority applies only to6a_failure
+pool; stop on complete6a failure, exhaustion, external blocker or final6A success.
+Local maxima:ONE preflight,FOUR lineage,EIGHT diff,TWENTY source/evidence reviews,
+SIX artifact downloads. No local Swift/Xcode/Simulator/device execution. Budget
+also preserved externally as capture-repair-budget.txt. No prior budget reused.
+
+Candidate record(_:) copies local issue description/source and immediately forwards
+the unchanged issue to XCTest; it never queries the app. Teardown attempts optional
+collection once. Automatic and explicit collection share a lock-protected guard,
+local metadata, transition tracking and omission records. A secondary issue is
+still forwarded, ends collection at its next stage boundary and cannot recurse.
+Optional diagnostics alone temporarily continue after recording issues so cleanup
+can run; defer restores the original fail-fast setting. Existing functional test
+behavior,3/10-second waits, unique/native readiness and all assertions retained.
+No original launch-timeout cause or QR Save defect is claimed repaired.
+
+Four strict negative UI regressions map6A.3a-6A.3d: primary forwarding/normal
+capture; secondary issue/nested attempt/guard reset; unavailable app; controlled
+transition issue with editor present plus successful real relaunch and unchanged
+disk. Only deliberately constructed assertion issues with exact source/description
+are expected; all other issues fail normally. Profile6a_failure selects these FOUR
+plus TWO fixture tests (SIX distinct). Existing complete6a remains TEN tests.
+6A restoration requires both sets on source-equivalent revisions plus exact final
+published documented-HEAD SUCCESS. Existing full/default and prerequisite profiles
+retain their functional selection; package/core intentionally skipped by focus.
+
+All records precede validation. Candidate IMPLEMENTED / NOT RUN, not a compile or
+Simulator PASS. Verify/inspect preserved artifacts before recording restoration.
+Physical device/manual VoiceOver/largest-text NOT RUN. Stop this repair at6A;
+next separately bounded scope remains affected6B/6C reassessment and QR diagnosis
+in prerequisite order, without6D acceptance while those are withheld.
+
+---
+
+# Active restart project state
+
 Documentation update (2026-11-23): [engineering lessons](ENGINEERING_LESSONS.md)
 now consolidates observed mistakes, proven causes, unknowns and prevention rules.
 AGENTS requires relevant lessons at session entry. TEST_MATRIX adds required

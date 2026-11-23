@@ -1,3 +1,28 @@
+# Shared capture repair candidate mapping - 2026-11-23
+
+Implementation present; new runtime evidence NOT RUN. Current acceptance belongs
+to PROJECT_STATE. Narrow6a_failure is SIX cases (four below + two fixture tests).
+Complete unchanged6a is TEN cases; both sets are required for6A restoration.
+
+| Scenario | Executable | Required observation |
+| --- | --- | --- |
+| 6A.3a | FailureCaptureUITests/testPrimaryIssueIsForwardedBeforeNormalCapture | One strict primary issue retained with source; record initiates zero captures/queries; explicit normal capture completes once with context/hierarchy/screenshot, guard released and original fail-fast setting restored. |
+| 6A.3b | FailureCaptureUITests/testCollectionIssueDoesNotReenterAndGuardResets | Primary and secondary issues forwarded; injected nested attempt denied; exactly one outer capture, zero queries after secondary issue; omission retained; later independent capture completes with same two issue records. |
+| 6A.3c | FailureCaptureUITests/testUnavailableApplicationRetainsIssueWithoutQueries | Terminated application; primary issue retained; explicit omission; zero queries, no launch/capture recursion; guard and fail-fast setting restored. |
+| 6A.3d | FailureCaptureUITests/testTransitionIssueWithEditorPresentSkipsQueriesAndRelaunches | Controlled transition issue with editor present produces zero queries and an omission; later real terminate/relaunch returns intended ID, unchanged disk/no edit-service event. Original60-second launch failure is not claimed reproduced or solved. |
+
+Strict XCTExpectFailure is scoped only to deliberately constructed assertion
+issues with exact description/source matching. FIVE intentional issues across FOUR
+tests are expected; real launch/query/product/assertion failures are not matched.
+No broad intermittent-failure allowance, blind retap or timeout/assertion change.
+Artifact review must verify primary/source/secondary messages, omission/context
+records, no runner restart/stack overflow and relevant recovered screenshots.
+Teardown uses the same guarded collector once for pending original issue metadata;
+a secondary diagnostic issue remains a real failure unless it is the exact injected
+regression issue. Full Gate6/device acceptance is not supplied by these profiles.
+
+---
+
 # Required failure-path regression contracts - 2026-11-23
 
 [Engineering lessons](ENGINEERING_LESSONS.md), PA-L001, records the proven
