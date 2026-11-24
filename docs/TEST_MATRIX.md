@@ -1,3 +1,20 @@
+# Native time-picker change - 2026-11-23
+
+IMPLEMENTED / NOT RUN at publication: native time wheels replace hour/minute menus.
+DraftEditingTests/testWheelTimeSelectionPreservesBoundariesAndOtherDraftFields
+covers midnight,23:59,02:30 and noon; other draft fields preserved. Existing unit
+suite and two functional UI cases selected: testTimeEditsStayInDraftAndCancel and
+testSavedTimeAndSoundReopenFromDisk. These assert actual draft, disk no-write before
+save, service entry, persistence and reopen; no weakened functional assertions.
+UI automation uses en_GB for two stable hour/minute wheels; shipping locale remains
+user-controlled. Native readiness and covered/disabled-control contracts retained.
+M1 acceptance still requires remaining management/configuration journeys. Historical
+minute-menu results describe the removed UI; no menu-specific claim applies to the
+new wheels. Exact current CI result lives on its assessed SHA; PROJECT_STATE owns
+milestone status. Build, Simulator, Appetize and device evidence remain separate.
+
+---
+
 # Appetize preview evidence boundary - 2026-11-23
 
 Preview workflow builds ARM64 iOS Simulator, verifies platform, installs/launches,

@@ -1,3 +1,36 @@
+# Approved milestone execution policy — 2026-11-23
+
+Owner-approved [COMPLETION_PLAN](COMPLETION_PLAN.md) controls current work order:
+M1 alarm management/stable contracts; M2 all-three-challenge playable Appetize;
+M3 real alarm integration; M4 physical-device verification/handoff. Autonomous
+progress across milestones is authorized, with at most two disjoint challenge
+workers after stable contracts and one integration owner. PROJECT_STATE alone
+owns current status. This supersedes the historical Stage 6 checkpoint stop order
+and per-stage authorization boundary; it accepts no prior gate automatically.
+
+All original product requirements, architecture invariants and meaningful
+acceptance assertions below remain required and map into the four milestones.
+Retain ordered prerequisites where functionality actually depends on them. Trace
+demonstrated defects to their earliest cause and invalidate/rerun affected
+dependent evidence, including inherited Gates 0–5 if disproved. Unrelated
+diagnostic failures do not prevent independent functional implementation or
+acceptance; failed probes remain FAILED/diagnostic-only with preserved evidence.
+Equivalent real editor/list journeys must establish relevant product interaction
+requirements; do not weaken identity, readiness, storage/service, error, timeout
+or relaunch assertions.
+
+Use explicit bounded $0 validation allocations and exact-source CI. Build/package
+before optional diagnostics; preserve evidence categories. Documentation-only
+revisions receive documentation review and link the assessed source SHA/run;
+they never inherit an exact-new-HEAD app pass and do not require another app run
+merely to record a result. Source changes require their own relevant successful
+CI for the exact published source revision. Detailed limits and milestone exit
+criteria are in COMPLETION_PLAN. The original specification and historical
+checkpoint refinement follow intact; conflicting execution-policy text is retired
+by this owner decision.
+
+---
+
 # PuzzleAlarm — Recursive Self-Correcting Master Development Plan
 
 You are the lead implementation engineer for **PuzzleAlarm**, a personal native iPhone alarm application.

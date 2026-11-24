@@ -1,3 +1,17 @@
+# Approved completion milestones and native alarm picker - 2026-11-23
+
+Owner approved autonomous all-three Appetize-first completion and milestone policy.
+Current status is compact; prior state preserved byte-for-byte in docs/history.
+Replaced separate hour/minute menus with native locale-aware time wheels and an
+inline editor title. UTC reference-day binding preserves selected wall-clock time
+without today's DST normalization. Stored AlarmTime and service semantics unchanged.
+Updated existing functional helpers for native wheels under deterministic en_GB
+UI-test locale; covered-menu diagnostic now uses remaining Mode menu. Added boundary
+conversion test; retained cancel/disk/service/relaunch assertions. Focused checks
+and $0 allocation in NATIVE_TIME_PICKER. Candidate validation pending exact source.
+
+---
+
 # Preview delivery priority and repair closeout - 2026-11-23
 
 Complete6a on a7b5fa8/run45252354273 FAILED with diagnostic.direct native switch

@@ -50,7 +50,7 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
         let app = XCUIApplication()
         app.launchEnvironment["PUZZLEALARM_TEST_NAMESPACE"] = namespace
         app.launchEnvironment["PUZZLEALARM_TEST_FIXTURE"] = fixture
-        app.launchArguments = ["--ui-testing"] + (reset ? ["--ui-reset"] : [])
+        app.launchArguments = ["--ui-testing", "-AppleLanguages", "(en)", "-AppleLocale", "en_GB"] + (reset ? ["--ui-reset"] : [])
             + (diagnostics ? ["--ui-switch-diagnostics"] : [])
             + (probe ? ["--ui-switch-probe"] : [])
             + (navigationAudit ? ["--ui-navigation-audit"] : [])
@@ -178,6 +178,16 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
 
     @MainActor
     func choose(_ id: String, _ title: String, in app: XCUIApplication) {
+        if id == "editor.hour" || id == "editor.minute" {
+            let picker = unique(app.datePickers.matching(identifier: "editor.time"), in: app)
+            let wheels = picker.pickerWheels
+            XCTAssertEqual(wheels.count, 2, "en_GB time picker must have hour and minute wheels")
+            let wheel = wheels.element(boundBy: id == "editor.hour" ? 0 : 1)
+            XCTAssertTrue(wheel.isEnabled && wheel.isHittable)
+            guard let number = Int(title) else { XCTFail("Invalid time selection"); return }
+            wheel.adjust(toPickerWheelValue: id == "editor.hour" ? String(number) : title)
+            return
+        }
         let query = app.buttons.matching(identifier: id)
         revealQuery(query, in: app)
         let picker = ready(query, in: app)

@@ -1,3 +1,62 @@
+# Active completion authority — owner decision 2026-11-23
+
+The owner approved [docs/COMPLETION_PLAN.md](docs/COMPLETION_PLAN.md): first deliver
+all-three-challenge playable Appetize, then real integration/device verification.
+Proceed autonomously through M1–M4 with milestone updates; no routine checkpoint
+or milestone approvals. Ask only for product decisions, authentication, external
+blockers and device actions. PROJECT_STATE owns current status. MASTER_PLAN keeps
+all product requirements; its new milestone overlay controls work order. Earlier
+Stage 6-only, Stage 7 prohibition, checkpoint stop order, blanket exact-HEAD
+prerequisite-before-implementation and final-doc-HEAD app rerun requirements below
+are superseded. Exact-source acceptance and actual dependency checks remain.
+Historical text remains as history.
+
+Standing rules:
+
+- Preserve restart baseline `159b777379ad587a615df56ef24fa273aa29ffe4`, fixed anchor
+  `862c2d872958c2e08971acbf605bbcf07ee4b3d5` (sole parent baseline), and active branch
+  `codex/restart-gate5-20261029-f8a41c`. Fetch and read its remote PROJECT_STATE then
+  AGENTS; verify identity, clean checkout, HEAD/ancestry and every post-baseline
+  commit. No post-anchor merges or abandoned Stage 6–14 imports/cherry-picks/copies.
+  Stop on conflicting lineage, unexpected changes or unverifiable provenance.
+- Preserve dirty worktrees and all historical evidence. Publish with expected
+  remote SHA checks and non-force fast-forwards. Run lineage with full history;
+  preflight if present before work. If absent, record it; never invent a PASS.
+- Keep $0 tools/public Apple APIs and credentials out of the repo. Core cannot
+  depend on SwiftUI/UIKit/AlarmKit/AVFoundation. Inspect SDK and compile AlarmKit
+  spikes rather than invent signatures. Preserve existing architecture/invariants.
+- Record explicit bounded $0 checks/executions/retries/runner time before any
+  validation, counting automatic triggers. Default ceiling and stop rules are in
+  COMPLETION_PLAN; no budget is allocated by this policy. No unchanged failing
+  reruns. Reuse relevant success only for matching unchanged source SHA.
+- Require relevant successful exact-published-source CI for source acceptance;
+  never label a parent run a new-HEAD pass. Documentation-only revisions receive
+  documentation review and link assessed app SHA/run, without recursive app CI.
+  Keep source, automated, Xcode, Simulator, Appetize and device evidence distinct.
+- Keep diagnostic probes separate from functional acceptance. Existing failed
+  activation-point diagnostic stays FAILED/diagnostic-only; demonstrate equivalent
+  user interactions through real journeys. Preserve meaningful assertions and
+  artifacts. A demonstrated defect blocks its functional dependents; trace earliest
+  cause, invalidate affected evidence and rerun in dependency order, including
+  inherited Gates 0–5 if disproved. No blanket acceptance of old gates.
+- Read relevant ENGINEERING_LESSONS before repairs; distinguish proven cause from
+  unresolved trigger. Verify failure paths and successful recovery before claiming
+  repair. TEST_MATRIX owns acceptance/evidence, ARCHITECTURE design, MASTER_PLAN
+  requirements, AGENTS policy, PROJECT_STATE status; logs/history are historical.
+- One integration owner handles shared contracts, persistence/session/schema,
+  lifecycle, composition/navigation, workflows and final acceptance. After contracts
+  stabilize, at most two workers may implement independent challenge files; give
+  compact contracts/ownership/exit cases. Parent verifies integration; review
+  completed milestones and critical platform/cancellation boundaries.
+
+Read this compact authority, current state and relevant source/tests before work;
+consult historical logs as needed. Preserve functional acceptance assertions and
+the complete original specification while using the four approved milestones.
+
+---
+
+# Historical owner instructions (superseded where conflicting)
+
 # Owner priority: hands-on preview - 2026-11-23
 
 The owner requested an Appetize version now. An explicitly labelled Simulator

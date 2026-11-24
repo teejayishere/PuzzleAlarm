@@ -6,6 +6,27 @@ import XCTest
 
 final class DraftEditingTests: XCTestCase, @unchecked Sendable {
     @MainActor
+    func testWheelTimeSelectionPreservesBoundariesAndOtherDraftFields() throws {
+        let original = try fixture()
+        for (hour, minute) in [(0, 0), (23, 59), (2, 30), (12, 5)] {
+            var draft = AlarmDraft(original)
+            let selected = try XCTUnwrap(AlarmDraft.timePickerCalendar.date(from:
+                DateComponents(year: 2026, month: 3, day: 8, hour: hour, minute: minute)))
+            draft.timeSelection = selected
+            XCTAssertEqual(draft.hour, hour)
+            XCTAssertEqual(draft.minute, minute)
+            let components = AlarmDraft.timePickerCalendar.dateComponents([.hour, .minute], from: draft.timeSelection)
+            XCTAssertEqual(components.hour, hour)
+            XCTAssertEqual(components.minute, minute)
+            let converted = try draft.definition(at: original.updatedAt)
+            XCTAssertEqual(converted.time, try AlarmTime(hour: hour, minute: minute))
+            XCTAssertEqual(converted.weekdays, original.weekdays)
+            XCTAssertEqual(converted.enabled, original.enabled)
+            XCTAssertEqual(converted.challengeSequence, original.challengeSequence)
+        }
+    }
+
+    @MainActor
     func testTimeRoundTripsIndependentlyIncludingBoundaries() throws {
         let original = try fixture()
         for (hour, minute) in [(0, 0), (23, 59), (8, 0), (7, 35)] {

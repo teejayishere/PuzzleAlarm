@@ -1,6 +1,11 @@
 name: Appetize simulator preview
 on:
   workflow_dispatch:
+    inputs:
+      verify_time_picker:
+        description: Run focused draft and native time-picker checks
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -38,7 +43,18 @@ jobs:
             2>&1 | tee Preview/build.log
           /usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName PuzzleAlarm Preview' \
             PreviewDerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Info.plist
+      - name: Package Appetize upload
+        run: |
+          app=PreviewDerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app
+          test "$(lipo -archs "$app/PuzzleAlarm")" = arm64
+          xcrun vtool -show-build "$app/PuzzleAlarm" | tee Preview/platform.txt
+          grep -q IOSSIMULATOR Preview/platform.txt
+          ditto -c -k --sequesterRsrc --keepParent "$app" Preview/PuzzleAlarm-Appetize.zip
+          shasum -a 256 Preview/PuzzleAlarm-Appetize.zip > Preview/SHA256.txt
+          printf 'Source SHA: %s\nPreview only; scheduling simulated; challenge solving unavailable.\n' "$GITHUB_SHA" > Preview/README.txt
+          cp docs/APPETIZE_PREVIEW.md Preview/
       - name: Install and launch the exact packaged app
+        timeout-minutes: 8
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: |
@@ -50,16 +66,27 @@ jobs:
           xcrun simctl spawn "$SIMULATOR_ID" launchctl list | tee Preview/processes.txt
           grep -F com.teejayishere.PuzzleAlarm.Preview Preview/processes.txt
           xcrun simctl io "$SIMULATOR_ID" screenshot Preview/launch.png
-      - name: Package Appetize upload
+      - name: Verify draft and native time-picker journeys
+        if: inputs.verify_time_picker
+        timeout-minutes: 12
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: |
-          app=PreviewDerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app
-          test "$(lipo -archs "$app/PuzzleAlarm")" = arm64
-          xcrun vtool -show-build "$app/PuzzleAlarm" | tee Preview/platform.txt
-          grep -q IOSSIMULATOR Preview/platform.txt
-          ditto -c -k --sequesterRsrc --keepParent "$app" Preview/PuzzleAlarm-Appetize.zip
-          shasum -a 256 Preview/PuzzleAlarm-Appetize.zip > Preview/SHA256.txt
-          printf 'Source SHA: %s\nPreview only; scheduling simulated; challenge solving unavailable.\n' "$GITHUB_SHA" > Preview/README.txt
-          cp docs/APPETIZE_PREVIEW.md Preview/
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=arm64" \
+            -derivedDataPath DerivedData -resultBundlePath TestResults/TimePicker.xcresult \
+            -only-testing:PuzzleAlarmTests/DraftEditingTests \
+            -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testTimeEditsStayInDraftAndCancel \
+            -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testSavedTimeAndSoundReopenFromDisk \
+            -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
+            2>&1 | tee Preview/time-picker-tests.log
+      - name: Freeze focused test evidence
+        if: always() && inputs.verify_time_picker
+        timeout-minutes: 2
+        run: |
+          python3 Scripts/preserve_xcode_results.py TestResults/TimePicker.xcresult Preview/TestEvidence \
+            Preview/build.log Preview/time-picker-tests.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:

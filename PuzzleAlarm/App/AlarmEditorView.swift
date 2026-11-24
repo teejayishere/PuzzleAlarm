@@ -10,13 +10,15 @@ struct AlarmEditorView: View {
         NavigationStack {
             Form {
                 if let error = model.errorMessage { Text(error).foregroundStyle(.red) }
-                Section("Time") {
-                    Picker("Hour", selection: $draft.hour) {
-                        ForEach(0..<24, id: \.self) { Text(String(format: "%02d", $0)).tag($0) }
-                    }.pickerStyle(.menu).accessibilityIdentifier("editor.hour")
-                    Picker("Minute", selection: $draft.minute) {
-                        ForEach(0..<60, id: \.self) { Text(String(format: "%02d", $0)).tag($0) }
-                    }.pickerStyle(.menu).accessibilityIdentifier("editor.minute")
+                Section {
+                    DatePicker("Alarm time", selection: $draft.timeSelection, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                        .environment(\.calendar, AlarmDraft.timePickerCalendar)
+                        .environment(\.timeZone, AlarmDraft.timePickerCalendar.timeZone)
+                        .accessibilityIdentifier("editor.time")
+                } header: { Text("Time") }
+                Section("Alarm") {
                     LabeledContent("Enabled") {
                         Toggle("Enabled", isOn: $draft.enabled).labelsHidden()
                             .accessibilityLabel("Enabled")
@@ -52,6 +54,7 @@ struct AlarmEditorView: View {
                 }
             }
             .navigationTitle(draft.original == nil ? "New alarm" : "Edit alarm")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }.accessibilityIdentifier("editor.cancel")

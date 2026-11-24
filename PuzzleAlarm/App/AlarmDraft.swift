@@ -61,6 +61,22 @@ struct AlarmDraft: Identifiable {
     static let sounds: [SoundSelection] = [.systemDefault] + BundledSound.allCases.map { .bundled($0) }
     static let soundNames = ["System default", "Harsh buzzer", "Rapid beeps", "Siren", "Escalating"]
 
+    // A time-of-day is not today's occurrence. A fixed UTC reference prevents
+    // a DST gap on today's date from silently changing the selected hour.
+    static let timePickerCalendar: Calendar = {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = .gmt
+        return calendar
+    }()
+
+    var timeSelection: Date {
+        get { Date(timeIntervalSinceReferenceDate: Double(hour * 3_600 + minute * 60)) }
+        set {
+            hour = Self.timePickerCalendar.component(.hour, from: newValue)
+            minute = Self.timePickerCalendar.component(.minute, from: newValue)
+        }
+    }
+
     var canSave: Bool { mode == .annoyingOnly || !challenges.isEmpty }
 
     mutating func add(_ kind: ChallengeKind) {
