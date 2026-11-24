@@ -1,3 +1,19 @@
+# Preview delivery priority and repair closeout - 2026-11-23
+
+Complete6a on a7b5fa8/run45252354273 FAILED with diagnostic.direct native switch
+activation-point/hittability error and test-step timeout; no runner restart.
+7/8 completed UI cases PASS; two unit cases not reached. Repair allocation closed
+at3/6,2383 actual runner-seconds,$0. No checkpoint restored. The observer recursion
+repair has separate negative regression proof; this new trigger is unresolved.
+
+Owner requested an Appetize version. Added Simulator-only APPETIZE_PREVIEW
+composition, isolated persistent storage, visible limitations notice, and manual
+build/launch/package workflow. No normal app composition, functional assertions,
+solver engines or baseline requirements changed. Fresh budget/evidence contract
+in APPETIZE_PREVIEW. Preview result pending; current authority PROJECT_STATE.
+
+---
+
 # Capture containment negative evidence verified - 2026-11-23
 
 c62d0a8/run45250273849 profile6a_failure SUCCESS: six iOS cases,three verifier

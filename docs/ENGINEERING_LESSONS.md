@@ -1,3 +1,21 @@
+# PA-L009 - Formal acceptance must not conceal lack of a usable preview
+
+Owner feedback2026-11-23: months of development without an Appetize version.
+Repeated harness repairs and checkpoint reassessments delayed hands-on feedback.
+The recursion defect was real, but later XCTest hittability failures do not by
+themselves establish a product defect. Distinguish unfinished features, proven
+product failures, test infrastructure failures and unresolved observations.
+
+Prevention: when the owner requests a preview, ship a clearly labelled candidate
+with explicit limitations independently of formal promotion. Preserve gate failures
+without turning every diagnostic failure into a delivery blocker. Provide a build
+artifact and exact source/run evidence; compilation/launch is not proof of complete
+user journeys. Future sessions should resume from PROJECT_STATE's owner priority.
+No extra regression suite is needed to demonstrate this workflow correction;
+the concrete evidence is an actual uploadable build and honest capability list.
+
+---
+
 # PA-L001 / PA-L008 scoped verification - 2026-11-23
 
 [Run45250273849](https://github.com/teejayishere/PuzzleAlarm/actions/runs/45250273849)

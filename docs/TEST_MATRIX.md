@@ -1,3 +1,14 @@
+# Appetize preview evidence boundary - 2026-11-23
+
+Preview workflow builds ARM64 iOS Simulator, verifies platform, installs/launches,
+checks the process remains present after5seconds, captures a screenshot and packages
+the exact app. IMPLEMENTED / NOT RUN. This is build/launch evidence only; no editing
+journey, background ringing, sound, solver or physical-device acceptance implied.
+Existing XCTest assertions/profiles remain unchanged; complete6a run45252354273
+FAILED and does not accept6A. Current decisions belong only to PROJECT_STATE.
+
+---
+
 # Verified negative capture postconditions - c62d0a8 / 45250273849
 
 Profile6a_failure attempt1 SUCCESS,SIX iOS cases PASS/zero unexpected failures.

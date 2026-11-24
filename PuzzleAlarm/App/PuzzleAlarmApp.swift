@@ -8,7 +8,13 @@ struct PuzzleAlarmApp: App {
     init() {
         do {
             var directory = try DiskRepository.applicationSupportDirectory()
+            #if APPETIZE_PREVIEW && DEBUG && targetEnvironment(simulator)
+            directory = directory.appendingPathComponent("AppetizePreview", isDirectory: true)
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+            var scheduler: any AlarmScheduling = try SimulatorAlarmScheduler(directory: directory)
+            #else
             var scheduler: any AlarmScheduling = AlarmManagerService()
+            #endif
             #if DEBUG && targetEnvironment(simulator)
             if ProcessInfo.processInfo.arguments.contains("--ui-testing") {
                 directory = try SimulatorUITestFixture.prepare(root: directory,

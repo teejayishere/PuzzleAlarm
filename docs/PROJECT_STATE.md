@@ -1,5 +1,39 @@
 # Active restart project state
 
+## Owner prioritizes Appetize preview - 2026-11-23
+
+Immediate scope: deliver a labelled, uploadable ARM64 Simulator preview of the
+existing alarm management/configuration UI. Owner explicitly requested hands-on
+Appetize testing instead of further checkpoint cycling. No Stage 7 solver work
+or gate promotion. Scheduling simulated; alarms do not ring; Math/Memory/QR solving
+and bundled audio playback are unfinished. Preview-specific composition uses
+isolated persistent storage and requires no test launch arguments.
+
+6A NOT ACCEPTED; 6B/6C WITHHELD; 6D-6F/Gate6 NOT ACCEPTED; Stage7 NOT STARTED.
+Gates0-5 not disproved. Complete6a run45252354273 on exact HEAD a7b5fa869f68ab4d6558354c6324b4b6e98ded8d FAILED:
+7/8 completed UI cases PASS, one diagnostic.direct native hittability error,
+18-minute test-step timeout, two fixture tests not reached. No runner restart.
+Capture negative regressions were verified separately on c62d0a8/run45250273849;
+that repair did not restore complete6A. The invalid activation-point cause remains
+unknown and is not proof of a product binding defect. QR Save remains unresolved.
+Old repair allocation CLOSED at 3/6 executions,2383/9000 runner-seconds,$0; no
+remaining executions transfer. See APPETIZE_PREVIEW for failure artifact evidence.
+
+Fresh preview-only $0 budget is recorded in APPETIZE_PREVIEW before validation:
+maximum2 changed builds,25min each,50 actual runner-minutes,zero unchanged failing
+reruns. No full UI suite selected and no formal acceptance claimed. Candidate
+source/docs/workflow precede the build. Preview CI and hands-on evidence remain
+NOT RUN until exact-SHA workflow results are observed. Browser automation failed
+to initialize with a missing kernel-assets path; no Appetize upload/login was
+attempted. Build/package work continues independently. Preflight script absent
+in the fetched active branch; no preflight PASS is claimed. Outer dirty checkout
+and all historical evidence preserved. This entry supersedes next-6A instructions
+below for the owner's current preview request.
+
+---
+
+# Active restart project state
+
 ## Negative capture regressions verified; complete prior 6A next - 2026-11-23
 
 6A PENDING COMPLETE REASSESSMENT / NOT ACCEPTED. 6B/6C WITHHELD;6D-6F/Gate6

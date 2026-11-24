@@ -11,6 +11,12 @@ struct ContentView: View {
         NavigationStack {
             List {
                 Text("PuzzleAlarm").font(.title).accessibilityIdentifier("shell.title")
+                #if APPETIZE_PREVIEW && DEBUG && targetEnvironment(simulator)
+                Text("Preview: alarm scheduling is simulated. Alarms will not ring. Challenge solving is not available yet.")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                    .accessibilityIdentifier("preview.notice")
+                #endif
                 if let error = model.errorMessage {
                     Text(error).foregroundStyle(.red).accessibilityIdentifier("alarms.error")
                 }

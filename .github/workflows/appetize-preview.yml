@@ -1,0 +1,69 @@
+name: Appetize simulator preview
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview:
+    if: github.event.repository.private == false
+    runs-on: macos-26
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify restart lineage
+        run: python3 Scripts/check_restart_lineage.py
+      - name: Install pinned XcodeGen
+        run: bash Scripts/install_xcodegen.sh
+      - name: Generate project and select Simulator
+        id: simulator
+        run: |
+          xcodegen generate --spec project.yml
+          xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
+          xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
+          echo "id=$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)" >> "$GITHUB_OUTPUT"
+      - name: Build ARM64 preview
+        run: |
+          set -o pipefail
+          mkdir -p Preview
+          xcodebuild -version | tee Preview/toolchain.txt
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Debug -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath PreviewDerivedData \
+            ARCHS=arm64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_ALLOWED=NO \
+            PRODUCT_BUNDLE_IDENTIFIER=com.teejayishere.PuzzleAlarm.Preview \
+            'SWIFT_ACTIVE_COMPILATION_CONDITIONS=DEBUG APPETIZE_PREVIEW' build \
+            2>&1 | tee Preview/build.log
+          /usr/libexec/PlistBuddy -c 'Set :CFBundleDisplayName PuzzleAlarm Preview' \
+            PreviewDerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app/Info.plist
+      - name: Install and launch the exact packaged app
+        env:
+          SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
+        run: |
+          xcrun simctl boot "$SIMULATOR_ID"
+          xcrun simctl bootstatus "$SIMULATOR_ID" -b
+          xcrun simctl install "$SIMULATOR_ID" PreviewDerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app
+          xcrun simctl launch "$SIMULATOR_ID" com.teejayishere.PuzzleAlarm.Preview | tee Preview/launch.txt
+          sleep 5
+          xcrun simctl spawn "$SIMULATOR_ID" launchctl list | tee Preview/processes.txt
+          grep -F com.teejayishere.PuzzleAlarm.Preview Preview/processes.txt
+          xcrun simctl io "$SIMULATOR_ID" screenshot Preview/launch.png
+      - name: Package Appetize upload
+        run: |
+          app=PreviewDerivedData/Build/Products/Debug-iphonesimulator/PuzzleAlarm.app
+          test "$(lipo -archs "$app/PuzzleAlarm")" = arm64
+          xcrun vtool -show-build "$app/PuzzleAlarm" | tee Preview/platform.txt
+          grep -q IOSSIMULATOR Preview/platform.txt
+          ditto -c -k --sequesterRsrc --keepParent "$app" Preview/PuzzleAlarm-Appetize.zip
+          shasum -a 256 Preview/PuzzleAlarm-Appetize.zip > Preview/SHA256.txt
+          printf 'Source SHA: %s\nPreview only; scheduling simulated; challenge solving unavailable.\n' "$GITHUB_SHA" > Preview/README.txt
+          cp docs/APPETIZE_PREVIEW.md Preview/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: appetize-preview-${{ github.sha }}
+          path: Preview/
+          if-no-files-found: error
+          retention-days: 30

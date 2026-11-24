@@ -1,3 +1,15 @@
+# Owner priority: hands-on preview - 2026-11-23
+
+The owner requested an Appetize version now. An explicitly labelled Simulator
+preview of the existing candidate may be built and delivered while 6A is failed.
+This authorizes preview composition/packaging, not formal gate acceptance or
+Stage 7 implementation. Keep alarm scheduling simulated and visible to the user;
+do not promise ringing or implemented challenge solvers. Do not make delivery of
+this preview depend on repairing every diagnostic UI test. Existing acceptance
+requirements remain for production promotion. PROJECT_STATE owns current scope.
+
+---
+
 # PuzzleAlarm restart authority
 
 Owner decision: 2026-10-29 (America/Chicago).
