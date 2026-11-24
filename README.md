@@ -1,18 +1,32 @@
 # PuzzleAlarm
 
 Personal native iPhone alarm application under development for iOS 26+.
-The planned app offers ordinary alarms with selected sounds or ordered Math,
+V1 scope includes ordinary alarms with selected sounds or ordered Math,
 Memory and QR challenges backed by one primary and four independent backup alarms.
 
 **Current status is maintained only in the [active restart PROJECT_STATE](https://github.com/teejayishere/PuzzleAlarm/blob/codex/restart-gate5-20261029-f8a41c/docs/PROJECT_STATE.md).**
 
-Use the default branch `codex/restart-gate5-20261029-f8a41c`. Gates 0–5 are the
-inherited accepted baseline. Stage 6 alarm-management UI is implemented as a candidate;
-Gate 6 requires exact-final-HEAD CI as recorded in PROJECT_STATE and the session
-closeout. Stop after Gate 6. Main and all other
-branches are HISTORICAL / ABANDONED: no development, recovery or promotion there.
-Old Stage 6–14 failures and budgets are nonbinding. See the
-[branch and local entry-point inventory](docs/DOCUMENTATION_RECONCILIATION.md).
+Use the default branch `codex/restart-gate5-20261029-f8a41c`. The approved
+[completion plan](docs/COMPLETION_PLAN.md) uses four product milestones and
+autonomous execution. Main and other old lineages remain abandoned; no source
+imports or rewrite. Preserve the accepted baseline and actual dependency checks.
+Current milestone decisions and exact assessed source/run links belong to
+[PROJECT_STATE](docs/PROJECT_STATE.md), not historical checkpoint summaries.
+
+## Try the app
+
+The Simulator preview uses native scrolling time wheels. Configure and enable a
+challenge alarm, then choose **Try challenges** to enter its scheduled occurrence
+with a simulated clock. Solve Math, remember the digits after they hide, and use
+the labelled simulated QR input. Progress persists across relaunch; completion
+requires the whole saved sequence. Alarms and camera input are simulated in this
+preview. See [Appetize instructions](docs/APPETIZE_PREVIEW.md).
+
+A separate unsigned IPA uses real AlarmKit/camera adapters and contains no preview
+clock controls. It needs local signing and actual device testing. The planned
+[free Windows route](docs/WINDOWS_DEVICE_INSTALL.md) uses the owner's Apple account
+locally; credentials never enter this repository or CI. Compiling a device build
+is separate from proving that it installs, rings and recovers on the owner's phone.
 
 ## Evidence and scope
 

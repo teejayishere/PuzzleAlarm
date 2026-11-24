@@ -97,7 +97,8 @@ struct ChallengeHostView: View {
     private func memoryInput(roundID: UUID, digits: [Int]?, deadline: Date?, displayed: ChallengeSnapshot) -> some View {
         // Presentation hides at the absolute deadline independently of disk I/O.
         // An inactive app also omits digits from its rendered/accessibility tree.
-        TimelineView(.periodic(from: .now, by: 0.1)) { _ in
+        let revealEnds = Date().addingTimeInterval(max(0, deadline?.timeIntervalSince(model.now) ?? 0))
+        return TimelineView(.explicit([Date(), revealEnds])) { _ in
             if scenePhase != .active {
                 Text("Paused")
             } else if let digits, let deadline, model.now < deadline {

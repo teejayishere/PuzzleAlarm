@@ -1,3 +1,16 @@
+# Playable candidate verified before representative management acceptance - 2026-11-23
+
+90ad2b0/run45304649847 SUCCESS:137Core,44app-unit and3UI cases PASS; Simulator
+and unsigned Release builds/install/launch/package PASS. All3screens inspected;
+app/IPA CRC,platform,bundle,minOS and previewhash verified; manifest errors=[],
+excluded=[].927runner-seconds; playable allocationclosed2/2,1494seconds,$0.
+Next bounded MILESTONE_VALIDATION groups exercise remaining real management paths.
+Changed presentation uses an explicit memory deadline (no periodic idle redraw),
+main-thread audio callbacks and added routing/cancellation recovery tests. No full
+legacy UI or physical-device pass inferred. User can already try verified90ad build.
+
+---
+
 # Changed playable candidate after Debug composition compile failure - 2026-11-23
 
 4bceba5/run45302926145 failed Debug-test compilation after137Core tests and

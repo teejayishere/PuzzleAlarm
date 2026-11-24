@@ -1,3 +1,33 @@
+# Appetize preview usage - 2026-11-23
+
+Current status/evidence: PROJECT_STATE.md. The implemented candidate now includes
+native time wheels, alarm configuration, playable Math/Memory/QR, persistent
+progress, QR image sharing and bundled sound previews. Runtime acceptance is only
+claimed where exact-SHA test evidence is recorded. All alarm scheduling and QR
+camera input in this Simulator preview are simulated.
+
+1. Download the run artifact and extract its inner PuzzleAlarm-Appetize.zip.
+2. Upload that inner ZIP at https://appetize.io/upload and select iOS26+.
+3. Tap +, turn on Challenges required, add/configure/order challenges, and Save
+   the enabled alarm. The wheel control follows the user's12/24hour preference.
+4. Tap Try challenges. This advances a persisted Simulator clock to an already-
+   scheduled occurrence and enters the normal session/coordinator path.
+5. Solve Math and Memory; QR offers labelled registered/unregistered scan inputs.
+   Generate/share the actual target in the editor for later physical testing.
+6. Relaunch to test restoration. Only the full verified sequence completes the
+   occurrence and cancels its alarms. Failed writes/cancellation retain recovery.
+
+The free Appetize plan has3min sessions; choose short configurations for a quick
+trial. This package is a Simulator .app ZIP; it is not the unsigned device IPA.
+Browser tooling failed to initialize in this environment, so a hosted Appetize URL
+has not been created. See WINDOWS_DEVICE_INSTALL for the separate device route.
+
+The original preview-only allocation below is CLOSED after source758ccc6/run
+45294551508 SUCCESS,423actual runner-seconds,$0. Its no-solver scope describes that
+historical first preview and is superseded by the approved completion plan.
+
+---
+
 # Appetize preview delivery allocation - 2026-11-23
 
 Owner requested a usable Appetize version and challenged checkpoint overhead.

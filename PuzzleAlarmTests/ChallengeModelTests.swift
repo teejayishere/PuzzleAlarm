@@ -285,6 +285,52 @@ final class ChallengeModelTests: XCTestCase, @unchecked Sendable {
         XCTAssertTrue(try scheduler.currentAlarms().isEmpty)
     }
 
+    @MainActor
+    func testCompletedAnswersRemainUnfinishedUntilFailedAlarmCancellationRecovers() async throws {
+        let pendingKey = "PuzzleAlarm.pendingOccurrenceID"
+        UserDefaults.standard.removeObject(forKey: pendingKey)
+        defer { UserDefaults.standard.removeObject(forKey: pendingKey) }
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let repository = DiskRepository(directory: directory)
+        let scheduler = OneCancellationFailureScheduler(base: try SimulatorAlarmScheduler(directory: directory))
+        let clock = try SimulatorClock(directory: directory)
+        let service = LifecycleAlarmManagementService(repository: repository, scheduler: scheduler,
+            clock: { clock.now() }, context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
+        let qr = QRConfiguration(token: UUID())
+        let definition = try makeDefinition([.qr(qr)], now: clock.now())
+        _ = try await service.perform(.create(definition))
+        let model = ChallengeModel(repository: repository, service: service,
+            clock: { clock.now() }, advancePreviewClock: { try clock.advance(to: $0) })
+        await model.runNow(alarmID: definition.id)
+        XCTAssertNil(model.errorMessage)
+        XCTAssertEqual(model.current?.phase, .active)
+        XCTAssertEqual(try scheduler.currentAlarms().count, 5)
+        scheduler.failNextCancellation()
+        await model.submit(.scanQR(payload: qr.expectedPayload), expecting: model.current)
+        let failed = try await record(in: DiskRepository(directory: directory), parentID: definition.id)
+        XCTAssertEqual(failed.session.currentChallengeIndex, 1)
+        XCTAssertEqual(failed.session.challengeCompletedAt.count, 1)
+        XCTAssertNil(failed.checkpoint)
+        XCTAssertEqual(failed.session.phase, .cancellationPartiallyFailed)
+        XCTAssertNil(failed.session.completedAt)
+        XCTAssertEqual(model.current?.phase, .cancellationPartiallyFailed)
+        let remainingIDs = Set(try scheduler.currentAlarms().map(\.id))
+        XCTAssertEqual(remainingIDs.count, 1)
+        XCTAssertEqual(remainingIDs, Set(failed.session.remainingCancellationIDs))
+        await model.refresh()
+        XCTAssertNil(model.errorMessage)
+        let recovered = try await record(in: DiskRepository(directory: directory), parentID: definition.id)
+        XCTAssertEqual(recovered.session.id, failed.session.id)
+        XCTAssertEqual(recovered.session.phase, .completed)
+        XCTAssertNotNil(recovered.session.completedAt)
+        XCTAssertEqual(recovered.session.challengeCompletedAt, failed.session.challengeCompletedAt)
+        XCTAssertTrue(recovered.session.cancellation.allSatisfy { $0 == .succeeded })
+        XCTAssertTrue(try scheduler.currentAlarms().isEmpty)
+        XCTAssertEqual(model.current?.phase, .completed)
+    }
+
     func testPreviewClockPersistsItsAdvanceAndRejectsCorruptStorage() throws {
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
@@ -328,6 +374,26 @@ private actor RejectingChallengeRepository: PuzzleAlarmRepository {
     func commit(_ state: RepositoryState, expecting version: RepositoryVersion) async throws -> RepositorySnapshot {
         if rejectWrites { throw PersistenceError.io("Injected challenge commit failure") }
         return try await base.commit(state, expecting: version)
+    }
+}
+
+private final class OneCancellationFailureScheduler: AlarmScheduling, @unchecked Sendable {
+    private let base: SimulatorAlarmScheduler
+    private let lock = NSLock()
+    private var shouldFail = false
+    init(base: SimulatorAlarmScheduler) { self.base = base }
+    var authorization: AlarmAuthorization { base.authorization }
+    func failNextCancellation() { lock.withLock { shouldFail = true } }
+    func requestAuthorization() async throws -> AlarmAuthorization { try await base.requestAuthorization() }
+    func schedule(_ request: AlarmRequest) async throws -> RegisteredAlarm { try await base.schedule(request) }
+    func currentAlarms() throws -> [RegisteredAlarm] { try base.currentAlarms() }
+    func observeAlarms(_ receive: @escaping @Sendable ([RegisteredAlarm]) -> Void) async {
+        await base.observeAlarms(receive)
+    }
+    func cancel(id: UUID) throws {
+        let fail = lock.withLock { let value = shouldFail; shouldFail = false; return value }
+        if fail { throw PersistenceError.io("Injected one-time cancellation failure") }
+        try base.cancel(id: id)
     }
 }
 #endif

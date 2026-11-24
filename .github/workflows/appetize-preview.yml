@@ -10,13 +10,20 @@ on:
         description: Run core, app-unit and playable challenge journey checks
         type: boolean
         default: false
+      management_group:
+        description: Representative final management acceptance group
+        type: choice
+        options: [none, lifecycle, configuration, settings]
+        default: none
 permissions:
   contents: read
 jobs:
   preview:
     if: github.event.repository.private == false
     runs-on: macos-26
-    timeout-minutes: 25
+    timeout-minutes: 30
+    env:
+      MANAGEMENT_GROUP: ${{ inputs.management_group || 'none' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -34,8 +41,10 @@ jobs:
           xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
           echo "id=$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)" >> "$GITHUB_OUTPUT"
       - name: Verify core domain and challenge engines
-        if: inputs.verify_challenges
-        run: swift test -Xswiftc -warnings-as-errors
+        if: inputs.verify_challenges || inputs.management_group == 'lifecycle'
+        run: |
+          swift test -Xswiftc -warnings-as-errors --enable-code-coverage
+          python3 Scripts/report_core_coverage.py "$(swift test --show-codecov-path)"
       - name: Build ARM64 preview
         run: |
           set -o pipefail
@@ -61,7 +70,7 @@ jobs:
           printf 'Source SHA: %s\nPreview only; alarms and QR camera input are simulated.\n' "$GITHUB_SHA" > Preview/README.txt
           cp docs/APPETIZE_PREVIEW.md Preview/
       - name: Build unsigned device application
-        if: inputs.verify_challenges
+        if: inputs.verify_challenges || inputs.management_group == 'lifecycle'
         timeout-minutes: 4
         run: |
           set -o pipefail
@@ -88,8 +97,8 @@ jobs:
           grep -F com.teejayishere.PuzzleAlarm.Preview Preview/processes.txt
           xcrun simctl io "$SIMULATOR_ID" screenshot Preview/launch.png
       - name: Verify draft and native time-picker journeys
-        if: inputs.verify_time_picker || inputs.verify_challenges
-        timeout-minutes: 12
+        if: inputs.verify_time_picker || inputs.verify_challenges || env.MANAGEMENT_GROUP != 'none'
+        timeout-minutes: 18
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: |
@@ -103,6 +112,18 @@ jobs:
               -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testTimeEditsStayInDraftAndCancel
               -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testSavedTimeAndSoundReopenFromDisk)
           fi
+          case "$MANAGEMENT_GROUP" in
+            lifecycle)
+              selectors=(-only-testing:PuzzleAlarmTests
+                -only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testCreateEditEnableDisableDeleteAndRelaunch) ;;
+            configuration)
+              selectors=(-only-testing:PuzzleAlarmUITests/AlarmManagementUITests/testChallengeConfigurationOrderingSoundAndPersistence
+                -only-testing:PuzzleAlarmUITests/ChallengeSettingsUITests/testQRTargetRetainsExactTokenThroughSaveAndReopen) ;;
+            settings)
+              selectors=(-only-testing:PuzzleAlarmUITests/ChallengeSettingsUITests/testMathSettingsSaveAndReopen
+                -only-testing:PuzzleAlarmUITests/ChallengeSettingsUITests/testMemorySettingsSaveAndReopen
+                -only-testing:PuzzleAlarmUITests/PlayableChallengeUITests) ;;
+          esac
           xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=arm64" \
             -derivedDataPath DerivedData -resultBundlePath TestResults/TimePicker.xcresult \
@@ -110,7 +131,7 @@ jobs:
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee Preview/time-picker-tests.log
       - name: Freeze focused test evidence
-        if: always() && (inputs.verify_time_picker || inputs.verify_challenges)
+        if: always() && (inputs.verify_time_picker || inputs.verify_challenges || env.MANAGEMENT_GROUP != 'none')
         timeout-minutes: 2
         run: |
           python3 Scripts/preserve_xcode_results.py TestResults/TimePicker.xcresult Preview/TestEvidence \

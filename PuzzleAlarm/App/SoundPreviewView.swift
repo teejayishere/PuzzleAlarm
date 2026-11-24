@@ -29,10 +29,10 @@ struct SoundPreviewView: View {
         }
         .onChange(of: selection) { _, _ in playback.stop() }
         .onChange(of: scenePhase) { _, phase in if phase != .active { playback.stop() } }
-        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification).receive(on: RunLoop.main)) { _ in
             playback.stop()
         }
-        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.mediaServicesWereResetNotification)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.mediaServicesWereResetNotification).receive(on: RunLoop.main)) { _ in
             playback.stop()
         }
         .onDisappear { playback.stop() }
