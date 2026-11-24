@@ -1,3 +1,17 @@
+# Native wheel regression evidence - 2026-11-23
+
+Picker300f63a/run45300385711 FAILED: seven draft unit tests PASS, both UI cases
+failed at native adjust(toPickerWheelValue:"8"). XCTest explicitly listed the
+accepted zero-padded values01...23,00. Picker/app compiled, installed, launched;
+no product binding defect established. Changed helper selects "%02d" for both
+wheels, preserving all draft/disk/service/relaunch assertions. Actual runner949s;
+native allocation1/2 used. Downloaded artifact14877874730; inner app ZIP hash/CRC
+and frozen xcresult ZIP CRC verified. Two PNG recovered; one inspected showing
+the native time wheels. Combined next candidate consumes the second native slot
+and first playable slot; both scoped contracts remain required, no duplicate run.
+
+---
+
 # PA-L009 - Formal acceptance must not conceal lack of a usable preview
 
 Owner feedback2026-11-23: months of development without an Appetize version.

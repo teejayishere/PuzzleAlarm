@@ -1,3 +1,24 @@
+# Challenge execution and preview integration - 2026-11-23
+
+ChallengeCoordinator transforms existing PersistedSession; WakeUpSession remains
+sole progress authority and ResumeCheckpoint holds generated problem/round identity.
+Engines verify input; views never issue success. Snapshots omit expected answers
+and hidden digits. ChallengeModel commits the whole replacement with repository
+CAS before publishing, then existing lifecycle refresh handles confirmed cleanup
+and next occurrence. Save failures retain mandatory session/alarms. One lifecycle
+service instance owns scheduler effects; no parallel replacement scheduler owner.
+
+Simulator-only Run Now advances a persisted shared clock to an already-scheduled
+occurrence and runs normal recovery, rather than inventing a completed session.
+Device composition receives no advance hook or simulated matching-QR input.
+Real QR scanner emits payloads only; exact matching lives in Core. Bundled sound
+selection falls back to system default when files are absent; preview has one
+playback owner and stops on disappearance/inactivity/interruption. A persisted
+intent route selects only an existing actionable session. Foreground due-time and
+scene/time-change reconciliation use the same service and cancellation invariants.
+
+---
+
 # Controlled negative fixture continuation - 2026-11-23
 
 Direct record() can stop a fail-fast fixture even if the issue matches an expected

@@ -49,8 +49,9 @@ struct AlarmEditorView: View {
                             Text(AlarmDraft.soundNames[index]).tag(index)
                         }
                     }.pickerStyle(.menu).accessibilityIdentifier("editor.sound")
+                    SoundPreviewView(selection: AlarmDraft.sounds[draft.soundIndex])
                 } header: { Text("Sound") } footer: {
-                    Text("Selection only. Bundled sound resources and preview playback arrive in a later stage. Use System default for the available system sound.")
+                    Text("Preview a bundled sound before saving. Missing sound files fall back to the system default.")
                 }
             }
             .navigationTitle(draft.original == nil ? "New alarm" : "Edit alarm")
@@ -82,7 +83,7 @@ struct AlarmEditorView: View {
                 }
                 if draft.challenges.isEmpty { Text("Add at least one challenge to save.") }
             } header: { Text("Challenge sequence") } footer: {
-                Text("Each type can appear once. Complete them in the order shown. Challenge solving is not available yet.")
+                    Text("Each type can appear once. Complete them in the order shown.")
             }
             ForEach($draft.challenges) { $challenge in
                 let kind = challenge.kind
@@ -131,7 +132,8 @@ private struct ChallengeConfigurationView: View {
         case .qr:
             Text("Target: \(QRConfiguration(token: draft.token).expectedPayload)")
                 .textSelection(.enabled).accessibilityIdentifier("challenge.qr.target")
-            Text("This target is saved with the alarm. QR image, sharing and scanning are not available yet.")
+            QRTargetView(payload: QRConfiguration(token: draft.token).expectedPayload)
+            Text("Save or share this code and place it where you want to scan it when you wake up.")
         }
     }
 }

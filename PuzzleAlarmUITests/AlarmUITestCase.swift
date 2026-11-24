@@ -185,7 +185,7 @@ class AlarmUITestCase: XCTestCase, @unchecked Sendable {
             let wheel = wheels.element(boundBy: id == "editor.hour" ? 0 : 1)
             XCTAssertTrue(wheel.isEnabled && wheel.isHittable)
             guard let number = Int(title) else { XCTFail("Invalid time selection"); return }
-            wheel.adjust(toPickerWheelValue: id == "editor.hour" ? String(number) : title)
+            wheel.adjust(toPickerWheelValue: String(format: "%02d", number))
             return
         }
         let query = app.buttons.matching(identifier: id)

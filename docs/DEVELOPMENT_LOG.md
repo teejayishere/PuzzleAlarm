@@ -1,3 +1,22 @@
+# Playable challenge and platform integration candidate - 2026-11-23
+
+Implemented pure Math/Memory/QR engines, identity-bound challenge coordinator,
+safe display snapshots and atomically persisted session progress. Added one host,
+Run Now with persisted simulator-only clock, QR generation/share/scanner, four
+original WAVs and playback cleanup/fallback, foreground/intent routing and unsigned
+device build. Engine/coordinator tests cover permutations, wrong/duplicate/stale
+input, hiding/deadline/relaunch; app tests exercise all-three progression, rejected
+write/retry, actual fake-scheduler cancellation and persisted clock recovery.
+
+Independent workers owned disjoint engine/platform/test files; parent reviewed
+integration. Review caught duplicate simulateQR declaration before compilation;
+removed. Foreground due-time reconciliation now has a cancellable one-shot task.
+No shared Core schema or baseline lifecycle logic replaced. Candidate NOT RUN.
+Budget/evidence boundary: PLAYABLE_CHALLENGES. Picker first run failed solely at
+unpadded native-wheel automation input; helper now uses observed zero-padded values.
+
+---
+
 # Approved completion milestones and native alarm picker - 2026-11-23
 
 Owner approved autonomous all-three Appetize-first completion and milestone policy.

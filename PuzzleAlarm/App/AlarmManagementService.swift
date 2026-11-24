@@ -20,10 +20,11 @@ actor LifecycleAlarmManagementService: AlarmManagementService {
     private let context: @Sendable () throws -> ScheduleContext
 
     init(repository: any PuzzleAlarmRepository, scheduler: any AlarmScheduling,
+         clock: @escaping @Sendable () -> Date = { Date() },
          context: @escaping @Sendable () throws -> ScheduleContext = {
              try ScheduleContext(timeZoneIdentifier: TimeZone.current.identifier)
          }) {
-        coordinator = AlarmLifecycleCoordinator(repository: repository, scheduler: scheduler)
+        coordinator = AlarmLifecycleCoordinator(repository: repository, scheduler: scheduler, clock: clock)
         self.scheduler = scheduler
         self.context = context
     }

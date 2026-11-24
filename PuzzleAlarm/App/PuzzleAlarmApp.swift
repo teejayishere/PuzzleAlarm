@@ -4,6 +4,7 @@ import PuzzleAlarmCore
 @main
 struct PuzzleAlarmApp: App {
     @StateObject private var model: AlarmListModel
+    @StateObject private var challenges: ChallengeModel
 
     init() {
         do {
@@ -25,7 +26,21 @@ struct PuzzleAlarmApp: App {
             }
             #endif
             let repository = DiskRepository(directory: directory)
-            let base = LifecycleAlarmManagementService(repository: repository, scheduler: scheduler)
+            let clock: @Sendable () -> Date
+            let advance: (@Sendable (Date) throws -> Void)?
+            #if DEBUG && targetEnvironment(simulator)
+            let simulatorClock = try SimulatorClock(directory: directory)
+            clock = { simulatorClock.now() }
+            #if APPETIZE_PREVIEW
+            advance = { try simulatorClock.advance(to: $0) }
+            #else
+            advance = ProcessInfo.processInfo.arguments.contains("--ui-testing")
+                ? { try simulatorClock.advance(to: $0) } : nil
+            #endif
+            #else
+            clock = { Date() }; advance = nil
+            #endif
+            let base = LifecycleAlarmManagementService(repository: repository, scheduler: scheduler, clock: clock)
             let service: any AlarmManagementService
             #if DEBUG && targetEnvironment(simulator)
             if ProcessInfo.processInfo.arguments.contains("--ui-testing") &&
@@ -36,10 +51,13 @@ struct PuzzleAlarmApp: App {
             service = base
             #endif
             _model = StateObject(wrappedValue: AlarmListModel(service: service, repository: repository))
+            _challenges = StateObject(wrappedValue: ChallengeModel(repository: repository,
+                service: service, clock: clock, advancePreviewClock: advance))
         } catch {
             // Never replace unreadable disk state with a writable empty repository.
             let service = UnavailableAlarmManagementService()
             _model = StateObject(wrappedValue: AlarmListModel(service: service, repository: service))
+            _challenges = StateObject(wrappedValue: ChallengeModel(repository: service, service: service))
         }
     }
 
@@ -49,10 +67,10 @@ struct PuzzleAlarmApp: App {
             if ProcessInfo.processInfo.arguments.contains("--ui-switch-probe") {
                 DirectStateSwitchProbe()
             } else {
-                ContentView(model: model)
+                ContentView(model: model, challenges: challenges)
             }
             #else
-            ContentView(model: model)
+            ContentView(model: model, challenges: challenges)
             #endif
         }
     }

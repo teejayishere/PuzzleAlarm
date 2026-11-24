@@ -15,7 +15,7 @@ final class LifecyclePlatformTests: XCTestCase, @unchecked Sendable {
             let request = try AlarmRequest(definition: definition, alarmID: UUID(), date: now.addingTimeInterval(60))
             XCTAssertNil(request.metadata.sessionID)
             XCTAssertNil(AlarmConfigurationFactory.presentation(challenge: false).alert.secondaryButton)
-            XCTAssertEqual(AlarmConfigurationFactory.selectedSound(request.selectedSound), .named("siren.caf"))
+            XCTAssertEqual(AlarmConfigurationFactory.selectedSound(request.selectedSound), .named("siren.wav"))
             XCTAssertEqual(AlarmConfigurationFactory.selectedSound(.systemDefault), .default)
             let schedule = AlarmConfigurationFactory.schedule(for: request)
             if days.isEmpty {

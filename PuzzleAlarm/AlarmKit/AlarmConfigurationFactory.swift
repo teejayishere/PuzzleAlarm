@@ -44,10 +44,12 @@ enum AlarmConfigurationFactory {
         }
     }
 
-    static func selectedSound(_ selection: SoundSelection) -> AlertConfiguration.AlertSound {
+    static func selectedSound(_ selection: SoundSelection, bundle: Bundle = .main) -> AlertConfiguration.AlertSound {
         switch selection {
         case .systemDefault: .default
-        case let .bundled(sound): .named(sound.rawValue + ".caf")
+        case let .bundled(sound):
+            bundle.url(forResource: sound.rawValue, withExtension: "wav") == nil
+                ? .default : .named(sound.rawValue + ".wav")
         }
     }
 

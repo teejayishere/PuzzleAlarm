@@ -25,6 +25,8 @@ targets:
       - path: PuzzleAlarm/App
       - path: PuzzleAlarm/AlarmKit
       - path: PuzzleAlarm/Intents
+      - path: PuzzleAlarm/Resources/Sounds
+        buildPhase: resources
     dependencies:
       - package: PuzzleAlarmCore
         product: PuzzleAlarmCore
@@ -38,6 +40,7 @@ targets:
       properties:
         CFBundleDisplayName: PuzzleAlarm
         NSAlarmKitUsageDescription: PuzzleAlarm uses alarms to wake you at the times you schedule.
+        NSCameraUsageDescription: PuzzleAlarm scans your registered QR code to complete a wake-up challenge.
         LSRequiresIPhoneOS: true
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false

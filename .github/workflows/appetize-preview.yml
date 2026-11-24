@@ -6,6 +6,10 @@ on:
         description: Run focused draft and native time-picker checks
         type: boolean
         default: false
+      verify_challenges:
+        description: Run core, app-unit and playable challenge journey checks
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -29,6 +33,9 @@ jobs:
           xcrun simctl list devices available --json > "$RUNNER_TEMP/devices.json"
           xcrun simctl list runtimes --json > "$RUNNER_TEMP/runtimes.json"
           echo "id=$(python3 Scripts/select_simulator.py "$RUNNER_TEMP/devices.json" "$RUNNER_TEMP/runtimes.json" 26.0)" >> "$GITHUB_OUTPUT"
+      - name: Verify core domain and challenge engines
+        if: inputs.verify_challenges
+        run: swift test -Xswiftc -warnings-as-errors
       - name: Build ARM64 preview
         run: |
           set -o pipefail
@@ -51,8 +58,19 @@ jobs:
           grep -q IOSSIMULATOR Preview/platform.txt
           ditto -c -k --sequesterRsrc --keepParent "$app" Preview/PuzzleAlarm-Appetize.zip
           shasum -a 256 Preview/PuzzleAlarm-Appetize.zip > Preview/SHA256.txt
-          printf 'Source SHA: %s\nPreview only; scheduling simulated; challenge solving unavailable.\n' "$GITHUB_SHA" > Preview/README.txt
+          printf 'Source SHA: %s\nPreview only; alarms and QR camera input are simulated.\n' "$GITHUB_SHA" > Preview/README.txt
           cp docs/APPETIZE_PREVIEW.md Preview/
+      - name: Build unsigned device application
+        if: inputs.verify_challenges
+        timeout-minutes: 4
+        run: |
+          set -o pipefail
+          xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
+            -configuration Release -sdk iphoneos -destination 'generic/platform=iOS' \
+            -derivedDataPath DeviceDerivedData CODE_SIGNING_ALLOWED=NO build \
+            2>&1 | tee Preview/device-build.log
+          ditto -c -k --sequesterRsrc --keepParent \
+            DeviceDerivedData/Build/Products/Release-iphoneos/PuzzleAlarm.app Preview/PuzzleAlarm-Unsigned-Device.zip
       - name: Install and launch the exact packaged app
         timeout-minutes: 8
         env:
@@ -67,22 +85,29 @@ jobs:
           grep -F com.teejayishere.PuzzleAlarm.Preview Preview/processes.txt
           xcrun simctl io "$SIMULATOR_ID" screenshot Preview/launch.png
       - name: Verify draft and native time-picker journeys
-        if: inputs.verify_time_picker
+        if: inputs.verify_time_picker || inputs.verify_challenges
         timeout-minutes: 12
         env:
           SIMULATOR_ID: ${{ steps.simulator.outputs.id }}
         run: |
           set -o pipefail
+          selectors=(-only-testing:PuzzleAlarmTests/DraftEditingTests
+            -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testTimeEditsStayInDraftAndCancel
+            -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testSavedTimeAndSoundReopenFromDisk)
+          if [[ "${{ inputs.verify_challenges }}" == "true" ]]; then
+            selectors=(-only-testing:PuzzleAlarmTests
+              -only-testing:PuzzleAlarmUITests/PlayableChallengeUITests
+              -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testTimeEditsStayInDraftAndCancel
+              -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testSavedTimeAndSoundReopenFromDisk)
+          fi
           xcodebuild -project PuzzleAlarm.xcodeproj -scheme PuzzleAlarm \
             -configuration Debug -destination "platform=iOS Simulator,id=$SIMULATOR_ID,arch=arm64" \
             -derivedDataPath DerivedData -resultBundlePath TestResults/TimePicker.xcresult \
-            -only-testing:PuzzleAlarmTests/DraftEditingTests \
-            -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testTimeEditsStayInDraftAndCancel \
-            -only-testing:PuzzleAlarmUITests/DraftEditingUITests/testSavedTimeAndSoundReopenFromDisk \
+            "${selectors[@]}" \
             -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test \
             2>&1 | tee Preview/time-picker-tests.log
       - name: Freeze focused test evidence
-        if: always() && inputs.verify_time_picker
+        if: always() && (inputs.verify_time_picker || inputs.verify_challenges)
         timeout-minutes: 2
         run: |
           python3 Scripts/preserve_xcode_results.py TestResults/TimePicker.xcresult Preview/TestEvidence \

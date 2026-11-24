@@ -1,8 +1,10 @@
 import SwiftUI
+import UIKit
 import PuzzleAlarmCore
 
 struct ContentView: View {
     @ObservedObject var model: AlarmListModel
+    @ObservedObject var challenges: ChallengeModel
     @Environment(\.scenePhase) private var scenePhase
     @State private var draft: AlarmDraft?
     @State private var deleting: AlarmDefinition?
@@ -12,13 +14,16 @@ struct ContentView: View {
             List {
                 Text("PuzzleAlarm").font(.title).accessibilityIdentifier("shell.title")
                 #if APPETIZE_PREVIEW && DEBUG && targetEnvironment(simulator)
-                Text("Preview: alarm scheduling is simulated. Alarms will not ring. Challenge solving is not available yet.")
+                Text("Preview: alarms and QR scans are simulated. Enable a challenge alarm, then tap Try challenges to play it now.")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .accessibilityIdentifier("preview.notice")
                 #endif
                 if let error = model.errorMessage {
                     Text(error).foregroundStyle(.red).accessibilityIdentifier("alarms.error")
+                }
+                if let error = challenges.errorMessage {
+                    Text(error).foregroundStyle(.red)
                 }
                 if let message = model.message { Text(message).accessibilityIdentifier("alarms.warning") }
                 if model.listState == .loading {
@@ -47,6 +52,10 @@ struct ContentView: View {
             .switchDiagnosticState("stored=\(model.definitions); busy=\(model.busy); loaded=\(model.loaded); error=\(String(describing: model.errorMessage)); selected=\(String(describing: draft?.id))", context: "list")
             .navigationTestState("list", context: "list")
             .sheet(item: $draft) { value in AlarmEditorView(draft: value, model: model) }
+            .fullScreenCover(isPresented: Binding(get: { challenges.current != nil }, set: { _ in })) {
+                ChallengeHostView(model: challenges)
+                    .interactiveDismissDisabled()
+            }
             .alert("Delete alarm?", isPresented: Binding(
                 get: { deleting != nil }, set: { if !$0 { deleting = nil } }
             )) {
@@ -56,9 +65,33 @@ struct ContentView: View {
                 }
                 Button("Cancel", role: .cancel) { deleting = nil }
             } message: { Text("Scheduled alarms will be cancelled when safe. Active challenge sessions remain protected.") }
-            .task { await model.refresh() }
+            .task { await model.refresh(); await challenges.refresh() }
+            .task(id: challenges.nextWakeUpDate) {
+                guard let delay = challenges.secondsUntilNextWakeUp else { return }
+                do { try await Task.sleep(for: .seconds(delay)) } catch { return }
+                await challenges.refresh()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.significantTimeChangeNotification)) { _ in
+                Task { await model.refresh(); await challenges.refresh() }
+            }
+            .task(id: challenges.nextWakeUpDate) {
+                guard let delay = challenges.secondsUntilNextWakeUp else { return }
+                do { try await Task.sleep(for: .seconds(delay)) } catch { return }
+                await challenges.refresh()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIApplication.significantTimeChangeNotification)) { _ in
+                Task { await model.refresh(); await challenges.refresh() }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: Notification.Name("PuzzleAlarm.openOccurrence")).receive(on: RunLoop.main)) { _ in
+                Task { await model.refresh(); await challenges.refresh() }
+            }
+            .onChange(of: challenges.current?.phase) { _, phase in
+                if phase == .completed { Task { await model.refresh() } }
+            }
             .onChange(of: scenePhase) { _, phase in
-                if phase == .active && model.loaded { Task { await model.refresh() } }
+                if phase == .active && model.loaded {
+                    Task { await model.refresh(); await challenges.refresh() }
+                } else if phase != .active { Task { await challenges.interrupt() } }
             }
         }
     }
@@ -93,6 +126,14 @@ struct ContentView: View {
             }
             Button("Delete alarm", role: .destructive) { deleting = alarm }
                 .accessibilityIdentifier("alarm.delete.\(alarm.id)")
+            #if DEBUG && targetEnvironment(simulator)
+            if challenges.supportsPreview && alarm.enabled && alarm.dismissalMode == .challengesRequired {
+                Button("Try challenges", systemImage: "play.fill") {
+                    Task { await challenges.runNow(alarmID: alarm.id) }
+                }
+                .accessibilityIdentifier("alarm.try.\(alarm.id)")
+            }
+            #endif
         }
         .buttonStyle(.borderless)
         .padding(.vertical, 6)

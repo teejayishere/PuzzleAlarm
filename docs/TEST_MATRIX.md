@@ -1,3 +1,22 @@
+# Playable candidate acceptance map - 2026-11-23
+
+IMPLEMENTED / NOT RUN: MathChallengeEngineTests,MemoryChallengeEngineTests,
+QRChallengeEngineTests and ChallengeCoordinatorTests test generation, invalid and
+stale answers,15sequence permutations, restore, memory hiding and exact matching.
+ChallengeModelTests test full persisted Math/Memory/QR with interruption/restoration,
+no early cancellation, CAS write failure/retry, final cleanup and clock recovery.
+SoundResourceTests validate bundled WAVs and real missing-resource fallback.
+PlayableChallengeUITests/testRunNowSolvesMathMemoryAndRegisteredQRBeforeReturningToList
+uses displayed prompts/digits, wrong QR then registered simulated QR, and final
+completion/list return. The dedicated fixture's30s reveal accommodates native
+snapshot overhead; the new35s wait covers this configured display duration.
+All app-unit tests and existing two time-picker user journeys are selected with
+all Core tests. Generic unsigned Release device compilation is separate evidence.
+Actual camera/AlarmKit/sound/intent-launch behavior remains DEVICE REQUIRED;
+Appetize interactive runtime NOT VERIFIED. No full legacy UI suite pass claimed.
+
+---
+
 # Native time-picker change - 2026-11-23
 
 IMPLEMENTED / NOT RUN at publication: native time wheels replace hour/minute menus.
