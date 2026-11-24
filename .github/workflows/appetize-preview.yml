@@ -71,6 +71,9 @@ jobs:
             2>&1 | tee Preview/device-build.log
           ditto -c -k --sequesterRsrc --keepParent \
             DeviceDerivedData/Build/Products/Release-iphoneos/PuzzleAlarm.app Preview/PuzzleAlarm-Unsigned-Device.zip
+          mkdir -p "$RUNNER_TEMP/Payload"
+          ditto DeviceDerivedData/Build/Products/Release-iphoneos/PuzzleAlarm.app "$RUNNER_TEMP/Payload/PuzzleAlarm.app"
+          ditto -c -k --sequesterRsrc --keepParent "$RUNNER_TEMP/Payload" Preview/PuzzleAlarm-Unsigned.ipa
       - name: Install and launch the exact packaged app
         timeout-minutes: 8
         env:

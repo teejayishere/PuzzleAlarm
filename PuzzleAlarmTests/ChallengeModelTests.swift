@@ -7,6 +7,9 @@ import XCTest
 final class ChallengeModelTests: XCTestCase, @unchecked Sendable {
     @MainActor
     func testRunNowPersistsAllThreeChallengesRestoresAndCancelsOnlyAfterFullSequence() async throws {
+        let pendingKey = "PuzzleAlarm.pendingOccurrenceID"
+        UserDefaults.standard.removeObject(forKey: pendingKey)
+        defer { UserDefaults.standard.removeObject(forKey: pendingKey) }
         let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: directory) }
@@ -96,6 +99,92 @@ final class ChallengeModelTests: XCTestCase, @unchecked Sendable {
         XCTAssertTrue(Set(try scheduler.currentAlarms().map(\.id)).isDisjoint(with: originalIDs))
         XCTAssertEqual(restored.current?.phase, .completed)
         XCTAssertEqual(restored.current?.content, .finished)
+        // Neither an unknown notification hint nor an old completed occurrence
+        // can reopen the host or manufacture another wake-up session on relaunch.
+        for hint in [UUID(), completed.session.id] {
+            UserDefaults.standard.set(hint.uuidString, forKey: pendingKey)
+            let fresh = ChallengeModel(repository: reopened, service: restoredService,
+                clock: { restoredClock.now() })
+            await fresh.refresh()
+            XCTAssertNil(fresh.errorMessage)
+            XCTAssertNil(fresh.current)
+            XCTAssertNil(UserDefaults.standard.string(forKey: pendingKey))
+            let retained = try await record(in: reopened, parentID: definition.id)
+            XCTAssertEqual(retained, completed)
+            guard case let .loaded(snapshot, _) = try await reopened.load() else {
+                return XCTFail("Completed session storage disappeared")
+            }
+            XCTAssertEqual(snapshot.state.sessions.count, 1)
+        }
+    }
+
+    @MainActor
+    func testFutureHintsDoNotOpenHostAndOrdinaryRefreshRoutesActualDueOccurrence() async throws {
+        let pendingKey = "PuzzleAlarm.pendingOccurrenceID"
+        UserDefaults.standard.removeObject(forKey: pendingKey)
+        defer { UserDefaults.standard.removeObject(forKey: pendingKey) }
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let repository = DiskRepository(directory: directory)
+        let scheduler = try SimulatorAlarmScheduler(directory: directory)
+        let clock = try SimulatorClock(directory: directory)
+        let service = LifecycleAlarmManagementService(repository: repository, scheduler: scheduler,
+            clock: { clock.now() }, context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
+        let now = clock.now()
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = try XCTUnwrap(TimeZone(secondsFromGMT: 0))
+        let future = calendar.dateComponents([.hour, .minute], from: now.addingTimeInterval(3_600))
+        let definition = try AlarmDefinition(id: UUID(),
+            time: AlarmTime(hour: XCTUnwrap(future.hour), minute: XCTUnwrap(future.minute)), weekdays: [],
+            enabled: true, dismissalMode: .challengesRequired,
+            challengeSequence: ChallengeSequence([.qr(QRConfiguration(token: UUID()))]),
+            selectedSound: .systemDefault, createdAt: now, updatedAt: now)
+        _ = try await service.perform(.create(definition))
+        let armed = try await record(in: repository, parentID: definition.id)
+        let originalIDs = Set(armed.session.plan.alarms.map(\.id))
+        XCTAssertEqual(originalIDs.count, 5)
+        XCTAssertEqual(armed.session.phase, .armed)
+        XCTAssertGreaterThan(armed.session.scheduledWakeUpDate, clock.now())
+        let model = ChallengeModel(repository: repository, service: service, clock: { clock.now() })
+        for hint in [UUID(), armed.session.id] {
+            UserDefaults.standard.set(hint.uuidString, forKey: pendingKey)
+            await model.refresh()
+            XCTAssertNil(model.errorMessage)
+            XCTAssertNil(model.current, "Hints cannot activate a future occurrence")
+            XCTAssertEqual(model.nextWakeUpDate, armed.session.scheduledWakeUpDate)
+            XCTAssertNil(UserDefaults.standard.string(forKey: pendingKey))
+            let unchanged = try await record(in: repository, parentID: definition.id)
+            XCTAssertEqual(unchanged, armed)
+        }
+
+        // No preview command: the normal foreground refresh must detect due work.
+        try clock.advance(to: armed.session.scheduledWakeUpDate)
+        UserDefaults.standard.set(UUID().uuidString, forKey: pendingKey)
+        await model.refresh()
+        XCTAssertNil(model.errorMessage)
+        XCTAssertEqual(model.current?.sessionID, armed.session.id)
+        XCTAssertEqual(model.current?.phase, .active)
+        XCTAssertEqual(model.current?.challengeIndex, 0)
+        XCTAssertEqual(model.current?.content, .qr)
+        XCTAssertEqual(Set(try scheduler.currentAlarms().map(\.id)), originalIDs)
+        let due = try await record(in: repository, parentID: definition.id)
+        XCTAssertTrue(due.session.challengeCompletedAt.isEmpty)
+        XCTAssertNil(due.session.completedAt)
+        XCTAssertTrue(due.session.cancellation.allSatisfy { $0 == .notRequested })
+        UserDefaults.standard.set(armed.session.id.uuidString, forKey: pendingKey)
+        let fresh = ChallengeModel(repository: repository, service: service, clock: { clock.now() })
+        await fresh.refresh()
+        XCTAssertNil(fresh.errorMessage)
+        XCTAssertEqual(fresh.current?.sessionID, armed.session.id)
+        XCTAssertEqual(fresh.current?.phase, .active)
+        XCTAssertNil(UserDefaults.standard.string(forKey: pendingKey))
+        guard case let .loaded(snapshot, _) = try await repository.load() else {
+            return XCTFail("Due session storage disappeared")
+        }
+        XCTAssertEqual(snapshot.state.sessions.count, 1)
+        XCTAssertEqual(snapshot.state.sessions.first, due)
+        XCTAssertEqual(Set(try scheduler.currentAlarms().map(\.id)), originalIDs)
     }
 
     @MainActor
@@ -138,6 +227,62 @@ final class ChallengeModelTests: XCTestCase, @unchecked Sendable {
         XCTAssertEqual(retried.session.challengeCompletedAt.count, 1)
         XCTAssertEqual(model.current?.phase, .completed)
         XCTAssertTrue(Set(try scheduler.currentAlarms().map(\.id)).isDisjoint(with: originalIDs))
+    }
+
+    @MainActor
+    func testHintSelectsSecondDueSessionAndLateQRCallbackCannotCompleteTheNextSession() async throws {
+        let pendingKey = "PuzzleAlarm.pendingOccurrenceID"
+        UserDefaults.standard.removeObject(forKey: pendingKey)
+        defer { UserDefaults.standard.removeObject(forKey: pendingKey) }
+        let directory = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let repository = DiskRepository(directory: directory)
+        let scheduler = try SimulatorAlarmScheduler(directory: directory)
+        let clock = try SimulatorClock(directory: directory)
+        let service = LifecycleAlarmManagementService(repository: repository, scheduler: scheduler,
+            clock: { clock.now() }, context: { try ScheduleContext(timeZoneIdentifier: "UTC") })
+        let qr = QRConfiguration(token: UUID())
+        let now = clock.now()
+        let first = try makeDefinition([.qr(qr)], now: now)
+        let second = try makeDefinition([.qr(qr)], now: now)
+        _ = try await service.perform(.create(first))
+        _ = try await service.perform(.create(second))
+        let firstArmed = try await record(in: repository, parentID: first.id)
+        let secondArmed = try await record(in: repository, parentID: second.id)
+        try clock.advance(to: max(firstArmed.session.scheduledWakeUpDate, secondArmed.session.scheduledWakeUpDate))
+        UserDefaults.standard.set(secondArmed.session.id.uuidString, forKey: pendingKey)
+        let model = ChallengeModel(repository: repository, service: service, clock: { clock.now() })
+        await model.refresh()
+        XCTAssertNil(model.errorMessage)
+        let oldDisplay = try XCTUnwrap(model.current)
+        XCTAssertEqual(oldDisplay.sessionID, secondArmed.session.id,
+                       "Preparing the hinted session must preserve its selection")
+        XCTAssertEqual(oldDisplay.content, .qr)
+        XCTAssertNil(UserDefaults.standard.string(forKey: pendingKey))
+        await model.submit(.scanQR(payload: qr.expectedPayload), expecting: oldDisplay)
+        XCTAssertNil(model.errorMessage)
+        let secondCompleted = try await record(in: repository, parentID: second.id)
+        XCTAssertEqual(secondCompleted.session.phase, .completed)
+        let nextDisplay = try XCTUnwrap(model.current)
+        XCTAssertEqual(nextDisplay.sessionID, firstArmed.session.id)
+        XCTAssertEqual(nextDisplay.phase, .active)
+        XCTAssertEqual(nextDisplay.content, .qr)
+        let beforeLateCallback = try await record(in: repository, parentID: first.id)
+        await model.submit(.scanQR(payload: qr.expectedPayload), expecting: oldDisplay)
+        let afterLateCallback = try await record(in: repository, parentID: first.id)
+        XCTAssertEqual(afterLateCallback, beforeLateCallback)
+        XCTAssertTrue(afterLateCallback.session.challengeCompletedAt.isEmpty)
+        XCTAssertEqual(model.current, nextDisplay)
+        XCTAssertNil(model.errorMessage)
+        let observed = Set(try scheduler.currentAlarms().map(\.id))
+        XCTAssertEqual(observed, Set(firstArmed.session.plan.alarms.map(\.id)))
+        await model.submit(.scanQR(payload: qr.expectedPayload), expecting: nextDisplay)
+        XCTAssertNil(model.errorMessage)
+        let firstCompleted = try await record(in: repository, parentID: first.id)
+        XCTAssertEqual(firstCompleted.session.phase, .completed)
+        XCTAssertEqual(firstCompleted.session.challengeCompletedAt.count, 1)
+        XCTAssertTrue(try scheduler.currentAlarms().isEmpty)
     }
 
     func testPreviewClockPersistsItsAdvanceAndRejectsCorruptStorage() throws {

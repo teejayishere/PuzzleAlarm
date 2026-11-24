@@ -34,8 +34,9 @@ struct PuzzleAlarmApp: App {
             #if APPETIZE_PREVIEW
             advance = { try simulatorClock.advance(to: $0) }
             #else
-            advance = ProcessInfo.processInfo.arguments.contains("--ui-testing")
-                ? { try simulatorClock.advance(to: $0) } : nil
+            if ProcessInfo.processInfo.arguments.contains("--ui-testing") {
+                advance = { try simulatorClock.advance(to: $0) }
+            } else { advance = nil }
             #endif
             #else
             clock = { Date() }; advance = nil

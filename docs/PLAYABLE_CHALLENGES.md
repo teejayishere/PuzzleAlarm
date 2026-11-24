@@ -36,3 +36,19 @@ Also compile ONE unsigned generic iPhone Release app per candidate (maximum4min
 step, within25min job); preserve it separately from Simulator ZIP. This checks
 that preview-only code is excluded from device composition. It is not installable
 without provisioning and proves no real-device behavior. No extra execution added.
+
+First playable candidate4bceba5/run45302926145 FAILED before iOS test execution.
+137 Core tests in6suites PASS; Simulator preview and unsigned iPhone Release builds
+and Simulator install/launch PASS. Debug test composition failed compiler diagnostic
+atPuzzleAlarmApp.swift:37 on optional advance-clock closure ternary. Replaced with
+explicit if/else, no relaxed checks. Allocation1/2,567actual runner-seconds,$0.
+Native-only allocation closed at2executions (949+567seconds); no native UI acceptance.
+Remaining playable allocation includes the related two time-picker journeys.
+
+Changed candidate also binds delayed QR callbacks to displayed session/index,
+preserves hinted active session through preparation, hides memory at its absolute
+deadline independently of persistence latency and omits digits while inactive.
+Added two-due-session stale QR regression and routing/clock recovery tests.
+Try-challenge control disables while restore is busy. Generated unsigned IPA uses
+Payload/PuzzleAlarm.app for external free Windows signing; credentials stay outside
+GitHub. Source review only until the changed exact-SHA run finishes.

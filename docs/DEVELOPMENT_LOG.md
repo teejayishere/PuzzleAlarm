@@ -1,3 +1,16 @@
+# Changed playable candidate after Debug composition compile failure - 2026-11-23
+
+4bceba5/run45302926145 failed Debug-test compilation after137Core tests and
+Simulator/Release builds and launch passed. Replaced optional closure ternary
+with explicit branches. Added bound view callbacks, route/clock recovery cases,
+UI-independent memory hiding deadline and inactive redaction, and unsigned IPA
+packaging. Owner device iPhone16/iOS27.2.1; free Windows installation route planned.
+Playable allocation1/2,567seconds; native allocation closed2/2,1516seconds.
+Remaining changed playable run retains two native time journeys and all-three flow.
+No test success inferred from builds; actual stage/milestone status PROJECT_STATE.
+
+---
+
 # Playable challenge and platform integration candidate - 2026-11-23
 
 Implemented pure Math/Memory/QR engines, identity-bound challenge coordinator,

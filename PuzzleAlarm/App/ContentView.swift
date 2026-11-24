@@ -131,6 +131,7 @@ struct ContentView: View {
                 Button("Try challenges", systemImage: "play.fill") {
                     Task { await challenges.runNow(alarmID: alarm.id) }
                 }
+                .disabled(challenges.busy)
                 .accessibilityIdentifier("alarm.try.\(alarm.id)")
             }
             #endif

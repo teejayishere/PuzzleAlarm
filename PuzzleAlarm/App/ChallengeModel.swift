@@ -17,6 +17,7 @@ final class ChallengeModel: ObservableObject {
     private var selectedSessionID: UUID?
 
     var supportsPreview: Bool { advancePreviewClock != nil }
+    var now: Date { clock() }
     var secondsUntilNextWakeUp: TimeInterval? { nextWakeUpDate.map { max(0, $0.timeIntervalSince(clock())) } }
 
     init(repository: any PuzzleAlarmRepository, service: any AlarmManagementService,
@@ -53,8 +54,10 @@ final class ChallengeModel: ObservableObject {
         } catch { errorMessage = "Could not start this preview. Enable a challenge alarm first. \(error)" }
     }
 
-    func submit(_ action: ChallengeCommand.Action) async {
+    func submit(_ action: ChallengeCommand.Action, expecting displayed: ChallengeSnapshot? = nil) async {
         guard let current, current.phase == .active, !busy else { return }
+        if let displayed,
+           displayed.sessionID != current.sessionID || displayed.challengeIndex != current.challengeIndex { return }
         let command = ChallengeCommand(sessionID: current.sessionID,
             challengeIndex: current.challengeIndex, action: action)
         busy = true; defer { busy = false }
@@ -82,12 +85,12 @@ final class ChallengeModel: ObservableObject {
     func tick() async {
         guard let current, case let .memory(_, digits, _, deadline, _, _) = current.content,
               digits != nil, let deadline, clock() >= deadline else { return }
-        await submit(.advanceTime)
+        await submit(.advanceTime, expecting: current)
     }
 
     func interrupt() async {
         guard let current, case .memory = current.content else { return }
-        await submit(.interruptMemory)
+        await submit(.interruptMemory, expecting: current)
     }
 
     func dismissCompleted() {
@@ -96,13 +99,13 @@ final class ChallengeModel: ObservableObject {
     }
 
     #if DEBUG && targetEnvironment(simulator)
-    func simulateQR(matches: Bool) async {
+    func simulateQR(matches: Bool, expecting displayed: ChallengeSnapshot? = nil) async {
         guard supportsPreview, let current, current.phase == .active else { return }
         do {
             guard case let .loaded(snapshot, _) = try await repository.load(),
                   let record = snapshot.state.sessions.first(where: { $0.session.id == current.sessionID }),
                   case let .qr(configuration) = record.session.currentChallenge else { return }
-            await submit(.scanQR(payload: matches ? configuration.expectedPayload : "puzzlealarm://challenge/other"))
+            await submit(.scanQR(payload: matches ? configuration.expectedPayload : "puzzlealarm://challenge/other"), expecting: displayed ?? current)
         } catch { errorMessage = "Could not read the registered QR target. \(error)" }
     }
     #endif
@@ -146,6 +149,7 @@ final class ChallengeModel: ObservableObject {
         let pending = UserDefaults.standard.string(forKey: "PuzzleAlarm.pendingOccurrenceID").flatMap(UUID.init(uuidString:))
         let actionable: (PersistedSession) -> Bool = { [.active, .completing, .cancellationPartiallyFailed].contains($0.session.phase) }
         let record = candidates.first { $0.session.id == pending && actionable($0) }
+            ?? candidates.first { $0.session.id == selectedSessionID && actionable($0) }
             ?? candidates.first(where: actionable)
             ?? candidates.first { $0.session.id == selectedSessionID }
         UserDefaults.standard.removeObject(forKey: "PuzzleAlarm.pendingOccurrenceID")

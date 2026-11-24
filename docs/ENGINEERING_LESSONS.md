@@ -1,3 +1,17 @@
+# PA-L006 recurrence: compile every shipped/test composition - 2026-11-23
+
+4bceba5/run45302926145:137Core tests PASS and both APPETIZE_PREVIEW Simulator
+and Release device builds PASS, but ordinary Debug Simulator test build failed
+Swift's diagnostic at an optional closure ternary in PuzzleAlarmApp.swift:37.
+No app-unit/UI tests executed. Explicit if/else replaces ambiguous inference.
+This is a candidate compile/configuration defect, not evidence of broken challenge
+answers or an accepted test pass. Preserve all three configuration builds in the
+focused pipeline; do not infer test-target compilation from the preview binary.
+Changed candidate also adds delayed QR/session and foreground routing regressions;
+these are source-review protections, pending actual run. No extra gate accepted.
+
+---
+
 # Native wheel regression evidence - 2026-11-23
 
 Picker300f63a/run45300385711 FAILED: seven draft unit tests PASS, both UI cases
